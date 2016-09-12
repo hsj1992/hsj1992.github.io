@@ -1,0 +1,958 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,html,css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="边距 简记法padding: 5px;——使用一个值，这个值就会应用于全部四个边。padding: 5px 9px;——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。padding: 5px 9px 11px;——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边padding: 5px 9px 11px 0;——使用四个值，它们会按照时钟顺序，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《HTML5与CSS3基础教程》读书笔记3">
+<meta property="og:url" content="https://codingme.xyz/2016/08/29/html-css-diary-3/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="边距 简记法padding: 5px;——使用一个值，这个值就会应用于全部四个边。padding: 5px 9px;——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。padding: 5px 9px 11px;——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边padding: 5px 9px 11px 0;——使用四个值，它们会按照时钟顺序，">
+<meta property="og:updated_time" content="2016-09-11T08:54:31.772Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《HTML5与CSS3基础教程》读书笔记3">
+<meta name="twitter:description" content="边距 简记法padding: 5px;——使用一个值，这个值就会应用于全部四个边。padding: 5px 9px;——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。padding: 5px 9px 11px;——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边padding: 5px 9px 11px 0;——使用四个值，它们会按照时钟顺序，">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/08/29/html-css-diary-3/"/>
+
+  <title> 《HTML5与CSS3基础教程》读书笔记3 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《HTML5与CSS3基础教程》读书笔记3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-29T17:09:32+08:00" content="2016-08-29">
+              2016-08-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="边距-简记法"><a href="#边距-简记法" class="headerlink" title="边距 简记法"></a>边距 简记法</h1><p><code>padding: 5px;</code>——使用一个值，这个值就会应用于全部四个边。<br><code>padding: 5px 9px;</code>——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。<br><code>padding: 5px 9px 11px;</code>——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边<br><code>padding: 5px 9px 11px 0;</code>——使用四个值，它们会按照时钟顺序，依次应用于上、右、下、左四个边.<br>应该也适用与 margin 。</p>
+<h1 id="Bootstrap-3的-box-sizing"><a href="#Bootstrap-3的-box-sizing" class="headerlink" title="Bootstrap 3的 box-sizing"></a>Bootstrap 3的 box-sizing</h1><p>学习到 <code>box-sizing:border-box</code> 时候发现原来 <strong>Bootstrap 3</strong> 已经把所有的盒模型都设置成 border-box 了……将 box-sizing 属性设置为 border-box ，就可以很方便地对拥有水平方向内边距（使用 em 或其他的单位）的元素定义宽度，而不必进行复杂的数学计算来找出百分数的值。这对响应式页面来说很方便。所以 Bootstrap 3 才用了 border-box 吧。</p>
+<h1 id="em-与-margin、padding"><a href="#em-与-margin、padding" class="headerlink" title="em 与 margin、padding"></a>em 与 margin、padding</h1><p>当 em 值用于内边距和外边距时，它的值是<strong>相对于元素的字体大小</strong>的，而不是相对于父元素的字体大小。</p>
+<a id="more"></a>
+<h1 id="clearfix-解决浮动后遗症"><a href="#clearfix-解决浮动后遗症" class="headerlink" title="clearfix 解决浮动后遗症"></a>clearfix 解决浮动后遗症</h1><ul>
+<li>使用 float 浮动后，父元素高度为0，这样一来想给内容加背景色什么的很麻烦。解决方法：<br>  让容器自身具有清除浮动的能力。<br>  用所谓的 <strong>clearfix 方法</strong>（最可靠？）<br>  在 CSS 中引入规则，然后为浮动元素的父元素添加 clearfix 类，从而可以支撑起父元素，并能够添加一些预期样式。<br>  大量网站使用 clearfix 类或类似方法清除浮动。  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.clearfix:before,</div><div class="line">.clearfix:after &#123;</div><div class="line">content: " ";</div><div class="line">display: table;</div><div class="line">&#125;</div><div class="line">.clearfix:after &#123;</div><div class="line">clear: both;</div><div class="line">&#125;</div><div class="line">.clearfix &#123;</div><div class="line">*zoom: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="另一种方法：-overflow-方法"><a href="#另一种方法：-overflow-方法" class="headerlink" title="另一种方法： overflow 方法"></a>另一种方法： overflow 方法</h1><p>通常，可以对浮动元素的父元素使用 overflow 属性以替代 clearfix 方法。例如，在示例页面中可以使用以下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line"><span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在某些情况下， overflow: hidden; 会将内容<strong>截断</strong>，对此要多加注意。有时使用 overflow: auto; 也有效，但这样做可能会出现一个<strong>滚动条</strong>，这显然是我们不希望看到的。</li>
+<li>可 以 将 clearfix 或 overflow 应用到浮动元素的任何一个非父元素的祖先元素。这样做不会让父元素变高，但祖先元素的高度会包含浮动元素。</li>
+</ul>
+<h1 id="position-relative"><a href="#position-relative" class="headerlink" title="position: relative"></a>position: relative</h1><ul>
+<li><code>position: relative;</code>对元素进行<strong>相对定位</strong>,偏移自然流中元素。</li>
+<li>使用相对定位、绝对定位或固定定位时，对于相互重叠的元素，可以用 <strong>z-index</strong> 属性指定它们的叠放次序。</li>
+<li>对包含图标列表的父元素设置 <code>position: relative</code> ，从而让这些图标可以相对父元素（而不是 body 元素）进行绝对定位。</li>
+</ul>
+<h1 id="align-的基准线值"><a href="#align-的基准线值" class="headerlink" title="align 的基准线值"></a>align 的基准线值</h1><p>输入 <code>vertical-align:</code>  输入 <code>baseline</code> ，使元素的基准线对齐父元素的基准线；或者 <code>sub、super、text-top、text-bottom、top、bottom</code>。</p>
+<h1 id="viewport-解决宽度问题"><a href="#viewport-解决宽度问题" class="headerlink" title="viewport 解决宽度问题"></a>viewport 解决宽度问题</h1><ul>
+<li>解决浏览器视觉区域宽与屏幕宽度不同的一种快速解决方案：页面的 head 部分添加视觉区域 meta 元素 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;</code></li>
+<li><code>initial-scale=1</code> 的的意思：将页面的默认缩放级别设成 100%，换成纵向模式也一样。如果不设置 <code>initial-scale=1</code> ，在 iPhone 中，手机从纵向模式改为横向模式时，网页会被放大，从而让布局与纵向模式的一致。</li>
+</ul>
+<h1 id="font-简记法"><a href="#font-简记法" class="headerlink" title="font 简记法"></a>font 简记法</h1><ul>
+<li><code>font:100%/1.2 ...</code> 行高1.2跟在字体大小100%和一个斜杠后面。</li>
+<li><code>font: .875em/1.3 &quot;Palatino Linotype&quot;,Palatino, serif;</code></li>
+</ul>
+<h1 id="media-与响应式页面"><a href="#media-与响应式页面" class="headerlink" title="@media 与响应式页面"></a>@media 与响应式页面</h1><ul>
+<li>响应式页面利用媒体查询器和百分比宽度  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*  30em（大于等于480px）</span></div><div class="line">----------------------------------- */</div><div class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">30em</span>) &#123;</div><div class="line">...  报头样式  ...</div><div class="line"><span class="selector-class">.post-photo</span> &#123;</div><div class="line"><span class="attribute">float</span>: left;</div><div class="line"><span class="attribute">margin-bottom</span>: <span class="number">2px</span>;</div><div class="line"><span class="attribute">margin-right</span>: <span class="number">22px</span>;</div><div class="line"><span class="attribute">max-width</span>: <span class="number">61.667%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.post-footer</span> &#123;</div><div class="line"><span class="attribute">clear</span>: left;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="响应式设计的旧版兼容"><a href="#响应式设计的旧版兼容" class="headerlink" title="响应式设计的旧版兼容"></a>响应式设计的旧版兼容</h1><ul>
+<li><p>响应式设计要兼容旧版 IE 的话：</p>
+<ul>
+<li>移动优先方法，因为媒体查询器对 IE8 及以下的版本不支持。所以有3种解决方法：<ul>
+<li>什么都不做。让网站显示基本的版本</li>
+<li>为它们单独创建一个样式表，让它们显示网站最宽的版本。一种做法是复制一份常规的样式表，将其命名为 old-ie.css 之类的文件名。将媒体查询语句去掉，但保留其中的样式规则。在 HTML 中添加条件注释，从而让不同的浏览器都能找到正确的样式表：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--</span></div><div class="line">第一个条件注释包含的是为 IE8 及更旧版本以外</div><div class="line">的所有浏览器准备的样式表。</div><div class="line">第二个包含的则是仅为 IE9 以下的IE 准备的样式表</div><div class="line">--&gt;</div><div class="line"><span class="comment">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span></span></div><div class="line"><span class="attr">href</span>=<span class="string">"css/styles.css"</span> /&gt;</div><div class="line"><span class="comment">&lt;!--&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">&lt;script src="js/respond.min.js"&gt;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果希望页面有响应式的效果，就在页面中引入 respond.min.js。它让 min-width 和 max-width 媒体查询对旧版 IE 也有效。<a href="https://github.com/scottjehl/Respond/" target="_blank" rel="external">https://github.com/scottjehl/Respond/</a></p>
+</li>
+<li>第二种方法更可靠，它让 IE8 用户也能看到网站的完整布局。</li>
+<li>如果使用 Sass、LESS 或 Stylus 这类 CSS 预处理器，就可以自动创建为旧版 IE 准备的样式表。地址：<a href="https://akearchibald.github.io/sass-ie/" target="_blank" rel="external">https://akearchibald.github.io/sass-ie/</a></li>
+</ul>
+<h1 id="Web-字体"><a href="#Web-字体" class="headerlink" title="Web 字体"></a>Web 字体</h1><ol>
+<li>使用 Web 字体可能在它们显示到页面上之前，都需要下载到用户的计算机上。这会减慢网站加载的速度，尤其是对移动用户来说。所以审慎地选择 Web 字体。</li>
+<li>每一个样式和粗细版本都会引入一个新的字体文件，从而增加浏览器要下载的文件大小，这会影响性能。出于这个原因，很多设计师仅对标题使用 Web 字体。</li>
+<li>字体的常见分类：<ul>
+<li>衬线字体（San）:衬线体的字体可以有效的转移视线，提高阅读速度，尤其在印刷品中效果非常明显。</li>
+<li>无衬线体(Sans-serif):非衬线字体有着简单的风格，在网上或者银幕上表现效果都很好，能让画面感觉变得更清晰。</li>
+<li>等宽字体（monospace）</li>
+<li>梦幻字体（fantasy）</li>
+<li>手写字体（cursive）</li>
+</ul>
+</li>
+</ol>
+<h1 id="IE-的-CSS-polyfill"><a href="#IE-的-CSS-polyfill" class="headerlink" title="IE 的 CSS polyfill"></a>IE 的 CSS polyfill</h1><ul>
+<li>关于 IE，Jason Johnston 的 CSS3 PIE（<a href="http://css3pie.com/" target="_blank" rel="external">http://css3pie.com/</a> ）是一种最为常见的 <strong>polyfill</strong>。它为  Internet Explorer 6 ～ 9 提供了本章讨论的大部分 CSS 效果的支持。</li>
+<li>CSS3 属性前缀可以用 Autoprefixer。</li>
+</ul>
+<h1 id="border-radius-的可能-bug"><a href="#border-radius-的可能-bug" class="headerlink" title="border-radius 的可能 bug"></a>border-radius 的可能 bug</h1><p>有时元素的背景（这里讲的不是子元素的背景）会透过其圆角。为了避免这种情况，可以在元素的 border-radius 声明后面增加一条样式规则： <code>background-clip: padding-box;</code>。</p>
+<h1 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h1><p>允许使用两个可选的属性—— inset 关键字属性和 spread 属性（前者用于内阴影，后者用于扩张/收缩阴影）。</p>
+<p>希望兼容浏览器，需要加 css 前缀（autoprefixer）:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-box-shadow</span>: <span class="selector-tag">x-offset</span> <span class="selector-tag">y-offset</span> <span class="selector-tag">blur-radius</span></div><div class="line"> <span class="selector-tag">inset</span> <span class="selector-tag">spread</span> <span class="selector-tag">color</span>(<span class="selector-tag">inset</span>内阴影);</div><div class="line"><span class="selector-tag">box-shadow</span>: <span class="selector-tag">x-offset</span> <span class="selector-tag">y-offset</span> <span class="selector-tag">blur-radius</span></div><div class="line"> <span class="selector-tag">spread</span> <span class="selector-tag">color</span> (<span class="selector-tag">inset</span>);</div><div class="line"><span class="selector-tag">box-shadow</span>:参数组1，参数组2(多重阴影);</div></pre></td></tr></table></figure>
+<h1 id="HTML-多重背景"><a href="#HTML-多重背景" class="headerlink" title="HTML 多重背景"></a>HTML 多重背景</h1><p><code>background-image</code>、<code>background-position</code>、<code>background-repeat</code>等，用逗号分隔多个参数组；也可以用<code>background</code>简写。<br>其中<code>background-position:x-offset y-offset;</code><br>（实用性在哪…增加多个图片背景不是会增加HTTP请求么..）</p>
+<h1 id="渐变背景"><a href="#渐变背景" class="headerlink" title="渐变背景"></a>渐变背景</h1><ul>
+<li>先有<code>background</code>颜色（用于防止不支持的浏览器）</li>
+<li>用<code>background-image</code>和<code>background</code>效果相同。</li>
+<li><p>线性渐变：</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*关键字指定线性渐变的方向*/</span></div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">bottom</span> <span class="selector-tag">right</span>, <span class="selector-tag">aqua</span>, <span class="selector-tag">navy</span>);</div><div class="line"></div><div class="line"><span class="comment">/*指定角度*/</span></div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(290<span class="selector-tag">deg</span>, <span class="selector-tag">aqua</span>, <span class="selector-tag">navy</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>径向渐变:</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">使用渐变尺寸（长/宽），或者 closest-side 、</div><div class="line">farthest-side 、 closest-corner 或farthest-corner</div><div class="line">*/</div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">radial-gradient</span>(100<span class="selector-tag">px</span> 50<span class="selector-tag">px</span>,<span class="selector-tag">yellow</span>, <span class="selector-tag">red</span>);</div><div class="line"></div><div class="line"><span class="comment">/*at决定渐变中心（关键字、x/y）：*/</span></div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">closest-side</span></div><div class="line"> <span class="selector-tag">at</span> 70<span class="selector-tag">px</span> 60<span class="selector-tag">px</span>, <span class="selector-tag">yellow</span>, <span class="selector-tag">lime</span>, <span class="selector-tag">red</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>考虑浏览器兼容情况加上 CSS 前缀。</p>
+</li>
+</ul>
+<h1 id="opacity-的透明程度"><a href="#opacity-的透明程度" class="headerlink" title="opacity 的透明程度"></a>opacity 的透明程度</h1><ul>
+<li>示例：<code>&lt;body&gt;</code>背景褐色;<code>&lt;div&gt;</code>背景黑色，里面有个<code>&lt;img&gt;</code>;对<code>&lt;div&gt;</code>使用opacity属性0.5，变半透明，整个<code>&lt;div&gt;</code>包括黑色背景都呈现褐色。如果对<code>&lt;img&gt;</code>使用，应该是图片半透明呈现黑色。</li>
+<li>对于旧版IE:使用滤镜。  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line"><span class="attribute">-ms-filter</span>: progid:DXImageTransform.</div><div class="line"> Microsoft.<span class="built_in">Alpha</span>(opacity=50);</div><div class="line"><span class="attribute">filter</span>: <span class="built_in">alpha</span>(opacity=50);</div><div class="line"><span class="attribute">opacity</span>: .<span class="number">5</span>;</div><div class="line"><span class="attribute">zoom</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="CSS-生成内容"><a href="#CSS-生成内容" class="headerlink" title="CSS 生成内容"></a>CSS 生成内容</h1><ul>
+<li>功能：<br>  使用生成内容可以添加符号、创建用于添加样式的空内容元素等。<br>  生成内容并不是为页面添加段落或标题。这些内容还是应该交给HTML。</li>
+<li>示例：<br>  CSS 实现三角形:<a href="http://web.jobbole.com/87367/" target="_blank" rel="external">http://web.jobbole.com/87367/</a>。<br>  生成 CSS 三角形：<a href="http://www.cssarrowplease.com/" target="_blank" rel="external">http://www.cssarrowplease.com/</a>。</li>
+<li>学习到的：<ol>
+<li>伪元素 <code>:before</code> 和 <code>:after</code> ,都拥有 <code>position:absolute</code> 时候，<code>z-index</code> 值后者比前者高，或者说后者会覆盖前者。</li>
+<li>伪类 <code>:focus</code> 要实现正常工作，对其元素使用 <code>tabindex=&quot;0&quot;</code> (例子中用的 <code>&lt;img&gt;</code>)<br><code>:focus</code> 伪类默认对链接和表单元素起作用。对于这些元素，不必添加 <code>tabindex=&quot;0&quot;</code> 。</li>
+<li>tabindex 属性决定 tab 键在控件中的移动顺序。 tab 移动顺序根据 tabindex 值从大到小。</li>
+</ol>
+</li>
+</ul>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>除了无序列表 ul 、有序列表 ol 外，还有个描述列表 dl 之前被称作定义列表。( dt 、 dd 为 dl 中的术语和描述）</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/29/html-css-diary-2/" rel="next" title="《HTML5与CSS3基础教程》读书笔记2">
+                <i class="fa fa-chevron-left"></i> 《HTML5与CSS3基础教程》读书笔记2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/30/target-blank-vulnerable/" rel="prev" title="target="_blank" 漏洞">
+                target="_blank" 漏洞 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#边距-简记法"><span class="nav-number">1.</span> <span class="nav-text">边距 简记法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bootstrap-3的-box-sizing"><span class="nav-number">2.</span> <span class="nav-text">Bootstrap 3的 box-sizing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#em-与-margin、padding"><span class="nav-number">3.</span> <span class="nav-text">em 与 margin、padding</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#clearfix-解决浮动后遗症"><span class="nav-number">4.</span> <span class="nav-text">clearfix 解决浮动后遗症</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#另一种方法：-overflow-方法"><span class="nav-number">5.</span> <span class="nav-text">另一种方法： overflow 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#position-relative"><span class="nav-number">6.</span> <span class="nav-text">position: relative</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#align-的基准线值"><span class="nav-number">7.</span> <span class="nav-text">align 的基准线值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#viewport-解决宽度问题"><span class="nav-number">8.</span> <span class="nav-text">viewport 解决宽度问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#font-简记法"><span class="nav-number">9.</span> <span class="nav-text">font 简记法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#media-与响应式页面"><span class="nav-number">10.</span> <span class="nav-text">@media 与响应式页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式设计的旧版兼容"><span class="nav-number">11.</span> <span class="nav-text">响应式设计的旧版兼容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-字体"><span class="nav-number">12.</span> <span class="nav-text">Web 字体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IE-的-CSS-polyfill"><span class="nav-number">13.</span> <span class="nav-text">IE 的 CSS polyfill</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#border-radius-的可能-bug"><span class="nav-number">14.</span> <span class="nav-text">border-radius 的可能 bug</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#box-shadow"><span class="nav-number">15.</span> <span class="nav-text">box-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-多重背景"><span class="nav-number">16.</span> <span class="nav-text">HTML 多重背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#渐变背景"><span class="nav-number">17.</span> <span class="nav-text">渐变背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#opacity-的透明程度"><span class="nav-number">18.</span> <span class="nav-text">opacity 的透明程度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-生成内容"><span class="nav-number">19.</span> <span class="nav-text">CSS 生成内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">20.</span> <span class="nav-text">列表</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

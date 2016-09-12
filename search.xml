@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第三章]]></title>
+      <url>https://codingme.xyz/2016/09/11/javascript-note-3/</url>
+      <content type="html"><![CDATA[<h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
+<li>区分大小写</li>
+<li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
+</ul>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul>
+<li>单行： <code>//这里是注释</code></li>
+<li>多行：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">这里是注释</div><div class="line">*/</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="ECMAScript-的严格模式-strict-mode"><a href="#ECMAScript-的严格模式-strict-mode" class="headerlink" title="ECMAScript 的严格模式 (strict mode)"></a>ECMAScript 的严格模式 (strict mode)</h1><ul>
+<li>严格模式的启用：<br>顶部添加如下代码：”use strict”;<br>看起来像是字符串，而且也没有赋值给任何变量，但其实它是一个编译指示（pragma），用于告诉支持的 JavaScript 引擎切换到严格模式。这是为不破坏 ECMAScript 3 语法而特意选定的语法。</li>
+<li><p>也可以指定函数在严格模式下执行：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>严格模式下，JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+、Firefox 4+、Safari 5.1+、Opera 12+和 Chrome。</p>
+</li>
+</ul>
+<h1 id="ECMAScript-的语句"><a href="#ECMAScript-的语句" class="headerlink" title="ECMAScript 的语句"></a>ECMAScript 的语句</h1><ul>
+<li>任何时候都不要省略语句结尾的分号。加上分号也会在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。</li>
+<li>最佳实践是始终在控制语句中使用代码块。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第二章]]></title>
+      <url>https://codingme.xyz/2016/09/10/javascript-note-2/</url>
+      <content type="html"><![CDATA[<h1 id="script-元素的-defer"><a href="#script-元素的-defer" class="headerlink" title="script 元素的 defer"></a>script 元素的 defer</h1><p><strong>defer</strong> 延迟脚本。<br>效果：在页面解析时候下载脚本，可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。（HTML 4.01时定义）</p>
+<ul>
+<li>在现实当中，延迟脚本并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件触发前执行，因此最好只包含一个延迟脚本。</li>
+<li>把延迟脚本放在页面底部仍然是最佳选择。</li>
+<li>defer属性在浏览器之间表现并不一致。defer 属性只被 IE 4 和 Firefox 3.5 更高版本的浏览器所支持，所以它不是一个理想的跨浏览器解决方案。在其他浏览器中，defer 属性会被直接忽略，因此<code>&lt;script&gt;</code>标签会以默认的方式处理，也就是说会造成阻塞。</li>
+<li>为了避免跨浏览器的差异，可以使用 “lazy loading”的方法，即直到用到该脚本时才加载。</li>
+<li>在 XHTML 文档中，要把 defer 属性设置为 defer=”defer” 。async同理。</li>
+</ul>
+<h1 id="script-元素的-async"><a href="#script-元素的-async" class="headerlink" title="script 元素的 async"></a>script 元素的 async</h1><p><strong>async</strong> 异步脚本。<br>效果：下载脚本同时不影响页面解析，当下载完毕后就执行，执行完接着页面解析。只对外部脚本文件有效。<br>Google Analytics 就是适合使用 async 的脚本；<br>还有下载其他资源。<br>目的：不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。</p>
+<ul>
+<li>标记为 async 的脚本并不保证按照指定它们的先后顺序执行。因此，确保互不依赖非常重要。</li>
+<li>建议异步脚本不要在加载期间修改 DOM。</li>
+<li>异步脚本一定会在页面的 load 事件前执行，但可能会在 DOMContentLoaded 事件触发之前或之后执行。</li>
+</ul>
+<a id="more"></a>
+<h1 id="MIME-类型"><a href="#MIME-类型" class="headerlink" title="MIME 类型"></a>MIME 类型</h1><ul>
+<li>即 type 。表示编写代码使用的脚本语言的内容类型。</li>
+<li>如果是 Apache Web 服务器，可以通过 .htaccess 文件设置 MIME 类型。类似：<br>  .htaccess 文件中添加MIME类型：<br>  AddType video/ogg .ogv<br>  AddType video/mp4 .mp4<br>  AddType video/webm .webm<br>  AddType audio/ogg .ogg<br>  AddType audio/mp3 .mp3</li>
+</ul>
+<h1 id="script-元素的-src-属性"><a href="#script-元素的-src-属性" class="headerlink" title="script 元素的 src 属性"></a>script 元素的 src 属性</h1><ul>
+<li>如果使用了 src 属性的值是一个指向外部 JavaScript 文件的链接，那么内部嵌入的代码会被忽略。</li>
+<li>正常的 &lt;script&gt; 元素在解析外部 JavaScript 文件（包括下载该文件）时，页面的处理会暂时停止。所以使用async和defer可以在下载该文件时不妨碍页面的处理。</li>
+<li>外部 JavaScript 文件带有.js扩展名。但这个扩展名不是必需的这样一来，使用 JSP、PHP 或其他服务器端语言动态生成 JavaScript 代码也就成为了可能。但是，服务器通常还是需要看扩展名决定为响应应用哪种 MIME 类型。如果不使用.js 扩展名，请确保服务器能返回正确的 MIME 类型。</li>
+<li>src 属性还可以包含来自外部域的 JavaScript 文件。这点备受争议。如果想包含来自不同域的代码，则要么你是那个域的所有者，要么那个域的所有者值得信赖。否则会有安全隐患。</li>
+</ul>
+<h1 id="script-元素的注意事项"><a href="#script-元素的注意事项" class="headerlink" title="script 元素的注意事项"></a>script 元素的注意事项</h1><ul>
+<li>脚本执行和页面的渲染是共用一个线程。</li>
+<li>在解释器对 &lt;script&gt; 元素内部的所有代码求值完毕以前，页面中的其余内容都不会被浏览器加载或显示。</li>
+<li>使用 <code>&lt;script&gt;</code> 嵌入 JavaScript 代码时，记住不要在代码中的任何地方出现 “<code>&lt;/script&gt;</code>“ 字符串。</li>
+<li>一般认为最好的做法还是尽可能使用外部文件来包含 JavaScript 代码。<br>  优点有：<br>  可维护性；<br>  可缓存；<br>  适应未来。</li>
+</ul>
+<h1 id="script-元素与-XHTML"><a href="#script-元素与-XHTML" class="headerlink" title="script 元素与 XHTML"></a>script 元素与 XHTML</h1><p>比较语句 a &lt; b 中的小于号（&lt;）在 XHTML 中将被当作开始一个新标签来解析。但是作为标签来讲，小于号后面不能跟空格，因此就会导致语法错误。</p>
+<ul>
+<li>解决方法1：使用字符实体来代替小于号（&lt;），比如 &lt; 。</li>
+<li>解决方法2：使用一个 CData 片段来包含 JavaScript 代码。示例：  <figure class="highlight xhtml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="xml"></span></div><div class="line">&lt;![CDATA[   //不兼容XHTML的话将此行注释掉。</div><div class="line">function compare(a, b) &#123;</div><div class="line">if (a &lt; b) &#123;</div><div class="line">alert("A is less than B");</div><div class="line">&#125; else if (a &gt; b) &#123;</div><div class="line">alert("A is greater than B");</div><div class="line">&#125; else &#123;</div><div class="line">alert("A is equal to B");</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">]]&gt;    //不兼容XHTML的话将此行注释掉。</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>将页面的 MIME 类型指定为 “application/xhtml+xml” 的情况下会触发 XHTML 模式。并不是所有浏览器都支持以这种方式提供 XHTML 文档。</p>
+<h1 id="文档模式与文档类型-doctype"><a href="#文档模式与文档类型-doctype" class="headerlink" title="文档模式与文档类型(doctype)"></a>文档模式与文档类型(doctype)</h1><ul>
+<li>IE 5.5 引入了文档模式的概念，而这个概念是通过使用文档类型（doctype）切换实现的。</li>
+<li>最初两种文档模式：混杂模式（quirks mode)和标准模式（standards mode）。混杂模式也称作怪异模式。</li>
+<li>混杂模式会让 IE 的行为与 IE5 相同,而标准模式则让 IE 的行为更接近标准行为。</li>
+<li>这两种模式主要影响 CSS内容的呈现，但在某些情况下也会影响到 JavaScript 的解释执行。</li>
+<li>之后，IE 又提出一种所谓的准标准模式（almost standards mode）。这种模式下的浏览器特性有很多都是符合标准的，但也不尽然。不标准的地方主要体现在处理图片间隙的时候（在表格中使用图片时问题最明显）。</li>
+<li>准标准模式与标准模式非常接近，它们的差异几乎可以忽略不计。因此，当有人提到“标准模式”时，有可能是指这两种模式中的任何一种。</li>
+<li>如果在文档开始处没有发现文档类型声明，则所有浏览器都会默认开启混杂模式。</li>
+<li>采用混杂模式不是什么值得推荐的做法，因为不同浏览器在这种模式下的行为差异非常大，如果不使用某些 hack 技术，跨浏览器的行为根本就没有一致性可言。</li>
+</ul>
+<p>标准模式（包含HTML的严格模式/版本）有：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML 4.01 严格型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 严格型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Strict//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- HTML 5 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div></pre></td></tr></table></figure>
+<p>准标准模式(有框架集版本、过渡版本）：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML 4.01 过渡型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></div><div class="line">"-//W3C//DTD HTML 4.01 Transitional//EN"</div><div class="line">"http://www.w3.org/TR/html4/loose.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- HTML 4.01 框架集型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></div><div class="line">"-//W3C//DTD HTML 4.01 Frameset//EN"</div><div class="line">"http://www.w3.org/TR/html4/frameset.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 过渡型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Transitional//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 框架集型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Frameset//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;</div></pre></td></tr></table></figure>
+<h1 id="noscript-元素"><a href="#noscript-元素" class="headerlink" title="noscript 元素"></a>noscript 元素</h1><p>浏览器不支持 JavaScript 时如何让页面平稳地退化。于是 noscript 诞生。<br>这个元素可以包含能够出现在文档 <code>&lt;body&gt;</code> 中的任何 HTML 元素—— <code>&lt;script&gt;</code> 元素除外。<br>包含在 <code>&lt;noscript&gt;</code> 元素中的内容只有在下列情况下才会显示出来：</p>
+<ul>
+<li>浏览器不支持脚本；</li>
+<li>浏览器支持脚本，但脚本被禁用。</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example HTML Page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">defer</span>=<span class="string">"defer"</span> <span class="attr">src</span>=<span class="string">"example1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">defer</span>=<span class="string">"defer"</span> <span class="attr">src</span>=<span class="string">"example2.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">noscript</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> 本页面需要浏览器支持（启用）JavaScript 。</div><div class="line"><span class="tag">&lt;/<span class="name">noscript</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第一章]]></title>
+      <url>https://codingme.xyz/2016/09/09/javascript-note-1/</url>
+      <content type="html"><![CDATA[<h1 id="JavaScript-的诞生："><a href="#JavaScript-的诞生：" class="headerlink" title="JavaScript 的诞生："></a>JavaScript 的诞生：</h1><p>以前必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域。<br>Netscape Navigator 希望通过 JavaScript 来解决这个问题。<br>于是 JavaScript 诞生，当时主要目的是处理以前由服务器端语言负责的一些输入验证操作。<br>它从一个简单的输入验证器发展成为一门强大的编程语言。</p>
+<h1 id="JavaScript、ECMAScript-历史："><a href="#JavaScript、ECMAScript-历史：" class="headerlink" title="JavaScript、ECMAScript 历史："></a>JavaScript、ECMAScript 历史：</h1><ol>
+<li>Netscape navigator 2诞生, JavaScript 诞生。</li>
+<li>IE 的 JScript。</li>
+<li>标准化，ECMA-262，即 ECMAScript 诞生。</li>
+<li>ECMAScript 与 Web 浏览器没有依赖关系,Web 浏览器只是 ECMAScript 实现可能的宿主环境之一。</li>
+<li>ECMA-262 定义的只是这门语言的基础。</li>
+<li>JavaScript 包含 <strong>ECMAScript</strong> 、 <strong>DOM</strong> 、 <strong>BOM</strong> 三个部分。</li>
+</ol>
+<a id="more"></a>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><ul>
+<li>针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API,Application Programming Interface）</li>
+<li>DOM 目的：允许您使用 JavaScript 动态创建 HTML 的几乎全部文档内容。</li>
+<li>为什么要用 DOM ?<br>  IE 4 和 网景浏览器 4 分别支持不同形式的 DHTML 。怕出现技术割据互不兼容，于是 W3C 开始着手规划 DOM 。<br>  DOM 并不只是针对 JavaScript 的，很多别的语言也都实现了 DOM。不过，在 Web 浏览器中，基于 ECMAScript 实现的 DOM 的确已经成为 JavaScript 这门语言的一个重要组成部分。</li>
+<li><strong>DOM 1 级</strong>：目标主要是映射文档的结构。(DOM1 级 于 1998 年 10 月成为 W3C 的推荐标准。)<ul>
+<li><strong>DOM 核心（DOM Core）</strong>，规定如何映射基于 XML 的文档结构；</li>
+<li><strong>DOM HTML</strong> ，在前者基础上扩展，添加了针对 HTML 的对象和方法。</li>
+</ul>
+</li>
+<li><strong>DOM 2 级</strong>：原来 DOM 的基础上又扩充了许多细分模块。而且通过对象接口增加了对 CSS 的支持。<ul>
+<li><strong>DOM 视图（DOM Views）</strong>，定义了跟踪不同文档视图的接口；</li>
+<li><strong>DOM 事件（DOM Events）</strong>：定义了事件和事件处理的接口；</li>
+<li><strong>DOM 样式（DOM Style）</strong>：定义了基于 CSS 为元素应用样式的接口；</li>
+<li><strong>DOM 遍历和范围（DOM Traversal and Range）</strong>：定义了遍历和操作文档树的接口。</li>
+</ul>
+</li>
+<li><strong>DOM 3 级</strong>：<ul>
+<li><strong>DOM 加载和保存（DOM Load and Save）</strong>：引入了以统一方式加载和保存文档的方法；</li>
+<li><strong>DOM 验证（DOM Validation）</strong>：新增了验证文档的方法；</li>
+<li>对 DOM 核心进行了扩展，开始<strong>支持 XML 1.0 规范</strong>，涉及 XML Infoset、XPath 和 XML Base。</li>
+</ul>
+</li>
+</ul>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><ul>
+<li>在 HTML5 之前， BOM 的问题在于他作为 JavaScript 的一部分却没有相关标准。</li>
+<li>根本上讲，BOM 只处理浏览器窗口和框架；</li>
+<li>但人们习惯上也把所有针对浏览器的 JavaScript 扩展算作 BOM 的一部分。 比如：<br>  弹出新浏览器窗口的功能；<br>  移动、缩放和关闭浏览器窗口的功能；<br>  提供浏览器详细信息的 navigator 对象；<br>  提供浏览器所加载页面的详细信息的 location 对象；<br>  提供用户显示器分辨率详细信息的 screen 对象；<br>  对 cookies 的支持；<br>  像 XMLHttpRequest 和 IE的 ActiveXObject 这样的自定义对象。</li>
+</ul>
+<h1 id="JavaScript-版本"><a href="#JavaScript-版本" class="headerlink" title="JavaScript 版本"></a>JavaScript 版本</h1><p>大多数浏览器在提及对 JavaScript 的支持情况时，一般都以 ECMAScript 兼容性和对 DOM的支持情况为准。</p>
+<h1 id="HTML-、CSS-版本联动"><a href="#HTML-、CSS-版本联动" class="headerlink" title="HTML 、CSS 版本联动"></a>HTML 、CSS 版本联动</h1><ul>
+<li>当早期的浏览器 Netscape 4 和 Explorer 4 对 css 进行解析时，并未遵守 W3C 标准，这时的解析方式就被我们称之为 quirks mode (怪异模式)。</li>
+<li>怪异模式的主要目的就是向后兼容（向下兼容），兼容旧版浏览器。在怪异模式下，排版会模拟 Navigator 4 与 Internet Explorer 5 的非标准行为。</li>
+<li>怪异模式与标准模式的具体的最大不同在于盒模型的解释上。<br>  怪异模式的盒模型宽度：元素的实际宽度 width ，不包含 margin 、border 、 padding 。<br>  标准模式（包含HTML严格模式）的盒模型宽度： margin + padding + border + 元素的实际宽度 width 。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《HTML5与CSS3基础教程》读书笔记5]]></title>
+      <url>https://codingme.xyz/2016/09/06/html-css-diary-5/</url>
+      <content type="html"><![CDATA[<h1 id="单选按钮"><a href="#单选按钮" class="headerlink" title="单选按钮"></a>单选按钮</h1><ol>
+<li><code>type=&quot;radio&quot;</code> ，例子：性别的单选按钮。</li>
+<li>两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。</li>
+<li>value 属性设置值，因为对于单选按钮访问者无法输入值。</li>
+<li>输入 checked 或者 <code>checked=&quot;checked&quot;</code> 让该单选按钮在页面打开时默认处于激活状态</li>
+</ol>
+<h1 id="复选框"><a href="#复选框" class="headerlink" title="复选框"></a>复选框</h1><ol>
+<li><code>type=&quot;checkbox&quot;</code> ,例子：选择订阅推送。</li>
+<li>name 属性相同，<code>name=&quot; boxset &quot;</code>。（如果使用 PHP 处理表单，使用 name=” boxset[] “)</li>
+<li>value 属性设置值，因为对于复选按钮访问者无法输入值。</li>
+<li>checked 方面跟单选按钮一样。</li>
+</ol>
+<h1 id="textarea-元素，文本区域"><a href="#textarea-元素，文本区域" class="headerlink" title="textarea 元素，文本区域"></a>textarea 元素，文本区域</h1><ol>
+<li>rows 和 cols 属性分别控制文本区域的高度和宽度，除非使用 CSS 覆盖其中之一或者全部。</li>
+<li>textarea 没有 value 属性，所以如果想要预设文本要直接在 textarea 标签之间添加文本。</li>
+</ol>
+<a id="more"></a>
+<h1 id="下拉选择框"><a href="#下拉选择框" class="headerlink" title="下拉选择框"></a>下拉选择框</h1><ul>
+<li><p>用 select 和 option 元素</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"state"</span>&gt;</span>State:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"state"</span> <span class="attr">name</span>=<span class="string">"state"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"AL"</span>&gt;</span>Alabama<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"AK"</span>&gt;</span>Alaska<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">...</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>size=”n”， n 代表选择框高度。如果不设置就必须选择一个选择项。设置后菜单显示为一个有滚动条的列表，默认没有选中任何一项。</p>
+</li>
+<li>option 元素的属性： selected 或者 <code>selected=&quot;selected&quot;</code> ，指定该选项默认被选中。</li>
+<li>option 元素也是有 label 属性可替代中间的文本，不过 Firefox 不支持这一属性，所以最好不用。</li>
+<li>如果需要对选择项进行分组，使用 optgroup 元素，带有 label 属性。</li>
+</ul>
+<h1 id="上传文件的设置"><a href="#上传文件的设置" class="headerlink" title="上传文件的设置"></a>上传文件的设置</h1><ol>
+<li>对于 input 要设置 <code>type=&quot;file&quot;</code>,对于 form 要设置<code>&lt;form method=&quot;post&quot; action=&quot;show-data.php&quot;enctype=&quot;multipart/form-data&quot;&gt;</code></li>
+<li>multiple 属性可以允许上传多个文件(IE10+ 支持，移动端忽略)</li>
+<li>对于 type=”file” 的 input 元素，浏览器会自动创建 Browse（浏览）按钮。Chrome 和 Safari 不会创建框，它们只显示按钮。</li>
+</ol>
+<h1 id="隐藏字段"><a href="#隐藏字段" class="headerlink" title="隐藏字段"></a>隐藏字段</h1><ol>
+<li>例子：<code>&lt;input type=&quot;hidden&quot; name=&quot;step&quot; value=&quot;6&quot; /&gt;</code><br> 访问者不会看到这个输入框，但他们提交表单的时候，名 “step” 和值 “6” 会随着表单中从访问者输入获取的数据一起传送给服务器。</li>
+<li><code>&lt;input type=&quot;hidden&quot; name=&quot;email&quot; value=&quot;&lt;?= $email ?&gt;&quot; /&gt;</code><br> 创建隐藏字段时，可以使用脚本中的变量将字段的值设置为访问者原来输入的值（这个示例使用了 PHP 语法）</li>
+<li>隐藏字段用法：<br> 用来处理那些你不想在表单页面里编辑和显示 ，但是又必须跟随表单填写者填写的其他信息，例如当前时间。<br> <code>&lt;input type=&quot;hidden&quot; name=&quot;time&quot; value=&quot;&lt;%=NowTime%&gt;&quot;&gt;</code></li>
+</ol>
+<h1 id="disabled-和-readonly"><a href="#disabled-和-readonly" class="headerlink" title="disabled 和 readonly"></a>disabled 和 readonly</h1><p>readonly 可以获得焦点，访问者可以选择和复制里面的文本，但不能修改，只能用于文本框和文本区域。</p>
+<h1 id="提交按钮"><a href="#提交按钮" class="headerlink" title="提交按钮"></a>提交按钮</h1><ol>
+<li>除了典型的 <code>type=&quot;submit&quot;</code> 外，还可以用 <code>type=&quot;image&quot;</code> 使用图像形式的提交按钮。</li>
+<li>创建结合文本和图像的提交按钮可以用 button 元素。（依然使用 <code>type=&quot;submit&quot;</code> 。其中除了文字还包含 <code>&lt;img&gt;</code>)<br> (使用 button 元素要注意考虑 IE8 之前的兼容问题)</li>
+<li>如果有多个提交按钮，可以为每个按钮设置 name 属性和 value 属性。<br> 否则 name 属性最好省略。<br> 如果需要多个提交按钮就应避免使用 button 。</li>
+</ol>
+<h1 id="表单的重置"><a href="#表单的重置" class="headerlink" title="表单的重置"></a>表单的重置</h1><ol>
+<li><code>&lt;input type=&quot;reset&quot; /&gt;</code> 或 <code>&lt;button type=&quot;reset&quot;&gt;Reset&lt;/button&gt;</code></li>
+<li><code>&lt;input type=&quot;button&quot; value=&quot;这个用JavaScript清除&quot;onclick=&quot;document.getElementById(&#39;form1&#39;).reset()&quot;/&gt;</code></li>
+</ol>
+<h1 id="禁用验证功能"><a href="#禁用验证功能" class="headerlink" title="禁用验证功能"></a>禁用验证功能</h1><p>HTML5 对 <code>type=&quot;email&quot;</code> 和 <code>type=&quot;URL&quot;</code> 的 input 添加了自动验证功能。对提交按钮使用 formnovalidate 属性可以关闭该功能，如 <code>&lt;input type=&quot;submit&quot; formnovalidate /&gt;</code> 。</p>
+<h1 id="禁用表单元素"><a href="#禁用表单元素" class="headerlink" title="禁用表单元素"></a>禁用表单元素</h1><p>例子：当选择了 Others 的时候，textarea 才可以访问修改输入文本。<br>方式：</p>
+<ol>
+<li>将 textarea 设为 disabled ；</li>
+<li>在最后 <code>&lt;/body&gt;</code> 之前添加 script 引入了一个 JavaScript 文件。该文件包含了一段脚本，其作用是当用户选择 Other（其他）单选按钮时，让 textarea 变为可用的，选择其余两个单选按钮中的任意一个，则会禁用 textarea。</li>
+</ol>
+<h1 id="活用伪类"><a href="#活用伪类" class="headerlink" title="活用伪类"></a>活用伪类</h1><ol>
+<li>利用和相邻同胞结合符+,实现选择框勾中后文字变色、选择输入框时输入框背景颜色改变等。</li>
+<li>给 form 元素一个类，对于该类所有 input 子元素有 <code>:invalid</code> 伪类的颜色设置为红色。</li>
+</ol>
+<h1 id="多媒体元素属性"><a href="#多媒体元素属性" class="headerlink" title="多媒体元素属性"></a>多媒体元素属性</h1><ol>
+<li>使用控件 controls 属性。</li>
+<li>预加载 preload 默认 auto，可设 metadata 和 none。</li>
+</ol>
+<h1 id="旧浏览器兼容-html5-多媒体"><a href="#旧浏览器兼容-html5-多媒体" class="headerlink" title="旧浏览器兼容 html5 多媒体"></a>旧浏览器兼容 html5 多媒体</h1><ol>
+<li>mediaelement.js（mediaelementjs.com/）</li>
+<li>Video.js（www.videojs.com）、</li>
+<li>JW Player （www.longtailvideo.com/jw-player/）</li>
+<li>Flowplayer（flowplayer.org）</li>
+</ol>
+<p>JW Player 和 Flowplayer 的免费版本会在媒体播放器上显示它们的标识。</p>
+<h1 id="表格的属性"><a href="#表格的属性" class="headerlink" title="表格的属性"></a>表格的属性</h1><ol>
+<li>对于标题单元格 th ，使用 scope 属性 （col/row/colgroup/rowgroup)</li>
+<li>如果有 caption 元素则必定是 table 中第一个元素。</li>
+<li>thead 和 tfoot 每个 table 只能各有一个。</li>
+<li>如果有了 thead 和 tfoot 则必定要有 tbody 。</li>
+<li>table 嵌套在 figure 中时可以省略掉 caption 直接用 figcaption 。</li>
+<li>当使单元格跨越多行多列时使用 colspan 和 rowspan 属性。</li>
+<li>如果<strong>正下列正好是标题单元格的内容</strong>的话，可以用 <code>scope=&quot;rowgroup&quot;</code> 属性。<br> 例子： th 为 Time ,正下列为各个时间。</li>
+</ol>
+<h1 id="表格的相关-CSS-设置"><a href="#表格的相关-CSS-设置" class="headerlink" title="表格的相关 CSS 设置"></a>表格的相关 CSS 设置</h1><ol>
+<li><code>border-collapse:collapse;</code> 能<strong>合并重复的单元格边框</strong>。<br> （默认值为 <code>border-collapse:separate;</code> ）</li>
+<li>不同的浏览器显示的样式稍有差异，尤其是 <code>Internet Explorer</code>。</li>
+</ol>
+<h1 id="JavaScript-的部分注意事项"><a href="#JavaScript-的部分注意事项" class="headerlink" title="JavaScript 的部分注意事项"></a>JavaScript 的部分注意事项</h1><ol>
+<li><code>&lt;script&gt;</code> 标签在大多数情况下最好在页面的<strong>最末尾</strong>加载，即<code>&lt;/body&gt;</code>前面</li>
+<li>保持组织文件良好，通常将 JavaScript 文件放在一个<strong>子文件夹</strong>中。</li>
+<li>通常，<strong>压缩后的脚本</strong>以 <strong>.min.js</strong> 作为扩展名</li>
+</ol>
+<h1 id="JavaScript-的阻塞行为"><a href="#JavaScript-的阻塞行为" class="headerlink" title="JavaScript 的阻塞行为"></a>JavaScript 的阻塞行为</h1><ol>
+<li>默认情况下，浏览器会按照脚本在 HTML 中出现的顺序对它们进行加载。</li>
+<li>在处理脚本的过程中，浏览器既不会下载该 script 元素后面出现的内容（哪怕是文本），也不会呈现这些内容。这称为<strong>阻塞行为</strong>。</li>
+<li>消除 JavaScript 阻塞最简单的方法就是将所有的 script 元素放置在 HTML 结束之前，即 <code>&lt;/body&gt;</code> 结束标签的前面。</li>
+<li>如果确实需要在 head 中加载脚本，也要将它们放置在所有加载 CSS 文件的 link 元素之后（这也是出于性能的考虑）。</li>
+<li>另一种简单的加快脚本加载速率的方法就是将 JavaScript 放在同一个文件中（或尽可能少的一些文件中）并压缩代码。</li>
+</ol>
+<h1 id="压缩脚本工具"><a href="#压缩脚本工具" class="headerlink" title="压缩脚本工具"></a>压缩脚本工具</h1><ul>
+<li><strong>Google Closure Compiler</strong><br>  <a href="http://code.google.com/closure/compiler/" target="_blank" rel="external">http://code.google.com/closure/compiler/</a>（供下载的版本及文档）<br>  <a href="http://closure-compiler.appspot.com/" target="_blank" rel="external">http://closure-compiler.appspot.com/</a>（在线版本）</li>
+<li><strong>UglifyJS</strong>（使用第二个链接）<br>  <a href="https://github.com/mishoo/UglifyJS2/" target="_blank" rel="external">https://github.com/mishoo/UglifyJS2/</a>（供下载的版本及文档）<br>  <a href="http://lisperator.net/uglifyjs/" target="_blank" rel="external">http://lisperator.net/uglifyjs/</a>（在线版本，选择“Open demo”)</li>
+<li><strong>YUI Compressor</strong>（使用第二个链接）<br>  <a href="http://developer.yahoo.com/yui/compressor/" target="_blank" rel="external">http://developer.yahoo.com/yui/compressor/</a>（供下载的版本及文档）<br>  <a href="http://refresh-sf.com/yui/" target="_blank" rel="external">http://refresh-sf.com/yui/</a>（非官方的在线版本）</li>
+</ul>
+<h1 id="验证代码"><a href="#验证代码" class="headerlink" title="验证代码"></a>验证代码</h1><ol>
+<li>HTML 的代码验证：<ul>
+<li><a href="http://validator.w3.org/" target="_blank" rel="external">http://validator.w3.org/</a></li>
+<li><a href="http://html5.validator.nu/" target="_blank" rel="external">http://html5.validator.nu/</a><br>感觉部分验证过于注重“正统”..</li>
+</ul>
+</li>
+<li>CSS 的代码验证：<br>  <a href="http://jigsaw.w3.org/css-validator/" target="_blank" rel="external">http://jigsaw.w3.org/css-validator/</a><br>  依然是过于注重“正统”的感觉….</li>
+<li>Lint<br> 有 HTML Lint ,也有各种各样的 Lint 。<br> 有在线的，也有本地的；<br> 有单独的，也有插件式的。</li>
+</ol>
+<h1 id="浏览器开发工具"><a href="#浏览器开发工具" class="headerlink" title="浏览器开发工具"></a>浏览器开发工具</h1><ol>
+<li>Chrome DevTools<br> <a href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/</a></li>
+<li>Firebug<br> <a href="http://getfirebug.com/" target="_blank" rel="external">http://getfirebug.com/</a></li>
+<li>Web Developer<br> <a href="http://chrispederick.com/work/web-developer/" target="_blank" rel="external">http://chrispederick.com/work/web-developer/</a></li>
+</ol>
+<p>此外还有 Internet Explorer：F12 Developer Tools 、Opera：Dragonfly 、Safari：Web Inspector 等。</p>
+<h1 id="Web-分析"><a href="#Web-分析" class="headerlink" title="Web 分析"></a>Web 分析</h1><ul>
+<li>谷歌分析： <a href="https://www.google.com/analytics/" target="_blank" rel="external">https://www.google.com/analytics/</a></li>
+<li>百度统计： <a href="http://tongji.baidu.com/" target="_blank" rel="external">http://tongji.baidu.com/</a></li>
+<li>腾讯分析: <a href="http://ta.qq.com/" target="_blank" rel="external">http://ta.qq.com/</a></li>
+<li>CNZZ &amp;友盟统计：<br>  <a href="https://web.umeng.com/main.php?c=user&amp;a=index/" target="_blank" rel="external">https://web.umeng.com/main.php?c=user&amp;a=index/</a><br>  <a href="http://www.cnzz.com/o_index.php/" target="_blank" rel="external">http://www.cnzz.com/o_index.php/</a></li>
+<li>不蒜子统计： <a href="http://service.ibruce.info/" target="_blank" rel="external">http://service.ibruce.info/</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《HTML5与CSS3基础教程》读书笔记4]]></title>
+      <url>https://codingme.xyz/2016/09/01/html-css-diary-4/</url>
+      <content type="html"><![CDATA[<h1 id="sprite"><a href="#sprite" class="headerlink" title="sprite"></a>sprite</h1><ul>
+<li>目的：<br>  将多个图像拼合成单个背景图像（sprite），再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于UI上的多个小图标、重复图标等。</li>
+<li>使用方法：<br>  <code>background-image</code> 获得图像，<code>background-position</code> 获得所取的具体位置(目前只知道x范围和y范围，但想必还可以更加深入的切取）</li>
+<li>工具：<br>  可以多个图片合成一张 sprite 的 CSS Sprite Generator:<a href="http://spritegen.website-performance.org/" target="_blank" rel="external">http://spritegen.website-performance.org/</a></li>
+<li>关于 Retina 显示屏：<br>  使用长宽双倍大小像素的图片，一样的容器长宽，使其缩小。</li>
+</ul>
+<h1 id="列表的缩进对齐"><a href="#列表的缩进对齐" class="headerlink" title="列表的缩进对齐"></a>列表的缩进对齐</h1><p>默认的列表要左缩进对齐的话，用<code>padding-left:1.125em</code>，但是针对 IE7 及以下版本，还要使用<code>margin-left:0;</code></p>
+<h1 id="ol-、ul-的选择"><a href="#ol-、ul-的选择" class="headerlink" title="ol 、ul 的选择"></a>ol 、ul 的选择</h1><p>会因为顺序改变而改变的列表，使用有序列表，比如<strong>分页标记</strong>、<strong>面包屑导航</strong>；其他大多数情况下都可以用无序列表。</p>
+<h1 id="标记的修改"><a href="#标记的修改" class="headerlink" title="标记的修改"></a>标记的修改</h1><ul>
+<li>对于标记的修改，使用 <code>list-style-type:none;</code> 或者 <code>type=&quot;none&quot;;</code></li>
+<li><code>background: url( image.ext ) repeat-type horizontal vertical;</code> [ horizontal、vertical 是背景图像相对于元素的位置，默认为0]</li>
+<li><code>list-style-image</code> 不同浏览器显示效果不一致，更难控制位置（所以很少用）</li>
+</ul>
+<h1 id="列表的属性-start-、value"><a href="#列表的属性-start-、value" class="headerlink" title="列表的属性 start 、value"></a>列表的属性 start 、value</h1><p><code>&lt;ol&gt;</code> 中 <code>start=&quot;n&quot;</code> 表示列表初始值， <code>&lt;li&gt;</code> 的 <code>value=&quot;n&quot;</code> 表示该项目的值。value 属性的值会覆盖 start 的值。</p>
+<h1 id="列表标记的位置"><a href="#列表标记的位置" class="headerlink" title="列表标记的位置"></a>列表标记的位置</h1><p><code>list-style-position</code> 默认为 <code>outside</code> ，可以设置为 <code>inside</code> 成为段落的一部分（像首个大写的字母）而不是独立在段落外。</p>
+<a id="more"></a>
+<h1 id="列表中文本拥挤问题"><a href="#列表中文本拥挤问题" class="headerlink" title="列表中文本拥挤问题"></a>列表中文本拥挤问题</h1><p>利用好 <code>line-height</code> 增大文本行间距。</p>
+<h1 id="list-style-的继承"><a href="#list-style-的继承" class="headerlink" title="list-style-* 的继承"></a>list-style-* 的继承</h1><p>list-style-type 、list-style-position 和 list-style-image ， list-style 属性都是继承的。这也是我们可以应用到父元素 ol 或 ul 上的原因。</p>
+<h1 id="元素的隐藏"><a href="#元素的隐藏" class="headerlink" title="元素的隐藏"></a>元素的隐藏</h1><p>使用 <code>left:</code><br>    <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.nav</span> <span class="selector-class">.subnav</span> &#123;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">999em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.subnav</span> &#123;</div><div class="line"><span class="attribute">left</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>问题:除了 left 能否用其他方法？<br>（关键是要避免误交互，所以我想元素本身还在那里的 opacity 和 visibility 应该不行）<br>能否用 display:none 、 position:absolute 、Clip-path ？</p>
+<h1 id="dt-元素、-dd-元素"><a href="#dt-元素、-dd-元素" class="headerlink" title="dt 元素、 dd 元素"></a>dt 元素、 dd 元素</h1><p><code>&lt;dt&gt;</code>: Definition Term.<br><code>&lt;dd&gt;</code>: Description.<br>dd 元素必定是接在 dt 元素之后。<br>dd 元素不必用 p 元素来标记文本（除非里面有多个段落）</p>
+<h1 id="HTML5-form-表单的旧浏览器兼容"><a href="#HTML5-form-表单的旧浏览器兼容" class="headerlink" title="HTML5 form 表单的旧浏览器兼容"></a>HTML5 form 表单的旧浏览器兼容</h1><p><a href="https://github.com/ryanseddon/H5F/" target="_blank" rel="external">https://github.com/ryanseddon/H5F/</a></p>
+<h1 id="input-type-选择的兼容性"><a href="#input-type-选择的兼容性" class="headerlink" title="input type 选择的兼容性"></a>input type 选择的兼容性</h1><p><a href="https://www.wufoo.com/html5/" target="_blank" rel="external">https://www.wufoo.com/html5/</a></p>
+<h1 id="method-”get”-与-“post”-的区别"><a href="#method-”get”-与-“post”-的区别" class="headerlink" title="method=”get” 与 “post” 的区别"></a>method=”get” 与 “post” 的区别</h1><ol>
+<li>如果希望表单提交后从服务器得到信息使用 method=”get”。表单提交后，表单中的数据会显示在浏览器的地址栏里。get 一般用于<strong>数据查询</strong>。<br> 例子：各大搜索引擎。</li>
+<li>使用 method=”post” 提交表单后，表单中的数据不会显示在浏览器的地址栏里，这样更为安全。同时，比起 get ，使用 post 可以向服务器发送更多的数据。通常，post 用于向服务器存入数据，而非获取数据。如果需要在数据库中<strong>保存、添加和删除数据</strong>，就应选择 post 。</li>
+<li>通常，如果不确定使用哪一种，就使用 post ，这样数据不会暴露在 URL 中。</li>
+<li>GET 相对 POST 的优点：<ol>
+<li>GET 请求是可被缓存的，可被收藏为书签，不应在处理敏感数据时使用，只应当用于取回数据。但是 POST 不可以。</li>
+<li>GET 速度一般比 POST 快。</li>
+</ol>
+</li>
+</ol>
+<h1 id="表单安全性"><a href="#表单安全性" class="headerlink" title="表单安全性"></a>表单安全性</h1><p><a href="http://www.htmlcssvqs.com/8ed/form-security/" target="_blank" rel="external">http://www.htmlcssvqs.com/8ed/form-security/</a>（跟 PHP 相关性更高点）</p>
+<h1 id="表单标题描述"><a href="#表单标题描述" class="headerlink" title="表单标题描述"></a>表单标题描述</h1><ol>
+<li>使用 h1 、 h2 标题</li>
+<li>使用 legend 元素(如果使用必须是 fieldset 的第一个元素）</li>
+<li>fieldset :用于将一套表单元素组合在一起.</li>
+</ol>
+<h1 id="legend元素"><a href="#legend元素" class="headerlink" title="legend元素"></a>legend元素</h1><ol>
+<li>虽然 legend 元素可以提高表单的可访问性。</li>
+<li>但是，这种行为在不同的屏幕阅读器和浏览器上并不完全一样，不同的模式下也不一样。</li>
+<li>所以，考虑到以上这些问题，使用 h1 ～ h6 标题代替 legend 来识别一些（并非所有） fieldset ，就是一个明智的选择。</li>
+<li>无论如何，对于单选按钮，最好总是使用 fieldset 和 legend 。</li>
+</ol>
+<h1 id="文本框"><a href="#文本框" class="headerlink" title="文本框"></a>文本框</h1><ul>
+<li>必须为每个文本框设置 name 属性，只有在希望为文本框添加默认值的情况下才需要设置 value 属性。</li>
+<li>文本框可选属性：<ol>
+<li><code>placeholder=&quot;hinttext&quot;</code>，指导用户输入。</li>
+<li><code>required=&quot;required&quot;</code>，仅在这个字段有值的情况下才能提交表单</li>
+<li><code>autofocus或者autofocus=&quot;autofocus&quot;</code>，如果是第一个拥有这个属性的控件，input 会在页面加载时默认获得焦点。</li>
+<li><code>size=&quot;n&quot;</code> 定义文本框大小，n是需要设置的文本框宽度，以字符为单位（也可以用CSS单独设置）默认值20。</li>
+<li><code>maxlength=&quot;n&quot;</code>，n 是允许输入的最大字符数。</li>
+<li><code>autocomplete=&quot;off/on&quot;</code>,保存用户所输入的内容并根据先前的表单输入给出一些包含同样字母的建议文本。可以作用与父元素 form 让所有子元素继承。</li>
+</ol>
+</li>
+</ul>
+<h1 id="分隔表单元素"><a href="#分隔表单元素" class="headerlink" title="分隔表单元素"></a>分隔表单元素</h1><p>分隔表单元素的方法在例子中大多数情况下使用 p 元素，嵌套 p 情况下使用 div 。并且都使用了 class=”row” 作为定义样式的钩子。</p>
+<h1 id="label-元素"><a href="#label-元素" class="headerlink" title="label 元素"></a>label 元素</h1><p>标签（label）是描述表单字段用途的文本。</p>
+<ul>
+<li>for 属性：<br>  <code>for=&quot;idlabel&quot;</code>，利用 for 显示关联表单字段 (aka input)。<br>  例子：点击复选框的文本也可以勾选上。实现点击文本标签来修改状态。</li>
+</ul>
+<p>强烈推荐使用，对提升表单的可访问性和可用性有很重要的作用。</p>
+<h1 id="id-、-for-和-name-属性的命名习惯"><a href="#id-、-for-和-name-属性的命名习惯" class="headerlink" title="id 、 for 和 name 属性的命名习惯"></a>id 、 for 和 name 属性的命名习惯</h1><ul>
+<li>让for 、id 和 name 属性值都一样是一种并非必需但很常见的做法。单选按钮和复选框是例外。</li>
+<li>对于包含多个单词的值， for 和 id 中使用连字符（-）分隔各个单词，name 中使用下划线（_）。<br>  例子：<code>for=&quot;first-name&quot;</code> 、 id=”first-name” 和 name=”first_name”</li>
+<li>无论使用哪种方法，一定要保证 for 和 id 的值是一样的。</li>
+</ul>
+<h1 id="pattern-属性"><a href="#pattern-属性" class="headerlink" title="pattern 属性"></a>pattern 属性</h1><p>pattern 属性用于定制的验证规则。它使用正则表达式对用户在框中输入的内容进行限制。<br><a href="http://html5pattern.com/" target="_blank" rel="external">http://html5pattern.com/</a>——<strong>常用正则表达式</strong>。</p>
+<h1 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h1><ol>
+<li><strong>multiple</strong> 属性：用逗号分开，例如电子邮件框用逗号分开输入多个邮件地址。</li>
+<li>WebKit 浏览器支持两个非官方 HTML5 属性： autosave 和 results 。</li>
+<li>为 form 添加了 ARIA 地标角色 <strong>role=”search”</strong> 。这会让屏幕阅读器指出网页上有搜索区域，从而提高页面的可访问性。如果表单有多个控件而非只有搜索，就将与搜索相关的控件放在一个 fieldset 或div 中并为其添加 role=”search” ，而不是将 role=”search” 添加到 form 元素本身。</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[target="_blank" 漏洞]]></title>
+      <url>https://codingme.xyz/2016/08/30/target-blank-vulnerable/</url>
+      <content type="html"><![CDATA[<h1 id="劫持手段"><a href="#劫持手段" class="headerlink" title="劫持手段"></a>劫持手段</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">/* pseudo url */</div><div class="line">window.opener.location = 'https://钓鱼网站.假/</div><div class="line">qq客服中奖.电脑一台/输入账号密码.领奖';</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>举例说明：</p>
+<ol>
+<li>如果<strong>页面一</strong>上有<code>target=&quot;_blank&quot;</code>没有script，新建窗口跳转到<strong>页面二</strong>，而<strong>页面二</strong>上有这段script的话：<ul>
+<li>原本在后台作为后台标签页的<strong>页面一</strong>，会被重定向为<code>https://钓鱼网站.假/qq客服中奖.电脑一台/输入账号密码.领奖&#39;</code>的页面；</li>
+</ul>
+</li>
+<li>如果<strong>页面一</strong>上有<code>target=&quot;_blank&quot;</code>而且有script，使用了<code>target=&quot;_blank&quot;</code>新建窗口跳转到其他没有script的页面的话：<ul>
+<li><strong>页面一</strong>并不会有改变。</li>
+</ul>
+</li>
+</ol>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p><code>target=&quot;_blank&quot;</code>打开新页面实际上是要经由<code>window.opener</code>对象。<br>每次打开一个新窗口都要经由<code>window.open();</code></p>
+<h1 id="劫持效果"><a href="#劫持效果" class="headerlink" title="劫持效果"></a>劫持效果</h1><p>结果：<br>`target=”_blank”的漏洞会影响新建窗口之前的页面一，使其重定向为script设置好的钓鱼网站。</p>
+<p>实际例子demo：<br><a href="http://tvvocold.coding.me/target_blank_vulnerability/test.html/" target="_blank" rel="external">http://tvvocold.coding.me/target_blank_vulnerability/test.html/</a></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul>
+<li><p>对于使用了<code>target=&quot;_blank&quot;</code>的元素，使用rel属性：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*因为FireFox不支持noopener，所以添加了noreferrer*/</span></div><div class="line">rel=<span class="string">"noopener noreferrer"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>解决opener属性：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newWnd = <span class="built_in">window</span>.open();</div><div class="line">newWnd.opener = <span class="literal">null</span>;</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《HTML5与CSS3基础教程》读书笔记3]]></title>
+      <url>https://codingme.xyz/2016/08/29/html-css-diary-3/</url>
+      <content type="html"><![CDATA[<h1 id="边距-简记法"><a href="#边距-简记法" class="headerlink" title="边距 简记法"></a>边距 简记法</h1><p><code>padding: 5px;</code>——使用一个值，这个值就会应用于全部四个边。<br><code>padding: 5px 9px;</code>——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。<br><code>padding: 5px 9px 11px;</code>——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边<br><code>padding: 5px 9px 11px 0;</code>——使用四个值，它们会按照时钟顺序，依次应用于上、右、下、左四个边.<br>应该也适用与 margin 。</p>
+<h1 id="Bootstrap-3的-box-sizing"><a href="#Bootstrap-3的-box-sizing" class="headerlink" title="Bootstrap 3的 box-sizing"></a>Bootstrap 3的 box-sizing</h1><p>学习到 <code>box-sizing:border-box</code> 时候发现原来 <strong>Bootstrap 3</strong> 已经把所有的盒模型都设置成 border-box 了……将 box-sizing 属性设置为 border-box ，就可以很方便地对拥有水平方向内边距（使用 em 或其他的单位）的元素定义宽度，而不必进行复杂的数学计算来找出百分数的值。这对响应式页面来说很方便。所以 Bootstrap 3 才用了 border-box 吧。</p>
+<h1 id="em-与-margin、padding"><a href="#em-与-margin、padding" class="headerlink" title="em 与 margin、padding"></a>em 与 margin、padding</h1><p>当 em 值用于内边距和外边距时，它的值是<strong>相对于元素的字体大小</strong>的，而不是相对于父元素的字体大小。</p>
+<a id="more"></a>
+<h1 id="clearfix-解决浮动后遗症"><a href="#clearfix-解决浮动后遗症" class="headerlink" title="clearfix 解决浮动后遗症"></a>clearfix 解决浮动后遗症</h1><ul>
+<li>使用 float 浮动后，父元素高度为0，这样一来想给内容加背景色什么的很麻烦。解决方法：<br>  让容器自身具有清除浮动的能力。<br>  用所谓的 <strong>clearfix 方法</strong>（最可靠？）<br>  在 CSS 中引入规则，然后为浮动元素的父元素添加 clearfix 类，从而可以支撑起父元素，并能够添加一些预期样式。<br>  大量网站使用 clearfix 类或类似方法清除浮动。  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.clearfix:before,</div><div class="line">.clearfix:after &#123;</div><div class="line">content: " ";</div><div class="line">display: table;</div><div class="line">&#125;</div><div class="line">.clearfix:after &#123;</div><div class="line">clear: both;</div><div class="line">&#125;</div><div class="line">.clearfix &#123;</div><div class="line">*zoom: 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="另一种方法：-overflow-方法"><a href="#另一种方法：-overflow-方法" class="headerlink" title="另一种方法： overflow 方法"></a>另一种方法： overflow 方法</h1><p>通常，可以对浮动元素的父元素使用 overflow 属性以替代 clearfix 方法。例如，在示例页面中可以使用以下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line"><span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>在某些情况下， overflow: hidden; 会将内容<strong>截断</strong>，对此要多加注意。有时使用 overflow: auto; 也有效，但这样做可能会出现一个<strong>滚动条</strong>，这显然是我们不希望看到的。</li>
+<li>可 以 将 clearfix 或 overflow 应用到浮动元素的任何一个非父元素的祖先元素。这样做不会让父元素变高，但祖先元素的高度会包含浮动元素。</li>
+</ul>
+<h1 id="position-relative"><a href="#position-relative" class="headerlink" title="position: relative"></a>position: relative</h1><ul>
+<li><code>position: relative;</code>对元素进行<strong>相对定位</strong>,偏移自然流中元素。</li>
+<li>使用相对定位、绝对定位或固定定位时，对于相互重叠的元素，可以用 <strong>z-index</strong> 属性指定它们的叠放次序。</li>
+<li>对包含图标列表的父元素设置 <code>position: relative</code> ，从而让这些图标可以相对父元素（而不是 body 元素）进行绝对定位。</li>
+</ul>
+<h1 id="align-的基准线值"><a href="#align-的基准线值" class="headerlink" title="align 的基准线值"></a>align 的基准线值</h1><p>输入 <code>vertical-align:</code>  输入 <code>baseline</code> ，使元素的基准线对齐父元素的基准线；或者 <code>sub、super、text-top、text-bottom、top、bottom</code>。</p>
+<h1 id="viewport-解决宽度问题"><a href="#viewport-解决宽度问题" class="headerlink" title="viewport 解决宽度问题"></a>viewport 解决宽度问题</h1><ul>
+<li>解决浏览器视觉区域宽与屏幕宽度不同的一种快速解决方案：页面的 head 部分添加视觉区域 meta 元素 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;</code></li>
+<li><code>initial-scale=1</code> 的的意思：将页面的默认缩放级别设成 100%，换成纵向模式也一样。如果不设置 <code>initial-scale=1</code> ，在 iPhone 中，手机从纵向模式改为横向模式时，网页会被放大，从而让布局与纵向模式的一致。</li>
+</ul>
+<h1 id="font-简记法"><a href="#font-简记法" class="headerlink" title="font 简记法"></a>font 简记法</h1><ul>
+<li><code>font:100%/1.2 ...</code> 行高1.2跟在字体大小100%和一个斜杠后面。</li>
+<li><code>font: .875em/1.3 &quot;Palatino Linotype&quot;,Palatino, serif;</code></li>
+</ul>
+<h1 id="media-与响应式页面"><a href="#media-与响应式页面" class="headerlink" title="@media 与响应式页面"></a>@media 与响应式页面</h1><ul>
+<li>响应式页面利用媒体查询器和百分比宽度  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*  30em（大于等于480px）</span></div><div class="line">----------------------------------- */</div><div class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">30em</span>) &#123;</div><div class="line">...  报头样式  ...</div><div class="line"><span class="selector-class">.post-photo</span> &#123;</div><div class="line"><span class="attribute">float</span>: left;</div><div class="line"><span class="attribute">margin-bottom</span>: <span class="number">2px</span>;</div><div class="line"><span class="attribute">margin-right</span>: <span class="number">22px</span>;</div><div class="line"><span class="attribute">max-width</span>: <span class="number">61.667%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.post-footer</span> &#123;</div><div class="line"><span class="attribute">clear</span>: left;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="响应式设计的旧版兼容"><a href="#响应式设计的旧版兼容" class="headerlink" title="响应式设计的旧版兼容"></a>响应式设计的旧版兼容</h1><ul>
+<li><p>响应式设计要兼容旧版 IE 的话：</p>
+<ul>
+<li>移动优先方法，因为媒体查询器对 IE8 及以下的版本不支持。所以有3种解决方法：<ul>
+<li>什么都不做。让网站显示基本的版本</li>
+<li>为它们单独创建一个样式表，让它们显示网站最宽的版本。一种做法是复制一份常规的样式表，将其命名为 old-ie.css 之类的文件名。将媒体查询语句去掉，但保留其中的样式规则。在 HTML 中添加条件注释，从而让不同的浏览器都能找到正确的样式表：<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--</span></div><div class="line">第一个条件注释包含的是为 IE8 及更旧版本以外</div><div class="line">的所有浏览器准备的样式表。</div><div class="line">第二个包含的则是仅为 IE9 以下的IE 准备的样式表</div><div class="line">--&gt;</div><div class="line"><span class="comment">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span></span></div><div class="line"><span class="attr">href</span>=<span class="string">"css/styles.css"</span> /&gt;</div><div class="line"><span class="comment">&lt;!--&lt;![endif]--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">&lt;script src="js/respond.min.js"&gt;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果希望页面有响应式的效果，就在页面中引入 respond.min.js。它让 min-width 和 max-width 媒体查询对旧版 IE 也有效。<a href="https://github.com/scottjehl/Respond/" target="_blank" rel="external">https://github.com/scottjehl/Respond/</a></p>
+</li>
+<li>第二种方法更可靠，它让 IE8 用户也能看到网站的完整布局。</li>
+<li>如果使用 Sass、LESS 或 Stylus 这类 CSS 预处理器，就可以自动创建为旧版 IE 准备的样式表。地址：<a href="https://akearchibald.github.io/sass-ie/" target="_blank" rel="external">https://akearchibald.github.io/sass-ie/</a></li>
+</ul>
+<h1 id="Web-字体"><a href="#Web-字体" class="headerlink" title="Web 字体"></a>Web 字体</h1><ol>
+<li>使用 Web 字体可能在它们显示到页面上之前，都需要下载到用户的计算机上。这会减慢网站加载的速度，尤其是对移动用户来说。所以审慎地选择 Web 字体。</li>
+<li>每一个样式和粗细版本都会引入一个新的字体文件，从而增加浏览器要下载的文件大小，这会影响性能。出于这个原因，很多设计师仅对标题使用 Web 字体。</li>
+<li>字体的常见分类：<ul>
+<li>衬线字体（San）:衬线体的字体可以有效的转移视线，提高阅读速度，尤其在印刷品中效果非常明显。</li>
+<li>无衬线体(Sans-serif):非衬线字体有着简单的风格，在网上或者银幕上表现效果都很好，能让画面感觉变得更清晰。</li>
+<li>等宽字体（monospace）</li>
+<li>梦幻字体（fantasy）</li>
+<li>手写字体（cursive）</li>
+</ul>
+</li>
+</ol>
+<h1 id="IE-的-CSS-polyfill"><a href="#IE-的-CSS-polyfill" class="headerlink" title="IE 的 CSS polyfill"></a>IE 的 CSS polyfill</h1><ul>
+<li>关于 IE，Jason Johnston 的 CSS3 PIE（<a href="http://css3pie.com/" target="_blank" rel="external">http://css3pie.com/</a> ）是一种最为常见的 <strong>polyfill</strong>。它为  Internet Explorer 6 ～ 9 提供了本章讨论的大部分 CSS 效果的支持。</li>
+<li>CSS3 属性前缀可以用 Autoprefixer。</li>
+</ul>
+<h1 id="border-radius-的可能-bug"><a href="#border-radius-的可能-bug" class="headerlink" title="border-radius 的可能 bug"></a>border-radius 的可能 bug</h1><p>有时元素的背景（这里讲的不是子元素的背景）会透过其圆角。为了避免这种情况，可以在元素的 border-radius 声明后面增加一条样式规则： <code>background-clip: padding-box;</code>。</p>
+<h1 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h1><p>允许使用两个可选的属性—— inset 关键字属性和 spread 属性（前者用于内阴影，后者用于扩张/收缩阴影）。</p>
+<p>希望兼容浏览器，需要加 css 前缀（autoprefixer）:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-box-shadow</span>: <span class="selector-tag">x-offset</span> <span class="selector-tag">y-offset</span> <span class="selector-tag">blur-radius</span></div><div class="line"> <span class="selector-tag">inset</span> <span class="selector-tag">spread</span> <span class="selector-tag">color</span>(<span class="selector-tag">inset</span>内阴影);</div><div class="line"><span class="selector-tag">box-shadow</span>: <span class="selector-tag">x-offset</span> <span class="selector-tag">y-offset</span> <span class="selector-tag">blur-radius</span></div><div class="line"> <span class="selector-tag">spread</span> <span class="selector-tag">color</span> (<span class="selector-tag">inset</span>);</div><div class="line"><span class="selector-tag">box-shadow</span>:参数组1，参数组2(多重阴影);</div></pre></td></tr></table></figure>
+<h1 id="HTML-多重背景"><a href="#HTML-多重背景" class="headerlink" title="HTML 多重背景"></a>HTML 多重背景</h1><p><code>background-image</code>、<code>background-position</code>、<code>background-repeat</code>等，用逗号分隔多个参数组；也可以用<code>background</code>简写。<br>其中<code>background-position:x-offset y-offset;</code><br>（实用性在哪…增加多个图片背景不是会增加HTTP请求么..）</p>
+<h1 id="渐变背景"><a href="#渐变背景" class="headerlink" title="渐变背景"></a>渐变背景</h1><ul>
+<li>先有<code>background</code>颜色（用于防止不支持的浏览器）</li>
+<li>用<code>background-image</code>和<code>background</code>效果相同。</li>
+<li><p>线性渐变：</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*关键字指定线性渐变的方向*/</span></div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">bottom</span> <span class="selector-tag">right</span>, <span class="selector-tag">aqua</span>, <span class="selector-tag">navy</span>);</div><div class="line"></div><div class="line"><span class="comment">/*指定角度*/</span></div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(290<span class="selector-tag">deg</span>, <span class="selector-tag">aqua</span>, <span class="selector-tag">navy</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>径向渐变:</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">使用渐变尺寸（长/宽），或者 closest-side 、</div><div class="line">farthest-side 、 closest-corner 或farthest-corner</div><div class="line">*/</div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">radial-gradient</span>(100<span class="selector-tag">px</span> 50<span class="selector-tag">px</span>,<span class="selector-tag">yellow</span>, <span class="selector-tag">red</span>);</div><div class="line"></div><div class="line"><span class="comment">/*at决定渐变中心（关键字、x/y）：*/</span></div><div class="line"><span class="selector-tag">background</span>: <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">closest-side</span></div><div class="line"> <span class="selector-tag">at</span> 70<span class="selector-tag">px</span> 60<span class="selector-tag">px</span>, <span class="selector-tag">yellow</span>, <span class="selector-tag">lime</span>, <span class="selector-tag">red</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>考虑浏览器兼容情况加上 CSS 前缀。</p>
+</li>
+</ul>
+<h1 id="opacity-的透明程度"><a href="#opacity-的透明程度" class="headerlink" title="opacity 的透明程度"></a>opacity 的透明程度</h1><ul>
+<li>示例：<code>&lt;body&gt;</code>背景褐色;<code>&lt;div&gt;</code>背景黑色，里面有个<code>&lt;img&gt;</code>;对<code>&lt;div&gt;</code>使用opacity属性0.5，变半透明，整个<code>&lt;div&gt;</code>包括黑色背景都呈现褐色。如果对<code>&lt;img&gt;</code>使用，应该是图片半透明呈现黑色。</li>
+<li>对于旧版IE:使用滤镜。  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line"><span class="attribute">-ms-filter</span>: progid:DXImageTransform.</div><div class="line"> Microsoft.<span class="built_in">Alpha</span>(opacity=50);</div><div class="line"><span class="attribute">filter</span>: <span class="built_in">alpha</span>(opacity=50);</div><div class="line"><span class="attribute">opacity</span>: .<span class="number">5</span>;</div><div class="line"><span class="attribute">zoom</span>: <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="CSS-生成内容"><a href="#CSS-生成内容" class="headerlink" title="CSS 生成内容"></a>CSS 生成内容</h1><ul>
+<li>功能：<br>  使用生成内容可以添加符号、创建用于添加样式的空内容元素等。<br>  生成内容并不是为页面添加段落或标题。这些内容还是应该交给HTML。</li>
+<li>示例：<br>  CSS 实现三角形:<a href="http://web.jobbole.com/87367/" target="_blank" rel="external">http://web.jobbole.com/87367/</a>。<br>  生成 CSS 三角形：<a href="http://www.cssarrowplease.com/" target="_blank" rel="external">http://www.cssarrowplease.com/</a>。</li>
+<li>学习到的：<ol>
+<li>伪元素 <code>:before</code> 和 <code>:after</code> ,都拥有 <code>position:absolute</code> 时候，<code>z-index</code> 值后者比前者高，或者说后者会覆盖前者。</li>
+<li>伪类 <code>:focus</code> 要实现正常工作，对其元素使用 <code>tabindex=&quot;0&quot;</code> (例子中用的 <code>&lt;img&gt;</code>)<br><code>:focus</code> 伪类默认对链接和表单元素起作用。对于这些元素，不必添加 <code>tabindex=&quot;0&quot;</code> 。</li>
+<li>tabindex 属性决定 tab 键在控件中的移动顺序。 tab 移动顺序根据 tabindex 值从大到小。</li>
+</ol>
+</li>
+</ul>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><p>除了无序列表 ul 、有序列表 ol 外，还有个描述列表 dl 之前被称作定义列表。( dt 、 dd 为 dl 中的术语和描述）</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《HTML5与CSS3基础教程》读书笔记2]]></title>
+      <url>https://codingme.xyz/2016/08/29/html-css-diary-2/</url>
+      <content type="html"><![CDATA[<h1 id="html的其他属性"><a href="#html的其他属性" class="headerlink" title="html的其他属性"></a>html的其他属性</h1><p>除非在 html 元素中添加 dir 属性并将属性值设为 rtl ，否则内容的基准方向都默认为从左至右。</p>
+<h1 id="span-和-div"><a href="#span-和-div" class="headerlink" title="span 和 div"></a>span 和 div</h1><p>span 只适合<strong>包围字词或短语内容</strong>，而 div 适合<strong>包含块级内容</strong>。由于 span 没有任何语义，因此应将它作为最后的选择，仅在没有其他合适的元素时才使用它。</p>
+<h1 id="bdo"><a href="#bdo" class="headerlink" title="bdo"></a>bdo</h1><p>bdo （ bidirectional override ，双向重载）:用于显式地格式化其内容的文本方向。<br>要使用 bdo ，必须包含 dir 属性并将属性值设为 ltr （由左至右）或 rtl （由右至左），指定你希望呈现的方向。(如果你的 HTML 页面中混合了从左至右书写的字符和从右至左书写的字符，就可能要用到 bdi 和 bdo 元素。)例子： <code>&lt;plang=&quot;he&quot;&gt;&lt;bdo dir=&quot;rtl&quot;&gt;...&lt;/bdo&gt;&lt;/p&gt;</code></p>
+<h1 id="bdi-元素"><a href="#bdi-元素" class="headerlink" title="bdi 元素"></a>bdi 元素</h1><p>bdi 指的是 bidi 隔离（Bi-directional Isolation），用于标识独立于周围文本的用做双向文本格式化的一块文本。<br>bdi 元素是 HTML5 中新加的元素，用于内容的方向未知的情况。不必包含 dir 属性，因为默认已设为自动判断。例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>jcranmer<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line"> 12 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>hober<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line"> 5 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>نا إي<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line"> 3 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h1 id="meter-元素"><a href="#meter-元素" class="headerlink" title="meter 元素"></a>meter 元素</h1><p>可以用 meter 元素表示<strong>分数的值或已知范围的测量结果</strong>。简单地说，它代表的是<strong>投票结果</strong>。HTML5 建议（并非强制）浏览器在呈现 meter 时，在旁边显示一个类似温度计的图形——一个表示测量值的横条，测量值的颜色与最大值的颜色有所区别（相等除外）。作为当前少数几个支持 meter 的浏览器，Firefox 正是这样显示的。对于不支持 meter 的浏览器，可以通过 CSS 对 meter 添加一些额外的样式，或用 JavaScript 进行改进。</p>
+<ul>
+<li><p>meter 元素代码示例：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Project completion status: <span class="tag">&lt;<span class="name">meter</span></span></div><div class="line"> <span class="attr">value</span>=<span class="string">"0.80"</span>&gt;80% completed<span class="tag">&lt;/<span class="name">meter</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Car brake pad wear: <span class="tag">&lt;<span class="name">meter</span> <span class="attr">low</span>=</span></div><div class="line"> <span class="string">"0.25"</span> <span class="attr">high</span>=<span class="string">"0.75"</span> <span class="attr">optimum</span>=<span class="string">"0"</span></div><div class="line"> <span class="attr">value</span>=<span class="string">"0.21"</span>&gt;21% worn<span class="tag">&lt;/<span class="name">meter</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Miles walked during half-marathon:</div><div class="line"><span class="tag">&lt;<span class="name">meter</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"13.1"</span> <span class="attr">value</span>=<span class="string">"5.5"</span></span></div><div class="line"> <span class="attr">title</span>=<span class="string">"Miles"</span>&gt;4.5<span class="tag">&lt;/<span class="name">meter</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>已经有人试过针对支持 meter 的浏览器和不支持的浏览器统一编写 meter 的 CSS。在网上搜索“style HTML5 meter with CSS”（用CSS 为 HTML5 的 meter 添加样式），就可以找到一些解决方案（注意其中的一些用到了 JavaScript ）。meter 并不用于标记没有范围的普通测量值，如高度、宽度、距离、周长等。</p>
+</li>
+<li>一定不要将 meter 和 progress 元素混在一起使用。</li>
+</ul>
+<h1 id="progress-元素"><a href="#progress-元素" class="headerlink" title="progress 元素"></a>progress 元素</h1><p>progress 元素也是 HTML5 的新元素。前面说过，它指示<strong>某项任务的完成进度</strong>。它和 meter 元素一样，支持的会显示一个进度条，不支持的会显示文本。</p>
+<ul>
+<li>progress 代码示例：  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Current progress: <span class="tag">&lt;<span class="name">progress</span> <span class="attr">max</span>=<span class="string">"100"</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>0% saved</div><div class="line"><span class="tag">&lt;/<span class="name">progress</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="rel-属性"><a href="#rel-属性" class="headerlink" title="rel 属性"></a>rel 属性</h1><ul>
+<li><p>rel 属性是可选的，即便没有它，链接也能照常工作。但对于指向另一网站的链接，推荐包含这个值。它描述包含链接的页面和链接指向的页面之间的关系。它也是另一种提升 HTML 语义化程度的方式。搜索引擎也会利用这些信息。此外，还可以对带有 <code>rel=&quot;external&quot;</code> 的链接添加不同的样式，从而告知访问者这是一个指向外部网站的链接。对任何链接到站外页面的 a 元素（即外部链接）添加 <code>rel=&quot;external&quot;</code> 是非常好的习惯。</p>
+</li>
+<li><p>不管怎样，应避免使用“点击此处”作为标签。例如，应使用“了解我们的销售情况”，而不是“点击此处了解我们的销售情况”。</p>
+</li>
+<li><p>维 基 百 科 上 有 一 份 rel 值 的 列 表：<a href="http://microformats.org/wiki/existing-rel-values/" target="_blank" rel="external">http://microformats.org/wiki/existing-rel-values/</a>，该列表还在持续更新中。</p>
+</li>
+</ul>
+<h1 id="target-属性"><a href="#target-属性" class="headerlink" title="target 属性"></a>target 属性</h1><p>target 属性不要在大多数情况下使用。首先，应该让用户决定是否在不同的窗口或标签页打开链接，而不是让 HTML 开发人员决定。</p>
+<h1 id="CSS-层叠规则"><a href="#CSS-层叠规则" class="headerlink" title="CSS 层叠规则"></a>CSS 层叠规则</h1><p>CSS 用层叠的原则来考虑<strong>特殊性</strong>（specificity）、<strong>顺序</strong>（order）和<strong>重要性</strong>(importance），从而判断相互冲突的规则中哪个规则应该起作用。</p>
+<h1 id="CSS3-新增颜色属性"><a href="#CSS3-新增颜色属性" class="headerlink" title="CSS3 新增颜色属性"></a>CSS3 新增颜色属性</h1><p>CSS3 中新增的颜色属性 HSL 相比 RGB 的优点是：<br>举例，从红变绿的话，HSL 更加的可预计，而且不需要更改原本的亮度。<br>HSL:<strong>色相</strong>(hue)/<strong>饱和度</strong>(saturation)/<strong>亮度</strong>(lightness)<br>例子:<br>红色为 hsl(0,100%,50%);<br>黄色为 hsl(60,100%,50%);<br>绿色为 hsl(120,100%,50%);<br>青色为 hsl(180,100%,50%);</p>
+<h1 id="外部样式表与-import"><a href="#外部样式表与-import" class="headerlink" title="外部样式表与 @import"></a>外部样式表与 @import</h1><p>外部样式表要么是通过链接引用的，要么是导入的（通过 <code>@import</code> ），不过不推荐导入。 @import 指令会影响页面的下载速度和呈现速度，在 Internet Explorer 中影响更为明显。Web 性能专家 Steve Souders对此问题进行了讨论，参见<a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/" target="_blank" rel="external">http://www.stevesouders.com/blog/2009/04/09/dont-use-import/</a> 。建议不要使用 <code>@import</code> ，这主要是出于性能上的考虑。如果用了 <code>@import</code> ，当引入的样式后面有与之冲突的样式，则后出现的样式会覆盖这些引入的样式，与预期一致。</p>
+<ul>
+<li>外部样式表的另一个好处是，一旦浏览器在某个页面加载了它，在随后浏览引用它的页面时，通常无需再向 Web 服务器请求该文件。浏览器会将它保存到缓存里，也就是保存到用户的计算机里，并使用这个版本的文件。这样做可以加快对页面的加载。不过，不必担心。如果随后对样式表作了修改，再将它传到 Web 服务器，浏览器就会下载更新后的文件，而不是使用缓存的文件。</li>
+</ul>
+<h1 id="link-、-style-元素的开始标签"><a href="#link-、-style-元素的开始标签" class="headerlink" title="link 、 style 元素的开始标签"></a>link 、 style 元素的开始标签</h1><ul>
+<li>HTML 早期版本要求在 link 元素定义中包含 <code>type=&quot;text/css&quot;</code> ，但 HTML5 不要求这样做。</li>
+<li>HTML5 之前的版本要求在 style 开始标签中包含属性 <code>type=&quot;text/css&quot;</code> ，不过 HTML5 没有要求。</li>
+<li>在 link 或 style 元素的开始标签中添加 <code>media=&quot;output&quot;</code>，其中 output 可以是 print 、screen 或 all （尽管还有其他一些选项，但这些是最常见的） 也可以在样式表中使用<code>@media</code>规则。这种方法不需要在 link 元素中指定媒体类型。</li>
+<li>通过对 link 元素添加 media 属性，可以将样式表限于特定输出。使用浏览器查看页面时，style.css 会起作用（由于使用了 <code>media=&quot;screen&quot;</code>）；打印页面时，print.css 会起作用（由于使用了 <code>media=&quot;print&quot;</code> ）。</li>
+</ul>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><p>可以在选择器中使用<strong>方括号</strong>添加关于目标元素的属性或值的信息：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[title]</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">a</span><span class="selector-attr">[href="http://www.wikipedia.org"]</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>尽量不要使用<strong>ID选择器</strong>。</li>
+<li>除非必须特别针对目标元素，最好不要在 id 或 class 选择器中添加元素名称。（像是<code>h1.news { color: red; }</code> ）</li>
+<li>如果有样式冲突， .architect.bio 的规则的优先级比.architect或.bio的更高。</li>
+<li>id选择器会引入下面两个问题:<ul>
+<li>与它们关联的样式不能在其他元素上复用</li>
+<li>它们的特殊性比 class 选择器要强得多。这意味着如果要覆盖使用 id选择器定义的样式，就要编写特殊性更强的CSS规则。</li>
+</ul>
+</li>
+<li><p>.architect 和 p 之间的空格表示这个选择器会寻找任何作为 architect 类元素后代（无论是第几代）的 p 元素。</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.architect</span> <span class="selector-tag">p</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*得到相同效果的其他方式</span></div><div class="line">-------------------------------------- */</div><div class="line"><span class="comment">/* 是任意article祖先的所有p元素，</span></div><div class="line">这是三个中特殊性最低的一个 */</div><div class="line"><span class="selector-tag">article</span> <span class="selector-tag">p</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 属于architect类article元素的祖先的任意p元</span></div><div class="line">素，是三个中特殊性最高的一个 */</div><div class="line"><span class="selector-tag">article</span><span class="selector-class">.architect</span> <span class="selector-tag">p</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>这个选择器仅选择 architect 类元素的子元素（而非子子元素、子子子元素等）的 p 元素。包含于任何其他元素的 p 元素均不会被选中</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.architect</span> &gt; <span class="selector-tag">p</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>通常最好保持较低的特殊性，让样式更易于复用。</p>
+</li>
+</ul>
+<h1 id="，CSS-相邻同胞结合符"><a href="#，CSS-相邻同胞结合符" class="headerlink" title="+，CSS 相邻同胞结合符"></a>+，CSS 相邻同胞结合符</h1><p>CSS 相邻同胞结合符（adjacent sibling combinator）:只有直接跟在同胞 p 元素后面的 p 元素显示为红色。如果后面还有第三个、第四个以及更多的段落，它们也将显示为红色。例如，如果要对<strong>除第一个段落以外的所有段落进行缩进</strong>，相邻同胞结合符就很有用。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">architect</span> <span class="selector-tag">p</span>+<span class="selector-tag">p</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="，普通同胞结合符"><a href="#，普通同胞结合符" class="headerlink" title="~，普通同胞结合符"></a>~，普通同胞结合符</h1><p>我们也可能会用到普通同胞结合符，通过它可以选择那些并非直接出现在另一同胞元素后面的同胞元素。它与相邻同胞结合符的唯一区别是使用～（波浪号）代替 + 分隔同胞元素。例如， <code>h1 ～ h2 { color: red; }</code>会让<strong>任何属于同一父元素的同胞 h1 后面的 h2元素显示为红色（它们可以直接相邻，也可以不直接相邻）</strong>。</p>
+<h1 id="伪类与伪元素"><a href="#伪类与伪元素" class="headerlink" title="伪类与伪元素"></a>伪类与伪元素</h1><p>选择第一个或最后一个子元素用 <code>:first-child</code> 和 <code>:last-child</code> 伪类。这些伪类选择的是作为第一个子元素或最后一个子元素的元素（在这个例子中就是 li ）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">li</span><span class="selector-pseudo">:last-child</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>仅仅使用 <code>:first-child { color: red; }</code> ，可以为任何作为另一个元素的第一个子元素的元素应用样式。</li>
+<li>我们可以分别使用 <code>:first-letter</code> 和 <code>:first-line</code> 伪元素只选择元素的第一个字母或第一行。</li>
+<li>第一个字母前面的标点符号（如引号）会被当做第一个字母的一部分，一同被格式化。现代浏览器都支持这一特性，但 IE8 之前的版本并不是这样做的，它将标点符号本身当做第一个字母。</li>
+<li>在 CSS3 中， <code>:first-line</code> 的语法为 <code>::first-line</code> ， <code>:first-letter</code> 的语法为 <code>::first-letter</code> 。注意，它们用两个冒号代替了单个冒号。这样修改的目的是将<strong>伪元素</strong>（有四个，包 括 <code>::first-line</code> 、 <code>::first-letter</code> 、 <code>::before</code> 和 <code>::after</code> ） 与 <strong>伪类</strong>（ 如 <code>:first-child</code> 、<code>:link</code> 、 <code>:hover</code> 等）区分开。</li>
+<li><strong>伪元素</strong>（pseudo-element）是 HTML 中并不存在的元素。例如，定义第一个字母或第一行文字时，并未在 HTML 中作相应的标记。它们是另一个元素（在本例中为 p 元素）的部分内容。</li>
+<li><strong>伪类</strong>（pseudo-class）应用于一组 HTML 元素，而你无需在 HTML 代码中用类标记它们。例如，使用 <code>:first-child</code> 可以选择某元素的第一个子元素，你就不用写成<code>class=&quot;first-child&quot;</code></li>
+<li>未来， <code>::first-line</code> 和 <code>::first-letter</code> 这样的双冒号语法是推荐的方式，现代浏览器也支持它们。原始的单冒号语法则被废弃了，但浏览器出于向后兼容的目的，仍然支持它们。不过，IE9 之前的 Internet Explorer 版本均不支持双冒号。因此，你可以选择继续使用单冒号语法，除非你为 IE8 及以下版本设置了单独的 CSS。</li>
+<li>按状态选择链接元素<ul>
+<li>输入 link 以设置从未被激活或指向，当前也没有被激活或指向的链接的外观</li>
+<li>输入 visited 以设置访问者已激活过的链接的外观</li>
+<li>输入 focus ，前提是链接是通过键盘选择并已准备好激活的(例如通过Tab键）</li>
+<li>输入 hover 以设置光标指向链接时链接的外观</li>
+<li>输入 active 以设置激活过的链接的外观（更准确应该是激活时，点击是active,松开后是visited)</li>
+<li>要对链接指定样式，不一定要指定伪类，例如，使用 <code>a{color: red;}</code>会让链接的所有状态显示为同一种样式。不过，最好使用伪类区分不同状态的样式，这样做可以方便访问者。<ul>
+<li>由于链接可能同时处于多种状态，且晚出现的规则会覆盖前面出现的规则，所以，一定要按照下面的顺序定义规则： <strong>link</strong> 、 <strong>visited</strong> 、<strong>focus</strong> 、 <strong>hover</strong> 、 <strong>active</strong> （ 缩 写 为 LVFHA）。一种助记口诀为“Lord Vader’s Former Handle Anakin”（达斯·维达的原名叫安纳金）</li>
+<li>触屏设备（如智能手机和平板电脑）的浏览器没有桌面浏览器所具有的“鼠标悬停”（即 hover）状态。不过，在 iPhone 和 iPad 上，访问者激活链接时，确实会显示通过 :hover 指定的样式。其他设备的行为则不一而定。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h1><ul>
+<li><p>按属性选择元素</p>
+<ul>
+<li>方括号包围目标属性和目标属性值。这个例子中没有属性值，它选择的是所有具有 class属性的段落<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-attr">[class]</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>属性选择器</strong>参考表</p>
+<ul>
+<li>[attribute] 匹配指定属性，不论具体值是什么</li>
+<li>[attribute=”value”] 完全匹配指定属性值</li>
+<li>[attribute~=”value”] 属性值是以空格分隔的多个单词，其中有一个完全匹配指定值</li>
+<li>[attribute|=”value”] 属性值以 value- 打头或匹配value</li>
+<li>[attribute^=”value”] 属性值以 value 开头， value 为完整的单词或单词的一部分</li>
+<li>[attribute$=”value”] 属性值以 value 结尾， value 为完整的单词或单词的一部分</li>
+<li>[attribute*=”value”] 属性值为指定值的子字符串,属性值至少包含这里的 value 一次的元素将被选中。<ul>
+<li>当前所有主流浏览器均支持按元素包含的属性（和属性值）选择元素。对于 CSS3 中新增的属性选择器，IE7 和 IE8 有一些异常。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>指定元素组</p>
+<ul>
+<li>不同的选择器不一定非得单独成行，但很多编码人员都遵循这种惯例，易于阅读！<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>,</div><div class="line"><span class="selector-tag">h2</span> &#123;</div><div class="line"><span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在这里有个疑问，尝试自问自答。<br>  问：用元素组选择器跟用同个 class 效果是差不多的，比如上面的 h1 , h2 ,可以都拥有相同 class 属性。那么怎么判断该用哪个呢？<br>  一句话总结：<strong>爱用哪个用哪个</strong>。<br>  与其考虑用哪个选择器的话，不如想想维护性，这点更重要。<br>  (选择器影响效率也是微乎其微..在选择器上优化得到的性能提升还没有合并一个 http 请求来得实在。)<br>  关于选择器效率有一点：选择器的匹配机制是从选择器的右边到左边进行读取的。<br>  选择器效率从高到低的排序列表:<br>  id选择器（#id）<br>  类选择器（.className）<br>  标签选择器（div,h1,p）<br>  相邻选择器（h1+p）<br>  子选择器（ul &gt; li）<br>  后代选择器（li a）<br>  通配符选择器（*）<br>  属性选择器（a[rel=”external”]）<br>  伪类选择器（a:hover,li:nth-child）</p>
+</li>
+</ul>
+<h1 id="IE6-伪类和选择器兼容"><a href="#IE6-伪类和选择器兼容" class="headerlink" title="IE6 伪类和选择器兼容"></a>IE6 伪类和选择器兼容</h1><p>Selectivizr（<a href="http://selectivizr.com/" target="_blank" rel="external">http://selectivizr.com/</a> ）：这是“一个在 Internet Explorer 6 ～ 8 中模拟 CSS3 伪类和属性选择器的 JavaScript 工具”</p>
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><ul>
+<li>sans-serif、 cursive 、 fantasy 、 monospace 分别表示无衬线字体、手写字体、装饰字体和等宽字体。</li>
+<li><a href="https://css-tricks.com/why-ems/" target="_blank" rel="external">https://css-tricks.com/why-ems/</a></li>
+</ul>
+<h1 id="文本大小写"><a href="#文本大小写" class="headerlink" title="文本大小写"></a>文本大小写</h1><ul>
+<li>既然可以改变 HTML 里的文本，为什么还要用 text-transform 这类的 CSS 属性来修改文本显示呢？这是因为，有时，内容是你无法控制的。例如，内容可能存储在数据库里，或者来自另一个网站的新闻源。在这些情况下，只能通过 CSS 控制文本的大小写。搜索引擎通常是按它在 HTML 里输入的样子索引文本的，在搜索结果里显示标准的大小写会更容易阅读。</li>
+<li>使用小型大写字母的方法:输入 <code>font-variant: small-caps</code>。与简单地缩小字号的大写字母相比，小型大写字母显得更为轻巧。</li>
+<li><code>white-space: pre;</code> 输入 pre ，以让浏览器显示原文本中所有的空格和回车。或者输入 owrap ，确保所有空格不断行，也就是文本全部显示在一行；或者输入 normal ，按正常方式处理空格。</li>
+</ul>
+<h1 id="CSS-重置"><a href="#CSS-重置" class="headerlink" title="CSS 重置"></a>CSS 重置</h1><p>使用 CSS Reset 和 normalize.css 的原因：每个浏览器都有内置的默认样式表。 HTML 会遵照该样式表显示，除非你自己编写的 CSS 覆盖了它们。整体上，不同浏览器提供的默认样式表是相似的，但也存在一定的差异。为此，开发人员在应用他们自己的 CSS 之前，常常需要抹平这些差异。</p>
+<h1 id="ul-与-inline-block"><a href="#ul-与-inline-block" class="headerlink" title="ul 与 inline-block"></a>ul 与 inline-block</h1><p>关于 inline-block 和 ul：让 ul 水平排列，如果对 li 用 inline-block 的话貌似会让 list-style-* 出现问题。</p>
+<h1 id="兼容性-CSS-前缀"><a href="#兼容性-CSS-前缀" class="headerlink" title="兼容性 CSS 前缀"></a>兼容性 CSS 前缀</h1><p>带有-webkit- 和 -moz- 这些奇怪前缀的属性可以让这些规则在旧的 Android 和 iOS 设备上起作用，同时在Firefox 上也能正常工作。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《HTML5与CSS3基础教程》读书笔记]]></title>
+      <url>https://codingme.xyz/2016/08/07/html-css-diary/</url>
+      <content type="html"><![CDATA[<h1 id="Web-设计-在线网址"><a href="#Web-设计-在线网址" class="headerlink" title="Web 设计 在线网址"></a>Web 设计 在线网址</h1><p><a href="http://designingfortheweb.co.uk/" target="_blank" rel="external">http://designingfortheweb.co.uk/</a><br>—— Mark Boulton</p>
+<h1 id="article-元素"><a href="#article-元素" class="headerlink" title="article 元素"></a>article 元素</h1><p>article 元素表示文档、页面、应用或网站中<em>一个独立的容器</em>，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他<strong>独立的内容项</strong>。</p>
+<h1 id="section-元素"><a href="#section-元素" class="headerlink" title="section 元素"></a>section 元素</h1><p>section 元素代表文档或应用的<em>一个一般的区块</em>。如果只是出于添加样式的原因要对内容添加一个容器，应使用 div 而不是 section。在考虑何时使用 section 的时候，记住定义中“<strong>具有相似主题的一组内容</strong>”这一条是很有帮助的。这也是 section 区别于 div 的另一个原因。</p>
+<h1 id="div-元素"><a href="#div-元素" class="headerlink" title="div 元素"></a>div 元素</h1><p>有关 div 的一些历史以及何时在 HTML5 中使用它:<br>在 HTML5 之前， div 是包围大块内容（如页眉、页脚、主要内容、插图、附注栏等）从而可用 CSS 为之添加样式的不二选择。之前 div 没有任何语义含义，现在也一样。 这就是 HTML5 引入 header 、 footer 、 main 、 article 、 section 、 aside 和 nav 的原因。这些类型的构造块在网页中普遍存在，因此它们可以成为具有独立含义的元素。在 HTML5 中，div 并没有消失，只是使用它的场合变少了。不过，可以肯定的是， div 应该作为最后一个备用容器，因为它没有任何语义价值。大多数时候，使用 header 、 footer 、 main （仅使用一次）、 article 、 section 、 aside 甚至 nav代替 div 会更合适。但是，如果语义上不合适，也不必为了刻意避免使用 div 而使用上述元素。有用得上 div 的地方，只是需要限制其使用。</p>
+<a id="more"></a>
+<h1 id="role-属性和-ARIA-地标角色"><a href="#role-属性和-ARIA-地标角色" class="headerlink" title="role 属性和 ARIA 地标角色"></a>role 属性和 ARIA 地标角色</h1><p>关于 role 属性和 ARIA 地标角色：<br>可用性专家 Steve Faulkner 对地标角色有详细的讲解，见 <a href="http://blog.paciellogroup.com/2013/02/using-wai-aria-landmarks-2013/" target="_blank" rel="external">http://blog.paciellogroup.com/2013/02/using-wai-aria-landmarks-2013/</a> 。他还引用了另一位专家 Léonie Watson 录制的演示屏幕阅读器用户访问页面行为的视频，推荐观看！<br>地标角色只是 ARIA 规范 <a href="http://www.w3.org/TR/wai-aria/" target="_blank" rel="external">http://www.w3.org/TR/wai-aria/</a> 众多特性中的一个。如果对相关的实施指南感兴趣，可以访问 <a href="http://www.w3.org/WAI/PF/aria-practices/" target="_blank" rel="external">http://www.w3.org/WAI/PF/aria-practices/</a>。<br>可以在 CSS 选择器中使用 ARIA 角色属性，从而对使用它们的元素添加样式。</p>
+<h1 id="CSS-方面目的不推荐使用-id"><a href="#CSS-方面目的不推荐使用-id" class="headerlink" title="CSS 方面目的不推荐使用 id"></a>CSS 方面目的不推荐使用 id</h1><p>但一般不推荐出于添加样式的目的使用 id。推荐使用类为元素添加样式。在 class 和 id 名称中，通常使用短横线分隔多个单词，例如 <code>class=&quot;footer-page&quot;</code> 。</p>
+<h1 id="em-元素、cite-元素"><a href="#em-元素、cite-元素" class="headerlink" title="em 元素、cite 元素"></a>em 元素、cite 元素</h1><p>em 元素用于<strong>标识强调的文本</strong>，cite 元素用于<strong>标识对艺术作品、电影、图书等内容的引用</strong>。</p>
+<h1 id="b、i、em、strong"><a href="#b、i、em、strong" class="headerlink" title="b、i、em、strong"></a>b、i、em、strong</h1><ul>
+<li>strong 元素表示<strong>内容的重要性</strong>，而 em 则表示<strong>内容的着重点</strong>。</li>
+<li>不要使用 b 元素代替 strong ，也不要使用 i 元素代替 em 。尽管它们在浏览器中显示的样式是一样的，但它们的含义却很不一样。</li>
+<li>旧版本HTML那时 strong 所表示文本的强调程度比 em 表示的文本要高。不过，在 HTML5 中， em 是<strong>表示强调的唯一元素</strong>，而 strong 表示的则是<strong>重要程度</strong>。</li>
+<li>先一句话总结：HTML5 强调， <strong>b 和 i 应该是其他元素（如 strong 、 em 、 cite 等）都不适用时的最后选择</strong>。</li>
+</ul>
+<p>HTML5 将 b 重新定义为：<br>b 元素表示出于实用目的提醒读者注意的一块文字，不传达任何额外的重要性，也不表示其他的语态和语气，用于如<strong>文档摘要里的关键词</strong>、<strong>评论中的产品名</strong>、<strong>基于文本的交互式软件中指示操作的文字</strong>、<strong>文章导语</strong>等。<br>HTML5 将 i 重新定义为：<br>i 元素表示一块不同于其他文字的文字，具有不同的语态或语气，或其他不同于常规之处，用于如<strong>分类名称</strong>、<strong>技术术语</strong>、<strong>外语里的惯用语</strong>、<strong>翻译的散文</strong>、<strong>西方文字中的船舶名称</strong>等。</p>
+<h1 id="small-元素"><a href="#small-元素" class="headerlink" title="small 元素"></a>small 元素</h1><p>small 表示细则一类的旁注（side comment），通常包括<strong>免责声明</strong>、<strong>注意事项</strong>、<strong>法律限制</strong>、<strong>版权信息</strong>等。有时我们还可以用它来<strong>表示署名</strong>，或者<strong>满足许可要求</strong>。用 small 标记页面的版权信息是一种常见的做法。不过，small <strong>只适用于短语</strong>，因此不要用它标记长的法律声明，如“使用条款”和“隐私政策”页面。</p>
+<h1 id="em-和-cite-不能滥用"><a href="#em-和-cite-不能滥用" class="headerlink" title="em 和 cite 不能滥用"></a>em 和 cite 不能滥用</h1><p>内容显示的样子与为其使用的标记没有关系。因此，不应该为了让文字变为斜体就使用 em 或 cite ，添加样式是 CSS 的事情。</p>
+<h1 id="del-、ins-和-s"><a href="#del-、ins-和-s" class="headerlink" title="del 、ins 和 s"></a>del 、ins 和 s</h1><p>标记不再准确或不再相关的文本用 &lt;s&gt; 。仅在有语义价值的时候使用 del 、ins 和 s 。如果只是出于装饰的原因要给文字添加下划线或删除线，可以用 CSS 实现这些效果。HTML5 指出：“ s 元素不适用于指示文档的编辑，要标记文档中一块已移除的文本，应使用 del 元素。”有时，这之间的差异是很微妙的，只能由你决定哪种选择更符合内容的语义。</p>
+<h1 id="u-元素"><a href="#u-元素" class="headerlink" title="u 元素"></a>u 元素</h1><p>同 b 、 i 、 s 和 small 一样，HTML5 重新定义了 u 元素，使之不再是无语义的、用于表现的元素。以前， u 元素用来为文本添加下划线。现在， u 元素用于<strong>非文本注解</strong>。HTML5 对它的定义为：u 元素为一块文字添加明显的非文本注解，比如<strong>在中文中将文本标为专有名词（即中文的专名号,专名号用于表示人名、地名、朝代名等专名。）</strong>，或者<strong>标明文本拼写有误</strong>。</p>
+<h1 id="figure-元素、aside-元素"><a href="#figure-元素、aside-元素" class="headerlink" title="figure 元素、aside 元素"></a>figure 元素、aside 元素</h1><p>figure：用于识别在主文档流内被引用，但在不影响文档流的情况下可以移至他处的内容。<br>对于与内容有关的<strong>图像</strong>（如图表、图形或带有说明文字的插图），使用 figure。<br>不要简单地将 figure 作为在文本中嵌入独立内容实例的方法。这种情况下，通常更适合用 aside 元素。<br>aside 元素：用于标识页面中的一个区域，其内容与周围的内容无关。</p>
+<h1 id="time-元素、datetime-属性"><a href="#time-元素、datetime-属性" class="headerlink" title="time 元素、datetime 属性"></a>time 元素、datetime 属性</h1><p>time 元素<strong>标记时间、日期或时间段</strong>。datetime 属性不会单独产生任何效果，但它可以用于在 Web 应用（如日历应用）之间同步日期和时间。这就是必须使用标准的机器可读格式的原因，这样，程序之间就可以使用相同的“语言”来共享信息。<br>示例代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"1952-06-12T 11:05:00"</span>&gt;</span></div><div class="line">June 12, 1952 at 11:05 a.m.</div><div class="line"> <span class="tag">&lt;/<span class="name">time</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="abbr-元素"><a href="#abbr-元素" class="headerlink" title="abbr 元素"></a>abbr 元素</h1><p><code>&lt;abbr title=&quot;National Football League&quot;&gt;NFL&lt;/abbr&gt;</code><br>不必对每个<strong>缩写词</strong>都使用 abbr ，只在需要帮助访问者了解该词含义的时候使用。<br>作为对用户的视觉提示，Firefox 和Opera 等浏览器会对带 title 的 abbr 文字使用虚线下划线。<br>想在其他浏览器中对带 title 的 abbr 文字使用虚线下划线，可以在样式表中加上这条语句：<br><code>abbr[title] { border-bottom: 1px dotted#000; }</code><br>无论 abbr 是否添加了下划线样式，浏览器都会将 title 属性内容以提示框的形式显示出来。如果看不到 abbr 有虚线下划线，试着为其父元素的 CSS 添加 line-height 属性。</p>
+<h1 id="dfn-元素"><a href="#dfn-元素" class="headerlink" title="dfn 元素"></a>dfn 元素</h1><p>dfn:Definition<br>在 HTML 中<strong>定义术语</strong>时，可以使用 dfn元素对其作语义上的区分。dfn 元素及其定义必须挨在一起，否则便是错误的用法。还可以在描述列表（ dl 元素）中使用 dfn 。例子： <code>&lt;dfn&gt;pleonasm&lt;/dfn&gt;means &quot;a redundant word or expression&quot;</code></p>
+<h1 id="kbd、-samp-和-var"><a href="#kbd、-samp-和-var" class="headerlink" title="kbd、 samp 和 var"></a>kbd、 samp 和 var</h1><ol>
+<li>kbd :标记用户输入指示。 <code>&lt;li&gt;Hit &lt;kbd&gt;RETURN&lt;/kbd&gt; or &lt;kbd&gt;ENTER&lt;/kbd&gt;&lt;/li&gt;</code></li>
+<li>samp ：指示程序或系统的示例输出。 <code>&lt;samp&gt;Thanks for your order!&lt;/samp&gt;</code></li>
+<li>var :表示变量或占位符的值。 <code>&lt;var&gt;E&lt;/var&gt; =&lt;var&gt;m&lt;/var&gt;&lt;var&gt;c&lt;/var&gt; &lt;sup&gt;2&lt;/sup&gt;</code></li>
+</ol>
+<h1 id="pre-元素"><a href="#pre-元素" class="headerlink" title="pre 元素"></a>pre 元素</h1><p>不要将 pre 作为逃避以合适的语义标记内容和用 CSS 控制样式的快捷方式。例如，如果你想发布一篇在字处理软件中写好的文章，不要为了保留原来的格式，简单地将它复制、粘贴到 pre 里。相反，应该使用 p（以及其他相关的文本元素）标记内容，编写 CSS 控制页面的布局。</p>
+<h1 id="创建换行"><a href="#创建换行" class="headerlink" title="创建换行"></a>创建换行</h1><ul>
+<li>要确保使用 br 是最后的选择，因为该元素将表现样式带入了 HTML，而不是让所有的呈现样式都交由 CSS 控制。例如，不要使用 br 模拟段落之间的距离。相反，应该用 p标记两个段落并通过 CSS 的 margin 属性规定两段之间的距离。实际上，对于诗歌、街道地址等应该紧挨着出现的短行，都适合用 br 元素。</li>
+<li>要尽量避免使用 br ，除非没有更好的选择，因为这样做会在 HTML 中混合表现，而不是让 CSS 控制它。(让HTML负责内容，CSS负责样式/显示）</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SQL的小注意事项]]></title>
+      <url>https://codingme.xyz/2015/12/22/sql-tips/</url>
+      <content type="html"><![CDATA[<h1 id="DISTINCT-和-GROUP-BY"><a href="#DISTINCT-和-GROUP-BY" class="headerlink" title="DISTINCT 和 GROUP BY"></a>DISTINCT 和 GROUP BY</h1><ul>
+<li>使用GROUP BY子句时，SELECT子句中不能出现聚合键之外的列名；</li>
+<li>GROUP BY子句结果的显示是无序的；</li>
+<li>DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把NULL作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？</li>
+</ul>
+<p>但其实这个问题本身就是本末倒置的，我们应该考虑的是该SELECT语句是否满足需求。选择的标准其实很简单：<br><strong>在“想要删除选择结果中的重复记录”时使用DISTINCT；在“想要计算聚合结果”时使用GROUP BY。</strong><br>不使用COUNT等聚合函数，而只使用GROUP BY子句的SELECT语句，会让人觉得非常奇怪。难免让人产生“到底为什么要对表进行分组呢？这样做有必要吗？”等疑问。</p>
+<h1 id="HAVING-和-WHERE"><a href="#HAVING-和-WHERE" class="headerlink" title="HAVING 和 WHERE"></a>HAVING 和 WHERE</h1><ul>
+<li>WHERE用例：“商品种类为衣服”、“销售单价在1000元以上”；<br>HAVING用例：“数据行数为2行”、“平均值为500”；【count、avg】</li>
+<li>WHERE子句不能使用聚合函数。（只有SELECT子句和HAVING子句（以及ORDER BY子句）中能够使用聚合函数）。</li>
+<li>WHERE子句只能指定记录（行）的条件，不能用来指定组的条件（例如，“数据行数为2行”或者“平均值为500”等）。<br>因此，对集合指定条件就需要使用HAVING子句。</li>
+<li>HAVING子句能够使用:常数、聚合函数、聚合键。</li>
+<li>有些条件既可以写在HAVING子句当中，又可以写在WHERE子句当中。这些条件就是 聚合键所对应的条件。</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>聚合键所对应的条件还是应该书写在WHERE子句中。<br>理由：</p>
+<ol>
+<li><p>WHERE子句和HAVING子句的作用不同。<br>　　WHERE子句 = 指定行所对应的条件<br>　　HAVING子句 = 指定组所对应的条件</p>
+</li>
+<li><p>与性能即执行速度有关系<br>　　通过WHERE子句指定条件时，由于排序之前就对数据进行了过滤，所以能够减少排序的数据量。但HAVING子句是在排序之后才对数据进行分组的，因此与在WHERE子句中指定条件比起来，需要排序的数据量就会多得多。<br>　　WHERE子句更具速度优势的另一个理由是，可以对WHERE子句指定条件所对应的列创建索引，这样也可以大幅提高处理速度。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="书写顺序与执行顺序"><a href="#书写顺序与执行顺序" class="headerlink" title="书写顺序与执行顺序"></a>书写顺序与执行顺序</h1><p>　　书写顺序：<br><strong>SELECT</strong> -&gt; <strong>FROM</strong> -&gt; <strong>WHERE</strong> -&gt; <strong>GROUP BY</strong> -&gt; <strong>HAVING</strong> -&gt; <strong>ORDER BY</strong><br>　　执行顺序：<br><strong>FROM</strong> -&gt; <strong>WHERE</strong> -&gt; <strong>GROUP BY</strong> -&gt; <strong>HAVING</strong> -&gt; <strong>SELECT</strong> -&gt; <strong>(DISTINCT)</strong> -&gt;<strong>ORDER BY</strong></p>
+<h1 id="关于NULL"><a href="#关于NULL" class="headerlink" title="关于NULL"></a>关于NULL</h1><ol>
+<li>所有包含NULL的计算，结果肯定是NULL.</li>
+<li>比较运算符无法用于NULL，只能使用专门用来判断是否为NULL的运算符 <strong>IS NULL</strong></li>
+<li>对NULL进行逻辑运算时，结果是SQL特有的第三种值——不确定（Unknown）.所以尽量不使用NULL,在创建表时，要给某些列设定NOT NULL约束的原因就在此.</li>
+</ol>
+<h1 id="SQL语句及其种类"><a href="#SQL语句及其种类" class="headerlink" title="SQL语句及其种类"></a>SQL语句及其种类</h1><ol>
+<li>DDL(Data Definition Language，数据定义语言）<ul>
+<li>CREATE</li>
+<li>DROP</li>
+<li>ALTER</li>
+</ul>
+</li>
+<li>DML（Data Manipulation Language，数据操作语言）<ul>
+<li>SELECT</li>
+<li>INSERT</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
+</li>
+<li>DCL（Data Control Language，数据控制语言）<ul>
+<li>COMMIT</li>
+<li>ROLLBACK</li>
+<li>GRANT</li>
+<li>REVOKE</li>
+</ul>
+</li>
+</ol>
+<h1 id="关于事务Transaction"><a href="#关于事务Transaction" class="headerlink" title="关于事务Transaction"></a>关于事务Transaction</h1><ol>
+<li>事务处理何时开始？<br> 事务并没有标准的开始指令存在，而是根据DBMS的不同而不同。<br> 想Oracle这样不使用指令而悄悄开始事务的情况下，应该如何区分各个事务呢？<br> 通常有两种情况：<br> <strong>一、每条SQL语句就是一个事务（自动提交模式）。</strong><br> <strong>二、直到用户执行COMMIT或者ROLLBACK为止算作一个事务。</strong></li>
+<li>自动模式情况下要特别注意DELETE语句，否则一旦误删回滚也无济于事。</li>
+<li>ACID特性<ul>
+<li><strong>原子性（Atomicity）</strong><br>  事务结束时，其中包含的DML语句更新处理，要么全部执行，要么全不执行的特性。</li>
+<li><strong>一致性（Consistency）</strong><br>  事务中包含的处理，要满足数据库提前设置的约束。又称为完整性。（一旦其中一句语句违反约束，就会出错无法执行，整个事务的SQL语句都会被取消不执行。【原子性的体现】）<br>  (例子: INSERT INTO 表 SELECT * FROM 表。执行会因为主键重复失败）</li>
+<li><strong>隔离性（Isolation）</strong><br>  保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。在某个事务中进行的更改，在该事务结束之前，对其他事务而言是不可见的。</li>
+<li><strong>持久性（Durability）</strong><br>  事务（无论是提交还是回滚）一旦结束，DBMS会保证该时点的数据状态得以保存的特性。即使由于系统故障导致数据丢失，数据库也一定能通过某些手段进行恢复。<br>  保证持久性的方法根据实现的不同而不同，最常见的是将事务的执行记录保存到硬盘等存储介质中（该执行记录称为日志）。当发生故障时，可以通过日志恢复到故障发生前的状态。</li>
+</ul>
+</li>
+</ol>
+<h1 id="关于视图"><a href="#关于视图" class="headerlink" title="关于视图"></a>关于视图</h1><ol>
+<li>对多数DBMS来说，多重视图会降低SQL的性能。因此应该避免在视图的基础上创建视图。</li>
+<li>视图的限制：<ul>
+<li>定义视图时不能使用ORDER BY子句。<br>  因为视图和表一样，数据行都是没有顺序的。</li>
+<li>如果定义视图的SELECT语句能够满足某些条件，那么这个视图就可以被更新，比较具有代表性的一些条件：<br>  <strong>一、</strong>SELECT子句中未使用DISTINCT<br>  <strong>二、</strong>FROM子句中只有一张表<br>  <strong>三、</strong>未使用GROUP BY子句<br>  原因：视图和表需要同事进行更新，因此通过聚合得到的视图无法进行更新。<br>  <strong>四、</strong>未使用HAVING子句</li>
+</ul>
+</li>
+</ol>
+<h1 id="关联子查询"><a href="#关联子查询" class="headerlink" title="关联子查询"></a>关联子查询</h1><ol>
+<li>在细分的组内进行比较时，需要使用关联子查询。</li>
+<li>结合条件一定要写在子查询中。<br> 例如： <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> ‘按分类的平均单价’</div><div class="line"><span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> 商品<span class="keyword">ID</span>, 商品名, 商品分类, 商品单价,</div><div class="line">(<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(商品单价)</div><div class="line"><span class="keyword">FROM</span> 商品表 <span class="keyword">AS</span> S2</div><div class="line"><span class="keyword">WHERE</span> S1.商品分类=S2.商品分类</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 商品分类)</div><div class="line"><span class="keyword">AS</span> 商品分类_单价</div><div class="line"><span class="keyword">FROM</span> 商品表 <span class="keyword">AS</span> S1;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="EXISTS-与-IN"><a href="#EXISTS-与-IN" class="headerlink" title="EXISTS 与 IN"></a>EXISTS 与 IN</h1><p>EXISTS的特性：<br>通常指定关联子查询作为EXIST的参数;<br>作为EXISTS参数的子查询经常会使用SELECT *。</p>
+<ol>
+<li>一言以蔽之：<br> EXISTS与IN的使用效率的问题，通常情况下采用EXISTS要比IN效率高，因为IN不走索引，但要看实际情况具体使用：<br> <strong>IN适合于外表大而内表小的情况；</strong><br> <strong>EXISTS适合于外表小而内表大的情况。</strong></li>
+<li>IN 是把外表和内表作hash 连接，而EXISTS是对外表作loop循环，每次loop循环再对内表进行查询。</li>
+<li>如果两个表中一个较小，一个是大表，则子查询表大的用EXISTS，子查询表小的用IN：<br> 例如：表A（小表），表B（大表）</li>
+<li>NOT IN和NOT EXISTS<br> 如果查询语句使用了NOT IN，那么内外表都进行全表扫描，没有用到索引；<br>而NOT EXISTS的子查询依然能用到表上的索引。<br>所以无论哪个表大，用NOT EXISTS都比NOT IN要快。</li>
+</ol>
+<p>一：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> A 【小】</div><div class="line"><span class="keyword">WHERE</span> cc <span class="keyword">IN</span> (<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> B【大】)</div><div class="line"><span class="comment">--效率低，用到了A表上cc列的索引；</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> A 【小】</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> B 【大】 <span class="keyword">WHERE</span> cc=A.cc)</div><div class="line"><span class="comment">--效率高，用到了B表上cc列的索引。</span></div></pre></td></tr></table></figure>
+<p>二：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> B 【大】</div><div class="line"><span class="keyword">WHERE</span> cc <span class="keyword">IN</span> (<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> A【小】)</div><div class="line"><span class="comment">--效率高，用到了B表上cc列的索引；</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> B 【大】</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> A【小】 <span class="keyword">where</span> cc=B.cc)</div><div class="line"><span class="comment">--效率低，用到了A表上cc列的索引。</span></div></pre></td></tr></table></figure>
+<h1 id="集合函数"><a href="#集合函数" class="headerlink" title="集合函数"></a>集合函数</h1><p>应用于2张以上表的SQL语句</p>
+<ul>
+<li><p>UNION<br>  ——并集<br>注意事项：<br>作为运算对象的记录的列数必须相同；<br>作为运算对象的记录的列的数据类型必须相同；<br>可以使用任何SELECT语句，但ORDER BY语句只能在最后使用一次；<br>保留重复行使用ALL选项；</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line"> <span class="keyword">FROM</span> Shohin2</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> shohin_id;</div></pre></td></tr></table></figure>
+</li>
+<li><p>INTERSECT<br>  ——交集</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin</div><div class="line"><span class="keyword">INTERSECT</span></div><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line"> <span class="keyword">FROM</span> Shohin2</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> shohin_id;</div></pre></td></tr></table></figure>
+</li>
+<li><p>EXCEPT<br>  ——差集</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin</div><div class="line"><span class="keyword">EXCEPT</span></div><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin2</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> shohin_id;</div><div class="line"><span class="comment">--Shohin 减去 Shohin2.</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>JOIN<br>  ——联结<br>一、INNER JOIN<br>内联结。<br>使用时SELECT子句中的列需要按照 &lt;表的别名&gt;.&lt;列名&gt; 的格式进行书写；<br>必须使用ON子句，书写在FROM和WHERE之间；</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei, S.hanbai_tanka</div><div class="line"><span class="keyword">FROM</span></div><div class="line">TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span></div><div class="line">Shohin <span class="keyword">AS</span> S</div><div class="line"><span class="keyword">ON</span> TS.shohin_id = S.shohin_id;</div></pre></td></tr></table></figure>
+<p>  二、OUTER JOIN<br>  外联结。<br>  选出单张表中全部的信息，而不像内联结只选出同时存在于两张表中的数据；<br>  通过LEFT和RIGHT指定主表;</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">S.shohin_id, S.shohin_mei, S.hanbai_tanka</div><div class="line"><span class="keyword">FROM</span></div><div class="line">Shohin <span class="keyword">AS</span> S</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span></div><div class="line">TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">ON</span> TS.shohin_id = S.shohin_id;</div></pre></td></tr></table></figure>
+<p>  三、多张表的联结</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--三张以上表的内联结</span></div><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei,</div><div class="line">S.hanbai_tanka, ZS.zaiko_suryo</div><div class="line"><span class="keyword">FROM</span> TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Shohin <span class="keyword">AS</span> S</div><div class="line"><span class="keyword">ON</span> TS.shohin_id = S.shohin_id</div><div class="line">   <span class="keyword">INNER</span> <span class="keyword">JOIN</span> ZaikoShohin <span class="keyword">AS</span> ZS</div><div class="line">      <span class="keyword">ON</span> TS.shohin_id = ZS.shohin_id</div><div class="line"><span class="keyword">WHERE</span> ZS.souko_id = <span class="string">'S001'</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>四、CROSS JOIN<br>——交叉联结。<br>表的笛卡尔集。<br>AXB={(a,b)|a属于A，b属于B}<br>内联结可以说是交叉联结的一部分，但是外联结不能说是“交叉联结结果之外的部分”，应该说是：<br>外联结 = 主表内所有数据（包括内联结和内联结之中不存在的主表信息【空白处用NULL补上】）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei</div><div class="line"><span class="keyword">FROM</span> TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">CROSS</span> <span class="keyword">JOIN</span></div><div class="line">Shohin <span class="keyword">AS</span> S;</div></pre></td></tr></table></figure>
+<h1 id="过时语法"><a href="#过时语法" class="headerlink" title="过时语法"></a>过时语法</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei, S.hanbai_tanka</div><div class="line">  <span class="keyword">FROM</span> TenpoShohin TS, Shohin S</div><div class="line"> <span class="keyword">WHERE</span> TS.shohin_id = S.shohin_id</div><div class="line">   <span class="keyword">AND</span> TS.tenpo_id = <span class="string">'000A'</span>;</div></pre></td></tr></table></figure>
+<p>缺点：</p>
+<ul>
+<li>无法马上判断出到底是内联结还是外联结又或者是其他类型的联结</li>
+<li>由于联结条件都写在WHERE子句中，无法在短时间内分辨出哪部分是联结条件，哪部分是用来选取记录的限制条件</li>
+<li>我们不知道这样的语法到底还能使用多久</li>
+</ul>
+<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><ol>
+<li>COALESCE函数<br> 将NULL值变为其他值</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>（<span class="keyword">name</span>, <span class="string">'unknown'</span>) <span class="keyword">AS</span> <span class="keyword">name</span></div><div class="line"><span class="comment">--于是name中的NULL值就变成unknown了</span></div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[递归的四条基本法则]]></title>
+      <url>https://codingme.xyz/2015/12/06/recursion/</url>
+      <content type="html"><![CDATA[<h1 id="基准情形"><a href="#基准情形" class="headerlink" title="基准情形"></a>基准情形</h1><p>必须总要有某些基准情形，它无须递归就能解出。</p>
+<h1 id="不断推进"><a href="#不断推进" class="headerlink" title="不断推进"></a>不断推进</h1><p>对于那些需要递归求解的情形，每一次递归调用都必须要使状况朝向一种基准情形推进。</p>
+<h1 id="设计法则。"><a href="#设计法则。" class="headerlink" title="设计法则。"></a>设计法则。</h1><p>假设所有的递归调用都能运行。</p>
+<h1 id="合成效益法则。"><a href="#合成效益法则。" class="headerlink" title="合成效益法则。"></a>合成效益法则。</h1><p>在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。</p>
+]]></content>
+    </entry>
+    
+  
+  
+</search>

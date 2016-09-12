@@ -1,0 +1,944 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,html,css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="sprite
+目的：  将多个图像拼合成单个背景图像（sprite），再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于UI上的多个小图标、重复图标等。
+使用方法：  background-image 获得图像，background-position 获得所取的具体位置(目前只知道x范围和y范围，但想必还可以更加深入的切取）
+工具：  可以多个图片合成一张">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《HTML5与CSS3基础教程》读书笔记4">
+<meta property="og:url" content="https://codingme.xyz/2016/09/01/html-css-diary-4/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="sprite
+目的：  将多个图像拼合成单个背景图像（sprite），再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于UI上的多个小图标、重复图标等。
+使用方法：  background-image 获得图像，background-position 获得所取的具体位置(目前只知道x范围和y范围，但想必还可以更加深入的切取）
+工具：  可以多个图片合成一张">
+<meta property="og:updated_time" content="2016-09-11T08:55:14.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《HTML5与CSS3基础教程》读书笔记4">
+<meta name="twitter:description" content="sprite
+目的：  将多个图像拼合成单个背景图像（sprite），再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于UI上的多个小图标、重复图标等。
+使用方法：  background-image 获得图像，background-position 获得所取的具体位置(目前只知道x范围和y范围，但想必还可以更加深入的切取）
+工具：  可以多个图片合成一张">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/09/01/html-css-diary-4/"/>
+
+  <title> 《HTML5与CSS3基础教程》读书笔记4 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《HTML5与CSS3基础教程》读书笔记4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-01T15:52:18+08:00" content="2016-09-01">
+              2016-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="sprite"><a href="#sprite" class="headerlink" title="sprite"></a>sprite</h1><ul>
+<li>目的：<br>  将多个图像拼合成单个背景图像（sprite），再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于UI上的多个小图标、重复图标等。</li>
+<li>使用方法：<br>  <code>background-image</code> 获得图像，<code>background-position</code> 获得所取的具体位置(目前只知道x范围和y范围，但想必还可以更加深入的切取）</li>
+<li>工具：<br>  可以多个图片合成一张 sprite 的 CSS Sprite Generator:<a href="http://spritegen.website-performance.org/" target="_blank" rel="external">http://spritegen.website-performance.org/</a></li>
+<li>关于 Retina 显示屏：<br>  使用长宽双倍大小像素的图片，一样的容器长宽，使其缩小。</li>
+</ul>
+<h1 id="列表的缩进对齐"><a href="#列表的缩进对齐" class="headerlink" title="列表的缩进对齐"></a>列表的缩进对齐</h1><p>默认的列表要左缩进对齐的话，用<code>padding-left:1.125em</code>，但是针对 IE7 及以下版本，还要使用<code>margin-left:0;</code></p>
+<h1 id="ol-、ul-的选择"><a href="#ol-、ul-的选择" class="headerlink" title="ol 、ul 的选择"></a>ol 、ul 的选择</h1><p>会因为顺序改变而改变的列表，使用有序列表，比如<strong>分页标记</strong>、<strong>面包屑导航</strong>；其他大多数情况下都可以用无序列表。</p>
+<h1 id="标记的修改"><a href="#标记的修改" class="headerlink" title="标记的修改"></a>标记的修改</h1><ul>
+<li>对于标记的修改，使用 <code>list-style-type:none;</code> 或者 <code>type=&quot;none&quot;;</code></li>
+<li><code>background: url( image.ext ) repeat-type horizontal vertical;</code> [ horizontal、vertical 是背景图像相对于元素的位置，默认为0]</li>
+<li><code>list-style-image</code> 不同浏览器显示效果不一致，更难控制位置（所以很少用）</li>
+</ul>
+<h1 id="列表的属性-start-、value"><a href="#列表的属性-start-、value" class="headerlink" title="列表的属性 start 、value"></a>列表的属性 start 、value</h1><p><code>&lt;ol&gt;</code> 中 <code>start=&quot;n&quot;</code> 表示列表初始值， <code>&lt;li&gt;</code> 的 <code>value=&quot;n&quot;</code> 表示该项目的值。value 属性的值会覆盖 start 的值。</p>
+<h1 id="列表标记的位置"><a href="#列表标记的位置" class="headerlink" title="列表标记的位置"></a>列表标记的位置</h1><p><code>list-style-position</code> 默认为 <code>outside</code> ，可以设置为 <code>inside</code> 成为段落的一部分（像首个大写的字母）而不是独立在段落外。</p>
+<a id="more"></a>
+<h1 id="列表中文本拥挤问题"><a href="#列表中文本拥挤问题" class="headerlink" title="列表中文本拥挤问题"></a>列表中文本拥挤问题</h1><p>利用好 <code>line-height</code> 增大文本行间距。</p>
+<h1 id="list-style-的继承"><a href="#list-style-的继承" class="headerlink" title="list-style-* 的继承"></a>list-style-* 的继承</h1><p>list-style-type 、list-style-position 和 list-style-image ， list-style 属性都是继承的。这也是我们可以应用到父元素 ol 或 ul 上的原因。</p>
+<h1 id="元素的隐藏"><a href="#元素的隐藏" class="headerlink" title="元素的隐藏"></a>元素的隐藏</h1><p>使用 <code>left:</code><br>    <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.nav</span> <span class="selector-class">.subnav</span> &#123;</div><div class="line">    <span class="attribute">left</span>: -<span class="number">999em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.nav</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.subnav</span> &#123;</div><div class="line"><span class="attribute">left</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>问题:除了 left 能否用其他方法？<br>（关键是要避免误交互，所以我想元素本身还在那里的 opacity 和 visibility 应该不行）<br>能否用 display:none 、 position:absolute 、Clip-path ？</p>
+<h1 id="dt-元素、-dd-元素"><a href="#dt-元素、-dd-元素" class="headerlink" title="dt 元素、 dd 元素"></a>dt 元素、 dd 元素</h1><p><code>&lt;dt&gt;</code>: Definition Term.<br><code>&lt;dd&gt;</code>: Description.<br>dd 元素必定是接在 dt 元素之后。<br>dd 元素不必用 p 元素来标记文本（除非里面有多个段落）</p>
+<h1 id="HTML5-form-表单的旧浏览器兼容"><a href="#HTML5-form-表单的旧浏览器兼容" class="headerlink" title="HTML5 form 表单的旧浏览器兼容"></a>HTML5 form 表单的旧浏览器兼容</h1><p><a href="https://github.com/ryanseddon/H5F/" target="_blank" rel="external">https://github.com/ryanseddon/H5F/</a></p>
+<h1 id="input-type-选择的兼容性"><a href="#input-type-选择的兼容性" class="headerlink" title="input type 选择的兼容性"></a>input type 选择的兼容性</h1><p><a href="https://www.wufoo.com/html5/" target="_blank" rel="external">https://www.wufoo.com/html5/</a></p>
+<h1 id="method-”get”-与-“post”-的区别"><a href="#method-”get”-与-“post”-的区别" class="headerlink" title="method=”get” 与 “post” 的区别"></a>method=”get” 与 “post” 的区别</h1><ol>
+<li>如果希望表单提交后从服务器得到信息使用 method=”get”。表单提交后，表单中的数据会显示在浏览器的地址栏里。get 一般用于<strong>数据查询</strong>。<br> 例子：各大搜索引擎。</li>
+<li>使用 method=”post” 提交表单后，表单中的数据不会显示在浏览器的地址栏里，这样更为安全。同时，比起 get ，使用 post 可以向服务器发送更多的数据。通常，post 用于向服务器存入数据，而非获取数据。如果需要在数据库中<strong>保存、添加和删除数据</strong>，就应选择 post 。</li>
+<li>通常，如果不确定使用哪一种，就使用 post ，这样数据不会暴露在 URL 中。</li>
+<li>GET 相对 POST 的优点：<ol>
+<li>GET 请求是可被缓存的，可被收藏为书签，不应在处理敏感数据时使用，只应当用于取回数据。但是 POST 不可以。</li>
+<li>GET 速度一般比 POST 快。</li>
+</ol>
+</li>
+</ol>
+<h1 id="表单安全性"><a href="#表单安全性" class="headerlink" title="表单安全性"></a>表单安全性</h1><p><a href="http://www.htmlcssvqs.com/8ed/form-security/" target="_blank" rel="external">http://www.htmlcssvqs.com/8ed/form-security/</a>（跟 PHP 相关性更高点）</p>
+<h1 id="表单标题描述"><a href="#表单标题描述" class="headerlink" title="表单标题描述"></a>表单标题描述</h1><ol>
+<li>使用 h1 、 h2 标题</li>
+<li>使用 legend 元素(如果使用必须是 fieldset 的第一个元素）</li>
+<li>fieldset :用于将一套表单元素组合在一起.</li>
+</ol>
+<h1 id="legend元素"><a href="#legend元素" class="headerlink" title="legend元素"></a>legend元素</h1><ol>
+<li>虽然 legend 元素可以提高表单的可访问性。</li>
+<li>但是，这种行为在不同的屏幕阅读器和浏览器上并不完全一样，不同的模式下也不一样。</li>
+<li>所以，考虑到以上这些问题，使用 h1 ～ h6 标题代替 legend 来识别一些（并非所有） fieldset ，就是一个明智的选择。</li>
+<li>无论如何，对于单选按钮，最好总是使用 fieldset 和 legend 。</li>
+</ol>
+<h1 id="文本框"><a href="#文本框" class="headerlink" title="文本框"></a>文本框</h1><ul>
+<li>必须为每个文本框设置 name 属性，只有在希望为文本框添加默认值的情况下才需要设置 value 属性。</li>
+<li>文本框可选属性：<ol>
+<li><code>placeholder=&quot;hinttext&quot;</code>，指导用户输入。</li>
+<li><code>required=&quot;required&quot;</code>，仅在这个字段有值的情况下才能提交表单</li>
+<li><code>autofocus或者autofocus=&quot;autofocus&quot;</code>，如果是第一个拥有这个属性的控件，input 会在页面加载时默认获得焦点。</li>
+<li><code>size=&quot;n&quot;</code> 定义文本框大小，n是需要设置的文本框宽度，以字符为单位（也可以用CSS单独设置）默认值20。</li>
+<li><code>maxlength=&quot;n&quot;</code>，n 是允许输入的最大字符数。</li>
+<li><code>autocomplete=&quot;off/on&quot;</code>,保存用户所输入的内容并根据先前的表单输入给出一些包含同样字母的建议文本。可以作用与父元素 form 让所有子元素继承。</li>
+</ol>
+</li>
+</ul>
+<h1 id="分隔表单元素"><a href="#分隔表单元素" class="headerlink" title="分隔表单元素"></a>分隔表单元素</h1><p>分隔表单元素的方法在例子中大多数情况下使用 p 元素，嵌套 p 情况下使用 div 。并且都使用了 class=”row” 作为定义样式的钩子。</p>
+<h1 id="label-元素"><a href="#label-元素" class="headerlink" title="label 元素"></a>label 元素</h1><p>标签（label）是描述表单字段用途的文本。</p>
+<ul>
+<li>for 属性：<br>  <code>for=&quot;idlabel&quot;</code>，利用 for 显示关联表单字段 (aka input)。<br>  例子：点击复选框的文本也可以勾选上。实现点击文本标签来修改状态。</li>
+</ul>
+<p>强烈推荐使用，对提升表单的可访问性和可用性有很重要的作用。</p>
+<h1 id="id-、-for-和-name-属性的命名习惯"><a href="#id-、-for-和-name-属性的命名习惯" class="headerlink" title="id 、 for 和 name 属性的命名习惯"></a>id 、 for 和 name 属性的命名习惯</h1><ul>
+<li>让for 、id 和 name 属性值都一样是一种并非必需但很常见的做法。单选按钮和复选框是例外。</li>
+<li>对于包含多个单词的值， for 和 id 中使用连字符（-）分隔各个单词，name 中使用下划线（_）。<br>  例子：<code>for=&quot;first-name&quot;</code> 、 id=”first-name” 和 name=”first_name”</li>
+<li>无论使用哪种方法，一定要保证 for 和 id 的值是一样的。</li>
+</ul>
+<h1 id="pattern-属性"><a href="#pattern-属性" class="headerlink" title="pattern 属性"></a>pattern 属性</h1><p>pattern 属性用于定制的验证规则。它使用正则表达式对用户在框中输入的内容进行限制。<br><a href="http://html5pattern.com/" target="_blank" rel="external">http://html5pattern.com/</a>——<strong>常用正则表达式</strong>。</p>
+<h1 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h1><ol>
+<li><strong>multiple</strong> 属性：用逗号分开，例如电子邮件框用逗号分开输入多个邮件地址。</li>
+<li>WebKit 浏览器支持两个非官方 HTML5 属性： autosave 和 results 。</li>
+<li>为 form 添加了 ARIA 地标角色 <strong>role=”search”</strong> 。这会让屏幕阅读器指出网页上有搜索区域，从而提高页面的可访问性。如果表单有多个控件而非只有搜索，就将与搜索相关的控件放在一个 fieldset 或div 中并为其添加 role=”search” ，而不是将 role=”search” 添加到 form 元素本身。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/30/target-blank-vulnerable/" rel="next" title="target="_blank" 漏洞">
+                <i class="fa fa-chevron-left"></i> target="_blank" 漏洞
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/06/html-css-diary-5/" rel="prev" title="《HTML5与CSS3基础教程》读书笔记5">
+                《HTML5与CSS3基础教程》读书笔记5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#sprite"><span class="nav-number">1.</span> <span class="nav-text">sprite</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表的缩进对齐"><span class="nav-number">2.</span> <span class="nav-text">列表的缩进对齐</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ol-、ul-的选择"><span class="nav-number">3.</span> <span class="nav-text">ol 、ul 的选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标记的修改"><span class="nav-number">4.</span> <span class="nav-text">标记的修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表的属性-start-、value"><span class="nav-number">5.</span> <span class="nav-text">列表的属性 start 、value</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表标记的位置"><span class="nav-number">6.</span> <span class="nav-text">列表标记的位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表中文本拥挤问题"><span class="nav-number">7.</span> <span class="nav-text">列表中文本拥挤问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#list-style-的继承"><span class="nav-number">8.</span> <span class="nav-text">list-style-* 的继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元素的隐藏"><span class="nav-number">9.</span> <span class="nav-text">元素的隐藏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dt-元素、-dd-元素"><span class="nav-number">10.</span> <span class="nav-text">dt 元素、 dd 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-form-表单的旧浏览器兼容"><span class="nav-number">11.</span> <span class="nav-text">HTML5 form 表单的旧浏览器兼容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#input-type-选择的兼容性"><span class="nav-number">12.</span> <span class="nav-text">input type 选择的兼容性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#method-”get”-与-“post”-的区别"><span class="nav-number">13.</span> <span class="nav-text">method=”get” 与 “post” 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表单安全性"><span class="nav-number">14.</span> <span class="nav-text">表单安全性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表单标题描述"><span class="nav-number">15.</span> <span class="nav-text">表单标题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#legend元素"><span class="nav-number">16.</span> <span class="nav-text">legend元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本框"><span class="nav-number">17.</span> <span class="nav-text">文本框</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分隔表单元素"><span class="nav-number">18.</span> <span class="nav-text">分隔表单元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#label-元素"><span class="nav-number">19.</span> <span class="nav-text">label 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#id-、-for-和-name-属性的命名习惯"><span class="nav-number">20.</span> <span class="nav-text">id 、 for 和 name 属性的命名习惯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pattern-属性"><span class="nav-number">21.</span> <span class="nav-text">pattern 属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他属性"><span class="nav-number">22.</span> <span class="nav-text">其他属性</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

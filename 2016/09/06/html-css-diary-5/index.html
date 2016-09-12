@@ -1,0 +1,1002 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,html,css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="单选按钮
+type=&amp;quot;radio&amp;quot; ，例子：性别的单选按钮。
+两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。
+value 属性设置值，因为对于单选按钮访问者无法输入值。
+输入 checked 或者 checked=&amp;quot;checked&amp;quot; 让该单选按钮在页面打开时默认处于激活状态
+
+复选框
+type=&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《HTML5与CSS3基础教程》读书笔记5">
+<meta property="og:url" content="https://codingme.xyz/2016/09/06/html-css-diary-5/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="单选按钮
+type=&amp;quot;radio&amp;quot; ，例子：性别的单选按钮。
+两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。
+value 属性设置值，因为对于单选按钮访问者无法输入值。
+输入 checked 或者 checked=&amp;quot;checked&amp;quot; 让该单选按钮在页面打开时默认处于激活状态
+
+复选框
+type=&amp;quo">
+<meta property="og:updated_time" content="2016-09-11T08:26:31.689Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《HTML5与CSS3基础教程》读书笔记5">
+<meta name="twitter:description" content="单选按钮
+type=&amp;quot;radio&amp;quot; ，例子：性别的单选按钮。
+两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。
+value 属性设置值，因为对于单选按钮访问者无法输入值。
+输入 checked 或者 checked=&amp;quot;checked&amp;quot; 让该单选按钮在页面打开时默认处于激活状态
+
+复选框
+type=&amp;quo">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/09/06/html-css-diary-5/"/>
+
+  <title> 《HTML5与CSS3基础教程》读书笔记5 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《HTML5与CSS3基础教程》读书笔记5
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-06T15:47:30+08:00" content="2016-09-06">
+              2016-09-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="单选按钮"><a href="#单选按钮" class="headerlink" title="单选按钮"></a>单选按钮</h1><ol>
+<li><code>type=&quot;radio&quot;</code> ，例子：性别的单选按钮。</li>
+<li>两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。</li>
+<li>value 属性设置值，因为对于单选按钮访问者无法输入值。</li>
+<li>输入 checked 或者 <code>checked=&quot;checked&quot;</code> 让该单选按钮在页面打开时默认处于激活状态</li>
+</ol>
+<h1 id="复选框"><a href="#复选框" class="headerlink" title="复选框"></a>复选框</h1><ol>
+<li><code>type=&quot;checkbox&quot;</code> ,例子：选择订阅推送。</li>
+<li>name 属性相同，<code>name=&quot; boxset &quot;</code>。（如果使用 PHP 处理表单，使用 name=” boxset[] “)</li>
+<li>value 属性设置值，因为对于复选按钮访问者无法输入值。</li>
+<li>checked 方面跟单选按钮一样。</li>
+</ol>
+<h1 id="textarea-元素，文本区域"><a href="#textarea-元素，文本区域" class="headerlink" title="textarea 元素，文本区域"></a>textarea 元素，文本区域</h1><ol>
+<li>rows 和 cols 属性分别控制文本区域的高度和宽度，除非使用 CSS 覆盖其中之一或者全部。</li>
+<li>textarea 没有 value 属性，所以如果想要预设文本要直接在 textarea 标签之间添加文本。</li>
+</ol>
+<a id="more"></a>
+<h1 id="下拉选择框"><a href="#下拉选择框" class="headerlink" title="下拉选择框"></a>下拉选择框</h1><ul>
+<li><p>用 select 和 option 元素</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"state"</span>&gt;</span>State:<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"state"</span> <span class="attr">name</span>=<span class="string">"state"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"AL"</span>&gt;</span>Alabama<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"AK"</span>&gt;</span>Alaska<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">...</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>size=”n”， n 代表选择框高度。如果不设置就必须选择一个选择项。设置后菜单显示为一个有滚动条的列表，默认没有选中任何一项。</p>
+</li>
+<li>option 元素的属性： selected 或者 <code>selected=&quot;selected&quot;</code> ，指定该选项默认被选中。</li>
+<li>option 元素也是有 label 属性可替代中间的文本，不过 Firefox 不支持这一属性，所以最好不用。</li>
+<li>如果需要对选择项进行分组，使用 optgroup 元素，带有 label 属性。</li>
+</ul>
+<h1 id="上传文件的设置"><a href="#上传文件的设置" class="headerlink" title="上传文件的设置"></a>上传文件的设置</h1><ol>
+<li>对于 input 要设置 <code>type=&quot;file&quot;</code>,对于 form 要设置<code>&lt;form method=&quot;post&quot; action=&quot;show-data.php&quot;enctype=&quot;multipart/form-data&quot;&gt;</code></li>
+<li>multiple 属性可以允许上传多个文件(IE10+ 支持，移动端忽略)</li>
+<li>对于 type=”file” 的 input 元素，浏览器会自动创建 Browse（浏览）按钮。Chrome 和 Safari 不会创建框，它们只显示按钮。</li>
+</ol>
+<h1 id="隐藏字段"><a href="#隐藏字段" class="headerlink" title="隐藏字段"></a>隐藏字段</h1><ol>
+<li>例子：<code>&lt;input type=&quot;hidden&quot; name=&quot;step&quot; value=&quot;6&quot; /&gt;</code><br> 访问者不会看到这个输入框，但他们提交表单的时候，名 “step” 和值 “6” 会随着表单中从访问者输入获取的数据一起传送给服务器。</li>
+<li><code>&lt;input type=&quot;hidden&quot; name=&quot;email&quot; value=&quot;&lt;?= $email ?&gt;&quot; /&gt;</code><br> 创建隐藏字段时，可以使用脚本中的变量将字段的值设置为访问者原来输入的值（这个示例使用了 PHP 语法）</li>
+<li>隐藏字段用法：<br> 用来处理那些你不想在表单页面里编辑和显示 ，但是又必须跟随表单填写者填写的其他信息，例如当前时间。<br> <code>&lt;input type=&quot;hidden&quot; name=&quot;time&quot; value=&quot;&lt;%=NowTime%&gt;&quot;&gt;</code></li>
+</ol>
+<h1 id="disabled-和-readonly"><a href="#disabled-和-readonly" class="headerlink" title="disabled 和 readonly"></a>disabled 和 readonly</h1><p>readonly 可以获得焦点，访问者可以选择和复制里面的文本，但不能修改，只能用于文本框和文本区域。</p>
+<h1 id="提交按钮"><a href="#提交按钮" class="headerlink" title="提交按钮"></a>提交按钮</h1><ol>
+<li>除了典型的 <code>type=&quot;submit&quot;</code> 外，还可以用 <code>type=&quot;image&quot;</code> 使用图像形式的提交按钮。</li>
+<li>创建结合文本和图像的提交按钮可以用 button 元素。（依然使用 <code>type=&quot;submit&quot;</code> 。其中除了文字还包含 <code>&lt;img&gt;</code>)<br> (使用 button 元素要注意考虑 IE8 之前的兼容问题)</li>
+<li>如果有多个提交按钮，可以为每个按钮设置 name 属性和 value 属性。<br> 否则 name 属性最好省略。<br> 如果需要多个提交按钮就应避免使用 button 。</li>
+</ol>
+<h1 id="表单的重置"><a href="#表单的重置" class="headerlink" title="表单的重置"></a>表单的重置</h1><ol>
+<li><code>&lt;input type=&quot;reset&quot; /&gt;</code> 或 <code>&lt;button type=&quot;reset&quot;&gt;Reset&lt;/button&gt;</code></li>
+<li><code>&lt;input type=&quot;button&quot; value=&quot;这个用JavaScript清除&quot;onclick=&quot;document.getElementById(&#39;form1&#39;).reset()&quot;/&gt;</code></li>
+</ol>
+<h1 id="禁用验证功能"><a href="#禁用验证功能" class="headerlink" title="禁用验证功能"></a>禁用验证功能</h1><p>HTML5 对 <code>type=&quot;email&quot;</code> 和 <code>type=&quot;URL&quot;</code> 的 input 添加了自动验证功能。对提交按钮使用 formnovalidate 属性可以关闭该功能，如 <code>&lt;input type=&quot;submit&quot; formnovalidate /&gt;</code> 。</p>
+<h1 id="禁用表单元素"><a href="#禁用表单元素" class="headerlink" title="禁用表单元素"></a>禁用表单元素</h1><p>例子：当选择了 Others 的时候，textarea 才可以访问修改输入文本。<br>方式：</p>
+<ol>
+<li>将 textarea 设为 disabled ；</li>
+<li>在最后 <code>&lt;/body&gt;</code> 之前添加 script 引入了一个 JavaScript 文件。该文件包含了一段脚本，其作用是当用户选择 Other（其他）单选按钮时，让 textarea 变为可用的，选择其余两个单选按钮中的任意一个，则会禁用 textarea。</li>
+</ol>
+<h1 id="活用伪类"><a href="#活用伪类" class="headerlink" title="活用伪类"></a>活用伪类</h1><ol>
+<li>利用和相邻同胞结合符+,实现选择框勾中后文字变色、选择输入框时输入框背景颜色改变等。</li>
+<li>给 form 元素一个类，对于该类所有 input 子元素有 <code>:invalid</code> 伪类的颜色设置为红色。</li>
+</ol>
+<h1 id="多媒体元素属性"><a href="#多媒体元素属性" class="headerlink" title="多媒体元素属性"></a>多媒体元素属性</h1><ol>
+<li>使用控件 controls 属性。</li>
+<li>预加载 preload 默认 auto，可设 metadata 和 none。</li>
+</ol>
+<h1 id="旧浏览器兼容-html5-多媒体"><a href="#旧浏览器兼容-html5-多媒体" class="headerlink" title="旧浏览器兼容 html5 多媒体"></a>旧浏览器兼容 html5 多媒体</h1><ol>
+<li>mediaelement.js（mediaelementjs.com/）</li>
+<li>Video.js（www.videojs.com）、</li>
+<li>JW Player （www.longtailvideo.com/jw-player/）</li>
+<li>Flowplayer（flowplayer.org）</li>
+</ol>
+<p>JW Player 和 Flowplayer 的免费版本会在媒体播放器上显示它们的标识。</p>
+<h1 id="表格的属性"><a href="#表格的属性" class="headerlink" title="表格的属性"></a>表格的属性</h1><ol>
+<li>对于标题单元格 th ，使用 scope 属性 （col/row/colgroup/rowgroup)</li>
+<li>如果有 caption 元素则必定是 table 中第一个元素。</li>
+<li>thead 和 tfoot 每个 table 只能各有一个。</li>
+<li>如果有了 thead 和 tfoot 则必定要有 tbody 。</li>
+<li>table 嵌套在 figure 中时可以省略掉 caption 直接用 figcaption 。</li>
+<li>当使单元格跨越多行多列时使用 colspan 和 rowspan 属性。</li>
+<li>如果<strong>正下列正好是标题单元格的内容</strong>的话，可以用 <code>scope=&quot;rowgroup&quot;</code> 属性。<br> 例子： th 为 Time ,正下列为各个时间。</li>
+</ol>
+<h1 id="表格的相关-CSS-设置"><a href="#表格的相关-CSS-设置" class="headerlink" title="表格的相关 CSS 设置"></a>表格的相关 CSS 设置</h1><ol>
+<li><code>border-collapse:collapse;</code> 能<strong>合并重复的单元格边框</strong>。<br> （默认值为 <code>border-collapse:separate;</code> ）</li>
+<li>不同的浏览器显示的样式稍有差异，尤其是 <code>Internet Explorer</code>。</li>
+</ol>
+<h1 id="JavaScript-的部分注意事项"><a href="#JavaScript-的部分注意事项" class="headerlink" title="JavaScript 的部分注意事项"></a>JavaScript 的部分注意事项</h1><ol>
+<li><code>&lt;script&gt;</code> 标签在大多数情况下最好在页面的<strong>最末尾</strong>加载，即<code>&lt;/body&gt;</code>前面</li>
+<li>保持组织文件良好，通常将 JavaScript 文件放在一个<strong>子文件夹</strong>中。</li>
+<li>通常，<strong>压缩后的脚本</strong>以 <strong>.min.js</strong> 作为扩展名</li>
+</ol>
+<h1 id="JavaScript-的阻塞行为"><a href="#JavaScript-的阻塞行为" class="headerlink" title="JavaScript 的阻塞行为"></a>JavaScript 的阻塞行为</h1><ol>
+<li>默认情况下，浏览器会按照脚本在 HTML 中出现的顺序对它们进行加载。</li>
+<li>在处理脚本的过程中，浏览器既不会下载该 script 元素后面出现的内容（哪怕是文本），也不会呈现这些内容。这称为<strong>阻塞行为</strong>。</li>
+<li>消除 JavaScript 阻塞最简单的方法就是将所有的 script 元素放置在 HTML 结束之前，即 <code>&lt;/body&gt;</code> 结束标签的前面。</li>
+<li>如果确实需要在 head 中加载脚本，也要将它们放置在所有加载 CSS 文件的 link 元素之后（这也是出于性能的考虑）。</li>
+<li>另一种简单的加快脚本加载速率的方法就是将 JavaScript 放在同一个文件中（或尽可能少的一些文件中）并压缩代码。</li>
+</ol>
+<h1 id="压缩脚本工具"><a href="#压缩脚本工具" class="headerlink" title="压缩脚本工具"></a>压缩脚本工具</h1><ul>
+<li><strong>Google Closure Compiler</strong><br>  <a href="http://code.google.com/closure/compiler/" target="_blank" rel="external">http://code.google.com/closure/compiler/</a>（供下载的版本及文档）<br>  <a href="http://closure-compiler.appspot.com/" target="_blank" rel="external">http://closure-compiler.appspot.com/</a>（在线版本）</li>
+<li><strong>UglifyJS</strong>（使用第二个链接）<br>  <a href="https://github.com/mishoo/UglifyJS2/" target="_blank" rel="external">https://github.com/mishoo/UglifyJS2/</a>（供下载的版本及文档）<br>  <a href="http://lisperator.net/uglifyjs/" target="_blank" rel="external">http://lisperator.net/uglifyjs/</a>（在线版本，选择“Open demo”)</li>
+<li><strong>YUI Compressor</strong>（使用第二个链接）<br>  <a href="http://developer.yahoo.com/yui/compressor/" target="_blank" rel="external">http://developer.yahoo.com/yui/compressor/</a>（供下载的版本及文档）<br>  <a href="http://refresh-sf.com/yui/" target="_blank" rel="external">http://refresh-sf.com/yui/</a>（非官方的在线版本）</li>
+</ul>
+<h1 id="验证代码"><a href="#验证代码" class="headerlink" title="验证代码"></a>验证代码</h1><ol>
+<li>HTML 的代码验证：<ul>
+<li><a href="http://validator.w3.org/" target="_blank" rel="external">http://validator.w3.org/</a></li>
+<li><a href="http://html5.validator.nu/" target="_blank" rel="external">http://html5.validator.nu/</a><br>感觉部分验证过于注重“正统”..</li>
+</ul>
+</li>
+<li>CSS 的代码验证：<br>  <a href="http://jigsaw.w3.org/css-validator/" target="_blank" rel="external">http://jigsaw.w3.org/css-validator/</a><br>  依然是过于注重“正统”的感觉….</li>
+<li>Lint<br> 有 HTML Lint ,也有各种各样的 Lint 。<br> 有在线的，也有本地的；<br> 有单独的，也有插件式的。</li>
+</ol>
+<h1 id="浏览器开发工具"><a href="#浏览器开发工具" class="headerlink" title="浏览器开发工具"></a>浏览器开发工具</h1><ol>
+<li>Chrome DevTools<br> <a href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank" rel="external">https://developers.google.com/web/tools/chrome-devtools/</a></li>
+<li>Firebug<br> <a href="http://getfirebug.com/" target="_blank" rel="external">http://getfirebug.com/</a></li>
+<li>Web Developer<br> <a href="http://chrispederick.com/work/web-developer/" target="_blank" rel="external">http://chrispederick.com/work/web-developer/</a></li>
+</ol>
+<p>此外还有 Internet Explorer：F12 Developer Tools 、Opera：Dragonfly 、Safari：Web Inspector 等。</p>
+<h1 id="Web-分析"><a href="#Web-分析" class="headerlink" title="Web 分析"></a>Web 分析</h1><ul>
+<li>谷歌分析： <a href="https://www.google.com/analytics/" target="_blank" rel="external">https://www.google.com/analytics/</a></li>
+<li>百度统计： <a href="http://tongji.baidu.com/" target="_blank" rel="external">http://tongji.baidu.com/</a></li>
+<li>腾讯分析: <a href="http://ta.qq.com/" target="_blank" rel="external">http://ta.qq.com/</a></li>
+<li>CNZZ &amp;友盟统计：<br>  <a href="https://web.umeng.com/main.php?c=user&amp;a=index/" target="_blank" rel="external">https://web.umeng.com/main.php?c=user&amp;a=index/</a><br>  <a href="http://www.cnzz.com/o_index.php/" target="_blank" rel="external">http://www.cnzz.com/o_index.php/</a></li>
+<li>不蒜子统计： <a href="http://service.ibruce.info/" target="_blank" rel="external">http://service.ibruce.info/</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/01/html-css-diary-4/" rel="next" title="《HTML5与CSS3基础教程》读书笔记4">
+                <i class="fa fa-chevron-left"></i> 《HTML5与CSS3基础教程》读书笔记4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/09/javascript-note-1/" rel="prev" title="《JavaScript高级程序设计》读书笔记-第一章">
+                《JavaScript高级程序设计》读书笔记-第一章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单选按钮"><span class="nav-number">1.</span> <span class="nav-text">单选按钮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复选框"><span class="nav-number">2.</span> <span class="nav-text">复选框</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#textarea-元素，文本区域"><span class="nav-number">3.</span> <span class="nav-text">textarea 元素，文本区域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下拉选择框"><span class="nav-number">4.</span> <span class="nav-text">下拉选择框</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传文件的设置"><span class="nav-number">5.</span> <span class="nav-text">上传文件的设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#隐藏字段"><span class="nav-number">6.</span> <span class="nav-text">隐藏字段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#disabled-和-readonly"><span class="nav-number">7.</span> <span class="nav-text">disabled 和 readonly</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提交按钮"><span class="nav-number">8.</span> <span class="nav-text">提交按钮</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表单的重置"><span class="nav-number">9.</span> <span class="nav-text">表单的重置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁用验证功能"><span class="nav-number">10.</span> <span class="nav-text">禁用验证功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#禁用表单元素"><span class="nav-number">11.</span> <span class="nav-text">禁用表单元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#活用伪类"><span class="nav-number">12.</span> <span class="nav-text">活用伪类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多媒体元素属性"><span class="nav-number">13.</span> <span class="nav-text">多媒体元素属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#旧浏览器兼容-html5-多媒体"><span class="nav-number">14.</span> <span class="nav-text">旧浏览器兼容 html5 多媒体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表格的属性"><span class="nav-number">15.</span> <span class="nav-text">表格的属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表格的相关-CSS-设置"><span class="nav-number">16.</span> <span class="nav-text">表格的相关 CSS 设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-的部分注意事项"><span class="nav-number">17.</span> <span class="nav-text">JavaScript 的部分注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-的阻塞行为"><span class="nav-number">18.</span> <span class="nav-text">JavaScript 的阻塞行为</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#压缩脚本工具"><span class="nav-number">19.</span> <span class="nav-text">压缩脚本工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证代码"><span class="nav-number">20.</span> <span class="nav-text">验证代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器开发工具"><span class="nav-number">21.</span> <span class="nav-text">浏览器开发工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-分析"><span class="nav-number">22.</span> <span class="nav-text">Web 分析</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

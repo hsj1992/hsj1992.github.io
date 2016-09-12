@@ -1,0 +1,901 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,html,css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Web 设计 在线网址http://designingfortheweb.co.uk/—— Mark Boulton
+article 元素article 元素表示文档、页面、应用或网站中一个独立的容器，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他独立的内容项。
+sectio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《HTML5与CSS3基础教程》读书笔记">
+<meta property="og:url" content="https://codingme.xyz/2016/08/07/html-css-diary/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="Web 设计 在线网址http://designingfortheweb.co.uk/—— Mark Boulton
+article 元素article 元素表示文档、页面、应用或网站中一个独立的容器，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他独立的内容项。
+sectio">
+<meta property="og:updated_time" content="2016-09-11T12:27:53.350Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《HTML5与CSS3基础教程》读书笔记">
+<meta name="twitter:description" content="Web 设计 在线网址http://designingfortheweb.co.uk/—— Mark Boulton
+article 元素article 元素表示文档、页面、应用或网站中一个独立的容器，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他独立的内容项。
+sectio">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/08/07/html-css-diary/"/>
+
+  <title> 《HTML5与CSS3基础教程》读书笔记 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《HTML5与CSS3基础教程》读书笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-07T13:39:51+08:00" content="2016-08-07">
+              2016-08-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Web-设计-在线网址"><a href="#Web-设计-在线网址" class="headerlink" title="Web 设计 在线网址"></a>Web 设计 在线网址</h1><p><a href="http://designingfortheweb.co.uk/" target="_blank" rel="external">http://designingfortheweb.co.uk/</a><br>—— Mark Boulton</p>
+<h1 id="article-元素"><a href="#article-元素" class="headerlink" title="article 元素"></a>article 元素</h1><p>article 元素表示文档、页面、应用或网站中<em>一个独立的容器</em>，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他<strong>独立的内容项</strong>。</p>
+<h1 id="section-元素"><a href="#section-元素" class="headerlink" title="section 元素"></a>section 元素</h1><p>section 元素代表文档或应用的<em>一个一般的区块</em>。如果只是出于添加样式的原因要对内容添加一个容器，应使用 div 而不是 section。在考虑何时使用 section 的时候，记住定义中“<strong>具有相似主题的一组内容</strong>”这一条是很有帮助的。这也是 section 区别于 div 的另一个原因。</p>
+<h1 id="div-元素"><a href="#div-元素" class="headerlink" title="div 元素"></a>div 元素</h1><p>有关 div 的一些历史以及何时在 HTML5 中使用它:<br>在 HTML5 之前， div 是包围大块内容（如页眉、页脚、主要内容、插图、附注栏等）从而可用 CSS 为之添加样式的不二选择。之前 div 没有任何语义含义，现在也一样。 这就是 HTML5 引入 header 、 footer 、 main 、 article 、 section 、 aside 和 nav 的原因。这些类型的构造块在网页中普遍存在，因此它们可以成为具有独立含义的元素。在 HTML5 中，div 并没有消失，只是使用它的场合变少了。不过，可以肯定的是， div 应该作为最后一个备用容器，因为它没有任何语义价值。大多数时候，使用 header 、 footer 、 main （仅使用一次）、 article 、 section 、 aside 甚至 nav代替 div 会更合适。但是，如果语义上不合适，也不必为了刻意避免使用 div 而使用上述元素。有用得上 div 的地方，只是需要限制其使用。</p>
+<a id="more"></a>
+<h1 id="role-属性和-ARIA-地标角色"><a href="#role-属性和-ARIA-地标角色" class="headerlink" title="role 属性和 ARIA 地标角色"></a>role 属性和 ARIA 地标角色</h1><p>关于 role 属性和 ARIA 地标角色：<br>可用性专家 Steve Faulkner 对地标角色有详细的讲解，见 <a href="http://blog.paciellogroup.com/2013/02/using-wai-aria-landmarks-2013/" target="_blank" rel="external">http://blog.paciellogroup.com/2013/02/using-wai-aria-landmarks-2013/</a> 。他还引用了另一位专家 Léonie Watson 录制的演示屏幕阅读器用户访问页面行为的视频，推荐观看！<br>地标角色只是 ARIA 规范 <a href="http://www.w3.org/TR/wai-aria/" target="_blank" rel="external">http://www.w3.org/TR/wai-aria/</a> 众多特性中的一个。如果对相关的实施指南感兴趣，可以访问 <a href="http://www.w3.org/WAI/PF/aria-practices/" target="_blank" rel="external">http://www.w3.org/WAI/PF/aria-practices/</a>。<br>可以在 CSS 选择器中使用 ARIA 角色属性，从而对使用它们的元素添加样式。</p>
+<h1 id="CSS-方面目的不推荐使用-id"><a href="#CSS-方面目的不推荐使用-id" class="headerlink" title="CSS 方面目的不推荐使用 id"></a>CSS 方面目的不推荐使用 id</h1><p>但一般不推荐出于添加样式的目的使用 id。推荐使用类为元素添加样式。在 class 和 id 名称中，通常使用短横线分隔多个单词，例如 <code>class=&quot;footer-page&quot;</code> 。</p>
+<h1 id="em-元素、cite-元素"><a href="#em-元素、cite-元素" class="headerlink" title="em 元素、cite 元素"></a>em 元素、cite 元素</h1><p>em 元素用于<strong>标识强调的文本</strong>，cite 元素用于<strong>标识对艺术作品、电影、图书等内容的引用</strong>。</p>
+<h1 id="b、i、em、strong"><a href="#b、i、em、strong" class="headerlink" title="b、i、em、strong"></a>b、i、em、strong</h1><ul>
+<li>strong 元素表示<strong>内容的重要性</strong>，而 em 则表示<strong>内容的着重点</strong>。</li>
+<li>不要使用 b 元素代替 strong ，也不要使用 i 元素代替 em 。尽管它们在浏览器中显示的样式是一样的，但它们的含义却很不一样。</li>
+<li>旧版本HTML那时 strong 所表示文本的强调程度比 em 表示的文本要高。不过，在 HTML5 中， em 是<strong>表示强调的唯一元素</strong>，而 strong 表示的则是<strong>重要程度</strong>。</li>
+<li>先一句话总结：HTML5 强调， <strong>b 和 i 应该是其他元素（如 strong 、 em 、 cite 等）都不适用时的最后选择</strong>。</li>
+</ul>
+<p>HTML5 将 b 重新定义为：<br>b 元素表示出于实用目的提醒读者注意的一块文字，不传达任何额外的重要性，也不表示其他的语态和语气，用于如<strong>文档摘要里的关键词</strong>、<strong>评论中的产品名</strong>、<strong>基于文本的交互式软件中指示操作的文字</strong>、<strong>文章导语</strong>等。<br>HTML5 将 i 重新定义为：<br>i 元素表示一块不同于其他文字的文字，具有不同的语态或语气，或其他不同于常规之处，用于如<strong>分类名称</strong>、<strong>技术术语</strong>、<strong>外语里的惯用语</strong>、<strong>翻译的散文</strong>、<strong>西方文字中的船舶名称</strong>等。</p>
+<h1 id="small-元素"><a href="#small-元素" class="headerlink" title="small 元素"></a>small 元素</h1><p>small 表示细则一类的旁注（side comment），通常包括<strong>免责声明</strong>、<strong>注意事项</strong>、<strong>法律限制</strong>、<strong>版权信息</strong>等。有时我们还可以用它来<strong>表示署名</strong>，或者<strong>满足许可要求</strong>。用 small 标记页面的版权信息是一种常见的做法。不过，small <strong>只适用于短语</strong>，因此不要用它标记长的法律声明，如“使用条款”和“隐私政策”页面。</p>
+<h1 id="em-和-cite-不能滥用"><a href="#em-和-cite-不能滥用" class="headerlink" title="em 和 cite 不能滥用"></a>em 和 cite 不能滥用</h1><p>内容显示的样子与为其使用的标记没有关系。因此，不应该为了让文字变为斜体就使用 em 或 cite ，添加样式是 CSS 的事情。</p>
+<h1 id="del-、ins-和-s"><a href="#del-、ins-和-s" class="headerlink" title="del 、ins 和 s"></a>del 、ins 和 s</h1><p>标记不再准确或不再相关的文本用 &lt;s&gt; 。仅在有语义价值的时候使用 del 、ins 和 s 。如果只是出于装饰的原因要给文字添加下划线或删除线，可以用 CSS 实现这些效果。HTML5 指出：“ s 元素不适用于指示文档的编辑，要标记文档中一块已移除的文本，应使用 del 元素。”有时，这之间的差异是很微妙的，只能由你决定哪种选择更符合内容的语义。</p>
+<h1 id="u-元素"><a href="#u-元素" class="headerlink" title="u 元素"></a>u 元素</h1><p>同 b 、 i 、 s 和 small 一样，HTML5 重新定义了 u 元素，使之不再是无语义的、用于表现的元素。以前， u 元素用来为文本添加下划线。现在， u 元素用于<strong>非文本注解</strong>。HTML5 对它的定义为：u 元素为一块文字添加明显的非文本注解，比如<strong>在中文中将文本标为专有名词（即中文的专名号,专名号用于表示人名、地名、朝代名等专名。）</strong>，或者<strong>标明文本拼写有误</strong>。</p>
+<h1 id="figure-元素、aside-元素"><a href="#figure-元素、aside-元素" class="headerlink" title="figure 元素、aside 元素"></a>figure 元素、aside 元素</h1><p>figure：用于识别在主文档流内被引用，但在不影响文档流的情况下可以移至他处的内容。<br>对于与内容有关的<strong>图像</strong>（如图表、图形或带有说明文字的插图），使用 figure。<br>不要简单地将 figure 作为在文本中嵌入独立内容实例的方法。这种情况下，通常更适合用 aside 元素。<br>aside 元素：用于标识页面中的一个区域，其内容与周围的内容无关。</p>
+<h1 id="time-元素、datetime-属性"><a href="#time-元素、datetime-属性" class="headerlink" title="time 元素、datetime 属性"></a>time 元素、datetime 属性</h1><p>time 元素<strong>标记时间、日期或时间段</strong>。datetime 属性不会单独产生任何效果，但它可以用于在 Web 应用（如日历应用）之间同步日期和时间。这就是必须使用标准的机器可读格式的原因，这样，程序之间就可以使用相同的“语言”来共享信息。<br>示例代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time</span> <span class="attr">datetime</span>=<span class="string">"1952-06-12T 11:05:00"</span>&gt;</span></div><div class="line">June 12, 1952 at 11:05 a.m.</div><div class="line"> <span class="tag">&lt;/<span class="name">time</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="abbr-元素"><a href="#abbr-元素" class="headerlink" title="abbr 元素"></a>abbr 元素</h1><p><code>&lt;abbr title=&quot;National Football League&quot;&gt;NFL&lt;/abbr&gt;</code><br>不必对每个<strong>缩写词</strong>都使用 abbr ，只在需要帮助访问者了解该词含义的时候使用。<br>作为对用户的视觉提示，Firefox 和Opera 等浏览器会对带 title 的 abbr 文字使用虚线下划线。<br>想在其他浏览器中对带 title 的 abbr 文字使用虚线下划线，可以在样式表中加上这条语句：<br><code>abbr[title] { border-bottom: 1px dotted#000; }</code><br>无论 abbr 是否添加了下划线样式，浏览器都会将 title 属性内容以提示框的形式显示出来。如果看不到 abbr 有虚线下划线，试着为其父元素的 CSS 添加 line-height 属性。</p>
+<h1 id="dfn-元素"><a href="#dfn-元素" class="headerlink" title="dfn 元素"></a>dfn 元素</h1><p>dfn:Definition<br>在 HTML 中<strong>定义术语</strong>时，可以使用 dfn元素对其作语义上的区分。dfn 元素及其定义必须挨在一起，否则便是错误的用法。还可以在描述列表（ dl 元素）中使用 dfn 。例子： <code>&lt;dfn&gt;pleonasm&lt;/dfn&gt;means &quot;a redundant word or expression&quot;</code></p>
+<h1 id="kbd、-samp-和-var"><a href="#kbd、-samp-和-var" class="headerlink" title="kbd、 samp 和 var"></a>kbd、 samp 和 var</h1><ol>
+<li>kbd :标记用户输入指示。 <code>&lt;li&gt;Hit &lt;kbd&gt;RETURN&lt;/kbd&gt; or &lt;kbd&gt;ENTER&lt;/kbd&gt;&lt;/li&gt;</code></li>
+<li>samp ：指示程序或系统的示例输出。 <code>&lt;samp&gt;Thanks for your order!&lt;/samp&gt;</code></li>
+<li>var :表示变量或占位符的值。 <code>&lt;var&gt;E&lt;/var&gt; =&lt;var&gt;m&lt;/var&gt;&lt;var&gt;c&lt;/var&gt; &lt;sup&gt;2&lt;/sup&gt;</code></li>
+</ol>
+<h1 id="pre-元素"><a href="#pre-元素" class="headerlink" title="pre 元素"></a>pre 元素</h1><p>不要将 pre 作为逃避以合适的语义标记内容和用 CSS 控制样式的快捷方式。例如，如果你想发布一篇在字处理软件中写好的文章，不要为了保留原来的格式，简单地将它复制、粘贴到 pre 里。相反，应该使用 p（以及其他相关的文本元素）标记内容，编写 CSS 控制页面的布局。</p>
+<h1 id="创建换行"><a href="#创建换行" class="headerlink" title="创建换行"></a>创建换行</h1><ul>
+<li>要确保使用 br 是最后的选择，因为该元素将表现样式带入了 HTML，而不是让所有的呈现样式都交由 CSS 控制。例如，不要使用 br 模拟段落之间的距离。相反，应该用 p标记两个段落并通过 CSS 的 margin 属性规定两段之间的距离。实际上，对于诗歌、街道地址等应该紧挨着出现的短行，都适合用 br 元素。</li>
+<li>要尽量避免使用 br ，除非没有更好的选择，因为这样做会在 HTML 中混合表现，而不是让 CSS 控制它。(让HTML负责内容，CSS负责样式/显示）</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/html/" rel="tag">#html</a>
+          
+            <a href="/tags/css/" rel="tag">#css</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/22/sql-tips/" rel="next" title="SQL的小注意事项">
+                <i class="fa fa-chevron-left"></i> SQL的小注意事项
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/29/html-css-diary-2/" rel="prev" title="《HTML5与CSS3基础教程》读书笔记2">
+                《HTML5与CSS3基础教程》读书笔记2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web-设计-在线网址"><span class="nav-number">1.</span> <span class="nav-text">Web 设计 在线网址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#article-元素"><span class="nav-number">2.</span> <span class="nav-text">article 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#section-元素"><span class="nav-number">3.</span> <span class="nav-text">section 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#div-元素"><span class="nav-number">4.</span> <span class="nav-text">div 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#role-属性和-ARIA-地标角色"><span class="nav-number">5.</span> <span class="nav-text">role 属性和 ARIA 地标角色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-方面目的不推荐使用-id"><span class="nav-number">6.</span> <span class="nav-text">CSS 方面目的不推荐使用 id</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#em-元素、cite-元素"><span class="nav-number">7.</span> <span class="nav-text">em 元素、cite 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#b、i、em、strong"><span class="nav-number">8.</span> <span class="nav-text">b、i、em、strong</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#small-元素"><span class="nav-number">9.</span> <span class="nav-text">small 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#em-和-cite-不能滥用"><span class="nav-number">10.</span> <span class="nav-text">em 和 cite 不能滥用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#del-、ins-和-s"><span class="nav-number">11.</span> <span class="nav-text">del 、ins 和 s</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u-元素"><span class="nav-number">12.</span> <span class="nav-text">u 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#figure-元素、aside-元素"><span class="nav-number">13.</span> <span class="nav-text">figure 元素、aside 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#time-元素、datetime-属性"><span class="nav-number">14.</span> <span class="nav-text">time 元素、datetime 属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#abbr-元素"><span class="nav-number">15.</span> <span class="nav-text">abbr 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dfn-元素"><span class="nav-number">16.</span> <span class="nav-text">dfn 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kbd、-samp-和-var"><span class="nav-number">17.</span> <span class="nav-text">kbd、 samp 和 var</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pre-元素"><span class="nav-number">18.</span> <span class="nav-text">pre 元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建换行"><span class="nav-number">19.</span> <span class="nav-text">创建换行</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
