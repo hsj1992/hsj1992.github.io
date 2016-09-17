@@ -104,46 +104,19 @@
 
 
 
-<meta name="description" content="ECMAScript 的标识符
-区分大小写
-采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。  如： doSomethingImportant
-
-注释
-单行： //这里是注释
-多行：  123/*这里是注释*/
-
-
-ECMAScript 的严格模式 (strict mode)
-严格模式的启用：顶部添加如下代码：”use strict”;看起来像是字符串，而且也没">
+<meta name="description" content="前言在 ECMAScript 中，引用类型是一种数据结构，用于将数据和功能组织在一起。它也常被称为类，但这种称呼并不妥当。ECMAScript不具备传统的面向对象语言所支持的类和接口等基本结构。引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。
+虽然引用类型与类看起来相似，但它们并不是相同的概念。对象(Object)是某个特定引用类型的实例。新对象是使用 new 操作符后">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《JavaScript高级程序设计》读书笔记-第三章">
-<meta property="og:url" content="https://codingme.xyz/2016/09/11/javascript-note-3/index.html">
+<meta property="og:title" content="《JavaScript高级程序设计》读书笔记-第五章">
+<meta property="og:url" content="https://codingme.xyz/2016/09/17/javascript-note-5/index.html">
 <meta property="og:site_name" content="CodingMe">
-<meta property="og:description" content="ECMAScript 的标识符
-区分大小写
-采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。  如： doSomethingImportant
-
-注释
-单行： //这里是注释
-多行：  123/*这里是注释*/
-
-
-ECMAScript 的严格模式 (strict mode)
-严格模式的启用：顶部添加如下代码：”use strict”;看起来像是字符串，而且也没">
-<meta property="og:updated_time" content="2016-09-11T15:01:02.025Z">
+<meta property="og:description" content="前言在 ECMAScript 中，引用类型是一种数据结构，用于将数据和功能组织在一起。它也常被称为类，但这种称呼并不妥当。ECMAScript不具备传统的面向对象语言所支持的类和接口等基本结构。引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。
+虽然引用类型与类看起来相似，但它们并不是相同的概念。对象(Object)是某个特定引用类型的实例。新对象是使用 new 操作符后">
+<meta property="og:updated_time" content="2016-09-17T07:44:59.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记-第三章">
-<meta name="twitter:description" content="ECMAScript 的标识符
-区分大小写
-采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。  如： doSomethingImportant
-
-注释
-单行： //这里是注释
-多行：  123/*这里是注释*/
-
-
-ECMAScript 的严格模式 (strict mode)
-严格模式的启用：顶部添加如下代码：”use strict”;看起来像是字符串，而且也没">
+<meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记-第五章">
+<meta name="twitter:description" content="前言在 ECMAScript 中，引用类型是一种数据结构，用于将数据和功能组织在一起。它也常被称为类，但这种称呼并不妥当。ECMAScript不具备传统的面向对象语言所支持的类和接口等基本结构。引用类型有时候也被称为对象定义，因为它们描述的是一类对象所具有的属性和方法。
+虽然引用类型与类看起来相似，但它们并不是相同的概念。对象(Object)是某个特定引用类型的实例。新对象是使用 new 操作符后">
 
 
 
@@ -164,9 +137,9 @@ ECMAScript 的严格模式 (strict mode)
 
 
 
-  <link rel="canonical" href="https://codingme.xyz/2016/09/11/javascript-note-3/"/>
+  <link rel="canonical" href="https://codingme.xyz/2016/09/17/javascript-note-5/"/>
 
-  <title> 《JavaScript高级程序设计》读书笔记-第三章 | CodingMe </title>
+  <title> 《JavaScript高级程序设计》读书笔记-第五章 | CodingMe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -329,7 +302,7 @@ ECMAScript 的严格模式 (strict mode)
             
             
               
-                《JavaScript高级程序设计》读书笔记-第三章
+                《JavaScript高级程序设计》读书笔记-第五章
               
             
           </h1>
@@ -341,8 +314,8 @@ ECMAScript 的严格模式 (strict mode)
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T15:36:56+08:00" content="2016-09-11">
-              2016-09-11
+            <time itemprop="dateCreated" datetime="2016-09-17T14:59:26+08:00" content="2016-09-17">
+              2016-09-17
             </time>
           </span>
 
@@ -388,26 +361,54 @@ ECMAScript 的严格模式 (strict mode)
       
 
       
-        <h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
-<li>区分大小写</li>
-<li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
-</ul>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul>
-<li>单行： <code>//这里是注释</code></li>
-<li>多行：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">这里是注释</div><div class="line">*/</div></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
+<p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
+<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><h2 id="创建-Object-实例的方式"><a href="#创建-Object-实例的方式" class="headerlink" title="创建 Object 实例的方式"></a>创建 Object 实例的方式</h2><ol>
+<li>使用 new 操作符后跟 Object 构造函数:<code>var person = new Object();</code></li>
+<li><p>使用对象字面量表示法：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line"><span class="string">"name"</span> : <span class="string">"Nicholas"</span>,</div><div class="line"><span class="string">"age"</span> : <span class="number">29</span>,</div><div class="line"><span class="number">5</span> : <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p> 左边的花括号（ { ）表示对象字面量的开始，如果是在 if 语句的后面，则表示一个语句块的开始。<br> 在使用对象字面量语法时，属性名也可以使用字符串。5会自动转化为字符串。<br> 使用字面量表示法不会调用Object构造函数。<br> 使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象。<code>var person = {}; //与 new Object()相同</code><br> 关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。<br> 因为这种语法要求的代码量少，而且能够给人封装数据的感觉，开发人员更青睐对象字面量语法。<br> 对象字面量也是向函数传递大量可选参数的首选方式。<br> 在函数中的使用：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">displayInfo(&#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">age: <span class="number">29</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
 </li>
-</ul>
-<h1 id="ECMAScript-的严格模式-strict-mode"><a href="#ECMAScript-的严格模式-strict-mode" class="headerlink" title="ECMAScript 的严格模式 (strict mode)"></a>ECMAScript 的严格模式 (strict mode)</h1><ul>
-<li>严格模式的启用：<br>顶部添加如下代码：”use strict”;<br>看起来像是字符串，而且也没有赋值给任何变量，但其实它是一个编译指示（pragma），用于告诉支持的 JavaScript 引擎切换到严格模式。这是为不破坏 ECMAScript 3 语法而特意选定的语法。</li>
-<li><p>也可以指定函数在严格模式下执行：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</ol>
+<h2 id="访问对象属性的方法"><a href="#访问对象属性的方法" class="headerlink" title="访问对象属性的方法"></a>访问对象属性的方法</h2><ol>
+<li>点表示法</li>
+<li><p>方括号表示法（JavaScript中)<br> 在使用方括号语法时，应该将要访问的属性以字符串的形式放在方括号中。<br> 主要优点是可以通过变量来访问属性。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> propertyName = <span class="string">"name"</span>;</div><div class="line">alert(person[propertyName]); <span class="comment">//"Nicholas"</span></div></pre></td></tr></table></figure>
+<p> 如果属性名中包含会导致语法错误的字符，或者属性名使用的是关键字或保留字，也可以使用方括号表示法。比如带空格的属性”first name”。<br> 通常，除非必须使用变量来访问属性，否则我们建议使用点表示法。</p>
 </li>
-<li><p>严格模式下，JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+、Firefox 4+、Safari 5.1+、Opera 12+和 Chrome。</p>
+</ol>
+<h1 id="Array-类型"><a href="#Array-类型" class="headerlink" title="Array 类型"></a>Array 类型</h1><ol>
+<li>都是有序列表。</li>
+<li>每一项可以保存任何类型的数据。</li>
+<li>数组的大小是可以动态调整的。</li>
+</ol>
+<h2 id="创建数组的基本方式"><a href="#创建数组的基本方式" class="headerlink" title="创建数组的基本方式"></a>创建数组的基本方式</h2><ol>
+<li><p>第一种:使用 Array 构造函数。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</div><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>);</div></pre></td></tr></table></figure>
+<p> 在使用 Array 构造函数时也可以省略 new 操作符。</p>
 </li>
-</ul>
-<h1 id="ECMAScript-的语句"><a href="#ECMAScript-的语句" class="headerlink" title="ECMAScript 的语句"></a>ECMAScript 的语句</h1><ul>
-<li>任何时候都不要省略语句结尾的分号。加上分号也会在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。</li>
-<li>最佳实践是始终在控制语句中使用代码块。</li>
+<li><p>第二种:数组字面量表示法。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含 3 个字符串的数组</span></div><div class="line"><span class="keyword">var</span> names = []; <span class="comment">// 创建一个空数组</span></div><div class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,]; <span class="comment">// 不要这样！这样会创建一个包含 2 或 3 项的数组</span></div><div class="line"><span class="keyword">var</span> options = [,,,,,]; <span class="comment">// 不要这样！这样会创建一个包含 5 或 6 项的数组</span></div></pre></td></tr></table></figure>
+<p> IE的BUG：在 IE 中， values 会成为一个包含 3 个项且每项的值分别为 1、2 和 undefined 的数组。<br> 原因是 IE8 及之前版本中的 ECMAScript 实现在数组字面量方面存在 bug。<br> 所以强烈建议不要使用<code>var values = [1,2,];</code>这种写法。<br> 在使用数组字面量表示法时，也不会调用 Array 构造函数。</p>
+</li>
+</ol>
+<h2 id="读取和设置数组"><a href="#读取和设置数组" class="headerlink" title="读取和设置数组"></a>读取和设置数组</h2><p>使用方括号并提供相应值的基于 0 的数字索引。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 定义一个字符串数组</span></div><div class="line">alert(colors[<span class="number">0</span>]); <span class="comment">// 显示第一项</span></div><div class="line">colors[<span class="number">2</span>] = <span class="string">"black"</span>; <span class="comment">// 修改第三项</span></div><div class="line">colors[<span class="number">3</span>] = <span class="string">"brown"</span>; <span class="comment">// 新增第四项</span></div></pre></td></tr></table></figure>
+<h2 id="数组的-length"><a href="#数组的-length" class="headerlink" title="数组的 length"></a>数组的 length</h2><p>它不是只读的。因此，</p>
+<ol>
+<li>通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项。<br> 往小了设置，可以移除最后几项；<br> 往大了设置，可以新增几项undefined。</li>
+<li>利用 length 属性也可以方便地在数组末尾添加新项。 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含 3 个字符串的数组</span></div><div class="line">colors[colors.length] = <span class="string">"black"</span>; <span class="comment">// （在位置 3 ）添加一种颜色</span></div><div class="line">colors[colors.length] = <span class="string">"brown"</span>; <span class="comment">// （在位置 4</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>数组最多可以包含 4 294 967 295 个项,如果超过这个上限值，就会发生异常。<br>而创建一个初始大小与这个上限值接近的数组，则可能会导致运行时间超长的脚本错误。</p>
+<h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><p>对于 ECMAScript3 来说，使用 instanceof 。<br>存在问题：<br>如果网页包含多个框架，那实际上存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数。<br>解决方法：<br>ECMAScript5 新增了Array,isArray()方法。<br>支持 Array.isArray() 方法的浏览器有 IE9+、Firefox 4+、Safari 5+、Opera 10.5+和 Chrome。<br>要在尚未实现这个方法中的浏览器中准确检测数组，请参考 22.1.1 节。</p>
+<h2 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h2><p>所有对象都具有 toLocaleString() 、 toString() 和 valueOf() 方法。</p>
+<ul>
+<li>toString() ：返回由数组中每个值的字符串形式拼接而成的<strong>一个以逗号分隔的字符串</strong>。</li>
+<li>valueOf() ：返回的还是数组。</li>
+<li>toLocaleString()：也会创建一个数组值的以逗号分隔的字符串。为了取得每一项的值，调用的是每一项的 toLocale-String() 方法，而不是 toString() 方法。</li>
 </ul>
 
       
@@ -442,8 +443,8 @@ ECMAScript 的严格模式 (strict mode)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/10/javascript-note-2/" rel="next" title="《JavaScript高级程序设计》读书笔记-第二章">
-                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》读书笔记-第二章
+              <a href="/2016/09/17/javascript-note-4/" rel="next" title="《JavaScript高级程序设计》读书笔记-第四章">
+                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》读书笔记-第四章
               </a>
             
           </div>
@@ -516,7 +517,7 @@ ECMAScript 的严格模式 (strict mode)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -636,7 +637,7 @@ ECMAScript 的严格模式 (strict mode)
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript-的标识符"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript 的标识符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript-的严格模式-strict-mode"><span class="nav-number">3.</span> <span class="nav-text">ECMAScript 的严格模式 (strict mode)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript-的语句"><span class="nav-number">4.</span> <span class="nav-text">ECMAScript 的语句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-类型"><span class="nav-number">2.</span> <span class="nav-text">Object 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-Object-实例的方式"><span class="nav-number">2.1.</span> <span class="nav-text">创建 Object 实例的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问对象属性的方法"><span class="nav-number">2.2.</span> <span class="nav-text">访问对象属性的方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Array-类型"><span class="nav-number">3.</span> <span class="nav-text">Array 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建数组的基本方式"><span class="nav-number">3.1.</span> <span class="nav-text">创建数组的基本方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取和设置数组"><span class="nav-number">3.2.</span> <span class="nav-text">读取和设置数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的-length"><span class="nav-number">3.3.</span> <span class="nav-text">数组的 length</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测数组"><span class="nav-number">3.4.</span> <span class="nav-text">检测数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换方法"><span class="nav-number">3.5.</span> <span class="nav-text">转换方法</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

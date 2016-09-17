@@ -4,8 +4,360 @@
   
     
     <entry>
-      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第三章]]></title>
-      <url>https://codingme.xyz/2016/09/11/javascript-note-3/</url>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第五章]]></title>
+      <url>https://codingme.xyz/2016/09/17/javascript-note-5/</url>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
+<p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
+<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><h2 id="创建-Object-实例的方式"><a href="#创建-Object-实例的方式" class="headerlink" title="创建 Object 实例的方式"></a>创建 Object 实例的方式</h2><ol>
+<li>使用 new 操作符后跟 Object 构造函数:<code>var person = new Object();</code></li>
+<li><p>使用对象字面量表示法：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line"><span class="string">"name"</span> : <span class="string">"Nicholas"</span>,</div><div class="line"><span class="string">"age"</span> : <span class="number">29</span>,</div><div class="line"><span class="number">5</span> : <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p> 左边的花括号（ { ）表示对象字面量的开始，如果是在 if 语句的后面，则表示一个语句块的开始。<br> 在使用对象字面量语法时，属性名也可以使用字符串。5会自动转化为字符串。<br> 使用字面量表示法不会调用Object构造函数。<br> 使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象。<code>var person = {}; //与 new Object()相同</code><br> 关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。<br> 因为这种语法要求的代码量少，而且能够给人封装数据的感觉，开发人员更青睐对象字面量语法。<br> 对象字面量也是向函数传递大量可选参数的首选方式。<br> 在函数中的使用：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">displayInfo(&#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">age: <span class="number">29</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
+</li>
+</ol>
+<h2 id="访问对象属性的方法"><a href="#访问对象属性的方法" class="headerlink" title="访问对象属性的方法"></a>访问对象属性的方法</h2><ol>
+<li>点表示法</li>
+<li><p>方括号表示法（JavaScript中)<br> 在使用方括号语法时，应该将要访问的属性以字符串的形式放在方括号中。<br> 主要优点是可以通过变量来访问属性。例如：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> propertyName = <span class="string">"name"</span>;</div><div class="line">alert(person[propertyName]); <span class="comment">//"Nicholas"</span></div></pre></td></tr></table></figure>
+<p> 如果属性名中包含会导致语法错误的字符，或者属性名使用的是关键字或保留字，也可以使用方括号表示法。比如带空格的属性”first name”。<br> 通常，除非必须使用变量来访问属性，否则我们建议使用点表示法。</p>
+</li>
+</ol>
+<h1 id="Array-类型"><a href="#Array-类型" class="headerlink" title="Array 类型"></a>Array 类型</h1><ol>
+<li>都是有序列表。</li>
+<li>每一项可以保存任何类型的数据。</li>
+<li>数组的大小是可以动态调整的。</li>
+</ol>
+<h2 id="创建数组的基本方式"><a href="#创建数组的基本方式" class="headerlink" title="创建数组的基本方式"></a>创建数组的基本方式</h2><ol>
+<li><p>第一种:使用 Array 构造函数。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</div><div class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>);</div></pre></td></tr></table></figure>
+<p> 在使用 Array 构造函数时也可以省略 new 操作符。</p>
+</li>
+<li><p>第二种:数组字面量表示法。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含 3 个字符串的数组</span></div><div class="line"><span class="keyword">var</span> names = []; <span class="comment">// 创建一个空数组</span></div><div class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,]; <span class="comment">// 不要这样！这样会创建一个包含 2 或 3 项的数组</span></div><div class="line"><span class="keyword">var</span> options = [,,,,,]; <span class="comment">// 不要这样！这样会创建一个包含 5 或 6 项的数组</span></div></pre></td></tr></table></figure>
+<p> IE的BUG：在 IE 中， values 会成为一个包含 3 个项且每项的值分别为 1、2 和 undefined 的数组。<br> 原因是 IE8 及之前版本中的 ECMAScript 实现在数组字面量方面存在 bug。<br> 所以强烈建议不要使用<code>var values = [1,2,];</code>这种写法。<br> 在使用数组字面量表示法时，也不会调用 Array 构造函数。</p>
+</li>
+</ol>
+<h2 id="读取和设置数组"><a href="#读取和设置数组" class="headerlink" title="读取和设置数组"></a>读取和设置数组</h2><p>使用方括号并提供相应值的基于 0 的数字索引。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 定义一个字符串数组</span></div><div class="line">alert(colors[<span class="number">0</span>]); <span class="comment">// 显示第一项</span></div><div class="line">colors[<span class="number">2</span>] = <span class="string">"black"</span>; <span class="comment">// 修改第三项</span></div><div class="line">colors[<span class="number">3</span>] = <span class="string">"brown"</span>; <span class="comment">// 新增第四项</span></div></pre></td></tr></table></figure>
+<h2 id="数组的-length"><a href="#数组的-length" class="headerlink" title="数组的 length"></a>数组的 length</h2><p>它不是只读的。因此，</p>
+<ol>
+<li>通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项。<br> 往小了设置，可以移除最后几项；<br> 往大了设置，可以新增几项undefined。</li>
+<li>利用 length 属性也可以方便地在数组末尾添加新项。 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>]; <span class="comment">// 创建一个包含 3 个字符串的数组</span></div><div class="line">colors[colors.length] = <span class="string">"black"</span>; <span class="comment">// （在位置 3 ）添加一种颜色</span></div><div class="line">colors[colors.length] = <span class="string">"brown"</span>; <span class="comment">// （在位置 4</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>数组最多可以包含 4 294 967 295 个项,如果超过这个上限值，就会发生异常。<br>而创建一个初始大小与这个上限值接近的数组，则可能会导致运行时间超长的脚本错误。</p>
+<h2 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h2><p>对于 ECMAScript3 来说，使用 instanceof 。<br>存在问题：<br>如果网页包含多个框架，那实际上存在两个以上不同的全局执行环境，从而存在两个以上不同版本的Array构造函数。<br>解决方法：<br>ECMAScript5 新增了Array,isArray()方法。<br>支持 Array.isArray() 方法的浏览器有 IE9+、Firefox 4+、Safari 5+、Opera 10.5+和 Chrome。<br>要在尚未实现这个方法中的浏览器中准确检测数组，请参考 22.1.1 节。</p>
+<h2 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h2><p>所有对象都具有 toLocaleString() 、 toString() 和 valueOf() 方法。</p>
+<ul>
+<li>toString() ：返回由数组中每个值的字符串形式拼接而成的<strong>一个以逗号分隔的字符串</strong>。</li>
+<li>valueOf() ：返回的还是数组。</li>
+<li>toLocaleString()：也会创建一个数组值的以逗号分隔的字符串。为了取得每一项的值，调用的是每一项的 toLocale-String() 方法，而不是 toString() 方法。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第四章]]></title>
+      <url>https://codingme.xyz/2016/09/17/javascript-note-4/</url>
+      <content type="html"><![CDATA[<h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
+<p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
+<p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
+<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<br>ECMAScript放弃了这一传统。</p>
+<h2 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。(Object)<br>只能给引用类型值动态地添加属性，以便将来使用。（给基本类型的添加了也是undefined)</p>
+<h2 id="复制变量值"><a href="#复制变量值" class="headerlink" title="复制变量值"></a>复制变量值</h2><p>基本类型：如果从一个变量向另一个变量复制基本类型的值，会在变量对象上创建一个新值，然后把该值复制到为新变量分配的位置上。<br>引用类型：当从一个变量向另一个变量复制引用类型的值时，同样也会将存储在变量对象中的值复制一份放到为新变量分配的空间中。不同的是，这个值的副本实际上是一个指针，而这个指针指向存储在堆中的一个对象。</p>
+<h2 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h2><p>ECMAScript 中所有函数的参数都是按值传递的。<br>有不少开发人员在这一点上可能会感到困惑，因为访问变量有按值和按引用两种方式，而参数只能按值传递。</p>
+<p>基本类型：在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量（即命名参数，或者用ECMAScript 的概念来说，就是 arguments 对象中的一个元素）。<br>引用类型：在向参数传递引用类型的值时，会把这个值在内存中的地址（引用/指针）复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部(引用类型的值会被修改）。</p>
+<p>有很多开发人员错误地认为：在局部作用域中修改的对象会在全局作用域中反映出来，就说明参数是按引用传递的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">obj.name = <span class="string">"Nicholas"</span>;</div><div class="line">obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">obj.name = <span class="string">"Greg"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">setName(person);</div><div class="line">alert(person.name); <span class="comment">//"Nicholas"</span></div></pre></td></tr></table></figure>
+<p>如果 person 是按引用传递的，那么 person 就会自动被修改为指向其 name 属性值为 “Greg” 的新对象。<br>但是，当接下来再访问 person.name 时，显示的值仍然是 “Nicholas” 。<br>这说明即使在函数内部修改了参数的值，但<strong>原始的引用仍然保持未变</strong>。<br>实际上，当在函数内部重写 obj 时，这个变量引用的就是一个局部对象了。<br>而这个局部对象会在函数执行完毕后立即被销毁。<br>可以把 ECMAScript 函数的参数想象成局部变量。</p>
+<h2 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h2><p>typeof:检测基本数据类型时 typeof 是非常得力的助手，但在检测引用类型的值时，这个操作符的用处不大。<br>instanceof:如果变量是给定引用类型的实例，那么instanceof 操作符就会返回 true 。如果使用 instanceof 操作符检测基本类型的值，则该操作符始终会返回 false ，因为基本类型不是对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alert(person <span class="keyword">instanceof</span> <span class="built_in">Object</span>);  <span class="comment">// 变量 person 是 Object 吗？</span></div><div class="line">alert(colors <span class="keyword">instanceof</span> <span class="built_in">Array</span>); <span class="comment">// 变量 colors 是 Array 吗？</span></div><div class="line">alert(pattern <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>); <span class="comment">// 变量 pattern 是 RegExp 吗？</span></div></pre></td></tr></table></figure>
+<p>使用 typeof 操作符检测函数时，该操作符会返回 “function” 。<br>ECMA-262 规定任何在内部实现 [[Call]] 方法的对象都应该在应用 typeof 操作符时返回 “function” 。<br>(在 Safari 5 及之前版本和 Chrome 7 及之前版本中使用 typeof 检测正则表达式时，浏览器中的正则表达式也实现了这个方法，因此对正则表达式应用 typeof 会返回 “function” )<br>(在IE 和 Firefox中，对正则表达式应用 typeof 会返回 “object”)</p>
+<h1 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h1><h2 id="全局执行环境"><a href="#全局执行环境" class="headerlink" title="全局执行环境"></a>全局执行环境</h2><p><strong>全局执行环境</strong>是最外围的一个执行环境。根据 ECMAScript 实现所在的宿主环境不同，表示执行环境的对象也不一样。在 Web 浏览器中，全局执行环境被认为是 window 对象，因此所有全局变量和函数都是作为 window 对象的属性和方法创建的。（全局执行环境直到应用程序退出——例如关闭网页或浏览器——时才会被销毁）</p>
+<h2 id="执行流"><a href="#执行流" class="headerlink" title="执行流"></a>执行流</h2><p>ECMAScript 程序中的<strong>执行流</strong>的控制机制：每个函数都有自己的执行环境。当执行流进入一个函数时，函数的环境就会被推入一个环境栈中。而在函数执行之后，栈将其环境弹出，把控制权返回给之前的执行环境。</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>当代码在一个环境中执行时，会创建变量对象的一个<strong>作用域链</strong>（scope chain）。<br>每次进入一个新执行环境，都会创建一个用于搜索变量和函数的作用域链。</p>
+<p>用途：是保证对执行环境有权访问的所有变量和函数的有序访问。</p>
+<p>当前的变量对象——&gt;<br>活动对象作为变量对象（环境若是函数）——&gt;<br>活动对象最开始只包含 arguments 对象——&gt;<br>下一个变量对象来自包含（外部）环境——&gt;<br>再下一个来自下一个包含（外部）环境——&gt;<br>……<br>直到全局执行环境。</p>
+<p>标识符（name)解析是沿着作用域链一级一级地搜索标识符的过程。（如果找不到标识符，通常会导致错误发生）</p>
+<p>函数参数也被当作变量来对待，因此其访问规则与执行环境中的其他变量相同。</p>
+<h3 id="延长作用域链"><a href="#延长作用域链" class="headerlink" title="延长作用域链"></a>延长作用域链</h3><ol>
+<li>try-catch 语句的 catch 块；</li>
+<li>with 语句。</li>
+</ol>
+<p>这两个语句都会在作用域链的前端添加一个变量对象。<br>对 with 语句来说，会将指定的对象添加到作用域链中。<br>对 catch 语句来说，会创建一个新的变量对象，其中包含的是被抛出的错误对象的声明。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">buildUrl</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> qs = <span class="string">"?debug=true"</span>;</div><div class="line"><span class="keyword">with</span>(location)&#123;</div><div class="line"><span class="keyword">var</span> url = href + qs;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> url;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>url成了函数执行环境中的一部分，所以可以当作函数的值被返回。</p>
+<p>旧浏览器的BUG:<br>在 IE8 及之前版本的 JavaScript 实现中，存在一个与标准不一致的地方，<br>即在catch 语句中捕获的错误对象会被添加到执行环境的变量对象，而不是 catch 语句的变量对象中。<br>换句话说，即使是在 catch 块的外部也可以访问到错误对象。<br>IE9 修复了这个问题。</p>
+<h3 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h3><p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</div><div class="line"><span class="keyword">var</span> color = <span class="string">"blue"</span>;</div><div class="line">&#125;</div><div class="line">alert(color); <span class="comment">//"blue"</span></div></pre></td></tr></table></figure>
+<p>如果是在 C、C++或 Java中， color 会在 if 语句执行完毕后被销毁。<br>但在 JavaScript 中， if 语句中的变量声明会将变量添加到当前的执行环境（在这里是全局环境）中。<br>在使用 for 语句时尤其要牢记这一差异。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</div><div class="line">doSomething(i);</div><div class="line">&#125;</div><div class="line">alert(i); <span class="comment">//10</span></div></pre></td></tr></table></figure>
+<p>对于有块级作用域的语言来说， for 语句初始化变量的表达式所定义的变量，只会存在于循环的环境之中。<br>而对于 JavaScript 来说，由 for 语句创建的变量 i 即使在 for 循环执行结束后，也依旧会存在于循环外部的执行环境中。</p>
+<ol>
+<li>声明变量：<br> 使用 var 声明的变量会自动被添加到最接近的环境中。<br> 在函数内部，最接近的环境就是函数的局部环境；<br> 在 with 语句中，最接近的环境是函数环境。<br> 如果初始化变量时没有使用 var 声明，该变量会自动被添加到全局环境。<br> 要点：<br> 在编写 JavaScript 代码的过程中，不声明而直接初始化变量是一个常见的错误做法，因为这样可能会导致意外。<br> 我们建议在初始化变量之前，一定要先声明，这样就可以避免类似问题。<br> <strong>在严格模式下，初始化未经声明的变量会导致错误。</strong></li>
+<li>查询标识符：<br> 如果存在一个局部的变量的定义，则搜索会自动停止，不再进入另一个变量对象。<br> 换句话说，如果局部环境中存在着同名标识符，就不会使用位于父环境中的标识符。<br> 变量查询也不是没有代价的。很明显，访问局部变量要比访问全局变量更快，因为不用向上搜索作用域链。<br> JavaScript 引擎在优化标识符查询方面做得不错，因此这个差别在将来恐怕就可以忽略不计了。</li>
+</ol>
+<h1 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h1><p>离开作用域的值将被自动标记为可以回收，因此将在垃圾收集期间被删除。<br>用于标识无用变量的策略可能会因实现而异，但具体到浏览器中的实现，则通常有两个策略。</p>
+<h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><p>JavaScript 中最常用的垃圾收集方式（mark-and-sweep）。<br>当变量进入环境（例如，在函数中声明一个变量）时，就将这个变量标记为“进入环境”。<br>从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。<br>而当变量离开环境时，则将其标记为“离开环境”。<br>如何标记变量其实并不重要，关键在于采取什么策略。</p>
+<p>垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记（当然，可以使用任何标记方式）。——[mark all]<br>然后，它会去掉环境中的变量以及被环境中的变量引用的变量的标记。——[delete used]<br>在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。——[mark garbage]<br>最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。——[swap]</p>
+<p>到 2008 年为止，IE、Firefox、Opera、Chrome 和 Safari 的 JavaScript 实现使用的都是标记清除式的垃圾收集策略（或类似的策略），只不过垃圾收集的时间间隔互有不同。</p>
+<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>另一种不太常见的垃圾收集策略。<br>含义是跟踪记录每个值被引用的次数。<br>当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是 1。<br>如果同一个值又被赋给另一个变量，则该值的引用次数加 1。<br>相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减 1。<br>当这个值的引用次数变成 0 时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。<br>当垃圾收集器下次再运行时，它就会释放那些引用次数为零的值所占用的内存。</p>
+<p>Netscape Navigator 3.0是最早使用引用计数策略的浏览器。</p>
+<h3 id="严重问题：循环引用。"><a href="#严重问题：循环引用。" class="headerlink" title="严重问题：循环引用。"></a>严重问题：循环引用。</h3><p>所以Netscape 在 Navigator 4.0 中放弃了引用计数方式，转而采用标记清除来实现其垃圾收集机制。<br>可是引用计数导致的麻烦并未就此终结。</p>
+<p>IE 中有一部分对象并不是原生 JavaScript 对象。<br>例如，其 BOM 和 DOM 中的对象就是使用 C++以 COM（Component Object Model，组件对象模型）对象的形式实现的，<br>而 COM 对象的垃圾收集机制采用的就是引用计数策略。<br>即使 IE 的 JavaScript 引擎是使用标记清除策略来实现的，<br>但JavaScript 访问的 COM 对象依然是基于引用计数策略的。<br>换句话说，只要在 IE 中涉及 COM 对象，就会存在循环引用的问题。</p>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">"some_element"</span>);</div><div class="line"><span class="keyword">var</span> myObject = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">myObject.element = element;</div><div class="line">element.someObject = myObject;</div></pre></td></tr></table></figure>
+<p>这个例子在一个 DOM 元素（ element ）与一个原生 JavaScript 对象（ myObject ）之间创建了循环引用。<br>其中，变量 myObject 有一个名为 element 的属性指向 element 对象；<br>而变量 element 也有一个属性名叫 someObject 回指 myObject 。<br>由于存在这个循环引用，即使将例子中的 DOM 从页面中移除，它也永远不会被回收。</p>
+<p>为了避免类似这样的循环引用问题，最好是在不使用它们的时候手工断开原生 JavaScript 对象与DOM 元素之间的连接。<br>例如可以使用下面的代码消除前面例子创建的循环引用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">myObject.element = <span class="literal">null</span>;</div><div class="line">element.someObject = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
+<p>将变量设置为 null 意味着切断变量与它此前引用的值之间的连接。当垃圾收集器下次运行时，就会删除这些值并回收它们占用的内存。</p>
+<p>在IE9时把 BOM 和 DOM 对象都转换成了真正的 JavaScript 对象。这样，就避免了两种垃圾收集算法并存导致的问题，也消除了常见的内存泄漏现象。</p>
+<h2 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h2><h3 id="IE-声名狼藉的性能问题。"><a href="#IE-声名狼藉的性能问题。" class="headerlink" title="IE 声名狼藉的性能问题。"></a>IE 声名狼藉的性能问题。</h3><p>IE 的垃圾收集器是根据内存分配量运行的，<br>具体一点说就是 256 个变量、4096 个对象（或数组）字面量和数组元素（slot）或者 64KB 的字符串。<br>达到上述任何一个临界值，垃圾收集器就会运行。</p>
+<p>问题在于，如果一个脚本中包含那么多变量，那么该脚本很可能会在其生命周期中一直保有那么多的变量。<br>而这样一来，垃圾收集器就不得不频繁地运行。</p>
+<p>由此引发的严重性能问题促使 IE7 重写了其垃圾收集例程。<br>IE7触发垃圾收集的变量分配、字面量和（或）数组元素的临界值被调整为动态修正。</p>
+<p>临界值在初始时与 IE6 相等。<br>如果垃圾收集例程回收的内存分配量低于 15%，则临界值加倍。<br>如果例程回收了 85%的内存分配量，则将各种临界值重置回默认值。</p>
+<p><strong>事实上，在有的浏览器中可以触发垃圾收集过程，但我们不建议读者这样做。</strong>在IE 中，调用 window.CollectGarbage() 方法会立即执行垃圾收集。</p>
+<h1 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h1><p>JavaScript在进行内存管理及垃圾收集时面临的问题还是有点与众不同。</p>
+<p>最主要的一个问题，就是分配给 Web浏览器的可用内存数量通常要比分配给桌面应用程序的少。<br>目的是防止运行 JavaScript 的网页耗尽全部系统内存而导致系统崩溃。<br><strong>内存限制问题</strong>不仅会影响给变量分配内存，同时还会影响调用栈以及在一个线程中能够同时执行的语句数量。</p>
+<p>优化内存占用的最佳方式，就是为执行中的代码只保存必要的数据。<br>一旦数据不再有用，最好通过将其值设置为 null 来释放其引用——这个做法叫做解除引用（dereferencing）。<br>这一做法适用于大多数全局变量和全局对象的属性。<br>局部变量会在它们离开执行环境时自动被解除引用。</p>
+<p>解除一个值的引用并不意味着自动回收该值所占用的内存。<br>解除引用的真正作用是让值脱离执行环境，以便垃圾收集器下次运行时将其回收。<br>为了确保有效地回收内存，应该及时解除不再使用的全局对象、全局对象属性以及循环引用变量的引用。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第三章-3]]></title>
+      <url>https://codingme.xyz/2016/09/17/javascript-note-3-3/</url>
+      <content type="html"><![CDATA[<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>ECMA-262 规定了一组语句（也称为流控制语句）。</p>
+<h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
+<p>其中的 condition（条件）可以是任意表达式；而且对这个表达式求值的结果不一定是布尔值。<br>ECMAScript 会自动调用 Boolean() 转换函数将这个表达式的结果转换为一个布尔值。</p>
+<p><strong>业界普遍推崇的最佳实践是始终使用代码块，即使要执行的只有一行代码。</strong>因为这样可以消除人们的误解，否则可能让人分不清在不同条件下要执行哪些语句。</p>
+<h2 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h2><p>要点：<strong>像 do-while 这种后测试循环语句最常用于循环体中的代码至少要被执行一次的情形。</strong></p>
+<h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><p>while 语句属于前测试循环语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。</p>
+<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h2><p>for 语句也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。</p>
+<p><strong>使用 while 循环做不到的，使用 for 循环同样也做不到。</strong>也就是说， for 循环只是把与循环有关的代码集中在了一个位置。</p>
+<p>由于 ECMAScript 中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
+<p>for 语句中的初始化表达式、控制表达式和循环后表达式都是可选的。将这三个表达式全部省略，就会创建一个无限循环。</p>
+<a id="more"></a>
+<h2 id="for-in-语句"><a href="#for-in-语句" class="headerlink" title="for-in 语句"></a>for-in 语句</h2><p>for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (property <span class="keyword">in</span> expression) statement</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> propName <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</div><div class="line"><span class="built_in">document</span>.write(propName);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个例子中，我们使用 for-in 循环来显示了 BOM 中 window 对象的所有属性。每次执行循环时，都会将 window 对象中存在的一个属性名赋值给变量 propName 。这个过程会一直持续到对象中的所有属性都被枚举一遍为止。</p>
+<p>与 for 语句类似，这里控制语句中的 var 操作符也不是必需的。但是，<strong>为了保证使用局部变量</strong>，我们推荐上面例子中的这种做法。</p>
+<p>ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。具体来讲，所有属性都会被返回一次，但返回的先后次序可能会因浏览器而异。</p>
+<p>如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。ECMAScript 5 更正了这一行为；<br>为了保证最大限度的兼容性，建议在使用 for-in 循环之前，先检测确认该对象的值不是 null 或 undefined 。</p>
+<h2 id="label-语句"><a href="#label-语句" class="headerlink" title="label 语句"></a>label 语句</h2><p>使用 label 语句可以在代码中添加标签，以便将来使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">label: statement</div><div class="line"></div><div class="line">start: <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">alert(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个例子中定义的 start 标签可以在将来由 break 或 continue 语句引用。<br>加标签的语句一般都要与 for 语句等循环语句配合使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</div><div class="line">outPoint:</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</div><div class="line">     <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; <span class="number">10</span> ; j++)&#123;</div><div class="line">          <span class="keyword">if</span>( i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span> )&#123;</div><div class="line">                <span class="keyword">break</span> outPoint;</div><div class="line">          &#125;</div><div class="line">     num++;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">alert(num); <span class="comment">// 循环在 i 为5，j 为5的时候跳出双循环，返回到outPoint层继续执行，输出 55</span></div></pre></td></tr></table></figure>
+<p>由例子可见 label 语句可以用来实现break跳出内层循环回到外层这样的功能。<br>然而，就像 Java 中的 goto 语句一样，对于 label 语句：</p>
+<p>标记（Labels）在 JavaScript 中并不经常被使用，这是因为它们会使程序变得更难于阅读和理解。<br>应该尽可能地避免使用，根据情况，选择<strong>调用函数</strong> 或 <strong>抛出异常</strong>。——<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label/" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/label/</a></p>
+<h2 id="break-和-continue-语句"><a href="#break-和-continue-语句" class="headerlink" title="break 和 continue 语句"></a>break 和 continue 语句</h2><p>虽然联用 break 、 continue 和 label 语句能够执行复杂的操作，但如果使用过度，也会给调试带来麻烦。在此，我们建议如果使用 label 语句，<strong>一定要使用描述性的标签，同时不要嵌套过多的循环。</strong></p>
+<h2 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h2><p>with 语句的作用是将代码的作用域设置到一个特定的对象中。<br>定义 with 语句的目的主要是为了简化多次编写同一个对象的工作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> qs = location.search.substring(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> hostName = location.hostname;</div><div class="line"><span class="keyword">var</span> url = location.href;</div></pre></td></tr></table></figure>
+<p>上面几行代码都包含 location 对象。如果使用 with 语句:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(location)&#123;</div><div class="line"><span class="keyword">var</span> qs = search.substring(<span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> hostName = hostname;</div><div class="line"><span class="keyword">var</span> url = href;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>提示：<strong>严格模式下不允许使用 with 语句，否则将视为语法错误。</strong><br>提示1：由于大量使用 with 语句会导致性能下降，同时也会给调试代码造成困难，因此在<strong>开发大型应用程序时，不建议使用 with 语句。</strong></p>
+<h2 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h2><p>ECMAScript 中 switch 语句的语法与其他基于 C 的语言非常接近。<br>从根本上讲， switch 语句就是为了让开发人员免于编写多个 if else 重复代码。<br>如果需要省略break合并几种情况，不要忘了在代码中添加注释，说明你是有意省略了 break 关键字。<br>ECMAScript 中可以在switch 语句中使用任何数据类型（在很多其他语言中只能使用数值），无论是字符串，还是对象都没有问题。<br>其次，每个 case 的值不一定是常量，可以是变量，甚至是表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> (<span class="string">"hello world"</span>) &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"hello"</span> + <span class="string">" world"</span>:</div><div class="line">alert(<span class="string">"Greeting was found."</span>);</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> <span class="string">"goodbye"</span>:</div><div class="line">alert(<span class="string">"Closing was found."</span>);</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">default</span>:</div><div class="line">alert(<span class="string">"Unexpected message was found."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以及：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">25</span>;</div><div class="line"><span class="keyword">switch</span> (<span class="literal">true</span>) &#123;</div><div class="line"><span class="keyword">case</span> num &lt; <span class="number">0</span>:</div><div class="line">alert(<span class="string">"Less than 0."</span>);</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> num &gt;= <span class="number">0</span> &amp;&amp; num &lt;= <span class="number">10</span>:</div><div class="line">alert(<span class="string">"Between 0 and 10."</span>);</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> num &gt; <span class="number">10</span> &amp;&amp; num &lt;= <span class="number">20</span>:</div><div class="line">alert(<span class="string">"Between 10 and 20."</span>);</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">default</span>:</div><div class="line">alert(<span class="string">"More than 20."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要点：<strong>switch 语句在比较值时使用的是全等操作符，因此不会发生类型转换（例如，字符串 “10” 不等于数值 10）。</strong></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>ECMAScript 中的函数在定义时不必指定是否返回值。实际上，任何函数在任何时候都可以通过return 语句后跟要返回的值来实现返回值。<br>要点：<strong>推荐的做法是要么让函数始终都返回一个值，要么永远都不要返回值。否则，如果函数有时候返回值，有时候有不返回值，会给调试代码带来不便。</strong><br>实际上，未指定返回值的函数返回的是一个特殊的 undefined 值。</p>
+<h2 id="严格模式的限制"><a href="#严格模式的限制" class="headerlink" title="严格模式的限制"></a>严格模式的限制</h2><ul>
+<li>不能把函数命名为 eval 或 arguments ；</li>
+<li>不能把参数命名为 eval 或 arguments ；</li>
+<li>不能出现两个命名参数同名的情况。</li>
+</ul>
+<h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><h3 id="参数特点"><a href="#参数特点" class="headerlink" title="参数特点"></a>参数特点</h3><ul>
+<li>ECMAScript 函数不介意传递进来多少个参数，也不在乎传进来参数是什么数据类型。<br>  原因是 ECMAScript 中的参数在内部是用一个数组来表示的。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数（如果有参数的话）。</li>
+<li>没有传递值的命名参数将自动被赋予 undefined 值。</li>
+<li>ECMAScript 中的所有参数传递的都是值，不可能通过引用传递参数。</li>
+</ul>
+<h3 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h3><p>arguments 对象只是与数组类似（它并不是 Array 的实例），因为可以使用方括号语法访问它的每一个元素（即第一个元素是 arguments[0] ，第二个元素是 argumetns[1] ，以此类推），使用 length 属性来确定传递进来多少个参数。</p>
+<p>arguments的使用体现ECMAScript 函数的一个重要特点：<strong>命名的参数只提供便利，但不是必需的。</strong></p>
+<h4 id="arguments-特点："><a href="#arguments-特点：" class="headerlink" title="arguments 特点："></a>arguments 特点：</h4><ul>
+<li>arguments 对象可以与命名参数一起使用。</li>
+<li>它的值永远与对应命名参数的值保持同步。<strong>并不是说读取第一个命名参数和arguments[0]这两个值会访问相同的内存空间；它们的内存空间是独立的，但它们的值会同步。</strong></li>
+<li>严格模式下，对arguments赋值会变得无效。其次，重写arguments 的值会导致语法错误（代码将不会执行）。</li>
+</ul>
+<h2 id="没有重载"><a href="#没有重载" class="headerlink" title="没有重载"></a>没有重载</h2><p>ECMAScirpt函数没有签名，真正的重载是不可能做到的。<br>如果在 ECMAScript中定义了两个名字相同的函数，则该名字只属于后定义的函数。<br>通过检查传入函数中参数的类型和数量并作出不同的反应，可以模仿方法的重载。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第三章-2]]></title>
+      <url>https://codingme.xyz/2016/09/17/javascript-note-3-2/</url>
+      <content type="html"><![CDATA[<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><p>包括算术操作符（如加号和减号）、位操作符、关系操作符和相等操作符。<br>ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字符串、数字值、布尔值，甚至对象。<br>不过，<strong>在应用于对象时，相应的操作符通常都会调用对象的 valueOf()和（或） toString() 方法，以便取得可以操作的值。</strong></p>
+<h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h2><h3 id="递增递减操作符"><a href="#递增递减操作符" class="headerlink" title="递增递减操作符"></a>递增递减操作符</h3><p>执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。（在计算机科学领域，这种情况通常被称作副效应。）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="keyword">var</span> anotherAge = --age + <span class="number">2</span>;</div><div class="line">alert(age); <span class="comment">// 输出 28</span></div><div class="line">alert(anotherAge); <span class="comment">// 输出 30</span></div></pre></td></tr></table></figure>
+<p>后置递增和递减与前置递增和递减有一个非常重要的区别，即递增和递减操作是在包含它们的语句被求值之后才执行的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> num2 = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> num3 = num1-- + num2; <span class="comment">//  等于 22</span></div><div class="line"><span class="keyword">var</span> num4 = num1 + num2; <span class="comment">// 等于 21</span></div></pre></td></tr></table></figure>
+<p>作用数据类型时候，等同于先Number()再加减1，会像 Number() 转型函数一样对这个值执行转换。</p>
+<a id="more"></a>
+<h3 id="一元加操作符"><a href="#一元加操作符" class="headerlink" title="一元加操作符"></a>一元加操作符</h3><p>对数值不会产生任何影响。<br>对非数值应用一元加操作符时，该操作符会像 Number() 转型函数一样对这个值执行转换。<br>所以<strong>疑问</strong>：一元加操作符乃至于递增递减操作符和Number()有什么关系？感觉好像都会经由Number()转换。</p>
+<h3 id="一元减操作符"><a href="#一元减操作符" class="headerlink" title="一元减操作符"></a>一元减操作符</h3><p>对数值会让其变成其负数。<br>对非数值跟一元加操作符相同，最后再转换成负数。</p>
+<h2 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h2><p>ECMAScript 中的所有数值都以 IEEE-754 64 位格式存储，但位操作符并不直接操作 64 位的值。<br>而是先将 64 位的值转换成 32 位的整数，然后执行操作，最后再将结果转换回 64 位。<br>对于开发人员来说，由于 64 位存储格式是透明的，因此整个过程就像是只存在 32 位的整数一样。</p>
+<p>对于有符号的整数，32 位中的前 31 位用于表示整数的值。第 32 位用于表示数值的符号：0 表示正数，1 表示负数。<br>这个表示符号的位叫做符号位，符号位的值决定了其他位数值的格式。<br>正数以纯二进制格式存储，31 位中的每一位都表示 2 的幂。<br>负数同样以二进制码存储，但使用的格式是二进制补码。<br>这个转换过程也导致了一个严重的副效应，即在<strong>对特殊的 NaN 和 Infinity 值应用位操作时，这两个值都会被当成 0 来处理。</strong></p>
+<h3 id="按位非-NOT"><a href="#按位非-NOT" class="headerlink" title="按位非 NOT"></a>按位非 NOT</h3><p>按位非操作符由一个波浪线（~）表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">25</span>; <span class="comment">// 二进制 00000000000000000000000000011001</span></div><div class="line"><span class="keyword">var</span> num2 = ~num1; <span class="comment">// 二进制 11111111111111111111111111100110</span></div><div class="line">alert(num2); <span class="comment">// -26</span></div></pre></td></tr></table></figure>
+<h3 id="按位与-AND"><a href="#按位与-AND" class="headerlink" title="按位与 AND"></a>按位与 AND</h3><p>按位与操作符由一个和号字符（ &amp; ）表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = <span class="number">25</span> &amp; <span class="number">3</span>;</div><div class="line">alert(result); <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<h3 id="按位或-OR"><a href="#按位或-OR" class="headerlink" title="按位或 OR"></a>按位或 OR</h3><p>按位或操作符由一个竖线符号（|）表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = <span class="number">25</span> | <span class="number">3</span>;</div><div class="line">alert(result); <span class="comment">//27</span></div></pre></td></tr></table></figure>
+<h3 id="按位异或-XOR"><a href="#按位异或-XOR" class="headerlink" title="按位异或 XOR"></a>按位异或 XOR</h3><p>按位异或操作符由一个插入符号（^）表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = <span class="number">25</span> ^ <span class="number">3</span>;</div><div class="line">alert(result); <span class="comment">//26</span></div></pre></td></tr></table></figure>
+<h3 id="左移"><a href="#左移" class="headerlink" title="左移"></a>左移</h3><p>左移操作符由两个小于号（&lt;&lt;）表示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oldValue = <span class="number">2</span>; <span class="comment">// 等于二进制的 10</span></div><div class="line"><span class="keyword">var</span> newValue = oldValue &lt;&lt; <span class="number">5</span>; <span class="comment">// 等于二进制的 1000000，十进制的 64</span></div></pre></td></tr></table></figure>
+<p>注意，左移不会影响操作数的符号位。换句话说，如果将2向左移动 5位，结果将是64，而非 64。<br><strong>也就是说，符号位是不会有变化，而是符号位右边的位会变化</strong></p>
+<h3 id="有符号右移"><a href="#有符号右移" class="headerlink" title="有符号右移"></a>有符号右移</h3><p>有符号的右移操作符由两个大于号（&gt;&gt;）表示。<br>会将数值向右移动，但保留符号位。<br> ECMAScript 会用符号位的值来填充所有空位。<br> <strong>即如果是负数的话，填充空位用的是1，反之为0</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oldValue = <span class="number">64</span>; <span class="comment">// 等于二进制的 1000000</span></div><div class="line"><span class="keyword">var</span> newValue = oldValue &gt;&gt; <span class="number">5</span>; <span class="comment">// 等于二进制的 10 ，即十进制的 2</span></div></pre></td></tr></table></figure>
+<h3 id="无符号右移"><a href="#无符号右移" class="headerlink" title="无符号右移"></a>无符号右移</h3><p>无符号右移操作符由 3 个大于号（&gt;&gt;&gt;）表示。<br>对正数来说，无符号右移的结果与有符号右移相同。<br>无符号右移是以 0 来填充空位，而不是像有符号右移那样以符号位的值来填充空位。</p>
+<p>无符号右移操作符会把负数的二进制码当成正数的二进制码。而且，由于负数以其绝对值的二进制补码形式表示，因此就会导致无符号右移后的结果非常之大。<strong>（填充了无数个0，反码计算回去，十进制的数字无限大）</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oldValue = <span class="number">-64</span>; <span class="comment">//  等于二进制的 11111111111111111111111111000000</span></div><div class="line"><span class="keyword">var</span> newValue = oldValue &gt;&gt;&gt; <span class="number">5</span>; <span class="comment">// 等于十进制的 134217726</span></div></pre></td></tr></table></figure>
+<h3 id="无符号左移"><a href="#无符号左移" class="headerlink" title="无符号左移"></a>无符号左移</h3><p>无符号右移操作符由 3 个大于号（&gt;&gt;&gt;）表示。<br>对负数来说，无符号右移是以 0 来填充空位，其次，无符号右移操作符会把负数的二进制码当成正数的二进制码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oldValue = <span class="number">-64</span>; <span class="comment">//  等于二进制的 11111111111111111111111111000000</span></div><div class="line"><span class="keyword">var</span> newValue = oldValue &gt;&gt;&gt; <span class="number">5</span>; <span class="comment">// 等于十进制的 134217726</span></div></pre></td></tr></table></figure>
+<h2 id="布尔操作符"><a href="#布尔操作符" class="headerlink" title="布尔操作符"></a>布尔操作符</h2><h3 id="逻辑非"><a href="#逻辑非" class="headerlink" title="逻辑非"></a>逻辑非</h3><p>逻辑非操作符由一个叹号（！）表示，可以应用于 ECMAScript 中的任何值。</p>
+<ul>
+<li>如果操作数是一个对象，返回 false ；</li>
+<li>如果操作数是一个空字符串，返回 true ；</li>
+<li>如果操作数是一个非空字符串，返回 false ；</li>
+<li>如果操作数是数值 0，返回 true ；</li>
+<li>如果操作数是任意非 0 数值（包括 Infinity ），返回 false ；</li>
+<li>如果操作数是 null ，返回 true ；</li>
+<li>如果操作数是 NaN ，返回 true ；</li>
+<li>如果操作数是 undefined ，返回 true 。</li>
+</ul>
+<p>同时使用两个逻辑非操作符，实际上就会模拟 Boolean() 转型函数的行为。</p>
+<h3 id="逻辑与"><a href="#逻辑与" class="headerlink" title="逻辑与"></a>逻辑与</h3><p>逻辑与操作符由两个和号（ &amp;&amp; ）表示。</p>
+<ol>
+<li>如果第一个操作数是对象，则返回第二个操作数；</li>
+<li>如果第二个操作数是对象，则只有在第一个操作数的求值结果为 true 的情况下才会返回该对象；</li>
+<li>如果两个操作数都是对象，则返回第二个操作数；</li>
+<li>如果有一个操作数是 null ，则返回 null ；</li>
+<li>如果有一个操作数是 NaN ，则返回 NaN ；</li>
+<li>如果有一个操作数是 undefined ，则返回 undefined 。</li>
+</ol>
+<p><strong>短路操作符</strong>：如果第一个操作数的求值结果为true ，就不会对第二个操作数求值了。</p>
+<h3 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或"></a>逻辑或</h3><p>逻辑或操作符由两个竖线符号（ || ）表示。</p>
+<ol>
+<li>同 逻辑与 第一条。</li>
+</ol>
+<ul>
+<li>如果第一个操作数的求值结果为 false ，则返回第二个操作数；</li>
+<li>如果两个操作数都是对象，则返回第一个操作数；</li>
+<li>如果两个操作数都是 null ，则返回 null ；</li>
+<li>如果两个操作数都是 NaN ，则返回 NaN ；</li>
+<li>如果两个操作数都是 undefined ，则返回 undefined 。</li>
+</ul>
+<p>同样是<strong>短路操作符</strong>。</p>
+<h4 id="使用范例"><a href="#使用范例" class="headerlink" title="使用范例"></a>使用范例</h4><p>利用逻辑或的这一行为来避免为变量赋 null 或 undefined 值。ECMAScript 程序的赋值语句经常会使用这种模式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = preferredObject || backupObject;</div></pre></td></tr></table></figure>
+<h2 id="乘性操作符"><a href="#乘性操作符" class="headerlink" title="乘性操作符"></a>乘性操作符</h2><p>乘法、除法和求模。<br>如果参与乘性计算的某个操作数不是数值，后台会先使用 Number() 转型函数将其转换为数值。</p>
+<h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><ol>
+<li>如果操作数都是数值，执行常规的乘法计算，即两个正数或两个负数相乘的结果还是正数，而如果只有一个操作数有符号，那么结果就是数。如果乘积超过了 ECMAScript 数值的表示范围，则返回 Infinity 或 -Infinity ；</li>
+<li>如果有一个操作数是 NaN ，则结果是 NaN ；</li>
+<li>如果是 Infinity 与 0 相乘，则结果是 NaN ；</li>
+<li>如果是 Infinity 与非 0 数值相乘，则结果是 Infinity 或 -Infinity ，取决于有符号操作数的符号；</li>
+<li>如果是 Infinity 与 Infinity 相乘，则结果是 Infinity ；</li>
+<li>如果有一个操作数不是数值，则在后台调用 Number() 将其转换为数值，然后再应用上面的规则。</li>
+</ol>
+<h3 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h3><ul>
+<li>同 乘法 第一条；</li>
+<li>同 乘法 第二条；</li>
+<li>同 乘法 第五条；</li>
+<li>如果是零被零除，则结果是 NaN ；</li>
+<li>如果是非零的有限数被零除，则结果是 Infinity 或 -Infinity ，取决于有符号操作数的符号；</li>
+<li>如果是 Infinity 被任何非零数值除，则结果是 Infinity 或 -Infinity ，取决于有符号操作数的符号；</li>
+<li>同 乘法 第六条。</li>
+</ul>
+<h3 id="求模"><a href="#求模" class="headerlink" title="求模"></a>求模</h3><ol>
+<li>如果操作数都是数值，执行常规的除法计算，返回除得的余数；</li>
+<li>如果被除数是无穷大值而除数是有限大的数值，则结果是 NaN ；</li>
+<li>如果被除数是有限大的数值而除数是零，则结果是 NaN ；</li>
+<li>如果是 Infinity 被 Infinity 除，则结果是 NaN ；</li>
+<li>如果被除数是有限大的数值而除数是无穷大的数值，则结果是被除数；</li>
+<li>如果被除数是零，则结果是零； 0%？</li>
+<li>同 乘法 第六条。</li>
+</ol>
+<h2 id="加性操作符"><a href="#加性操作符" class="headerlink" title="加性操作符"></a>加性操作符</h2><h3 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h3><ul>
+<li>如果有一个操作数是 NaN ，则结果是 NaN ；</li>
+<li>如果是 Infinity 加 Infinity ，则结果是 Infinity ；</li>
+<li>如果是 -Infinity 加 -Infinity ，则结果是 -Infinity ；</li>
+<li>如果是 Infinity 加 -Infinity ，则结果是 NaN ；</li>
+<li>如果是+0 加+0，则结果是+0；</li>
+<li>如果是-0 加-0，则结果是-0；</li>
+<li>如果是+0 加-0，则结果是+0。</li>
+</ul>
+<p>如果有一个操作数是字符串，则：</p>
+<ul>
+<li>如果两个操作数都是字符串，则将第二个操作数与第一个操作数拼接起来；</li>
+<li>如果只有一个操作数是字符串，则将另一个操作数转换为字符串，然后再将两个字符串拼接起来。</li>
+</ul>
+<p>忽视加法操作中的数据类型是 ECMAScript 编程中最常见的一个错误。</p>
+<h3 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h3><ul>
+<li>同 加法 第一条；</li>
+<li>如果是 Infinity 减 Infinity ，则结果是 NaN ；</li>
+<li>如果是 -Infinity 减 -Infinity ，则结果是 NaN ；</li>
+<li>如果是 Infinity 减 -Infinity ，则结果是 Infinity ；</li>
+<li>如果是 -Infinity 减 Infinity ，则结果是 -Infinity ；</li>
+<li>如果是+0 减+0，则结果是+0；</li>
+<li>如果是+0 减-0，则结果是-0；</li>
+<li>如果是-0 减-0，则结果是+0；</li>
+<li>如果有一个操作数是字符串、布尔值、 null 或 undefined ，则先在后台调用 Number() 函数将其转换为数值，然后再根据前面的规则执行减法计算。如果转换的结果是 NaN ，则减法的结果就是 NaN ；</li>
+<li>如果有一个操作数是对象，则调用对象的 valueOf() 方法以取得表示该对象的数值。如果得到的值是 NaN ，则减法的结果就是 NaN 。如果对象没有 valueOf() 方法，则调用其 toString()方法并将得到的字符串转换为数值。</li>
+</ul>
+<h2 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h2><ul>
+<li>如果两个操作数都是字符串，则比较两个字符串对应的字符编码值。</li>
+<li>如果一个操作数是数值，则将另一个操作数转换为一个数值，然后执行数值比较。</li>
+<li>如果一个操作数是对象，则调用这个对象的 valueOf() 方法，用得到的结果按照前面的规则执行比较。如果对象没有 valueOf() 方法，则调用 toString() 方法，并用得到的结果根据前面的规则执行比较。</li>
+<li>如果一个操作数是布尔值，则先将其转换为数值，然后再执行比较。</li>
+</ul>
+<p>有趣的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = <span class="string">"a"</span> &lt; <span class="number">3</span>; <span class="comment">// false，因为"a"被转换成了 NaN</span></div></pre></td></tr></table></figure>
+<p>由于字母 “a” 不能转换成合理的数值，因此就被转换成了 NaN 。根据规则，任何操作数与 NaN 进行关系比较，结果都是 false 。</p>
+<h2 id="相等操作符"><a href="#相等操作符" class="headerlink" title="相等操作符"></a>相等操作符</h2><p>由于相等和不相等操作符存在类型转换问题，<strong>而为了保持代码中数据类型的完整性，我们推荐使用全等和不全等操作符。</strong></p>
+<h3 id="相等和不相等——先转换再比较"><a href="#相等和不相等——先转换再比较" class="headerlink" title="相等和不相等——先转换再比较"></a>相等和不相等——先转换再比较</h3><p>相等操作符由两个等于号（ == ）表示，不相等操作符由叹号后跟等于号（ != ）表示。<br>这两个操作符都会先转换操作数（通常称为强制转型），然后再比较它们的相等性。</p>
+<ul>
+<li>如果有一个操作数是布尔值，则在比较相等性之前先将其转换为数值—— false 转换为 0，而true 转换为 1；</li>
+<li>如果一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值；</li>
+<li>如果一个操作数是对象，另一个操作数不是，则调用对象的 valueOf() 方法，用得到的基本类型值按照前面的规则进行比较；</li>
+</ul>
+<p>这两个操作符在进行比较时则要遵循下列规则。</p>
+<ul>
+<li>null 和 undefined 是相等的。</li>
+<li>要比较相等性之前，不能将 null 和 undefined 转换成其他任何值。</li>
+<li>如果有一个操作数是 NaN ，则相等操作符返回 false ，而不相等操作符返回 true 。重要提示：即使两个操作数都是 NaN ，相等操作符也返回 false ；因为按照规则， NaN 不等于 NaN 。</li>
+<li>如果两个操作数都是对象，则比较它们是不是同一个对象。如果两个操作数都指向同一个对象，则相等操作符返回 true ；否则，返回 false 。</li>
+</ul>
+<h3 id="全等和不全等——仅比较而不转换"><a href="#全等和不全等——仅比较而不转换" class="headerlink" title="全等和不全等——仅比较而不转换"></a>全等和不全等——仅比较而不转换</h3><p>全等操作符由 3 个等于号（ === ）表示，不全等操作符由一个叹号后跟两个等于号（ !== ）表示。</p>
+<h2 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h2><p>条件操作符应该算是 ECMAScript 中最灵活的一种操作符了，而且它遵循与 Java 中的条件操作符相同的语法形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">variable = boolean_expression ? true_value : false_value;</div></pre></td></tr></table></figure>
+<p>本质上，这行代码的含义就是基于对 <code>boolean_expression</code> 求值的结果，决定给变量 <code>variable</code>赋什么值。如果求值结果为 <code>true</code> ，则给变量 <code>variable</code> 赋 <code>true_value</code> 值；如果求值结果为<code>false</code> ，则给变量 <code>variable</code> 赋 <code>false_value</code> 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> max = (num1 &gt; num2) ? num1 : num2;</div></pre></td></tr></table></figure>
+<p>在这个例子中， max 中将会保存一个最大的值。这个表达式的意思是：如果 num1 大于 num2 （关系表达式返回 true ），则将 num1 的值赋给 max ；如果 num1 小于或等于 num2 （关系表达式返回 false ），则将 num2 的值赋给 max 。</p>
+<h2 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h2><p>简单的赋值操作符由等于号（ = ）表示。</p>
+<ul>
+<li>乘/赋值（ *= ）；</li>
+<li>除/赋值（ /= ）；</li>
+<li>模/赋值（ %= ）；</li>
+<li>加/赋值（ += ）；</li>
+<li>减/赋值（ = ）；</li>
+<li>左移/赋值（ &lt;&lt;= ）；</li>
+<li>有符号右移/赋值（ &gt;&gt;= ）；</li>
+<li>无符号右移/赋值（ &gt;&gt;&gt;= ）。</li>
+</ul>
+<p>设计这些操作符的主要目的就是简化赋值操作。使用它们不会带来任何性能的提升。</p>
+<h2 id="逗号操作符"><a href="#逗号操作符" class="headerlink" title="逗号操作符"></a>逗号操作符</h2><p>使用逗号操作符可以在一条语句中执行多个操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1=<span class="number">1</span>, num2=<span class="number">2</span>, num3=<span class="number">3</span>;</div></pre></td></tr></table></figure>
+<p>逗号操作符多用于声明多个变量；但除此之外，逗号操作符还可以用于赋值。在用于赋值时，逗号操作符总会返回表达式中的最后一项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = (<span class="number">5</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">0</span>); <span class="comment">// num 的值为 0</span></div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[《JavaScript高级程序设计》读书笔记-第三章-1]]></title>
+      <url>https://codingme.xyz/2016/09/11/javascript-note-3-1/</url>
       <content type="html"><![CDATA[<h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
 <li>区分大小写</li>
 <li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
@@ -23,10 +375,180 @@
 <li><p>严格模式下，JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+、Firefox 4+、Safari 5.1+、Opera 12+和 Chrome。</p>
 </li>
 </ul>
+<a id="more"></a>
 <h1 id="ECMAScript-的语句"><a href="#ECMAScript-的语句" class="headerlink" title="ECMAScript 的语句"></a>ECMAScript 的语句</h1><ul>
 <li>任何时候都不要省略语句结尾的分号。加上分号也会在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。</li>
 <li>最佳实践是始终在控制语句中使用代码块。</li>
 </ul>
+<h1 id="ECMAScript-的关键字和保留字"><a href="#ECMAScript-的关键字和保留字" class="headerlink" title="ECMAScript 的关键字和保留字"></a>ECMAScript 的关键字和保留字</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><pre><code>break       do      instanceof  typeof
+case        else    new         var
+catch       finally return      void
+continue    for     switch      while
+debugger*   function this       with
+default     if      throw
+delete      in      try
+</code></pre><h2 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h2><p>第三版的全部保留字：</p>
+<pre><code>abstract    enum        int         short
+boolean     export      interface   static
+byte        extends     long        super
+char        final       native      synchronized
+class       float       package     throws
+const       goto        private     transient
+debugger    implements  protected   volatile
+double      import      public
+</code></pre><p>第 5 版在非严格模式下：</p>
+<pre><code>class   enum      extends   super
+const   export    import
+</code></pre><p>在严格模式下还有：</p>
+<pre><code>implements  package     public
+interface   private     static
+let         protected   yield
+</code></pre><p>为了最大程度地保证兼容性，建议读者将第 3 版定义的保留字外加 let 和 yield 作为编程时的参考。<br>一般来说，最好都不要使用关键字和保留字作为标识符和属性名，以便与将来的 ECMAScript 版本兼容。<br>举例：<br>IE7 问世时 ECMAScript5 还没出来。IE8支持一点，直到IE9支持更多、IE10完美支持。<br>所以为了兼容IE，要这么参考。</p>
+<h1 id="ECMAScript-的变量"><a href="#ECMAScript-的变量" class="headerlink" title="ECMAScript 的变量"></a>ECMAScript 的变量</h1><ol>
+<li>不建议修改变量所保存值的类型。</li>
+<li>用 var 操作符定义的变量将成为定义该变量的作用域中的局部变量。（即作用域方面的问题）</li>
+<li>虽然省略 var 操作符可以定义全局变量，但这也不是我们推荐的做法。<br> 因为在局部作用域中定义的全局变量很难维护，<br> 而且如果有意地忽略了 var 操作符，也会由于相应变量不会马上就有定义而导致不必要的混乱。<br> 给未经声明的变量赋值在严格模式下会导致抛出 ReferenceError 错误。</li>
+<li><p>可以使用一条语句定义多个变量，只要把每个变量用逗号分隔开就行。虽然代码里的换行和变量缩进不是必需的，但这样做可以提高可读性。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message = <span class="string">"hi"</span>,</div><div class="line">    found = <span class="literal">false</span>,</div><div class="line">    age = <span class="number">29</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在严格模式下，不能定义名为 eval 或 arguments 的变量，否则会导致语法错误。</p>
+</li>
+</ol>
+<h1 id="ECMAScript-的数据类型"><a href="#ECMAScript-的数据类型" class="headerlink" title="ECMAScript 的数据类型"></a>ECMAScript 的数据类型</h1><ol>
+<li>五种简单数据类型：<ol>
+<li>Undefined</li>
+<li>Null</li>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+</ol>
+</li>
+<li>一种复杂数据类型—— Object ， Object 本质上是由一组无序的名值对组成的。</li>
+</ol>
+<h2 id="typeof-操作符"><a href="#typeof-操作符" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h2><ol>
+<li>可能返回的字符串：<br> “undefined” ——如果这个值未定义；<br> “boolean” ——如果这个值是布尔值；<br> “string” ——如果这个值是字符串；<br> “number” ——如果这个值是数值；<br> “object” ——如果这个值是对象或 null；<br> “function” ——如果这个值是函数。</li>
+<li><code>typeof null</code>会返回 “object”，因为特殊值 null 被认为是一个空的对象引用。</li>
+<li>从技术角度讲，函数在 ECMAScript中是对象，不是一种数据类型。然而，函数也确实有一些特殊的属性，因此通过 typeof 操作符来区分函数和其他对象是有必要的。</li>
+</ol>
+<h2 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h2><ol>
+<li>显式的 undefined 值 由 ECMAScript 第三版引入，引入这个值的目的是用于比较，为了正式区分空对象指针与未经初始化的变量。<br> undefined的一个示例：<br> <code>var message;</code> 等同于 <code>var message = undefined;</code></li>
+<li><p>对于尚未声明的变量，只能执行一项操作，即使用 typeof 操作符检测其数据类型，然而:</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message; <span class="comment">// 这个变量声明之后默认取得了 undefined 值</span></div><div class="line"><span class="comment">// 下面这个变量并没有声明</span></div><div class="line"><span class="comment">// var age</span></div><div class="line">alert(<span class="keyword">typeof</span> message); <span class="comment">// "undefined"</span></div><div class="line">alert(<span class="keyword">typeof</span> age); <span class="comment">// "undefined"</span></div></pre></td></tr></table></figure>
+<p> 这个结果有其逻辑上的合理性。因为虽然这两种变量从技术角度看有本质区别，但实际上无论对哪种变量也不可能执行真正的操作。</p>
+</li>
+<li>显式地初始化变量依然是明智的选择。于是 typeof 操作符返回 “undefined”时我们就能确定被检测的变量还没有被声明。（如果声明肯定初始化了不会是 undefined )</li>
+</ol>
+<h2 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h2><ol>
+<li><p>Null 类型是第二个只有一个值的数据类型，这个特殊的值是 null 。从逻辑角度来看， null 值表示一个<strong>空对象指针</strong>，而这也正是使用 typeof 操作符检测 null 值时会返回 “object” 的原因。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> car = <span class="literal">null</span>;</div><div class="line">alert(<span class="keyword">typeof</span> car); <span class="comment">// "object"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为 null 而不是其他值。这样就可以直接检查知道变量是否已经保存了一个对象的引用。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (car != <span class="literal">null</span>)&#123;</div><div class="line"><span class="comment">// 对 car 对象执行某些操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>实际上， undefined 值是派生自 null 值的,因此相等性测试【相等操作符（ == ）】：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p> 两者用途完全不同。无论在什么情况下都没有必要把一个变量的值显式地设置为 undefined，对 null则不同。只要意在保存对象的变量还没有真正保存对象，就应该明确地让该变量保存 null 值。这样做不仅可以体现 null 作为空对象指针的惯例，而且也有助于进一步区分 null 和 undefined 。</p>
+</li>
+</ol>
+<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h2><ol>
+<li><p>虽然 Boolean 类型的字面值只有两个，但 ECMAScript 中所有类型的值都有与这两个 Boolean 值等价的值。要将一个值转换为其对应的 Boolean 值，可以调用转型函数 Boolean()。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message = <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">var</span> messageAsBoolean = <span class="built_in">Boolean</span>(message);</div></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">数据类型     转换为true的值                 转换为false的值</div><div class="line">Boolean     true                          false</div><div class="line">String      任何非空字符串                  "" （空字符串）</div><div class="line">Number      任何非零数字值（包括无穷大）     0和 NaN</div><div class="line">Object      任何对象                       null</div><div class="line">Undefined   n/a                           undefined</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p> 这些转换规则对理解流控制语句（如 if 语句）自动执行相应的 Boolean 转换非常重要</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message = <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">if</span> (message)&#123;</div><div class="line">alert(<span class="string">"Value is true"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h2><p>ECMScript 没有为整数和浮点数值分别定义不同的数据类型， Number 类型可用于表示所有数值。</p>
+<ol>
+<li>十进制整数:<br> <code>var intNum = 55; // 整数</code></li>
+<li>八进制：<br> <code>var octalNum1 = 070; // 八进制的 56</code></li>
+<li>十六进制:<br> <code>var hexNum1 = 0xA; // 十六进制的 10</code></li>
+<li>浮点数值：<br> <code>var floatNum1 = 1.1;</code><br> 虽然小数点前面可以没有整数，但我们不推荐这种写法。<br> 保存浮点数值需要的内存空间是保存整数值的两倍，所以 ECMAScript会不失时机地将浮点数值转换为整数值。<br> 如果小数点后面没有跟任何数字，或者本身表示的就是一个整数，那么这个数值就可以作为整数值来保存。<br> 对于那些极大或极小的数值，可以用 e 表示法（即科学计数法）表示的浮点数值表示。<br> <code>var floatNum = 3.125e7; // 等于 31250000</code><br> 在默认情况下，ECMASctipt 会将那些小数点后面带有 6 个零以上的浮点数值转换为以 e 表示法表示的数值。</li>
+<li><p><strong>联动</strong>——关于<code>JavaScript</code>的<code>parseInt</code>陷阱(所以要用<code>parseFloat</code>)<br><code>parse(0.0000001)==1</code>，而<code>parseInt(0.01) == 0</code></p>
+<ul>
+<li><strong>原因</strong>:<ol>
+<li><code>parseInt</code> 会先调用 <code>toString</code> 方法。</li>
+<li>对于小于 <code>1e-6</code> 的数值来说，<code>toString</code> 时会自动转换为科学计数法。</li>
+<li>0.0000001会被转换成<code>&quot;1e-7&quot;</code></li>
+<li>于是<code>parse(0.0000001)</code>就会变成<code>parse(&quot;1e-7&quot;)</code></li>
+<li>因为<code>parseInt</code>不认识字符串形式的科学计数法，所以直接匹配字符串数字，<code>&quot;1e-7&quot;</code>就匹配到第一个数字1。</li>
+</ol>
+</li>
+<li><strong>另一示例</strong>:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="number">1</span>/<span class="number">1000001</span>) <span class="comment">//即parseInt("9.99999000001e-7")</span></div><div class="line"><span class="number">9</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>浮点数值的最高精度是 17 位小数，但在进行算术计算时其精确度远远不如整数。<br> 例如，0.1 加 0.2的结果不是 0.3，而是 0.30000000000000004。<br> 这是使用基于IEEE754 数值的浮点计算的通病，ECMAScript 并非独此一家。<br> 因此，永远不要测试某个特定的浮点数值。<br> 解决方法1：使用JavaScript内置的函数toPrecision或toFixed来保留一定的精度。<br> 解决方法2：<code>Math.round((0.1+0.2)*100)/100;//0.3</code><br> 解决方法3：使用BigDecimal。其他语言有标准类库，js没有内置的BigDecimal的库，要找一些第三方的来完成。</p>
+</li>
+<li>数值范围<ul>
+<li><code>Number.MIN_VALUE</code> ：5e-324</li>
+<li><code>Number.MAX_VALUE</code> ：1.7976931348623157e+308</li>
+<li>一旦超出就会被转换成特殊的Infinity值。</li>
+<li>如果某次计算返回了正或负的 Infinity 值，那么该值将无法继续参与下一次的计算，因为 Infinity 不是能够参与计算的数值。</li>
+<li>判断是不是有穷的，可以用 <code>isFinite()</code> 函数。</li>
+<li>访问 <code>Number.NEGATIVE_INFINITY</code> 和 <code>Number.POSITIVE_INFINITY</code> 也可以得到负和正 Infinity 的值。可以想见，这两个属性中分别保存着 -Infinity 和Infinity 。</li>
+</ul>
+</li>
+<li>NaN<ul>
+<li>用于表示一个本来要返回数值的操作数未返回数值的情况（这样就不会抛出错误了）。</li>
+<li>在 ECMAScript中，任何数值除以 0会返回 NaN ，因此不会影响其他代码的执行。</li>
+<li>特点1：任何涉及 NaN 的操作（例如 NaN /10）都会返回 NaN ，这个特点在多步计算中有可能导致问题。</li>
+<li>特点2：NaN 与任何值都不相等，包括 NaN 本身。针对 NaN 的这两个特点，ECMAScript 定义了 isNaN() 函数。</li>
+<li>isNaN() 也适用于对象。会首先调用对象的 valueOf() 方法，然后确定该方法返回的值是否可以转换为数值。如果不能，则基于这个返回值再调用 toString() 方法，再测试返回值。</li>
+</ul>
+</li>
+<li><p>Number() 函数</p>
+<ul>
+<li>如果是对象，则<strong>调用对象的 valueOf() 方法，然后依照前面的规则转换返回的值。如果转换的结果是 NaN ，则调用对象的 toString() 方法，然后再次依照前面的规则转换返回的字符串值。</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="built_in">Number</span>(<span class="string">"Hello world!"</span>); <span class="comment">//NaN</span></div><div class="line"><span class="keyword">var</span> num2 = <span class="built_in">Number</span>(<span class="string">""</span>); <span class="comment">//0</span></div><div class="line"><span class="keyword">var</span> num3 = <span class="built_in">Number</span>(<span class="string">"000011"</span>); <span class="comment">//11</span></div><div class="line"><span class="keyword">var</span> num4 = <span class="built_in">Number</span>(<span class="literal">true</span>); <span class="comment">//1</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>parseInt()</p>
+<ul>
+<li><p>由于 Number() 函数在转换字符串时比较复杂而且不够合理，因此在处理整数的时候更常用的是parseInt() 函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="built_in">parseInt</span>(<span class="string">"1234blue"</span>); <span class="comment">// 1234</span></div><div class="line"><span class="keyword">var</span> num2 = <span class="built_in">parseInt</span>(<span class="string">""</span>); <span class="comment">// NaN</span></div><div class="line"><span class="keyword">var</span> num3 = <span class="built_in">parseInt</span>(<span class="string">"0xA"</span>); <span class="comment">// 10（十六进制数）</span></div><div class="line"><span class="keyword">var</span> num4 = <span class="built_in">parseInt</span>(<span class="number">22.5</span>); <span class="comment">// 22</span></div><div class="line"><span class="keyword">var</span> num5 = <span class="built_in">parseInt</span>(<span class="string">"070"</span>); <span class="comment">// 56（八进制数）</span></div><div class="line"><span class="keyword">var</span> num6 = <span class="built_in">parseInt</span>(<span class="string">"70"</span>); <span class="comment">// 70（十进制数）</span></div><div class="line"><span class="keyword">var</span> num7 = <span class="built_in">parseInt</span>(<span class="string">"0xf"</span>); <span class="comment">// 15（十六进制数）</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>版本的分歧。在 ECMAScript 3 JavaScript 引擎中， “070” 被当成八进制字面量，因此转换后的值是十进制的 56。而在 ECMAScript 5 JavaScript 引擎中， parseInt() 已经不具有解析八进制值的能力，因此前导的零会被认为无效，从而将这个值当成 “70” ，结果就得到十进制的 70。在 ECMAScript 5 中，即使是在非严格模式下也会如此。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//ECMAScript 3 认为是 56（八进制），ECMAScript 5 认为是 70（十进制）</span></div><div class="line"><span class="keyword">var</span> num = <span class="built_in">parseInt</span>(<span class="string">"070"</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>所以要使用第二个参数指定进制基数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="built_in">parseInt</span>(<span class="string">"AF"</span>, <span class="number">16</span>); <span class="comment">//175</span></div><div class="line"><span class="keyword">var</span> num2 = <span class="built_in">parseInt</span>(<span class="string">"AF"</span>); <span class="comment">//NaN</span></div></pre></td></tr></table></figure>
+<ul>
+<li>建议无论在什么情况下都明确指定基数。</li>
+</ul>
+</li>
+<li>parseFloat()<ul>
+<li>字符串中的第一个小数点是有效的，而第二个小数点就是无效的了，因此它后面的字符串将被忽略。</li>
+<li>parseFloat() 与 parseInt() 的第二个区别在于它始终都会忽略前导的零。十六进制格式的字符串则始终会被转换成 0 。</li>
+<li>parseFloat() 只解析十进制值。如果字符串包含的是一个可解析为整数的数（没有小数点，或者小数点后都是零）， parseFloat() 会返回整数。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="built_in">parseFloat</span>(<span class="string">"1234blue"</span>); <span class="comment">//1234 （整数）</span></div><div class="line"><span class="keyword">var</span> num2 = <span class="built_in">parseFloat</span>(<span class="string">"0xA"</span>); <span class="comment">//0</span></div><div class="line"><span class="keyword">var</span> num3 = <span class="built_in">parseFloat</span>(<span class="string">"22.5"</span>); <span class="comment">//22.5</span></div><div class="line"><span class="keyword">var</span> num4 = <span class="built_in">parseFloat</span>(<span class="string">"22.34.5"</span>); <span class="comment">//22.34</span></div><div class="line"><span class="keyword">var</span> num5 = <span class="built_in">parseFloat</span>(<span class="string">"0908.5"</span>); <span class="comment">//908.5</span></div><div class="line"><span class="keyword">var</span> num6 = <span class="built_in">parseFloat</span>(<span class="string">"3.125e7"</span>); <span class="comment">//31250000</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><ol>
+<li>拼接变量：首先创建一个能容纳 10 个字符的新字符串，然后在这个字符串中填充 “Java” 和 “Script” ，最后一步是销毁原来的字符串 “Java” 和字符串 “Script” ，因为这两个字符串已经没用了。这也是在某些旧版本的浏览器（例如版本低于 1.0 的 Firefox、IE6 等）中拼接字符串时速度很慢的原因所在。</li>
+<li>数值、布尔值、对象和字符串值（没错，每个字符串也都有一个 toString() 方法，该方法返回字符串的一个副本）都有 toString() 方法。但 null 和 undefined 值没有这个方法。</li>
+<li>toString() 可以输出以二进制、八进制、十六进制乃至其他任意有效进制格式表示的字符串值。 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">10</span>;</div><div class="line">alert(num.toString()); <span class="comment">// "10"</span></div><div class="line">alert(num.toString(<span class="number">2</span>)); <span class="comment">// "1010"</span></div><div class="line">alert(num.toString(<span class="number">8</span>)); <span class="comment">// "12"</span></div><div class="line">alert(num.toString(<span class="number">10</span>)); <span class="comment">// "10"</span></div><div class="line">alert(num.toString(<span class="number">16</span>)); <span class="comment">// "a"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h2><ol>
+<li><p>ECMAScript 中的对象其实就是一组数据和功能的集合。</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>; <span class="comment">// 有效，但不推荐省略圆括号</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>在 ECMAScript 中，（就像 Java 中的 java.lang.Object 对象一样） Object 类型是所有它的实例的基础。换句话说，Object 类型所具有的任何属性和方法也同样存在于更具体的对象中。所有对象都具有这些基本的属性和方法。</p>
+<ul>
+<li><strong>constructor</strong> ：保存着用于创建当前对象的函数。对于前面的例子而言，构造函数（constructor）就是 Object() 。</li>
+<li><strong>hasOwnProperty(propertyName)</strong> ：用于检查给定的属性在当前对象实例中（而不是在实例的原型中）是否存在。其中，作为参数的属性名（ propertyName ）必须以字符串形式指定（例如： o.hasOwnProperty(“name”) ）。</li>
+<li><strong>isPrototypeOf(object)</strong> ：用于检查传入的对象是否是传入对象的原型。</li>
+<li><strong>propertyIsEnumerable(propertyName)</strong> ：用于检查给定的属性是否能够使用 for-in 语句来枚举。与 hasOwnProperty() 方法一样，作为参数的属性名必须以字符串形式指定。</li>
+<li><strong>toLocaleString()</strong> ：返回对象的字符串表示，该字符串与执行环境的地区对应。</li>
+<li><strong>toString()</strong> ：返回对象的字符串表示。</li>
+<li><strong>valueOf()</strong> ：返回对象的字符串、数值或布尔值表示。通常与 toString() 方法的返回值相同。</li>
+</ul>
+</li>
+<li>ECMA-262 中对象的行为不一定适用于 JavaScript 中的其他对象。BOM 和 DOM 中的对象，都属于宿主对象，ECMA-262 不负责定义宿主对象，因此宿主对象可能会也可能不会继承 Object 。</li>
+</ol>
 ]]></content>
     </entry>
     
@@ -81,10 +603,8 @@
 <li>如果在文档开始处没有发现文档类型声明，则所有浏览器都会默认开启混杂模式。</li>
 <li>采用混杂模式不是什么值得推荐的做法，因为不同浏览器在这种模式下的行为差异非常大，如果不使用某些 hack 技术，跨浏览器的行为根本就没有一致性可言。</li>
 </ul>
-<p>标准模式（包含HTML的严格模式/版本）有：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML 4.01 严格型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 严格型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Strict//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- HTML 5 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div></pre></td></tr></table></figure>
-<p>准标准模式(有框架集版本、过渡版本）：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML 4.01 过渡型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></div><div class="line">"-//W3C//DTD HTML 4.01 Transitional//EN"</div><div class="line">"http://www.w3.org/TR/html4/loose.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- HTML 4.01 框架集型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></div><div class="line">"-//W3C//DTD HTML 4.01 Frameset//EN"</div><div class="line">"http://www.w3.org/TR/html4/frameset.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 过渡型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Transitional//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 框架集型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Frameset//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;</div></pre></td></tr></table></figure>
+<h2 id="标准模式（包含HTML的严格模式-版本）"><a href="#标准模式（包含HTML的严格模式-版本）" class="headerlink" title="标准模式（包含HTML的严格模式/版本）"></a>标准模式（包含HTML的严格模式/版本）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML 4.01 严格型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 严格型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Strict//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- HTML 5 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="准标准模式-有框架集版本、过渡版本）"><a href="#准标准模式-有框架集版本、过渡版本）" class="headerlink" title="准标准模式(有框架集版本、过渡版本）"></a>准标准模式(有框架集版本、过渡版本）</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML 4.01 过渡型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></div><div class="line">"-//W3C//DTD HTML 4.01 Transitional//EN"</div><div class="line">"http://www.w3.org/TR/html4/loose.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- HTML 4.01 框架集型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC</span></div><div class="line">"-//W3C//DTD HTML 4.01 Frameset//EN"</div><div class="line">"http://www.w3.org/TR/html4/frameset.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 过渡型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Transitional//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</div><div class="line"><span class="comment">&lt;!-- XHTML 1.0 框架集型 --&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC</span></div><div class="line">"-//W3C//DTD XHTML 1.0 Frameset//EN"</div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;</div></pre></td></tr></table></figure>
 <h1 id="noscript-元素"><a href="#noscript-元素" class="headerlink" title="noscript 元素"></a>noscript 元素</h1><p>浏览器不支持 JavaScript 时如何让页面平稳地退化。于是 noscript 诞生。<br>这个元素可以包含能够出现在文档 <code>&lt;body&gt;</code> 中的任何 HTML 元素—— <code>&lt;script&gt;</code> 元素除外。<br>包含在 <code>&lt;noscript&gt;</code> 元素中的内容只有在下列情况下才会显示出来：</p>
 <ul>
 <li>浏览器不支持脚本；</li>
@@ -111,24 +631,23 @@
 <li>针对 XML 但经过扩展用于 HTML 的应用程序编程接口（API,Application Programming Interface）</li>
 <li>DOM 目的：允许您使用 JavaScript 动态创建 HTML 的几乎全部文档内容。</li>
 <li>为什么要用 DOM ?<br>  IE 4 和 网景浏览器 4 分别支持不同形式的 DHTML 。怕出现技术割据互不兼容，于是 W3C 开始着手规划 DOM 。<br>  DOM 并不只是针对 JavaScript 的，很多别的语言也都实现了 DOM。不过，在 Web 浏览器中，基于 ECMAScript 实现的 DOM 的确已经成为 JavaScript 这门语言的一个重要组成部分。</li>
-<li><strong>DOM 1 级</strong>：目标主要是映射文档的结构。(DOM1 级 于 1998 年 10 月成为 W3C 的推荐标准。)<ul>
+</ul>
+<h2 id="DOM-1-级"><a href="#DOM-1-级" class="headerlink" title="DOM 1 级"></a>DOM 1 级</h2><p>目标主要是映射文档的结构。(DOM1 级 于 1998 年 10 月成为 W3C 的推荐标准。)</p>
+<ul>
 <li><strong>DOM 核心（DOM Core）</strong>，规定如何映射基于 XML 的文档结构；</li>
 <li><strong>DOM HTML</strong> ，在前者基础上扩展，添加了针对 HTML 的对象和方法。</li>
 </ul>
-</li>
-<li><strong>DOM 2 级</strong>：原来 DOM 的基础上又扩充了许多细分模块。而且通过对象接口增加了对 CSS 的支持。<ul>
+<h2 id="DOM-2-级"><a href="#DOM-2-级" class="headerlink" title="DOM 2 级"></a>DOM 2 级</h2><p>原来 DOM 的基础上又扩充了许多细分模块。而且通过对象接口增加了对 CSS 的支持。</p>
+<ul>
 <li><strong>DOM 视图（DOM Views）</strong>，定义了跟踪不同文档视图的接口；</li>
 <li><strong>DOM 事件（DOM Events）</strong>：定义了事件和事件处理的接口；</li>
 <li><strong>DOM 样式（DOM Style）</strong>：定义了基于 CSS 为元素应用样式的接口；</li>
 <li><strong>DOM 遍历和范围（DOM Traversal and Range）</strong>：定义了遍历和操作文档树的接口。</li>
 </ul>
-</li>
-<li><strong>DOM 3 级</strong>：<ul>
+<h2 id="DOM-3-级"><a href="#DOM-3-级" class="headerlink" title="DOM 3 级"></a>DOM 3 级</h2><ul>
 <li><strong>DOM 加载和保存（DOM Load and Save）</strong>：引入了以统一方式加载和保存文档的方法；</li>
 <li><strong>DOM 验证（DOM Validation）</strong>：新增了验证文档的方法；</li>
 <li>对 DOM 核心进行了扩展，开始<strong>支持 XML 1.0 规范</strong>，涉及 XML Infoset、XPath 和 XML Base。</li>
-</ul>
-</li>
 </ul>
 <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><ul>
 <li>在 HTML5 之前， BOM 的问题在于他作为 JavaScript 的一部分却没有相关标准。</li>
