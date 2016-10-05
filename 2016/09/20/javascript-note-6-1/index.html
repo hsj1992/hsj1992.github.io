@@ -107,14 +107,14 @@
 <meta name="description" content="理解对象ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”严格来讲，这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。
 创">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《JavaScript高级程序设计》读书笔记-第六章-1">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第六章-1">
 <meta property="og:url" content="https://codingme.xyz/2016/09/20/javascript-note-6-1/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="理解对象ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”严格来讲，这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。
 创">
-<meta property="og:updated_time" content="2016-09-22T02:59:33.481Z">
+<meta property="og:updated_time" content="2016-10-04T06:00:03.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记-第六章-1">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第六章-1">
 <meta name="twitter:description" content="理解对象ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”严格来讲，这就相当于说对象是一组没有特定顺序的值。对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。
 创">
 
@@ -139,7 +139,7 @@
 
   <link rel="canonical" href="https://codingme.xyz/2016/09/20/javascript-note-6-1/"/>
 
-  <title> 《JavaScript高级程序设计》读书笔记-第六章-1 | CodingMe </title>
+  <title> 《 JavaScript 高级程序设计》备忘-第六章-1 | CodingMe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +302,7 @@
             
             
               
-                《JavaScript高级程序设计》读书笔记-第六章-1
+                《 JavaScript 高级程序设计》备忘-第六章-1
               
             
           </h1>
@@ -363,8 +363,8 @@
       
         <h1 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h1><p>ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”<br>严格来讲，这就相当于说对象是一组没有特定顺序的值。<br>对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。<br>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。<br>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。</p>
 <p>创建自定义对象最简单方式就是创建一个 Object 的实例，然后再为它添加属性和方法。<br><a id="more"></a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">person.name = <span class="string">"Nicholas"</span>;</div><div class="line">person.age = <span class="number">29</span>;</div><div class="line">person.job = <span class="string">"Software Engineer"</span>;</div><div class="line">person.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/*早期JavaScript开发人员经常用这种模式创建新对象，</span></div><div class="line">几年后，对象字面量成为创建这种对象的首选模式。</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">age: <span class="number">29</span>,</div><div class="line">job: <span class="string">"Software Engineer"</span>,</div><div class="line">sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这些属性在创建时都带有一些特征值（characteristic），JavaScript通过这些特征值来定义它们的行为。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">person.name = <span class="string">"Nicholas"</span>;</div><div class="line">person.age = <span class="number">29</span>;</div><div class="line">person.job = <span class="string">"Software Engineer"</span>;</div><div class="line">person.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/*早期 JavaScript 开发人员经常用这种模式创建新对象，</span></div><div class="line">几年后，对象字面量成为创建这种对象的首选模式。</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">age: <span class="number">29</span>,</div><div class="line">job: <span class="string">"Software Engineer"</span>,</div><div class="line">sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>这些属性在创建时都带有一些特征值(characteristic)， JavaScript 通过这些特征值来定义它们的行为。</p>
 <h2 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h2><p>ECMAScript 中有两种属性：数据属性和访问器属性。</p>
 <h3 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h3><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有 4 个描述其行为的特性。</p>
 <ol>
@@ -374,15 +374,15 @@
 <li>[[Value]] ：(数据值)<br> 包含这个属性的数据值。读取属性值的时候，从这个位置读；<br> 写入属性值的时候，把新值保存在这个位置。<br> 这个特性的默认值为 undefined 。</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这里创建了一个名为 name 的属性，为它指定的值是 “Nicholas” 。<br>也就是说， [[Value]] 特性将被设置为 “Nicholas” ，而对这个值的任何修改都将反映在这个位置。<br>要修改属性默认的特性，必须使用 ECMAScript 5 的 Object.defineProperty() 方法。<br>这个方法接收三个参数：<strong>属性所在的对象</strong>、<strong>属性的名字</strong>和<strong>一个描述符对象</strong>。<br>其中，描述符（descriptor）对象的属性必须是： configurable 、 enumerable 、 writable 和 value 。<br>设置其中的一或多个值，可以修改对应的特性值。</p>
+<p>这里创建了一个名为 name 的属性，为它指定的值是 “Nicholas” 。<br>也就是说， [[Value]] 特性将被设置为 “Nicholas” ，而对这个值的任何修改都将反映在这个位置。<br>要修改属性默认的特性，必须使用 ECMAScript 5 的 Object.defineProperty() 方法。<br>这个方法接收三个参数：<strong>属性所在的对象</strong>、<strong>属性的名字</strong>和<strong>一个描述符对象</strong>。<br>其中，描述符(descriptor)对象的属性必须是： configurable 、 enumerable 、 writable 和 value 。<br>设置其中的一或多个值，可以修改对应的特性值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">这个例子创建了一个名为 name 的属性，它的值 "Nicholas" 是只读的。这个属性的值是不可修改</div><div class="line">的，如果尝试为它指定新值，则在非严格模式下，赋值操作将被忽略；在严格模式下，赋值操作将会导</div><div class="line">致抛出错误。</div><div class="line">*/</div><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">writable: <span class="literal">false</span>,</div><div class="line">value: <span class="string">"Nicholas"</span></div><div class="line">&#125;);</div><div class="line">alert(person.name); <span class="comment">//"Nicholas"</span></div><div class="line">person.name = <span class="string">"Greg"</span>;</div><div class="line">alert(person.name); <span class="comment">//"Nicholas"</span></div></pre></td></tr></table></figure>
-<p>可以多次调用 Object.defineProperty() 方法修改同一个属性，但在把 configurable特性设置为 false 之后就会有限制了。</p>
+<p>可以多次调用 Object.defineProperty() 方法修改同一个属性，但在把 configurable 特性设置为 false 之后就会有限制了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">configurable: <span class="literal">false</span>,</div><div class="line">value: <span class="string">"Nicholas"</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">//抛出错误</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(person, <span class="string">"name"</span>, &#123;</div><div class="line">configurable: <span class="literal">true</span>,</div><div class="line">value: <span class="string">"Nicholas"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>在调用 Object.defineProperty() 方法时，<br>如果不指定， configurable 、 enumerable 和writable 特性的默认值都是 false 。<br>多数情况下，可能都没有必要利用 Object.defineProperty()方法提供的这些高级功能。</p>
-<p>IE的BUG：IE8 是第一个实现 Object.defineProperty() 方法的浏览器版本。<br>然而由于实现不彻底，建议不要在 IE8 中使用 Object.defineProperty()方法。</p>
-<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><p>访问器属性不包含数据值；它们包含一对儿 getter 和 setter 函数（不过，这两个函数都不是必需的）。<br>在读取访问器属性时，会调用 getter 函数，这个函数负责返回有效的值；<br>在写入访问器属性时，会调用setter 函数并传入新值，这个函数负责决定如何处理数据。<br>访问器属性有如下 4 个特性。</p>
+<p>在调用 Object.defineProperty() 方法时，<br>如果不指定， configurable 、 enumerable 和 writable 特性的默认值都是 false 。<br>多数情况下，可能都没有必要利用 Object.defineProperty()方法提供的这些高级功能。</p>
+<p>IE 的 BUG ： IE8 是第一个实现 Object.defineProperty() 方法的浏览器版本。<br>然而由于实现不彻底，建议不要在 IE8 中使用 Object.defineProperty()方法。</p>
+<h3 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h3><p>访问器属性不包含数据值；它们包含一对儿 getter 和 setter 函数(不过，这两个函数都不是必需的)。<br>在读取访问器属性时，会调用 getter 函数，这个函数负责返回有效的值；<br>在写入访问器属性时，会调用 setter 函数并传入新值，这个函数负责决定如何处理数据。<br>访问器属性有如下 4 个特性。</p>
 <ol>
-<li>[[Configurable]] ：<br> 表示能否通过 delete 删除属性从而重新定义属性，<br> 能否修改属性的特性，或者能否把属性修改为数据属性。<br> 对于直接在对象上定义的属性，这个特性的默认值为true 。</li>
+<li>[[Configurable]] ：<br> 表示能否通过 delete 删除属性从而重新定义属性，<br> 能否修改属性的特性，或者能否把属性修改为数据属性。<br> 对于直接在对象上定义的属性，这个特性的默认值为 true 。</li>
 <li>[[Enumerable]] ：<br> 表示能否通过 for-in 循环返回属性。<br> 对于直接在对象上定义的属性，这个特性的默认值为 true 。</li>
 <li>[[Get]] ：<br> 在读取属性时调用的函数。默认值为 undefined 。</li>
 <li>[[Set]] ：<br> 在写入属性时调用的函数。默认值为 undefined 。</li>
@@ -390,14 +390,14 @@
 <p>访问器属性不能直接定义，必须使用 Object.defineProperty() 来定义。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> book = &#123;</div><div class="line">_year: <span class="number">2004</span>,</div><div class="line">edition: <span class="number">1</span></div><div class="line">&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(book, <span class="string">"year"</span>, &#123;</div><div class="line">get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>._year;</div><div class="line">&#125;,</div><div class="line">set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (newValue &gt; <span class="number">2004</span>) &#123;</div><div class="line"><span class="keyword">this</span>._year = newValue;</div><div class="line"><span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">book.year = <span class="number">2005</span>;</div><div class="line">alert(book.edition); <span class="comment">//2</span></div></pre></td></tr></table></figure>
 <p>_year 前面的下划线是一种常用的记号，用于表示只能通过对象方法访问的属性。<br>setter 函数通过计算来确定正确的版本。因此，把 year 属性修改为 2005 会导致 _year 变成 2005，而 edition 变为 2。<br>这是使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化。</p>
-<p>不一定非要同时指定 getter 和 setter。只指定 getter 意味着属性是不能写，尝试写入属性会被忽略。<br>在严格模式下，尝试写入只指定了 getter 函数的属性会抛出错误。<br>类似地，只指定 setter 函数的属性也不能读，否则在非严格模式下会返回 undefined ，而在严格模式下会抛出错误。<br>支持 ECMAScript 5 的这个方法的浏览器有 IE9+（IE8 只是部分实现）、Firefox 4+、Safari 5+、Opera 12+和 Chrome。<br>在这个方法之前，要创建访问器属性，一般都使用两个非标准的方法：<br><code>__defineGetter__()</code> 和 <code>__defineSetter__()</code>。<br>这两个方法最初是由 Firefox 引入的，后来 Safari 3、Chrome 1和 Opera 9.5 也给出了相同的实现。</p>
+<p>不一定非要同时指定 getter 和 setter 。只指定 getter 意味着属性是不能写，尝试写入属性会被忽略。<br>在严格模式下，尝试写入只指定了 getter 函数的属性会抛出错误。<br>类似地，只指定 setter 函数的属性也不能读，否则在非严格模式下会返回 undefined ，而在严格模式下会抛出错误。<br>支持 ECMAScript 5 的这个方法的浏览器有 IE9+(IE8 只是部分实现)、 Firefox 4+ 、 Safari 5+ 、 Opera 12+和 Chrome 。<br>在这个方法之前，要创建访问器属性，一般都使用两个非标准的方法：<br><code>__defineGetter__()</code> 和 <code>__defineSetter__()</code>。<br>这两个方法最初是由 Firefox 引入的，后来 Safari 3 、 Chrome 1和 Opera 9.5 也给出了相同的实现。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> book = &#123;</div><div class="line">_year: <span class="number">2004</span>,</div><div class="line">edition: <span class="number">1</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// 定义访问器的旧有方法</span></div><div class="line">book.__defineGetter__(<span class="string">"year"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>._year;</div><div class="line">&#125;);</div><div class="line">book.__defineSetter__(<span class="string">"year"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (newValue &gt; <span class="number">2004</span>) &#123;</div><div class="line"><span class="keyword">this</span>._year = newValue;</div><div class="line"><span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">book.year = <span class="number">2005</span>;</div><div class="line">alert(book.edition); <span class="comment">//2</span></div></pre></td></tr></table></figure>
 <p>在 不 支 持 Object.defineProperty() 方 法 的 浏 览 器 中 不 能 修 改 [[Configurable]] 和[[Enumerable]] 。</p>
-<h2 id="定义多个属性"><a href="#定义多个属性" class="headerlink" title="定义多个属性"></a>定义多个属性</h2><p>支持 Object.defineProperties() 方法的浏览器有 IE9+、Firefox 4+、Safari 5+、Opera 12+和Chrome。<br>由于为对象定义多个属性的可能性很大，ECMAScript 5 又定义了一个 Object.defineProperties() 方法。<br>利用这个方法可以通过描述符一次定义多个属性。<br>这个方法接收两个对象参数：第一个对象是要添加和修改其属性的对象，第二个对象的属性与第一个对象中要添加或修改的属性一一对应。</p>
+<h2 id="定义多个属性"><a href="#定义多个属性" class="headerlink" title="定义多个属性"></a>定义多个属性</h2><p>支持 Object.defineProperties() 方法的浏览器有 IE9+ 、 Firefox 4+ 、 Safari 5+ 、 Opera 12+和 Chrome 。<br>由于为对象定义多个属性的可能性很大， ECMAScript 5 又定义了一个 Object.defineProperties() 方法。<br>利用这个方法可以通过描述符一次定义多个属性。<br>这个方法接收两个对象参数：第一个对象是要添加和修改其属性的对象，第二个对象的属性与第一个对象中要添加或修改的属性一一对应。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> book = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperties(book, &#123;</div><div class="line">_year: &#123;</div><div class="line">value: <span class="number">2004</span></div><div class="line">&#125;,</div><div class="line">edition: &#123;</div><div class="line">value: <span class="number">1</span></div><div class="line">&#125;,</div><div class="line">year: &#123;</div><div class="line">get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._year;</div><div class="line">&#125;,</div><div class="line">set: <span class="function"><span class="keyword">function</span>(<span class="params">newValue</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (newValue &gt; <span class="number">2004</span>) &#123;</div><div class="line"><span class="keyword">this</span>._year = newValue;</div><div class="line"><span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="读取属性的特性"><a href="#读取属性的特性" class="headerlink" title="读取属性的特性"></a>读取属性的特性</h2><p>使用 ECMAScript 5 的 Object.getOwnPropertyDescriptor() 方法，可以取得给定属性的描述<br>符。<br>这个方法接收两个参数：属性所在的对象和要读取其描述符的属性名称。<br>返回值是一个对象，如果是访问器属性，这个对象的属性有 configurable 、 enumerable 、 get 和 set ；<br>如果是数据属性，这个对象的属性有 configurable 、 enumerable 、 writable 和 value 。<br>在 JavaScript 中，可以针对任何对象——包括 DOM 和 BOM 对象，使用 Object.getOwnPropertyDescriptor() 方法。<br>支持这个方法的浏览器有 IE9+、Firefox 4+、Safari 5+、Opera 12+和 Chrome。</p>
+<h2 id="读取属性的特性"><a href="#读取属性的特性" class="headerlink" title="读取属性的特性"></a>读取属性的特性</h2><p>使用 ECMAScript 5 的 Object.getOwnPropertyDescriptor() 方法，可以取得给定属性的描述<br>符。<br>这个方法接收两个参数：属性所在的对象和要读取其描述符的属性名称。<br>返回值是一个对象，如果是访问器属性，这个对象的属性有 configurable 、 enumerable 、 get 和 set ；<br>如果是数据属性，这个对象的属性有 configurable 、 enumerable 、 writable 和 value 。<br>在 JavaScript 中，可以针对任何对象——包括 DOM 和 BOM 对象，使用 Object.getOwnPropertyDescriptor() 方法。<br>支持这个方法的浏览器有 IE9+、 Firefox 4+ 、 Safari 5+ 、 Opera 12+和 Chrome 。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> descriptor = <span class="built_in">Object</span>.getOwnPropertyDescriptor(book, <span class="string">"_year"</span>);</div><div class="line">alert(descriptor.value); <span class="comment">//2004</span></div><div class="line">alert(descriptor.configurable); <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<p>对于数据属性 _year ， value 等于最初的值， configurable 是 false ，而 get 等于undefined 。<br>对于访问器属性 year ， value 等于 undefined ， enumerable 是 false ，而 get 是一个指向 getter函数的指针。</p>
+<p>对于数据属性 _year ， value 等于最初的值， configurable 是 false ，而 get 等于 undefined 。<br>对于访问器属性 year ， value 等于 undefined ， enumerable 是 false ，而 get 是一个指向 getter 函数的指针。</p>
 
       
     </div>
@@ -431,16 +431,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/20/javascript-note-5-5/" rel="next" title="《JavaScript高级程序设计》读书笔记-第五章-5">
-                <i class="fa fa-chevron-left"></i> 《JavaScript高级程序设计》读书笔记-第五章-5
+              <a href="/2016/09/20/javascript-note-5-5/" rel="next" title="《 JavaScript 高级程序设计》备忘-第五章-5">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第五章-5
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/20/javascript-note-6-2/" rel="prev" title="《JavaScript高级程序设计》读书笔记-第六章-2">
-                《JavaScript高级程序设计》读书笔记-第六章-2 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/20/javascript-note-6-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第六章-2">
+                《 JavaScript 高级程序设计》备忘-第六章-2 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +509,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -517,7 +517,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -526,7 +526,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

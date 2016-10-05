@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/22/javascript-note-6-3/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第六章-3
+                <a class="post-title-link" href="/2016/10/04/javascript-note-11/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十一章
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T11:55:27+08:00" content="2016-09-22">
-              2016-09-22
+            <time itemprop="dateCreated" datetime="2016-10-04T14:33:04+08:00" content="2016-10-04">
+              2016-10-04
             </time>
           </span>
 
@@ -361,58 +361,214 @@
       
         
           
-            <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>许多 OO 语言都支持两种继承方式：接口继承和实现继承。<br>接口继承只继承方法签名，而实现继承则继承实际的方法。<br>由于函数没有签名，在 ECMAScript 中无法实现接口继承。<br>ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链来实现的。</p>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>ECMAScript 将原型链作为实现继承的主要方法。<br>基本思想:利用原型让一个引用类型继承另一个引用类型的属性和方法。</p>
-<p>基本模式：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.property = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">SuperType.prototype.getSuperValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>.property;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.subproperty = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//继承了 SuperType</span></div><div class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</div><div class="line"></div><div class="line">SubType.prototype.getSubValue = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>.subproperty;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> SubType();</div><div class="line">alert(instance.getSuperValue()); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>SuperType 和 SubType 主要区别是 SubType 继承了 SuperType ，<br>而继承是通过创建 SuperType 的实例，并将该实例赋给SubType.prototype 实现的。<br>实现的本质是重写原型对象，代之以一个新类型的实例。<br>原来存在于 SuperType 的实例中的所有属性和方法，现在也存在于 SubType.prototype 中了。<br>新原型不仅具有作为一个 SuperType 的实例所拥有的全部属性和方法，而且其内部还有一个指针，指向了 SuperType 的原型。</p>
-<p>instance 指向 SubType的原型 ，<br>SubType 的原型又指向 SuperType 的原型 。<br>getSuperValue() 方法仍然还在SuperType.prototype 中，<br>但 property 则位于 SubType.prototype(SuperType实例) 中。<br>instance.constructor 现在指向的是 SuperType ，<br>这是因为原来 SubType.prototype 中的 constructor 被重写了的缘故(现在的SubType.prototype即SuperType实例，其原型SuperType 的 constructor指向SuperType构造函数)。</p>
-<p>通过实现原型链，本质上扩展了本章前面介绍的原型搜索机制。<br>调用instance.getSuperValue() 会经历三个搜索步骤：<br>1）搜索实例；<br>2）搜索 SubType.prototype ；<br>3）搜索 SuperType.prototype ，最后一步才会找到该方法。</p>
-<h3 id="别忘记默认的原型"><a href="#别忘记默认的原型" class="headerlink" title="别忘记默认的原型"></a>别忘记默认的原型</h3><p>前面例子中展示的原型链还少一环。所有引用类型默认都继承了 Object ，而这个继承也是通过原型链实现的。<br>有函数的默认原型都是 Object 的实例，因此默认原型都会包含一个内部指针，指向 Object.prototype 。<br>这也正是所有自定义类型都会继承 toString() 、valueOf() 等默认方法的根本原因。<br>SubType 继承了 SuperType ，而 SuperType 继承了 Object 。当调用 instance.toString()时，实际上调用的是保存在 Object.prototype 中的那个方法。</p>
-<h3 id="确定原型和实例的关系"><a href="#确定原型和实例的关系" class="headerlink" title="确定原型和实例的关系"></a>确定原型和实例的关系</h3><p>可以通过两种方式来确定原型和实例之间的关系。<br>1.使用 instanceof 操作符。用这个操作符来测试<strong>实例</strong>与原型链中出现过的<strong>构造函数</strong>，结果就会返回 true 。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alert(instance <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></div><div class="line">alert(instance <span class="keyword">instanceof</span> SuperType); <span class="comment">//true</span></div><div class="line">alert(instance <span class="keyword">instanceof</span> SubType); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>2.使用 isPrototypeOf() 方法。同样，只要是原型链中出现过的<strong>原型</strong>，都可以说是该原型链所派生的<strong>实例的原型</strong>，因此 isPrototypeOf() 方法也会返回 true。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">Object</span>.prototype.isPrototypeOf(instance)); <span class="comment">//true</span></div><div class="line">alert(SuperType.prototype.isPrototypeOf(instance)); <span class="comment">//true</span></div><div class="line">alert(SubType.prototype.isPrototypeOf(instance)); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<h3 id="谨慎地定义方法"><a href="#谨慎地定义方法" class="headerlink" title="谨慎地定义方法"></a>谨慎地定义方法</h3><p>给原型添加方法的代码一定要放在替换原型的语句之后。<br>在通过原型链实现继承时，不能使用对象字面量创建原型方法。因为这样做就会重写原型链。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//继承了 SuperType</span></div><div class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</div><div class="line"></div><div class="line"><span class="comment">// 使用字面量添加新方法，会导致上一行代码无效</span></div><div class="line">SubType.prototype = &#123;</div><div class="line">getSubValue : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>.subproperty;</div><div class="line">&#125;,</div><div class="line">someOtherMethod : <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>现在的原型包含的是一个 Object 的实例，而非 SuperType 的实例，<br>因此我们设想中的原型链已经被切断—— SubType 和 SuperType 之间已经没有关系了。</p>
-<h3 id="原型链的问题"><a href="#原型链的问题" class="headerlink" title="原型链的问题"></a>原型链的问题</h3><p>1.最主要的问题来自包含引用类型值的原型。<br>包含引用类型值的原型属性会被所有实例共享；而这也正是为什么要在构造函数中，而不是在原型对象中定义属性的原因。<br>在通过原型来实现继承时，原型实际上会变成另一个类型的实例。<br>于是，原先的实例属性也就顺理成章地变成了现在的原型属性了。</p>
-<p>2.在创建子类型的实例时，不能向超类型的构造函数中传递参数。<br>应该说是没有办法在不影响所有对象实例的情况下，给超类型的构造函数传递参数。</p>
-<p>因此，实践中很少会单独使用原型链。</p>
-<h2 id="借用构造函数"><a href="#借用构造函数" class="headerlink" title="借用构造函数"></a>借用构造函数</h2><p>在解决<strong>原型中包含引用类型值</strong>所带来问题的过程中，开发人员开始使用一种叫做<strong>借用构造函数</strong>（constructor stealing）的技术（有时候也叫做<strong>伪造对象</strong>或<strong>经典继承</strong>）。<br>基本思想：即在子类型构造函数的内部调用超类型构造函数。<br>函数只不过是在特定环境中执行代码的对象，因此通过使用 apply() 和 call() 方法也可以在（将来）新创建的对象上执行构造函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="comment">// 继承了 SuperType</span></div><div class="line">SuperType.call(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType();</div><div class="line">instance1.colors.push(<span class="string">"black"</span>);</div><div class="line">alert(instance1.colors); <span class="comment">//"red,blue,green,black"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType();</div><div class="line">alert(instance2.colors); <span class="comment">//"red,blue,green"</span></div></pre></td></tr></table></figure>
-<p>“借调”了超类型的构造函数。通过使用 call() 方法（或 apply() 方法也可以），<br>我们实际上是在（未来将要）新创建的 SubType 实例的环境下调用了 SuperType 构造函数。</p>
-<p>结果，SubType 的每个实例就都会具有自己的 colors 属性的副本了。</p>
-<h3 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h3><p>相对于原型链而言，借用构造函数有一个很大的优势，即可以在子类型构造函数中向超类型构造函数传递参数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="comment">//继承了 SuperType，同时还传递了参数</span></div><div class="line">SuperType.call(<span class="keyword">this</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="comment">//实例属性</span></div><div class="line"><span class="keyword">this</span>.age = <span class="number">29</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> SubType();</div><div class="line">alert(instance.name); <span class="comment">//"Nicholas";</span></div><div class="line">alert(instance.age); <span class="comment">//29</span></div></pre></td></tr></table></figure>
-<h3 id="借用构造函数的问题"><a href="#借用构造函数的问题" class="headerlink" title="借用构造函数的问题"></a>借用构造函数的问题</h3><p>如果仅仅是借用构造函数，那么也将无法避免构造函数模式存在的问题——方法都在构造函数中定义，(于是就有了一个接一个的函数实例)<br>因此函数复用就无从谈起了。<br>而且，在超类型的原型中定义的方法，对子类型而言也是不可见的，结果所有类型都只能使用构造函数模式。<br>考虑到这些问题，借用构造函数的技术也是很少单独使用的。</p>
-<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><p>组合继承（combination inheritance），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的技术组合到一块，从而发挥二者之长的一种继承模式。<br>思路：使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.name = name;</div><div class="line"><span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line"></div><div class="line"><span class="comment">//继承属性</span></div><div class="line">SuperType.call(<span class="keyword">this</span>, name);</div><div class="line"></div><div class="line"><span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//继承方法</span></div><div class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</div><div class="line">SubType.prototype.constructor = SubType;</div><div class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType(<span class="string">"Nicholas"</span>, <span class="number">29</span>);</div><div class="line">instance1.colors.push(<span class="string">"black"</span>);</div><div class="line">alert(instance1.colors); <span class="comment">//"red,blue,green,black"</span></div><div class="line">instance1.sayName(); <span class="comment">//"Nicholas";</span></div><div class="line">instance1.sayAge(); <span class="comment">//29</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType(<span class="string">"Greg"</span>, <span class="number">27</span>);</div><div class="line">alert(instance2.colors); <span class="comment">//"red,blue,green"</span></div><div class="line">instance2.sayName(); <span class="comment">//"Greg";</span></div><div class="line">instance2.sayAge(); <span class="comment">//27</span></div></pre></td></tr></table></figure>
-<p>在这个例子中 SubType 利用 call()/apply() 方法调用 SuperType 构造函数，继承了 SuperType 构造函数的属性（color）,并传入 name 参数，<br>又定义了它自己的属性 age 。之后将 SuperType 的实例赋值给 SubType 的原型实现了继承方法，然后又在该新原型上定义了方法 sayAge() 。<br>这样一来，就可以让两个不同的 SubType 实例既分别拥有自己属性——包括 colors 属性，又可以使用相同的方法了。</p>
-<p>组合继承避免了原型链和借用构造函数的缺陷，融合了它们的优点，成为 JavaScript 中最常用的继承模式。<br>而且， instanceof 和 isPrototypeOf() 也能够用于识别基于组合继承创建的对象。</p>
-<h2 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h2><p>道格拉斯·克罗克福德在 2006年写了一篇文章，题为 Prototypal Inheritance in JavaScript （JavaScript中的原型式继承）。<br>想法：借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span>(<span class="params">o</span>)</span>&#123;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">F.prototype = o;</div><div class="line"><span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在 object() 函数内部，先创建了一个临时性的构造函数，然后将传入的对象作为这个构造函数的原型，最后返回了这个临时类型的一个新实例。<br>从本质上讲， object() 对传入其中的对象执行了一次浅复制。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">friends: [<span class="string">"Shelby"</span>, <span class="string">"Court"</span>, <span class="string">"Van"</span>]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> anotherPerson = object(person);</div><div class="line">anotherPerson.name = <span class="string">"Greg"</span>;</div><div class="line">anotherPerson.friends.push(<span class="string">"Rob"</span>);</div><div class="line"><span class="keyword">var</span> yetAnotherPerson = object(person);</div><div class="line">yetAnotherPerson.name = <span class="string">"Linda"</span>;</div><div class="line">yetAnotherPerson.friends.push(<span class="string">"Barbie"</span>);</div><div class="line">alert(person.friends); <span class="comment">//"Shelby,Court,Van,Rob,Barbie"</span></div></pre></td></tr></table></figure>
-<p>这种原型式继承，要求你必须有一个对象可以作为另一个对象的基础。<br>如果有这么一个对象的话，可以把它传递给 object() 函数，然后再根据具体需求对得到的对象加以修改即可。<br>在这个例子中，可以作为另一个对象基础的是 person 对象，<br>于是我们把它传入到 object() 函数中，然后该函数就会返回一个新对象。<br>这个新对象将 person 作为原型，所以它的原型中就包含一个基本类型值属性和一个引用类型值属性。<br>这意味着 person.friends 不仅属于 person 所有，而且也会被 anotherPerson以及 yetAnotherPerson 共享。<br>实际上，这就相当于又创建了 person (实例)对象的两个副本。</p>
-<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create()"></a>Object.create()</h3><p>ECMAScript 5 通过新增 Object.create() 方法规范化了原型式继承。<br>这个方法接收两个参数：一个用作新对象原型的对象和（可选的）一个为新对象定义额外属性的对象。<br>在传入一个参数的情况下，Object.create() 与 object() 方法的行为相同。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">friends: [<span class="string">"Shelby"</span>, <span class="string">"Court"</span>, <span class="string">"Van"</span>]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> anotherPerson = <span class="built_in">Object</span>.create(person);</div><div class="line">anotherPerson.name = <span class="string">"Greg"</span>;</div><div class="line">anotherPerson.friends.push(<span class="string">"Rob"</span>);</div><div class="line"><span class="keyword">var</span> yetAnotherPerson = <span class="built_in">Object</span>.create(person);</div><div class="line">yetAnotherPerson.name = <span class="string">"Linda"</span>;</div><div class="line">yetAnotherPerson.friends.push(<span class="string">"Barbie"</span>);</div><div class="line">alert(person.friends); <span class="comment">//"Shelby,Court,Van,Rob,Barbie"</span></div></pre></td></tr></table></figure>
-<p>Object.create() 方法的第二个参数与 Object.defineProperties() 方法的第二个参数格式相同：<br>每个属性都是通过自己的描述符定义的。以这种方式指定的任何属性都会覆盖原型对象上的同名属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">friends: [<span class="string">"Shelby"</span>, <span class="string">"Court"</span>, <span class="string">"Van"</span>]</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> anotherPerson = <span class="built_in">Object</span>.create(person, &#123;</div><div class="line">name: &#123;</div><div class="line">value: <span class="string">"Greg"</span></div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">alert(anotherPerson.name); <span class="comment">//"Greg"</span></div></pre></td></tr></table></figure>
-<p>在没有必要兴师动众地创建构造函数，而只想让一个对象与另一个对象保持类似的情况下，原型式继承是完全可以胜任的。<br>不过别忘了，包含引用类型值的属性始终都会共享相应的值，就像使用原型模式一样。</p>
-<h2 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h2><p>是与原型式继承紧密相关的一种思路，并且同样也是由克罗克福德推而广之的。<br>思路:与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，<br>该函数在内部以某种方式来增强对象，最后再像真的是它做了所有工作一样返回对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span>(<span class="params">original</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> clone = object(original); <span class="comment">//通过调用函数创建一个新对象</span></div><div class="line">clone.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//以某种方式来增强这个对象</span></div><div class="line">alert(<span class="string">"hi"</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">return</span> clone; <span class="comment">//返回这个对象</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">friends: [<span class="string">"Shelby"</span>, <span class="string">"Court"</span>, <span class="string">"Van"</span>]</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> anotherPerson = createAnother(person);</div><div class="line">anotherPerson.sayHi(); <span class="comment">//"hi"</span></div></pre></td></tr></table></figure>
-<p>这个例子中的代码基于 person 返回了一个新对象—— anotherPerson 。<br>新对象不仅具有 person的所有属性和方法，而且还有自己的 sayHi() 方法。<br>在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。<br>前面示范继承模式时使用的 object() 函数不是必需的；任何能够返回新对象的函数都适用于此模式。</p>
-<p>使用寄生式继承来为对象添加函数，会由于不能做到函数复用而降低效率；这一点与构造函数模式类似。</p>
-<h2 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h2><p>组合继承是 JavaScript 最常用的继承模式；不过，它也有自己的不足。<br>组合继承最大的问题就是无论什么情况下，都会调用两次超类型构造函数：<br>一次是在创建子类型原型的时候，另一次是在子类型构造函数内部。<br>子类型最终会包含超类型对象的全部实例属性，但我们不得不在调用子类型构造函数时重写这些属性。</p>
-<p>所谓寄生组合式继承，即通过借用构造函数来继承属性，通过原型链的混成形式来继承方法。<br>基本思路:不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本而已。<br>本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType, superType</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> prototype = object(superType.prototype); <span class="comment">//创建对象</span></div><div class="line">prototype.constructor = subType; <span class="comment">//增强对象</span></div><div class="line">subType.prototype = prototype; <span class="comment">//指定对象</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>第一步是创建超类型原型的一个副本。<br>第二步是为创建的副本添加 constructor 属性，从而弥补因重写原型而失去的默认的 constructor 属性。<br>最后一步，将新创建的对象（即副本）赋值给子类型的原型。</p>
-<p>原版：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.name = name;</div><div class="line"><span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</div><div class="line">&#125;</div><div class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">SuperType.call(<span class="keyword">this</span>, name); <span class="comment">// 第二次调用 SuperType()</span></div><div class="line"><span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">SubType.prototype = <span class="keyword">new</span> SuperType(); <span class="comment">// 第一次调用 SuperType()</span></div><div class="line">SubType.prototype.constructor = SubType;</div><div class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>使用寄生式组合继承的版本：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params">name</span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.name = name;</div><div class="line"><span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</div><div class="line">&#125;</div><div class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params">name, age</span>)</span>&#123;</div><div class="line">SuperType.call(<span class="keyword">this</span>, name);</div><div class="line"><span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">inheritPrototype(SubType, SuperType);</div><div class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这样就只需要调用一次 SuperType 构造函数，避免了在SubType.prototype 上面创建不必要的、多余的属性。<br>与此同时，原型链还能保持不变；因此，还能够正常使用instanceof 和 isPrototypeOf() 。<br>开发人员普遍认为寄生组合式继承是引用类型最理想的继承范式。<br>YUI 的 YAHOO.lang.extend() 方法采用了寄生组合继承，从而让这种模式首次出现在了一个应用非常广泛的 JavaScript 库中。</p>
+            <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><p>众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。<br>实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。</p>
+<p>Selectors API Level 1 的核心是两个方法：querySelector()和querySelectorAll()。<br>在兼容的浏览器中，可以通过Document 及Element 类型的实例调用它们。<br>目前已完全支持Selectors API Level 1的浏览器有IE 8+、Firefox 3.5+、Safari 3.1+、Chrome 和Opera 10+。</p>
+<h2 id="querySelector-方法"><a href="#querySelector-方法" class="headerlink" title="querySelector()方法"></a>querySelector()方法</h2><p>querySelector()方法接收一个CSS 选择符，返回与该模式匹配的第一个元素，如果没有找到匹配的元素，返回null。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得body 元素</span></div><div class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>);</div><div class="line"><span class="comment">//取得ID 为"myDiv"的元素</span></div><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.querySelector(<span class="string">"#myDiv"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的第一个元素</span></div><div class="line"><span class="keyword">var</span> selected = <span class="built_in">document</span>.querySelector(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得类为"button"的第一个图像元素</span></div><div class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.body.querySelector(<span class="string">"img.button"</span>);</div></pre></td></tr></table></figure>
+<p>通过Document 类型调用querySelector()方法时，会在文档元素的范围内查找匹配的元素。<br>而通过Element 类型调用querySelector()方法时，只会在该元素后代元素的范围内查找匹配的元素。<br>如果传入了不被支持的选择符，querySelector()会抛出错误。</p>
+<h2 id="querySelectorAll-方法"><a href="#querySelectorAll-方法" class="headerlink" title="querySelectorAll()方法"></a>querySelectorAll()方法</h2><p>接收的参数与querySelector()方法一样，都是一个CSS 选择符，但返回的是所有匹配的元素而不仅仅是一个元素。返回的是一个NodeList 的实例。<br>具体来说，返回的值实际上是带有所有属性和方法的NodeList，而其底层实现则类似于一组元素的<strong>快照</strong>，而非不断对文档进行搜索的动态查询。<br>可以避免使用NodeList 对象通常会引起的大多数性能问题。<br>只要传给querySelectorAll()方法的CSS 选择符有效，该方法都会返回一个NodeList 对象，而不管找到多少匹配的元素。<br>如果没有找到匹配的元素，NodeList 就是空的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得某&lt;div&gt;中的所有&lt;em&gt;元素（类似于getElementsByTagName("em")）</span></div><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).querySelectorAll(<span class="string">"em"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的所有元素</span></div><div class="line"><span class="keyword">var</span> selecteds = <span class="built_in">document</span>.querySelectorAll(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素</span></div><div class="line"><span class="keyword">var</span> strongs = <span class="built_in">document</span>.querySelectorAll(<span class="string">"p strong"</span>);</div></pre></td></tr></table></figure>
+<p>与querySelector()类似，如果传入了浏览器不支持的选择符或者选择符中有语法错误，querySelectorAll()会抛出错误。</p>
+<h2 id="matchesSelector-方法"><a href="#matchesSelector-方法" class="headerlink" title="matchesSelector()方法"></a>matchesSelector()方法</h2><p>Selectors API Level 2 规范为Element 类型新增了一个方法matchesSelector()。<br>这个方法接收一个参数，即CSS 选择符，如果调用元素与该选择符匹配，返回true；否则，返回false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.body.matchesSelector(<span class="string">"body.page1"</span>))&#123;</div><div class="line"><span class="comment">//true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在取得某个元素引用的情况下，使用这个方法能够方便地检测它是否会被querySelector()或querySelectorAll()方法返回。<br>截至2011 年年中，还没有浏览器支持matchesSelector()方法；<br>不过，也有一些实验性的实现。IE 9+通过msMatchesSelector()支持该方法，Firefox 3.6+通过mozMatchesSelector()支持该方法，Safari 5+和Chrome 通过webkitMatchesSelector()支持该方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchesSelector</span>(<span class="params">element, selector</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (element.matchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.matchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.msMatchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.msMatchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.mozMatchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.mozMatchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.webkitMatchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.webkitMatchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Not supported."</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (matchesSelector(<span class="built_in">document</span>.body, <span class="string">"body.page1"</span>))&#123;</div><div class="line"><span class="comment">//执行操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="元素遍历"><a href="#元素遍历" class="headerlink" title="元素遍历"></a>元素遍历</h1><p>对于元素间的空格，IE9 及之前版本不会返回文本节点，而其他所有浏览器都会返回文本节点。<br>这样，就导致了在使用childNodes 和firstChild 等属性时的行为不一致。<br>为了弥补这一差异，而同时又保持DOM规范不变，Element Traversal 规范（www.w3.org/TR/ElementTraversal/）新定义了一组属性。</p>
+<ul>
+<li>childElementCount：返回子元素（不包括文本节点和注释）的个数。</li>
+<li>firstElementChild：指向第一个子元素；firstChild 的元素版。</li>
+<li>lastElementChild：指向最后一个子元素；lastChild 的元素版。</li>
+<li>previousElementSibling：指向前一个同辈元素；previousSibling 的元素版。</li>
+<li>nextElementSibling：指向后一个同辈元素；nextSibling 的元素版。</li>
+</ul>
+<p>利用这些元素不必担心空白文本节点，从而可以更方便地查找DOM 元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//原版本</span></div><div class="line"><span class="keyword">var</span> i,</div><div class="line">len,</div><div class="line">child = element.firstChild;</div><div class="line"><span class="keyword">while</span>(child != element.lastChild)&#123;</div><div class="line"><span class="keyword">if</span> (child.nodeType == <span class="number">1</span>)&#123; <span class="comment">//检查是不是元素</span></div><div class="line">processChild(child);</div><div class="line">&#125;</div><div class="line">child = child.nextSibling;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//而使用Element Traversal 新增的元素，代码会更简洁。</span></div><div class="line"><span class="keyword">var</span> i,</div><div class="line">len,</div><div class="line">child = element.firstElementChild;</div><div class="line"><span class="keyword">while</span>(child != element.lastElementChild)&#123;</div><div class="line">processChild(child); <span class="comment">//已知其是元素</span></div><div class="line">child = child.nextElementSibling;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>支持Element Traversal 规范的浏览器有IE 9+、Firefox 3.5+、Safari 4+、Chrome 和Opera 10+。</p>
+<h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><p>对于传统HTML 而言，HTML5 是一个叛逆。<br>所有之前的版本对JavaScript 接口的描述都不过三言两语，主要篇幅都用于定义标记，与JavaScript 相关的内容一概交由DOM 规范去定义。</p>
+<p>而HTML5 规范则围绕如何使用新增标记定义了大量JavaScript API。其中一些API 与DOM 重叠，定义了浏览器应该支持的DOM扩展。</p>
+<h2 id="与类相关的扩充"><a href="#与类相关的扩充" class="headerlink" title="与类相关的扩充"></a>与类相关的扩充</h2><p>HTML5 新增了很多API，致力于简化CSS 类的用法。</p>
+<h3 id="getElementsByClassName-方法"><a href="#getElementsByClassName-方法" class="headerlink" title="getElementsByClassName()方法"></a>getElementsByClassName()方法</h3><p>是最受人欢迎的一个方法，可以通过document对象及所有HTML 元素调用该方法。<br>这个方法最早出现在JavaScript 库中，是通过既有的DOM 功能实现的，而原生的实现具有极大的性能优势。<br>getElementsByClassName()方法接收一个参数，即一个包含一或多个类名的字符串，返回带有指定类的所有元素的NodeList。<br>传入多个类名时，类名的先后顺序不重要。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得所有类中包含"username"和"current"的元素，类名的先后顺序无所谓</span></div><div class="line"><span class="keyword">var</span> allCurrentUsernames = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"username current"</span>);</div><div class="line"><span class="comment">//取得ID 为"myDiv"的元素中带有类名"selected"的所有元素</span></div><div class="line"><span class="keyword">var</span> selected = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).getElementsByClassName(<span class="string">"selected"</span>);</div></pre></td></tr></table></figure>
+<p>使用这个方法可以更方便地为带有某些类的元素添加事件处理程序，从而不必再局限于使用ID 或标签名。<br>因为返回的对象是NodeList，所以使用这个方法与使用getElementsByTagName()以及其他返回NodeList 的DOM 方法都具有同样的性能问题。<br>支持getElementsByClassName()方法的浏览器有IE 9+、Firefox 3+、Safari 3.1+、Chrome 和Opera 9.5+。</p>
+<h3 id="classList-属性"><a href="#classList-属性" class="headerlink" title="classList 属性"></a>classList 属性</h3><p>操作类名时，需要通过className 属性添加、删除和替换类名。<br>因为className 中是一个字符串，所以即使只修改字符串一部分，也必须每次都设置整个字符串的值。<br><code>&lt;div class=&quot;bd user disabled&quot;&gt;...&lt;/div&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除"user"类</span></div><div class="line"><span class="comment">//首先，取得类名字符串并拆分成数组</span></div><div class="line"><span class="keyword">var</span> classNames = div.className.split(<span class="regexp">/\s+/</span>);</div><div class="line"><span class="comment">//找到要删的类名</span></div><div class="line"><span class="keyword">var</span> pos = <span class="number">-1</span>,</div><div class="line">i,</div><div class="line">len;</div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=classNames.length; i &lt; len; i++)&#123;</div><div class="line"><span class="keyword">if</span> (classNames[i] == <span class="string">"user"</span>)&#123;</div><div class="line">pos = i;</div><div class="line"><span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//删除类名</span></div><div class="line">classNames.splice(i,<span class="number">1</span>);</div><div class="line"><span class="comment">//把剩下的类名拼成字符串并重新设置</span></div><div class="line">div.className = classNames.join(<span class="string">" "</span>);</div></pre></td></tr></table></figure>
+<p>HTML5 新增了一种操作类名的方式，可以让操作更简单也更安全，那就是为所有元素添加classList 属性。<br>这个classList 属性是新集合类型DOMTokenList 的实例。<br>DOMTokenList 有一个表示自己包含多少元素的length 属性，而要取得每个元素可以使用item()方法，也可以使用方括号语法。</p>
+<p>这个新类型还有不少方法。</p>
+<ul>
+<li>add(value)：将给定的字符串值添加到列表中。如果值已经存在，就不添加了。</li>
+<li>contains(value)：表示列表中是否存在给定的值，如果存在则返回true，否则返回false。</li>
+<li>remove(value)：从列表中删除给定的字符串。</li>
+<li>toggle(value)：如果列表中已经存在给定的值，删除它；如果列表中没有给定的值，添加它。</li>
+</ul>
+<p><code>div.classList.remove(&quot;user&quot;);</code><br>以上代码能够确保其他类名不受此次修改的影响。其他方法也能极大地减少类似基本操作的复杂性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除"disabled"类</span></div><div class="line">div.classList.remove(<span class="string">"disabled"</span>);</div><div class="line"><span class="comment">//添加"current"类</span></div><div class="line">div.classList.add(<span class="string">"current"</span>);</div><div class="line"><span class="comment">//切换"user"类</span></div><div class="line">div.classList.toggle(<span class="string">"user"</span>);</div><div class="line"><span class="comment">//确定元素中是否包含既定的类名</span></div><div class="line"><span class="keyword">if</span> (div.classList.contains(<span class="string">"bd"</span>) &amp;&amp; !div.classList.contains(<span class="string">"disabled"</span>))&#123;</div><div class="line"><span class="comment">//执行操作</span></div><div class="line">)</div><div class="line"><span class="comment">//迭代类名</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=div.classList.length; i &lt; len; i++)&#123;</div><div class="line">doSomething(div.classList[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有了classList 属性，除非你需要全部删除所有类名，或者完全重写元素的class 属性，否则也就用不到className 属性了。<br>支持classList 属性的浏览器有Firefox 3.6+和Chrome。</p>
+<h2 id="焦点管理"><a href="#焦点管理" class="headerlink" title="焦点管理"></a>焦点管理</h2><p>HTML5 也添加了辅助管理DOM 焦点的功能。<br>document.activeElement 属性，这个属性始终会引用DOM 中当前获得了焦点的元素。</p>
+<p>元素获得焦点的方式有页面加载、用户输入（通常是通过按Tab 键）和在代码中调用focus()方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>);</div><div class="line">button.focus();</div><div class="line">alert(<span class="built_in">document</span>.activeElement === button); <span class="comment">//true</span></div><div class="line">button.focus();</div><div class="line">alert(<span class="built_in">document</span>.hasFocus()); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>默认情况下，文档刚刚加载完成时，document.activeElement 中保存的是document.body 元素的引用。<br>文档加载期间，document.activeElement 的值为null。</p>
+<p>新增了document.hasFocus()方法，这个方法用于确定文档是否获得了焦点。<br>通过检测文档是否获得了焦点，可以知道用户是不是正在与页面交互。</p>
+<p>查询文档获知哪个元素获得了焦点，以及确定文档是否获得了焦点，这两个功能最重要的用途是提高Web 应用的无障碍性。<br>无障碍Web 应用的一个主要标志就是恰当的焦点管理，而确切地知道哪个元素获得了焦点是一个极大的进步，至少我们不用再像过去那样靠猜测了。</p>
+<h2 id="HTMLDocument的变化"><a href="#HTMLDocument的变化" class="headerlink" title="HTMLDocument的变化"></a>HTMLDocument的变化</h2><p>HTML5 扩展了HTMLDocument，增加了新的功能。</p>
+<h3 id="readyState-属性"><a href="#readyState-属性" class="headerlink" title="readyState 属性"></a>readyState 属性</h3><p>Document 的readyState 属性有两个可能的值：</p>
+<ul>
+<li>loading，正在加载文档；</li>
+<li>complete，已经加载完文档。</li>
+</ul>
+<p>使用document.readyState 的最恰当方式，就是通过它来实现一个指示文档已经加载完成的指示器。<br>在这个属性得到广泛支持之前，要实现这样一个指示器，必须借助onload 事件处理程序设置一个标签，表明文档已经加载完毕。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>)&#123;</div><div class="line"><span class="comment">//执行操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>支持readyState 属性的浏览器有IE4+、Firefox 3.6+、Safari、Chrome 和Opera 9+。</p>
+<h3 id="兼容模式"><a href="#兼容模式" class="headerlink" title="兼容模式"></a>兼容模式</h3><p>自从IE6 开始区分渲染页面的模式是标准的还是混杂的，检测页面的兼容模式就成为浏览器的必要功能。<br>IE 为此给document 添加了一个名为compatMode 的属性，这个属性就是为了告诉开发人员浏览器采用了哪种渲染模式。</p>
+<p>在标准模式下，document.compatMode 的值等于”CSS1Compat”，而在混杂模式下，document.compatMode 的值等于”BackCompat”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>)&#123;</div><div class="line">alert(<span class="string">"Standards mode"</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">alert(<span class="string">"Quirks mode"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>后来，陆续实现这个属性的浏览器有Firefox、Safari 3.1+、Opera 和Chrome。最终，HTML5 也把这个属性纳入标准，对其实现做出了明确规定。</p>
+<h3 id="head-属性"><a href="#head-属性" class="headerlink" title="head 属性"></a>head 属性</h3><p>HTML5 新增了document.head 属性，引用文档的<code>&lt;head&gt;</code>元素。<br>结合使用这个属性和另一种后备方法。<br><code>var head = document.head || document.getElementsByTagName(&quot;head&quot;)[0];</code><br>如果可用，就使用document.head，否则仍然使用getElementsByTagName()方法。</p>
+<h2 id="字符集属性"><a href="#字符集属性" class="headerlink" title="字符集属性"></a>字符集属性</h2><p>charset 属性表示文档中实际使用的字符集，也可以用来指定新字符集。<br>默认情况下，这个属性的值为”UTF-16”，但可以通过<code>&lt;meta&gt;</code>元素、响应头部或直接设置charset 属性修改这个值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.charset); <span class="comment">//"UTF-16"</span></div><div class="line"><span class="built_in">document</span>.charset = <span class="string">"UTF-8"</span>;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/04/javascript-note-10-5/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-5
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T14:12:40+08:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h1><p>由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。</p>
+<h2 id="动态脚本"><a href="#动态脚本" class="headerlink" title="动态脚本"></a>动态脚本</h2><p>动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。<br>创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
+<p>动态加载的外部JavaScript 文件能够立即运行。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;client.js&quot;&gt;&lt;/script&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = <span class="string">"client.js"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+<p>在执行最后一行代码把<code>&lt;script&gt;</code>元素添加到页面中之前，是不会下载外部文件的。也可以把这个元素添加到<code>&lt;head&gt;</code>元素中，效果相同。<br>可以使用函数来封装。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = url;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadScript(<span class="string">"client.js"</span>);</div></pre></td></tr></table></figure>
+<p>加载完成后，就可以在页面中的其他地方使用这个脚本了。<br>问题只有一个：怎么知道脚本加载完成呢？</p>
+<p>另一种指定JavaScript 代码的方式是行内方式。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="string">"hi"</span>);</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>));</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+<p>在Firefox、Safari、Chrome 和Opera 中，这些DOM 代码可以正常运行。但在IE 中，则会导致错误。<br>IE 将<code>&lt;script&gt;</code>视为一个特殊的元素，不允许DOM 访问其子节点。<br>不过，可以使用<code>&lt;script&gt;</code>元素的text 属性来指定JavaScript 代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.text = <span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params">code</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">script.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line">&#125; <span class="keyword">catch</span> (ex)&#123;</div><div class="line">script.text = code;</div><div class="line">&#125;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadScriptString(<span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>);</div></pre></td></tr></table></figure>
+<p>以这种方式加载的代码会在全局作用域中执行，而且当脚本执行后将立即可用。<br>实际上，这样执行代码与在全局作用域中把相同的字符串传递给eval()是一样的。</p>
+<h2 id="动态样式"><a href="#动态样式" class="headerlink" title="动态样式"></a>动态样式</h2><p>能够把CSS 样式包含到HTML 页面中的元素有两个。其中，<code>&lt;link&gt;</code>元素用于包含来自外部的文件，而<code>&lt;style&gt;</code>元素用于指定嵌入的样式。<br>动态样式是指在页面刚加载时不存在的样式；动态样式是在页面加载完成后动态添加到页面中的。<br><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</code></p>
+<p>用DOM代码则是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</div><div class="line">link.rel = <span class="string">"stylesheet"</span>;</div><div class="line">link.type = <span class="string">"text/css"</span>;</div><div class="line">link.href = <span class="string">"style.css"</span>;</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(link);</div></pre></td></tr></table></figure>
+<p>需要注意的是，必须将<code>&lt;link&gt;</code>元素添加到<code>&lt;head&gt;</code>而不是<code>&lt;body&gt;</code>元素，才能保证在所有浏览器中的行为一致。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyles</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</div><div class="line">link.rel = <span class="string">"stylesheet"</span>;</div><div class="line">link.type = <span class="string">"text/css"</span>;</div><div class="line">link.href = url;</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(link);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadStyles(<span class="string">"styles.css"</span>);</div></pre></td></tr></table></figure>
+<p>加载外部样式文件的过程是异步的，也就是加载样式与执行JavaScript 代码的过程没有固定的次序。</p>
+<p>另一种定义样式的方式是使用<code>&lt;style&gt;</code>元素来包含嵌入式CSS。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line"><span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>);</div><div class="line">style.type = <span class="string">"text/css"</span>;</div><div class="line">style.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"body&#123;background-color:red&#125;"</span>));</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(style);</div></pre></td></tr></table></figure>
+<p>以上代码可以在Firefox、Safari、Chrome 和Opera 中运行，在IE 中则会报错。<br>IE 将<code>&lt;style&gt;</code>视为一个特殊的、与<code>&lt;script&gt;</code>类似的节点，不允许访问其子节点。<br>解决IE 中这个问题的办法，就是访问元素的styleSheet 属性，该属性又有一个cssText 属性，可以接受CSS 代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">css</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>);</div><div class="line">style.type = <span class="string">"text/css"</span>;</div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">style.appendChild(<span class="built_in">document</span>.createTextNode(css));</div><div class="line">&#125; <span class="keyword">catch</span> (ex)&#123;</div><div class="line">style.styleSheet.cssText = css;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(style);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadStyleString(<span class="string">"body&#123;background-color:red&#125;"</span>);</div></pre></td></tr></table></figure>
+<p>专门针对IE 编写代码，务必小心使用styleSheet.cssText 属性。<br>在重用同一个<code>&lt;style&gt;</code>元素并再次设置这个属性时，有可能会导致浏览器崩溃。<br>将cssText 属性设置为空字符串也可能导致浏览器崩溃。</p>
+<h2 id="操作表格"><a href="#操作表格" class="headerlink" title="操作表格"></a>操作表格</h2><p><code>&lt;table&gt;</code>元素是HTML 中最复杂的结构之一。<br>要想创建表格，一般都必须涉及表示表格行、单元格、表头等方面的标签。<br>由于涉及的标签多，因而使用核心DOM 方法创建和修改表格往往都免不了要编写大量的代码。</p>
+<p>例如要创建这个HTML表格。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"100%"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 1,1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 2,1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 1,2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 2,2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>使用核心DOM代码的话需要很多代码。<br>为了方便构建表格，HTML DOM 还为<code>&lt;table&gt;</code>、<code>&lt;tbody&gt;</code>和<code>&lt;tr&gt;</code>元素添加了一些属性和方法。<br>使用这些属性和方法，可以极大地减少创建表格所需的代码数量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建table</span></div><div class="line"><span class="keyword">var</span> table = <span class="built_in">document</span>.createElement(<span class="string">"table"</span>);</div><div class="line">table.border = <span class="number">1</span>;</div><div class="line">table.width = <span class="string">"100%"</span>;</div><div class="line"><span class="comment">//创建tbody</span></div><div class="line"><span class="keyword">var</span> tbody = <span class="built_in">document</span>.createElement(<span class="string">"tbody"</span>);</div><div class="line">table.appendChild(tbody);</div><div class="line"><span class="comment">//创建第一行</span></div><div class="line">tbody.insertRow(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].insertCell(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].cells[<span class="number">0</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 1,1"</span>));</div><div class="line">tbody.rows[<span class="number">0</span>].insertCell(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].cells[<span class="number">1</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 2,1"</span>));</div><div class="line"></div><div class="line"><span class="comment">//创建第二行</span></div><div class="line">tbody.insertRow(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].insertCell(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].cells[<span class="number">0</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 1,2"</span>));</div><div class="line">tbody.rows[<span class="number">1</span>].insertCell(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].cells[<span class="number">1</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 2,2"</span>));</div><div class="line"><span class="comment">//将表格添加到文档主体中</span></div><div class="line"><span class="built_in">document</span>.body.appendChild(table);</div></pre></td></tr></table></figure>
+<h2 id="使用NodeList"><a href="#使用NodeList" class="headerlink" title="使用NodeList"></a>使用NodeList</h2><p>理解NodeList 及其“近亲”NamedNodeMap 和HTMLCollection，是从整体上透彻理解DOM的关键所在。<br>这三个集合都是“动态的”；换句话说，每当文档结构发生变化时，它们都会得到更新。<br>从本质上说，所有NodeList 对象都是在访问DOM文档时实时运行的查询。</p>
+<p>一般来说，应该尽量减少访问NodeList 的次数。因为每次访问NodeList，都会运行一次基于文档的查询。<br>所以，可以考虑将从NodeList 中取得的值缓存起来。</p>
 
           
         
@@ -462,8 +618,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-6-2/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第六章-2
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-4
                 </a>
               
             
@@ -476,8 +632,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:46:00+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-10-03T19:04:28+08:00" content="2016-10-03">
+              2016-10-03
             </time>
           </span>
 
@@ -524,11 +680,214 @@
 
       
         
-          <h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><p>虽然 Object 构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：<br>使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。</p>
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。<br>考虑到在 ECMAScript 中无法创建类，开发人员就发明了一种函数，用函数来封装以特定接口创建对象的细节。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">o.name = name;</div><div class="line">o.age = age;</div><div class="line">o.job = job;</div><div class="line">o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</div></pre></td></tr></table></figure>
+          
+            <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
+<ul>
+<li>nodeType 的值为3；</li>
+<li>nodeName 的值为”#text”；</li>
+<li>nodeValue 的值为节点所包含的文本；</li>
+<li>parentNode 是一个Element；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包含的值相同。<br>操作文本方法：</p>
+<ul>
+<li>appendData(text)：将text 添加到节点的末尾。</li>
+<li>deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。</li>
+<li>insertData(offset, text)：在offset 指定的位置插入text。</li>
+<li>replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+count 为止处的文本。</li>
+<li>splitText(offset)：从offset 指定的位置将当前文本节点分成两个文本节点。</li>
+<li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有空格，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有内容，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--想必有换行的也是吧（换行符）--&gt;</span></div></pre></td></tr></table></figure>
+<p>nodeValue 的值为”Hello World!”。可以使用以下代码来访问这些文本子节点。<br><code>var textNode = div.firstChild; //或者div.childNodes[0]</code><br>如果这个文本节点当前存在于文档树中，那么修改文本节点的结果就会立即得到反映。<br>此时的字符串会经过HTML（或XML，取决于文档类型）编码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//输出结果是"Some &amp;lt;strong&amp;gt;other&amp;lt;/strong&amp;gt; message"</span></div><div class="line">div.firstChild.nodeValue = <span class="string">"Some &lt;strong&gt;other&lt;/strong&gt; message"</span>;</div></pre></td></tr></table></figure>
+<p>这是在向DOM 文档中插入文本之前，先对其进行HTML 编码的一种有效方式。</p>
+<h3 id="创建文本节点"><a href="#创建文本节点" class="headerlink" title="创建文本节点"></a>创建文本节点</h3><p>document.createTextNode()。作为参数的文本也将按照HTML 或XML 的格式进行编码。<br><code>var textNode = document.createTextNode(&quot;&lt;strong&gt;Hello&lt;/strong&gt; world!&quot;);</code><br>在创建新文本节点的同时，也会为其设置ownerDocument 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">element.className = <span class="string">"message"</span>;</div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</div><div class="line">element.appendChild(textNode);</div><div class="line"><span class="built_in">document</span>.body.appendChild(element);</div></pre></td></tr></table></figure>
+<p>可以往同一个元素添加多个文本节点。如果两个文本节点是相邻的同胞节点，那么两个节点中的文本就会连起来显示，中间不会有空格。</p>
+<h3 id="规范化文本节点"><a href="#规范化文本节点" class="headerlink" title="规范化文本节点"></a>规范化文本节点</h3><p>DOM 文档中存在相邻的同胞文本节点很容易导致混乱，因为分不清哪个文本节点表示哪个字符串。<br>DOM 文档中出现相邻文本节点的情况也不在少数。<br>所以才有了normalize()，将相邻文本节点合并。<br>结果节点的nodeValue 等于将合并前每个文本节点的nodeValue 值拼接起来的值。<br>浏览器在解析文档时永远不会创建相邻的文本节点。<br>只会作为执行DOM操作的结果出现。<br>在某些情况下，执行normalize()方法会导致IE6 崩溃。不过，在IE6 后来的补丁中，可能已经修复了这个问题（未经证实）。<br>（IE又是你！）</p>
+<h3 id="分割文本节点"><a href="#分割文本节点" class="headerlink" title="分割文本节点"></a>分割文本节点</h3><p>splitText(),作用与normalize()相反。。<br>这个方法会将一个文本节点分成两个文本节点，即按照指定的位置分割nodeValue 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newNode = element.firstChild.splitText(<span class="number">5</span>);</div><div class="line">alert(element.firstChild.nodeValue); <span class="comment">//"Hello"</span></div><div class="line">alert(newNode.nodeValue); <span class="comment">//" world!"</span></div><div class="line">alert(element.childNodes.length); <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<p>位置5是”Hello”和”world!”之间的空格，因此原来的文本节点将包含字符串”Hello”，而新文本节点将包含文本”world!”（包含空格）。<br><strong>分割文本节点是从文本节点中提取数据的一种常用DOM 解析技术</strong>。</p>
+<h2 id="Comment类型"><a href="#Comment类型" class="headerlink" title="Comment类型"></a>Comment类型</h2><p>注释在DOM中是通过Comment 类型来表示的。</p>
+<ul>
+<li>nodeType 的值为8；</li>
+<li>nodeName 的值为”#comment”；</li>
+<li>nodeValue 的值是注释的内容；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>Comment 类型与Text 类型继承自相同的基类，因此它拥有除splitText()之外的所有字符串操作方法。<br>与Text 类型相似，也可以通过nodeValue 或data 属性来取得注释的内容。<br>使用document.createComment()并为其传递注释文本也可以创建注释节点。<br>1.开发人员很少会创建和访问注释节点，因为注释节点对算法鲜有影响。<br>2.浏览器也不会识别位于<code>&lt;/html&gt;</code>标签后面的注释。如果要访问注释节点，一定要保证它们是<code>&lt;html&gt;</code>元素的后代</p>
+<h2 id="CDATASection类型"><a href="#CDATASection类型" class="headerlink" title="CDATASection类型"></a>CDATASection类型</h2><p>CDATASection 类型只针对基于XML 的文档，表示的是CDATA 区域。<br>CDATASection 类型继承自Text 类型，因此拥有除splitText()之外的所有字符串操作方法。</p>
+<ul>
+<li>nodeType 的值为4；</li>
+<li>nodeName 的值为”#cdata-section”；</li>
+<li>nodeValue 的值是CDATA 区域中的内容；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>CDATA 区域只会出现在XML 文档中，因此多数浏览器都会把CDATA 区域错误地解析为Comment或Element。<br><code>&lt;div id=&quot;myDiv&quot;&gt;&lt;![CDATA[This is some content.]]&gt;&lt;/div&gt;</code><br>这个例子中的<code>&lt;div&gt;</code>元素应该包含一个CDATASection 节点。<br>可是，四大主流浏览器无一能够这样解析它。即使对于有效的XHTML 页面，浏览器也没有正确地支持嵌入的CDATA 区域。</p>
+<p>在真正的XML 文档中，可以使用document.createCDataSection()来创建CDATA 区域，只需为其传入节点的内容即可。</p>
+<h2 id="DocumentType类型"><a href="#DocumentType类型" class="headerlink" title="DocumentType类型"></a>DocumentType类型</h2><p>DocumentType 类型在Web 浏览器中并不常用，仅有Firefox、Safari 和Opera 支持它。</p>
+<ul>
+<li>nodeType 的值为10；</li>
+<li>nodeName 的值为doctype 的名称；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 是Document；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>DocumentType 对象不能动态创建，而只能通过解析文档代码的方式来创建。<br>支持它的浏览器会把DocumentType 对象保存在document.doctype 中。<br>DocumentType 对象的3 个属性：name、entities 和notations。<br>name 表示文档类型的名称；<br>entities 是由文档类型描述的实体的NamedNodeMap 对象；<br>notations 是由文档类型描述的符号的NamedNodeMap 对象。</p>
+<p>通常，浏览器中的文档使用的都是HTML 或XHTML 文档类型，因而entities和notations 都是空列表（列表中的项来自行内文档类型声明）。<br>但不管怎样，只有name 属性是有用的。</p>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.doctype.name); <span class="comment">//"HTML"</span></div></pre></td></tr></table></figure>
+<p>IE 及更早版本不支持DocumentType，因此document.doctype 的值始终都等于null。<br>可是，这些浏览器会把文档类型声明错误地解释为注释， 并且为它创建一个注释节点。<br>IE9 会给document.doctype 赋正确的对象，但仍然不支持访问DocumentType 类型。</p>
+<h2 id="DocumentFragment类型"><a href="#DocumentFragment类型" class="headerlink" title="DocumentFragment类型"></a>DocumentFragment类型</h2><p>只有DocumentFragment 在文档中没有对应的标记。<br>DOM 规定文档片段（document fragment）是一种“轻量级”的文档，可以包含和控制节点，但不会像完整的文档那样占用额外的资源。</p>
+<ul>
+<li>nodeType 的值为11；</li>
+<li>nodeName 的值为”#document-fragment”；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 的值为null；</li>
+<li>子节点可以是Element、ProcessingInstruction、Comment、Text、CDATASection 或EntityReference。</li>
+</ul>
+<p>虽然不能把文档片段直接添加到文档中，但可以将它作为一个“仓库”来使用，即可以在里面保存将来可能会添加到文档中的节点。<br><code>var fragment = document.createDocumentFragment();</code><br>文档片段继承了Node 的所有方法，通常用于执行那些针对文档的DOM操作。<br>如果将文档中的节点添加到文档片段中，就会从文档树中移除该节点，也不会从浏览器中再看到该节点。<br>添加到文档片段中的新节点同样也不属于文档树。<br>可以通过appendChild()或insertBefore()将文档片段中内容添加到文档中。<br><code>&lt;ul id=&quot;myList&quot;&gt;&lt;/ul&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</div><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="literal">null</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</div><div class="line">li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">li.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Item "</span> + (i+<span class="number">1</span>)));</div><div class="line">fragment.appendChild(li);</div><div class="line">&#125;</div><div class="line">ul.appendChild(fragment);</div></pre></td></tr></table></figure>
+<p>如果逐个地添加列表项，将会导致浏览器反复渲染（呈现）新信息。<br>为避免这个问题，可以使用一个文档片段来保存创建的列表项，然后再一次性将它们添加到文档中。<br>最后，文档片段的所有子节点都被删除并转移到了<code>&lt;ul&gt;</code>元素中。</p>
+<h2 id="Attr类型"><a href="#Attr类型" class="headerlink" title="Attr类型"></a>Attr类型</h2><p>元素的特性在DOM 中以Attr 类型来表示。</p>
+<ul>
+<li>nodeType 的值为2；</li>
+<li>nodeName 的值是特性的名称；</li>
+<li>nodeValue 的值是特性的值；</li>
+<li>parentNode 的值为null；</li>
+<li>在HTML 中不支持（没有）子节点；</li>
+<li>在XML 中子节点可以是Text 或EntityReference。</li>
+</ul>
+<p>尽管它们也是节点，但特性却不被认为是DOM 文档树的一部分。<br>开发人员最常使用的是getAttribute()、setAttribute()和remveAttribute()方法，很少直接引用特性节点。<br>Attr 对象有3 个属性：name、value 和specified。<br>name 是特性名称（与nodeName 的值相同），<br>value 是特性的值（与nodeValue 的值相同），<br>而specified 是一个布尔值，用以区别特性是在代码中指定的，还是默认的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> attr = <span class="built_in">document</span>.createAttribute(<span class="string">"align"</span>);</div><div class="line">attr.value = <span class="string">"left"</span>;</div><div class="line">element.setAttributeNode(attr);</div><div class="line">alert(element.attributes[<span class="string">"align"</span>].value); <span class="comment">//"left"</span></div><div class="line">alert(element.getAttributeNode(<span class="string">"align"</span>).value); <span class="comment">//"left"</span></div><div class="line">alert(element.getAttribute(<span class="string">"align"</span>)); <span class="comment">//"left"</span></div></pre></td></tr></table></figure>
+<p>并不建议直接访问特性节点。实际上，使用getAttribute()、setAttribute()和removeAttribute()方法远比操作特性节点更为方便。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T14:36:47+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h2><p>Element 类型就要算是Web 编程中最常用的类型了。<br>Element 类型用于表现XML或HTML元素，提供了对元素标签名、子节点及特性的访问。</p>
+<ul>
+<li>nodeType 的值为1；</li>
+<li>nodeName 的值为元素的标签名；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>其子节点可能是Element、Text、Comment、ProcessingInstruction、CDATASection 或EntityReference。</li>
+</ul>
+<p>要访问元素的标签名，可以使用nodeName 属性，也可以使用tagName 属性；<br>这两个属性会返回相同的值（使用后者主要是为了清晰起见）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">alert(div.tagName); <span class="comment">//"DIV"</span></div><div class="line">alert(div.tagName == div.nodeName); <span class="comment">//true</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-6-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -579,8 +938,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-6-1/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第六章-1
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-2
                 </a>
               
             
@@ -593,8 +952,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:12:25+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-10-03T14:18:24+08:00" content="2016-10-03">
+              2016-10-03
             </time>
           </span>
 
@@ -641,10 +1000,19 @@
 
       
         
-          <h1 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h1><p>ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”<br>严格来讲，这就相当于说对象是一组没有特定顺序的值。<br>对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。<br>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。<br>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。</p>
-<p>创建自定义对象最简单方式就是创建一个 Object 的实例，然后再为它添加属性和方法。<br>
+          <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h2><p>JavaScript 通过Document 类型表示文档。<br>在浏览器中，document 对象是HTMLDocument（继承自Document 类型）的一个实例，表示整个HTML 页面。<br>document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。<br>Document 节点具有下列特征：</p>
+<ul>
+<li>nodeType 的值为9；</li>
+<li>nodeName 的值为”#document”；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 的值为null；</li>
+<li>ownerDocument 的值为 null；</li>
+<li>其子节点可能是一个DocumentType（最多一个）、Element（最多一个）、ProcessingInstruction或Comment。</li>
+</ul>
+<p>Document 类型可以表示HTML 页面或者其他基于XML 的文档。<br>不过，最常见的应用还是作为HTMLDocument 实例的document 对象。</p>
+<h3 id="文档的子节点"><a href="#文档的子节点" class="headerlink" title="文档的子节点"></a>文档的子节点</h3><p>Document 节点的子节点可以是DocumentType、Element、ProcessingInstruction或Comment，但还有两个内置的访问其子节点的快捷方式。<br>第一个就是documentElement属性，该属性始终指向HTML 页面中的<code>&lt;html&gt;</code>元素。<br>另一个就是通过childNodes 列表访问文档元素，但通过documentElement 属性则能更快捷、更直接地访问该元素。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-6-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -695,8 +1063,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-5-5/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第五章-5
+                <a class="post-title-link" href="/2016/10/02/javascript-note-10-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-1
                 </a>
               
             
@@ -709,8 +1077,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T13:35:35+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-10-02T11:10:30+08:00" content="2016-10-02">
+              2016-10-02
             </time>
           </span>
 
@@ -757,11 +1125,10 @@
 
       
         
-          <h1 id="单体内置对象"><a href="#单体内置对象" class="headerlink" title="单体内置对象"></a>单体内置对象</h1><p>内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”<br>开发人员不必显式地实例化内置对象，因为它们已经实例化了。<br>大多数内置对象，例如 Object 、 Array 和 String 。<br>ECMA-262 还定义了两个单体内置对象： Global 和 Math 。</p>
-<h2 id="Global-对象"><a href="#Global-对象" class="headerlink" title="Global 对象"></a>Global 对象</h2><p>Global （全局）对象可以说是 ECMAScript 中最特别的一个对象了，因为不管你从什么角度上看，这个对象都是不存在的。<br>ECMAScript 中的 Global 对象在某种意义上是作为一个终极的“兜底儿对象”来定义的。<br>换句话说，不属于任何其他对象的属性和方法，最终都是它的属性和方法。<br><strong>事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</strong></p>
-<p>诸如 isNaN() 、 isFinite() 、 parseInt() 以及 parseFloat() ，实际上全都是 Global对象的方法。<br>除此之外， Global 对象还包含其他一些方法。</p>
+          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>针对HTML 和XML 文档的一个API。<br>脱胎于Netscape 及微软公司创始的DHTML（动态HTML）。<br>已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。</p>
+<h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><p><code>&lt;html&gt;</code>元素称之为文档元素。<br>每个文档只能有一个文档元素。<br>文档元素是文档的最外层元素。<br>在HTML 页面中，文档元素始终都是<code>&lt;html&gt;</code>元素。<br>在XML 中，没有预定义的元素，因此任何元素都可能成为文档元素。<br>标记都可以通过树中的节点来表示：<br>HTML 元素通过元素节点表示，<br>特性（attribute）通过特性节点表示，<br>文档类型通过文档类型节点表示，<br>而注释则通过注释节点表示。<br>总共有12 种节点类型，这些类型都继承自一个基类型。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-5-5/#more" rel="contents">
+            <a class="btn" href="/2016/10/02/javascript-note-10-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -812,8 +1179,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-5-4/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第五章-4
+                <a class="post-title-link" href="/2016/10/02/javascript-note-9-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第九章-2
                 </a>
               
             
@@ -826,8 +1193,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T12:26:34+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-10-02T09:24:50+08:00" content="2016-10-02">
+              2016-10-02
             </time>
           </span>
 
@@ -874,11 +1241,13 @@
 
       
         
-          <h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><p>为了便于操作基本类型值，ECMAScript 还提供了 3 个特殊的引用类型： Boolean 、 Number 和String 。<br>这些类型与本章介绍的其他引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。<br>实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="string">"some text"</span>;</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">//等同于</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"some text"</span>);</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line">s1 = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<p>后台操作：<br>(1) 创建 String 类型的一个实例；<br>(2) 在实例上调用指定的方法；<br>(3) 销毁这个实例。<br>这三个步骤也分别适用于 Boolean和 Number 类型对应的布尔值和数字值。<br>
+          <h1 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h1><p>首先要确定的往往是你需要多么具体的浏览器信息。<br>一般情况下，知道呈现引擎和最低限度的版本就足以决定正确的操作方法了。<br>不推荐的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isIE6 || isIE7) &#123; <span class="comment">//不推荐!!!</span></div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种代码其实是很脆弱的，因为它要依据特定的版本来决定做什么。<br>如果是IE8 怎么办呢？只要IE 有新版本出来，就必须更新这些代码。</p>
+<p>使用这类代码可以避免：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ieVer &gt;=<span class="number">6</span>)&#123;</div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-5-4/#more" rel="contents">
+            <a class="btn" href="/2016/10/02/javascript-note-9-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -929,8 +1298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/javascript-note-5-3/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第五章-3
+                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-2
                 </a>
               
             
@@ -943,8 +1312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T12:56:36+08:00" content="2016-09-19">
-              2016-09-19
+            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
+              2016-09-30
             </time>
           </span>
 
@@ -991,12 +1360,21 @@
 
       
         
-          <h1 id="Function-类型"><a href="#Function-类型" class="headerlink" title="Function 类型"></a>Function 类型</h1><p>ECMAScript 中最有意思的是函数——因为函数实际上是对象。<br>JavaScript 最有特色的地方。<br>每个函数都是 Function 类型的实例，而且都与其他引用类型一样具有属性和方法。<br>由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>) </span>&#123;</div><div class="line"><span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*等同于*/</span></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不推荐</span></div></pre></td></tr></table></figure>
-<p>在使用函数表达式定义函数时，没有必要使用函数名——通过变量 sum 即可以引用函数。<br>另外，还要注意函数末尾有一个分号，就像声明其他变量时一样。<br>最后一种定义函数的方式是使用 Function 构造函数。<br>但是不推荐这种方法定义函数，因为这种语法会导致解析两次代码（第一次是解析常规 ECMAScript代码，第二次是解析传入构造函数中的字符串），从而影响性能。</p>
-<p>使用不带圆括号的函数名是访问函数指针，而非调用函数。<br>
+          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
+<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
+<pre><code>hash &quot;#contents&quot; 返回URL中的hash（#号后跟零或多个字符），如果URL中不包含散列，则返回空字符串
+host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号（如果有）
+hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
+href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
+toString()方法也返回这个值
+pathname &quot;/WileyCDA/&quot; 返回URL中的目录和（或）文件名
+port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
+这个属性返回空字符串
+protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
+search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/javascript-note-5-3/#more" rel="contents">
+            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1047,8 +1425,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/javascript-note-5-2/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第五章-2
+                <a class="post-title-link" href="/2016/09/30/javascript-note-9-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第九章-1
                 </a>
               
             
@@ -1061,8 +1439,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T11:45:54+08:00" content="2016-09-19">
-              2016-09-19
+            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
+              2016-09-30
             </time>
           </span>
 
@@ -1109,11 +1487,14 @@
 
       
         
-          <h1 id="Date-类型"><a href="#Date-类型" class="headerlink" title="Date 类型"></a>Date 类型</h1><p>创建一个Date对象，使用 new 操作符和 Date 构造函数即可。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
-<p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。<br>如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数。（从 UTC 时间 1970 年 1 月 1 日午夜起至该日期止经过的毫秒数）<br>了简化这一计算过程，ECMAScript 提供了两个方法： Date.parse()和 Date.UTC() 。<br>
+          <h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么（也是更常见的）就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”（quirk），多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
+<p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
+<h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>（又称特性检测）。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (object.propertyInQuestion)&#123;</div><div class="line"><span class="comment">//使用object.propertyInQuestion</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>举例来说，IE5.0 之前的版本不支持document.getElementById()这个DOM 方法。<br>尽管可以使用非标准的document.all 属性实现相同的目的，<br>但IE 的早期版本中确实不存在document.getElementById()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.getElementById)&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.all)&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">document</span>.all[id];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/javascript-note-5-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/30/javascript-note-9-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1164,8 +1545,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/javascript-note-5-1/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第五章-1
+                <a class="post-title-link" href="/2016/09/29/javascript-note-8-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-1
                 </a>
               
             
@@ -1178,8 +1559,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T14:59:26+08:00" content="2016-09-17">
-              2016-09-17
+            <time itemprop="dateCreated" datetime="2016-09-29T10:39:11+08:00" content="2016-09-29">
+              2016-09-29
             </time>
           </span>
 
@@ -1226,263 +1607,13 @@
 
       
         
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
-<p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
-<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>Object 是一个基础类型，其他所有类型都从 Object 继承了基本的行为。</p>
-<h2 id="创建-Object-实例的方式"><a href="#创建-Object-实例的方式" class="headerlink" title="创建 Object 实例的方式"></a>创建 Object 实例的方式</h2><ol>
-<li>使用 new 操作符后跟 Object 构造函数:<code>var person = new Object();</code></li>
-<li><p>使用对象字面量表示法：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line"><span class="string">"name"</span> : <span class="string">"Nicholas"</span>,</div><div class="line"><span class="string">"age"</span> : <span class="number">29</span>,</div><div class="line"><span class="number">5</span> : <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p> 左边的花括号（ { ）表示对象字面量的开始，如果是在 if 语句的后面，则表示一个语句块的开始。<br> 在使用对象字面量语法时，属性名也可以使用字符串。5会自动转化为字符串。<br> 使用字面量表示法不会调用Object构造函数。<br> 使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象。<code>var person = {}; //与 new Object()相同</code><br> 关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。<br> 因为这种语法要求的代码量少，而且能够给人封装数据的感觉，开发人员更青睐对象字面量语法。<br> 对象字面量也是向函数传递大量可选参数的首选方式。<br> 在函数中的使用：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">displayInfo(&#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">age: <span class="number">29</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p> 最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
-</li>
-</ol>
+          <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript ，那么 BOM（浏览器对象模型）则无疑才是真正的核心。</p>
+<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>它表示浏览器的一个实例。<br>它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。<br>这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问parseInt() 等方法。</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;</div><div class="line">alert(<span class="built_in">window</span>.age); <span class="comment">//29</span></div><div class="line">sayAge(); <span class="comment">//29</span></div><div class="line"><span class="built_in">window</span>.sayAge(); <span class="comment">//29</span></div></pre></td></tr></table></figure>
+<p>由于 sayAge() 存在于全局作用域中，因此 this.age 被映射到 window.age 。<br>定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 操作符删除，而直接在 window 对象上的定义的属性可以。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-5-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/javascript-note-4/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第四章
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T12:59:05+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
-<p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
-<p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
-<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<br>ECMAScript放弃了这一传统。</p>
-<h2 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。(Object)<br>只能给引用类型值动态地添加属性，以便将来使用。（给基本类型的添加了也是undefined)</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/javascript-note-3-3/" itemprop="url">
-                  《JavaScript高级程序设计》读书笔记-第三章-3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T12:31:15+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>ECMA-262 规定了一组语句（也称为流控制语句）。</p>
-<h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
-<p>其中的 condition（条件）可以是任意表达式；而且对这个表达式求值的结果不一定是布尔值。<br>ECMAScript 会自动调用 Boolean() 转换函数将这个表达式的结果转换为一个布尔值。</p>
-<p><strong>业界普遍推崇的最佳实践是始终使用代码块，即使要执行的只有一行代码。</strong>因为这样可以消除人们的误解，否则可能让人分不清在不同条件下要执行哪些语句。</p>
-<h2 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h2><p>要点：<strong>像 do-while 这种后测试循环语句最常用于循环体中的代码至少要被执行一次的情形。</strong></p>
-<h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><p>while 语句属于前测试循环语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。</p>
-<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h2><p>for 语句也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。</p>
-<p><strong>使用 while 循环做不到的，使用 for 循环同样也做不到。</strong>也就是说， for 循环只是把与循环有关的代码集中在了一个位置。</p>
-<p>由于 ECMAScript 中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
-<p>for 语句中的初始化表达式、控制表达式和循环后表达式都是可选的。将这三个表达式全部省略，就会创建一个无限循环。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-3-3/#more" rel="contents">
+            <a class="btn" href="/2016/09/29/javascript-note-8-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1516,7 +1647,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1557,7 +1688,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1565,7 +1696,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1574,7 +1705,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

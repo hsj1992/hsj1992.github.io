@@ -1,0 +1,967 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="DOMText类型可以照字面解释的纯文本内容。纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。
+
+nodeType 的值为3；
+nodeName 的值为”#text”；
+nodeValue 的值为节点所包含的文本；
+parentNode 是一个Element；
+不支持（没有）子节点。
+
+可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十章-4">
+<meta property="og:url" content="https://codingme.xyz/2016/10/03/javascript-note-10-4/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="DOMText类型可以照字面解释的纯文本内容。纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。
+
+nodeType 的值为3；
+nodeName 的值为”#text”；
+nodeValue 的值为节点所包含的文本；
+parentNode 是一个Element；
+不支持（没有）子节点。
+
+可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包">
+<meta property="og:updated_time" content="2016-10-04T06:26:05.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十章-4">
+<meta name="twitter:description" content="DOMText类型可以照字面解释的纯文本内容。纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。
+
+nodeType 的值为3；
+nodeName 的值为”#text”；
+nodeValue 的值为节点所包含的文本；
+parentNode 是一个Element；
+不支持（没有）子节点。
+
+可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/10/03/javascript-note-10-4/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十章-4 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十章-4
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T19:04:28+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
+<ul>
+<li>nodeType 的值为3；</li>
+<li>nodeName 的值为”#text”；</li>
+<li>nodeValue 的值为节点所包含的文本；</li>
+<li>parentNode 是一个Element；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包含的值相同。<br>操作文本方法：</p>
+<ul>
+<li>appendData(text)：将text 添加到节点的末尾。</li>
+<li>deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。</li>
+<li>insertData(offset, text)：在offset 指定的位置插入text。</li>
+<li>replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+count 为止处的文本。</li>
+<li>splitText(offset)：从offset 指定的位置将当前文本节点分成两个文本节点。</li>
+<li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有空格，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有内容，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--想必有换行的也是吧（换行符）--&gt;</span></div></pre></td></tr></table></figure>
+<p>nodeValue 的值为”Hello World!”。可以使用以下代码来访问这些文本子节点。<br><code>var textNode = div.firstChild; //或者div.childNodes[0]</code><br>如果这个文本节点当前存在于文档树中，那么修改文本节点的结果就会立即得到反映。<br>此时的字符串会经过HTML（或XML，取决于文档类型）编码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//输出结果是"Some &amp;lt;strong&amp;gt;other&amp;lt;/strong&amp;gt; message"</span></div><div class="line">div.firstChild.nodeValue = <span class="string">"Some &lt;strong&gt;other&lt;/strong&gt; message"</span>;</div></pre></td></tr></table></figure>
+<p>这是在向DOM 文档中插入文本之前，先对其进行HTML 编码的一种有效方式。</p>
+<h3 id="创建文本节点"><a href="#创建文本节点" class="headerlink" title="创建文本节点"></a>创建文本节点</h3><p>document.createTextNode()。作为参数的文本也将按照HTML 或XML 的格式进行编码。<br><code>var textNode = document.createTextNode(&quot;&lt;strong&gt;Hello&lt;/strong&gt; world!&quot;);</code><br>在创建新文本节点的同时，也会为其设置ownerDocument 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">element.className = <span class="string">"message"</span>;</div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</div><div class="line">element.appendChild(textNode);</div><div class="line"><span class="built_in">document</span>.body.appendChild(element);</div></pre></td></tr></table></figure>
+<p>可以往同一个元素添加多个文本节点。如果两个文本节点是相邻的同胞节点，那么两个节点中的文本就会连起来显示，中间不会有空格。</p>
+<h3 id="规范化文本节点"><a href="#规范化文本节点" class="headerlink" title="规范化文本节点"></a>规范化文本节点</h3><p>DOM 文档中存在相邻的同胞文本节点很容易导致混乱，因为分不清哪个文本节点表示哪个字符串。<br>DOM 文档中出现相邻文本节点的情况也不在少数。<br>所以才有了normalize()，将相邻文本节点合并。<br>结果节点的nodeValue 等于将合并前每个文本节点的nodeValue 值拼接起来的值。<br>浏览器在解析文档时永远不会创建相邻的文本节点。<br>只会作为执行DOM操作的结果出现。<br>在某些情况下，执行normalize()方法会导致IE6 崩溃。不过，在IE6 后来的补丁中，可能已经修复了这个问题（未经证实）。<br>（IE又是你！）</p>
+<h3 id="分割文本节点"><a href="#分割文本节点" class="headerlink" title="分割文本节点"></a>分割文本节点</h3><p>splitText(),作用与normalize()相反。。<br>这个方法会将一个文本节点分成两个文本节点，即按照指定的位置分割nodeValue 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newNode = element.firstChild.splitText(<span class="number">5</span>);</div><div class="line">alert(element.firstChild.nodeValue); <span class="comment">//"Hello"</span></div><div class="line">alert(newNode.nodeValue); <span class="comment">//" world!"</span></div><div class="line">alert(element.childNodes.length); <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<p>位置5是”Hello”和”world!”之间的空格，因此原来的文本节点将包含字符串”Hello”，而新文本节点将包含文本”world!”（包含空格）。<br><strong>分割文本节点是从文本节点中提取数据的一种常用DOM 解析技术</strong>。</p>
+<h2 id="Comment类型"><a href="#Comment类型" class="headerlink" title="Comment类型"></a>Comment类型</h2><p>注释在DOM中是通过Comment 类型来表示的。</p>
+<ul>
+<li>nodeType 的值为8；</li>
+<li>nodeName 的值为”#comment”；</li>
+<li>nodeValue 的值是注释的内容；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>Comment 类型与Text 类型继承自相同的基类，因此它拥有除splitText()之外的所有字符串操作方法。<br>与Text 类型相似，也可以通过nodeValue 或data 属性来取得注释的内容。<br>使用document.createComment()并为其传递注释文本也可以创建注释节点。<br>1.开发人员很少会创建和访问注释节点，因为注释节点对算法鲜有影响。<br>2.浏览器也不会识别位于<code>&lt;/html&gt;</code>标签后面的注释。如果要访问注释节点，一定要保证它们是<code>&lt;html&gt;</code>元素的后代</p>
+<h2 id="CDATASection类型"><a href="#CDATASection类型" class="headerlink" title="CDATASection类型"></a>CDATASection类型</h2><p>CDATASection 类型只针对基于XML 的文档，表示的是CDATA 区域。<br>CDATASection 类型继承自Text 类型，因此拥有除splitText()之外的所有字符串操作方法。</p>
+<ul>
+<li>nodeType 的值为4；</li>
+<li>nodeName 的值为”#cdata-section”；</li>
+<li>nodeValue 的值是CDATA 区域中的内容；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>CDATA 区域只会出现在XML 文档中，因此多数浏览器都会把CDATA 区域错误地解析为Comment或Element。<br><code>&lt;div id=&quot;myDiv&quot;&gt;&lt;![CDATA[This is some content.]]&gt;&lt;/div&gt;</code><br>这个例子中的<code>&lt;div&gt;</code>元素应该包含一个CDATASection 节点。<br>可是，四大主流浏览器无一能够这样解析它。即使对于有效的XHTML 页面，浏览器也没有正确地支持嵌入的CDATA 区域。</p>
+<p>在真正的XML 文档中，可以使用document.createCDataSection()来创建CDATA 区域，只需为其传入节点的内容即可。</p>
+<h2 id="DocumentType类型"><a href="#DocumentType类型" class="headerlink" title="DocumentType类型"></a>DocumentType类型</h2><p>DocumentType 类型在Web 浏览器中并不常用，仅有Firefox、Safari 和Opera 支持它。</p>
+<ul>
+<li>nodeType 的值为10；</li>
+<li>nodeName 的值为doctype 的名称；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 是Document；</li>
+<li>不支持（没有）子节点。</li>
+</ul>
+<p>DocumentType 对象不能动态创建，而只能通过解析文档代码的方式来创建。<br>支持它的浏览器会把DocumentType 对象保存在document.doctype 中。<br>DocumentType 对象的3 个属性：name、entities 和notations。<br>name 表示文档类型的名称；<br>entities 是由文档类型描述的实体的NamedNodeMap 对象；<br>notations 是由文档类型描述的符号的NamedNodeMap 对象。</p>
+<p>通常，浏览器中的文档使用的都是HTML 或XHTML 文档类型，因而entities和notations 都是空列表（列表中的项来自行内文档类型声明）。<br>但不管怎样，只有name 属性是有用的。</p>
+<p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.doctype.name); <span class="comment">//"HTML"</span></div></pre></td></tr></table></figure>
+<p>IE 及更早版本不支持DocumentType，因此document.doctype 的值始终都等于null。<br>可是，这些浏览器会把文档类型声明错误地解释为注释， 并且为它创建一个注释节点。<br>IE9 会给document.doctype 赋正确的对象，但仍然不支持访问DocumentType 类型。</p>
+<h2 id="DocumentFragment类型"><a href="#DocumentFragment类型" class="headerlink" title="DocumentFragment类型"></a>DocumentFragment类型</h2><p>只有DocumentFragment 在文档中没有对应的标记。<br>DOM 规定文档片段（document fragment）是一种“轻量级”的文档，可以包含和控制节点，但不会像完整的文档那样占用额外的资源。</p>
+<ul>
+<li>nodeType 的值为11；</li>
+<li>nodeName 的值为”#document-fragment”；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 的值为null；</li>
+<li>子节点可以是Element、ProcessingInstruction、Comment、Text、CDATASection 或EntityReference。</li>
+</ul>
+<p>虽然不能把文档片段直接添加到文档中，但可以将它作为一个“仓库”来使用，即可以在里面保存将来可能会添加到文档中的节点。<br><code>var fragment = document.createDocumentFragment();</code><br>文档片段继承了Node 的所有方法，通常用于执行那些针对文档的DOM操作。<br>如果将文档中的节点添加到文档片段中，就会从文档树中移除该节点，也不会从浏览器中再看到该节点。<br>添加到文档片段中的新节点同样也不属于文档树。<br>可以通过appendChild()或insertBefore()将文档片段中内容添加到文档中。<br><code>&lt;ul id=&quot;myList&quot;&gt;&lt;/ul&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</div><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="literal">null</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</div><div class="line">li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">li.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Item "</span> + (i+<span class="number">1</span>)));</div><div class="line">fragment.appendChild(li);</div><div class="line">&#125;</div><div class="line">ul.appendChild(fragment);</div></pre></td></tr></table></figure>
+<p>如果逐个地添加列表项，将会导致浏览器反复渲染（呈现）新信息。<br>为避免这个问题，可以使用一个文档片段来保存创建的列表项，然后再一次性将它们添加到文档中。<br>最后，文档片段的所有子节点都被删除并转移到了<code>&lt;ul&gt;</code>元素中。</p>
+<h2 id="Attr类型"><a href="#Attr类型" class="headerlink" title="Attr类型"></a>Attr类型</h2><p>元素的特性在DOM 中以Attr 类型来表示。</p>
+<ul>
+<li>nodeType 的值为2；</li>
+<li>nodeName 的值是特性的名称；</li>
+<li>nodeValue 的值是特性的值；</li>
+<li>parentNode 的值为null；</li>
+<li>在HTML 中不支持（没有）子节点；</li>
+<li>在XML 中子节点可以是Text 或EntityReference。</li>
+</ul>
+<p>尽管它们也是节点，但特性却不被认为是DOM 文档树的一部分。<br>开发人员最常使用的是getAttribute()、setAttribute()和remveAttribute()方法，很少直接引用特性节点。<br>Attr 对象有3 个属性：name、value 和specified。<br>name 是特性名称（与nodeName 的值相同），<br>value 是特性的值（与nodeValue 的值相同），<br>而specified 是一个布尔值，用以区别特性是在代码中指定的，还是默认的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> attr = <span class="built_in">document</span>.createAttribute(<span class="string">"align"</span>);</div><div class="line">attr.value = <span class="string">"left"</span>;</div><div class="line">element.setAttributeNode(attr);</div><div class="line">alert(element.attributes[<span class="string">"align"</span>].value); <span class="comment">//"left"</span></div><div class="line">alert(element.getAttributeNode(<span class="string">"align"</span>).value); <span class="comment">//"left"</span></div><div class="line">alert(element.getAttribute(<span class="string">"align"</span>)); <span class="comment">//"left"</span></div></pre></td></tr></table></figure>
+<p>并不建议直接访问特性节点。实际上，使用getAttribute()、setAttribute()和removeAttribute()方法远比操作特性节点更为方便。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/03/javascript-note-10-3/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十章-3">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十章-3
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/04/javascript-note-10-5/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十章-5">
+                《 JavaScript 高级程序设计》备忘-第十章-5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM"><span class="nav-number">1.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Text类型"><span class="nav-number">1.1.</span> <span class="nav-text">Text类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文本节点"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建文本节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规范化文本节点"><span class="nav-number">1.1.2.</span> <span class="nav-text">规范化文本节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割文本节点"><span class="nav-number">1.1.3.</span> <span class="nav-text">分割文本节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comment类型"><span class="nav-number">1.2.</span> <span class="nav-text">Comment类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CDATASection类型"><span class="nav-number">1.3.</span> <span class="nav-text">CDATASection类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DocumentType类型"><span class="nav-number">1.4.</span> <span class="nav-text">DocumentType类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DocumentFragment类型"><span class="nav-number">1.5.</span> <span class="nav-text">DocumentFragment类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attr类型"><span class="nav-number">1.6.</span> <span class="nav-text">Attr类型</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

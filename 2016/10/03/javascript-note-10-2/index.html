@@ -1,0 +1,934 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="节点层次Document类型JavaScript 通过Document 类型表示文档。在浏览器中，document 对象是HTMLDocument（继承自Document 类型）的一个实例，表示整个HTML 页面。document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。Document 节点具有下列特征：
+
+nodeType 的值为9；
+nodeName 的值为”#d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十章-2">
+<meta property="og:url" content="https://codingme.xyz/2016/10/03/javascript-note-10-2/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="节点层次Document类型JavaScript 通过Document 类型表示文档。在浏览器中，document 对象是HTMLDocument（继承自Document 类型）的一个实例，表示整个HTML 页面。document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。Document 节点具有下列特征：
+
+nodeType 的值为9；
+nodeName 的值为”#d">
+<meta property="og:updated_time" content="2016-10-04T06:00:03.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十章-2">
+<meta name="twitter:description" content="节点层次Document类型JavaScript 通过Document 类型表示文档。在浏览器中，document 对象是HTMLDocument（继承自Document 类型）的一个实例，表示整个HTML 页面。document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。Document 节点具有下列特征：
+
+nodeType 的值为9；
+nodeName 的值为”#d">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/10/03/javascript-note-10-2/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十章-2 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十章-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-03T14:18:24+08:00" content="2016-10-03">
+              2016-10-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h2><p>JavaScript 通过Document 类型表示文档。<br>在浏览器中，document 对象是HTMLDocument（继承自Document 类型）的一个实例，表示整个HTML 页面。<br>document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。<br>Document 节点具有下列特征：</p>
+<ul>
+<li>nodeType 的值为9；</li>
+<li>nodeName 的值为”#document”；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 的值为null；</li>
+<li>ownerDocument 的值为 null；</li>
+<li>其子节点可能是一个DocumentType（最多一个）、Element（最多一个）、ProcessingInstruction或Comment。</li>
+</ul>
+<p>Document 类型可以表示HTML 页面或者其他基于XML 的文档。<br>不过，最常见的应用还是作为HTMLDocument 实例的document 对象。</p>
+<h3 id="文档的子节点"><a href="#文档的子节点" class="headerlink" title="文档的子节点"></a>文档的子节点</h3><p>Document 节点的子节点可以是DocumentType、Element、ProcessingInstruction或Comment，但还有两个内置的访问其子节点的快捷方式。<br>第一个就是documentElement属性，该属性始终指向HTML 页面中的<code>&lt;html&gt;</code>元素。<br>另一个就是通过childNodes 列表访问文档元素，但通过documentElement 属性则能更快捷、更直接地访问该元素。<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这个页面在经过浏览器解析后，其文档中只包含一个子节点，即<code>&lt;html&gt;</code>元素。<br>可以通过documentElement 或childNodes 列表来访问这个元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> html = <span class="built_in">document</span>.documentElement; <span class="comment">//取得对&lt;html&gt;的引用</span></div><div class="line">alert(html === <span class="built_in">document</span>.childNodes[<span class="number">0</span>]); <span class="comment">//true</span></div><div class="line">alert(html === <span class="built_in">document</span>.firstChild); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>作为HTMLDocument 的实例，document 对象还有一个body 属性，直接指向<code>&lt;body&gt;</code>元素。<br>因为开发人员经常要使用这个元素，所以document.body 在JavaScript 代码中出现的频率非常高。<br><code>var body = document.body; //取得对&lt;body&gt;的引用</code><br>所有浏览器都支持document.documentElement 和document.body 属性。</p>
+<p>Document 另一个可能的子节点是DocumentType。<br>通常将<code>&lt;!DOCTYPE&gt;</code>标签看成一个与文档其他部分不同的实体，可以通过doctype 属性（在浏览器中是document.doctype）来访问它的信息。<br><code>var doctype = document.doctype; //取得对&lt;!DOCTYPE&gt;的引用</code><br>浏览器对document.doctype 的支持差别很大。</p>
+<ul>
+<li>IE8 及之前版本：如果存在文档类型声明，会将其错误地解释为一个注释并把它当作Comment节点；而document.doctype 的值始终为null。</li>
+<li>IE9+及Firefox：如果存在文档类型声明，则将其作为文档的第一个子节点；document.doctype是一个DocumentType 节点，也可以通过document.firstChild 或document.childNodes[0]访问同一个节点。</li>
+<li>Safari、Chrome 和Opera：如果存在文档类型声明，则将其解析，但不作为文档的子节点。document.doctype 是一个DocumentType 节点，但该节点不会出现在document.childNodes 中。</li>
+</ul>
+<p>由于浏览器对document.doctype 的支持不一致，因此这个属性的用处很有限。<br>从技术上说，出现在<code>&lt;html&gt;</code>元素外部的注释应该算是文档的子节点。<br>然而，不同的浏览器在是否解析这些注释以及能否正确处理它们等方面，也存在很大差异。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--第一条注释 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--第二条注释 --&gt;</span></div></pre></td></tr></table></figure>
+<p>看起来这个页面应该有3 个子节点：注释、<code>&lt;html&gt;</code>元素、注释。</p>
+<ul>
+<li>IE8 及之前版本、Safari 3.1 及更高版本、Opera 和Chrome 只为第一条注释创建节点，不为第二条注释创建节点。结果，第一条注释就会成为document.childNodes 中的第一个子节点。</li>
+<li>IE9 及更高版本会将第一条注释创建为document.childNodes 中的一个注释节点，也会将第二条注释创建为document.childNodes 中的注释子节点。</li>
+<li>Firefox 以及Safari 3.1 之前的版本会完全忽略这两条注释。</li>
+</ul>
+<p>浏览器间的这种不一致性也导致了位于<code>&lt;html&gt;</code>元素外部的注释没有什么用处。<br>多数情况下，我们都用不着在document 对象上调用appendChild()、removeChild()和replaceChild()方法，<br>因为文档类型（如果存在的话）是只读的，而且它只能有一个元素子节点（该节点通常早就已经存在了）。</p>
+<h3 id="文档信息"><a href="#文档信息" class="headerlink" title="文档信息"></a>文档信息</h3><p>作为HTMLDocument 的一个实例，document 对象还有一些标准的Document 对象所没有的属性。<br>这些属性提供了document 对象所表现的网页的一些信息。<br>其中第一个属性就是title，包含着<code>&lt;title&gt;</code>元素中的文本——显示在浏览器窗口的标题栏或标签页上。<br>修改title 属性的值不会改变<code>&lt;title&gt;</code>元素。</p>
+<p>三个属性：URL、domain 和referrer。<br>URL 属性中包含页面完整的URL（即地址栏中显示的URL），<br>domain 属性中只包含页面的域名，<br>而referrer属性中则保存着链接到当前页面的那个页面的URL。<br>所有这些信息都存在于请求的HTTP 头部，<br>只不过是通过这些属性让我们能够在JavaScrip 中访问它们。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得完整的URL</span></div><div class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.URL;</div><div class="line"><span class="comment">//取得域名</span></div><div class="line"><span class="keyword">var</span> domain = <span class="built_in">document</span>.domain;</div><div class="line"><span class="comment">//取得来源页面的URL</span></div><div class="line"><span class="keyword">var</span> referrer = <span class="built_in">document</span>.referrer;</div></pre></td></tr></table></figure>
+<p>在这3 个属性中，只有domain 是可以设置的。<br>但由于安全方面的限制，也并非可以给domain 设置任何值。<br>如果URL 中包含一个子域名，例如p2p.wrox.com，那么就只能将domain 设置为”wrox.com”（URL 中包含”www”，如www.wrox.com 时，也是如此）。不能将这个属性设置为URL 中不包含的域。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//假设页面来自p2p.wrox.com 域</span></div><div class="line"><span class="built_in">document</span>.domain = <span class="string">"wrox.com"</span>; <span class="comment">// 成功</span></div><div class="line"><span class="built_in">document</span>.domain = <span class="string">"nczonline.net"</span>; <span class="comment">// 出错！</span></div></pre></td></tr></table></figure>
+<p>当页面中包含来自其他子域的框架或内嵌框架时，能够设置document.domain 就非常方便了。<br>由于跨域安全限制， 来自不同子域的页面无法通过JavaScript 通信。<br>而通过将每个页面的document.domain 设置为相同的值，这些页面就可以互相访问对方包含的JavaScript 对象了。</p>
+<p>假设有一个页面加载自www.wrox.com，其中包含一个内嵌框架，框架内的页面加载自p2p.wrox.com。<br>由于document.domain 字符串不一样，内外两个页面之间无法相互访问对方的JavaScript 对象。<br>但如果将这两个页面的document.domain 值都设置为”wrox.com”，它们之间就可以通信了。</p>
+<p>浏览器对domain 属性还有一个限制，即如果域名一开始是“松散的”（loose），那么不能将它再设<br>置为“紧绷的”（tight）。换句话说，在将document.domain 设置为”wrox.com”之后，就不能再将其<br>设置回”p2p.wrox.com”，否则将会导致错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//假设页面来自于p2p.wrox.com 域</span></div><div class="line"><span class="built_in">document</span>.domain = <span class="string">"wrox.com"</span>; <span class="comment">//松散的（成功）</span></div><div class="line"><span class="built_in">document</span>.domain = <span class="string">"p2p.wrox.com"</span>; <span class="comment">//紧绷的（出错！）</span></div></pre></td></tr></table></figure>
+<p>所有浏览器中都存在这个限制，但IE8 是实现这一限制的最早的IE 版本。(所以IE7、IE6就…)</p>
+<h3 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h3><p>getElementById()，接收一个参数：要取得的元素的ID。<br>如果找到相应的元素则返回该元素，如果不存在带有相应ID 的元素，则返回null。<br>这里的ID 必须与页面中元素的id特性（attribute）严格匹配，包括大小写。<br>IE8 及较低版本不区分ID 的大小写，因此”myDiv”和”mydiv”会被当作相同的元素ID。<br>如果页面中多个元素的ID 值相同，getElementById()只返回文档中第一次出现的元素。</p>
+<p>IE7 及较低版本还为此方法添加了一个有意思的“怪癖”：name 特性与给定ID 匹配的表单元素<br>（<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;button&gt;</code>及<code>&lt;select&gt;</code>）也会被该方法返回。<br>如果有哪个表单元素的name 特性等于指定的ID，而且该元素在文档中位于带有给定ID 的元素前面，那么IE 就会返回那个表单元素。<br>为了避免IE 中存在的这个问题，最好的办法是不让表单字段的name 特性与其他元素的ID 相同。</p>
+<p>另一个常用于取得元素引用的方法是getElementsByTagName()。<br>这个方法接受一个参数，即要取得元素的标签名，而返回的是包含零或多个元素的NodeList。<br>在HTML 文档中，这个方法会返回一个HTMLCollection 对象，作为一个“动态”集合，该对象与NodeList 非常类似。<br><code>var images = document.getElementsByTagName(&quot;img&quot;);</code><br>这行代码会将一个HTMLCollection 对象保存在images 变量中。<br>与NodeList 对象类似，可以使用方括号语法或item()方法来访问HTMLCollection 对象中的项。<br>HTMLCollection 对象还有一个方法，叫做namedItem()，使用这个方法可以通过元素的name特性取得集合中的项。<br><code>&lt;img src=&quot;myimage.gif&quot; name=&quot;myImage&quot;&gt;</code><br><code>var myImage = images.namedItem(&quot;myImage&quot;);</code><br>在提供按索引访问项的基础上，HTMLCollection 还支持按名称访问项，这就为我们取得实际想要的元素提供了便利。<br>而且，对命名的项也可以使用方括号语法来访问。<br>对HTMLCollection 而言，我们可以向方括号中传入数值或字符串形式的索引值。<br>在后台，对数值索引就会调用item()，而对字符串索引就会调用namedItem()。</p>
+<p>由于IE 将注释（Comment）实现为元素（Element），因此在IE 中调用getElementsByTagName(“*”)将会返回所有注释节点。</p>
+<p>为了最大限度地与既有HTML 页面兼容，传给getElementsByTagName()的标签名是不需要区分大小写的。<br>但对于XML页面而言（包括XHTML），getElementsByTagName()方法就会区分大小写。</p>
+<p>第三个方法，也是只有HTMLDocument 类型才有的方法，是getElementsByName()。<br>这个方法会返回带有给定name 特性的所有元素。<br>最常使用getElementsByName()方法的情况是取得单选按钮；<br>为了确保发送给浏览器的值正确无误，所有单选按钮必须具有相同的name 特性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">legend</span>&gt;</span>Which color do you prefer?<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"red"</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">id</span>=<span class="string">"colorRed"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"colorRed"</span>&gt;</span>Red<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"green"</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">id</span>=<span class="string">"colorGreen"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"colorGreen"</span>&gt;</span>Green<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">value</span>=<span class="string">"blue"</span> <span class="attr">name</span>=<span class="string">"color"</span> <span class="attr">id</span>=<span class="string">"colorBlue"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"colorBlue"</span>&gt;</span>Blue<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>其中所有单选按钮的name 特性值都是”color”，但它们的ID 可以不同。<br>ID 的作用在于将<code>&lt;label&gt;</code>元素应用到每个单选按钮，而name 特性则用以确保三个值中只有一个被发送给浏览器。</p>
+<p>getElementsByName()方法也会返回一个HTMLCollectioin。<br>但是，对于这里的单选按钮来说，namedItem()方法则只会取得第一项（因为每一项的name 特性都相同）。<br>(那么 getElementsByTagName() 方法的namedItmen()就不会只取得第一项么？)</p>
+<h3 id="特殊集合"><a href="#特殊集合" class="headerlink" title="特殊集合"></a>特殊集合</h3><p>document 对象的一些特殊的集合。这些集合都是HTMLCollection 对象，为访问文档常用的部分提供了快捷方式。</p>
+<ul>
+<li>document.anchors，包含文档中所有带name 特性的<code>&lt;a&gt;</code>元素；</li>
+<li>document.applets，包含文档中所有的<code>&lt;applet&gt;</code>元素，因为不再推荐使用<code>&lt;applet&gt;</code>元素，所以这个集合已经不建议使用了；</li>
+<li>document.forms，包含文档中所有的<code>&lt;form&gt;</code>元素，与document.getElementsByTagName(“form”)得到的结果相同；</li>
+<li>document.images，包含文档中所有的<code>&lt;img&gt;</code>元素，与document.getElementsByTagName(“img”)得到的结果相同；</li>
+<li>document.links，包含文档中所有带href 特性的<code>&lt;a&gt;</code>元素。</li>
+</ul>
+<p>始终都可以通过HTMLDocument 对象访问到，而且，与HTMLCollection 对象类似，集合中的项也会随着当前文档内容的更新而更新。</p>
+<h3 id="DOM-一致性检测"><a href="#DOM-一致性检测" class="headerlink" title="DOM 一致性检测"></a>DOM 一致性检测</h3><p>检测浏览器实现了DOM的哪些部分十分必要。<br>document.implementation 属性就是为此提供相应信息和功能的对象，与浏览器对DOM的实现直接对应。<br>DOM1 级只为document.implementation 规定了一个方法，即hasFeature()。<br>这个方法接受两个参数：要检测的DOM 功能的名称及版本号。<br>如果浏览器支持给定名称和版本的功能，则该方法返回true。<br><code>var hasXmlDom = document.implementation.hasFeature(&quot;XML&quot;, &quot;1.0&quot;);</code><br>尽管使用hasFeature()确实方便，但也有缺点。因为实现者可以自行决定是否与DOM 规范的不同部分保持一致。<br>例如，Safari 2.x 及更早版本会在没有完全实现某些DOM 功能的情况下也返回true。<br>所以在使用DOM 的某些特殊的功能之前，最好除了检测hasFeature()之外，还同时使用能力检测。</p>
+<h3 id="文档写入"><a href="#文档写入" class="headerlink" title="文档写入"></a>文档写入</h3><p>4 个方法：write()、writeln()、open()和close()。<br>write()和writeln()方法都接受一个字符串参数，即要写入到输出流中的文本。<br>后者会在字符串的末尾添加一个换行符（\n）。<br>在页面被加载的过程中，可以使用这两个方法向页面中动态地加入内容。<br>还可以使用write()和writeln()方法动态地包含外部资源，例如JavaScript 文件等。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>document.write() Example 3<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="xml"></span></div><div class="line">document.write("<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">\</span>"<span class="attr">text</span>/<span class="attr">javascript</span>\" <span class="attr">src</span>=<span class="string">\</span>"<span class="attr">file.js</span>\"&gt;</span><span class="xml">" +</span></div><div class="line">"<span class="tag">&lt;<span class="name">\</span>/<span class="attr">script</span>&gt;</span>");</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果在文档加载结束后再调用document.write()，那么输出的内容将会重写整个页面。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>document.write() Example 4<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some content that you won't get to see because it will be overwritten.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="built_in">document</span>.write(<span class="string">"Hello world!"</span>);</div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>使用了window.onload 事件处理程序，等到页面完全加载之后延迟执行函数。<br>函数执行之后，字符串”Hello world!”会重写整个页面内容。</p>
+<p>严格型XHTML 文档不支持文档写入。对于那些按照application/xml+xhtml内容类型提供的页面，这两个方法也同样无效。</p>
+<p>方法open()和close()分别用于打开和关闭网页的输出流。<br>如果是在页面加载期间使用write()或writeln()方法，则不需要用到这两个方法。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/02/javascript-note-10-1/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十章-1">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十章-1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/03/javascript-note-10-3/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十章-3">
+                《 JavaScript 高级程序设计》备忘-第十章-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#节点层次"><span class="nav-number">1.</span> <span class="nav-text">节点层次</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Document类型"><span class="nav-number">1.1.</span> <span class="nav-text">Document类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档的子节点"><span class="nav-number">1.1.1.</span> <span class="nav-text">文档的子节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档信息"><span class="nav-number">1.1.2.</span> <span class="nav-text">文档信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找元素"><span class="nav-number">1.1.3.</span> <span class="nav-text">查找元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊集合"><span class="nav-number">1.1.4.</span> <span class="nav-text">特殊集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-一致性检测"><span class="nav-number">1.1.5.</span> <span class="nav-text">DOM 一致性检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档写入"><span class="nav-number">1.1.6.</span> <span class="nav-text">文档写入</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -105,30 +105,24 @@
 
 
 <meta name="description" content="DISTINCT 和 GROUP BY
-使用GROUP BY子句时，SELECT子句中不能出现聚合键之外的列名；
-GROUP BY子句结果的显示是无序的；
-DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把NULL作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？
-
-但其实这个问题本">
+使用 GROUP BY 子句时， SELECT 子句中不能出现聚合键之外的列名；
+GROUP BY 子句结果的显示是无序的；
+DISTINCT 和 GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把 NULL 作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL的小注意事项">
+<meta property="og:title" content="SQL 的小注意事项">
 <meta property="og:url" content="https://codingme.xyz/2015/12/22/sql-tips/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="DISTINCT 和 GROUP BY
-使用GROUP BY子句时，SELECT子句中不能出现聚合键之外的列名；
-GROUP BY子句结果的显示是无序的；
-DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把NULL作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？
-
-但其实这个问题本">
-<meta property="og:updated_time" content="2016-09-11T14:55:07.958Z">
+使用 GROUP BY 子句时， SELECT 子句中不能出现聚合键之外的列名；
+GROUP BY 子句结果的显示是无序的；
+DISTINCT 和 GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把 NULL 作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？">
+<meta property="og:updated_time" content="2016-09-27T10:44:44.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SQL的小注意事项">
+<meta name="twitter:title" content="SQL 的小注意事项">
 <meta name="twitter:description" content="DISTINCT 和 GROUP BY
-使用GROUP BY子句时，SELECT子句中不能出现聚合键之外的列名；
-GROUP BY子句结果的显示是无序的；
-DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把NULL作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？
-
-但其实这个问题本">
+使用 GROUP BY 子句时， SELECT 子句中不能出现聚合键之外的列名；
+GROUP BY 子句结果的显示是无序的；
+DISTINCT 和 GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把 NULL 作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？">
 
 
 
@@ -151,7 +145,7 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
 
   <link rel="canonical" href="https://codingme.xyz/2015/12/22/sql-tips/"/>
 
-  <title> SQL的小注意事项 | CodingMe </title>
+  <title> SQL 的小注意事项 | CodingMe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -314,7 +308,7 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
             
             
               
-                SQL的小注意事项
+                SQL 的小注意事项
               
             
           </h1>
@@ -374,50 +368,50 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
 
       
         <h1 id="DISTINCT-和-GROUP-BY"><a href="#DISTINCT-和-GROUP-BY" class="headerlink" title="DISTINCT 和 GROUP BY"></a>DISTINCT 和 GROUP BY</h1><ul>
-<li>使用GROUP BY子句时，SELECT子句中不能出现聚合键之外的列名；</li>
-<li>GROUP BY子句结果的显示是无序的；</li>
-<li>DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把NULL作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？</li>
+<li>使用 GROUP BY 子句时， SELECT 子句中不能出现聚合键之外的列名；</li>
+<li>GROUP BY 子句结果的显示是无序的；</li>
+<li>DISTINCT 和 GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把 NULL 作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？</li>
 </ul>
-<p>但其实这个问题本身就是本末倒置的，我们应该考虑的是该SELECT语句是否满足需求。选择的标准其实很简单：<br><strong>在“想要删除选择结果中的重复记录”时使用DISTINCT；在“想要计算聚合结果”时使用GROUP BY。</strong><br>不使用COUNT等聚合函数，而只使用GROUP BY子句的SELECT语句，会让人觉得非常奇怪。难免让人产生“到底为什么要对表进行分组呢？这样做有必要吗？”等疑问。</p>
+<p>但其实这个问题本身就是本末倒置的，我们应该考虑的是该 SELECT 语句是否满足需求。选择的标准其实很简单：<br><strong>在“想要删除选择结果中的重复记录”时使用 DISTINCT ；在“想要计算聚合结果”时使用 GROUP BY 。</strong><br>不使用 COUNT 等聚合函数，而只使用 GROUP BY 子句的 SELECT 语句，会让人觉得非常奇怪。难免让人产生“到底为什么要对表进行分组呢？这样做有必要吗？”等疑问。</p>
 <h1 id="HAVING-和-WHERE"><a href="#HAVING-和-WHERE" class="headerlink" title="HAVING 和 WHERE"></a>HAVING 和 WHERE</h1><ul>
-<li>WHERE用例：“商品种类为衣服”、“销售单价在1000元以上”；<br>HAVING用例：“数据行数为2行”、“平均值为500”；【count、avg】</li>
-<li>WHERE子句不能使用聚合函数。（只有SELECT子句和HAVING子句（以及ORDER BY子句）中能够使用聚合函数）。</li>
-<li>WHERE子句只能指定记录（行）的条件，不能用来指定组的条件（例如，“数据行数为2行”或者“平均值为500”等）。<br>因此，对集合指定条件就需要使用HAVING子句。</li>
-<li>HAVING子句能够使用:常数、聚合函数、聚合键。</li>
-<li>有些条件既可以写在HAVING子句当中，又可以写在WHERE子句当中。这些条件就是 聚合键所对应的条件。</li>
+<li>WHERE 用例：“商品种类为衣服”、“销售单价在1000元以上”；<br>HAVING 用例：“数据行数为2行”、“平均值为500”；【 count 、 avg 】</li>
+<li>WHERE 子句不能使用聚合函数。(只有 SELECT 子句和 HAVING 子句(以及 ORDER BY 子句)中能够使用聚合函数)。</li>
+<li>WHERE 子句只能指定记录(行)的条件，不能用来指定组的条件(例如，“数据行数为2行”或者“平均值为500”等)。<br>因此，对集合指定条件就需要使用 HAVING 子句。</li>
+<li>HAVING 子句能够使用:常数、聚合函数、聚合键。</li>
+<li>有些条件既可以写在 HAVING 子句当中，又可以写在 WHERE 子句当中。这些条件就是 聚合键所对应的条件。</li>
 </ul>
 <a id="more"></a>
 <ul>
-<li><p>聚合键所对应的条件还是应该书写在WHERE子句中。<br>理由：</p>
+<li><p>聚合键所对应的条件还是应该书写在 WHERE 子句中。<br>理由：</p>
 <ol>
-<li><p>WHERE子句和HAVING子句的作用不同。<br>　　WHERE子句 = 指定行所对应的条件<br>　　HAVING子句 = 指定组所对应的条件</p>
+<li><p>WHERE 子句和 HAVING 子句的作用不同。<br>　　WHERE 子句 = 指定行所对应的条件<br>　　HAVING 子句 = 指定组所对应的条件</p>
 </li>
-<li><p>与性能即执行速度有关系<br>　　通过WHERE子句指定条件时，由于排序之前就对数据进行了过滤，所以能够减少排序的数据量。但HAVING子句是在排序之后才对数据进行分组的，因此与在WHERE子句中指定条件比起来，需要排序的数据量就会多得多。<br>　　WHERE子句更具速度优势的另一个理由是，可以对WHERE子句指定条件所对应的列创建索引，这样也可以大幅提高处理速度。</p>
+<li><p>与性能即执行速度有关系<br>　　通过 WHERE 子句指定条件时，由于排序之前就对数据进行了过滤，所以能够减少排序的数据量。但 HAVING 子句是在排序之后才对数据进行分组的，因此与在 WHERE 子句中指定条件比起来，需要排序的数据量就会多得多。<br>　　WHERE 子句更具速度优势的另一个理由是，可以对 WHERE 子句指定条件所对应的列创建索引，这样也可以大幅提高处理速度。</p>
 </li>
 </ol>
 </li>
 </ul>
 <h1 id="书写顺序与执行顺序"><a href="#书写顺序与执行顺序" class="headerlink" title="书写顺序与执行顺序"></a>书写顺序与执行顺序</h1><p>　　书写顺序：<br><strong>SELECT</strong> -&gt; <strong>FROM</strong> -&gt; <strong>WHERE</strong> -&gt; <strong>GROUP BY</strong> -&gt; <strong>HAVING</strong> -&gt; <strong>ORDER BY</strong><br>　　执行顺序：<br><strong>FROM</strong> -&gt; <strong>WHERE</strong> -&gt; <strong>GROUP BY</strong> -&gt; <strong>HAVING</strong> -&gt; <strong>SELECT</strong> -&gt; <strong>(DISTINCT)</strong> -&gt;<strong>ORDER BY</strong></p>
-<h1 id="关于NULL"><a href="#关于NULL" class="headerlink" title="关于NULL"></a>关于NULL</h1><ol>
-<li>所有包含NULL的计算，结果肯定是NULL.</li>
-<li>比较运算符无法用于NULL，只能使用专门用来判断是否为NULL的运算符 <strong>IS NULL</strong></li>
-<li>对NULL进行逻辑运算时，结果是SQL特有的第三种值——不确定（Unknown）.所以尽量不使用NULL,在创建表时，要给某些列设定NOT NULL约束的原因就在此.</li>
+<h1 id="关于-NULL"><a href="#关于-NULL" class="headerlink" title="关于 NULL"></a>关于 NULL</h1><ol>
+<li>所有包含 NULL 的计算，结果肯定是 NULL 。</li>
+<li>比较运算符无法用于 NULL ，只能使用专门用来判断是否为 NULL 的运算符 <strong>IS NULL</strong></li>
+<li>对 NULL 进行逻辑运算时，结果是 SQL 特有的第三种值——不确定(Unknown).所以尽量不使用 NULL ,在创建表时，要给某些列设定 NOT NULL 约束的原因就在此.</li>
 </ol>
-<h1 id="SQL语句及其种类"><a href="#SQL语句及其种类" class="headerlink" title="SQL语句及其种类"></a>SQL语句及其种类</h1><ol>
-<li>DDL(Data Definition Language，数据定义语言）<ul>
+<h1 id="SQL-语句及其种类"><a href="#SQL-语句及其种类" class="headerlink" title="SQL 语句及其种类"></a>SQL 语句及其种类</h1><ol>
+<li>DDL(Data Definition Language ，数据定义语言)<ul>
 <li>CREATE</li>
 <li>DROP</li>
 <li>ALTER</li>
 </ul>
 </li>
-<li>DML（Data Manipulation Language，数据操作语言）<ul>
+<li>DML(Data Manipulation Language ，数据操作语言)<ul>
 <li>SELECT</li>
 <li>INSERT</li>
 <li>UPDATE</li>
 <li>DELETE</li>
 </ul>
 </li>
-<li>DCL（Data Control Language，数据控制语言）<ul>
+<li>DCL(Data Control Language ，数据控制语言)<ul>
 <li>COMMIT</li>
 <li>ROLLBACK</li>
 <li>GRANT</li>
@@ -425,46 +419,46 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
 </ul>
 </li>
 </ol>
-<h1 id="关于事务Transaction"><a href="#关于事务Transaction" class="headerlink" title="关于事务Transaction"></a>关于事务Transaction</h1><ol>
-<li>事务处理何时开始？<br> 事务并没有标准的开始指令存在，而是根据DBMS的不同而不同。<br> 想Oracle这样不使用指令而悄悄开始事务的情况下，应该如何区分各个事务呢？<br> 通常有两种情况：<br> <strong>一、每条SQL语句就是一个事务（自动提交模式）。</strong><br> <strong>二、直到用户执行COMMIT或者ROLLBACK为止算作一个事务。</strong></li>
-<li>自动模式情况下要特别注意DELETE语句，否则一旦误删回滚也无济于事。</li>
-<li>ACID特性<ul>
-<li><strong>原子性（Atomicity）</strong><br>  事务结束时，其中包含的DML语句更新处理，要么全部执行，要么全不执行的特性。</li>
-<li><strong>一致性（Consistency）</strong><br>  事务中包含的处理，要满足数据库提前设置的约束。又称为完整性。（一旦其中一句语句违反约束，就会出错无法执行，整个事务的SQL语句都会被取消不执行。【原子性的体现】）<br>  (例子: INSERT INTO 表 SELECT * FROM 表。执行会因为主键重复失败）</li>
-<li><strong>隔离性（Isolation）</strong><br>  保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。在某个事务中进行的更改，在该事务结束之前，对其他事务而言是不可见的。</li>
-<li><strong>持久性（Durability）</strong><br>  事务（无论是提交还是回滚）一旦结束，DBMS会保证该时点的数据状态得以保存的特性。即使由于系统故障导致数据丢失，数据库也一定能通过某些手段进行恢复。<br>  保证持久性的方法根据实现的不同而不同，最常见的是将事务的执行记录保存到硬盘等存储介质中（该执行记录称为日志）。当发生故障时，可以通过日志恢复到故障发生前的状态。</li>
+<h1 id="关于事务-Transaction"><a href="#关于事务-Transaction" class="headerlink" title="关于事务 Transaction"></a>关于事务 Transaction</h1><ol>
+<li>事务处理何时开始？<br> 事务并没有标准的开始指令存在，而是根据 DBMS 的不同而不同。<br> 想 Oracle 这样不使用指令而悄悄开始事务的情况下，应该如何区分各个事务呢？<br> 通常有两种情况：<br> <strong>一、每条 SQL 语句就是一个事务(自动提交模式)。</strong><br> <strong>二、直到用户执行 COMMIT 或者 ROLLBACK 为止算作一个事务。</strong></li>
+<li>自动模式情况下要特别注意 DELETE 语句，否则一旦误删回滚也无济于事。</li>
+<li>ACID 特性<ul>
+<li><strong>原子性(Atomicity)</strong><br>  事务结束时，其中包含的 DML 语句更新处理，要么全部执行，要么全不执行的特性。</li>
+<li><strong>一致性(Consistency)</strong><br>  事务中包含的处理，要满足数据库提前设置的约束。又称为完整性。(一旦其中一句语句违反约束，就会出错无法执行，整个事务的 SQL 语句都会被取消不执行。【原子性的体现】)<br>  (例子: INSERT INTO 表 SELECT * FROM 表。执行会因为主键重复失败)</li>
+<li><strong>隔离性(Isolation)</strong><br>  保证不同事务之间互不干扰的特性。该特性保证了事务之间不会互相嵌套。在某个事务中进行的更改，在该事务结束之前，对其他事务而言是不可见的。</li>
+<li><strong>持久性(Durability)</strong><br>  事务(无论是提交还是回滚)一旦结束， DBMS 会保证该时点的数据状态得以保存的特性。即使由于系统故障导致数据丢失，数据库也一定能通过某些手段进行恢复。<br>  保证持久性的方法根据实现的不同而不同，最常见的是将事务的执行记录保存到硬盘等存储介质中(该执行记录称为日志)。当发生故障时，可以通过日志恢复到故障发生前的状态。</li>
 </ul>
 </li>
 </ol>
 <h1 id="关于视图"><a href="#关于视图" class="headerlink" title="关于视图"></a>关于视图</h1><ol>
-<li>对多数DBMS来说，多重视图会降低SQL的性能。因此应该避免在视图的基础上创建视图。</li>
+<li>对多数 DBMS 来说，多重视图会降低 SQL 的性能。因此应该避免在视图的基础上创建视图。</li>
 <li>视图的限制：<ul>
-<li>定义视图时不能使用ORDER BY子句。<br>  因为视图和表一样，数据行都是没有顺序的。</li>
-<li>如果定义视图的SELECT语句能够满足某些条件，那么这个视图就可以被更新，比较具有代表性的一些条件：<br>  <strong>一、</strong>SELECT子句中未使用DISTINCT<br>  <strong>二、</strong>FROM子句中只有一张表<br>  <strong>三、</strong>未使用GROUP BY子句<br>  原因：视图和表需要同事进行更新，因此通过聚合得到的视图无法进行更新。<br>  <strong>四、</strong>未使用HAVING子句</li>
+<li>定义视图时不能使用 ORDER BY 子句。<br>  因为视图和表一样，数据行都是没有顺序的。</li>
+<li>如果定义视图的 SELECT 语句能够满足某些条件，那么这个视图就可以被更新，比较具有代表性的一些条件：<br>  <strong>一、</strong>SELECT 子句中未使用 DISTINCT<br>  <strong>二、</strong>FROM 子句中只有一张表<br>  <strong>三、</strong>未使用 GROUP BY 子句<br>  原因：视图和表需要同事进行更新，因此通过聚合得到的视图无法进行更新。<br>  <strong>四、</strong>未使用 HAVING 子句</li>
 </ul>
 </li>
 </ol>
 <h1 id="关联子查询"><a href="#关联子查询" class="headerlink" title="关联子查询"></a>关联子查询</h1><ol>
 <li>在细分的组内进行比较时，需要使用关联子查询。</li>
-<li>结合条件一定要写在子查询中。<br> 例如： <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> ‘按分类的平均单价’</div><div class="line"><span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> 商品<span class="keyword">ID</span>, 商品名, 商品分类, 商品单价,</div><div class="line">(<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(商品单价)</div><div class="line"><span class="keyword">FROM</span> 商品表 <span class="keyword">AS</span> S2</div><div class="line"><span class="keyword">WHERE</span> S1.商品分类=S2.商品分类</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 商品分类)</div><div class="line"><span class="keyword">AS</span> 商品分类_单价</div><div class="line"><span class="keyword">FROM</span> 商品表 <span class="keyword">AS</span> S1;</div></pre></td></tr></table></figure>
+<li>结合条件一定要写在子查询中。<br> 例如： <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> ‘按分类的平均单价’</div><div class="line"><span class="keyword">AS</span></div><div class="line"><span class="keyword">SELECT</span> 商品 <span class="keyword">ID</span>, 商品名, 商品分类, 商品单价,</div><div class="line">(<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(商品单价)</div><div class="line"><span class="keyword">FROM</span> 商品表 <span class="keyword">AS</span> S2</div><div class="line"><span class="keyword">WHERE</span> S1.商品分类=S2.商品分类</div><div class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> 商品分类)</div><div class="line"><span class="keyword">AS</span> 商品分类_单价</div><div class="line"><span class="keyword">FROM</span> 商品表 <span class="keyword">AS</span> S1;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="EXISTS-与-IN"><a href="#EXISTS-与-IN" class="headerlink" title="EXISTS 与 IN"></a>EXISTS 与 IN</h1><p>EXISTS的特性：<br>通常指定关联子查询作为EXIST的参数;<br>作为EXISTS参数的子查询经常会使用SELECT *。</p>
+<h1 id="EXISTS-与-IN"><a href="#EXISTS-与-IN" class="headerlink" title="EXISTS 与 IN"></a>EXISTS 与 IN</h1><p>EXISTS 的特性：<br>通常指定关联子查询作为 EXIST 的参数;<br>作为 EXISTS 参数的子查询经常会使用 SELECT *。</p>
 <ol>
-<li>一言以蔽之：<br> EXISTS与IN的使用效率的问题，通常情况下采用EXISTS要比IN效率高，因为IN不走索引，但要看实际情况具体使用：<br> <strong>IN适合于外表大而内表小的情况；</strong><br> <strong>EXISTS适合于外表小而内表大的情况。</strong></li>
-<li>IN 是把外表和内表作hash 连接，而EXISTS是对外表作loop循环，每次loop循环再对内表进行查询。</li>
-<li>如果两个表中一个较小，一个是大表，则子查询表大的用EXISTS，子查询表小的用IN：<br> 例如：表A（小表），表B（大表）</li>
-<li>NOT IN和NOT EXISTS<br> 如果查询语句使用了NOT IN，那么内外表都进行全表扫描，没有用到索引；<br>而NOT EXISTS的子查询依然能用到表上的索引。<br>所以无论哪个表大，用NOT EXISTS都比NOT IN要快。</li>
+<li>一言以蔽之：<br> EXISTS 与 IN 的使用效率的问题，通常情况下采用 EXISTS 要比 IN 效率高，因为 IN 不走索引，但要看实际情况具体使用：<br> <strong>IN 适合于外表大而内表小的情况；</strong><br> <strong>EXISTS 适合于外表小而内表大的情况。</strong></li>
+<li>IN 是把外表和内表作 hash 连接，而 EXISTS 是对外表作 loop 循环，每次 loop 循环再对内表进行查询。</li>
+<li>如果两个表中一个较小，一个是大表，则子查询表大的用 EXISTS ，子查询表小的用 IN ：<br> 例如：表 A(小表)，表 B(大表)</li>
+<li>NOT IN 和 NOT EXISTS<br> 如果查询语句使用了 NOT IN ，那么内外表都进行全表扫描，没有用到索引；<br>而 NOT EXISTS 的子查询依然能用到表上的索引。<br>所以无论哪个表大，用 NOT EXISTS 都比 NOT IN 要快。</li>
 </ol>
 <p>一：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> A 【小】</div><div class="line"><span class="keyword">WHERE</span> cc <span class="keyword">IN</span> (<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> B【大】)</div><div class="line"><span class="comment">--效率低，用到了A表上cc列的索引；</span></div></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> A 【小】</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> B 【大】 <span class="keyword">WHERE</span> cc=A.cc)</div><div class="line"><span class="comment">--效率高，用到了B表上cc列的索引。</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> A 【小】</div><div class="line"><span class="keyword">WHERE</span> cc <span class="keyword">IN</span> (<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> B【大】)</div><div class="line"><span class="comment">--效率低，用到了 A 表上 cc 列的索引；</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> A 【小】</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> B 【大】 <span class="keyword">WHERE</span> cc=A.cc)</div><div class="line"><span class="comment">--效率高，用到了 B 表上 cc 列的索引。</span></div></pre></td></tr></table></figure>
 <p>二：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> B 【大】</div><div class="line"><span class="keyword">WHERE</span> cc <span class="keyword">IN</span> (<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> A【小】)</div><div class="line"><span class="comment">--效率高，用到了B表上cc列的索引；</span></div></pre></td></tr></table></figure>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> B 【大】</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> A【小】 <span class="keyword">where</span> cc=B.cc)</div><div class="line"><span class="comment">--效率低，用到了A表上cc列的索引。</span></div></pre></td></tr></table></figure>
-<h1 id="集合函数"><a href="#集合函数" class="headerlink" title="集合函数"></a>集合函数</h1><p>应用于2张以上表的SQL语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> B 【大】</div><div class="line"><span class="keyword">WHERE</span> cc <span class="keyword">IN</span> (<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> A【小】)</div><div class="line"><span class="comment">--效率高，用到了 B 表上 cc 列的索引；</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> *</div><div class="line"><span class="keyword">FROM</span> B 【大】</div><div class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> cc <span class="keyword">FROM</span> A【小】 <span class="keyword">where</span> cc=B.cc)</div><div class="line"><span class="comment">--效率低，用到了 A 表上 cc 列的索引。</span></div></pre></td></tr></table></figure>
+<h1 id="集合函数"><a href="#集合函数" class="headerlink" title="集合函数"></a>集合函数</h1><p>应用于2张以上表的 SQL 语句</p>
 <ul>
-<li><p>UNION<br>  ——并集<br>注意事项：<br>作为运算对象的记录的列数必须相同；<br>作为运算对象的记录的列的数据类型必须相同；<br>可以使用任何SELECT语句，但ORDER BY语句只能在最后使用一次；<br>保留重复行使用ALL选项；</p>
+<li><p>UNION<br>  ——并集<br>注意事项：<br>作为运算对象的记录的列数必须相同；<br>作为运算对象的记录的列的数据类型必须相同；<br>可以使用任何 SELECT 语句，但 ORDER BY 语句只能在最后使用一次；<br>保留重复行使用 ALL 选项；</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin</div><div class="line"><span class="keyword">UNION</span></div><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line"> <span class="keyword">FROM</span> Shohin2</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> shohin_id;</div></pre></td></tr></table></figure>
 </li>
 <li><p>INTERSECT<br>  ——交集</p>
@@ -473,27 +467,27 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
 <li><p>EXCEPT<br>  ——差集</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin</div><div class="line"><span class="keyword">EXCEPT</span></div><div class="line"><span class="keyword">SELECT</span> shohin_id, shohin_mei</div><div class="line">  <span class="keyword">FROM</span> Shohin2</div><div class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> shohin_id;</div><div class="line"><span class="comment">--Shohin 减去 Shohin2.</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>JOIN<br>  ——联结<br>一、INNER JOIN<br>内联结。<br>使用时SELECT子句中的列需要按照 &lt;表的别名&gt;.&lt;列名&gt; 的格式进行书写；<br>必须使用ON子句，书写在FROM和WHERE之间；</p>
+<li><p>JOIN<br>  ——联结<br>一、 INNER JOIN<br>内联结。<br>使用时 SELECT 子句中的列需要按照 &lt;表的别名&gt;.&lt;列名&gt; 的格式进行书写；<br>必须使用 ON 子句，书写在 FROM 和 WHERE 之间；</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei, S.hanbai_tanka</div><div class="line"><span class="keyword">FROM</span></div><div class="line">TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span></div><div class="line">Shohin <span class="keyword">AS</span> S</div><div class="line"><span class="keyword">ON</span> TS.shohin_id = S.shohin_id;</div></pre></td></tr></table></figure>
-<p>  二、OUTER JOIN<br>  外联结。<br>  选出单张表中全部的信息，而不像内联结只选出同时存在于两张表中的数据；<br>  通过LEFT和RIGHT指定主表;</p>
+<p>  二、 OUTER JOIN<br>  外联结。<br>  选出单张表中全部的信息，而不像内联结只选出同时存在于两张表中的数据；<br>  通过 LEFT 和 RIGHT 指定主表;</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">S.shohin_id, S.shohin_mei, S.hanbai_tanka</div><div class="line"><span class="keyword">FROM</span></div><div class="line">Shohin <span class="keyword">AS</span> S</div><div class="line"><span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span></div><div class="line">TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">ON</span> TS.shohin_id = S.shohin_id;</div></pre></td></tr></table></figure>
 <p>  三、多张表的联结</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--三张以上表的内联结</span></div><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei,</div><div class="line">S.hanbai_tanka, ZS.zaiko_suryo</div><div class="line"><span class="keyword">FROM</span> TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Shohin <span class="keyword">AS</span> S</div><div class="line"><span class="keyword">ON</span> TS.shohin_id = S.shohin_id</div><div class="line">   <span class="keyword">INNER</span> <span class="keyword">JOIN</span> ZaikoShohin <span class="keyword">AS</span> ZS</div><div class="line">      <span class="keyword">ON</span> TS.shohin_id = ZS.shohin_id</div><div class="line"><span class="keyword">WHERE</span> ZS.souko_id = <span class="string">'S001'</span>;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>四、CROSS JOIN<br>——交叉联结。<br>表的笛卡尔集。<br>AXB={(a,b)|a属于A，b属于B}<br>内联结可以说是交叉联结的一部分，但是外联结不能说是“交叉联结结果之外的部分”，应该说是：<br>外联结 = 主表内所有数据（包括内联结和内联结之中不存在的主表信息【空白处用NULL补上】）</p>
+<p>四、 CROSS JOIN<br>——交叉联结。<br>表的笛卡尔集。<br>AXB={(a,b)|a 属于 A ， b 属于 B }<br>内联结可以说是交叉联结的一部分，但是外联结不能说是“交叉联结结果之外的部分”，应该说是：<br>外联结 = 主表内所有数据(包括内联结和内联结之中不存在的主表信息【空白处用 NULL 补上】)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei</div><div class="line"><span class="keyword">FROM</span> TenpoShohin <span class="keyword">AS</span> TS</div><div class="line"><span class="keyword">CROSS</span> <span class="keyword">JOIN</span></div><div class="line">Shohin <span class="keyword">AS</span> S;</div></pre></td></tr></table></figure>
 <h1 id="过时语法"><a href="#过时语法" class="headerlink" title="过时语法"></a>过时语法</h1><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> TS.tenpo_id, TS.tenpo_mei,</div><div class="line">TS.shohin_id, S.shohin_mei, S.hanbai_tanka</div><div class="line">  <span class="keyword">FROM</span> TenpoShohin TS, Shohin S</div><div class="line"> <span class="keyword">WHERE</span> TS.shohin_id = S.shohin_id</div><div class="line">   <span class="keyword">AND</span> TS.tenpo_id = <span class="string">'000A'</span>;</div></pre></td></tr></table></figure>
 <p>缺点：</p>
 <ul>
 <li>无法马上判断出到底是内联结还是外联结又或者是其他类型的联结</li>
-<li>由于联结条件都写在WHERE子句中，无法在短时间内分辨出哪部分是联结条件，哪部分是用来选取记录的限制条件</li>
+<li>由于联结条件都写在 WHERE 子句中，无法在短时间内分辨出哪部分是联结条件，哪部分是用来选取记录的限制条件</li>
 <li>我们不知道这样的语法到底还能使用多久</li>
 </ul>
 <h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><ol>
-<li>COALESCE函数<br> 将NULL值变为其他值</li>
+<li>COALESCE 函数<br> 将 NULL 值变为其他值</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>（<span class="keyword">name</span>, <span class="string">'unknown'</span>) <span class="keyword">AS</span> <span class="keyword">name</span></div><div class="line"><span class="comment">--于是name中的NULL值就变成unknown了</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>(<span class="keyword">name</span>, <span class="string">'unknown'</span>) <span class="keyword">AS</span> <span class="keyword">name</span></div><div class="line"><span class="comment">--于是 name 中的 NULL 值就变成 unknown 了</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -533,8 +527,8 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/07/html-css-diary/" rel="prev" title="《HTML5与CSS3基础教程》读书笔记">
-                《HTML5与CSS3基础教程》读书笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/07/html-css-diary/" rel="prev" title="《 HTML5与 CSS3 基础教程》备忘">
+                《 HTML5与 CSS3 基础教程》备忘 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -603,7 +597,7 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -611,7 +605,7 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -620,7 +614,7 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -723,7 +717,7 @@ DISTINCT 和GROUP BY 子句都能删除后续列中的重复数据，除此之�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DISTINCT-和-GROUP-BY"><span class="nav-number">1.</span> <span class="nav-text">DISTINCT 和 GROUP BY</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HAVING-和-WHERE"><span class="nav-number">2.</span> <span class="nav-text">HAVING 和 WHERE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#书写顺序与执行顺序"><span class="nav-number">3.</span> <span class="nav-text">书写顺序与执行顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于NULL"><span class="nav-number">4.</span> <span class="nav-text">关于NULL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL语句及其种类"><span class="nav-number">5.</span> <span class="nav-text">SQL语句及其种类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于事务Transaction"><span class="nav-number">6.</span> <span class="nav-text">关于事务Transaction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于视图"><span class="nav-number">7.</span> <span class="nav-text">关于视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联子查询"><span class="nav-number">8.</span> <span class="nav-text">关联子查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EXISTS-与-IN"><span class="nav-number">9.</span> <span class="nav-text">EXISTS 与 IN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合函数"><span class="nav-number">10.</span> <span class="nav-text">集合函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过时语法"><span class="nav-number">11.</span> <span class="nav-text">过时语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用"><span class="nav-number">12.</span> <span class="nav-text">常用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DISTINCT-和-GROUP-BY"><span class="nav-number">1.</span> <span class="nav-text">DISTINCT 和 GROUP BY</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HAVING-和-WHERE"><span class="nav-number">2.</span> <span class="nav-text">HAVING 和 WHERE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#书写顺序与执行顺序"><span class="nav-number">3.</span> <span class="nav-text">书写顺序与执行顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于-NULL"><span class="nav-number">4.</span> <span class="nav-text">关于 NULL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-语句及其种类"><span class="nav-number">5.</span> <span class="nav-text">SQL 语句及其种类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于事务-Transaction"><span class="nav-number">6.</span> <span class="nav-text">关于事务 Transaction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于视图"><span class="nav-number">7.</span> <span class="nav-text">关于视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关联子查询"><span class="nav-number">8.</span> <span class="nav-text">关联子查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EXISTS-与-IN"><span class="nav-number">9.</span> <span class="nav-text">EXISTS 与 IN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合函数"><span class="nav-number">10.</span> <span class="nav-text">集合函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过时语法"><span class="nav-number">11.</span> <span class="nav-text">过时语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用"><span class="nav-number">12.</span> <span class="nav-text">常用</span></a></li></ol></div>
             
           </div>
         </section>
