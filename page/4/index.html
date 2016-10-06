@@ -106,7 +106,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="CodingMe">
-<meta property="og:url" content="https://codingme.xyz/page/4/index.html">
+<meta property="og:url" content="http://codingme.xyz/page/4/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodingMe">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://codingme.xyz/page/4/"/>
+  <link rel="canonical" href="http://codingme.xyz/page/4/"/>
 
   <title> CodingMe </title>
 </head>
@@ -276,6 +276,135 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/01/html-css-diary-4/" itemprop="url">
+                  《 HTML5 与 CSS3 基础教程》备忘4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-01T15:52:18+08:00" content="2016-09-01">
+              2016-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="sprite"><a href="#sprite" class="headerlink" title="sprite"></a>sprite</h1><ul>
+<li>目的：<br>  将多个图像拼合成单个背景图像(sprite)，再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于 UI 上的多个小图标、重复图标等。</li>
+<li>使用方法：<br>  <code>background-image</code> 获得图像，<code>background-position</code> 获得所取的具体位置(目前只知道 x 范围和 y 范围，但想必还可以更加深入的切取)</li>
+<li>工具：<br>  可以多个图片合成一张 sprite 的 CSS Sprite Generator:<a href="http://spritegen.website-performance.org/">http://spritegen.website-performance.org/</a></li>
+<li>关于 Retina 显示屏：<br>  使用长宽双倍大小像素的图片，一样的容器长宽，使其缩小。</li>
+</ul>
+<h1 id="列表的缩进对齐"><a href="#列表的缩进对齐" class="headerlink" title="列表的缩进对齐"></a>列表的缩进对齐</h1><p>默认的列表要左缩进对齐的话，用<code>padding-left:1.125em</code>，但是针对 IE7 及以下版本，还要使用<code>margin-left:0;</code></p>
+<h1 id="ol-、-ul-的选择"><a href="#ol-、-ul-的选择" class="headerlink" title="ol 、 ul 的选择"></a>ol 、 ul 的选择</h1><p>会因为顺序改变而改变的列表，使用有序列表，比如<strong>分页标记</strong>、<strong>面包屑导航</strong>；其他大多数情况下都可以用无序列表。</p>
+<h1 id="标记的修改"><a href="#标记的修改" class="headerlink" title="标记的修改"></a>标记的修改</h1><ul>
+<li>对于标记的修改，使用 <code>list-style-type:none;</code> 或者 <code>type=&quot;none&quot;;</code></li>
+<li><code>background: url( image.ext ) repeat-type horizontal vertical;</code> [ horizontal 、 vertical 是背景图像相对于元素的位置，默认为0]</li>
+<li><code>list-style-image</code> 不同浏览器显示效果不一致，更难控制位置(所以很少用)</li>
+</ul>
+<h1 id="列表的属性-start-、-value"><a href="#列表的属性-start-、-value" class="headerlink" title="列表的属性 start 、 value"></a>列表的属性 start 、 value</h1><p><code>&lt;ol&gt;</code> 中 <code>start=&quot;n&quot;</code> 表示列表初始值， <code>&lt;li&gt;</code> 的 <code>value=&quot;n&quot;</code> 表示该项目的值。 value 属性的值会覆盖 start 的值。</p>
+<h1 id="列表标记的位置"><a href="#列表标记的位置" class="headerlink" title="列表标记的位置"></a>列表标记的位置</h1><p><code>list-style-position</code> 默认为 <code>outside</code> ，可以设置为 <code>inside</code> 成为段落的一部分(像首个大写的字母)而不是独立在段落外。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/01/html-css-diary-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1053,7 +1182,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

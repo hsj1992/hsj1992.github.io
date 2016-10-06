@@ -107,14 +107,14 @@
 <meta name="description" content="选择符API众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。
 Selectors API Level 1 的核心是两个方法：querySelec">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十一章">
-<meta property="og:url" content="https://codingme.xyz/2016/10/04/javascript-note-11/index.html">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十一章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/10/04/javascript-note-11-1/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="选择符API众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。
 Selectors API Level 1 的核心是两个方法：querySelec">
-<meta property="og:updated_time" content="2016-10-04T08:58:05.777Z">
+<meta property="og:updated_time" content="2016-10-05T08:32:11.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十一章">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十一章-1">
 <meta name="twitter:description" content="选择符API众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。
 Selectors API Level 1 的核心是两个方法：querySelec">
 
@@ -137,9 +137,9 @@ Selectors API Level 1 的核心是两个方法：querySelec">
 
 
 
-  <link rel="canonical" href="https://codingme.xyz/2016/10/04/javascript-note-11/"/>
+  <link rel="canonical" href="http://codingme.xyz/2016/10/04/javascript-note-11-1/"/>
 
-  <title> 《 JavaScript 高级程序设计》备忘-第十一章 | CodingMe </title>
+  <title> 《 JavaScript 高级程序设计》备忘-第十一章-1 | CodingMe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +302,7 @@ Selectors API Level 1 的核心是两个方法：querySelec">
             
             
               
-                《 JavaScript 高级程序设计》备忘-第十一章
+                《 JavaScript 高级程序设计》备忘-第十一章-1
               
             
           </h1>
@@ -425,6 +425,15 @@ Selectors API Level 1 的核心是两个方法：querySelec">
 <h3 id="head-属性"><a href="#head-属性" class="headerlink" title="head 属性"></a>head 属性</h3><p>HTML5 新增了document.head 属性，引用文档的<code>&lt;head&gt;</code>元素。<br>结合使用这个属性和另一种后备方法。<br><code>var head = document.head || document.getElementsByTagName(&quot;head&quot;)[0];</code><br>如果可用，就使用document.head，否则仍然使用getElementsByTagName()方法。</p>
 <h2 id="字符集属性"><a href="#字符集属性" class="headerlink" title="字符集属性"></a>字符集属性</h2><p>charset 属性表示文档中实际使用的字符集，也可以用来指定新字符集。<br>默认情况下，这个属性的值为”UTF-16”，但可以通过<code>&lt;meta&gt;</code>元素、响应头部或直接设置charset 属性修改这个值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.charset); <span class="comment">//"UTF-16"</span></div><div class="line"><span class="built_in">document</span>.charset = <span class="string">"UTF-8"</span>;</div></pre></td></tr></table></figure>
+<p>defaultCharset，表示根据默认浏览器及操作系统的设置，当前文档默认的字符集应该是什么。<br>如果文档没有使用默认的字符集，那charset 和defaultCharset 属性的值可能会不一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.charset != <span class="built_in">document</span>.defaultCharset)&#123;</div><div class="line">alert(<span class="string">"Custom character set being used."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过这两个属性可以得到文档使用的字符编码的具体信息，也能对字符编码进行准确地控制。<br>运行适当的情况下，可以保证用户正常查看页面或使用应用。</p>
+<p>支持document.charset 属性的浏览器有IE 、Firefox 、Safari 、Opera 和Chrome 。<br>支持document.defaultCharset 属性的浏览器有IE、Safari 和Chrome。</p>
+<h3 id="自定义数据属性"><a href="#自定义数据属性" class="headerlink" title="自定义数据属性"></a>自定义数据属性</h3><p>HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。<br>可以任意添加、随便命名，只要以data-开头即可。</p>
+<p>添加了自定义属性之后，可以通过元素的dataset 属性来访问自定义属性的值。<br>dataset 属性的值是DOMStringMap 的一个实例，也就是一个名值对的映射。<br>在这个映射中，每个data-name 形式的属性都会有一个对应的属性，只不过属性名没有data-前缀（比如，自定义属性是data-myname，那映射中对应的属性就是myname）。<br><code>&lt;div id=&quot;myDiv&quot; data-appId=&quot;12345&quot; data-myname=&quot;Nicholas&quot;&gt;&lt;/div&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//本例中使用的方法仅用于演示</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="comment">//取得自定义属性的值</span></div><div class="line"><span class="keyword">var</span> appId = div.dataset.appId;</div><div class="line"><span class="keyword">var</span> myName = div.dataset.myname;</div><div class="line"><span class="comment">//设置值</span></div><div class="line">div.dataset.appId = <span class="number">23456</span>;</div><div class="line">div.dataset.myname = <span class="string">"Michael"</span>;</div><div class="line"><span class="comment">//有没有"myname"值呢？</span></div><div class="line"><span class="keyword">if</span> (div.dataset.myname)&#123;</div><div class="line">alert(<span class="string">"Hello, "</span> + div.dataset.myname);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果需要给元素添加一些不可见的数据以便进行其他处理，那就要用到自定义数据属性。<br>在跟踪链接或混搭应用中，通过自定义数据属性能方便地知道点击来自页面中的哪个部分。</p>
+
       
     </div>
 
@@ -464,6 +473,10 @@ Selectors API Level 1 的核心是两个方法：querySelec">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/05/javascript-note-11-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十一章-2">
+                《 JavaScript 高级程序设计》备忘-第十一章-2 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +544,7 @@ Selectors API Level 1 的核心是两个方法：querySelec">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -651,7 +664,7 @@ Selectors API Level 1 的核心是两个方法：querySelec">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#选择符API"><span class="nav-number">1.</span> <span class="nav-text">选择符API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#querySelector-方法"><span class="nav-number">1.1.</span> <span class="nav-text">querySelector()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#querySelectorAll-方法"><span class="nav-number">1.2.</span> <span class="nav-text">querySelectorAll()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matchesSelector-方法"><span class="nav-number">1.3.</span> <span class="nav-text">matchesSelector()方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元素遍历"><span class="nav-number">2.</span> <span class="nav-text">元素遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5"><span class="nav-number">3.</span> <span class="nav-text">HTML5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#与类相关的扩充"><span class="nav-number">3.1.</span> <span class="nav-text">与类相关的扩充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getElementsByClassName-方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">getElementsByClassName()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classList-属性"><span class="nav-number">3.1.2.</span> <span class="nav-text">classList 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#焦点管理"><span class="nav-number">3.2.</span> <span class="nav-text">焦点管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTMLDocument的变化"><span class="nav-number">3.3.</span> <span class="nav-text">HTMLDocument的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState-属性"><span class="nav-number">3.3.1.</span> <span class="nav-text">readyState 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容模式"><span class="nav-number">3.3.2.</span> <span class="nav-text">兼容模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head-属性"><span class="nav-number">3.3.3.</span> <span class="nav-text">head 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符集属性"><span class="nav-number">3.4.</span> <span class="nav-text">字符集属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#选择符API"><span class="nav-number">1.</span> <span class="nav-text">选择符API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#querySelector-方法"><span class="nav-number">1.1.</span> <span class="nav-text">querySelector()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#querySelectorAll-方法"><span class="nav-number">1.2.</span> <span class="nav-text">querySelectorAll()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matchesSelector-方法"><span class="nav-number">1.3.</span> <span class="nav-text">matchesSelector()方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元素遍历"><span class="nav-number">2.</span> <span class="nav-text">元素遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5"><span class="nav-number">3.</span> <span class="nav-text">HTML5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#与类相关的扩充"><span class="nav-number">3.1.</span> <span class="nav-text">与类相关的扩充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getElementsByClassName-方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">getElementsByClassName()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classList-属性"><span class="nav-number">3.1.2.</span> <span class="nav-text">classList 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#焦点管理"><span class="nav-number">3.2.</span> <span class="nav-text">焦点管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTMLDocument的变化"><span class="nav-number">3.3.</span> <span class="nav-text">HTMLDocument的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState-属性"><span class="nav-number">3.3.1.</span> <span class="nav-text">readyState 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#兼容模式"><span class="nav-number">3.3.2.</span> <span class="nav-text">兼容模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head-属性"><span class="nav-number">3.3.3.</span> <span class="nav-text">head 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符集属性"><span class="nav-number">3.4.</span> <span class="nav-text">字符集属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义数据属性"><span class="nav-number">3.4.1.</span> <span class="nav-text">自定义数据属性</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
