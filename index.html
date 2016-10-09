@@ -298,130 +298,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/06/javascript-note-12-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十二章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-06T14:26:29+08:00" content="2016-10-06">
-              2016-10-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
-<p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
-<h2 id="访问元素的样式"><a href="#访问元素的样式" class="headerlink" title="访问元素的样式"></a>访问元素的样式</h2><p>任何支持style 特性的HTML 元素在JavaScript 中都有一个对应的style 属性。<br>这个style 对象是CSSStyleDeclaration 的实例，包含着通过HTML 的style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。<br>在style 特性中指定的任何CSS 属性都将表现为这个style 对象的相应属性。<br>对于使用短划线（分隔不同的词汇，例如background-image）的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</p>
-<p>例如:</p>
-<pre><code>background-image    style.backgroundImage
-color               style.color
-display             style.display
-font-family         style.fontFamily
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/06/javascript-note-12-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/10/06/javascript-note-12-1/" itemprop="url">
                   《 JavaScript 高级程序设计》备忘-第十二章-1
                 </a>
@@ -539,8 +415,8 @@ font-family         style.fontFamily
             
               
                 
-                <a class="post-title-link" href="/2016/10/05/javascript-note-11-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十一章-2
+                <a class="post-title-link" href="/2016/10/06/javascript-note-12-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-2
                 </a>
               
             
@@ -553,8 +429,8 @@ font-family         style.fontFamily
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-05T16:27:47+08:00" content="2016-10-05">
-              2016-10-05
+            <time itemprop="dateCreated" datetime="2016-10-06T14:26:29+08:00" content="2016-10-06">
+              2016-10-06
             </time>
           </span>
 
@@ -601,11 +477,18 @@ font-family         style.fontFamily
 
       
         
-          <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><h2 id="插入标记"><a href="#插入标记" class="headerlink" title="插入标记"></a>插入标记</h2><p>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。<br>因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。<br>相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</p>
-<h3 id="innerHTML-属性"><a href="#innerHTML-属性" class="headerlink" title="innerHTML 属性"></a>innerHTML 属性</h3><p>在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。<br>在写模式下，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全替换调用元素原先的所有子节点。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+          <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
+<p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="访问元素的样式"><a href="#访问元素的样式" class="headerlink" title="访问元素的样式"></a>访问元素的样式</h2><p>任何支持style 特性的HTML 元素在JavaScript 中都有一个对应的style 属性。<br>这个style 对象是CSSStyleDeclaration 的实例，包含着通过HTML 的style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。<br>在style 特性中指定的任何CSS 属性都将表现为这个style 对象的相应属性。<br>对于使用短划线（分隔不同的词汇，例如background-image）的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</p>
+<p>例如:</p>
+<pre><code>background-image    style.backgroundImage
+color               style.color
+display             style.display
+font-family         style.fontFamily
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/05/javascript-note-11-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/06/javascript-note-12-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1487,6 +1370,133 @@ font-family         style.fontFamily
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
+<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
+<pre><code>hash &quot;#contents&quot; 返回URL中的hash（#号后跟零或多个字符），如果URL中不包含散列，则返回空字符串
+host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号（如果有）
+hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
+href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
+toString()方法也返回这个值
+pathname &quot;/WileyCDA/&quot; 返回URL中的目录和（或）文件名
+port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
+这个属性返回空字符串
+protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
+search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1532,7 +1542,7 @@ font-family         style.fontFamily
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
