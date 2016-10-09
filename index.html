@@ -298,6 +298,247 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/06/javascript-note-12-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-06T14:26:29+08:00" content="2016-10-06">
+              2016-10-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
+<p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="访问元素的样式"><a href="#访问元素的样式" class="headerlink" title="访问元素的样式"></a>访问元素的样式</h2><p>任何支持style 特性的HTML 元素在JavaScript 中都有一个对应的style 属性。<br>这个style 对象是CSSStyleDeclaration 的实例，包含着通过HTML 的style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。<br>在style 特性中指定的任何CSS 属性都将表现为这个style 对象的相应属性。<br>对于使用短划线（分隔不同的词汇，例如background-image）的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</p>
+<p>例如:</p>
+<pre><code>background-image    style.backgroundImage
+color               style.color
+display             style.display
+font-family         style.fontFamily
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/06/javascript-note-12-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/06/javascript-note-12-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-06T14:26:29+08:00" content="2016-10-06">
+              2016-10-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="DOM2-和-DOM3"><a href="#DOM2-和-DOM3" class="headerlink" title="DOM2 和 DOM3"></a>DOM2 和 DOM3</h1><h1 id="DOM-变化"><a href="#DOM-变化" class="headerlink" title="DOM 变化"></a>DOM 变化</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM3Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"3.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2HTML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"HTML"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2Views = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Views"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2XML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="针对XML命名空间的变化"><a href="#针对XML命名空间的变化" class="headerlink" title="针对XML命名空间的变化"></a>针对XML命名空间的变化</h2><p>XML 命名空间使不同XML 文档的元素可以混合在一起，共同构成格式良好的文档不必担心发生命名冲突。<br>HTML 不支持XML 命名空间，但XHTML 支持XML 命名空间。<br>命名空间要使用xmlns 特性来指定。<br>XHTML 的命名空间是<code>http://www.w3.org/1999/xhtml</code>，在任何格式良好XHTML 页面中，都应该将其包含在<code>&lt;html&gt;</code>元素中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">Hello world!</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/06/javascript-note-12-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/05/javascript-note-11-2/" itemprop="url">
                   《 JavaScript 高级程序设计》备忘-第十一章-2
                 </a>
@@ -360,102 +601,14 @@
 
       
         
-          
-            <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><h2 id="插入标记"><a href="#插入标记" class="headerlink" title="插入标记"></a>插入标记</h2><p>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。<br>因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。<br>相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</p>
+          <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><h2 id="插入标记"><a href="#插入标记" class="headerlink" title="插入标记"></a>插入标记</h2><p>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。<br>因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。<br>相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</p>
 <h3 id="innerHTML-属性"><a href="#innerHTML-属性" class="headerlink" title="innerHTML 属性"></a>innerHTML 属性</h3><p>在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。<br>在写模式下，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全替换调用元素原先的所有子节点。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><code>&lt;div&gt;</code>元素的innerHTML 属性会返回如下字符串。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>但是，不同浏览器返回的文本格式会有所不同。<br>IE 和Opera 会将所有标签转换为大写形式，<br>而Safari、Chrome 和Firefox 则会原原本本地按照原先文档中（或指定这些标签时）的格式返回HTML，包括空格和缩进。</p>
-<p>不要指望所有浏览器返回的innerHTML 值完全相同。</p>
-<p>在写模式下，innerHTML 的值会被解析为DOM 子树，替换调用元素原来的所有子节点。<br>因为它的值被认为是HTML，所以其中的所有标签都会按照浏览器处理HTML 的标准方式转换为元素（同样，这里的转换结果也因浏览器而异）。<br>如果设置的值仅是文本而没有HTML 标签，那么结果就是设置纯文本。<br><code>div.innerHTML = &quot;Hello &amp; welcome, &lt;b&gt;\&quot;reader\&quot;!&lt;/b&gt;&quot;;</code><br>结果是：<br><code>&lt;div id=&quot;content&quot;&gt;Hello &amp;amp; welcome, &lt;b&gt;&amp;quot;reader&amp;quot;!&lt;/b&gt;&lt;/div&gt;</code><br>设置了innerHTML 之后，可以像访问文档中的其他节点一样访问新创建的节点。<br>为innerHTML 设置HTML 字符串后，浏览器会将这个字符串解析为相应的DOM树。<br>因此设置了innerHTML 之后，再从中读取HTML 字符串，会得到与设置时不一样的结果。<br>原因在于返回的字符串是根据原始HTML 字符串创建的DOM树经过序列化之后的结果。</p>
-<p>使用innerHTML 属性也有一些限制。比如，在大多数浏览器中，通过innerHTML 插入<code>&lt;script&gt;</code>元素并不会执行其中的脚本。</p>
-<p>IE8 及更早版本是唯一能在这种情况下执行脚本的浏览器，但必须满足一些条件。<br>一是必须为<code>&lt;script&gt;</code>元素指定defer 属性，二是<code>&lt;script&gt;</code>元素必须位于（微软所谓的）“有作用域的元素”（scoped element）之后。<br><code>&lt;script&gt;</code>元素被认为是“无作用域的元素”（NoScope element），也就是在页面中看不到的元素，与<code>&lt;style&gt;</code>元素或注释类似。</p>
-<p>如果通过innerHTML 插入的字符串开头就是一个“无作用域的元素”，那么IE 会在解析这个字符串前先删除该元素。<br><code>div.innerHTML = &quot;&lt;script defer&gt;alert(&#39;hi&#39;);&lt;\/script&gt;&quot;; //无效</code><br>如果想插入这段脚本，必须在前面添加一个“有作用域的元素”，可以是一个文本节点，也可以是一个没有结束标签的元素如<code>&lt;input&gt;</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div.innerHTML = <span class="string">"_&lt;script defer&gt;alert('hi');&lt;\/script&gt;"</span>;</div><div class="line">div.innerHTML = <span class="string">"&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;script defer&gt;alert('hi');&lt;\/script&gt;"</span>;</div><div class="line">div.innerHTML = <span class="string">"&lt;input type=\"hidden\"&gt;&lt;script defer&gt;alert('hi');&lt;\/script&gt;"</span>;</div></pre></td></tr></table></figure>
-<p>第一行代码会在<code>&lt;script&gt;</code>元素前插入一个文本节点。事后，为了不影响页面显示，可能需要移除这个文本节点。<br>第二行代码采用的方法类似，只不过使用的是一个包含非换行空格的<code>&lt;div&gt;</code>元素。<br>如果仅仅插入一个空的<code>&lt;div&gt;</code>元素，还是不行；必须要包含一点儿内容，浏览器才会创建文本节点。同样，为了不影响页面布局，恐怕还得移除这个节点。<br>第三行代码使用的是一个隐藏的<code>&lt;input&gt;</code>域，也能达到相同的效果。<br>由于隐藏的<code>&lt;input&gt;</code>域不影响页面布局，因此这种方式在大多数情况下都是首选。</p>
-<p>大多数浏览器都支持以直观的方式通过innerHTML 插入<code>&lt;style&gt;</code>元素。<br><code>div.innerHTML = &quot;&lt;style type=\&quot;text/css\&quot;&gt;body {background-color: red; }&lt;/style&gt;&quot;;</code><br>但在IE8 及更早版本中，<code>&lt;style&gt;</code>也是一个“没有作用域的元素”，因此必须给它前置一个“有作用域的元素”：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">div.innerHTML = <span class="string">"_&lt;style type=\"text/css\"&gt;body &#123;background-color: red; &#125;&lt;/style&gt;"</span>;</div><div class="line">div.removeChild(div.firstChild);</div></pre></td></tr></table></figure>
-<p>并不是所有元素都支持innerHTML 属性。不支持innerHTML 的元素有：<code>&lt;col&gt;</code>、<code>&lt;colgroup&gt;</code>、<code>&lt;frameset&gt;</code>、<code>&lt;head&gt;</code>、<code>html&gt;</code>、<code>&lt;style&gt;</code>、<code>&lt;table&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>和<code>&lt;tr&gt;</code>。</p>
-<p>在IE8 及更早版本中，<code>&lt;title&gt;</code>元素也没有innerHTML 属性。<br>Firefox 对在内容类型为application/xhtml+xml 的XHTML 文档中设置innerHTML有严格的限制。</p>
-<p>无论什么时候，只要使用innerHTML 从外部插入HTML，都应该首先以可靠的方式处理HTML。<br>IE8 为此提供了window.toStaticHTML()方法，这个方法接收一个参数，即一个HTML 字符串；<br>返回一个经过无害处理后的版本——从源HTML 中删除所有脚本节点和事件处理程序属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = <span class="string">"&lt;a href=\"#\" onclick=\"alert('hi')\"&gt;Click Me&lt;/a&gt;"</span>;</div><div class="line"><span class="keyword">var</span> sanitized = <span class="built_in">window</span>.toStaticHTML(text); <span class="comment">//Internet Explorer 8 only</span></div><div class="line">alert(sanitized); <span class="comment">//"&lt;a href=\"#\"&gt;Click Me&lt;/a&gt;"</span></div></pre></td></tr></table></figure>
-<p>得到的无害版本中去掉了onclick 属性。<br>虽然目前只有IE8 原生支持这个方法，但还是建议在通过innerHTML 插入代码之前，尽可能先手工检查一下其中的文本内容。</p>
-<h3 id="outerHTML-属性"><a href="#outerHTML-属性" class="headerlink" title="outerHTML 属性"></a>outerHTML 属性</h3><p>在读模式下，outerHTML 返回调用它的元素及所有子节点的HTML 标签。<br>在写模式下，outerHTML会根据指定的HTML 字符串创建新的DOM 子树，然后用这个DOM子树完全替换调用元素。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>如果在<code>&lt;div&gt;</code>元素上调用outerHTML，会返回与上面相同的代码，包括<code>&lt;div&gt;</code>本身。<br>不过，由于浏览器解析和解释HTML 标记的不同，结果也可能会有所不同。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">div.outerHTML = <span class="string">"&lt;p&gt;This is a paragraph.&lt;/p&gt;"</span>;</div><div class="line"><span class="comment">//等同于</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</div><div class="line">p.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"This is a paragraph."</span>));</div><div class="line">div.parentNode.replaceChild(p, div);</div></pre></td></tr></table></figure>
-<p>结果，就是新创建的<code>&lt;p&gt;</code>元素会取代DOM 树中的<code>&lt;div&gt;</code>元素。<br>支持outerHTML 属性的浏览器有IE4+、Safari 4+、Chrome 和Opera 8+。Firefox 7 及之前版本都不支持outerHTML 属性。</p>
-<h3 id="insertAdjacentHTML-方法"><a href="#insertAdjacentHTML-方法" class="headerlink" title="insertAdjacentHTML()方法"></a>insertAdjacentHTML()方法</h3><p>插入标记的最后一个新增方式是insertAdjacentHTML()方法。<br>最早也是在IE 中出现的，它接收两个参数：插入位置和要插入的HTML 文本。<br>第一个参数必须是：</p>
-<ul>
-<li>“beforebegin”，在当前元素之前插入一个紧邻的同辈元素；</li>
-<li>“afterbegin”，在当前元素之下插入一个新的子元素或在第一个子元素之前再插入新的子元素；</li>
-<li>“beforeend”，在当前元素之下插入一个新的子元素或在最后一个子元素之后再插入新的子元素；</li>
-<li>“afterend”，在当前元素之后插入一个紧邻的同辈元素。</li>
-</ul>
-<p>这些值都必须是小写形式。第二个参数是一个HTML 字符串（与innerHTML 和outerHTML的值相同），如果浏览器无法解析该字符串，就会抛出错误。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//作为前一个同辈元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"beforebegin"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div><div class="line"><span class="comment">//作为第一个子元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"afterbegin"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div><div class="line"><span class="comment">//作为最后一个子元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"beforeend"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div><div class="line"><span class="comment">//作为后一个同辈元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"afterend"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div></pre></td></tr></table></figure>
-<p>支持insertAdjacentHTML()方法的浏览器有IE、Firefox 8+、Safari、Opera 和Chrome。</p>
-<h3 id="内存与性能问题"><a href="#内存与性能问题" class="headerlink" title="内存与性能问题"></a>内存与性能问题</h3><p>使用方法替换子节点可能会导致浏览器的内存占用问题，尤其是在IE 中，问题更加明显。<br>在删除带有事件处理程序或引用了其他JavaScript 对象子树时，就有可能导致内存占用问题。<br>假设某个元素有一个事件处理程序（或者引用了一个JavaScript 对象作为属性），<br>在使用前述某个属性将该元素从文档树中删除后，元素与事件处理程序（或JavaScript 对象）之间的绑定关系在内存中并没有一并删除。<br>如果这种情况频繁出现，页面占用的内存数量就会明显增加。</p>
-<p>因此，在使用innerHTML、outerHTML 属性和insertAdjacentHTML()方法时，最好先手工删除要被替换的元素的所有事件处理程序和JavaScript 对象属性。</p>
-<p>使用这几个属性——特别是使用innerHTML，仍然还是可以为我们提供很多便利的。<br>在插入大量新HTML 标记时，使用innerHTML 属性与通过多次DOM 操作先创建节点再指定它们之间的关系相比，效率要高得多。<br>因为在设置innerHTML 或outerHTML 时，就会创建一个HTML解析器。这个解析器是在浏览器级别的代码（通常是C++编写的）基础上运行的，因此比执行JavaScript快得多。<br>不可避免地，创建和销毁HTML 解析器也会带来性能损失，所以最好能够将设置innerHTML或outerHTML 的次数控制在合理的范围内。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=values.length; i &lt; len; i++)&#123;</div><div class="line">ul.innerHTML += <span class="string">"&lt;li&gt;"</span> + values[i] + <span class="string">"&lt;/li&gt;"</span>; <span class="comment">//要避免这种频繁操作！！</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种每次循环都设置一次innerHTML 的做法效率很低。<br>每次循环还要从innerHTML 中读取一次信息，就意味着每次循环要访问两次innerHTML。<br>最好的做法是单独构建字符串，然后再一次性地将结果字符串赋值给innerHTML。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> itemsHtml = <span class="string">""</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=values.length; i &lt; len; i++)&#123;</div><div class="line">itemsHtml += <span class="string">"&lt;li&gt;"</span> + values[i] + <span class="string">"&lt;/li&gt;"</span>;</div><div class="line">&#125;</div><div class="line">ul.innerHTML = itemsHtml;</div></pre></td></tr></table></figure>
-<h2 id="scrollIntoView-方法"><a href="#scrollIntoView-方法" class="headerlink" title="scrollIntoView()方法"></a>scrollIntoView()方法</h2><p>在各种专有方法中，HTML5 最终选择了scrollIntoView()作为标准方法。<br>scrollIntoView()可以在所有HTML 元素上调用，通过滚动浏览器窗口或某个容器元素，调用元素就可以出现在视口中。<br>如果给这个方法传入true 作为参数，或者不传入任何参数，那么窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐。<br>如果传入false 作为参数，调用元素会尽可能全部出现在视口中，（可能的话，调用元素的底部会与视口顶部平齐。）不过顶部不一定平齐</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//让元素可见</span></div><div class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].scrollIntoView();</div></pre></td></tr></table></figure>
-<p>当页面发生变化时，一般会用这个方法来吸引用户的注意力。<br>实际上，为某个元素设置焦点也会导致浏览器滚动并显示出获得焦点的元素。</p>
-<h1 id="专有扩展"><a href="#专有扩展" class="headerlink" title="专有扩展"></a>专有扩展</h1><h2 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h2><p>IE8 引入，决定了可以使用什么功能。<br>决定了你可以使用哪个级别的CSS，可以在JavaScript 中使用哪些API，以及如何对待文档类型（doctype）。<br>到了IE9，总共有4 种文档模式。</p>
-<ul>
-<li>IE5：以混杂模式渲染页面（IE5 的默认模式就是混杂模式）。IE8 及更高版本中的新功能都无法使用。</li>
-<li>IE7：以IE7 标准模式渲染页面。IE8 及更高版本中的新功能都无法使用。</li>
-<li>IE8：以IE8 标准模式渲染页面。IE8 中的新功能都可以使用，因此可以使用Selectors API、更多CSS2 级选择符和某些CSS3 功能，还有一些HTML5 的功能。不过IE9 中的新功能无法使用。</li>
-<li>IE9：以IE9 标准模式渲染页面。IE9 中的新功能都可以使用，比如ECMAScript 5、完整的CSS3以及更多HTML5 功能。这个文档模式是最高级的模式。</li>
-</ul>
-<p>要理解IE8 及更高版本的工作原理，必须理解文档模式。<br>要强制浏览器以某种模式渲染页面，可以使用HTTP 头部信息X-UA-Compatible，或通过等价的<code>&lt;meta&gt;</code>标签来设置。<br><code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IEVersion&quot;&gt;</code><br>这里IE 的版本（IEVersion）有以下一些不同的值，而且这些值并不一定与上述4 种文档模式对应。</p>
-<ul>
-<li>Edge：始终以最新的文档模式来渲染页面。忽略文档类型声明。对于IE8，始终保持以IE8 标准模式渲染页面。对于IE9，则以IE9 标准模式渲染页面。</li>
-<li>EmulateIE9：如果有文档类型声明，则以IE9 标准模式渲染页面，否则将文档模式设置为IE5。</li>
-<li>EmulateIE8：如果有文档类型声明，则以IE8 标准模式渲染页面，否则将文档模式设置为IE5。</li>
-<li>EmulateIE7：如果有文档类型声明，则以IE7 标准模式渲染页面，否则将文档模式设置为IE5。</li>
-<li>9：强制以IE9 标准模式渲染页面，忽略文档类型声明。</li>
-<li>8：强制以IE8 标准模式渲染页面，忽略文档类型声明。</li>
-<li>7：强制以IE7 标准模式渲染页面，忽略文档类型声明。</li>
-<li>5：强制将文档模式设置为IE5，忽略文档类型声明。</li>
-</ul>
-<p>通过document.documentMode 属性可以知道给定页面使用的是什么文档模式。<br>这个属性是IE8中新增的，它会返回使用的文档模式的版本号（在IE9 中，可能返回的版本号为5、7、8、9）<br>知道页面采用的是什么文档模式，有助于理解页面的行为方式。无论在什么文档模式下，都可以访问这个属性。</p>
-<h2 id="children属性"><a href="#children属性" class="headerlink" title="children属性"></a>children属性</h2><p>IE9 之前的版本与其他浏览器在处理文本节点中的空白符时有差异，因此出现。<br>HTMLCollection 的实例，只包含元素中同样还是元素的子节点。<br>除此之外，children 属性与childNodes 没有什么区别，即在元素只包含元素子节点时，这两个属性的值相同。<br>IE8 及更早版本的children 属性中也会包含注释节点，但IE9 之后的版本则只返回元素节点。</p>
-<h2 id="contains-方法"><a href="#contains-方法" class="headerlink" title="contains()方法"></a>contains()方法</h2><p>调用contains()方法的应该是祖先节点，也就是搜索开始的节点，<br>这个方法接收一个参数，即要检测的后代节点。如果被检测的节点是后代节点，该方法返回true；否则，返回false。<br><code>alert(document.documentElement.contains(document.body)); //true</code></p>
-<p>例子测试了<code>&lt;body&gt;</code>元素是不是<code>&lt;html&gt;</code>元素的后代。<br>支持contains()方法的浏览器有IE、Firefox 9+、Safari、Opera 和Chrome。</p>
-<p>DOM Level 3 的compareDocumentPosition()也能够确定节点间的关系。<br>支持这个方法的浏览器有IE9+、Firefox、Safari、Opera 9.5+和Chrome。</p>
-<p>返回一个表示该关系的位掩码（ bitmask）。</p>
-<p>1 无关（给定的节点不在当前文档中）<br>2 居前（给定的节点在DOM树中位于参考节点之前）<br>4 居后（给定的节点在DOM树中位于参考节点之后）<br>8 包含（给定的节点是参考节点的祖先）<br>16 被包含（给定的节点是参考节点的后代）</p>
-<p>为模仿contains()方法，应该关注的是掩码16。<br>可以对compareDocumentPosition()的结果执行按位与，以确定参考节点（调用compareDocumentPosition()方法的当前节点）是否包含给定的节点（传入的节点）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">contains</span>(<span class="params">refNode, otherNode</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> refNode.contains == <span class="string">"function"</span> &amp;&amp;</div><div class="line">(!client.engine.webkit || client.engine.webkit &gt;= <span class="number">522</span>))&#123;</div><div class="line"><span class="keyword">return</span> refNode.contains(otherNode);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> refNode.compareDocumentPosition == <span class="string">"function"</span>)&#123;</div><div class="line"><span class="keyword">return</span> !!(refNode.compareDocumentPosition(otherNode) &amp; <span class="number">16</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">var</span> node = otherNode.parentNode;</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line"><span class="keyword">if</span> (node === refNode)&#123;</div><div class="line"><span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">node = node.parentNode;</div><div class="line">&#125;</div><div class="line">&#125; <span class="keyword">while</span> (node !== <span class="literal">null</span>);</div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>函数的第一个参数是参考节点，第二个参数是要检查的节点。</p>
-<p>在函数体内，首先检测refNode 中是否存在contains()方法（能力检测）。还检查了当前浏览器所用的WebKit 版本号。如果方法存在而且不是WebKit，则继续执行代码。否则，如果浏览器是WebKit 且至少是Safari 3（WebKit版本号为522 或更高），那么也可以继续执行代码。<br>在WebKit 版本号小于522 的Safari 浏览器中，contains()方法不能正常使用。</p>
-<p>接下来检查是否存在compareDocumentPosition()方法，而函数的最后一步则是自otherNode开始向上遍历DOM 结构，以递归方式取得parentNode，并检查其是否与refNode 相等。<br>在文档树的顶端，parentNode 的值等于null，于是循环结束。这是针对旧版本Safari 设计的一个后备策略。</p>
-<h2 id="插入文本"><a href="#插入文本" class="headerlink" title="插入文本"></a>插入文本</h2><p>IE 原来专有的插入标记的属性innerHTML 和outerHTML 已经被HTML5 纳入规范。<br>但另外两个插入文本的专有属性则没有这么好的运气。这两个没有被HTML5 看中的属性是innerText和outerText。</p>
-<h3 id="innerText-属性"><a href="#innerText-属性" class="headerlink" title="innerText 属性"></a>innerText 属性</h3><p>通过innertText 属性可以操作元素中包含的所有文本内容，包括子文档树中的文本。<br>在通过innerText 读取值时，它会按照由浅入深的顺序，将子文档树中的所有文本拼接起来。<br>在通过innerText 写入值时，结果会删除元素的所有子节点，插入包含相应文本值的文本节点。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>对<code>&lt;div&gt;</code>元素而言，会返回字符串：<br>This is a paragraph with a list following it.<br>Item 1<br>Item 2<br>Item 3</p>
-<p>由于不同浏览器处理空白符的方式不同，因此输出的文本可能会也可能不会包含原始HTML 代码中的缩进。<br><code>div.innerText = &quot;Hello world!&quot;;</code><br>执行之后：<code>&lt;div id=&quot;content&quot;&gt;Hello world!&lt;/div&gt;</code></p>
-<p>设置innerText属性的同时，也对文本中存在的HTML 语法字符（小于号、大于号、引号及和号）进行了编码。</p>
-<p>设置innerText 永远只会生成当前节点的一个子文本节点，而为了确保只生成一个子文本节点，就必须要对文本进行HTML 编码。</p>
-<p>利用这一点，可以通过innerText 属性过滤掉HTML 标签。<br><code>div.innerText = div.innerText;</code><br>执行这行代码后，就用原来的文本内容替换了容器元素中的所有内容（包括子节点，因而也就去掉了HTML 标签）。<br>支持innerText 属性的浏览器包括IE4+、Safari 3+、Opera 8+和Chrome。Firefox 虽然不支持innerText，但支持作用类似的textContent 属性。<br>textContent 是DOM Level 3 规定的一个属性，其他支持textContent 属性的浏览器还有IE9+、Safari 3+、Opera 10+和Chrome。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInnerText</span>(<span class="params">element</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> (<span class="keyword">typeof</span> element.textContent == <span class="string">"string"</span>) ?</div><div class="line">element.textContent : element.innerText;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setInnerText</span>(<span class="params">element, text</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> element.textContent == <span class="string">"string"</span>)&#123;</div><div class="line">element.textContent = text;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">element.innerText = text;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>实际上，innerText 与textContent 返回的内容并不完全一样。<br>比如，innerText 会忽略行内的样式和脚本，而textContent 则会像返回其他文本一样返回行内的样式和脚本代码。<br>避免跨浏览器兼容问题的最佳途径，就是从不包含行内样式或行内脚本的DOM 子树副本或DOM片段中读取文本。</p>
-<h3 id="outerText-属性"><a href="#outerText-属性" class="headerlink" title="outerText 属性"></a>outerText 属性</h3><p>作用范围扩大到了包含调用它的节点之外，outerText 与innerText 基本上没有多大区别。<br>读取文本值时，结果完全一样。<br>在写模式下，outerText 不只是替换调用它的元素的子节点，而是会替换整个元素（包括子节点）。<br>新的文本节点会完全取代调用outerText 的元素。此后，该元素就从文档中被删除，无法访问。<br>支持outerText 属性的浏览器有IE4+、Safari 3+、Opera 8+和Chrome。<br>由于这个属性会导致调用它的元素不存在，因此并不常用。也建议尽可能不要使用这个属性。</p>
-<h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><ul>
-<li>scrollIntoViewIfNeeded(alignCenter)：只在当前元素在视口中不可见的情况下，才滚动浏览器窗口或容器元素，最终让它可见。<br>  如果当前元素在视口中可见，这个方法什么也不做。如果将可选的alignCenter 参数设置为true，则表示尽量将元素显示在视口中部（垂直方向）。Safari 和Chrome 实现了这个方法。</li>
-<li>scrollByLines(lineCount)：将元素的内容滚动指定的行高，lineCount 值可以是正值，也可以是负值。Safari 和Chrome 实现了这个方法。</li>
-<li>scrollByPages(pageCount)：将元素的内容滚动指定的页面高度，具体高度由元素的高度决定。Safari 和Chrome 实现了这个方法。\</li>
-</ul>
-<p>scrollIntoView()和scrollIntoViewIfNeeded()的作用对象是元素的容器，而scrollByLines()和scrollByPages()影响的则是元素自身。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将页面主体滚动5 行</span></div><div class="line"><span class="built_in">document</span>.body.scrollByLines(<span class="number">5</span>);</div><div class="line"><span class="comment">//在当前元素不可见的时候，让它进入浏览器的视口</span></div><div class="line"><span class="built_in">document</span>.images[<span class="number">0</span>].scrollIntoViewIfNeeded();</div><div class="line"><span class="comment">//将页面主体往回滚动1 页</span></div><div class="line"><span class="built_in">document</span>.body.scrollByPages(<span class="number">-1</span>);</div></pre></td></tr></table></figure>
-<p>由于scrollIntoView()是唯一一个所有浏览器都支持的方法，因此还是这个方法最常用。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/05/javascript-note-11-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -565,81 +718,15 @@
 
       
         
-          
-            <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><p>众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。<br>实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。</p>
+          <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><p>众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。<br>实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。</p>
 <p>Selectors API Level 1 的核心是两个方法：querySelector()和querySelectorAll()。<br>在兼容的浏览器中，可以通过Document 及Element 类型的实例调用它们。<br>目前已完全支持Selectors API Level 1的浏览器有IE 8+、Firefox 3.5+、Safari 3.1+、Chrome 和Opera 10+。</p>
 <h2 id="querySelector-方法"><a href="#querySelector-方法" class="headerlink" title="querySelector()方法"></a>querySelector()方法</h2><p>querySelector()方法接收一个CSS 选择符，返回与该模式匹配的第一个元素，如果没有找到匹配的元素，返回null。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得body 元素</span></div><div class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>);</div><div class="line"><span class="comment">//取得ID 为"myDiv"的元素</span></div><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.querySelector(<span class="string">"#myDiv"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的第一个元素</span></div><div class="line"><span class="keyword">var</span> selected = <span class="built_in">document</span>.querySelector(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得类为"button"的第一个图像元素</span></div><div class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.body.querySelector(<span class="string">"img.button"</span>);</div></pre></td></tr></table></figure>
-<p>通过Document 类型调用querySelector()方法时，会在文档元素的范围内查找匹配的元素。<br>而通过Element 类型调用querySelector()方法时，只会在该元素后代元素的范围内查找匹配的元素。<br>如果传入了不被支持的选择符，querySelector()会抛出错误。</p>
-<h2 id="querySelectorAll-方法"><a href="#querySelectorAll-方法" class="headerlink" title="querySelectorAll()方法"></a>querySelectorAll()方法</h2><p>接收的参数与querySelector()方法一样，都是一个CSS 选择符，但返回的是所有匹配的元素而不仅仅是一个元素。返回的是一个NodeList 的实例。<br>具体来说，返回的值实际上是带有所有属性和方法的NodeList，而其底层实现则类似于一组元素的<strong>快照</strong>，而非不断对文档进行搜索的动态查询。<br>可以避免使用NodeList 对象通常会引起的大多数性能问题。<br>只要传给querySelectorAll()方法的CSS 选择符有效，该方法都会返回一个NodeList 对象，而不管找到多少匹配的元素。<br>如果没有找到匹配的元素，NodeList 就是空的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得某&lt;div&gt;中的所有&lt;em&gt;元素（类似于getElementsByTagName("em")）</span></div><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).querySelectorAll(<span class="string">"em"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的所有元素</span></div><div class="line"><span class="keyword">var</span> selecteds = <span class="built_in">document</span>.querySelectorAll(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素</span></div><div class="line"><span class="keyword">var</span> strongs = <span class="built_in">document</span>.querySelectorAll(<span class="string">"p strong"</span>);</div></pre></td></tr></table></figure>
-<p>与querySelector()类似，如果传入了浏览器不支持的选择符或者选择符中有语法错误，querySelectorAll()会抛出错误。</p>
-<h2 id="matchesSelector-方法"><a href="#matchesSelector-方法" class="headerlink" title="matchesSelector()方法"></a>matchesSelector()方法</h2><p>Selectors API Level 2 规范为Element 类型新增了一个方法matchesSelector()。<br>这个方法接收一个参数，即CSS 选择符，如果调用元素与该选择符匹配，返回true；否则，返回false。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.body.matchesSelector(<span class="string">"body.page1"</span>))&#123;</div><div class="line"><span class="comment">//true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在取得某个元素引用的情况下，使用这个方法能够方便地检测它是否会被querySelector()或querySelectorAll()方法返回。<br>截至2011 年年中，还没有浏览器支持matchesSelector()方法；<br>不过，也有一些实验性的实现。IE 9+通过msMatchesSelector()支持该方法，Firefox 3.6+通过mozMatchesSelector()支持该方法，Safari 5+和Chrome 通过webkitMatchesSelector()支持该方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchesSelector</span>(<span class="params">element, selector</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (element.matchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.matchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.msMatchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.msMatchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.mozMatchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.mozMatchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (element.webkitMatchesSelector)&#123;</div><div class="line"><span class="keyword">return</span> element.webkitMatchesSelector(selector);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Not supported."</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (matchesSelector(<span class="built_in">document</span>.body, <span class="string">"body.page1"</span>))&#123;</div><div class="line"><span class="comment">//执行操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="元素遍历"><a href="#元素遍历" class="headerlink" title="元素遍历"></a>元素遍历</h1><p>对于元素间的空格，IE9 及之前版本不会返回文本节点，而其他所有浏览器都会返回文本节点。<br>这样，就导致了在使用childNodes 和firstChild 等属性时的行为不一致。<br>为了弥补这一差异，而同时又保持DOM规范不变，Element Traversal 规范（www.w3.org/TR/ElementTraversal/）新定义了一组属性。</p>
-<ul>
-<li>childElementCount：返回子元素（不包括文本节点和注释）的个数。</li>
-<li>firstElementChild：指向第一个子元素；firstChild 的元素版。</li>
-<li>lastElementChild：指向最后一个子元素；lastChild 的元素版。</li>
-<li>previousElementSibling：指向前一个同辈元素；previousSibling 的元素版。</li>
-<li>nextElementSibling：指向后一个同辈元素；nextSibling 的元素版。</li>
-</ul>
-<p>利用这些元素不必担心空白文本节点，从而可以更方便地查找DOM 元素。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//原版本</span></div><div class="line"><span class="keyword">var</span> i,</div><div class="line">len,</div><div class="line">child = element.firstChild;</div><div class="line"><span class="keyword">while</span>(child != element.lastChild)&#123;</div><div class="line"><span class="keyword">if</span> (child.nodeType == <span class="number">1</span>)&#123; <span class="comment">//检查是不是元素</span></div><div class="line">processChild(child);</div><div class="line">&#125;</div><div class="line">child = child.nextSibling;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//而使用Element Traversal 新增的元素，代码会更简洁。</span></div><div class="line"><span class="keyword">var</span> i,</div><div class="line">len,</div><div class="line">child = element.firstElementChild;</div><div class="line"><span class="keyword">while</span>(child != element.lastElementChild)&#123;</div><div class="line">processChild(child); <span class="comment">//已知其是元素</span></div><div class="line">child = child.nextElementSibling;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>支持Element Traversal 规范的浏览器有IE 9+、Firefox 3.5+、Safari 4+、Chrome 和Opera 10+。</p>
-<h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><p>对于传统HTML 而言，HTML5 是一个叛逆。<br>所有之前的版本对JavaScript 接口的描述都不过三言两语，主要篇幅都用于定义标记，与JavaScript 相关的内容一概交由DOM 规范去定义。</p>
-<p>而HTML5 规范则围绕如何使用新增标记定义了大量JavaScript API。其中一些API 与DOM 重叠，定义了浏览器应该支持的DOM扩展。</p>
-<h2 id="与类相关的扩充"><a href="#与类相关的扩充" class="headerlink" title="与类相关的扩充"></a>与类相关的扩充</h2><p>HTML5 新增了很多API，致力于简化CSS 类的用法。</p>
-<h3 id="getElementsByClassName-方法"><a href="#getElementsByClassName-方法" class="headerlink" title="getElementsByClassName()方法"></a>getElementsByClassName()方法</h3><p>是最受人欢迎的一个方法，可以通过document对象及所有HTML 元素调用该方法。<br>这个方法最早出现在JavaScript 库中，是通过既有的DOM 功能实现的，而原生的实现具有极大的性能优势。<br>getElementsByClassName()方法接收一个参数，即一个包含一或多个类名的字符串，返回带有指定类的所有元素的NodeList。<br>传入多个类名时，类名的先后顺序不重要。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得所有类中包含"username"和"current"的元素，类名的先后顺序无所谓</span></div><div class="line"><span class="keyword">var</span> allCurrentUsernames = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"username current"</span>);</div><div class="line"><span class="comment">//取得ID 为"myDiv"的元素中带有类名"selected"的所有元素</span></div><div class="line"><span class="keyword">var</span> selected = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).getElementsByClassName(<span class="string">"selected"</span>);</div></pre></td></tr></table></figure>
-<p>使用这个方法可以更方便地为带有某些类的元素添加事件处理程序，从而不必再局限于使用ID 或标签名。<br>因为返回的对象是NodeList，所以使用这个方法与使用getElementsByTagName()以及其他返回NodeList 的DOM 方法都具有同样的性能问题。<br>支持getElementsByClassName()方法的浏览器有IE 9+、Firefox 3+、Safari 3.1+、Chrome 和Opera 9.5+。</p>
-<h3 id="classList-属性"><a href="#classList-属性" class="headerlink" title="classList 属性"></a>classList 属性</h3><p>操作类名时，需要通过className 属性添加、删除和替换类名。<br>因为className 中是一个字符串，所以即使只修改字符串一部分，也必须每次都设置整个字符串的值。<br><code>&lt;div class=&quot;bd user disabled&quot;&gt;...&lt;/div&gt;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除"user"类</span></div><div class="line"><span class="comment">//首先，取得类名字符串并拆分成数组</span></div><div class="line"><span class="keyword">var</span> classNames = div.className.split(<span class="regexp">/\s+/</span>);</div><div class="line"><span class="comment">//找到要删的类名</span></div><div class="line"><span class="keyword">var</span> pos = <span class="number">-1</span>,</div><div class="line">i,</div><div class="line">len;</div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=classNames.length; i &lt; len; i++)&#123;</div><div class="line"><span class="keyword">if</span> (classNames[i] == <span class="string">"user"</span>)&#123;</div><div class="line">pos = i;</div><div class="line"><span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//删除类名</span></div><div class="line">classNames.splice(i,<span class="number">1</span>);</div><div class="line"><span class="comment">//把剩下的类名拼成字符串并重新设置</span></div><div class="line">div.className = classNames.join(<span class="string">" "</span>);</div></pre></td></tr></table></figure>
-<p>HTML5 新增了一种操作类名的方式，可以让操作更简单也更安全，那就是为所有元素添加classList 属性。<br>这个classList 属性是新集合类型DOMTokenList 的实例。<br>DOMTokenList 有一个表示自己包含多少元素的length 属性，而要取得每个元素可以使用item()方法，也可以使用方括号语法。</p>
-<p>这个新类型还有不少方法。</p>
-<ul>
-<li>add(value)：将给定的字符串值添加到列表中。如果值已经存在，就不添加了。</li>
-<li>contains(value)：表示列表中是否存在给定的值，如果存在则返回true，否则返回false。</li>
-<li>remove(value)：从列表中删除给定的字符串。</li>
-<li>toggle(value)：如果列表中已经存在给定的值，删除它；如果列表中没有给定的值，添加它。</li>
-</ul>
-<p><code>div.classList.remove(&quot;user&quot;);</code><br>以上代码能够确保其他类名不受此次修改的影响。其他方法也能极大地减少类似基本操作的复杂性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除"disabled"类</span></div><div class="line">div.classList.remove(<span class="string">"disabled"</span>);</div><div class="line"><span class="comment">//添加"current"类</span></div><div class="line">div.classList.add(<span class="string">"current"</span>);</div><div class="line"><span class="comment">//切换"user"类</span></div><div class="line">div.classList.toggle(<span class="string">"user"</span>);</div><div class="line"><span class="comment">//确定元素中是否包含既定的类名</span></div><div class="line"><span class="keyword">if</span> (div.classList.contains(<span class="string">"bd"</span>) &amp;&amp; !div.classList.contains(<span class="string">"disabled"</span>))&#123;</div><div class="line"><span class="comment">//执行操作</span></div><div class="line">)</div><div class="line"><span class="comment">//迭代类名</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=div.classList.length; i &lt; len; i++)&#123;</div><div class="line">doSomething(div.classList[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>有了classList 属性，除非你需要全部删除所有类名，或者完全重写元素的class 属性，否则也就用不到className 属性了。<br>支持classList 属性的浏览器有Firefox 3.6+和Chrome。</p>
-<h2 id="焦点管理"><a href="#焦点管理" class="headerlink" title="焦点管理"></a>焦点管理</h2><p>HTML5 也添加了辅助管理DOM 焦点的功能。<br>document.activeElement 属性，这个属性始终会引用DOM 中当前获得了焦点的元素。</p>
-<p>元素获得焦点的方式有页面加载、用户输入（通常是通过按Tab 键）和在代码中调用focus()方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"myButton"</span>);</div><div class="line">button.focus();</div><div class="line">alert(<span class="built_in">document</span>.activeElement === button); <span class="comment">//true</span></div><div class="line">button.focus();</div><div class="line">alert(<span class="built_in">document</span>.hasFocus()); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>默认情况下，文档刚刚加载完成时，document.activeElement 中保存的是document.body 元素的引用。<br>文档加载期间，document.activeElement 的值为null。</p>
-<p>新增了document.hasFocus()方法，这个方法用于确定文档是否获得了焦点。<br>通过检测文档是否获得了焦点，可以知道用户是不是正在与页面交互。</p>
-<p>查询文档获知哪个元素获得了焦点，以及确定文档是否获得了焦点，这两个功能最重要的用途是提高Web 应用的无障碍性。<br>无障碍Web 应用的一个主要标志就是恰当的焦点管理，而确切地知道哪个元素获得了焦点是一个极大的进步，至少我们不用再像过去那样靠猜测了。</p>
-<h2 id="HTMLDocument的变化"><a href="#HTMLDocument的变化" class="headerlink" title="HTMLDocument的变化"></a>HTMLDocument的变化</h2><p>HTML5 扩展了HTMLDocument，增加了新的功能。</p>
-<h3 id="readyState-属性"><a href="#readyState-属性" class="headerlink" title="readyState 属性"></a>readyState 属性</h3><p>Document 的readyState 属性有两个可能的值：</p>
-<ul>
-<li>loading，正在加载文档；</li>
-<li>complete，已经加载完文档。</li>
-</ul>
-<p>使用document.readyState 的最恰当方式，就是通过它来实现一个指示文档已经加载完成的指示器。<br>在这个属性得到广泛支持之前，要实现这样一个指示器，必须借助onload 事件处理程序设置一个标签，表明文档已经加载完毕。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>)&#123;</div><div class="line"><span class="comment">//执行操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>支持readyState 属性的浏览器有IE4+、Firefox 3.6+、Safari、Chrome 和Opera 9+。</p>
-<h3 id="兼容模式"><a href="#兼容模式" class="headerlink" title="兼容模式"></a>兼容模式</h3><p>自从IE6 开始区分渲染页面的模式是标准的还是混杂的，检测页面的兼容模式就成为浏览器的必要功能。<br>IE 为此给document 添加了一个名为compatMode 的属性，这个属性就是为了告诉开发人员浏览器采用了哪种渲染模式。</p>
-<p>在标准模式下，document.compatMode 的值等于”CSS1Compat”，而在混杂模式下，document.compatMode 的值等于”BackCompat”。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>)&#123;</div><div class="line">alert(<span class="string">"Standards mode"</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">alert(<span class="string">"Quirks mode"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>后来，陆续实现这个属性的浏览器有Firefox、Safari 3.1+、Opera 和Chrome。最终，HTML5 也把这个属性纳入标准，对其实现做出了明确规定。</p>
-<h3 id="head-属性"><a href="#head-属性" class="headerlink" title="head 属性"></a>head 属性</h3><p>HTML5 新增了document.head 属性，引用文档的<code>&lt;head&gt;</code>元素。<br>结合使用这个属性和另一种后备方法。<br><code>var head = document.head || document.getElementsByTagName(&quot;head&quot;)[0];</code><br>如果可用，就使用document.head，否则仍然使用getElementsByTagName()方法。</p>
-<h2 id="字符集属性"><a href="#字符集属性" class="headerlink" title="字符集属性"></a>字符集属性</h2><p>charset 属性表示文档中实际使用的字符集，也可以用来指定新字符集。<br>默认情况下，这个属性的值为”UTF-16”，但可以通过<code>&lt;meta&gt;</code>元素、响应头部或直接设置charset 属性修改这个值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.charset); <span class="comment">//"UTF-16"</span></div><div class="line"><span class="built_in">document</span>.charset = <span class="string">"UTF-8"</span>;</div></pre></td></tr></table></figure>
-<p>defaultCharset，表示根据默认浏览器及操作系统的设置，当前文档默认的字符集应该是什么。<br>如果文档没有使用默认的字符集，那charset 和defaultCharset 属性的值可能会不一样。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.charset != <span class="built_in">document</span>.defaultCharset)&#123;</div><div class="line">alert(<span class="string">"Custom character set being used."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通过这两个属性可以得到文档使用的字符编码的具体信息，也能对字符编码进行准确地控制。<br>运行适当的情况下，可以保证用户正常查看页面或使用应用。</p>
-<p>支持document.charset 属性的浏览器有IE 、Firefox 、Safari 、Opera 和Chrome 。<br>支持document.defaultCharset 属性的浏览器有IE、Safari 和Chrome。</p>
-<h3 id="自定义数据属性"><a href="#自定义数据属性" class="headerlink" title="自定义数据属性"></a>自定义数据属性</h3><p>HTML5 规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。<br>可以任意添加、随便命名，只要以data-开头即可。</p>
-<p>添加了自定义属性之后，可以通过元素的dataset 属性来访问自定义属性的值。<br>dataset 属性的值是DOMStringMap 的一个实例，也就是一个名值对的映射。<br>在这个映射中，每个data-name 形式的属性都会有一个对应的属性，只不过属性名没有data-前缀（比如，自定义属性是data-myname，那映射中对应的属性就是myname）。<br><code>&lt;div id=&quot;myDiv&quot; data-appId=&quot;12345&quot; data-myname=&quot;Nicholas&quot;&gt;&lt;/div&gt;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//本例中使用的方法仅用于演示</span></div><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="comment">//取得自定义属性的值</span></div><div class="line"><span class="keyword">var</span> appId = div.dataset.appId;</div><div class="line"><span class="keyword">var</span> myName = div.dataset.myname;</div><div class="line"><span class="comment">//设置值</span></div><div class="line">div.dataset.appId = <span class="number">23456</span>;</div><div class="line">div.dataset.myname = <span class="string">"Michael"</span>;</div><div class="line"><span class="comment">//有没有"myname"值呢？</span></div><div class="line"><span class="keyword">if</span> (div.dataset.myname)&#123;</div><div class="line">alert(<span class="string">"Hello, "</span> + div.dataset.myname);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果需要给元素添加一些不可见的数据以便进行其他处理，那就要用到自定义数据属性。<br>在跟踪链接或混搭应用中，通过自定义数据属性能方便地知道点击来自页面中的哪个部分。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/04/javascript-note-11-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -749,42 +836,15 @@
 
       
         
-          
-            <h1 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h1><p>由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。</p>
+          <h1 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h1><p>由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。</p>
 <h2 id="动态脚本"><a href="#动态脚本" class="headerlink" title="动态脚本"></a>动态脚本</h2><p>动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。<br>创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
 <p>动态加载的外部JavaScript 文件能够立即运行。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;client.js&quot;&gt;&lt;/script&gt;</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = <span class="string">"client.js"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
-<p>在执行最后一行代码把<code>&lt;script&gt;</code>元素添加到页面中之前，是不会下载外部文件的。也可以把这个元素添加到<code>&lt;head&gt;</code>元素中，效果相同。<br>可以使用函数来封装。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = url;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadScript(<span class="string">"client.js"</span>);</div></pre></td></tr></table></figure>
-<p>加载完成后，就可以在页面中的其他地方使用这个脚本了。<br>问题只有一个：怎么知道脚本加载完成呢？</p>
-<p>另一种指定JavaScript 代码的方式是行内方式。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="string">"hi"</span>);</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>));</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
-<p>在Firefox、Safari、Chrome 和Opera 中，这些DOM 代码可以正常运行。但在IE 中，则会导致错误。<br>IE 将<code>&lt;script&gt;</code>视为一个特殊的元素，不允许DOM 访问其子节点。<br>不过，可以使用<code>&lt;script&gt;</code>元素的text 属性来指定JavaScript 代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.text = <span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params">code</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">script.appendChild(<span class="built_in">document</span>.createTextNode(code));</div><div class="line">&#125; <span class="keyword">catch</span> (ex)&#123;</div><div class="line">script.text = code;</div><div class="line">&#125;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadScriptString(<span class="string">"function sayHi()&#123;alert('hi');&#125;"</span>);</div></pre></td></tr></table></figure>
-<p>以这种方式加载的代码会在全局作用域中执行，而且当脚本执行后将立即可用。<br>实际上，这样执行代码与在全局作用域中把相同的字符串传递给eval()是一样的。</p>
-<h2 id="动态样式"><a href="#动态样式" class="headerlink" title="动态样式"></a>动态样式</h2><p>能够把CSS 样式包含到HTML 页面中的元素有两个。其中，<code>&lt;link&gt;</code>元素用于包含来自外部的文件，而<code>&lt;style&gt;</code>元素用于指定嵌入的样式。<br>动态样式是指在页面刚加载时不存在的样式；动态样式是在页面加载完成后动态添加到页面中的。<br><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles.css&quot;&gt;</code></p>
-<p>用DOM代码则是：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</div><div class="line">link.rel = <span class="string">"stylesheet"</span>;</div><div class="line">link.type = <span class="string">"text/css"</span>;</div><div class="line">link.href = <span class="string">"style.css"</span>;</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(link);</div></pre></td></tr></table></figure>
-<p>需要注意的是，必须将<code>&lt;link&gt;</code>元素添加到<code>&lt;head&gt;</code>而不是<code>&lt;body&gt;</code>元素，才能保证在所有浏览器中的行为一致。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyles</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</div><div class="line">link.rel = <span class="string">"stylesheet"</span>;</div><div class="line">link.type = <span class="string">"text/css"</span>;</div><div class="line">link.href = url;</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(link);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadStyles(<span class="string">"styles.css"</span>);</div></pre></td></tr></table></figure>
-<p>加载外部样式文件的过程是异步的，也就是加载样式与执行JavaScript 代码的过程没有固定的次序。</p>
-<p>另一种定义样式的方式是使用<code>&lt;style&gt;</code>元素来包含嵌入式CSS。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line"><span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>);</div><div class="line">style.type = <span class="string">"text/css"</span>;</div><div class="line">style.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"body&#123;background-color:red&#125;"</span>));</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(style);</div></pre></td></tr></table></figure>
-<p>以上代码可以在Firefox、Safari、Chrome 和Opera 中运行，在IE 中则会报错。<br>IE 将<code>&lt;style&gt;</code>视为一个特殊的、与<code>&lt;script&gt;</code>类似的节点，不允许访问其子节点。<br>解决IE 中这个问题的办法，就是访问元素的styleSheet 属性，该属性又有一个cssText 属性，可以接受CSS 代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">css</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>);</div><div class="line">style.type = <span class="string">"text/css"</span>;</div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">style.appendChild(<span class="built_in">document</span>.createTextNode(css));</div><div class="line">&#125; <span class="keyword">catch</span> (ex)&#123;</div><div class="line">style.styleSheet.cssText = css;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</div><div class="line">head.appendChild(style);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadStyleString(<span class="string">"body&#123;background-color:red&#125;"</span>);</div></pre></td></tr></table></figure>
-<p>专门针对IE 编写代码，务必小心使用styleSheet.cssText 属性。<br>在重用同一个<code>&lt;style&gt;</code>元素并再次设置这个属性时，有可能会导致浏览器崩溃。<br>将cssText 属性设置为空字符串也可能导致浏览器崩溃。</p>
-<h2 id="操作表格"><a href="#操作表格" class="headerlink" title="操作表格"></a>操作表格</h2><p><code>&lt;table&gt;</code>元素是HTML 中最复杂的结构之一。<br>要想创建表格，一般都必须涉及表示表格行、单元格、表头等方面的标签。<br>由于涉及的标签多，因而使用核心DOM 方法创建和修改表格往往都免不了要编写大量的代码。</p>
-<p>例如要创建这个HTML表格。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"100%"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 1,1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 2,1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 1,2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>Cell 2,2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>使用核心DOM代码的话需要很多代码。<br>为了方便构建表格，HTML DOM 还为<code>&lt;table&gt;</code>、<code>&lt;tbody&gt;</code>和<code>&lt;tr&gt;</code>元素添加了一些属性和方法。<br>使用这些属性和方法，可以极大地减少创建表格所需的代码数量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建table</span></div><div class="line"><span class="keyword">var</span> table = <span class="built_in">document</span>.createElement(<span class="string">"table"</span>);</div><div class="line">table.border = <span class="number">1</span>;</div><div class="line">table.width = <span class="string">"100%"</span>;</div><div class="line"><span class="comment">//创建tbody</span></div><div class="line"><span class="keyword">var</span> tbody = <span class="built_in">document</span>.createElement(<span class="string">"tbody"</span>);</div><div class="line">table.appendChild(tbody);</div><div class="line"><span class="comment">//创建第一行</span></div><div class="line">tbody.insertRow(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].insertCell(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].cells[<span class="number">0</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 1,1"</span>));</div><div class="line">tbody.rows[<span class="number">0</span>].insertCell(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">0</span>].cells[<span class="number">1</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 2,1"</span>));</div><div class="line"></div><div class="line"><span class="comment">//创建第二行</span></div><div class="line">tbody.insertRow(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].insertCell(<span class="number">0</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].cells[<span class="number">0</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 1,2"</span>));</div><div class="line">tbody.rows[<span class="number">1</span>].insertCell(<span class="number">1</span>);</div><div class="line">tbody.rows[<span class="number">1</span>].cells[<span class="number">1</span>].appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Cell 2,2"</span>));</div><div class="line"><span class="comment">//将表格添加到文档主体中</span></div><div class="line"><span class="built_in">document</span>.body.appendChild(table);</div></pre></td></tr></table></figure>
-<h2 id="使用NodeList"><a href="#使用NodeList" class="headerlink" title="使用NodeList"></a>使用NodeList</h2><p>理解NodeList 及其“近亲”NamedNodeMap 和HTMLCollection，是从整体上透彻理解DOM的关键所在。<br>这三个集合都是“动态的”；换句话说，每当文档结构发生变化时，它们都会得到更新。<br>从本质上说，所有NodeList 对象都是在访问DOM文档时实时运行的查询。</p>
-<p>一般来说，应该尽量减少访问NodeList 的次数。因为每次访问NodeList，都会运行一次基于文档的查询。<br>所以，可以考虑将从NodeList 中取得的值缓存起来。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/04/javascript-note-10-5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -894,8 +954,7 @@
 
       
         
-          
-            <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
+          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
 <ul>
 <li>nodeType 的值为3；</li>
 <li>nodeName 的值为”#text”；</li>
@@ -913,74 +972,11 @@
 <li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有空格，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有内容，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--想必有换行的也是吧（换行符）--&gt;</span></div></pre></td></tr></table></figure>
-<p>nodeValue 的值为”Hello World!”。可以使用以下代码来访问这些文本子节点。<br><code>var textNode = div.firstChild; //或者div.childNodes[0]</code><br>如果这个文本节点当前存在于文档树中，那么修改文本节点的结果就会立即得到反映。<br>此时的字符串会经过HTML（或XML，取决于文档类型）编码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//输出结果是"Some &amp;lt;strong&amp;gt;other&amp;lt;/strong&amp;gt; message"</span></div><div class="line">div.firstChild.nodeValue = <span class="string">"Some &lt;strong&gt;other&lt;/strong&gt; message"</span>;</div></pre></td></tr></table></figure>
-<p>这是在向DOM 文档中插入文本之前，先对其进行HTML 编码的一种有效方式。</p>
-<h3 id="创建文本节点"><a href="#创建文本节点" class="headerlink" title="创建文本节点"></a>创建文本节点</h3><p>document.createTextNode()。作为参数的文本也将按照HTML 或XML 的格式进行编码。<br><code>var textNode = document.createTextNode(&quot;&lt;strong&gt;Hello&lt;/strong&gt; world!&quot;);</code><br>在创建新文本节点的同时，也会为其设置ownerDocument 属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">element.className = <span class="string">"message"</span>;</div><div class="line"><span class="keyword">var</span> textNode = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello world!"</span>);</div><div class="line">element.appendChild(textNode);</div><div class="line"><span class="built_in">document</span>.body.appendChild(element);</div></pre></td></tr></table></figure>
-<p>可以往同一个元素添加多个文本节点。如果两个文本节点是相邻的同胞节点，那么两个节点中的文本就会连起来显示，中间不会有空格。</p>
-<h3 id="规范化文本节点"><a href="#规范化文本节点" class="headerlink" title="规范化文本节点"></a>规范化文本节点</h3><p>DOM 文档中存在相邻的同胞文本节点很容易导致混乱，因为分不清哪个文本节点表示哪个字符串。<br>DOM 文档中出现相邻文本节点的情况也不在少数。<br>所以才有了normalize()，将相邻文本节点合并。<br>结果节点的nodeValue 等于将合并前每个文本节点的nodeValue 值拼接起来的值。<br>浏览器在解析文档时永远不会创建相邻的文本节点。<br>只会作为执行DOM操作的结果出现。<br>在某些情况下，执行normalize()方法会导致IE6 崩溃。不过，在IE6 后来的补丁中，可能已经修复了这个问题（未经证实）。<br>（IE又是你！）</p>
-<h3 id="分割文本节点"><a href="#分割文本节点" class="headerlink" title="分割文本节点"></a>分割文本节点</h3><p>splitText(),作用与normalize()相反。。<br>这个方法会将一个文本节点分成两个文本节点，即按照指定的位置分割nodeValue 值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newNode = element.firstChild.splitText(<span class="number">5</span>);</div><div class="line">alert(element.firstChild.nodeValue); <span class="comment">//"Hello"</span></div><div class="line">alert(newNode.nodeValue); <span class="comment">//" world!"</span></div><div class="line">alert(element.childNodes.length); <span class="comment">//2</span></div></pre></td></tr></table></figure>
-<p>位置5是”Hello”和”world!”之间的空格，因此原来的文本节点将包含字符串”Hello”，而新文本节点将包含文本”world!”（包含空格）。<br><strong>分割文本节点是从文本节点中提取数据的一种常用DOM 解析技术</strong>。</p>
-<h2 id="Comment类型"><a href="#Comment类型" class="headerlink" title="Comment类型"></a>Comment类型</h2><p>注释在DOM中是通过Comment 类型来表示的。</p>
-<ul>
-<li>nodeType 的值为8；</li>
-<li>nodeName 的值为”#comment”；</li>
-<li>nodeValue 的值是注释的内容；</li>
-<li>parentNode 可能是Document 或Element；</li>
-<li>不支持（没有）子节点。</li>
-</ul>
-<p>Comment 类型与Text 类型继承自相同的基类，因此它拥有除splitText()之外的所有字符串操作方法。<br>与Text 类型相似，也可以通过nodeValue 或data 属性来取得注释的内容。<br>使用document.createComment()并为其传递注释文本也可以创建注释节点。<br>1.开发人员很少会创建和访问注释节点，因为注释节点对算法鲜有影响。<br>2.浏览器也不会识别位于<code>&lt;/html&gt;</code>标签后面的注释。如果要访问注释节点，一定要保证它们是<code>&lt;html&gt;</code>元素的后代</p>
-<h2 id="CDATASection类型"><a href="#CDATASection类型" class="headerlink" title="CDATASection类型"></a>CDATASection类型</h2><p>CDATASection 类型只针对基于XML 的文档，表示的是CDATA 区域。<br>CDATASection 类型继承自Text 类型，因此拥有除splitText()之外的所有字符串操作方法。</p>
-<ul>
-<li>nodeType 的值为4；</li>
-<li>nodeName 的值为”#cdata-section”；</li>
-<li>nodeValue 的值是CDATA 区域中的内容；</li>
-<li>parentNode 可能是Document 或Element；</li>
-<li>不支持（没有）子节点。</li>
-</ul>
-<p>CDATA 区域只会出现在XML 文档中，因此多数浏览器都会把CDATA 区域错误地解析为Comment或Element。<br><code>&lt;div id=&quot;myDiv&quot;&gt;&lt;![CDATA[This is some content.]]&gt;&lt;/div&gt;</code><br>这个例子中的<code>&lt;div&gt;</code>元素应该包含一个CDATASection 节点。<br>可是，四大主流浏览器无一能够这样解析它。即使对于有效的XHTML 页面，浏览器也没有正确地支持嵌入的CDATA 区域。</p>
-<p>在真正的XML 文档中，可以使用document.createCDataSection()来创建CDATA 区域，只需为其传入节点的内容即可。</p>
-<h2 id="DocumentType类型"><a href="#DocumentType类型" class="headerlink" title="DocumentType类型"></a>DocumentType类型</h2><p>DocumentType 类型在Web 浏览器中并不常用，仅有Firefox、Safari 和Opera 支持它。</p>
-<ul>
-<li>nodeType 的值为10；</li>
-<li>nodeName 的值为doctype 的名称；</li>
-<li>nodeValue 的值为null；</li>
-<li>parentNode 是Document；</li>
-<li>不支持（没有）子节点。</li>
-</ul>
-<p>DocumentType 对象不能动态创建，而只能通过解析文档代码的方式来创建。<br>支持它的浏览器会把DocumentType 对象保存在document.doctype 中。<br>DocumentType 对象的3 个属性：name、entities 和notations。<br>name 表示文档类型的名称；<br>entities 是由文档类型描述的实体的NamedNodeMap 对象；<br>notations 是由文档类型描述的符号的NamedNodeMap 对象。</p>
-<p>通常，浏览器中的文档使用的都是HTML 或XHTML 文档类型，因而entities和notations 都是空列表（列表中的项来自行内文档类型声明）。<br>但不管怎样，只有name 属性是有用的。</p>
-<p>例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.doctype.name); <span class="comment">//"HTML"</span></div></pre></td></tr></table></figure>
-<p>IE 及更早版本不支持DocumentType，因此document.doctype 的值始终都等于null。<br>可是，这些浏览器会把文档类型声明错误地解释为注释， 并且为它创建一个注释节点。<br>IE9 会给document.doctype 赋正确的对象，但仍然不支持访问DocumentType 类型。</p>
-<h2 id="DocumentFragment类型"><a href="#DocumentFragment类型" class="headerlink" title="DocumentFragment类型"></a>DocumentFragment类型</h2><p>只有DocumentFragment 在文档中没有对应的标记。<br>DOM 规定文档片段（document fragment）是一种“轻量级”的文档，可以包含和控制节点，但不会像完整的文档那样占用额外的资源。</p>
-<ul>
-<li>nodeType 的值为11；</li>
-<li>nodeName 的值为”#document-fragment”；</li>
-<li>nodeValue 的值为null；</li>
-<li>parentNode 的值为null；</li>
-<li>子节点可以是Element、ProcessingInstruction、Comment、Text、CDATASection 或EntityReference。</li>
-</ul>
-<p>虽然不能把文档片段直接添加到文档中，但可以将它作为一个“仓库”来使用，即可以在里面保存将来可能会添加到文档中的节点。<br><code>var fragment = document.createDocumentFragment();</code><br>文档片段继承了Node 的所有方法，通常用于执行那些针对文档的DOM操作。<br>如果将文档中的节点添加到文档片段中，就会从文档树中移除该节点，也不会从浏览器中再看到该节点。<br>添加到文档片段中的新节点同样也不属于文档树。<br>可以通过appendChild()或insertBefore()将文档片段中内容添加到文档中。<br><code>&lt;ul id=&quot;myList&quot;&gt;&lt;/ul&gt;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</div><div class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>);</div><div class="line"><span class="keyword">var</span> li = <span class="literal">null</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</div><div class="line">li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">li.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Item "</span> + (i+<span class="number">1</span>)));</div><div class="line">fragment.appendChild(li);</div><div class="line">&#125;</div><div class="line">ul.appendChild(fragment);</div></pre></td></tr></table></figure>
-<p>如果逐个地添加列表项，将会导致浏览器反复渲染（呈现）新信息。<br>为避免这个问题，可以使用一个文档片段来保存创建的列表项，然后再一次性将它们添加到文档中。<br>最后，文档片段的所有子节点都被删除并转移到了<code>&lt;ul&gt;</code>元素中。</p>
-<h2 id="Attr类型"><a href="#Attr类型" class="headerlink" title="Attr类型"></a>Attr类型</h2><p>元素的特性在DOM 中以Attr 类型来表示。</p>
-<ul>
-<li>nodeType 的值为2；</li>
-<li>nodeName 的值是特性的名称；</li>
-<li>nodeValue 的值是特性的值；</li>
-<li>parentNode 的值为null；</li>
-<li>在HTML 中不支持（没有）子节点；</li>
-<li>在XML 中子节点可以是Text 或EntityReference。</li>
-</ul>
-<p>尽管它们也是节点，但特性却不被认为是DOM 文档树的一部分。<br>开发人员最常使用的是getAttribute()、setAttribute()和remveAttribute()方法，很少直接引用特性节点。<br>Attr 对象有3 个属性：name、value 和specified。<br>name 是特性名称（与nodeName 的值相同），<br>value 是特性的值（与nodeValue 的值相同），<br>而specified 是一个布尔值，用以区别特性是在代码中指定的，还是默认的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> attr = <span class="built_in">document</span>.createAttribute(<span class="string">"align"</span>);</div><div class="line">attr.value = <span class="string">"left"</span>;</div><div class="line">element.setAttributeNode(attr);</div><div class="line">alert(element.attributes[<span class="string">"align"</span>].value); <span class="comment">//"left"</span></div><div class="line">alert(element.getAttributeNode(<span class="string">"align"</span>).value); <span class="comment">//"left"</span></div><div class="line">alert(element.getAttribute(<span class="string">"align"</span>)); <span class="comment">//"left"</span></div></pre></td></tr></table></figure>
-<p>并不建议直接访问特性节点。实际上，使用getAttribute()、setAttribute()和removeAttribute()方法远比操作特性节点更为方便。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/03/javascript-note-10-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1491,253 +1487,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/30/javascript-note-9-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第九章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
-              2016-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么（也是更常见的）就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”（quirk），多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
-<p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
-<h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>（又称特性检测）。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (object.propertyInQuestion)&#123;</div><div class="line"><span class="comment">//使用object.propertyInQuestion</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>举例来说，IE5.0 之前的版本不支持document.getElementById()这个DOM 方法。<br>尽管可以使用非标准的document.all 属性实现相同的目的，<br>但IE 的早期版本中确实不存在document.getElementById()。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.getElementById)&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.all)&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">document</span>.all[id];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/30/javascript-note-9-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第八章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
-              2016-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
-<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
-<pre><code>hash &quot;#contents&quot; 返回URL中的hash（#号后跟零或多个字符），如果URL中不包含散列，则返回空字符串
-host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号（如果有）
-hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
-href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
-toString()方法也返回这个值
-pathname &quot;/WileyCDA/&quot; 返回URL中的目录和（或）文件名
-port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
-这个属性返回空字符串
-protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
-search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1783,7 +1532,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

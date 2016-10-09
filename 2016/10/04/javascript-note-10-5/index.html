@@ -114,7 +114,7 @@
 <meta property="og:description" content="DOM 操作技术由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。
 动态脚本动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。
 动态加载的外部JavaScript 文件能够立即运行。&amp;lt;script type=&amp;quo">
-<meta property="og:updated_time" content="2016-10-04T06:29:43.804Z">
+<meta property="og:updated_time" content="2016-10-06T06:43:22.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十章-5">
 <meta name="twitter:description" content="DOM 操作技术由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。
@@ -368,6 +368,7 @@
 <h2 id="动态脚本"><a href="#动态脚本" class="headerlink" title="动态脚本"></a>动态脚本</h2><p>动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。<br>创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
 <p>动态加载的外部JavaScript 文件能够立即运行。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;client.js&quot;&gt;&lt;/script&gt;</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = <span class="string">"client.js"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>在执行最后一行代码把<code>&lt;script&gt;</code>元素添加到页面中之前，是不会下载外部文件的。也可以把这个元素添加到<code>&lt;head&gt;</code>元素中，效果相同。<br>可以使用函数来封装。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScript</span>(<span class="params">url</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = url;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;</div><div class="line"></div><div class="line">loadScript(<span class="string">"client.js"</span>);</div></pre></td></tr></table></figure>
 <p>加载完成后，就可以在页面中的其他地方使用这个脚本了。<br>问题只有一个：怎么知道脚本加载完成呢？</p>
@@ -508,7 +509,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

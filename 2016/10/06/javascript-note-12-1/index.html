@@ -1,0 +1,940 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="DOM2 和 DOM3DOM 变化12345var supportsDOM2Core = document.implementation.hasFeature(&quot;Core&quot;, &quot;2.0&quot;);var supportsDOM3Core = document.implementation.hasFeature(&quot;Core&quot;, &quot;3.0&quot;);var supportsDOM2HTML = document.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十二章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/10/06/javascript-note-12-1/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="DOM2 和 DOM3DOM 变化12345var supportsDOM2Core = document.implementation.hasFeature(&quot;Core&quot;, &quot;2.0&quot;);var supportsDOM3Core = document.implementation.hasFeature(&quot;Core&quot;, &quot;3.0&quot;);var supportsDOM2HTML = document.">
+<meta property="og:updated_time" content="2016-10-06T11:48:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十二章-1">
+<meta name="twitter:description" content="DOM2 和 DOM3DOM 变化12345var supportsDOM2Core = document.implementation.hasFeature(&quot;Core&quot;, &quot;2.0&quot;);var supportsDOM3Core = document.implementation.hasFeature(&quot;Core&quot;, &quot;3.0&quot;);var supportsDOM2HTML = document.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/06/javascript-note-12-1/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十二章-1 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十二章-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-06T14:26:29+08:00" content="2016-10-06">
+              2016-10-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DOM2-和-DOM3"><a href="#DOM2-和-DOM3" class="headerlink" title="DOM2 和 DOM3"></a>DOM2 和 DOM3</h1><h1 id="DOM-变化"><a href="#DOM-变化" class="headerlink" title="DOM 变化"></a>DOM 变化</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM3Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"3.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2HTML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"HTML"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2Views = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Views"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2XML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="针对XML命名空间的变化"><a href="#针对XML命名空间的变化" class="headerlink" title="针对XML命名空间的变化"></a>针对XML命名空间的变化</h2><p>XML 命名空间使不同XML 文档的元素可以混合在一起，共同构成格式良好的文档不必担心发生命名冲突。<br>HTML 不支持XML 命名空间，但XHTML 支持XML 命名空间。<br>命名空间要使用xmlns 特性来指定。<br>XHTML 的命名空间是<code>http://www.w3.org/1999/xhtml</code>，在任何格式良好XHTML 页面中，都应该将其包含在<code>&lt;html&gt;</code>元素中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">Hello world!</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>其中的所有元素默认都被视为XHTML 命名空间中的元素。<br>要想明确地为XML命名空间创建前缀，可以使用xmlns 后跟冒号，再后跟前缀。</p>
+<figure class="highlight xhtml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xhtml:html</span> <span class="attr">xmlns:xhtml</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">xhtml:head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">xhtml:title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">xhtml:title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xhtml:head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">xhtml:body</span>&gt;</span></div><div class="line">Hello world!</div><div class="line"><span class="tag">&lt;/<span class="name">xhtml:body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xhtml:html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这里为XHTML 的命名空间定义了一个名为xhtml 的前缀，并要求所有XHTML 元素都以该前缀开头。<br>有时候为了避免不同语言间的冲突，也需要使用命名空间来限定特性。</p>
+<figure class="highlight xhtml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">xhtml:html</span> <span class="attr">xmlns:xhtml</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">xhtml:head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">xhtml:title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">xhtml:title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xhtml:head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">xhtml:body</span> <span class="attr">xhtml:class</span>=<span class="string">"home"</span>&gt;</span></div><div class="line">Hello world!</div><div class="line"><span class="tag">&lt;/<span class="name">xhtml:body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">xhtml:html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在只基于一种语言编写XML 文档的情况下，命名空间实际上也没有什么用。不过，在混合使用两种语言的情况下，命名空间的用处就非常大了。</p>
+<figure class="highlight xhtml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></div><div class="line"><span class="attr">viewBox</span>=<span class="string">"0 0 100 100"</span> <span class="attr">style</span>=<span class="string">"width:100%; height:100%"</span>&gt;</div><div class="line"><span class="tag">&lt;<span class="name">rect</span> <span class="attr">x</span>=<span class="string">"0"</span> <span class="attr">y</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">style</span>=<span class="string">"fill:red"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>通过设置命名空间，将<code>&lt;svg&gt;</code>标识为了与包含文档无关的元素。此时，<code>&lt;svg&gt;</code>元素的所有子元素，以及这些元素的所有特性，都被认为属于<code>http://www.w3.org/2000/svg</code> 命名空间。即使这个文档从技术上说是一个XHTML文档，但因为有了命名空间，其中的SVG代码也仍然是有效的。</p>
+<p>最有意思的事发生在调用方法操作文档节点的情况下。<br>例如，在创建一个元素时，这个元素属于哪个命名空间呢？<br>在查询一个特殊标签名时，应该将结果包含在哪个命名空间中呢？</p>
+<p>“DOM2 级核心”通过为大多数DOM1 级方法提供特定于命名空间的版本解决了这个问题。</p>
+<h3 id="Node-类型的变化"><a href="#Node-类型的变化" class="headerlink" title="Node 类型的变化"></a>Node 类型的变化</h3><p>在DOM2 级中，Node 类型包含特定于命名空间的属性。</p>
+<ul>
+<li>localName：不带命名空间前缀的节点名称。</li>
+<li>namespaceURI：命名空间URI 或者（在未指定的情况下是）null。</li>
+<li>prefix：命名空间前缀或者（在未指定的情况下是）null。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">s:svg</span> <span class="attr">xmlns:s</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></div><div class="line"><span class="attr">viewBox</span>=<span class="string">"0 0 100 100"</span> <span class="attr">style</span>=<span class="string">"width:100%; height:100%"</span>&gt;</div><div class="line"><span class="tag">&lt;<span class="name">s:rect</span> <span class="attr">x</span>=<span class="string">"0"</span> <span class="attr">y</span>=<span class="string">"0"</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">style</span>=<span class="string">"fill:red"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">s:svg</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>当节点使用了命名空间前缀时，其nodeName 等于prefix+”:”+ localName。<br>对于<code>&lt;html&gt;</code>元素来说，它的localName 和tagName 是”html”，namespaceURI 是”<a href="http://www.w3.org/1999/xhtml/" target="_blank" rel="external">http://www.w3.org/1999/xhtml/</a>“，而prefix 是null。<br>对于<code>&lt;s:svg&gt;</code>元素而言，它的localName 是”svg”，tagName 是”s:svg”，namespaceURI 是”<a href="http://www.w3.org/2000/svg/" target="_blank" rel="external">http://www.w3.org/2000/svg/</a>“，而prefix 是”s”。</p>
+<p>DOM3 级在此基础上更进一步，又引入了与命名空间有关的方法。</p>
+<ul>
+<li>isDefaultNamespace(namespaceURI)：在指定的namespaceURI 是当前节点的默认命名空间的情况下返回true。</li>
+<li>lookupNamespaceURI(prefix)：返回给定prefix 的命名空间。</li>
+<li>lookupPrefix(namespaceURI)：返回给定namespaceURI 的前缀。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">alert(<span class="built_in">document</span>.body.isDefaultNamespace(<span class="string">"http://www.w3.org/1999/xhtml"</span>); <span class="comment">//true</span></div><div class="line"><span class="comment">//假设svg 中包含着对&lt;s:svg&gt;的引用</span></div><div class="line">alert(svg.lookupPrefix(<span class="string">"http://www.w3.org/2000/svg"</span>)); <span class="comment">//"s"</span></div><div class="line">alert(svg.lookupNamespaceURI(<span class="string">"s"</span>)); <span class="comment">//"http://www.w3.org/2000/svg"</span></div></pre></td></tr></table></figure>
+<h3 id="Document-类型的变化"><a href="#Document-类型的变化" class="headerlink" title="Document 类型的变化"></a>Document 类型的变化</h3><p>DOM2 级中的Document 类型也发生了变化。</p>
+<ul>
+<li>createElementNS(namespaceURI, tagName)：使用给定的tagName 创建一个属于命名空间namespaceURI 的新元素。</li>
+<li>createAttributeNS(namespaceURI, attributeName)：使用给定的attributeName 创建一个属于命名空间namespaceURI 的新特性。</li>
+<li>getElementsByTagNameNS(namespaceURI, tagName)：返回属于命名空间namespaceURI的tagName 元素的NodeList。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个新的SVG 元素</span></div><div class="line"><span class="keyword">var</span> svg = <span class="built_in">document</span>.createElementNS(<span class="string">"http://www.w3.org/2000/svg"</span>,<span class="string">"svg"</span>);</div><div class="line"><span class="comment">//创建一个属于某个命名空间的新特性</span></div><div class="line"><span class="keyword">var</span> att = <span class="built_in">document</span>.createAttributeNS(<span class="string">"http://www.somewhere.com"</span>, <span class="string">"random"</span>);</div><div class="line"><span class="comment">//取得所有XHTML 元素</span></div><div class="line"><span class="keyword">var</span> elems = <span class="built_in">document</span>.getElementsByTagNameNS(<span class="string">"http://www.w3.org/1999/xhtml"</span>, <span class="string">"*"</span>);</div></pre></td></tr></table></figure>
+<p>只有在文档中存在两个或多个命名空间时，这些与命名空间有关的方法才是必需的。</p>
+<h3 id="Element-类型的变化"><a href="#Element-类型的变化" class="headerlink" title="Element 类型的变化"></a>Element 类型的变化</h3><ul>
+<li>getAttributeNS(namespaceURI,localName)：取得属于命名空间namespaceURI 且名为localName 的特性。</li>
+<li>getAttributeNodeNS(namespaceURI,localName)：取得属于命名空间namespaceURI 且名为localName 的特性节点。</li>
+<li>getElementsByTagNameNS(namespaceURI, tagName)：返回属于命名空间namespaceURI的tagName 元素的NodeList。</li>
+<li>hasAttributeNS(namespaceURI,localName)：确定当前元素是否有一个名为localName的特性，而且该特性的命名空间是namespaceURI。注意，“DOM2 级核心”也增加了一个hasAttribute()方法，用于不考虑命名空间的情况。</li>
+<li>removeAttriubteNS(namespaceURI,localName)：删除属于命名空间namespaceURI 且名为localName 的特性。</li>
+<li>setAttributeNS(namespaceURI,qualifiedName,value)：设置属于命名空间namespaceURI 且名为qualifiedName 的特性的值为value。</li>
+<li>setAttributeNodeNS(attNode)：设置属于命名空间namespaceURI 的特性节点。</li>
+</ul>
+<h3 id="NamedNodeMap-类型的变化"><a href="#NamedNodeMap-类型的变化" class="headerlink" title="NamedNodeMap 类型的变化"></a>NamedNodeMap 类型的变化</h3><p>由于特性是通过NamedNodeMap 表示的，因此这些方法多数情况下只针对特性使用。</p>
+<ul>
+<li>getNamedItemNS(namespaceURI,localName)：取得属于命名空间namespaceURI 且名为localName 的项。</li>
+<li>removeNamedItemNS(namespaceURI,localName)：移除属于命名空间namespaceURI 且名为localName 的项。</li>
+<li>setNamedItemNS(node)：添加node，这个节点已经事先指定了命名空间信息。</li>
+</ul>
+<p>由于一般都是通过元素访问特性，所以这些方法很少使用。</p>
+<h2 id="其他方面的变化"><a href="#其他方面的变化" class="headerlink" title="其他方面的变化"></a>其他方面的变化</h2><h3 id="DocumentType-类型的变化"><a href="#DocumentType-类型的变化" class="headerlink" title="DocumentType 类型的变化"></a>DocumentType 类型的变化</h3><p>DocumentType 类型新增了3 个属性：publicId、systemId 和internalSubset。<br>前两个属性表示的是文档类型声明中的两个信息段，这两个信息段在DOM1 级中是没有办法访问到的。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"</span></div><div class="line">"http://www.w3.org/TR/html4/strict.dtd"&gt;</div></pre></td></tr></table></figure>
+<p>对这个文档类型声明而言，publicId 是”-//W3C//DTD HTML 4.01//EN”，<br>而systemId 是”<code>http://www.w3.org/TR/html4/strict.dtd</code>“。<br>实际上，很少需要在网页中访问此类信息。</p>
+<p>最后一个属性internalSubset，用于访问包含在文档类型声明中的额外定义。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"</span></div><div class="line">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"</div><div class="line">[&lt;!ELEMENT name (#PCDATA)&gt;] &gt;</div></pre></td></tr></table></figure>
+<h3 id="Document类型的变化"><a href="#Document类型的变化" class="headerlink" title="Document类型的变化"></a>Document类型的变化</h3><p>Document 类型的变化中唯一与命名空间无关的方法是importNode()。<br>这个方法的用途是从一个文档中取得一个节点，然后将其导入到另一个文档，使其成为这个文档结构的一部分。<br>每个节点都有一个ownerDocument 属性，表示所属的文档。<br>如果调用appendChild()时传入的节点属于不同的文档（ownerDocument 属性的值不一样），则会导致错误。<br>但在调用importNode()时传入不同文档的节点则会返回一个新节点，这个新节点的所有权归当前文档所有。<br>importNode()方法与Element 的cloneNode()方法非常相似。<br>它接受两个参数：要复制的节点和一个表示是否复制子节点的布尔值。<br>返回的结果是原来节点的副本，但能够在当前文档中使用。</p>
+<p>“DOM2 级视图”模块添加了一个名为defaultView 的属性，其中保存着一个指针，指向拥有给定文档的窗口（或框架）。除IE 之外的所有浏览器都支持defaultView 属性。在IE 中有一个等价的属性名叫parentWindow（Opera 也支持这个属性）。</p>
+<p><code>var parentWindow = document.defaultView || document.parentWindow;</code></p>
+<p>“DOM2 级核心”还为document.implementation 对象规定了两个新方法：createDocumentType()和createDocument()。<br>前者用于创建一个新的DocumentType节点，接受3 个参数：文档类型名称、publicId、systemId。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doctype = <span class="built_in">document</span>.implementation.createDocumentType(<span class="string">"html"</span>,</div><div class="line"><span class="string">"-//W3C//DTD HTML 4.01//EN"</span>,</div><div class="line"><span class="string">"http://www.w3.org/TR/html4/strict.dtd"</span>);</div></pre></td></tr></table></figure>
+<p>由于既有文档的文档类型不能改变，因此createDocumentType()只在创建新文档时有用；<br>创建新文档时需要用到createDocument()方法。这个方法接受3 个参数：针对文档中元素的namespaceURI、文档元素的标签名、新文档的文档类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doc = <span class="built_in">document</span>.implementation.createDocument(<span class="string">""</span>, <span class="string">"root"</span>, <span class="literal">null</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> doctype = <span class="built_in">document</span>.implementation.createDocumentType(<span class="string">"html"</span>,</div><div class="line"><span class="string">" -//W3C//DTD XHTML 1.0 Strict//EN"</span>,</div><div class="line"><span class="string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"</span>);</div><div class="line"><span class="keyword">var</span> doc = <span class="built_in">document</span>.implementation.createDocument(<span class="string">"http://www.w3.org/1999/xhtml"</span>,</div><div class="line"><span class="string">"html"</span>, doctype);</div></pre></td></tr></table></figure>
+<p>这样，就创建了一个带有适当命名空间和文档类型的新XHTML 文档。不过，新文档当前只有文档元素<code>&lt;html&gt;</code>，剩下的所有元素都需要继续添加。</p>
+<p>“DOM2 级HTML”模块也为document.implementation 新增了一个方法，名叫createHTMLDocument()。这个方法的用途是创建一个完整的HTML 文档，包括<code>&lt;html&gt;</code>、<code>&lt;head&gt;</code>、<code>&lt;title&gt;</code>和<code>&lt;body&gt;</code>元素。这个方法只接受一个参数，即新创建文档的标题（放在<code>&lt;title&gt;</code>元素中的字符串），返回新的HTML 文档。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> htmldoc = <span class="built_in">document</span>.implementation.createHTMLDocument(<span class="string">"New Doc"</span>);</div><div class="line">alert(htmldoc.title); <span class="comment">//"New Doc"</span></div><div class="line">alert(<span class="keyword">typeof</span> htmldoc.body); <span class="comment">//"object"</span></div></pre></td></tr></table></figure>
+<h3 id="Node类型的变化"><a href="#Node类型的变化" class="headerlink" title="Node类型的变化"></a>Node类型的变化</h3><p>Node 类型中唯一与命名空间无关的变化，就是添加了isSupported()方法。<br>如果浏览器实现了相应特性，而且能够基于给定节点执行该特性，isSupported()就返回true。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.body.isSupported(<span class="string">"HTML"</span>, <span class="string">"2.0"</span>))&#123;</div><div class="line"><span class="comment">//执行只有"DOM2 级HTML"才支持的操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也存在与hasFeature()方法相同的问题:不同实现在决定对什么特性返回true 或false 时并不一致。<br>所以还是使用能力检测。</p>
+<p>DOM3 级引入了两个辅助比较节点的方法：isSameNode()和isEqualNode()。这两个方法都接受一个节点参数，并在传入节点与引用的节点相同或相等时返回true</p>
+<p>相等:相同的类型，具有相等的属性（nodeName、nodeValue，等等），而且它们的attributes 和childNodes 属性也相等（相同位置包含相同的值）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div1 = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">div1.setAttribute(<span class="string">"class"</span>, <span class="string">"box"</span>);</div><div class="line"><span class="keyword">var</span> div2 = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">div2.setAttribute(<span class="string">"class"</span>, <span class="string">"box"</span>);</div><div class="line">alert(div1.isSameNode(div1)); <span class="comment">//true</span></div><div class="line">alert(div1.isEqualNode(div2)); <span class="comment">//true</span></div><div class="line">alert(div1.isSameNode(div2)); <span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>setUserData()方法会将数据指定给节点，它接受3 个参数：要设置的键、实际的数据（可以是任何数据类型）和处理函数。<br><code>document.body.setUserData(&quot;name&quot;, &quot;Nicholas&quot;, function(){});</code><br>然后，使用getUserData()并传入相同的键，就可以取得该数据。<br><code>var value = document.body.getUserData(&quot;name&quot;);</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</div><div class="line">div.setUserData(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">operation, key, value, src, dest</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (operation == <span class="number">1</span>)&#123;</div><div class="line">dest.setUserData(key, value, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;); &#125;</div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> newDiv = div.cloneNode(<span class="literal">true</span>);</div><div class="line">alert(newDiv.getUserData(<span class="string">"name"</span>)); <span class="comment">//"Nicholas"</span></div></pre></td></tr></table></figure>
+<p>先创建了一个<code>&lt;div&gt;</code>元素，然后又为它添加了一些数据（用户数据）。<br>在使用cloneNode()复制这个元素时，就会调用处理函数，从而将数据自动复制到了副本节点。<br>结果在通过副本节点调用getUserData()时，就会返回与原始节点中包含的相同的值。</p>
+<h3 id="框架的变化"><a href="#框架的变化" class="headerlink" title="框架的变化"></a>框架的变化</h3><p>框架和内嵌框架分别用HTMLFrameElement 和HTMLIFrameElement 表示。<br>在DOM 2级中有一个新属性，名叫contentDocument。<br>包含一个指针，指向表示框架内容的文档对象。<br>在此之前，无法直接通过元素取得这个文档对象（只能使用frames 集合）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">"myIframe"</span>);</div><div class="line"><span class="keyword">var</span> iframeDoc = iframe.contentDocument; <span class="comment">//在IE8 以前的版本中无效</span></div></pre></td></tr></table></figure>
+<p>由于contentDocument 属性是Document 类型的实例，因此可以像使用其他HTML 文档一样使用它，包括所有属性和方法。Opera、Firefox、Safari 和Chrome 支持这个属性。<br>IE8 之前不支持框架中的contentDocument 属性，但支持一个名叫contentWindow 的属性，该属性返回框架的window 对<br>象，而这个window 对象又有一个document 属性。<br>所有浏览器都支持contentWindow 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">"myIframe"</span>);</div><div class="line"><span class="keyword">var</span> iframeDoc = iframe.contentDocument || iframe.contentWindow.document;</div></pre></td></tr></table></figure>
+<p>访问框架或内嵌框架的文档对象要受到跨域安全策略的限制。如果某个框架中的页面来自其他域或不同子域，或者使用了不同的协议，那么要访问这个框架的文档对象就会导致错误。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/javascript-note-11-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十一章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十一章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/06/javascript-note-12-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十二章-2">
+                《 JavaScript 高级程序设计》备忘-第十二章-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM2-和-DOM3"><span class="nav-number">1.</span> <span class="nav-text">DOM2 和 DOM3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM-变化"><span class="nav-number">2.</span> <span class="nav-text">DOM 变化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#针对XML命名空间的变化"><span class="nav-number">2.1.</span> <span class="nav-text">针对XML命名空间的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-类型的变化"><span class="nav-number">2.1.1.</span> <span class="nav-text">Node 类型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Document-类型的变化"><span class="nav-number">2.1.2.</span> <span class="nav-text">Document 类型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Element-类型的变化"><span class="nav-number">2.1.3.</span> <span class="nav-text">Element 类型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NamedNodeMap-类型的变化"><span class="nav-number">2.1.4.</span> <span class="nav-text">NamedNodeMap 类型的变化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方面的变化"><span class="nav-number">2.2.</span> <span class="nav-text">其他方面的变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DocumentType-类型的变化"><span class="nav-number">2.2.1.</span> <span class="nav-text">DocumentType 类型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Document类型的变化"><span class="nav-number">2.2.2.</span> <span class="nav-text">Document类型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node类型的变化"><span class="nav-number">2.2.3.</span> <span class="nav-text">Node类型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架的变化"><span class="nav-number">2.2.4.</span> <span class="nav-text">框架的变化</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

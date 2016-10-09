@@ -1,0 +1,918 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="样式定义样式的方式有3 种：通过&amp;lt;link/&amp;gt;元素包含外部样式表文件、[外联]使用&amp;lt;style/&amp;gt;元素定义嵌入式样式，[内联]以及使用style 特性定义针对特定元素的样式。[行内]
+可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：
+12var supportsDOM2CSS = document.implementation.hasFeature(&quot;CSS&quot;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十二章-2">
+<meta property="og:url" content="http://codingme.xyz/2016/10/06/javascript-note-12-2/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="样式定义样式的方式有3 种：通过&amp;lt;link/&amp;gt;元素包含外部样式表文件、[外联]使用&amp;lt;style/&amp;gt;元素定义嵌入式样式，[内联]以及使用style 特性定义针对特定元素的样式。[行内]
+可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：
+12var supportsDOM2CSS = document.implementation.hasFeature(&quot;CSS&quot;,">
+<meta property="og:updated_time" content="2016-10-08T09:15:48.683Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十二章-2">
+<meta name="twitter:description" content="样式定义样式的方式有3 种：通过&amp;lt;link/&amp;gt;元素包含外部样式表文件、[外联]使用&amp;lt;style/&amp;gt;元素定义嵌入式样式，[内联]以及使用style 特性定义针对特定元素的样式。[行内]
+可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：
+12var supportsDOM2CSS = document.implementation.hasFeature(&quot;CSS&quot;,">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/06/javascript-note-12-2/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十二章-2 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十二章-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-06T14:26:29+08:00" content="2016-10-06">
+              2016-10-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
+<p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="访问元素的样式"><a href="#访问元素的样式" class="headerlink" title="访问元素的样式"></a>访问元素的样式</h2><p>任何支持style 特性的HTML 元素在JavaScript 中都有一个对应的style 属性。<br>这个style 对象是CSSStyleDeclaration 的实例，包含着通过HTML 的style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。<br>在style 特性中指定的任何CSS 属性都将表现为这个style 对象的相应属性。<br>对于使用短划线（分隔不同的词汇，例如background-image）的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</p>
+<p>例如:</p>
+<pre><code>background-image    style.backgroundImage
+color               style.color
+display             style.display
+font-family         style.fontFamily
+</code></pre><a id="more"></a>
+<p>多数情况下，都可以简单地转换属性名的格式来实现转换。<br>但是float就不行，因为它是Javascript的保留字，因此不能用来做属性名。<br>所以css的float在对象上对应的属性名应该是cssFloat;大部分浏览器都支持。<br>而IE支持的则是styleFloat。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="comment">//设置背景颜色</span></div><div class="line">myDiv.style.backgroundColor = <span class="string">"red"</span>;</div><div class="line"><span class="comment">//改变大小</span></div><div class="line">myDiv.style.width = <span class="string">"100px"</span>;</div><div class="line">myDiv.style.height = <span class="string">"200px"</span>;</div><div class="line"><span class="comment">//指定边框</span></div><div class="line">myDiv.style.border = <span class="string">"1px solid black"</span>;</div></pre></td></tr></table></figure>
+<p>在实践中，最好始终都指定度量单位。否则标准模式下会因为没有度量单位而导致数值被忽略。</p>
+<p>通过style 对象同样可以取得在style 特性中指定的样式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alert(myDiv.style.backgroundColor); <span class="comment">//"blue"</span></div><div class="line">alert(myDiv.style.width); <span class="comment">//"10px"</span></div><div class="line">alert(myDiv.style.height); <span class="comment">//"25px"</span></div></pre></td></tr></table></figure>
+<p>如果没有为元素设置style 特性，那么style 对象中可能会包含一些默认的值，但这些值并不能准确地反映该元素的样式信息。</p>
+<h3 id="DOM-样式属性和方法"><a href="#DOM-样式属性和方法" class="headerlink" title="DOM 样式属性和方法"></a>DOM 样式属性和方法</h3><p>提供元素的style特性值的同时，也可以修改样式的属性和方法。</p>
+<ul>
+<li>cssText：如前所述，通过它能够访问到style 特性中的CSS 代码。</li>
+<li>length：应用给元素的CSS 属性的数量。</li>
+<li>parentRule：表示CSS 信息的CSSRule 对象。</li>
+<li>getPropertyCSSValue(propertyName)：返回包含给定属性值的CSSValue 对象。</li>
+<li>getPropertyPriority(propertyName)：如果给定的属性使用了!important 设置，则返回”important”；否则，返回空字符串。</li>
+<li>getPropertyValue(propertyName)：返回给定属性的字符串值。</li>
+<li>item(index)：返回给定位置的CSS 属性的名称。</li>
+<li>removeProperty(propertyName)：从样式中删除给定属性。</li>
+<li>setProperty(propertyName,value,priority)：将给定属性设置为相应的值，并加上优先权标志（”important”或者一个空字符串）。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">myDiv.style.cssText = <span class="string">"width: 25px; height: 100px; background-color: green"</span>;</div><div class="line">alert(myDiv.style.cssText);</div></pre></td></tr></table></figure>
+<p>设置cssText 是为元素应用多项变化最快捷的方式，因为可以一次性地应用所有变化。<br>设计length 属性的目的，就是将其与item()方法配套使用，以便迭代在元素中定义的CSS 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=myDiv.style.length; i &lt; len; i++)&#123;</div><div class="line">alert(myDiv.style[i]); <span class="comment">//或者myDiv.style.item(i)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>无论是使用方括号语法还是使用item()方法，都可以取得CSS 属性名（”background-color”，不是”backgroundColor”）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> prop, value, i, len;</div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=myDiv.style.length; i &lt; len; i++)&#123;</div><div class="line">prop = myDiv.style[i]; <span class="comment">//或者 myDiv.style.item(i)</span></div><div class="line">value = myDiv.style.getPropertyValue(prop);</div><div class="line">alert(prop + <span class="string">" : "</span> + value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>getPropertyValue()方法取得的始终都是CSS 属性值的字符串表示。<br>如果用getPropertyCSSValue()方法，它返回一个包含两个属性的CSSValue 对象，这两个属性分别是：cssText 和cssValueType。其中，cssText 属性的值与getPropertyValue()返回的值相同，而cssValueType 属性则是一个数值常量，表示值的类型：0 表示继承的值，1 表示基本的值，2 表示<br>值列表，3 表示自定义的值。</p>
+<p>在实际开发中，getPropertyCSSValue()使用得比getPropertyValue()少得多。IE9+、Safari3+以及Chrome 支持这个方法。Firefox 7 及之前版本也提供这个访问，但调用总返回null。</p>
+<p>要从元素的样式中移除某个CSS 属性，需要使用removeProperty()方法。使用这个方法移除一个属性，意味着将会为该属性应用默认的样式（从其他样式表经层叠而来）。<br>在不确定某个给定的CSS 属性拥有什么默认值的情况下，就可以使用这个方法。只要移除相应的属性，就可以为元素应用默认值。</p>
+<h3 id="计算的样式"><a href="#计算的样式" class="headerlink" title="计算的样式"></a>计算的样式</h3><p>document.defaultView，提供了getComputedStyle()方法。<br>getComputedStyle()方法返回一个CSSStyleDeclaration 对象（与style 属性的类型相同），其中包含当前元素的所有计算的样式。<br>这个方法接受两个参数：要取得计算样式的元素和一个伪元素字符串（例如”:after”）。如果不需要伪元素信息，第二个参数可以是null。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="keyword">var</span> computedStyle = <span class="built_in">document</span>.defaultView.getComputedStyle(myDiv, <span class="literal">null</span>);</div><div class="line">alert(computedStyle.backgroundColor); <span class="comment">// "red"</span></div><div class="line">alert(computedStyle.width); <span class="comment">// "100px"</span></div><div class="line">alert(computedStyle.height); <span class="comment">// "200px"</span></div><div class="line">alert(computedStyle.border); <span class="comment">// 在某些浏览器中是"1px solid black"</span></div></pre></td></tr></table></figure>
+<p>边框属性可能会也可能不会返回样式表中实际的border 规则（Opera 会返回，但其他浏览器不会）。<br>存在这个差别的原因是不同浏览器解释综合（rollup）属性（如border）的方式不同，因为设置这种属性实际上会涉及很多其他属性。</p>
+<p>IE 不支持getComputedStyle(),但有一个currentStyle 属性。这个属性是CSSStyleDeclaration 的实例，包含当前元素全部计算后的样式。<br>与DOM 版本的方式一样，IE 也没有返回border 样式，因为这是一个综合属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line"><span class="keyword">var</span> computedStyle = myDiv.currentStyle;</div><div class="line">alert(computedStyle.backgroundColor); <span class="comment">//"red"</span></div><div class="line">alert(computedStyle.width); <span class="comment">//"100px"</span></div><div class="line">alert(computedStyle.height); <span class="comment">//"200px"</span></div><div class="line">alert(computedStyle.border); <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p>所有计算的样式都是只读的；不能修改计算后样式对象中的CSS 属性。<br>计算后的样式也包含属于浏览器内部样式表的样式信息，因此任何具有默认值的CSS 属性都会表现在计算后的样式中。<br>不能指望某个CSS 属性的默认值在不同浏览器中是相同的。<br>如果你需要元素具有某个特定的默认值，应该手工在样式表中指定该值。</p>
+<h2 id="操作样式表"><a href="#操作样式表" class="headerlink" title="操作样式表"></a>操作样式表</h2><p>CSSStyleSheet 类型表示的是样式表，包括通过<code>&lt;link&gt;</code>元素包含的样式表和在<code>&lt;style&gt;</code>元素中定义的样式表。<br>这两个元素本身分别是由HTMLLinkElement 和HTMLStyleElement 类型表示的。<br>但是，CSSStyleSheet 类型相对更加通用一些，它只表示样式表，而不管这些样式表在HTML中是如何定义的。<br>上述两个针对元素的类型允许修改HTML 特性，但CSSStyleSheet 对象则是一套只读的接口（有一个属性例外）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//确定浏览器是否支持DOM2 级样式表。</span></div><div class="line"><span class="keyword">var</span> supportsDOM2StyleSheets =</div><div class="line"><span class="built_in">document</span>.implementation.hasFeature(<span class="string">"StyleSheets"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<p>CSSStyleSheet 继承自StyleSheet，后者可以作为一个基础接口来定义非CSS 样式表。</p>
+<ul>
+<li>disabled：表示样式表是否被禁用的布尔值。这个属性是可读/写的，将这个值设置为true 可以禁用样式表。</li>
+<li>href：如果样式表是通过<code>&lt;link&gt;</code>包含的，则是样式表的URL；否则，是null。</li>
+<li>media：当前样式表支持的所有媒体类型的集合。与所有DOM 集合一样，这个集合也有一个length 属性和一个item()方法。<br>  也可以使用方括号语法取得集合中特定的项。如果集合是空列表，表示样式表适用于所有媒体。<br>  在IE 中，media 是一个反映<code>&lt;link&gt;</code>和<code>&lt;style&gt;</code>元素media特性值的字符串。</li>
+<li>ownerNode：指向拥有当前样式表的节点的指针，样式表可能是在HTML 中通过<code>&lt;link&gt;</code>或<code>&lt;style/&gt;</code>引入的（在XML 中可能是通过处理指令引入的）。<br>  如果当前样式表是其他样式表通过@import 导入的，则这个属性值为null。IE 不支持这个属性。</li>
+<li>parentStyleSheet：在当前样式表是通过@import 导入的情况下，这个属性是一个指向导入它的样式表的指针。</li>
+<li>title：ownerNode 中title 属性的值。</li>
+<li>type：表示样式表类型的字符串。对CSS 样式表而言，这个字符串是”type/css”。</li>
+</ul>
+<p>应用于文档的所有样式表是通过document.styleSheets 集合来表示的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sheet = <span class="literal">null</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=<span class="built_in">document</span>.styleSheets.length; i &lt; len; i++)&#123;</div><div class="line">    sheet = <span class="built_in">document</span>.styleSheets[i];</div><div class="line">alert(sheet.href);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码可以输出文档中使用的每一个样式表的href 属性（<code>&lt;style&gt;</code>元素包含的样式表没有href 属性）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyleSheet</span>(<span class="params">element</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> element.sheet || element.styleSheet;</div><div class="line">&#125;</div><div class="line"><span class="comment">//取得第一个&lt;link/&gt;元素引入的样式表</span></div><div class="line"><span class="keyword">var</span> link = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"link"</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> sheet = getStylesheet(link);</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/06/javascript-note-12-1/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十二章-1">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十二章-1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#样式"><span class="nav-number">1.</span> <span class="nav-text">样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#访问元素的样式"><span class="nav-number">1.1.</span> <span class="nav-text">访问元素的样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-样式属性和方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">DOM 样式属性和方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算的样式"><span class="nav-number">1.1.2.</span> <span class="nav-text">计算的样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作样式表"><span class="nav-number">1.2.</span> <span class="nav-text">操作样式表</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

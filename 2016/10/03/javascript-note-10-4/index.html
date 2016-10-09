@@ -126,7 +126,7 @@ parentNode 是一个Element；
 不支持（没有）子节点。
 
 可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包">
-<meta property="og:updated_time" content="2016-10-04T06:26:05.862Z">
+<meta property="og:updated_time" content="2016-10-06T06:43:32.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十章-4">
 <meta name="twitter:description" content="DOMText类型可以照字面解释的纯文本内容。纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。
@@ -400,6 +400,7 @@ parentNode 是一个Element；
 <li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有空格，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有内容，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--想必有换行的也是吧（换行符）--&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>nodeValue 的值为”Hello World!”。可以使用以下代码来访问这些文本子节点。<br><code>var textNode = div.firstChild; //或者div.childNodes[0]</code><br>如果这个文本节点当前存在于文档树中，那么修改文本节点的结果就会立即得到反映。<br>此时的字符串会经过HTML（或XML，取决于文档类型）编码。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//输出结果是"Some &amp;lt;strong&amp;gt;other&amp;lt;/strong&amp;gt; message"</span></div><div class="line">div.firstChild.nodeValue = <span class="string">"Some &lt;strong&gt;other&lt;/strong&gt; message"</span>;</div></pre></td></tr></table></figure>
 <p>这是在向DOM 文档中插入文本之前，先对其进行HTML 编码的一种有效方式。</p>
@@ -577,7 +578,7 @@ parentNode 是一个Element；
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -112,7 +112,7 @@ Selectors API Level 1 的核心是两个方法：querySelec">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="选择符API众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。
 Selectors API Level 1 的核心是两个方法：querySelec">
-<meta property="og:updated_time" content="2016-10-05T08:32:11.993Z">
+<meta property="og:updated_time" content="2016-10-06T06:43:00.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十一章-1">
 <meta name="twitter:description" content="选择符API众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。
@@ -365,6 +365,7 @@ Selectors API Level 1 的核心是两个方法：querySelec">
 <p>Selectors API Level 1 的核心是两个方法：querySelector()和querySelectorAll()。<br>在兼容的浏览器中，可以通过Document 及Element 类型的实例调用它们。<br>目前已完全支持Selectors API Level 1的浏览器有IE 8+、Firefox 3.5+、Safari 3.1+、Chrome 和Opera 10+。</p>
 <h2 id="querySelector-方法"><a href="#querySelector-方法" class="headerlink" title="querySelector()方法"></a>querySelector()方法</h2><p>querySelector()方法接收一个CSS 选择符，返回与该模式匹配的第一个元素，如果没有找到匹配的元素，返回null。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得body 元素</span></div><div class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>);</div><div class="line"><span class="comment">//取得ID 为"myDiv"的元素</span></div><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.querySelector(<span class="string">"#myDiv"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的第一个元素</span></div><div class="line"><span class="keyword">var</span> selected = <span class="built_in">document</span>.querySelector(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得类为"button"的第一个图像元素</span></div><div class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.body.querySelector(<span class="string">"img.button"</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>通过Document 类型调用querySelector()方法时，会在文档元素的范围内查找匹配的元素。<br>而通过Element 类型调用querySelector()方法时，只会在该元素后代元素的范围内查找匹配的元素。<br>如果传入了不被支持的选择符，querySelector()会抛出错误。</p>
 <h2 id="querySelectorAll-方法"><a href="#querySelectorAll-方法" class="headerlink" title="querySelectorAll()方法"></a>querySelectorAll()方法</h2><p>接收的参数与querySelector()方法一样，都是一个CSS 选择符，但返回的是所有匹配的元素而不仅仅是一个元素。返回的是一个NodeList 的实例。<br>具体来说，返回的值实际上是带有所有属性和方法的NodeList，而其底层实现则类似于一组元素的<strong>快照</strong>，而非不断对文档进行搜索的动态查询。<br>可以避免使用NodeList 对象通常会引起的大多数性能问题。<br>只要传给querySelectorAll()方法的CSS 选择符有效，该方法都会返回一个NodeList 对象，而不管找到多少匹配的元素。<br>如果没有找到匹配的元素，NodeList 就是空的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得某&lt;div&gt;中的所有&lt;em&gt;元素（类似于getElementsByTagName("em")）</span></div><div class="line"><span class="keyword">var</span> ems = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).querySelectorAll(<span class="string">"em"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的所有元素</span></div><div class="line"><span class="keyword">var</span> selecteds = <span class="built_in">document</span>.querySelectorAll(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得所有&lt;p&gt;元素中的所有&lt;strong&gt;元素</span></div><div class="line"><span class="keyword">var</span> strongs = <span class="built_in">document</span>.querySelectorAll(<span class="string">"p strong"</span>);</div></pre></td></tr></table></figure>
@@ -544,7 +545,7 @@ Selectors API Level 1 的核心是两个方法：querySelec">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">39</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
