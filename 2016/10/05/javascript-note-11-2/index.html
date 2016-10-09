@@ -1,0 +1,956 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="选择符API插入标记在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。
+innerHTML 属性在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。在写模式下，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十一章-2">
+<meta property="og:url" content="http://codingme.xyz/2016/10/05/javascript-note-11-2/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="选择符API插入标记在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。
+innerHTML 属性在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。在写模式下，">
+<meta property="og:updated_time" content="2016-10-06T06:42:51.106Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十一章-2">
+<meta name="twitter:description" content="选择符API插入标记在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。
+innerHTML 属性在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。在写模式下，">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/05/javascript-note-11-2/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十一章-2 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十一章-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T16:27:47+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><h2 id="插入标记"><a href="#插入标记" class="headerlink" title="插入标记"></a>插入标记</h2><p>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。<br>因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。<br>相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</p>
+<h3 id="innerHTML-属性"><a href="#innerHTML-属性" class="headerlink" title="innerHTML 属性"></a>innerHTML 属性</h3><p>在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。<br>在写模式下，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全替换调用元素原先的所有子节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><code>&lt;div&gt;</code>元素的innerHTML 属性会返回如下字符串。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>但是，不同浏览器返回的文本格式会有所不同。<br>IE 和Opera 会将所有标签转换为大写形式，<br>而Safari、Chrome 和Firefox 则会原原本本地按照原先文档中（或指定这些标签时）的格式返回HTML，包括空格和缩进。</p>
+<p>不要指望所有浏览器返回的innerHTML 值完全相同。</p>
+<p>在写模式下，innerHTML 的值会被解析为DOM 子树，替换调用元素原来的所有子节点。<br>因为它的值被认为是HTML，所以其中的所有标签都会按照浏览器处理HTML 的标准方式转换为元素（同样，这里的转换结果也因浏览器而异）。<br>如果设置的值仅是文本而没有HTML 标签，那么结果就是设置纯文本。<br><code>div.innerHTML = &quot;Hello &amp; welcome, &lt;b&gt;\&quot;reader\&quot;!&lt;/b&gt;&quot;;</code><br>结果是：<br><code>&lt;div id=&quot;content&quot;&gt;Hello &amp;amp; welcome, &lt;b&gt;&amp;quot;reader&amp;quot;!&lt;/b&gt;&lt;/div&gt;</code><br>设置了innerHTML 之后，可以像访问文档中的其他节点一样访问新创建的节点。<br>为innerHTML 设置HTML 字符串后，浏览器会将这个字符串解析为相应的DOM树。<br>因此设置了innerHTML 之后，再从中读取HTML 字符串，会得到与设置时不一样的结果。<br>原因在于返回的字符串是根据原始HTML 字符串创建的DOM树经过序列化之后的结果。</p>
+<p>使用innerHTML 属性也有一些限制。比如，在大多数浏览器中，通过innerHTML 插入<code>&lt;script&gt;</code>元素并不会执行其中的脚本。</p>
+<p>IE8 及更早版本是唯一能在这种情况下执行脚本的浏览器，但必须满足一些条件。<br>一是必须为<code>&lt;script&gt;</code>元素指定defer 属性，二是<code>&lt;script&gt;</code>元素必须位于（微软所谓的）“有作用域的元素”（scoped element）之后。<br><code>&lt;script&gt;</code>元素被认为是“无作用域的元素”（NoScope element），也就是在页面中看不到的元素，与<code>&lt;style&gt;</code>元素或注释类似。</p>
+<p>如果通过innerHTML 插入的字符串开头就是一个“无作用域的元素”，那么IE 会在解析这个字符串前先删除该元素。<br><code>div.innerHTML = &quot;&lt;script defer&gt;alert(&#39;hi&#39;);&lt;\/script&gt;&quot;; //无效</code><br>如果想插入这段脚本，必须在前面添加一个“有作用域的元素”，可以是一个文本节点，也可以是一个没有结束标签的元素如<code>&lt;input&gt;</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">div.innerHTML = <span class="string">"_&lt;script defer&gt;alert('hi');&lt;\/script&gt;"</span>;</div><div class="line">div.innerHTML = <span class="string">"&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;script defer&gt;alert('hi');&lt;\/script&gt;"</span>;</div><div class="line">div.innerHTML = <span class="string">"&lt;input type=\"hidden\"&gt;&lt;script defer&gt;alert('hi');&lt;\/script&gt;"</span>;</div></pre></td></tr></table></figure>
+<p>第一行代码会在<code>&lt;script&gt;</code>元素前插入一个文本节点。事后，为了不影响页面显示，可能需要移除这个文本节点。<br>第二行代码采用的方法类似，只不过使用的是一个包含非换行空格的<code>&lt;div&gt;</code>元素。<br>如果仅仅插入一个空的<code>&lt;div&gt;</code>元素，还是不行；必须要包含一点儿内容，浏览器才会创建文本节点。同样，为了不影响页面布局，恐怕还得移除这个节点。<br>第三行代码使用的是一个隐藏的<code>&lt;input&gt;</code>域，也能达到相同的效果。<br>由于隐藏的<code>&lt;input&gt;</code>域不影响页面布局，因此这种方式在大多数情况下都是首选。</p>
+<p>大多数浏览器都支持以直观的方式通过innerHTML 插入<code>&lt;style&gt;</code>元素。<br><code>div.innerHTML = &quot;&lt;style type=\&quot;text/css\&quot;&gt;body {background-color: red; }&lt;/style&gt;&quot;;</code><br>但在IE8 及更早版本中，<code>&lt;style&gt;</code>也是一个“没有作用域的元素”，因此必须给它前置一个“有作用域的元素”：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">div.innerHTML = <span class="string">"_&lt;style type=\"text/css\"&gt;body &#123;background-color: red; &#125;&lt;/style&gt;"</span>;</div><div class="line">div.removeChild(div.firstChild);</div></pre></td></tr></table></figure>
+<p>并不是所有元素都支持innerHTML 属性。不支持innerHTML 的元素有：<code>&lt;col&gt;</code>、<code>&lt;colgroup&gt;</code>、<code>&lt;frameset&gt;</code>、<code>&lt;head&gt;</code>、<code>html&gt;</code>、<code>&lt;style&gt;</code>、<code>&lt;table&gt;</code>、<code>&lt;tbody&gt;</code>、<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>和<code>&lt;tr&gt;</code>。</p>
+<p>在IE8 及更早版本中，<code>&lt;title&gt;</code>元素也没有innerHTML 属性。<br>Firefox 对在内容类型为application/xhtml+xml 的XHTML 文档中设置innerHTML有严格的限制。</p>
+<p>无论什么时候，只要使用innerHTML 从外部插入HTML，都应该首先以可靠的方式处理HTML。<br>IE8 为此提供了window.toStaticHTML()方法，这个方法接收一个参数，即一个HTML 字符串；<br>返回一个经过无害处理后的版本——从源HTML 中删除所有脚本节点和事件处理程序属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = <span class="string">"&lt;a href=\"#\" onclick=\"alert('hi')\"&gt;Click Me&lt;/a&gt;"</span>;</div><div class="line"><span class="keyword">var</span> sanitized = <span class="built_in">window</span>.toStaticHTML(text); <span class="comment">//Internet Explorer 8 only</span></div><div class="line">alert(sanitized); <span class="comment">//"&lt;a href=\"#\"&gt;Click Me&lt;/a&gt;"</span></div></pre></td></tr></table></figure>
+<p>得到的无害版本中去掉了onclick 属性。<br>虽然目前只有IE8 原生支持这个方法，但还是建议在通过innerHTML 插入代码之前，尽可能先手工检查一下其中的文本内容。</p>
+<h3 id="outerHTML-属性"><a href="#outerHTML-属性" class="headerlink" title="outerHTML 属性"></a>outerHTML 属性</h3><p>在读模式下，outerHTML 返回调用它的元素及所有子节点的HTML 标签。<br>在写模式下，outerHTML会根据指定的HTML 字符串创建新的DOM 子树，然后用这个DOM子树完全替换调用元素。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果在<code>&lt;div&gt;</code>元素上调用outerHTML，会返回与上面相同的代码，包括<code>&lt;div&gt;</code>本身。<br>不过，由于浏览器解析和解释HTML 标记的不同，结果也可能会有所不同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">div.outerHTML = <span class="string">"&lt;p&gt;This is a paragraph.&lt;/p&gt;"</span>;</div><div class="line"><span class="comment">//等同于</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.createElement(<span class="string">"p"</span>);</div><div class="line">p.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"This is a paragraph."</span>));</div><div class="line">div.parentNode.replaceChild(p, div);</div></pre></td></tr></table></figure>
+<p>结果，就是新创建的<code>&lt;p&gt;</code>元素会取代DOM 树中的<code>&lt;div&gt;</code>元素。<br>支持outerHTML 属性的浏览器有IE4+、Safari 4+、Chrome 和Opera 8+。Firefox 7 及之前版本都不支持outerHTML 属性。</p>
+<h3 id="insertAdjacentHTML-方法"><a href="#insertAdjacentHTML-方法" class="headerlink" title="insertAdjacentHTML()方法"></a>insertAdjacentHTML()方法</h3><p>插入标记的最后一个新增方式是insertAdjacentHTML()方法。<br>最早也是在IE 中出现的，它接收两个参数：插入位置和要插入的HTML 文本。<br>第一个参数必须是：</p>
+<ul>
+<li>“beforebegin”，在当前元素之前插入一个紧邻的同辈元素；</li>
+<li>“afterbegin”，在当前元素之下插入一个新的子元素或在第一个子元素之前再插入新的子元素；</li>
+<li>“beforeend”，在当前元素之下插入一个新的子元素或在最后一个子元素之后再插入新的子元素；</li>
+<li>“afterend”，在当前元素之后插入一个紧邻的同辈元素。</li>
+</ul>
+<p>这些值都必须是小写形式。第二个参数是一个HTML 字符串（与innerHTML 和outerHTML的值相同），如果浏览器无法解析该字符串，就会抛出错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//作为前一个同辈元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"beforebegin"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div><div class="line"><span class="comment">//作为第一个子元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"afterbegin"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div><div class="line"><span class="comment">//作为最后一个子元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"beforeend"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div><div class="line"><span class="comment">//作为后一个同辈元素插入</span></div><div class="line">element.insertAdjacentHTML(<span class="string">"afterend"</span>, <span class="string">"&lt;p&gt;Hello world!&lt;/p&gt;"</span>);</div></pre></td></tr></table></figure>
+<p>支持insertAdjacentHTML()方法的浏览器有IE、Firefox 8+、Safari、Opera 和Chrome。</p>
+<h3 id="内存与性能问题"><a href="#内存与性能问题" class="headerlink" title="内存与性能问题"></a>内存与性能问题</h3><p>使用方法替换子节点可能会导致浏览器的内存占用问题，尤其是在IE 中，问题更加明显。<br>在删除带有事件处理程序或引用了其他JavaScript 对象子树时，就有可能导致内存占用问题。<br>假设某个元素有一个事件处理程序（或者引用了一个JavaScript 对象作为属性），<br>在使用前述某个属性将该元素从文档树中删除后，元素与事件处理程序（或JavaScript 对象）之间的绑定关系在内存中并没有一并删除。<br>如果这种情况频繁出现，页面占用的内存数量就会明显增加。</p>
+<p>因此，在使用innerHTML、outerHTML 属性和insertAdjacentHTML()方法时，最好先手工删除要被替换的元素的所有事件处理程序和JavaScript 对象属性。</p>
+<p>使用这几个属性——特别是使用innerHTML，仍然还是可以为我们提供很多便利的。<br>在插入大量新HTML 标记时，使用innerHTML 属性与通过多次DOM 操作先创建节点再指定它们之间的关系相比，效率要高得多。<br>因为在设置innerHTML 或outerHTML 时，就会创建一个HTML解析器。这个解析器是在浏览器级别的代码（通常是C++编写的）基础上运行的，因此比执行JavaScript快得多。<br>不可避免地，创建和销毁HTML 解析器也会带来性能损失，所以最好能够将设置innerHTML或outerHTML 的次数控制在合理的范围内。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=values.length; i &lt; len; i++)&#123;</div><div class="line">ul.innerHTML += <span class="string">"&lt;li&gt;"</span> + values[i] + <span class="string">"&lt;/li&gt;"</span>; <span class="comment">//要避免这种频繁操作！！</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种每次循环都设置一次innerHTML 的做法效率很低。<br>每次循环还要从innerHTML 中读取一次信息，就意味着每次循环要访问两次innerHTML。<br>最好的做法是单独构建字符串，然后再一次性地将结果字符串赋值给innerHTML。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> itemsHtml = <span class="string">""</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=values.length; i &lt; len; i++)&#123;</div><div class="line">itemsHtml += <span class="string">"&lt;li&gt;"</span> + values[i] + <span class="string">"&lt;/li&gt;"</span>;</div><div class="line">&#125;</div><div class="line">ul.innerHTML = itemsHtml;</div></pre></td></tr></table></figure>
+<h2 id="scrollIntoView-方法"><a href="#scrollIntoView-方法" class="headerlink" title="scrollIntoView()方法"></a>scrollIntoView()方法</h2><p>在各种专有方法中，HTML5 最终选择了scrollIntoView()作为标准方法。<br>scrollIntoView()可以在所有HTML 元素上调用，通过滚动浏览器窗口或某个容器元素，调用元素就可以出现在视口中。<br>如果给这个方法传入true 作为参数，或者不传入任何参数，那么窗口滚动之后会让调用元素的顶部与视口顶部尽可能平齐。<br>如果传入false 作为参数，调用元素会尽可能全部出现在视口中，（可能的话，调用元素的底部会与视口顶部平齐。）不过顶部不一定平齐</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//让元素可见</span></div><div class="line"><span class="built_in">document</span>.forms[<span class="number">0</span>].scrollIntoView();</div></pre></td></tr></table></figure>
+<p>当页面发生变化时，一般会用这个方法来吸引用户的注意力。<br>实际上，为某个元素设置焦点也会导致浏览器滚动并显示出获得焦点的元素。</p>
+<h1 id="专有扩展"><a href="#专有扩展" class="headerlink" title="专有扩展"></a>专有扩展</h1><h2 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h2><p>IE8 引入，决定了可以使用什么功能。<br>决定了你可以使用哪个级别的CSS，可以在JavaScript 中使用哪些API，以及如何对待文档类型（doctype）。<br>到了IE9，总共有4 种文档模式。</p>
+<ul>
+<li>IE5：以混杂模式渲染页面（IE5 的默认模式就是混杂模式）。IE8 及更高版本中的新功能都无法使用。</li>
+<li>IE7：以IE7 标准模式渲染页面。IE8 及更高版本中的新功能都无法使用。</li>
+<li>IE8：以IE8 标准模式渲染页面。IE8 中的新功能都可以使用，因此可以使用Selectors API、更多CSS2 级选择符和某些CSS3 功能，还有一些HTML5 的功能。不过IE9 中的新功能无法使用。</li>
+<li>IE9：以IE9 标准模式渲染页面。IE9 中的新功能都可以使用，比如ECMAScript 5、完整的CSS3以及更多HTML5 功能。这个文档模式是最高级的模式。</li>
+</ul>
+<p>要理解IE8 及更高版本的工作原理，必须理解文档模式。<br>要强制浏览器以某种模式渲染页面，可以使用HTTP 头部信息X-UA-Compatible，或通过等价的<code>&lt;meta&gt;</code>标签来设置。<br><code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=IEVersion&quot;&gt;</code><br>这里IE 的版本（IEVersion）有以下一些不同的值，而且这些值并不一定与上述4 种文档模式对应。</p>
+<ul>
+<li>Edge：始终以最新的文档模式来渲染页面。忽略文档类型声明。对于IE8，始终保持以IE8 标准模式渲染页面。对于IE9，则以IE9 标准模式渲染页面。</li>
+<li>EmulateIE9：如果有文档类型声明，则以IE9 标准模式渲染页面，否则将文档模式设置为IE5。</li>
+<li>EmulateIE8：如果有文档类型声明，则以IE8 标准模式渲染页面，否则将文档模式设置为IE5。</li>
+<li>EmulateIE7：如果有文档类型声明，则以IE7 标准模式渲染页面，否则将文档模式设置为IE5。</li>
+<li>9：强制以IE9 标准模式渲染页面，忽略文档类型声明。</li>
+<li>8：强制以IE8 标准模式渲染页面，忽略文档类型声明。</li>
+<li>7：强制以IE7 标准模式渲染页面，忽略文档类型声明。</li>
+<li>5：强制将文档模式设置为IE5，忽略文档类型声明。</li>
+</ul>
+<p>通过document.documentMode 属性可以知道给定页面使用的是什么文档模式。<br>这个属性是IE8中新增的，它会返回使用的文档模式的版本号（在IE9 中，可能返回的版本号为5、7、8、9）<br>知道页面采用的是什么文档模式，有助于理解页面的行为方式。无论在什么文档模式下，都可以访问这个属性。</p>
+<h2 id="children属性"><a href="#children属性" class="headerlink" title="children属性"></a>children属性</h2><p>IE9 之前的版本与其他浏览器在处理文本节点中的空白符时有差异，因此出现。<br>HTMLCollection 的实例，只包含元素中同样还是元素的子节点。<br>除此之外，children 属性与childNodes 没有什么区别，即在元素只包含元素子节点时，这两个属性的值相同。<br>IE8 及更早版本的children 属性中也会包含注释节点，但IE9 之后的版本则只返回元素节点。</p>
+<h2 id="contains-方法"><a href="#contains-方法" class="headerlink" title="contains()方法"></a>contains()方法</h2><p>调用contains()方法的应该是祖先节点，也就是搜索开始的节点，<br>这个方法接收一个参数，即要检测的后代节点。如果被检测的节点是后代节点，该方法返回true；否则，返回false。<br><code>alert(document.documentElement.contains(document.body)); //true</code></p>
+<p>例子测试了<code>&lt;body&gt;</code>元素是不是<code>&lt;html&gt;</code>元素的后代。<br>支持contains()方法的浏览器有IE、Firefox 9+、Safari、Opera 和Chrome。</p>
+<p>DOM Level 3 的compareDocumentPosition()也能够确定节点间的关系。<br>支持这个方法的浏览器有IE9+、Firefox、Safari、Opera 9.5+和Chrome。</p>
+<p>返回一个表示该关系的位掩码（ bitmask）。</p>
+<p>1 无关（给定的节点不在当前文档中）<br>2 居前（给定的节点在DOM树中位于参考节点之前）<br>4 居后（给定的节点在DOM树中位于参考节点之后）<br>8 包含（给定的节点是参考节点的祖先）<br>16 被包含（给定的节点是参考节点的后代）</p>
+<p>为模仿contains()方法，应该关注的是掩码16。<br>可以对compareDocumentPosition()的结果执行按位与，以确定参考节点（调用compareDocumentPosition()方法的当前节点）是否包含给定的节点（传入的节点）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">contains</span>(<span class="params">refNode, otherNode</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> refNode.contains == <span class="string">"function"</span> &amp;&amp;</div><div class="line">(!client.engine.webkit || client.engine.webkit &gt;= <span class="number">522</span>))&#123;</div><div class="line"><span class="keyword">return</span> refNode.contains(otherNode);</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> refNode.compareDocumentPosition == <span class="string">"function"</span>)&#123;</div><div class="line"><span class="keyword">return</span> !!(refNode.compareDocumentPosition(otherNode) &amp; <span class="number">16</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">var</span> node = otherNode.parentNode;</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line"><span class="keyword">if</span> (node === refNode)&#123;</div><div class="line"><span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">node = node.parentNode;</div><div class="line">&#125;</div><div class="line">&#125; <span class="keyword">while</span> (node !== <span class="literal">null</span>);</div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数的第一个参数是参考节点，第二个参数是要检查的节点。</p>
+<p>在函数体内，首先检测refNode 中是否存在contains()方法（能力检测）。还检查了当前浏览器所用的WebKit 版本号。如果方法存在而且不是WebKit，则继续执行代码。否则，如果浏览器是WebKit 且至少是Safari 3（WebKit版本号为522 或更高），那么也可以继续执行代码。<br>在WebKit 版本号小于522 的Safari 浏览器中，contains()方法不能正常使用。</p>
+<p>接下来检查是否存在compareDocumentPosition()方法，而函数的最后一步则是自otherNode开始向上遍历DOM 结构，以递归方式取得parentNode，并检查其是否与refNode 相等。<br>在文档树的顶端，parentNode 的值等于null，于是循环结束。这是针对旧版本Safari 设计的一个后备策略。</p>
+<h2 id="插入文本"><a href="#插入文本" class="headerlink" title="插入文本"></a>插入文本</h2><p>IE 原来专有的插入标记的属性innerHTML 和outerHTML 已经被HTML5 纳入规范。<br>但另外两个插入文本的专有属性则没有这么好的运气。这两个没有被HTML5 看中的属性是innerText和outerText。</p>
+<h3 id="innerText-属性"><a href="#innerText-属性" class="headerlink" title="innerText 属性"></a>innerText 属性</h3><p>通过innertText 属性可以操作元素中包含的所有文本内容，包括子文档树中的文本。<br>在通过innerText 读取值时，它会按照由浅入深的顺序，将子文档树中的所有文本拼接起来。<br>在通过innerText 写入值时，结果会删除元素的所有子节点，插入包含相应文本值的文本节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>对<code>&lt;div&gt;</code>元素而言，会返回字符串：<br>This is a paragraph with a list following it.<br>Item 1<br>Item 2<br>Item 3</p>
+<p>由于不同浏览器处理空白符的方式不同，因此输出的文本可能会也可能不会包含原始HTML 代码中的缩进。<br><code>div.innerText = &quot;Hello world!&quot;;</code><br>执行之后：<code>&lt;div id=&quot;content&quot;&gt;Hello world!&lt;/div&gt;</code></p>
+<p>设置innerText属性的同时，也对文本中存在的HTML 语法字符（小于号、大于号、引号及和号）进行了编码。</p>
+<p>设置innerText 永远只会生成当前节点的一个子文本节点，而为了确保只生成一个子文本节点，就必须要对文本进行HTML 编码。</p>
+<p>利用这一点，可以通过innerText 属性过滤掉HTML 标签。<br><code>div.innerText = div.innerText;</code><br>执行这行代码后，就用原来的文本内容替换了容器元素中的所有内容（包括子节点，因而也就去掉了HTML 标签）。<br>支持innerText 属性的浏览器包括IE4+、Safari 3+、Opera 8+和Chrome。Firefox 虽然不支持innerText，但支持作用类似的textContent 属性。<br>textContent 是DOM Level 3 规定的一个属性，其他支持textContent 属性的浏览器还有IE9+、Safari 3+、Opera 10+和Chrome。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInnerText</span>(<span class="params">element</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> (<span class="keyword">typeof</span> element.textContent == <span class="string">"string"</span>) ?</div><div class="line">element.textContent : element.innerText;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setInnerText</span>(<span class="params">element, text</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> element.textContent == <span class="string">"string"</span>)&#123;</div><div class="line">element.textContent = text;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">element.innerText = text;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>实际上，innerText 与textContent 返回的内容并不完全一样。<br>比如，innerText 会忽略行内的样式和脚本，而textContent 则会像返回其他文本一样返回行内的样式和脚本代码。<br>避免跨浏览器兼容问题的最佳途径，就是从不包含行内样式或行内脚本的DOM 子树副本或DOM片段中读取文本。</p>
+<h3 id="outerText-属性"><a href="#outerText-属性" class="headerlink" title="outerText 属性"></a>outerText 属性</h3><p>作用范围扩大到了包含调用它的节点之外，outerText 与innerText 基本上没有多大区别。<br>读取文本值时，结果完全一样。<br>在写模式下，outerText 不只是替换调用它的元素的子节点，而是会替换整个元素（包括子节点）。<br>新的文本节点会完全取代调用outerText 的元素。此后，该元素就从文档中被删除，无法访问。<br>支持outerText 属性的浏览器有IE4+、Safari 3+、Opera 8+和Chrome。<br>由于这个属性会导致调用它的元素不存在，因此并不常用。也建议尽可能不要使用这个属性。</p>
+<h2 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h2><ul>
+<li>scrollIntoViewIfNeeded(alignCenter)：只在当前元素在视口中不可见的情况下，才滚动浏览器窗口或容器元素，最终让它可见。<br>  如果当前元素在视口中可见，这个方法什么也不做。如果将可选的alignCenter 参数设置为true，则表示尽量将元素显示在视口中部（垂直方向）。Safari 和Chrome 实现了这个方法。</li>
+<li>scrollByLines(lineCount)：将元素的内容滚动指定的行高，lineCount 值可以是正值，也可以是负值。Safari 和Chrome 实现了这个方法。</li>
+<li>scrollByPages(pageCount)：将元素的内容滚动指定的页面高度，具体高度由元素的高度决定。Safari 和Chrome 实现了这个方法。\</li>
+</ul>
+<p>scrollIntoView()和scrollIntoViewIfNeeded()的作用对象是元素的容器，而scrollByLines()和scrollByPages()影响的则是元素自身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将页面主体滚动5 行</span></div><div class="line"><span class="built_in">document</span>.body.scrollByLines(<span class="number">5</span>);</div><div class="line"><span class="comment">//在当前元素不可见的时候，让它进入浏览器的视口</span></div><div class="line"><span class="built_in">document</span>.images[<span class="number">0</span>].scrollIntoViewIfNeeded();</div><div class="line"><span class="comment">//将页面主体往回滚动1 页</span></div><div class="line"><span class="built_in">document</span>.body.scrollByPages(<span class="number">-1</span>);</div></pre></td></tr></table></figure>
+<p>由于scrollIntoView()是唯一一个所有浏览器都支持的方法，因此还是这个方法最常用。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/04/javascript-note-11-1/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十一章-1">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十一章-1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/06/javascript-note-12-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十二章-2">
+                《 JavaScript 高级程序设计》备忘-第十二章-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#选择符API"><span class="nav-number">1.</span> <span class="nav-text">选择符API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入标记"><span class="nav-number">1.1.</span> <span class="nav-text">插入标记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerHTML-属性"><span class="nav-number">1.1.1.</span> <span class="nav-text">innerHTML 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outerHTML-属性"><span class="nav-number">1.1.2.</span> <span class="nav-text">outerHTML 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insertAdjacentHTML-方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">insertAdjacentHTML()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存与性能问题"><span class="nav-number">1.1.4.</span> <span class="nav-text">内存与性能问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrollIntoView-方法"><span class="nav-number">1.2.</span> <span class="nav-text">scrollIntoView()方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专有扩展"><span class="nav-number">2.</span> <span class="nav-text">专有扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档模式"><span class="nav-number">2.1.</span> <span class="nav-text">文档模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#children属性"><span class="nav-number">2.2.</span> <span class="nav-text">children属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#contains-方法"><span class="nav-number">2.3.</span> <span class="nav-text">contains()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入文本"><span class="nav-number">2.4.</span> <span class="nav-text">插入文本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#innerText-属性"><span class="nav-number">2.4.1.</span> <span class="nav-text">innerText 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#outerText-属性"><span class="nav-number">2.4.2.</span> <span class="nav-text">outerText 属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动"><span class="nav-number">2.5.</span> <span class="nav-text">滚动</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
