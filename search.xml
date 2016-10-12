@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十二章-4]]></title>
-      <url>https://codingme.xyz/2016/10/09/javascript-note-12-4/</url>
+      <url>http://codingme.xyz/2016/10/09/javascript-note-12-4/</url>
       <content type="html"><![CDATA[<h1 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h1><h2 id="DOM中的范围"><a href="#DOM中的范围" class="headerlink" title="DOM中的范围"></a>DOM中的范围</h2><h3 id="操作DOM-范围中的内容"><a href="#操作DOM-范围中的内容" class="headerlink" title="操作DOM 范围中的内容"></a>操作DOM 范围中的内容</h3><p>在创建范围时 ，内部会为这个范围创建一个文档片段，范围所属的全部节点都被添加到了这个文档片段中。<br>为了创建这个文档片段，范围内容的格式必须正确有效。<br>在前面的例子中，我们创建的选区分别开始和结束于两个文本节点的内部，因此不能算是格式良好的DOM结构，也就无法通过DOM来表示。<br>范围知道自身缺少哪些开标签和闭标签，它能够重新构建有效的DOM结构以便我们对其进行操作。</p>
 <p>范围经过计算知道选区中缺少一个开始的<code>&lt;b&gt;</code>标签，因此就会在后台动态加入一个该标签，同时还会在前面加入一个表示结束的<code>&lt;/b&gt;</code>标签以结束”He”。于是，修改后的DOM 就变成了:<br><code>&lt;p&gt;&lt;b&gt;He&lt;/b&gt;&lt;b&gt;llo&lt;/b&gt; world!&lt;/p&gt;</code><br>文本节点”world!”也被拆分为两个文本节点，一个包含”wo”，另一个包含”rld!”。</p>
 <p>像这样创建了范围之后，就可以使用各种方法对范围的内容进行操作了。<br>deleteContents()这个方法能够从文档中删除范围所包含的内容。</p>
@@ -83,7 +83,7 @@
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十二章-3]]></title>
-      <url>https://codingme.xyz/2016/10/09/javascript-note-12-3/</url>
+      <url>http://codingme.xyz/2016/10/09/javascript-note-12-3/</url>
       <content type="html"><![CDATA[<h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1><p>“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：<br>NodeIterator和TreeWalker。<br>能够基于给定的起点对DOM 结构执行深度优先（depth-first）的遍历操作。<br>IE 不支持DOM 遍历。<br>检测浏览器对DOM2 级遍历能力的支持情况。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsTraversals = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Traversal"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsNodeIterator = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createNodeIterator == <span class="string">"function"</span>);</div><div class="line"><span class="keyword">var</span> supportsTreeWalker = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createTreeWalker == <span class="string">"function"</span>);</div></pre></td></tr></table></figure>
 <p>DOM 遍历是深度优先的DOM 结构遍历，也就是说，移动的方向至少有两个（取决于使用的遍历类型）。<br>遍历以给定节点为根，不可能向上超出DOM 树的根节点。</p>
@@ -179,7 +179,7 @@
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十二章-2]]></title>
-      <url>https://codingme.xyz/2016/10/08/javascript-note-12-2/</url>
+      <url>http://codingme.xyz/2016/10/08/javascript-note-12-2/</url>
       <content type="html"><![CDATA[<h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
 <p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
@@ -317,7 +317,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十二章-1]]></title>
-      <url>https://codingme.xyz/2016/10/07/javascript-note-12-1/</url>
+      <url>http://codingme.xyz/2016/10/07/javascript-note-12-1/</url>
       <content type="html"><![CDATA[<h1 id="DOM2-和-DOM3"><a href="#DOM2-和-DOM3" class="headerlink" title="DOM2 和 DOM3"></a>DOM2 和 DOM3</h1><h1 id="DOM-变化"><a href="#DOM-变化" class="headerlink" title="DOM 变化"></a>DOM 变化</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM3Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"3.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2HTML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"HTML"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2Views = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Views"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2XML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
 <h2 id="针对XML命名空间的变化"><a href="#针对XML命名空间的变化" class="headerlink" title="针对XML命名空间的变化"></a>针对XML命名空间的变化</h2><p>XML 命名空间使不同XML 文档的元素可以混合在一起，共同构成格式良好的文档不必担心发生命名冲突。<br>HTML 不支持XML 命名空间，但XHTML 支持XML 命名空间。<br>命名空间要使用xmlns 特性来指定。<br>XHTML 的命名空间是<code>http://www.w3.org/1999/xhtml</code>，在任何格式良好XHTML 页面中，都应该将其包含在<code>&lt;html&gt;</code>元素中。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">Hello world!</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -404,7 +404,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十一章-2]]></title>
-      <url>https://codingme.xyz/2016/10/05/javascript-note-11-2/</url>
+      <url>http://codingme.xyz/2016/10/05/javascript-note-11-2/</url>
       <content type="html"><![CDATA[<h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><h2 id="插入标记"><a href="#插入标记" class="headerlink" title="插入标记"></a>插入标记</h2><p>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。<br>因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。<br>相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</p>
 <h3 id="innerHTML-属性"><a href="#innerHTML-属性" class="headerlink" title="innerHTML 属性"></a>innerHTML 属性</h3><p>在读模式下，innerHTML 属性返回与调用元素的所有子节点（包括元素、注释和文本节点）对应的HTML 标记。<br>在写模式下，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全替换调用元素原先的所有子节点。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -504,7 +504,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十一章-1]]></title>
-      <url>https://codingme.xyz/2016/10/04/javascript-note-11-1/</url>
+      <url>http://codingme.xyz/2016/10/04/javascript-note-11-1/</url>
       <content type="html"><![CDATA[<h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><p>众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。<br>实际上，jQuery（www.jquery.com）的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。</p>
 <p>Selectors API Level 1 的核心是两个方法：querySelector()和querySelectorAll()。<br>在兼容的浏览器中，可以通过Document 及Element 类型的实例调用它们。<br>目前已完全支持Selectors API Level 1的浏览器有IE 8+、Firefox 3.5+、Safari 3.1+、Chrome 和Opera 10+。</p>
 <h2 id="querySelector-方法"><a href="#querySelector-方法" class="headerlink" title="querySelector()方法"></a>querySelector()方法</h2><p>querySelector()方法接收一个CSS 选择符，返回与该模式匹配的第一个元素，如果没有找到匹配的元素，返回null。</p>
@@ -583,7 +583,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十章-5]]></title>
-      <url>https://codingme.xyz/2016/10/04/javascript-note-10-5/</url>
+      <url>http://codingme.xyz/2016/10/04/javascript-note-10-5/</url>
       <content type="html"><![CDATA[<h1 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h1><p>由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。</p>
 <h2 id="动态脚本"><a href="#动态脚本" class="headerlink" title="动态脚本"></a>动态脚本</h2><p>动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。<br>创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
 <p>动态加载的外部JavaScript 文件能够立即运行。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;client.js&quot;&gt;&lt;/script&gt;</code></p>
@@ -623,7 +623,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十章-4]]></title>
-      <url>https://codingme.xyz/2016/10/03/javascript-note-10-4/</url>
+      <url>http://codingme.xyz/2016/10/03/javascript-note-10-4/</url>
       <content type="html"><![CDATA[<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
 <ul>
 <li>nodeType 的值为3；</li>
@@ -714,7 +714,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十章-3]]></title>
-      <url>https://codingme.xyz/2016/10/03/javascript-note-10-3/</url>
+      <url>http://codingme.xyz/2016/10/03/javascript-note-10-3/</url>
       <content type="html"><![CDATA[<h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h2><p>Element 类型就要算是Web 编程中最常用的类型了。<br>Element 类型用于表现XML或HTML元素，提供了对元素标签名、子节点及特性的访问。</p>
 <ul>
 <li>nodeType 的值为1；</li>
@@ -796,7 +796,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十章-2]]></title>
-      <url>https://codingme.xyz/2016/10/03/javascript-note-10-2/</url>
+      <url>http://codingme.xyz/2016/10/03/javascript-note-10-2/</url>
       <content type="html"><![CDATA[<h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h2><p>JavaScript 通过Document 类型表示文档。<br>在浏览器中，document 对象是HTMLDocument（继承自Document 类型）的一个实例，表示整个HTML 页面。<br>document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。<br>Document 节点具有下列特征：</p>
 <ul>
 <li>nodeType 的值为9；</li>
@@ -868,7 +868,7 @@ font-family         style.fontFamily
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第十章-1]]></title>
-      <url>https://codingme.xyz/2016/10/02/javascript-note-10-1/</url>
+      <url>http://codingme.xyz/2016/10/02/javascript-note-10-1/</url>
       <content type="html"><![CDATA[<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>针对HTML 和XML 文档的一个API。<br>脱胎于Netscape 及微软公司创始的DHTML（动态HTML）。<br>已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。</p>
 <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><p><code>&lt;html&gt;</code>元素称之为文档元素。<br>每个文档只能有一个文档元素。<br>文档元素是文档的最外层元素。<br>在HTML 页面中，文档元素始终都是<code>&lt;html&gt;</code>元素。<br>在XML 中，没有预定义的元素，因此任何元素都可能成为文档元素。<br>标记都可以通过树中的节点来表示：<br>HTML 元素通过元素节点表示，<br>特性（attribute）通过特性节点表示，<br>文档类型通过文档类型节点表示，<br>而注释则通过注释节点表示。<br>总共有12 种节点类型，这些类型都继承自一个基类型。<br><a id="more"></a></p>
 <h2 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h2><p>DOM1 级定义了一个Node 接口，该接口将由DOM 中的所有节点类型实现。<br>这个Node 接口在JavaScript 中是作为Node 类型实现的；<br>除了IE 之外，在其他所有浏览器中都可以访问到这个类型。<br>JavaScript 中的所有节点类型都继承自Node 类型，因此所有节点类型都共享着相同的基本属性和方法。</p>
@@ -918,7 +918,7 @@ Node.NOTATION_NODE(12)。
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第九章-2]]></title>
-      <url>https://codingme.xyz/2016/10/02/javascript-note-9-2/</url>
+      <url>http://codingme.xyz/2016/10/02/javascript-note-9-2/</url>
       <content type="html"><![CDATA[<h1 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h1><p>首先要确定的往往是你需要多么具体的浏览器信息。<br>一般情况下，知道呈现引擎和最低限度的版本就足以决定正确的操作方法了。<br>不推荐的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isIE6 || isIE7) &#123; <span class="comment">//不推荐!!!</span></div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这种代码其实是很脆弱的，因为它要依据特定的版本来决定做什么。<br>如果是IE8 怎么办呢？只要IE 有新版本出来，就必须更新这些代码。</p>
@@ -975,7 +975,7 @@ Node.NOTATION_NODE(12)。
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第八章-2]]></title>
-      <url>https://codingme.xyz/2016/09/30/javascript-note-8-2/</url>
+      <url>http://codingme.xyz/2016/09/30/javascript-note-8-2/</url>
       <content type="html"><![CDATA[<h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
 <p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
 <pre><code>hash &quot;#contents&quot; 返回URL中的hash（#号后跟零或多个字符），如果URL中不包含散列，则返回空字符串
@@ -1033,7 +1033,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第九章-1]]></title>
-      <url>https://codingme.xyz/2016/09/30/javascript-note-9-1/</url>
+      <url>http://codingme.xyz/2016/09/30/javascript-note-9-1/</url>
       <content type="html"><![CDATA[<h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么（也是更常见的）就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”（quirk），多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
 <p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
 <h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>（又称特性检测）。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
@@ -1113,7 +1113,7 @@ AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第八章-1]]></title>
-      <url>https://codingme.xyz/2016/09/29/javascript-note-8-1/</url>
+      <url>http://codingme.xyz/2016/09/29/javascript-note-8-1/</url>
       <content type="html"><![CDATA[<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript ，那么 BOM（浏览器对象模型）则无疑才是真正的核心。</p>
 <h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>它表示浏览器的一个实例。<br>它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。<br>这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问parseInt() 等方法。</p>
 <h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。</p>
@@ -1215,14 +1215,14 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[正则表达式，治疗强迫症]]></title>
-      <url>https://codingme.xyz/2016/09/27/regex/</url>
+      <url>http://codingme.xyz/2016/09/27/regex/</url>
       <content type="html"><![CDATA[<h1 id="治疗用药方"><a href="#治疗用药方" class="headerlink" title="治疗用药方"></a>治疗用药方</h1><p>中文字符： <code>[\u4e00-\u9fa5]</code><br>中文标点符号（似乎有遗漏）：<code>[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]</code></p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第七章-2]]></title>
-      <url>https://codingme.xyz/2016/09/27/javascript-note-7-2/</url>
+      <url>http://codingme.xyz/2016/09/27/javascript-note-7-2/</url>
       <content type="html"><![CDATA[<h1 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h1><p>严格来讲， JavaScript 中没有私有成员的概念；所有对象属性都是公有的。<br>不过，倒是有一个私有变量的概念。任何在函数中定义的变量，都可以认为是私有变量，因为不能在函数的外部访问这些变量。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> sum = num1 + num2;</div><div class="line"><span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在这个函数内部，有 3 个私有变量： num1 、 num2 和 sum 。<br>在函数内部可以访问这几个变量，但在函数外部则不能访问它们。<br>如果在这个函数内部创建一个闭包，那么闭包通过自己的作用域链也可以访问这些变量。<br>而利用这一点，就可以创建用于访问私有变量的公有方法。</p>
@@ -1256,7 +1256,7 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[记录：利用 Livereload 实现 Hexo 博客自动刷新页面]]></title>
-      <url>https://codingme.xyz/2016/09/26/hexo-tool-livereload/</url>
+      <url>http://codingme.xyz/2016/09/26/hexo-tool-livereload/</url>
       <content type="html"><![CDATA[<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>一开始是因为使用了新的 IDE ： Visual Studio Code ，装上了 markdownlint 插件。<br>然后为了符合规则，修改原本的 .md 文件。<br><code>hexo s</code>命令会监控文件，每次修改完保存，刷新页面就能看到所修改的新内容。<br>为了看修改完符合规则后，文章页面实际的表现效果有没有出错，在使用了<code>hexo s</code>命令后还得手动刷新页面。<br>每修改完想确认一次就得刷新一次， F5 又不是真的氪合金做的，而且一直手动刷新也麻烦；浏览器定时刷新也不准确。</p>
 <p>为了第一驱动力：懒惰，于是就去寻找跟 Hexo 和自动刷新有关的内容。</p>
 <h1 id="第一次尝试："><a href="#第一次尝试：" class="headerlink" title="第一次尝试："></a>第一次尝试：</h1><p>找到关于 Livereload 的介绍和教程，但是可能是因为 Hexo 和 Livereload 都有更新的缘故，原本推荐的 Hexo 的插件并不好使。<br>本地端通过 npm 安装的 Livereload 哪怕运行了，浏览器的 Livereload 插件并不能正常检测连接上。<br><a id="more"></a></p>
@@ -1285,7 +1285,7 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第七章-1]]></title>
-      <url>https://codingme.xyz/2016/09/25/javascript-note-7-1/</url>
+      <url>http://codingme.xyz/2016/09/25/javascript-note-7-1/</url>
       <content type="html"><![CDATA[<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><p>定义函数的两种方式：</p>
 <ol>
 <li>函数声明,重要特征：函数声明提升(function declaration hoisting)<br> <code>function functionName(arg0,arg1){}</code></li>
@@ -1355,7 +1355,7 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第六章-3]]></title>
-      <url>https://codingme.xyz/2016/09/22/javascript-note-6-3/</url>
+      <url>http://codingme.xyz/2016/09/22/javascript-note-6-3/</url>
       <content type="html"><![CDATA[<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>许多 OO 语言都支持两种继承方式：接口继承和实现继承。<br>接口继承只继承方法签名，而实现继承则继承实际的方法。<br>由于函数没有签名，在 ECMAScript 中无法实现接口继承。<br>ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链来实现的。</p>
 <h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>ECMAScript 将原型链作为实现继承的主要方法。<br>基本思想:利用原型让一个引用类型继承另一个引用类型的属性和方法。<br><a id="more"></a><br>基本模式：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.property = <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line">SuperType.prototype.getSuperValue = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>.property;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.subproperty = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//继承了 SuperType</span></div><div class="line">SubType.prototype = <span class="keyword">new</span> SuperType();</div><div class="line"></div><div class="line">SubType.prototype.getSubValue = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>.subproperty;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> SubType();</div><div class="line">alert(instance.getSuperValue()); <span class="comment">//true</span></div></pre></td></tr></table></figure>
@@ -1412,7 +1412,7 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第六章-2]]></title>
-      <url>https://codingme.xyz/2016/09/20/javascript-note-6-2/</url>
+      <url>http://codingme.xyz/2016/09/20/javascript-note-6-2/</url>
       <content type="html"><![CDATA[<h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><p>虽然 Object 构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：<br>使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。</p>
 <h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。<br>考虑到在 ECMAScript 中无法创建类，开发人员就发明了一种函数，用函数来封装以特定接口创建对象的细节。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">o.name = name;</div><div class="line">o.age = age;</div><div class="line">o.job = job;</div><div class="line">o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</div></pre></td></tr></table></figure>
@@ -1508,7 +1508,7 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第六章-1]]></title>
-      <url>https://codingme.xyz/2016/09/20/javascript-note-6-1/</url>
+      <url>http://codingme.xyz/2016/09/20/javascript-note-6-1/</url>
       <content type="html"><![CDATA[<h1 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h1><p>ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”<br>严格来讲，这就相当于说对象是一组没有特定顺序的值。<br>对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。<br>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。<br>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。</p>
 <p>创建自定义对象最简单方式就是创建一个 Object 的实例，然后再为它添加属性和方法。<br><a id="more"></a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">person.name = <span class="string">"Nicholas"</span>;</div><div class="line">person.age = <span class="number">29</span>;</div><div class="line">person.job = <span class="string">"Software Engineer"</span>;</div><div class="line">person.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/*早期 JavaScript 开发人员经常用这种模式创建新对象，</span></div><div class="line">几年后，对象字面量成为创建这种对象的首选模式。</div><div class="line">*/</div><div class="line"></div><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">age: <span class="number">29</span>,</div><div class="line">job: <span class="string">"Software Engineer"</span>,</div><div class="line">sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
@@ -1551,7 +1551,7 @@ width 数值 表示新窗口的宽度。不能小于100
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第五章-5]]></title>
-      <url>https://codingme.xyz/2016/09/20/javascript-note-5-5/</url>
+      <url>http://codingme.xyz/2016/09/20/javascript-note-5-5/</url>
       <content type="html"><![CDATA[<h1 id="单体内置对象"><a href="#单体内置对象" class="headerlink" title="单体内置对象"></a>单体内置对象</h1><p>内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”<br>开发人员不必显式地实例化内置对象，因为它们已经实例化了。<br>大多数内置对象，例如 Object 、 Array 和 String 。<br>ECMA-262 还定义了两个单体内置对象： Global 和 Math 。</p>
 <h2 id="Global-对象"><a href="#Global-对象" class="headerlink" title="Global 对象"></a>Global 对象</h2><p>Global (全局)对象可以说是 ECMAScript 中最特别的一个对象了，因为不管你从什么角度上看，这个对象都是不存在的。<br>ECMAScript 中的 Global 对象在某种意义上是作为一个终极的“兜底儿对象”来定义的。<br>换句话说，不属于任何其他对象的属性和方法，最终都是它的属性和方法。<br><strong>事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</strong></p>
 <p>诸如 isNaN() 、 isFinite() 、 parseInt() 以及 parseFloat() ，实际上全都是 Global 对象的方法。<br>除此之外， Global 对象还包含其他一些方法。</p>
@@ -1615,7 +1615,7 @@ Math.tan(x)             返回 x 的正切值
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第五章-4]]></title>
-      <url>https://codingme.xyz/2016/09/20/javascript-note-5-4/</url>
+      <url>http://codingme.xyz/2016/09/20/javascript-note-5-4/</url>
       <content type="html"><![CDATA[<h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><p>为了便于操作基本类型值， ECMAScript 还提供了 3 个特殊的引用类型： Boolean 、 Number 和 String 。<br>这些类型与本章介绍的其他引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。<br>实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="string">"some text"</span>;</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">//等同于</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"some text"</span>);</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line">s1 = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
 <p>后台操作：<br>(1) 创建 String 类型的一个实例；<br>(2) 在实例上调用指定的方法；<br>(3) 销毁这个实例。<br>这三个步骤也分别适用于 Boolean 和 Number 类型对应的布尔值和数字值。<br><a id="more"></a><br>引用类型与基本包装类型的主要区别就是对象的生存期。<br>要点：<strong>引用类型与基本包装类型的主要区别就是对象的生存期。</strong><br>使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。<br>而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。</p>
@@ -1707,7 +1707,7 @@ sup()               &lt;sup&gt;string&lt;/sup&gt;
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第五章-3]]></title>
-      <url>https://codingme.xyz/2016/09/19/javascript-note-5-3/</url>
+      <url>http://codingme.xyz/2016/09/19/javascript-note-5-3/</url>
       <content type="html"><![CDATA[<h1 id="Function-类型"><a href="#Function-类型" class="headerlink" title="Function 类型"></a>Function 类型</h1><p>ECMAScript 中最有意思的是函数——因为函数实际上是对象。<br>JavaScript 最有特色的地方。<br>每个函数都是 Function 类型的实例，而且都与其他引用类型一样具有属性和方法。<br>由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>) </span>&#123;</div><div class="line"><span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*等同于*/</span></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不推荐</span></div></pre></td></tr></table></figure>
 <p>在使用函数表达式定义函数时，没有必要使用函数名——通过变量 sum 即可以引用函数。<br>另外，还要注意函数末尾有一个分号，就像声明其他变量时一样。<br>最后一种定义函数的方式是使用 Function 构造函数。<br>但是不推荐这种方法定义函数，因为这种语法会导致解析两次代码(第一次是解析常规 ECMAScript 代码，第二次是解析传入构造函数中的字符串)，从而影响性能。</p>
@@ -1757,7 +1757,7 @@ sup()               &lt;sup&gt;string&lt;/sup&gt;
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第五章-2]]></title>
-      <url>https://codingme.xyz/2016/09/19/javascript-note-5-2/</url>
+      <url>http://codingme.xyz/2016/09/19/javascript-note-5-2/</url>
       <content type="html"><![CDATA[<h1 id="Date-类型"><a href="#Date-类型" class="headerlink" title="Date 类型"></a>Date 类型</h1><p>创建一个 Date 对象，使用 new 操作符和 Date 构造函数即可。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
 <p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。<br>如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数。(从 UTC 时间 1970 年 1 月 1 日午夜起至该日期止经过的毫秒数)<br>了简化这一计算过程， ECMAScript 提供了两个方法： Date.parse()和 Date.UTC() 。<br><a id="more"></a></p>
@@ -1870,7 +1870,7 @@ Input 字符串中 lastMatch 之后的文本
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第五章-1]]></title>
-      <url>https://codingme.xyz/2016/09/17/javascript-note-5-1/</url>
+      <url>http://codingme.xyz/2016/09/17/javascript-note-5-1/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript 不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
 <p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
 <h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>Object 是一个基础类型，其他所有类型都从 Object 继承了基本的行为。</p>
@@ -1963,7 +1963,7 @@ Input 字符串中 lastMatch 之后的文本
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第四章]]></title>
-      <url>https://codingme.xyz/2016/09/17/javascript-note-4/</url>
+      <url>http://codingme.xyz/2016/09/17/javascript-note-4/</url>
       <content type="html"><![CDATA[<h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
 <p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
 <p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
@@ -2032,7 +2032,7 @@ Input 字符串中 lastMatch 之后的文本
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第三章-3]]></title>
-      <url>https://codingme.xyz/2016/09/17/javascript-note-3-3/</url>
+      <url>http://codingme.xyz/2016/09/17/javascript-note-3-3/</url>
       <content type="html"><![CDATA[<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>ECMA-262 规定了一组语句(也称为流控制语句)。</p>
 <h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
 <p>其中的 condition(条件)可以是任意表达式；而且对这个表达式求值的结果不一定是布尔值。<br>ECMAScript 会自动调用 <code>Boolean()</code> 转换函数将这个表达式的结果转换为一个布尔值。</p>
@@ -2091,7 +2091,7 @@ Input 字符串中 lastMatch 之后的文本
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第三章-2]]></title>
-      <url>https://codingme.xyz/2016/09/17/javascript-note-3-2/</url>
+      <url>http://codingme.xyz/2016/09/17/javascript-note-3-2/</url>
       <content type="html"><![CDATA[<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><p>包括算术操作符(如加号和减号)、位操作符、关系操作符和相等操作符。<br>ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字符串、数字值、布尔值，甚至对象。<br>不过，<strong>在应用于对象时，相应的操作符通常都会调用对象的 valueOf()和(或) toString() 方法，以便取得可以操作的值。</strong></p>
 <h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h2><h3 id="递增递减操作符"><a href="#递增递减操作符" class="headerlink" title="递增递减操作符"></a>递增递减操作符</h3><p>执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。(在计算机科学领域，这种情况通常被称作副效应。)</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="keyword">var</span> anotherAge = --age + <span class="number">2</span>;</div><div class="line">alert(age); <span class="comment">// 输出 28</span></div><div class="line">alert(anotherAge); <span class="comment">// 输出 30</span></div></pre></td></tr></table></figure>
@@ -2261,7 +2261,7 @@ Input 字符串中 lastMatch 之后的文本
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第三章-1]]></title>
-      <url>https://codingme.xyz/2016/09/11/javascript-note-3-1/</url>
+      <url>http://codingme.xyz/2016/09/11/javascript-note-3-1/</url>
       <content type="html"><![CDATA[<h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
 <li>区分大小写</li>
 <li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
@@ -2455,7 +2455,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第二章]]></title>
-      <url>https://codingme.xyz/2016/09/10/javascript-note-2/</url>
+      <url>http://codingme.xyz/2016/09/10/javascript-note-2/</url>
       <content type="html"><![CDATA[<h1 id="script-元素的-defer"><a href="#script-元素的-defer" class="headerlink" title="script 元素的 defer"></a>script 元素的 defer</h1><p><strong>defer</strong> 延迟脚本。<br>效果：在页面解析时候下载脚本，可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。(HTML 4.01时定义)</p>
 <ul>
 <li>在现实当中，延迟脚本并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件触发前执行，因此最好只包含一个延迟脚本。</li>
@@ -2517,7 +2517,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 JavaScript 高级程序设计》备忘-第一章]]></title>
-      <url>https://codingme.xyz/2016/09/09/javascript-note-1/</url>
+      <url>http://codingme.xyz/2016/09/09/javascript-note-1/</url>
       <content type="html"><![CDATA[<h1 id="JavaScript-的诞生："><a href="#JavaScript-的诞生：" class="headerlink" title="JavaScript 的诞生："></a>JavaScript 的诞生：</h1><p>以前必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域。<br>Netscape Navigator 希望通过 JavaScript 来解决这个问题。<br>于是 JavaScript 诞生，当时主要目的是处理以前由服务器端语言负责的一些输入验证操作。<br>它从一个简单的输入验证器发展成为一门强大的编程语言。</p>
 <h1 id="JavaScript-、-ECMAScript-历史："><a href="#JavaScript-、-ECMAScript-历史：" class="headerlink" title="JavaScript 、 ECMAScript 历史："></a>JavaScript 、 ECMAScript 历史：</h1><ol>
 <li>Netscape navigator 2诞生, JavaScript 诞生。</li>
@@ -2566,7 +2566,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 HTML5 与 CSS3基础教程》备忘5]]></title>
-      <url>https://codingme.xyz/2016/09/06/html-css-diary-5/</url>
+      <url>http://codingme.xyz/2016/09/06/html-css-diary-5/</url>
       <content type="html"><![CDATA[<h1 id="单选按钮"><a href="#单选按钮" class="headerlink" title="单选按钮"></a>单选按钮</h1><ol>
 <li><code>type=&quot;radio&quot;</code> ，例子：性别的单选按钮。</li>
 <li>两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。</li>
@@ -2692,7 +2692,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 HTML5 与 CSS3 基础教程》备忘4]]></title>
-      <url>https://codingme.xyz/2016/09/01/html-css-diary-4/</url>
+      <url>http://codingme.xyz/2016/09/01/html-css-diary-4/</url>
       <content type="html"><![CDATA[<h1 id="sprite"><a href="#sprite" class="headerlink" title="sprite"></a>sprite</h1><ul>
 <li>目的：<br>  将多个图像拼合成单个背景图像(sprite)，再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于 UI 上的多个小图标、重复图标等。</li>
 <li>使用方法：<br>  <code>background-image</code> 获得图像，<code>background-position</code> 获得所取的具体位置(目前只知道 x 范围和 y 范围，但想必还可以更加深入的切取)</li>
@@ -2772,7 +2772,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[target="_blank" 漏洞]]></title>
-      <url>https://codingme.xyz/2016/08/30/target-blank-vulnerable/</url>
+      <url>http://codingme.xyz/2016/08/30/target-blank-vulnerable/</url>
       <content type="html"><![CDATA[<h1 id="劫持手段"><a href="#劫持手段" class="headerlink" title="劫持手段"></a>劫持手段</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">/* pseudo url */</div><div class="line">window.opener.location = 'https://钓鱼网站.假/</div><div class="line">qq 客服中奖.电脑一台/输入账号密码.领奖';</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>举例说明：</p>
 <ol>
@@ -2800,7 +2800,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 HTML5 与 CSS3 基础教程》备忘3]]></title>
-      <url>https://codingme.xyz/2016/08/29/html-css-diary-3/</url>
+      <url>http://codingme.xyz/2016/08/29/html-css-diary-3/</url>
       <content type="html"><![CDATA[<h1 id="边距-简记法"><a href="#边距-简记法" class="headerlink" title="边距 简记法"></a>边距 简记法</h1><p><code>padding: 5px;</code>——使用一个值，这个值就会应用于全部四个边。<br><code>padding: 5px 9px;</code>——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。<br><code>padding: 5px 9px 11px;</code>——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边<br><code>padding: 5px 9px 11px 0;</code>——使用四个值，它们会按照时钟顺序，依次应用于上、右、下、左四个边.<br>应该也适用与 margin 。</p>
 <h1 id="Bootstrap-3的-box-sizing"><a href="#Bootstrap-3的-box-sizing" class="headerlink" title="Bootstrap 3的 box-sizing"></a>Bootstrap 3的 box-sizing</h1><p>学习到 <code>box-sizing:border-box</code> 时候发现原来 <strong>Bootstrap 3</strong> 已经把所有的盒模型都设置成 border-box 了……将 box-sizing 属性设置为 border-box ，就可以很方便地对拥有水平方向内边距(使用 em 或其他的单位)的元素定义宽度，而不必进行复杂的数学计算来找出百分数的值。这对响应式页面来说很方便。所以 Bootstrap 3 才用了 border-box 吧。</p>
 <h1 id="em-与-margin-、-padding"><a href="#em-与-margin-、-padding" class="headerlink" title="em 与 margin 、 padding"></a>em 与 margin 、 padding</h1><p>当 em 值用于内边距和外边距时，它的值是<strong>相对于元素的字体大小</strong>的，而不是相对于父元素的字体大小。</p>
@@ -2903,7 +2903,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 HTML5 与 CSS3 基础教程》备忘2]]></title>
-      <url>https://codingme.xyz/2016/08/29/html-css-diary-2/</url>
+      <url>http://codingme.xyz/2016/08/29/html-css-diary-2/</url>
       <content type="html"><![CDATA[<h1 id="html-的其他属性"><a href="#html-的其他属性" class="headerlink" title="html 的其他属性"></a>html 的其他属性</h1><p>除非在 html 元素中添加 dir 属性并将属性值设为 rtl ，否则内容的基准方向都默认为从左至右。</p>
 <h1 id="span-和-div"><a href="#span-和-div" class="headerlink" title="span 和 div"></a>span 和 div</h1><p>span 只适合<strong>包围字词或短语内容</strong>，而 div 适合<strong>包含块级内容</strong>。由于 span 没有任何语义，因此应将它作为最后的选择，仅在没有其他合适的元素时才使用它。</p>
 <h1 id="bdo"><a href="#bdo" class="headerlink" title="bdo"></a>bdo</h1><p>bdo ( bidirectional override ，双向重载):用于显式地格式化其内容的文本方向。<br>要使用 bdo ，必须包含 dir 属性并将属性值设为 ltr (由左至右)或 rtl (由右至左)，指定你希望呈现的方向。(如果你的 HTML 页面中混合了从左至右书写的字符和从右至左书写的字符，就可能要用到 bdi 和 bdo 元素。)例子： <code>&lt;plang=&quot;he&quot;&gt;&lt;bdo dir=&quot;rtl&quot;&gt;...&lt;/bdo&gt;&lt;/p&gt;</code></p>
@@ -3040,7 +3040,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[《 HTML5与 CSS3 基础教程》备忘]]></title>
-      <url>https://codingme.xyz/2016/08/07/html-css-diary/</url>
+      <url>http://codingme.xyz/2016/08/07/html-css-diary/</url>
       <content type="html"><![CDATA[<h1 id="Web-设计-在线网址"><a href="#Web-设计-在线网址" class="headerlink" title="Web 设计 在线网址"></a>Web 设计 在线网址</h1><p><a href="http://designingfortheweb.co.uk/" target="_blank" rel="external">http://designingfortheweb.co.uk/</a><br>—— Mark Boulton</p>
 <h1 id="article-元素"><a href="#article-元素" class="headerlink" title="article 元素"></a>article 元素</h1><p>article 元素表示文档、页面、应用或网站中<em>一个独立的容器</em>，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他<strong>独立的内容项</strong>。</p>
 <h1 id="section-元素"><a href="#section-元素" class="headerlink" title="section 元素"></a>section 元素</h1><p>section 元素代表文档或应用的<em>一个一般的区块</em>。如果只是出于添加样式的原因要对内容添加一个容器，应使用 div 而不是 section 。在考虑何时使用 section 的时候，记住定义中“<strong>具有相似主题的一组内容</strong>”这一条是很有帮助的。这也是 section 区别于 div 的另一个原因。</p>
@@ -3080,7 +3080,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[SQL 的小注意事项]]></title>
-      <url>https://codingme.xyz/2015/12/22/sql-tips/</url>
+      <url>http://codingme.xyz/2015/12/22/sql-tips/</url>
       <content type="html"><![CDATA[<h1 id="DISTINCT-和-GROUP-BY"><a href="#DISTINCT-和-GROUP-BY" class="headerlink" title="DISTINCT 和 GROUP BY"></a>DISTINCT 和 GROUP BY</h1><ul>
 <li>使用 GROUP BY 子句时， SELECT 子句中不能出现聚合键之外的列名；</li>
 <li>GROUP BY 子句结果的显示是无序的；</li>
@@ -3207,7 +3207,7 @@ let         protected   yield
     
     <entry>
       <title><![CDATA[递归的四条基本法则]]></title>
-      <url>https://codingme.xyz/2015/12/06/recursion/</url>
+      <url>http://codingme.xyz/2015/12/06/recursion/</url>
       <content type="html"><![CDATA[<h1 id="基准情形"><a href="#基准情形" class="headerlink" title="基准情形"></a>基准情形</h1><p>必须总要有某些基准情形，它无须递归就能解出。</p>
 <h1 id="不断推进"><a href="#不断推进" class="headerlink" title="不断推进"></a>不断推进</h1><p>对于那些需要递归求解的情形，每一次递归调用都必须要使状况朝向一种基准情形推进。</p>
 <h1 id="设计法则。"><a href="#设计法则。" class="headerlink" title="设计法则。"></a>设计法则。</h1><p>假设所有的递归调用都能运行。</p>
