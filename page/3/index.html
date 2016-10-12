@@ -106,7 +106,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="CodingMe">
-<meta property="og:url" content="http://codingme.xyz/page/3/index.html">
+<meta property="og:url" content="https://codingme.xyz/page/3/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodingMe">
@@ -130,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="http://codingme.xyz/page/3/"/>
+  <link rel="canonical" href="https://codingme.xyz/page/3/"/>
 
   <title> CodingMe </title>
 </head>
@@ -276,6 +276,239 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/20/javascript-note-6-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第六章-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T14:46:00+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><p>虽然 Object 构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：<br>使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。</p>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。<br>考虑到在 ECMAScript 中无法创建类，开发人员就发明了一种函数，用函数来封装以特定接口创建对象的细节。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">o.name = name;</div><div class="line">o.age = age;</div><div class="line">o.job = job;</div><div class="line">o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/20/javascript-note-6-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/20/javascript-note-6-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第六章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T14:12:25+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h1><p>ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”<br>严格来讲，这就相当于说对象是一组没有特定顺序的值。<br>对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。<br>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。<br>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。</p>
+<p>创建自定义对象最简单方式就是创建一个 Object 的实例，然后再为它添加属性和方法。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/20/javascript-note-6-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1235,270 +1468,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/11/javascript-note-3-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第三章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-11T15:36:56+08:00" content="2016-09-11">
-              2016-09-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
-<li>区分大小写</li>
-<li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
-</ul>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul>
-<li>单行： <code>//这里是注释</code></li>
-<li>多行：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line">这里是注释</div><div class="line">*/</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="ECMAScript-的严格模式-strict-mode"><a href="#ECMAScript-的严格模式-strict-mode" class="headerlink" title="ECMAScript 的严格模式 (strict mode)"></a>ECMAScript 的严格模式 (strict mode)</h1><ul>
-<li>严格模式的启用：<br>顶部添加如下代码：”use strict”;<br>看起来像是字符串，而且也没有赋值给任何变量，但其实它是一个编译指示(pragma)，用于告诉支持的 JavaScript 引擎切换到严格模式。这是为不破坏 ECMAScript 3 语法而特意选定的语法。</li>
-<li><p>也可以指定函数在严格模式下执行：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>严格模式下， JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+ 、 Firefox 4+ 、 Safari 5.1+ 、 Opera 12+和 Chrome 。</p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/11/javascript-note-3-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/10/javascript-note-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二章
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-10T17:38:26+08:00" content="2016-09-10">
-              2016-09-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="script-元素的-defer"><a href="#script-元素的-defer" class="headerlink" title="script 元素的 defer"></a>script 元素的 defer</h1><p><strong>defer</strong> 延迟脚本。<br>效果：在页面解析时候下载脚本，可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。(HTML 4.01时定义)</p>
-<ul>
-<li>在现实当中，延迟脚本并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件触发前执行，因此最好只包含一个延迟脚本。</li>
-<li>把延迟脚本放在页面底部仍然是最佳选择。</li>
-<li>defer 属性在浏览器之间表现并不一致。 defer 属性只被 IE 4 和 Firefox 3.5 更高版本的浏览器所支持，所以它不是一个理想的跨浏览器解决方案。在其他浏览器中， defer 属性会被直接忽略，因此<code>&lt;script&gt;</code>标签会以默认的方式处理，也就是说会造成阻塞。</li>
-<li>为了避免跨浏览器的差异，可以使用 “ lazy loading ”的方法，即直到用到该脚本时才加载。</li>
-<li>在 XHTML 文档中，要把 defer 属性设置为 defer=”defer” 。 async 同理。</li>
-</ul>
-<h1 id="script-元素的-async"><a href="#script-元素的-async" class="headerlink" title="script 元素的 async"></a>script 元素的 async</h1><p><strong>async</strong> 异步脚本。<br>效果：下载脚本同时不影响页面解析，当下载完毕后就执行，执行完接着页面解析。只对外部脚本文件有效。<br>Google Analytics 就是适合使用 async 的脚本；<br>还有下载其他资源。<br>目的：不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。</p>
-<ul>
-<li>标记为 async 的脚本并不保证按照指定它们的先后顺序执行。因此，确保互不依赖非常重要。</li>
-<li>建议异步脚本不要在加载期间修改 DOM 。</li>
-<li>异步脚本一定会在页面的 load 事件前执行，但可能会在 DOMContentLoaded 事件触发之前或之后执行。</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/10/javascript-note-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1539,7 +1513,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

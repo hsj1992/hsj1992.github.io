@@ -1,0 +1,952 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="遍历“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：NodeIterator和TreeWalker。能够基于给定的起点对DOM 结构执行深度优先（depth-first）的遍历操作。IE 不支持DOM 遍历。检测浏览器对DOM2 级遍历能力的支持情况。
+123var supportsTraversals = document.implementation.hasFe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十二章-3">
+<meta property="og:url" content="https://codingme.xyz/2016/10/09/javascript-note-12-3/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="遍历“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：NodeIterator和TreeWalker。能够基于给定的起点对DOM 结构执行深度优先（depth-first）的遍历操作。IE 不支持DOM 遍历。检测浏览器对DOM2 级遍历能力的支持情况。
+123var supportsTraversals = document.implementation.hasFe">
+<meta property="og:updated_time" content="2016-10-11T06:32:34.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十二章-3">
+<meta name="twitter:description" content="遍历“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：NodeIterator和TreeWalker。能够基于给定的起点对DOM 结构执行深度优先（depth-first）的遍历操作。IE 不支持DOM 遍历。检测浏览器对DOM2 级遍历能力的支持情况。
+123var supportsTraversals = document.implementation.hasFe">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://codingme.xyz/2016/10/09/javascript-note-12-3/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十二章-3 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十二章-3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-09T14:26:31+08:00" content="2016-10-09">
+              2016-10-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1><p>“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：<br>NodeIterator和TreeWalker。<br>能够基于给定的起点对DOM 结构执行深度优先（depth-first）的遍历操作。<br>IE 不支持DOM 遍历。<br>检测浏览器对DOM2 级遍历能力的支持情况。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsTraversals = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Traversal"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsNodeIterator = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createNodeIterator == <span class="string">"function"</span>);</div><div class="line"><span class="keyword">var</span> supportsTreeWalker = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createTreeWalker == <span class="string">"function"</span>);</div></pre></td></tr></table></figure>
+<p>DOM 遍历是深度优先的DOM 结构遍历，也就是说，移动的方向至少有两个（取决于使用的遍历类型）。<br>遍历以给定节点为根，不可能向上超出DOM 树的根节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>假设<code>&lt;body&gt;</code>元素为根节点，那么遍历的第一步就是访问<code>&lt;p&gt;</code>元素，然后再访问同为<code>&lt;body&gt;</code>元素后代的两个文本节点。<br>这次遍历永远不会到达<code>&lt;html&gt;</code>、<code>&lt;head&gt;</code>元素，也不会到达不属于<code>&lt;body&gt;</code>元素子树的任何节点。</p>
+<h2 id="NodeIterator"><a href="#NodeIterator" class="headerlink" title="NodeIterator"></a>NodeIterator</h2><p>可以使用document.createNodeIterator()方法创建它的新实例。</p>
+<ul>
+<li>root：想要作为搜索起点的树中的节点。</li>
+<li>whatToShow：表示要访问哪些节点的数字代码。</li>
+<li>filter：是一个NodeFilter 对象，或者一个表示应该接受还是拒绝某种特定节点的函数。</li>
+<li>entityReferenceExpansion：布尔值，表示是否要扩展实体引用。这个参数在HTML 页面中没有用，因为其中的实体引用不能扩展。</li>
+</ul>
+<p>whatToShow 参数是一个位掩码，通过应用一或多个过滤器（filter）来确定要访问哪些节点。<br>这个参数的值以常量形式在NodeFilter 类型中定义。</p>
+<ul>
+<li>NodeFilter.SHOW_ALL：显示所有类型的节点。</li>
+<li>NodeFilter.SHOW_ELEMENT：显示元素节点。</li>
+<li>NodeFilter.SHOW_ATTRIBUTE：显示特性节点。由于DOM结构原因，实际上不能使用这个值。</li>
+<li>NodeFilter.SHOW_TEXT：显示文本节点。</li>
+<li>NodeFilter.SHOW_CDATA_SECTION：显示CDATA 节点。对HTML 页面没有用。</li>
+<li>NodeFilter.SHOW_ENTITY_REFERENCE：显示实体引用节点。对HTML 页面没有用。</li>
+<li>NodeFilter.SHOW_ENTITYE：显示实体节点。对HTML 页面没有用。</li>
+<li>NodeFilter.SHOW_PROCESSING_INSTRUCTION：显示处理指令节点。对HTML 页面没有用。</li>
+<li>NodeFilter.SHOW_COMMENT：显示注释节点。</li>
+<li>NodeFilter.SHOW_DOCUMENT：显示文档节点。</li>
+<li>NodeFilter.SHOW_DOCUMENT_TYPE：显示文档类型节点。</li>
+<li>NodeFilter.SHOW_DOCUMENT_FRAGMENT：显示文档片段节点。对HTML 页面没有用。</li>
+<li>NodeFilter.SHOW_NOTATION：显示符号节点。对HTML 页面没有用。</li>
+</ul>
+<p>除了NodeFilter.SHOW_ALL 之外，可以使用按位或操作符来组合多个选项。<br><code>var whatToShow = NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT;</code><br>可以通过createNodeIterator()方法的filter 参数来指定自定义的NodeFilter 对象，或者指定一个功能类似节点过滤器（node filter）的函数。<br>每个NodeFilter 对象只有一个方法，即acceptNode()；<br>如果应该访问给定的节点，该方法返回NodeFilter.FILTER_ACCEPT，<br>如果不应该访问给定的节点，该方法返回NodeFilter.FILTER_SKIP。<br>由于NodeFilter 是一个抽象的类型，因此不能直接创建它的实例。<br>在必要时，只要创建一个包含acceptNode()方法的对象，然后将这个对象传入createNodeIterator()中即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> filter = &#123;</div><div class="line">acceptNode: <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> node.tagName.toLowerCase() == <span class="string">"p"</span> ?</div><div class="line">NodeFilter.FILTER_ACCEPT :</div><div class="line">NodeFilter.FILTER_SKIP;</div><div class="line">&#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> iterator = <span class="built_in">document</span>.createNodeIterator(root, NodeFilter.SHOW_ELEMENT,</div><div class="line">filter, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>第三个参数也可以是一个与acceptNode()方法类似的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> filter = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> node.tagName.toLowerCase() == <span class="string">"p"</span> ?</div><div class="line">NodeFilter.FILTER_ACCEPT :</div><div class="line">NodeFilter.FILTER_SKIP;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> iterator = <span class="built_in">document</span>.createNodeIterator(root, NodeFilter.SHOW_ELEMENT,</div><div class="line">filter, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>一般来说，这就是在JavaScript 中使用这个方法的形式，这种形式比较简单，而且也跟其他的JavaScript 代码很相似。<br>如果不指定过滤器，那么应该在第三个参数的位置上传入null。<br>一个能够访问所有类型节点的简单的NodeIterator:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> iterator = <span class="built_in">document</span>.createNodeIterator(<span class="built_in">document</span>, NodeFilter.SHOW_ALL,</div><div class="line"><span class="literal">null</span>, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>NodeIterator 类型的两个主要方法是nextNode()和previousNode()。<br>在深度优先的DOM 子树遍历中，nextNode()方法用于向前前进一步，而previousNode()用于向后后退一步。<br>在刚刚创建的NodeIterator 对象中，有一个内部指针指向根节点，因此第一次调用nextNode()会返回根节点。<br>当遍历到DOM 子树的最后一个节点时，nextNode()返回null。<br>previousNode()方法的工作机制类似。<br>当遍历到DOM 子树的最后一个节点，且previousNode()返回根节点之后，再次调用它就会返回null。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>List item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>List item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>List item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</div><div class="line"><span class="keyword">var</span> iterator = <span class="built_in">document</span>.createNodeIterator(div, NodeFilter.SHOW_ELEMENT,</div><div class="line"><span class="literal">null</span>, <span class="literal">false</span>);</div><div class="line"><span class="keyword">var</span> node = iterator.nextNode();</div><div class="line"><span class="keyword">while</span> (node !== <span class="literal">null</span>) &#123;</div><div class="line">alert(node.tagName); <span class="comment">//输出标签名</span></div><div class="line">node = iterator.nextNode();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第一次调用nextNode()返回<code>&lt;p&gt;</code>元素。<br>执行上面的代码会显示如下标签名：<br>DIV<br>P<br>B<br>UL<br>LI<br>LI<br>LI</p>
+<p>只想返回遍历中遇到的<code>&lt;li&gt;</code>元素的话只要使用一个过滤器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">var filter = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> node.tagName.toLowerCase() == <span class="string">"li"</span> ?</div><div class="line">NodeFilter.FILTER_ACCEPT :</div><div class="line">NodeFilter.FILTER_SKIP;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> iterator = <span class="built_in">document</span>.createNodeIterator(div, NodeFilter.SHOW_ELEMENT,</div><div class="line">filter, <span class="literal">false</span>);</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>由于nextNode()和previousNode()方法都基于NodeIterator 在DOM 结构中的内部指针工作，所以DOM 结构的变化会反映在遍历的结果中。</p>
+<h2 id="TreeWalker"><a href="#TreeWalker" class="headerlink" title="TreeWalker"></a>TreeWalker</h2><p>TreeWalker 是NodeIterator 的一个更高级的版本。<br>除了包括nextNode()和previousNode()在内的相同的功能之外，这个类型还提供了下列用于在不同方向上遍历DOM 结构的方法。</p>
+<ul>
+<li>parentNode()：遍历到当前节点的父节点；</li>
+<li>firstChild()：遍历到当前节点的第一个子节点；</li>
+<li>lastChild()：遍历到当前节点的最后一个子节点；</li>
+<li>nextSibling()：遍历到当前节点的下一个同辈节点；</li>
+<li>previousSibling()：遍历到当前节点的上一个同辈节点。</li>
+</ul>
+<p>document.createTreeWalker()方法，这个方法接受的4 个参数与document.createNodeIterator()方法相同：作为遍历起点的根节点、要显示的节点类型、过滤器和一个表示是否扩展实体引用的布尔值。<br>由于这两个创建方法很相似，所以很容易用TreeWalker来代替NodeIterator。</p>
+<p>在使用NodeIterator 对象时，NodeFilter.FILTER_SKIP 与 NodeFilter.FILTER_REJECT 的作用相同：跳过指定的节点。<br>但在使用TreeWalker 对象时，NodeFilter.FILTER_SKIP 会跳过相应节点继续前进到子树中的下一个节点，<br>而NodeFilter.FILTER_REJECT 则会跳过相应节点及该节点的整个子树。</p>
+<p>例如，将前面例子中的NodeFilter.FILTER_SKIP 修改成 NodeFilter.FILTER_REJECT，结果就是不会访问任何节点。<br>因为第一个返回的节点是<code>&lt;div&gt;</code>，它的标签名不是”li”，于是就会返回NodeFilter.FILTER_REJECT，<br>这意味着遍历会跳过整个子树。在这个例子中，<code>&lt;div&gt;</code>元素是遍历的根节点，于是结果就会停止遍历。</p>
+<p>TreeWalker 真正强大的地方在于能够在DOM结构中沿任何方向移动。<br>使用TreeWalker遍历DOM 树，即使不定义过滤器，也可以取得所有<code>&lt;li&gt;</code>元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</div><div class="line"><span class="keyword">var</span> walker = <span class="built_in">document</span>.createTreeWalker(div, NodeFilter.SHOW_ELEMENT, <span class="literal">null</span>, <span class="literal">false</span>);</div><div class="line">walker.firstChild(); <span class="comment">//转到&lt;p&gt;</span></div><div class="line">walker.nextSibling(); <span class="comment">//转到&lt;ul&gt;</span></div><div class="line"><span class="keyword">var</span> node = walker.firstChild(); <span class="comment">//转到第一个&lt;li&gt;</span></div><div class="line"><span class="keyword">while</span> (node !== <span class="literal">null</span>) &#123;</div><div class="line">alert(node.tagName);</div><div class="line">node = walker.nextSibling();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>TreeWalker 类型还有一个属性，名叫currentNode，表示任何遍历方法在上一次遍历中返回的节点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> node = walker.nextNode();</div><div class="line">alert(node === walker.currentNode); <span class="comment">//true</span></div><div class="line">walker.currentNode = <span class="built_in">document</span>.body; <span class="comment">//修改起点</span></div></pre></td></tr></table></figure>
+<p>与NodeIterator 相比，TreeWalker 类型在遍历DOM时拥有更大的灵活性。<br>由于IE 中没有对应的类型和方法，所以使用遍历的跨浏览器解决方案非常少见。</p>
+<h1 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h1><p>“DOM2 级遍历和范围”模块定义了“范围”（range）接口。<br>Firefox、Opera、Safari 和Chrome 都支持DOM 范围。IE 以专有方式实现了自己的范围特性。</p>
+<h2 id="DOM中的范围"><a href="#DOM中的范围" class="headerlink" title="DOM中的范围"></a>DOM中的范围</h2><p>createRange()方法在兼容DOM 的浏览器中，这个方法属于document 对象。<br>通过范围可以选择文档中的一个区域，而不必考虑节点的界限。<br>使用hasFeature()或者直接检测该方法，都可以确定浏览器是否支持范围。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsRange = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Range"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> alsoSupportsRange = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createRange == <span class="string">"function"</span>);</div></pre></td></tr></table></figure>
+<p>如果浏览器支持范围，那么就可以使用createRange()来创建DOM范围。<br><code>var range = document.createRange();</code></p>
+<p>与节点类似，新创建的范围也直接与创建它的文档关联在一起，不能用于其他文档。<br>创建了范围之后，接下来就可以使用它在后台选择文档中的特定部分。<br>创建范围并设置了其位置之后，还可以针对范围的内容执行很多种操作，从而实现对底层DOM 树的更精细的控制。</p>
+<p>每个范围由一个Range 类型的实例表示，这个实例拥有很多属性和方法。</p>
+<ul>
+<li>startContainer：包含范围起点的节点（即选区中第一个节点的父节点）。</li>
+<li>startOffset：范围在startContainer 中起点的偏移量。如果startContainer 是文本节点、注释节点或CDATA 节点，那么startOffset 就是范围起点之前跳过的字符数量。否则，startOffset 就是范围中第一个子节点的索引。</li>
+<li>endContainer：包含范围终点的节点（即选区中最后一个节点的父节点）。</li>
+<li>endOffset：范围在endContainer 中终点的偏移量（与startOffset 遵循相同的取值规则）。</li>
+<li>commonAncestorContainer：startContainer 和endContainer 共同的祖先节点在文档树中位置最深的那个。</li>
+</ul>
+<h3 id="用DOM-范围实现简单选择"><a href="#用DOM-范围实现简单选择" class="headerlink" title="用DOM 范围实现简单选择"></a>用DOM 范围实现简单选择</h3><p>要使用范围来选择文档中的一部分，最简的方式就是使用selectNode()或selectNodeContents()。<br>这两个方法都接受一个参数，即一个DOM 节点，然后使用该节点中的信息来填充范围。<br>selectNode()方法选择整个节点，包括其子节点；而selectNodeContents()方法则只选择节点的子节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"p1"</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range1 = <span class="built_in">document</span>.createRange();</div><div class="line">range2 = <span class="built_in">document</span>.createRange();</div><div class="line">p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">range1.selectNode(p1);</div><div class="line">range2.selectNodeContents(p1);</div></pre></td></tr></table></figure>
+<p>在调用selectNode()时，startContainer、endContainer 和commonAncestorContainer都等于传入节点的父节点，也就是这个例子中的document.body。<br>startOffset 属性等于给定节点在其父节点的childNodes 集合中的索引（在这个例子中是1——因为兼容DOM的浏览器将空格算作一个文本节点），<br>endOffset 等于startOffset 加1（因为只选择了一个节点）。<br>在调用selectNodeContents()时，startContainer、endContainer 和commonAncestorContainer等于传入的节点，即这个例子中的<code>&lt;p&gt;</code>元素。<br>startOffset 属性始终等于0，因为范围从给定节点的第一个子节点开始。最后，endOffset 等于子节点的数量（node.childNodes.length），在这个例子中是2。</p>
+<p>此外，为了更精细地控制将哪些节点包含在范围中，还可以使用下列方法。</p>
+<ul>
+<li>setStartBefore(refNode)：将范围的起点设置在refNode 之前，因此refNode 也就是范围选区中的第一个子节点。同时会将startContainer 属性设置为refNode.parentNode，将startOffset 属性设置为refNode 在其父节点的childNodes 集合中的索引。</li>
+<li>setStartAfter(refNode)：将范围的起点设置在refNode 之后，因此refNode 也就不在范围之内了，其下一个同辈节点才是范围选区中的第一个子节点。同时会将startContainer 属性设置为refNode.parentNode，将startOffset 属性设置为refNode 在其父节点的childNodes 集合中的索引加1。</li>
+<li>setEndBefore(refNode)：将范围的终点设置在refNode 之前，因此refNode 也就不在范围之内了，其上一个同辈节点才是范围选区中的最后一个子节点。同时会将endContainer 属性设置为refNode.parentNode，将endOffset 属性设置为refNode 在其父节点的childNodes集合中的索引。</li>
+<li>setEndAfter(refNode)：将范围的终点设置在refNode 之后，因此refNode 也就是范围选区中的最后一个子节点。同时会将endContainer 属性设置为refNode.parentNode，将endOffset 属性设置为refNode 在其父节点的childNodes 集合中的索引加1。</li>
+</ul>
+<p>###　用DOM 范围实现复杂选择</p>
+<p>要创建复杂的范围就得使用setStart()和setEnd()方法。<br>都接受两个参数：一个参照节点和一个偏移量值。<br>对setStart()来说，参照节点会变成startContainer，而偏移量值会变成startOffset。<br>对于setEnd()来说，参照节点会变成endContainer，而偏移量值会变成endOffset。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range1 = <span class="built_in">document</span>.createRange();</div><div class="line">range2 = <span class="built_in">document</span>.createRange();</div><div class="line">p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">p1Index = <span class="number">-1</span>;</div><div class="line">i, len;</div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=p1.parentNode.childNodes.length; i &lt; len; i++) &#123;</div><div class="line"><span class="keyword">if</span> (p1.parentNode.childNodes[i] == p1) &#123;</div><div class="line">p1Index = i;</div><div class="line"><span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">range1.setStart(p1.parentNode, p1Index);</div><div class="line">range1.setEnd(p1.parentNode, p1Index + <span class="number">1</span>);</div><div class="line">range2.setStart(p1, <span class="number">0</span>);</div><div class="line">range2.setEnd(p1, p1.childNodes.length);</div></pre></td></tr></table></figure>
+<p>要选择这个节点（使用range1），就必须确定当前节点（p1）在其父节点的childNodes集合中的索引。<br>而要选择这个节点的内容（使用range2），也不必计算什么；只要通过setStart()和setEnd()设置默认值即可。<br>模仿selectNode()和selectNodeContents()并不是setStart()和setEnd()的主要用途，它们更胜一筹的地方在于能够选择节点的一部分。</p>
+<p>假设只想选择前面HTML 示例代码中从”Hello”的”llo”到”world!”的”o”——很容易做到。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line"></div><div class="line"><span class="keyword">var</span> range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">rang e.setEnd(worldNode, <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<p>这个范围的选区应该从”Hello”中”e”的后面开始，所以在setStart()中传入helloNode的同时，传入了偏移量2（即”e”的下一个位置；”H”的位置是0）。<br>设置选区的终点时，在setEnd()中传入worldNode 的同时传入了偏移量3，表示选区之外的第一个字符的位置，这个字符是”r”，它的位置是3（位置0 上还有一个空格）<br>由于helloNode 和worldNode 都是文本节点，因此它们分别变成了新建范围的startContainer和endContainer。<br>此时startOffset 和endOffset 分别用以确定两个节点所包含的文本中的位置，而不是用以确定子节点的位置（就像传入的参数为元素节点时那样）。<br>此时的commonAncestorContainer 是<code>&lt;p&gt;</code>元素，也就是同时包含这两个节点的第一个祖先元素。</p>
+<p>仅仅是选择了文档中的某一部分用处并不大。但重要的是，选择之后才可以对选区进行操作。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/08/javascript-note-12-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十二章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十二章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/09/javascript-note-12-4/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十二章-4">
+                《 JavaScript 高级程序设计》备忘-第十二章-4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遍历"><span class="nav-number">1.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeIterator"><span class="nav-number">1.1.</span> <span class="nav-text">NodeIterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeWalker"><span class="nav-number">1.2.</span> <span class="nav-text">TreeWalker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#范围"><span class="nav-number">2.</span> <span class="nav-text">范围</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM中的范围"><span class="nav-number">2.1.</span> <span class="nav-text">DOM中的范围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用DOM-范围实现简单选择"><span class="nav-number">2.1.1.</span> <span class="nav-text">用DOM 范围实现简单选择</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
