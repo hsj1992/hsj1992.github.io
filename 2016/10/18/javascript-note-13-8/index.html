@@ -1,0 +1,1003 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="事件流模拟事件也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。
+DOM中的事件模拟可以在document 对象上使用createEv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十三章-8">
+<meta property="og:url" content="http://codingme.xyz/2016/10/18/javascript-note-13-8/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="事件流模拟事件也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。
+DOM中的事件模拟可以在document 对象上使用createEv">
+<meta property="og:updated_time" content="2016-10-19T03:47:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十三章-8">
+<meta name="twitter:description" content="事件流模拟事件也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。
+DOM中的事件模拟可以在document 对象上使用createEv">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/18/javascript-note-13-8/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十三章-8 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十三章-8
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-18T19:37:41+08:00" content="2016-10-18">
+              2016-10-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="模拟事件"><a href="#模拟事件" class="headerlink" title="模拟事件"></a>模拟事件</h2><p>也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。<br>在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，<br>IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。</p>
+<h3 id="DOM中的事件模拟"><a href="#DOM中的事件模拟" class="headerlink" title="DOM中的事件模拟"></a>DOM中的事件模拟</h3><p>可以在document 对象上使用createEvent()方法创建event 对象。<br>接收一个参数，即表示要创建的事件类型的字符串。<br>在DOM2 级中，所有这些字符串都使用英文复数形式，而在DOM3级中都变成了单数。</p>
+<ul>
+<li>UIEvents：一般化的UI 事件。鼠标事件和键盘事件都继承自UI 事件。DOM3 级中是UIEvent。</li>
+<li>MouseEvents：一般化的鼠标事件。DOM3 级中是MouseEvent。</li>
+<li>MutationEvents：一般化的DOM 变动事件。DOM3 级中是MutationEvent。</li>
+<li>HTMLEvents：一般化的HTML 事件。没有对应的DOM3 级事件（HTML 事件被分散到其他类别中）。</li>
+</ul>
+<p>“DOM2 级事件”并没有专门规定键盘事件，后来的“DOM3 级事件”中才正式将其作为一种事件给出规定。<br>在其他浏览器中，在现有方法的基础上，可以通过几种方式来模拟键盘事件。</p>
+<p>模拟事件的最后一步就是触发事件。这一步需要使用dispatchEvent()方法，所有支持事件的DOM 节点都支持这个方法。<br>调用dispatchEvent()方法时，需要传入一个参数，即表示要触发事件的event 对象。<br><a id="more"></a></p>
+<h4 id="模拟鼠标事件"><a href="#模拟鼠标事件" class="headerlink" title="模拟鼠标事件"></a>模拟鼠标事件</h4><p>createEvent()传入字符串”MouseEvents”。返回的对象有一个名为initMouseEvent()方法，用于指定与该鼠标事件有关的信息。<br>这个方法接收15 个参数，分别与鼠标事件中每个典型的属性一一对应。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type（字符串）</td>
+<td>表示要触发的事件类型，例如”click”</td>
+</tr>
+<tr>
+<td>bubbles（布尔值）</td>
+<td>表示事件是否应该冒泡。为精确地模拟鼠标事件，应该把这个参数设置为true</td>
+</tr>
+<tr>
+<td>cancelable（布尔值）</td>
+<td>表示事件是否可以取消。为精确地模拟鼠标事件，应该把这个参数设置为true</td>
+</tr>
+<tr>
+<td>view（AbstractView）</td>
+<td>与事件关联的视图。这个参数几乎总是要设置为document.defaultView</td>
+</tr>
+<tr>
+<td>detail（整数）</td>
+<td>与事件有关的详细信息。这个值一般只有事件处理程序使用，但通常都设置为0</td>
+</tr>
+<tr>
+<td>screenX（整数）</td>
+<td>事件相对于屏幕的X 坐标</td>
+</tr>
+<tr>
+<td>screenY（整数）</td>
+<td>事件相对于屏幕的Y 坐标</td>
+</tr>
+<tr>
+<td>clientX（整数）</td>
+<td>事件相对于视口的X 坐标</td>
+</tr>
+<tr>
+<td>clientY（整数）</td>
+<td>事件想对于视口的Y 坐标</td>
+</tr>
+<tr>
+<td>ctrlKey（布尔值）</td>
+<td>表示是否按下了Ctrl 键。默认值为false</td>
+</tr>
+<tr>
+<td>altKey（布尔值）</td>
+<td>表示是否按下了Alt 键。默认值为false</td>
+</tr>
+<tr>
+<td>shiftKey（布尔值）</td>
+<td>表示是否按下了Shift 键。默认值为false</td>
+</tr>
+<tr>
+<td>metaKey（布尔值）</td>
+<td>表示是否按下了Meta 键。默认值为false</td>
+</tr>
+<tr>
+<td>button（整数）</td>
+<td>表示按下了哪一个鼠标键。默认值为0</td>
+</tr>
+<tr>
+<td>relatedTarget（对象）</td>
+<td>表示与事件相关的对象。这个参数只在模拟mouseover 或mouseout时使用</td>
+</tr>
+</tbody>
+</table>
+<p>initMouseEvent()方法的这些参数是与鼠标事件的event 对象所包含的属性一一对应的。<br>前4 个参数对正确地激发事件至关重要，因为浏览器要用到这些参数；而剩下的所有参数只有在事件处理程序中才会用到。<br>剩下的所有参数只有在事件处理程序中才会用到。<br>当把event 对象传给dispatchEvent()方法时，这个对象的target属性会自动设置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line"><span class="comment">//创建事件对象</span></div><div class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">"MouseEvents"</span>);</div><div class="line"><span class="comment">//初始化事件对象</span></div><div class="line">event.initMouseEvent(<span class="string">"click"</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="built_in">document</span>.defaultView, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</div><div class="line"><span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="literal">null</span>);</div><div class="line"><span class="comment">//触发事件</span></div><div class="line">btn.dispatchEvent(event);</div></pre></td></tr></table></figure>
+<p>在兼容DOM的浏览器中，也可以通过相同的方式来模拟其他鼠标事件（例如dblclick）。</p>
+<h4 id="模拟键盘事件"><a href="#模拟键盘事件" class="headerlink" title="模拟键盘事件"></a>模拟键盘事件</h4><p>DOM3 级规定，调用createEvent()并传入”KeyboardEvent”就可以创建一个键盘事件。<br>返回的事件对象会包含一个initKeyEvent()方法。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type（字符串）</td>
+<td>表示要触发的事件类型，如”keydown”</td>
+</tr>
+<tr>
+<td>bubbles（布尔值）</td>
+<td>表示事件是否应该冒泡。为精确模拟键盘事件，应该设置为true</td>
+</tr>
+<tr>
+<td>cancelable（布尔值）</td>
+<td>表示事件是否可以取消。为精确模拟键盘事件，应该设置为true</td>
+</tr>
+<tr>
+<td>view （AbstractView ）</td>
+<td>与事件关联的视图。这个参数几乎总是要设置为document.defaultView</td>
+</tr>
+<tr>
+<td>key（布尔值）</td>
+<td>表示按下的键的键码</td>
+</tr>
+<tr>
+<td>location（整数）</td>
+<td>表示按下了哪里的键。0 表示默认的主键盘，1 表示左，2 表示右，3 表示数字键盘，4 表示移动设备（即虚拟键盘），5 表示手柄</td>
+</tr>
+<tr>
+<td>modifiers（字符串）</td>
+<td>空格分隔的修改键列表，如”Shift”</td>
+</tr>
+<tr>
+<td>repeat（整数）</td>
+<td>在一行中按了这个键多少次</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.getElementById(<span class="string">"myTextbox"</span>),</div><div class="line">event;</div><div class="line"><span class="comment">//以DOM3 级方式创建事件对象</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.implementation.hasFeature(<span class="string">"KeyboardEvents"</span>, <span class="string">"3.0"</span>))&#123;</div><div class="line">event = <span class="built_in">document</span>.createEvent(<span class="string">"KeyboardEvent"</span>);</div><div class="line"><span class="comment">//初始化事件对象</span></div><div class="line">event.initKeyboardEvent(<span class="string">"keydown"</span>, <span class="literal">true</span>, <span class="literal">true</span>, <span class="built_in">document</span>.defaultView, <span class="string">"a"</span>,<span class="number">0</span>, <span class="string">"Shift"</span>, <span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">//触发事件</span></div><div class="line">textbox.dispatchEvent(event);</div></pre></td></tr></table></figure>
+<p>这个例子模拟的是按住Shift 的同时又按下A 键。</p>
+<p>在使用document.createEvent(“KeyboardEvent”)之前，应该先检测浏览器是否支持DOM3 级事件；<br>其他浏览器返回一个非标准的KeyboardEvent 对象。<br>在Firefox 中，调用createEvent()并传入”KeyEvents”就可以创建一个键盘事件。<br>返回的事件对象包含的initKeyEvent()方法接受10 个参数。<br>在其他浏览器中，则需要创建一个通用的事件，然后再向事件对象中添加键盘事件特有的信息。</p>
+<p>必须要使用通用事件，而不能使用UI 事件的原因是因为UI 事件不允许向event对象中再添加新属性（Safari 除外）。<br>像这样模拟事件虽然会触发键盘事件，但却不会向文本框中写入文本，这是由于无法精确模拟键盘事件所造成的。</p>
+<h4 id="模拟其他事件"><a href="#模拟其他事件" class="headerlink" title="模拟其他事件"></a>模拟其他事件</h4><p>有时候同样需要模拟变动事件和HTML 事件。<br>要模拟变动事件， 可以使用createEvent(“MutationEvents”) 创建一个包含initMutationEvent() 方法的变动事件对象。<br>接受的参数包括： type 、bubbles 、cancelable、relatedNode、preValue、newValue、attrName 和attrChange。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">"MutationEvents"</span>);</div><div class="line">event.initMutationEvent(<span class="string">"DOMNodeInserted"</span>, <span class="literal">true</span>, <span class="literal">false</span>, someNode, <span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="number">0</span>);</div><div class="line">target.dispatchEvent(event);</div></pre></td></tr></table></figure>
+<p>要模拟HTML 事件，同样需要先创建一个event 对象——通过createEvent(“HTMLEvents”)，然后再使用这个对象的initEvent()方法来初始化它即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEvent(<span class="string">"HTMLEvents"</span>);</div><div class="line">event.initEvent(<span class="string">"focus"</span>, <span class="literal">true</span>, <span class="literal">false</span>);</div><div class="line">targ et.dispatchEvent(event);</div></pre></td></tr></table></figure>
+<h4 id="自定义DOM-事件"><a href="#自定义DOM-事件" class="headerlink" title="自定义DOM 事件"></a>自定义DOM 事件</h4><p>DOM3 级还定义了“自定义事件”。<br>不是由DOM 原生触发的，目的是让开发人员创建自己的事件。<br>调用createEvent(“CustomEvent”)。<br>返回的对象有一个名为initCustomEvent()的方法,接受type、bubbles、cancelable、detail 四种属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>),</div><div class="line">event;</div><div class="line">EventUtil.addHandler(div, <span class="string">"myevent"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">alert(<span class="string">"DIV: "</span> + event.detail);</div><div class="line">&#125;);</div><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"myevent"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">alert(<span class="string">"DOCUMENT: "</span> + event.detail);</div><div class="line">&#125;);</div><div class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CustomEvents"</span>, <span class="string">"3.0"</span>))&#123;</div><div class="line">event = <span class="built_in">document</span>.createEvent(<span class="string">"CustomEvent"</span>);</div><div class="line">event.initCustomEvent(<span class="string">"myevent"</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="string">"Hello world!"</span>);</div><div class="line">div.dispatchEvent(event);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>initCustomEvent()方法指定这个事件应该冒泡，所以浏览器会负责将事件向上冒泡到document。<br>支持自定义DOM事件的浏览器有IE9+和Firefox 6+。</p>
+<h3 id="IE中的事件模拟"><a href="#IE中的事件模拟" class="headerlink" title="IE中的事件模拟"></a>IE中的事件模拟</h3><p>先创建event 对象，然后为其指定相应的信息，然后再使用该对象来触发事件。<br>当然，IE 在实现每个步骤时都采用了不一样的方式。</p>
+<p>调用document.createEventObject()方法,不接受参数，结果会返回一个通用的event 对象。<br>必须手工为这个对象添加所有必要的信息（没有方法来辅助完成这一步骤）。<br>最后一步就是在目标上调用fireEvent()方法，这个方法接受两个参数：事件处理程序的名称和event 对象。<br>在调用fireEvent()方法时，会自动为event 对象添加srcElement 和type 属性；其他属性则都是必须通过手工添加的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line"><span class="comment">//创建事件对象</span></div><div class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEventObject();</div><div class="line"><span class="comment">//初始化事件对象</span></div><div class="line">event.screenX = <span class="number">100</span>;</div><div class="line">event.screenY = <span class="number">0</span>;</div><div class="line">event.clientX = <span class="number">0</span>;</div><div class="line">event.clientY = <span class="number">0</span>;</div><div class="line">event.ctrlKey = <span class="literal">false</span>;</div><div class="line">event.altKey = <span class="literal">false</span>;</div><div class="line">event.shiftKey = <span class="literal">false</span>;</div><div class="line">event.button = <span class="number">0</span>;</div><div class="line"><span class="comment">//触发事件</span></div><div class="line">btn.fireEvent(<span class="string">"onclick"</span>, event);</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.getElementById(<span class="string">"myTextbox"</span>);</div><div class="line"><span class="comment">//创建事件对象</span></div><div class="line"><span class="keyword">var</span> event = <span class="built_in">document</span>.createEventObject();</div><div class="line"><span class="comment">//初始化事件对象</span></div><div class="line">event.altKey = <span class="literal">false</span>;</div><div class="line">event.ctrlKey = <span class="literal">false</span>;</div><div class="line">event.shiftKey = <span class="literal">false</span>;</div><div class="line">event.keyCode = <span class="number">65</span>;</div><div class="line"><span class="comment">//触发事件</span></div><div class="line">textbox.fireEvent(<span class="string">"onkeypress"</span>, event);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/18/javascript-note-13-7/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十三章-7">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十三章-7
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/19/javascript-note-14/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十四章">
+                《 JavaScript 高级程序设计》备忘-第十四章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件流"><span class="nav-number">1.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟事件"><span class="nav-number">1.1.</span> <span class="nav-text">模拟事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM中的事件模拟"><span class="nav-number">1.1.1.</span> <span class="nav-text">DOM中的事件模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟鼠标事件"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">模拟鼠标事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟键盘事件"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">模拟键盘事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟其他事件"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">模拟其他事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义DOM-事件"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">自定义DOM 事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE中的事件模拟"><span class="nav-number">1.1.2.</span> <span class="nav-text">IE中的事件模拟</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

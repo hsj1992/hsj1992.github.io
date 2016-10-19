@@ -1,0 +1,913 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="事件流事件类型HTML5 事件DOM 规范没有涵盖所有浏览器支持的所有事件。
+contextmenu 事件Windows 95 在PC 中引入了上下文菜单的概念，即通过单击鼠标右键可以调出上下文菜单。如何屏蔽与该操作关联的默认上下文菜单。为解决这个问题，就出现了contextmenu 这个事件，用以表示何时应该显示上下文菜单，以便开发人员取消默认的上下文菜单而提供自定义的菜单。(所以这是屏蔽鼠标右">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十三章-6">
+<meta property="og:url" content="http://codingme.xyz/2016/10/18/javascript-note-13-6/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="事件流事件类型HTML5 事件DOM 规范没有涵盖所有浏览器支持的所有事件。
+contextmenu 事件Windows 95 在PC 中引入了上下文菜单的概念，即通过单击鼠标右键可以调出上下文菜单。如何屏蔽与该操作关联的默认上下文菜单。为解决这个问题，就出现了contextmenu 这个事件，用以表示何时应该显示上下文菜单，以便开发人员取消默认的上下文菜单而提供自定义的菜单。(所以这是屏蔽鼠标右">
+<meta property="og:updated_time" content="2016-10-18T11:29:44.464Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十三章-6">
+<meta name="twitter:description" content="事件流事件类型HTML5 事件DOM 规范没有涵盖所有浏览器支持的所有事件。
+contextmenu 事件Windows 95 在PC 中引入了上下文菜单的概念，即通过单击鼠标右键可以调出上下文菜单。如何屏蔽与该操作关联的默认上下文菜单。为解决这个问题，就出现了contextmenu 这个事件，用以表示何时应该显示上下文菜单，以便开发人员取消默认的上下文菜单而提供自定义的菜单。(所以这是屏蔽鼠标右">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/18/javascript-note-13-6/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十三章-6 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十三章-6
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-18T14:14:57+08:00" content="2016-10-18">
+              2016-10-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="HTML5-事件"><a href="#HTML5-事件" class="headerlink" title="HTML5 事件"></a>HTML5 事件</h3><p>DOM 规范没有涵盖所有浏览器支持的所有事件。</p>
+<h4 id="contextmenu-事件"><a href="#contextmenu-事件" class="headerlink" title="contextmenu 事件"></a>contextmenu 事件</h4><p>Windows 95 在PC 中引入了上下文菜单的概念，即通过单击鼠标右键可以调出上下文菜单。<br>如何屏蔽与该操作关联的默认上下文菜单。<br>为解决这个问题，就出现了contextmenu 这个事件，用以表示何时应该显示上下文菜单，以便开发人员取消默认的上下文菜单而提供自定义的菜单。<br>(所以这是屏蔽鼠标右键、更改鼠标右键显示内容所使用的事件？)<br>由于contextmenu 事件是冒泡的，因此可以为document 指定一个事件处理程序，用以处理页面中发生的所有此类事件。<br>这个事件的目标是发生用户操作的元素。</p>
+<p>在所有浏览器中都可以取消这个事件：<br>在兼容DOM的浏览器中，使用event.preventDefalut()；<br>在IE 中，将event.returnValue 的值设置为false。</p>
+<p>因为contextmenu 事件属于鼠标事件，所以其事件对象中包含与光标位置有关的所有属性。<br>通常使用contextmenu 事件来显示自定义的上下文菜单，而使用onclick 事件处理程序来隐藏该菜单。<br><a id="more"></a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>ContextMenu Event Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span>&gt;</span>Right click or Ctrl+click me to get a custom context menu.</div><div class="line">            Click anywhere else to get the default context menu.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myMenu"</span> <span class="attr">style</span>=<span class="string">"position:absolute;visibility:hidden;background-color:silver"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.nczonline.net"</span>&gt;</span>Nicholas’ site<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.wrox.com"</span>&gt;</span>Wrox site<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.yahoo.com"</span>&gt;</span>Yahoo!<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这里的<code>&lt;div&gt;</code>元素包含一个自定义的上下文菜单。其中，<code>&lt;ul&gt;</code>元素作为自定义上下文菜单，并且在初始时是隐藏的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">    EventUtil.addHandler(div, <span class="string">"contextmenu"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        event = EventUtil.getEvent(event);</div><div class="line">        EventUtil.preventDefault(event);</div><div class="line">        <span class="keyword">var</span> menu = <span class="built_in">document</span>.getElementById(<span class="string">"myMenu"</span>);</div><div class="line">        menu.style.left = event.clientX + <span class="string">"px"</span>;</div><div class="line">        menu.style.top = event.clientY + <span class="string">"px"</span>;</div><div class="line">        menu.style.visibility = <span class="string">"visible"</span>;</div><div class="line">    &#125;);</div><div class="line">    EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="built_in">document</span>.getElementById(<span class="string">"myMenu"</span>).style.visibility = <span class="string">"hidden"</span>;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>为<code>&lt;div&gt;</code>元素添加了oncontextmenu 事件的处理程序。这个事件处理程序首先会取消默认行为，以保证不显示浏览器默认的上下文菜单。<br>然后，再根据event 对象clientX 和clientY 属性的值，来确定放置<code>&lt;ul&gt;</code>元素的位置。<br>最后一步就是通过将visibility 属性设置为”visible”来显示自定义上下文菜单。<br>为document 添加了一个onclick 事件处理程序，以便用户能够通过鼠标单击来隐藏菜单(单击也是隐藏系统上下文菜单的默认操作)。<br>支持contextmenu 事件的浏览器有IE、Firefox、Safari、Chrome 和Opera 11+。</p>
+<h4 id="beforeunload-事件"><a href="#beforeunload-事件" class="headerlink" title="beforeunload 事件"></a>beforeunload 事件</h4><p>之所以有发生在window 对象上的beforeunload 事件，是为了让开发人员有可能在页面卸载前阻止这一操作。<br>这个事件会在浏览器卸载页面之前触发，可以通过它来取消卸载并继续使用原有页面。<br>但是，不能彻底取消这个事件，因为那就相当于让用户无法离开当前页面了。</p>
+<p>这个事件的意图是将控制权交给用户。显示的消息会告知用户页面行将被卸载(正因为如此才会显示这个消息)，询问用户是否真的要关闭页面，还是希望继续留下来。(也就是可以设置关闭提示框：“您是否真的要离开该网页？”)</p>
+<p>为了显示这个弹出对话框，必须将event.returnValue 的值设置为要显示给用户的字符串(对IE 及Fiefox 而言)，<br>同时作为函数的值返回(对Safari 和Chrome 而言)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"beforeunload"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> message = <span class="string">"I'm really going to miss you if you go."</span>;</div><div class="line">    event.returnValue = message;</div><div class="line">    <span class="keyword">return</span> message;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>IE 和Firefox、Safari 和Chrome 都支持beforeunload 事件，也都会弹出这个对话框询问用户是否真想离开。Opera 11 及之前的版本不支持beforeunload 事件。</p>
+<h4 id="DOMContentLoaded-事件"><a href="#DOMContentLoaded-事件" class="headerlink" title="DOMContentLoaded 事件"></a>DOMContentLoaded 事件</h4><p>window 的load 事件会在页面中的一切都加载完毕时触发，但这个过程可能会因为要加载的外部资源过多而颇费周折。<br>而DOMContentLoaded 事件则在形成完整的DOM 树之后就会触发，<br>不理会图像、JavaScript 文件、CSS 文件或其他资源是否已经下载完毕。<br>DOMContentLoaded 支持在页面下载的早期添加事件处理程序，这也就意味着用户能够尽早地与页面进行交互。<br>要处理DOMContentLoaded 事件，可以为document 或window 添加相应的事件处理程序(尽管这个事件会冒泡到window，但它的目标实际上是document)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Content loaded"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>DOMContentLoaded 事件对象不会提供任何额外的信息(其target 属性是document)。<br>IE9+、Firefox、Chrome、Safari 3.1+和Opera 9+都支持DOMContentLoaded 事件，通常这个事件既可以添加事件处理程序，也可以执行其他DOM 操作。<br>这个事件始终都会在load 事件之前触发。<br>对于不支持DOMContentLoaded 的浏览器，我们建议在页面加载期间设置一个时间为0 毫秒的超时调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="comment">//在此添加事件处理程序</span></div><div class="line">&#125;, <span class="number">0</span>);</div></pre></td></tr></table></figure>
+<p>这段代码的实际意思就是：“在当前JavaScript 处理完成后立即运行这个函数。”<br>在页面下载和构建期间，只有一个JavaScript 处理过程，因此超时调用会在该过程结束时立即触发。<br>至于这个时间与DOMContentLoaded 被触发的时间能否同步，主要还是取决于用户使用的浏览器和页面中的其他代码。<br>为了确保这个方法有效，必须将其作为页面中的第一个超时调用；即便如此，也还是无法保证在所有环境中该超时调用一定会早于load 事件被触发。</p>
+<h4 id="readystatechange-事件"><a href="#readystatechange-事件" class="headerlink" title="readystatechange 事件"></a>readystatechange 事件</h4><p>IE 为DOM文档中的某些部分提供了readystatechange 事件。<br>这个事件的目的是提供与文档或元素的加载状态有关的信息，但这个事件的行为有时候也很难预料。<br>readyState 属性:</p>
+<ul>
+<li>uninitialized(未初始化)：对象存在但尚未初始化。</li>
+<li>loading(正在加载)：对象正在加载数据。</li>
+<li>loaded(加载完毕)：对象加载数据完成。</li>
+<li>interactive(交互)：可以操作对象了，但还没有完全加载。</li>
+<li>complete(完成)：对象已经加载完毕。</li>
+</ul>
+<p>这些状态看起来很直观，但并非所有对象都会经历readyState 的这几个阶段。如果某个阶段不适用某个对象，则该对象完全可能跳过该阶段；并没有规定哪个阶段适用于哪个对象。<br>这意味着readystatechange 事件经常会少于4 次，而readyState 属性的值也不总是连续的。<br>对于document 而言，值为”interactive”的readyState 会在与DOMContentLoaded 大致相同的时刻触发readystatechange 事件。<br>此时，DOM树已经加载完毕，可以安全地操作它了，因此就会进入交互(interactive)阶段。但与此同时，图像及其他外部文件不一定可用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"interactive"</span>)&#123;</div><div class="line">        alert(<span class="string">"Content loaded"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这个事件的event 对象不会提供任何信息，也没有目标对象。<br>在与load 事件一起使用时，无法预测两个事件触发的先后顺序。<br>在包含较多或较大的外部资源的页面中，会在load 事件触发之前先进入交互阶段；<br>而在包含较少或较小的外部资源的页面中，则很难说readystatechange 事件会发生在load 事件前面。<br>让问题变得更复杂的是，交互阶段可能会早于也可能会晚于完成阶段出现，无法确保顺序。<br>因此，为了尽可能抢到先机，有必要同时检测交互和完成阶段。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"interactive"</span> || <span class="built_in">document</span>.readyState == <span class="string">"complete"</span>)&#123;</div><div class="line">        EventUtil.removeHandler(<span class="built_in">document</span>, <span class="string">"readystatechange"</span>, <span class="built_in">arguments</span>.callee);</div><div class="line">        alert(<span class="string">"Content loaded"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>当readystatechange 事件触发时，会检测document.readyState 的值，看当前是否已经进入交互阶段或完成阶段。如果是，则移除相应的事件处理程序以免在其他阶段再执行。<br>由于事件处理程序使用的是匿名函数，因此这里使用了arguments.callee 来引用该函数。</p>
+<p>然后，会显示一个警告框，说明内容已经加载完毕。这样编写代码可以达到与使用DOMContentLoaded十分相近的效果。<br>支持readystatechange 事件的浏览器有IE、Firfox 4+和Opera。</p>
+<p>虽然使用readystatechange 可以十分近似地模拟DOMContentLoaded 事件，<br>但它们本质上还是不同的。在不同页面中，load 事件与readystatechange 事件并不能保证以相同的顺序触发。</p>
+<p><code>&lt;script&gt;</code>(在IE 和Opera 中)和<code>&lt;link&gt;</code>(仅IE 中)元素也会触发readystatechange事件，可以用来确定外部的JavaScript 和CSS 文件是否已经加载完成。</p>
+<p>与在其他浏览器中一样，除非把动态创建的元素添加到页面中， 否则浏览器不会开始下载外部资源。</p>
+<p>基于元素触发的readystatechange 事件也存在同样的问题， 即readyState 属性无论等于”loaded” 还是”complete”都可以表示资源已经可用。有时候，readyState 会停在”loaded”阶段而永远不会“完成”；有时候，又会跳过”loaded”阶段而直接“完成”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">    EventUtil.addHandler(script, <span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        event = EventUtil.getEvent(event);</div><div class="line">        <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">        <span class="keyword">if</span> (target.readyState == <span class="string">"loaded"</span> || target.readyState == <span class="string">"complete"</span>)&#123;</div><div class="line">            EventUtil.removeHandler(target, <span class="string">"readystatechange"</span>, <span class="built_in">arguments</span>. callee);</div><div class="line">            alert(<span class="string">"Script Loaded"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    script.src = <span class="string">"example.js"</span>;</div><div class="line">    <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>为新创建的<code>&lt;script&gt;</code>节点指定了一个事件处理程序。<br>事件的目标是该节点本身，因此当触发readystatechange 事件时， 要检测目标的readyState 属性是不是等于”loaded” 或”complete”。<br>如果进入了其中任何一个阶段，则移除事件处理程序(以防止被执行两次)，并显示一个警告框。与此同时，就可以执行已经加载完毕的外部文件中的函数了。<br>同样的编码方式也适用于通过<code>&lt;link&gt;</code>元素加载CSS 文件的情况。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">"link"</span>);</div><div class="line">    link.type = <span class="string">"text/css"</span>;</div><div class="line">    link.rel= <span class="string">"stylesheet"</span>;</div><div class="line">    EventUtil.addHandler(script, <span class="string">"readystatechange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        event = EventUtil.getEvent(event);</div><div class="line">        <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">        <span class="keyword">if</span> (target.readyState == <span class="string">"loaded"</span> || target.readyState == <span class="string">"complete"</span>)&#123;</div><div class="line">            EventUtil.removeHandler(target, <span class="string">"readystatechange"</span>, <span class="built_in">arguments</span>. callee);</div><div class="line">            alert(<span class="string">"CSS Loaded"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    link.href = <span class="string">"example.css"</span>;</div><div class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>].appendChild(link);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>最重要的是要一并检测readyState 的两个状态，并在调用了一次事件处理程序后就将其移除。</p>
+<h4 id="pageshow-和pagehide-事件"><a href="#pageshow-和pagehide-事件" class="headerlink" title="pageshow 和pagehide 事件"></a>pageshow 和pagehide 事件</h4><p>“往返缓存”(back-forward cache，或bfcache)，可以在用户使用浏览器的“后退”和“前进”按钮时加快页面的转换速度。<br>这个缓存中不仅保存着页面数据，还保存了DOM 和JavaScript 的状态；实际上是将整个页面都保存在了内存里。<br>指定了onunload 事件处理程序的页面会被自动排除在 bfcache 之外，即使事件处理程序是空的。</p>
+<p>纠错：</p>
+<blockquote><p>“我猜测是火狐在开发过程中发现，保存js和Dom状态这事有点像是热心办了坏事，还弄得开发者多加些逻辑，后来就索性，不再保存js和Dom状态，只是存资源(html内容，css，js…)，这样呢，开发者只要还继续用load/unload事件就能万事大吉。至于《Javascritp高级程序设计》的错误，书始终是前端界的好书，出书的时候这玩意还是正常的。”</p>
+<footer><strong>草依山</strong><cite><a href="http://jser.me/2012/09/22/BFcache%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF.html" target="_blank" rel="external">BFcache是什么东西</a></cite></footer></blockquote>
+<h4 id="hashchange-事件"><a href="#hashchange-事件" class="headerlink" title="hashchange 事件"></a>hashchange 事件</h4><p>HTML5 新增，以便在URL 的参数列表（及URL 中“#”号后面的所有字符串）发生变化时通知开发人员。<br>(在Ajax 应用中，开发人员经常要利用URL 参数列表来保存状态或导航信息。)</p>
+<p>必须要把hashchange 事件处理程序添加给window 对象，然后URL 参数列表只要变化就会调用它。<br>此时的event 对象应该额外包含两个属性：oldURL 和newURL。<br>这两个属性分别保存着参数列表变化前后的完整URL。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Old URL: "</span> + event.oldURL + <span class="string">"\nNew URL: "</span> + event.newURL);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>支持hashchange 事件的浏览器有IE8+、Firefox 3.6+、Safari 5+、Chrome 和Opera 10.6+。<br>只有Firefox 6+、Chrome 和Opera 支持oldURL 和newURL 属性。<br>为此，最好是使用location对象来确定当前的参数列表。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Current hash: "</span> + location.hash);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>检测浏览器是否支持hashchange 事件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> isSupported = (<span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>) &amp;&amp; (<span class="built_in">document</span>.documentMode === <span class="literal">undefined</span> || <span class="built_in">document</span>.documentMode &gt; <span class="number">7</span>);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/16/javascript-note-13-5/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十三章-5">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十三章-5
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/18/javascript-note-13-7/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十三章-7">
+                《 JavaScript 高级程序设计》备忘-第十三章-7 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件流"><span class="nav-number">1.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件类型"><span class="nav-number">1.1.</span> <span class="nav-text">事件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5-事件"><span class="nav-number">1.1.1.</span> <span class="nav-text">HTML5 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#contextmenu-事件"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">contextmenu 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#beforeunload-事件"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">beforeunload 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOMContentLoaded-事件"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">DOMContentLoaded 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#readystatechange-事件"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">readystatechange 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pageshow-和pagehide-事件"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">pageshow 和pagehide 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hashchange-事件"><span class="nav-number">1.1.1.6.</span> <span class="nav-text">hashchange 事件</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -110,7 +110,7 @@
 <meta property="og:url" content="http://codingme.xyz/2016/10/09/javascript-note-12-4/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="范围DOM中的范围操作DOM 范围中的内容在创建范围时 ，内部会为这个范围创建一个文档片段，范围所属的全部节点都被添加到了这个文档片段中。为了创建这个文档片段，范围内容的格式必须正确有效。在前面的例子中，我们创建的选区分别开始和结束于两个文本节点的内部，因此不能算是格式良好的DOM结构，也就无法通过DOM来表示。范围知道自身缺少哪些开标签和闭标签，它能够重新构建有效的DOM结构以便我们对其进行操作">
-<meta property="og:updated_time" content="2016-10-12T03:05:05.000Z">
+<meta property="og:updated_time" content="2016-10-18T06:23:42.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十二章-4">
 <meta name="twitter:description" content="范围DOM中的范围操作DOM 范围中的内容在创建范围时 ，内部会为这个范围创建一个文档片段，范围所属的全部节点都被添加到了这个文档片段中。为了创建这个文档片段，范围内容的格式必须正确有效。在前面的例子中，我们创建的选区分别开始和结束于两个文本节点的内部，因此不能算是格式良好的DOM结构，也就无法通过DOM来表示。范围知道自身缺少哪些开标签和闭标签，它能够重新构建有效的DOM结构以便我们对其进行操作">
@@ -365,7 +365,7 @@
 <a id="more"></a>
 <p>执行完后，<br><code>&lt;p&gt;&lt;b&gt;He&lt;/b&gt;rld!&lt;/p&gt;</code><br>由于范围选区在修改底层DOM 结构时能够保证格式良好，因此即使内容被删除了，最终的DOM结构依旧是格式良好的。<br>与deleteContents()方法相似，extractContents()也会从文档中移除范围选区。<br>但这两个方法的区别在于，extractContents()会返回范围的文档片段。<br>利用这个返回的值，可以将范围的内容插入到文档中的其他地方。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">range.setEnd(worldNode, <span class="number">3</span>);</div><div class="line"><span class="keyword">var</span> fragment = range.extractContents();</div><div class="line">p1.parentNode.appendChild(fragment);</div></pre></td></tr></table></figure>
-<p>在这个例子中，我们将提取出来的文档片段添加到了文档<code>&lt;body&gt;</code>元素的末尾。<br>（在将文档片段传入appendChild()方法中时，添加到文档中的只是片段的子节点，而非片段本身。）</p>
+<p>在这个例子中，我们将提取出来的文档片段添加到了文档<code>&lt;body&gt;</code>元素的末尾。<br>(在将文档片段传入appendChild()方法中时，添加到文档中的只是片段的子节点，而非片段本身。)</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>He<span class="tag">&lt;/<span class="name">b</span>&gt;</span>rld!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>llo<span class="tag">&lt;/<span class="name">b</span>&gt;</span> wo</div></pre></td></tr></table></figure>
 <p>cloneContents()创建范围对象的一个副本，然后在文档的其他地方插入该副本。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>),</div><div class="line">helloNode = p1.firstChild.firstChild,</div><div class="line">worldNode = p1.lastChild,</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">range.setEnd(worldNode, <span class="number">3</span>);</div><div class="line"><span class="keyword">var</span> fragment = range.cloneContents();</div><div class="line">p1.parentNode.appendChild(fragment);</div></pre></td></tr></table></figure>
@@ -375,16 +375,16 @@
 <h3 id="插入DOM-范围中的内容"><a href="#插入DOM-范围中的内容" class="headerlink" title="插入DOM 范围中的内容"></a>插入DOM 范围中的内容</h3><p>使用insertNode()方法可以向范围选区的开始处插入一个节点。<br>若想插入：<code>&lt;span style=&quot;color: red&quot;&gt;Inserted text&lt;/span&gt;</code><br>可以：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">range.setEnd(worldNode, <span class="number">3</span>);</div><div class="line"><span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);</div><div class="line">span.style.color = <span class="string">"red"</span>;</div><div class="line">span.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Inserted text"</span>));</div><div class="line">range.insertNode(span);</div></pre></td></tr></table></figure>
 <p>结果就是：<code>&lt;p id=&quot;p1&quot;&gt;&lt;b&gt;He&lt;span style=&quot;color: red&quot;&gt;Inserted text&lt;/span&gt;llo&lt;/b&gt; world&lt;/p&gt;</code><br><code>&lt;span&gt;</code>正好被插入到了”Hello”中的”llo”前面，而该位置就是范围选区的开始位置。<br>这里没有使用上一节介绍的方法，结果原始的HTML 并没有添加或删除<code>&lt;b&gt;</code>元素。<br>使用这种技术可以插入一些帮助提示信息，例如在打开新窗口的链接旁边插入一幅图像。</p>
-<p>除了向范围内部插入内容之外，还可以环绕范围插入内容。<br>surroundContents()这个方法接受一个参数，即环绕范围内容的节点。<br>后台会执行下列步骤。<br>(1) 提取出范围中的内容（类似执行extractContent()）；<br>(2) 将给定节点插入到文档中原来范围所在的位置上；<br>(3) 将文档片段的内容添加到给定节点中。</p>
+<p>除了向范围内部插入内容之外，还可以环绕范围插入内容。<br>surroundContents()这个方法接受一个参数，即环绕范围内容的节点。<br>后台会执行下列步骤。<br>(1) 提取出范围中的内容(类似执行extractContent())；<br>(2) 将给定节点插入到文档中原来范围所在的位置上；<br>(3) 将文档片段的内容添加到给定节点中。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.selectNode(helloNode);</div><div class="line"><span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);</div><div class="line">span.style.backgroundColor = <span class="string">"yellow"</span>;</div><div class="line">range.surroundContents(span);</div></pre></td></tr></table></figure>
 <p>结果是，提取出helloNode的内容即文本节点”Hello”,把span插入原本的位置上，再把”Hello”插入span中：<br><code>&lt;p&gt;&lt;b&gt;&lt;span style=&quot;background-color:yellow&quot;&gt;Hello&lt;/span&gt;&lt;/b&gt; world!&lt;/p&gt;</code></p>
-<p>为了插入<code>&lt;span&gt;</code>，范围必须包含整个DOM 选区（不能仅仅包含选中的DOM 节点）。</p>
+<p>为了插入<code>&lt;span&gt;</code>，范围必须包含整个DOM 选区(不能仅仅包含选中的DOM 节点)。</p>
 <h3 id="折叠DOM-范围"><a href="#折叠DOM-范围" class="headerlink" title="折叠DOM 范围"></a>折叠DOM 范围</h3><p>折叠范围，就是指范围中未选择文档的任何部分。可以用文本框来描述折叠范围的过程。<br>假设文本框中有一行文本，你用鼠标选择了其中一个完整的单词。然后，你单击鼠标左键，选区消失，而光标则落在了其中两个字母之间。<br>在折叠范围时，其位置会落在文档中的两个部分之间，可能是范围选区的开始位置，也可能是结束位置。<br>使用collapse()方法来折叠范围，这个方法接受一个参数，一个布尔值，表示要折叠到范围的哪一端。<br>参数true 表示折叠到范围的起点，参数false 表示折叠到范围的终点。<br>要确定范围已经折叠完毕，可以检查collapsed 属性。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">range.collapse(<span class="literal">true</span>); <span class="comment">//折叠到起点</span></div><div class="line">alert(range.collapsed); <span class="comment">//输出true</span></div></pre></td></tr></table></figure>
-<p>检测某个范围是否处于折叠状态，可以帮我们确定范围中的两个节点是否紧密相邻。<br><code>&lt;p id=&quot;p1&quot;&gt;Paragraph 1&lt;/p&gt;&lt;p id=&quot;p2&quot;&gt;Paragraph 2&lt;/p&gt;</code><br>如果不知道其实际构成（比如说，这行代码是动态生成的），那么可以创建一个范围。</p>
+<p>检测某个范围是否处于折叠状态，可以帮我们确定范围中的两个节点是否紧密相邻。<br><code>&lt;p id=&quot;p1&quot;&gt;Paragraph 1&lt;/p&gt;&lt;p id=&quot;p2&quot;&gt;Paragraph 2&lt;/p&gt;</code><br>如果不知道其实际构成(比如说，这行代码是动态生成的)，那么可以创建一个范围。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>),</div><div class="line">p2 = <span class="built_in">document</span>.getElementById(<span class="string">"p2"</span>),</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStartAfter(p1);</div><div class="line">range.setStartBefore(p2);</div><div class="line">alert(range.collapsed); <span class="comment">//输出true</span></div></pre></td></tr></table></figure>
-<p>在这个例子中，新创建的范围是折叠的，因为p1 的后面和p2 的前面什么也没有。<br>(所以p1和p2是相连的)<br>(但是，下面的比较 DOM 范围不是可以更加直接的发现是否是相连的么（比较第一个终点和第二个起点）？难道多新建一个Range对象就变成劣势了？)</p>
-<h3 id="比较DOM-范围"><a href="#比较DOM-范围" class="headerlink" title="比较DOM 范围"></a>比较DOM 范围</h3><p>使用compareBoundaryPoints()方法来确定这些范围是否有公共的边界（起点或终点）。<br>这个方法接受两个参数：表示比较方式的常量值和要比较的范围。<br>表示比较方式的常量值:</p>
+<p>在这个例子中，新创建的范围是折叠的，因为p1 的后面和p2 的前面什么也没有。<br>(所以p1和p2是相连的)<br>(但是，下面的比较 DOM 范围不是可以更加直接的发现是否是相连的么(比较第一个终点和第二个起点)？难道多新建一个Range对象就变成劣势了？)</p>
+<h3 id="比较DOM-范围"><a href="#比较DOM-范围" class="headerlink" title="比较DOM 范围"></a>比较DOM 范围</h3><p>使用compareBoundaryPoints()方法来确定这些范围是否有公共的边界(起点或终点)。<br>这个方法接受两个参数：表示比较方式的常量值和要比较的范围。<br>表示比较方式的常量值:</p>
 <ul>
 <li>Range.START_TO_START(0)：比较第一个范围和第二个范围的起点；</li>
 <li>Range.START_TO_END(1)：比较第一个范围的起点和第二个范围的终点；</li>
@@ -397,7 +397,7 @@
 <h3 id="清理DOM-范围"><a href="#清理DOM-范围" class="headerlink" title="清理DOM 范围"></a>清理DOM 范围</h3><p>使用完范围之后，最好是调用detach()方法，以便从创建范围的文档中分离出该范围。<br>调用detach()之后，就可以放心地解除对范围的引用，从而让垃圾回收机制回收其内存了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">range.detach(); <span class="comment">//从文档中分离</span></div><div class="line">range = <span class="literal">null</span>; <span class="comment">//解除引用</span></div></pre></td></tr></table></figure>
 <p>在使用范围的最后再执行这两个步骤。一旦分离范围，就不能再恢复使用了。</p>
-<h2 id="IE8-及更早版本中的范围"><a href="#IE8-及更早版本中的范围" class="headerlink" title="IE8 及更早版本中的范围"></a>IE8 及更早版本中的范围</h2><p>IE9 支持DOM 范围，但IE8 及之前版本不支持DOM范围。<br>IE8 及早期版本支持一种类似的概念，即文本范围（text range）。IE 专有的特性，其他浏览器都不支持。<br>文本范围处理的主要是文本（不一定是DOM 节点）。<br>通过<code>&lt;body&gt;</code>、<code>&lt;button&gt;</code>、<code>&lt;input&gt;</code>和<code>&lt;textarea&gt;</code>等这几个元素，可以调用createTextRange()方法来创建文本范围。<br><code>var range = document.body.createTextRange();</code><br>像这样通过document 创建的范围可以在页面中的任何地方使用（通过其他元素创建的范围则只能在相应的元素中使用）。</p>
+<h2 id="IE8-及更早版本中的范围"><a href="#IE8-及更早版本中的范围" class="headerlink" title="IE8 及更早版本中的范围"></a>IE8 及更早版本中的范围</h2><p>IE9 支持DOM 范围，但IE8 及之前版本不支持DOM范围。<br>IE8 及早期版本支持一种类似的概念，即文本范围(text range)。IE 专有的特性，其他浏览器都不支持。<br>文本范围处理的主要是文本(不一定是DOM 节点)。<br>通过<code>&lt;body&gt;</code>、<code>&lt;button&gt;</code>、<code>&lt;input&gt;</code>和<code>&lt;textarea&gt;</code>等这几个元素，可以调用createTextRange()方法来创建文本范围。<br><code>var range = document.body.createTextRange();</code><br>像这样通过document 创建的范围可以在页面中的任何地方使用(通过其他元素创建的范围则只能在相应的元素中使用)。</p>
 <h3 id="用IE-范围实现简单的选择"><a href="#用IE-范围实现简单的选择" class="headerlink" title="用IE 范围实现简单的选择"></a>用IE 范围实现简单的选择</h3><p>选择页面中某一区域的最简单方式，就是使用范围的findText()方法。<br>法会找到第一次出现的给定文本，并将范围移过来以环绕该文本。<br>如果没有找到文本，这个方法返回false；否则返回true。<br><code>&lt;p id=&quot;p1&quot;&gt;&lt;b&gt;Hello&lt;/b&gt; world!&lt;/p&gt;</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range = <span class="built_in">document</span>.body.createTextRange();</div><div class="line"><span class="keyword">var</span> found = range.findText(<span class="string">"Hello"</span>);</div><div class="line"></div><div class="line">alert(found); <span class="comment">//true</span></div><div class="line">alert(range.text); <span class="comment">//"Hello"</span></div></pre></td></tr></table></figure>
 <p>还可以为findText()传入另一个参数，即一个表示向哪个方向继续搜索的数值。负值表示应该从当前位置向后搜索，而正值表示应该从当前位置向前搜索。</p>
@@ -409,21 +409,21 @@
 <h3 id="使用IE-范围实现复杂的选择"><a href="#使用IE-范围实现复杂的选择" class="headerlink" title="使用IE 范围实现复杂的选择"></a>使用IE 范围实现复杂的选择</h3><p>在IE 中创建复杂范围的方法，就是以特定的增量向四周移动范围。<br>move()、moveStart()、moveEnd()和expand()。这些方法都接受两个参数：移动单位和移动单位的数量。<br>移动单位是一种字符串值。</p>
 <ul>
 <li>“character”：逐个字符地移动。</li>
-<li>“word”：逐个单词（一系列非空格字符）地移动。</li>
-<li>“sentence”：逐个句子（一系列以句号、问号或叹号结尾的字符）地移动。</li>
+<li>“word”：逐个单词(一系列非空格字符)地移动。</li>
+<li>“sentence”：逐个句子(一系列以句号、问号或叹号结尾的字符)地移动。</li>
 <li>“textedit”：移动到当前范围选区的开始或结束位置。</li>
 </ul>
 <p>moveStart()方法可以移动范围的起点，通过moveEnd()方法可以移动范围的终点，移动的幅度由单位数量指定。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">range.moveStart(<span class="string">"word"</span>, <span class="number">2</span>); <span class="comment">//起点移动2 个单词</span></div><div class="line">range.moveEnd(<span class="string">"character"</span>, <span class="number">1</span>); <span class="comment">//终点移动1 个字符</span></div></pre></td></tr></table></figure>
 <p>expand()方法可以将范围规范化。expand()方法的作用是将任何部分选择的文本全部选中。<br>例如，当前选择的是一个单词中间的两个字符，调用expand(“word”)可以将整个单词都包含在范围之内。</p>
-<p>move()方法则首先会折叠当前范围（让起点和终点相等），然后再将范围移动指定的单位数量。<br><code>range.move(&quot;character&quot;, 5); //移动5 个字符</code><br>调用move()之后，范围的起点和终点相同，因此必须再使用moveStart()或moveEnd()创建新的选区。</p>
+<p>move()方法则首先会折叠当前范围(让起点和终点相等)，然后再将范围移动指定的单位数量。<br><code>range.move(&quot;character&quot;, 5); //移动5 个字符</code><br>调用move()之后，范围的起点和终点相同，因此必须再使用moveStart()或moveEnd()创建新的选区。</p>
 <h3 id="操作IE-范围中的内容"><a href="#操作IE-范围中的内容" class="headerlink" title="操作IE 范围中的内容"></a>操作IE 范围中的内容</h3><p>在IE 中操作范围中的内容可以使用text 属性或pasteHTML()方法。<br>通过text 属性可以取得范围中的内容文本；但是，也可以通过这个属性设置范围中的内容文本。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range = <span class="built_in">document</span>.body.createTextRange();</div><div class="line">range.findText(<span class="string">"Hello"</span>);</div><div class="line">range.text = <span class="string">"Howdy"</span>;</div></pre></td></tr></table></figure>
 <p>执行以上代码后:<code>&lt;p id=&quot;p1&quot;&gt;&lt;b&gt;Howdy&lt;/b&gt; world!&lt;/p&gt;</code><br>在设置text 属性的情况下，HTML 标签保持不变。</p>
 <p>要向范围中插入HTML 代码，就得使用pasteHTML()方法。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range = <span class="built_in">document</span>.body.createTextRange();</div><div class="line">range.findText(<span class="string">"Hello"</span>);</div><div class="line">range.pasteHTML(<span class="string">"&lt;em&gt;Howdy&lt;/em&gt;"</span>);</div></pre></td></tr></table></figure>
 <p>执行这些代码后:<code>&lt;p id=&quot;p1&quot;&gt;&lt;b&gt;&lt;em&gt;Howdy&lt;/em&gt;&lt;/b&gt; world!&lt;/p&gt;</code><br>不过，在范围中包含HTML 代码时，不应该使用pasteHTML()，因为这样很容易导致不可预料的结果——很可能是格式不正确的HTML。</p>
-<h3 id="折叠IE-范围"><a href="#折叠IE-范围" class="headerlink" title="折叠IE 范围"></a>折叠IE 范围</h3><p>IE 为范围提供的collapse()方法与相应的DOM 方法用法一样：<br>传入true 把范围折叠到起点，传入false 把范围折叠到终点。<br><code>range.collapse(true); //折叠到起点</code><br>可惜的是，没有对应的collapsed 属性让我们知道范围是否已经折叠完毕。<br>使用boundingWidth 属性，该属性返回范围的宽度（以像素为单位）。如果boundingWidth 属性等于0，就说明范围已经折叠了。<br><code>var isCollapsed = (range.boundingWidth == 0);</code><br>还有boundingHeight、boundingLeft 和boundingTop 等属性，虽然它们都不像boundingWidth 那么有用，但也可以提供一些有关范围位置的信息。</p>
+<h3 id="折叠IE-范围"><a href="#折叠IE-范围" class="headerlink" title="折叠IE 范围"></a>折叠IE 范围</h3><p>IE 为范围提供的collapse()方法与相应的DOM 方法用法一样：<br>传入true 把范围折叠到起点，传入false 把范围折叠到终点。<br><code>range.collapse(true); //折叠到起点</code><br>可惜的是，没有对应的collapsed 属性让我们知道范围是否已经折叠完毕。<br>使用boundingWidth 属性，该属性返回范围的宽度(以像素为单位)。如果boundingWidth 属性等于0，就说明范围已经折叠了。<br><code>var isCollapsed = (range.boundingWidth == 0);</code><br>还有boundingHeight、boundingLeft 和boundingTop 等属性，虽然它们都不像boundingWidth 那么有用，但也可以提供一些有关范围位置的信息。</p>
 <h3 id="比较IE-范围"><a href="#比较IE-范围" class="headerlink" title="比较IE 范围"></a>比较IE 范围</h3><p>IE 中的compareEndPoints()方法与DOM范围的compareBoundaryPoints()方法类似。<br>这个方法接受两个参数：比较的类型和要比较的范围。<br>比较类型的取值范围是几个字符串值：”StartToStart”、”StartToEnd”、”EndToEnd”和”EndToStart”。<br>这几种比较类型与比较DOM范围时使用的几个值是相同的。<br>同样与DOM类似的是，compareEndPoints()方法也会按照相同的规则返回值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range1 = <span class="built_in">document</span>.body.createTextRange();</div><div class="line"><span class="keyword">var</span> range2 = <span class="built_in">document</span>.body.createTextRange();</div><div class="line">range1.findText(<span class="string">"Hello world!"</span>);</div><div class="line">range2.findText(<span class="string">"Hello"</span>);</div><div class="line">alert(range1.compareEndPoints(<span class="string">"StartToStart"</span>, range2)); <span class="comment">//0</span></div><div class="line">alert(range1.compareEndPoints(<span class="string">"EndToEnd"</span>, range2)); <span class="comment">//1</span></div></pre></td></tr></table></figure>
 <p>isEqual()用于确定两个范围是否相等，inRange()用于确定一个范围是否包含另一个范围。</p>
@@ -470,6 +470,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/12/javascript-note-13-1/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十三章-1">
+                《 JavaScript 高级程序设计》备忘-第十三章-1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +541,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -726,7 +730,7 @@
 
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
@@ -735,10 +739,10 @@
   <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>

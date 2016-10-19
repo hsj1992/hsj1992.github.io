@@ -1,0 +1,925 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="事件流事件类型设备事件orientationchange 事件苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。移动Safari 的window.orientation 属性中可能包含3 个值：0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。相关文档中还提到一个值，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十三章-7">
+<meta property="og:url" content="http://codingme.xyz/2016/10/18/javascript-note-13-7/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="事件流事件类型设备事件orientationchange 事件苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。移动Safari 的window.orientation 属性中可能包含3 个值：0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。相关文档中还提到一个值，">
+<meta property="og:updated_time" content="2016-10-18T11:36:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十三章-7">
+<meta name="twitter:description" content="事件流事件类型设备事件orientationchange 事件苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。移动Safari 的window.orientation 属性中可能包含3 个值：0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。相关文档中还提到一个值，">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/18/javascript-note-13-7/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十三章-7 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十三章-7
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-18T14:32:13+08:00" content="2016-10-18">
+              2016-10-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="设备事件"><a href="#设备事件" class="headerlink" title="设备事件"></a>设备事件</h3><h4 id="orientationchange-事件"><a href="#orientationchange-事件" class="headerlink" title="orientationchange 事件"></a>orientationchange 事件</h4><p>苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。<br>移动Safari 的window.orientation 属性中可能包含3 个值：<br>0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。<br>相关文档中还提到一个值，即180 表示iPhone 头朝下；但这种模式至今尚未得到支持。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">    div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"orientationchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>所有iOS 设备都支持orientationchange 事件和window.orientation 属性。<br>可以将orientationchange 看成window 事件，所以也可以通过指定<code>&lt;body&gt;</code>元素的onorientationchange 特性来指定事件处理程序。</p>
+<h4 id="MozOrientation-事件"><a href="#MozOrientation-事件" class="headerlink" title="MozOrientation 事件"></a>MozOrientation 事件</h4><p>已过时,从6.0版本起已经移除。由DeviceOrientationEvent替代。(而仅有Firefox支持)</p>
+<h4 id="deviceorientation-事件"><a href="#deviceorientation-事件" class="headerlink" title="deviceorientation 事件"></a>deviceorientation 事件</h4><p>只能在移动WebKit 浏览器中运行，因为它使用了专有的webkitTransform 属性（即CSS标准属性transform 的临时版）。<br>所以只有Chrome、Android 浏览器部分支持。</p>
+<h4 id="devicemotion-事件"><a href="#devicemotion-事件" class="headerlink" title="devicemotion 事件"></a>devicemotion 事件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"devicemotion"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>);</div><div class="line">    <span class="keyword">if</span> (event.rotationRate !== <span class="literal">null</span>)&#123;</div><div class="line">        output.innerHTML += <span class="string">"Alpha="</span> + event.rotationRate.alpha + <span class="string">", Beta="</span> +</div><div class="line">            event.rotationRate.beta + <span class="string">", Gamma="</span> +</div><div class="line">            event.rotationRate.gamma;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<ul>
+<li>acceleration：一个包含x、y 和z 属性的对象，在不考虑重力的情况下，告诉你在每个方向上的加速度。</li>
+<li>accelerationIncludingGravity：一个包含x、y 和z 属性的对象，在考虑z 轴自然重力加速度的情况下，告诉你在每个方向上的加速度。</li>
+<li>interval：以毫秒表示的时间值，必须在另一个devicemotion 事件触发前传入。这个值在每个事件中应该是一个常量。</li>
+<li>rotationRate：一个包含表示方向的alpha、beta 和gamma 属性的对象。</li>
+</ul>
+<p>如果读取不到acceleration、accelerationIncludingGravity 和rotationRate 值，则它们的值为null。<br>因此，在使用这三个属性之前，应该先检测确定它们的值不是null。</p>
+<p>浏览器支持情况与deviceorientation事件类似。</p>
+<h3 id="触摸与手势事件"><a href="#触摸与手势事件" class="headerlink" title="触摸与手势事件"></a>触摸与手势事件</h3><h4 id="触摸事件"><a href="#触摸事件" class="headerlink" title="触摸事件"></a>触摸事件</h4><ul>
+<li>touchstart：当手指触摸屏幕时触发；即使已经有一个手指放在了屏幕上也会触发。</li>
+<li>touchmove：当手指在屏幕上滑动时连续地触发。在这个事件发生期间，调用preventDefault()可以阻止滚动。</li>
+<li>touchend：当手指从屏幕上移开时触发。</li>
+<li>touchcancel：当系统停止跟踪触摸时触发。关于此事件的确切触发时间，文档中没有明确说明。</li>
+</ul>
+<p>这几个事件都会冒泡，也都可以取消。<br>提供属性：<br>bubbles、cancelable、view、clientX、clientY、screenX、screenY、detail、altKey、shiftKey、ctrlKey 和metaKey。<br>还包括：</p>
+<ul>
+<li>touches：表示当前跟踪的触摸操作的Touch 对象的数组。</li>
+<li>targetTouchs：特定于事件目标的Touch 对象的数组。</li>
+<li>changeTouches：表示自上次触摸以来发生了什么改变的Touch 对象的数组。</li>
+</ul>
+<p>每个Touch 对象包含下列属性。</p>
+<ul>
+<li>clientX：触摸目标在视口中的x 坐标。</li>
+<li>clientY：触摸目标在视口中的y 坐标。</li>
+<li>identifier：标识触摸的唯一ID。</li>
+<li>pageX：触摸目标在页面中的x 坐标。</li>
+<li>pageY：触摸目标在页面中的y 坐标。</li>
+<li>screenX：触摸目标在屏幕中的x 坐标。</li>
+<li>screenY：触摸目标在屏幕中的y 坐标。</li>
+<li>target：触摸的DOM 节点目标。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleTouchEvent</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="comment">//只跟踪一次触摸</span></div><div class="line">    <span class="keyword">if</span> (event.touches.length == <span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">var</span> output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>);</div><div class="line">        <span class="keyword">switch</span>(event.type)&#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">"touchstart"</span>:</div><div class="line">                output.innerHTML = <span class="string">"Touch started ("</span> + event.touches[<span class="number">0</span>].clientX +</div><div class="line">                    <span class="string">","</span> + event.touches[<span class="number">0</span>].clientY + <span class="string">")"</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">"touchend"</span>:</div><div class="line">                output.innerHTML += <span class="string">"&lt;br&gt;Touch ended ("</span> +</div><div class="line">                    event.changedTouches[<span class="number">0</span>].clientX + <span class="string">","</span> +</div><div class="line">                    event.changedTouches[<span class="number">0</span>].clientY + <span class="string">")"</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">"touchmove"</span>:</div><div class="line">                event.preventDefault(); <span class="comment">//阻止滚动</span></div><div class="line">                output.innerHTML += <span class="string">"&lt;br&gt;Touch moved ("</span> +</div><div class="line">                    event.changedTouches[<span class="number">0</span>].clientX + <span class="string">","</span> +</div><div class="line">                    event.changedTouches[<span class="number">0</span>].clientY + <span class="string">")"</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"touchstart"</span>, handleTouchEvent);</div><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"touchend"</span>, handleTouchEvent);</div><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"touchmove"</span>, handleTouchEvent);</div></pre></td></tr></table></figure>
+<p>跟踪屏幕上发生的一次触摸操作。为简单起见，只会在有一次活动触摸操作的情况下输出信息。<br>当touchstart 事件发生时，会将触摸的位置信息输出到<code>&lt;div&gt;</code>元素中。<br>当touchmove 事件发生时，会取消其默认行为，阻止滚动（触摸移动的默认行为是滚动页面），然后输出触摸操作的变化信息。<br>而touchend 事件则会输出有关触摸操作的最终信息。<br>在touchend 事件发生时，touches集合中就没有任何Touch 对象了，因为不存在活动的触摸操作；<br>此时，就必须转而使用changeTouchs集合。<br>这些事件会在文档的所有元素上面触发，因而可以分别操作页面的不同部分。<br>(1) touchstart<br>(2) mouseover<br>(3) mousemove（一次）<br>(4) mousedown<br>(5) mouseup<br>(6) click<br>(7) touchend</p>
+<h4 id="手势事件"><a href="#手势事件" class="headerlink" title="手势事件"></a>手势事件</h4><p>iOS 2.0 中的Safari 还引入了一组手势事件。<br>(之后没其他浏览器支持，也没有继续更新)</p>
+<h2 id="内存和性能"><a href="#内存和性能" class="headerlink" title="内存和性能"></a>内存和性能</h2><p>在创建GUI 的语言（如C#）中，为GUI 中的每个按钮添加一个onclick事件处理程序是司空见惯的事，而且这样做也不会导致什么问题。<br>可是在JavaScript 中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能。<br>首先，每个函数都是对象，都会占用内存；<br>内存中的对象越多，性能就越差。<br>其次，必须事先指定所有事件处理程序而导致的DOM访问次数，会延迟整个页面的交互就绪时间。</p>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>对“事件处理程序过多”问题的解决方案就是事件委托。利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。</p>
+<p>例如，click 事件会一直冒泡到document 层次。也就是说，我们可以为整个页面指定一个onclick 事件处理程序，而不必给每个可单击的元素分别添加事件处理程序。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myLinks"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"goSomewhere"</span>&gt;</span>Go somewhere<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"doSomething"</span>&gt;</span>Do something<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"sayHi"</span>&gt;</span>Say hi<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>按照传统的做法，需要像下面这样为它们添加3 个事件处理程序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> item1 = <span class="built_in">document</span>.getElementById(<span class="string">"goSomewhere"</span>);</div><div class="line"><span class="keyword">var</span> item2 = <span class="built_in">document</span>.getElementById(<span class="string">"doSomething"</span>);</div><div class="line"><span class="keyword">var</span> item3 = <span class="built_in">document</span>.getElementById(<span class="string">"sayHi"</span>);</div><div class="line">EventUtil.addHandler(item1, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    location.href = <span class="string">"http://www.wrox.com"</span>;</div><div class="line">&#125;);</div><div class="line">EventUtil.addHandler(item2, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.title = <span class="string">"I changed the document's title"</span>;</div><div class="line">&#125;);</div><div class="line">EventUtil.addHandler(item3, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"hi"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>可以利用事件委托技术解决这个问题。<br>使用事件委托，只需在DOM 树中尽量最高的层次上添加一个事件处理程序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"myLinks"</span>);</div><div class="line">EventUtil.addHandler(list, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">    <span class="keyword">switch</span>(target.id)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"doSomething"</span>:</div><div class="line">            <span class="built_in">document</span>.title = <span class="string">"I changed the document's title"</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"goSomewhere"</span>:</div><div class="line">            location.href = <span class="string">"http://www.wrox.com"</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"sayHi"</span>:</div><div class="line">            alert(<span class="string">"hi"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>使用事件委托只为<code>&lt;ul&gt;</code>元素添加了一个onclick 事件处理程序。<br>由于所有列表项都是这个元素的子节点，而且它们的事件会冒泡，所以单击事件最终会被这个函数处理。<br>事件目标是被单击的列表项，故而可以通过检测id 属性来决定采取适当的操作。<br>与前面未使用事件委托的代码比一比，会发现这段代码的事前消耗更低，因为只取得了一个DOM 元素，只添加了一个事件处理程序。<br>虽然对用户来说最终的结果相同，但这种技术需要占用的内存更少。所有用到按钮的事件（多数鼠标事件和键盘事件）都适合采用事件委托技术。</p>
+<p>如果可行的话，也可以考虑为document 对象添加一个事件处理程序，用以处理页面上发生的某种特定类型的事件。<br>这样做与采取传统的做法相比具有如下优点。</p>
+<ul>
+<li>document 对象很快就可以访问，而且可以在页面生命周期的任何时间点上为它添加事件处理程序<br>  （无需等待DOMContentLoaded 或load 事件）。换句话说，只要可单击的元素呈现在页面上，就可以立即具备适当的功能。</li>
+<li>在页面中设置事件处理程序所需的时间更少。只添加一个事件处理程序所需的DOM 引用更少，所花的时间也更少。</li>
+<li>整个页面占用的内存空间更少，能够提升整体性能。</li>
+</ul>
+<p>最适合采用事件委托技术的事件包括click、mousedown、mouseup、keydown、keyup 和keypress。<br>虽然mouseover 和mouseout 事件也冒泡，但要适当处理它们并不容易，而且经常需要计算元素的位置。<br>（因为当鼠标从一个元素移到其子节点时，或者当鼠标移出该元素时，都会触发mouseout 事件。）</p>
+<h3 id="移除事件处理程序"><a href="#移除事件处理程序" class="headerlink" title="移除事件处理程序"></a>移除事件处理程序</h3><p>除了事件委托，在不需要的时候移除事件处理程序，也是解决问题的一种方案。</p>
+<p>内存中留有那些过时不用的“空事件处理程序”（dangling event handler），也是造成Web 应用程序内存与性能问题的主要原因。<br>造成这问题的第一种情况就是从文档中移除带有事件处理程序的元素时。<br>这可能是通过纯粹的DOM操作，例如使用removeChild()和replaceChild()方法，但更多地是发生在使用innerHTML 替换页面中某一部分的时候。<br>如果带有事件处理程序的元素被innerHTML 删除了，那么原来添加到元素中的事件处理程序极有可能无法被当作垃圾回收。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Click Me"</span> <span class="attr">id</span>=<span class="string">"myBtn"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//先执行某些操作</span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML = <span class="string">"Processing..."</span>; <span class="comment">//麻烦了！</span></div><div class="line">&#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>有一个按钮被包含在<code>&lt;div&gt;</code>元素中。为避免双击，单击这个按钮时就将按钮移除并替换成一条消息；<br>这是网站设计中非常流行的一种做法。但问题在于，当按钮被从页面中移除时，它还带着一个事件处理程序。<br>在<code>&lt;div&gt;</code>元素上设置innerHTML 可以把按钮移走，但事件处理程序仍然与按钮保持着引用关系。</p>
+<p>有的浏览器（尤其是IE）在这种情况下不会作出恰当地处理，它们很有可能会将对元素和对事件处理程序的引用都保存在内存中。<br>如果你知道某个元素即将被移除，那么最好手工移除事件处理程序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//省略部分代码</span></div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//先执行某些操作</span></div><div class="line">    btn.onclick = <span class="literal">null</span>; <span class="comment">//移除事件处理程序</span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML = <span class="string">"Processing..."</span>;</div><div class="line">    &#125;;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>在事件处理程序中删除按钮也能阻止事件冒泡。目标元素在文档中是事件冒泡的前提。<br>采用事件委托也有助于解决这个问题。</p>
+<p>导致“空事件处理程序”的另一种情况，就是卸载页面的时候。<br>IE8 及更早版本在这种情况下依然是问题最多的浏览器，尽管其他浏览器或多或少也有类似的问题。<br>如果在页面被卸载之前没有清理干净事件处理程序，那它们就会滞留在内存中。<br>每次加载完页面再卸载页面时（可能是在两个页面间来回切换，也可以是单击了“刷新”按钮），内存中滞留的对象数目就会增加，<br>因为事件处理程序占用的内存并没有被释放。</p>
+<p>一般来说，最好的做法是在页面卸载之前，先通过onunload 事件处理程序移除所有事件处理程序。<br>事件委托技术再次表现出它的优势——需要跟踪的事件处理程序越少，移除它们就越容易。</p>
+<p>对这种类似撤销的操作，我们可以把它想象成：只要是通过onload 事件处理程序添加的东西，最后都要通过onunload 事件处理程序将它们移除。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/18/javascript-note-13-6/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十三章-6">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十三章-6
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/18/javascript-note-13-8/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十三章-8">
+                《 JavaScript 高级程序设计》备忘-第十三章-8 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件流"><span class="nav-number">1.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件类型"><span class="nav-number">1.1.</span> <span class="nav-text">事件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设备事件"><span class="nav-number">1.1.1.</span> <span class="nav-text">设备事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#orientationchange-事件"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">orientationchange 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MozOrientation-事件"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">MozOrientation 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deviceorientation-事件"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">deviceorientation 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#devicemotion-事件"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">devicemotion 事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触摸与手势事件"><span class="nav-number">1.1.2.</span> <span class="nav-text">触摸与手势事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触摸事件"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">触摸事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#手势事件"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">手势事件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存和性能"><span class="nav-number">1.2.</span> <span class="nav-text">内存和性能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件委托"><span class="nav-number">1.2.1.</span> <span class="nav-text">事件委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移除事件处理程序"><span class="nav-number">1.2.2.</span> <span class="nav-text">移除事件处理程序</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

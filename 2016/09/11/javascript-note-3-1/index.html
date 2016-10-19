@@ -130,7 +130,7 @@ ECMAScript 的严格模式 (strict mode)
 
 ECMAScript 的严格模式 (strict mode)
 严格模式的启用：顶部添加如下代码：”use strict”;看起来像是字符串，而且也没">
-<meta property="og:updated_time" content="2016-10-04T06:00:03.423Z">
+<meta property="og:updated_time" content="2016-10-15T09:45:06.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第三章-1">
 <meta name="twitter:description" content="ECMAScript 的标识符
@@ -400,7 +400,7 @@ ECMAScript 的严格模式 (strict mode)
 <h1 id="ECMAScript-的严格模式-strict-mode"><a href="#ECMAScript-的严格模式-strict-mode" class="headerlink" title="ECMAScript 的严格模式 (strict mode)"></a>ECMAScript 的严格模式 (strict mode)</h1><ul>
 <li>严格模式的启用：<br>顶部添加如下代码：”use strict”;<br>看起来像是字符串，而且也没有赋值给任何变量，但其实它是一个编译指示(pragma)，用于告诉支持的 JavaScript 引擎切换到严格模式。这是为不破坏 ECMAScript 3 语法而特意选定的语法。</li>
 <li><p>也可以指定函数在严格模式下执行：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line">    <span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>严格模式下， JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+ 、 Firefox 4+ 、 Safari 5.1+ 、 Opera 12+和 Chrome 。</p>
 </li>
@@ -473,7 +473,7 @@ let         protected   yield
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> car = <span class="literal">null</span>;</div><div class="line">alert(<span class="keyword">typeof</span> car); <span class="comment">// "object"</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为 null 而不是其他值。这样就可以直接检查知道变量是否已经保存了一个对象的引用。</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (car != <span class="literal">null</span>)&#123;</div><div class="line"><span class="comment">// 对 car 对象执行某些操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (car != <span class="literal">null</span>)&#123;</div><div class="line">    <span class="comment">// 对 car 对象执行某些操作</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>实际上， undefined 值是派生自 null 值的,因此相等性测试【相等操作符( == )】：</p>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">alert(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">//true</span></div></pre></td></tr></table></figure>
@@ -485,7 +485,7 @@ let         protected   yield
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message = <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">var</span> messageAsBoolean = <span class="built_in">Boolean</span>(message);</div></pre></td></tr></table></figure>
  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">数据类型     转换为 true 的值                 转换为 false 的值</div><div class="line">Boolean     true                          false</div><div class="line">String      任何非空字符串                  "" (空字符串)</div><div class="line">Number      任何非零数字值(包括无穷大)     0和 NaN</div><div class="line">Object      任何对象                       null</div><div class="line">Undefined   n/a                           undefined</div><div class="line">*/</div></pre></td></tr></table></figure>
 <p> 这些转换规则对理解流控制语句(如 if 语句)自动执行相应的 Boolean 转换非常重要</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message = <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">if</span> (message)&#123;</div><div class="line">alert(<span class="string">"Value is true"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message = <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">if</span> (message)&#123;</div><div class="line">    alert(<span class="string">"Value is true"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h2><p>ECMScript 没有为整数和浮点数值分别定义不同的数据类型， Number 类型可用于表示所有数值。</p>
@@ -687,7 +687,7 @@ let         protected   yield
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -876,7 +876,7 @@ let         protected   yield
 
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
@@ -885,10 +885,10 @@ let         protected   yield
   <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>

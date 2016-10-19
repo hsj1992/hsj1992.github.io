@@ -114,7 +114,7 @@ bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
 <meta property="og:description" content="html 的其他属性除非在 html 元素中添加 dir 属性并将属性值设为 rtl ，否则内容的基准方向都默认为从左至右。
 span 和 divspan 只适合包围字词或短语内容，而 div 适合包含块级内容。由于 span 没有任何语义，因此应将它作为最后的选择，仅在没有其他合适的元素时才使用它。
 bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
-<meta property="og:updated_time" content="2016-10-03T08:29:45.188Z">
+<meta property="og:updated_time" content="2016-10-15T10:23:23.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 HTML5 与 CSS3 基础教程》备忘2">
 <meta name="twitter:description" content="html 的其他属性除非在 html 元素中添加 dir 属性并将属性值设为 rtl ，否则内容的基准方向都默认为从左至右。
@@ -368,12 +368,12 @@ bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
 <h1 id="span-和-div"><a href="#span-和-div" class="headerlink" title="span 和 div"></a>span 和 div</h1><p>span 只适合<strong>包围字词或短语内容</strong>，而 div 适合<strong>包含块级内容</strong>。由于 span 没有任何语义，因此应将它作为最后的选择，仅在没有其他合适的元素时才使用它。</p>
 <h1 id="bdo"><a href="#bdo" class="headerlink" title="bdo"></a>bdo</h1><p>bdo ( bidirectional override ，双向重载):用于显式地格式化其内容的文本方向。<br>要使用 bdo ，必须包含 dir 属性并将属性值设为 ltr (由左至右)或 rtl (由右至左)，指定你希望呈现的方向。(如果你的 HTML 页面中混合了从左至右书写的字符和从右至左书写的字符，就可能要用到 bdi 和 bdo 元素。)例子： <code>&lt;plang=&quot;he&quot;&gt;&lt;bdo dir=&quot;rtl&quot;&gt;...&lt;/bdo&gt;&lt;/p&gt;</code></p>
 <h1 id="bdi-元素"><a href="#bdi-元素" class="headerlink" title="bdi 元素"></a>bdi 元素</h1><p>bdi 指的是 bidi 隔离(Bi-directional Isolation)，用于标识独立于周围文本的用做双向文本格式化的一块文本。<br>bdi 元素是 HTML5 中新加的元素，用于内容的方向未知的情况。不必包含 dir 属性，因为默认已设为自动判断。例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>jcranmer<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line"> 12 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>hober<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line"> 5 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>نا إي<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line"> 3 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>jcranmer<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    12 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>hober<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    5 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>نا إي<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    3 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
 <h1 id="meter-元素"><a href="#meter-元素" class="headerlink" title="meter 元素"></a>meter 元素</h1><p>可以用 meter 元素表示<strong>分数的值或已知范围的测量结果</strong>。简单地说，它代表的是<strong>投票结果</strong>。 HTML5 建议(并非强制)浏览器在呈现 meter 时，在旁边显示一个类似温度计的图形——一个表示测量值的横条，测量值的颜色与最大值的颜色有所区别(相等除外)。作为当前少数几个支持 meter 的浏览器， Firefox 正是这样显示的。对于不支持 meter 的浏览器，可以通过 CSS 对 meter 添加一些额外的样式，或用 JavaScript 进行改进。</p>
 <ul>
 <li><p>meter 元素代码示例：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Project completion status: <span class="tag">&lt;<span class="name">meter</span></span></div><div class="line"><span class="attr">value</span>=<span class="string">"0.80"</span>&gt;80% completed<span class="tag">&lt;/<span class="name">meter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Car brake pad wear: <span class="tag">&lt;<span class="name">meter</span> <span class="attr">low</span>=</span></div><div class="line"><span class="string">"0.25"</span> <span class="attr">high</span>=<span class="string">"0.75"</span> <span class="attr">optimum</span>=<span class="string">"0"</span></div><div class="line"><span class="attr">value</span>=<span class="string">"0.21"</span>&gt;21% worn<span class="tag">&lt;/<span class="name">meter</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Miles walked during half-marathon:</div><div class="line"><span class="tag">&lt;<span class="name">meter</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"13.1"</span> <span class="attr">value</span>=<span class="string">"5.5"</span></span></div><div class="line"><span class="attr">title</span>=<span class="string">"Miles"</span>&gt;4.5<span class="tag">&lt;/<span class="name">meter</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Project completion status:</div><div class="line">    <span class="tag">&lt;<span class="name">meter</span> <span class="attr">value</span>=<span class="string">"0.80"</span>&gt;</span>80% completed<span class="tag">&lt;/<span class="name">meter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Car brake pad wear:</div><div class="line">    <span class="tag">&lt;<span class="name">meter</span> <span class="attr">low</span>=<span class="string">"0.25"</span> <span class="attr">high</span>=<span class="string">"0.75"</span> <span class="attr">optimum</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"0.21"</span>&gt;</span>21% worn<span class="tag">&lt;/<span class="name">meter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Miles walked during half-marathon:</div><div class="line">    <span class="tag">&lt;<span class="name">meter</span> <span class="attr">min</span>=<span class="string">"0"</span> <span class="attr">max</span>=<span class="string">"13.1"</span> <span class="attr">value</span>=<span class="string">"5.5"</span> <span class="attr">title</span>=<span class="string">"Miles"</span>&gt;</span>4.5<span class="tag">&lt;/<span class="name">meter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>已经有人试过针对支持 meter 的浏览器和不支持的浏览器统一编写 meter 的 CSS 。在网上搜索“ style HTML5 meter with CSS ”(用 CSS 为 HTML5 的 meter 添加样式)，就可以找到一些解决方案(注意其中的一些用到了 JavaScript )。 meter 并不用于标记没有范围的普通测量值，如高度、宽度、距离、周长等。</p>
 </li>
@@ -381,7 +381,7 @@ bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
 </ul>
 <h1 id="progress-元素"><a href="#progress-元素" class="headerlink" title="progress 元素"></a>progress 元素</h1><p>progress 元素也是 HTML5 的新元素。前面说过，它指示<strong>某项任务的完成进度</strong>。它和 meter 元素一样，支持的会显示一个进度条，不支持的会显示文本。</p>
 <ul>
-<li>progress 代码示例：  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Current progress: <span class="tag">&lt;<span class="name">progress</span> <span class="attr">max</span>=<span class="string">"100"</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>0% saved</div><div class="line"><span class="tag">&lt;/<span class="name">progress</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<li>progress 代码示例：  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Current progress: </div><div class="line">    <span class="tag">&lt;<span class="name">progress</span> <span class="attr">max</span>=<span class="string">"100"</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>0% saved<span class="tag">&lt;/<span class="name">progress</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="rel-属性"><a href="#rel-属性" class="headerlink" title="rel 属性"></a>rel 属性</h1><ul>
@@ -608,7 +608,7 @@ bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -797,7 +797,7 @@ bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
 
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
@@ -806,10 +806,10 @@ bdobdo ( bidirectional override ，双向重载):用于显式地格式化其">
   <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>

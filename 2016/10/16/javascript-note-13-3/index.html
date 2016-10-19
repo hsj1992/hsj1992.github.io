@@ -1,0 +1,969 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="事件流事件类型“DOM3级事件”规定了以下几类事件。
+
+UI(User Interface，用户界面)事件，当用户与页面上的元素交互时触发；
+焦点事件，当元素获得或失去焦点时触发；
+鼠标事件，当用户通过鼠标在页面上执行操作时触发；
+滚轮事件，当使用鼠标滚轮(或类似设备)时触发；
+文本事件，当在文档中输入文本时触发；
+键盘事件，当用户通过键盘在页面上执行操作时触发；
+合成事件，当为IME(Input">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十三章-3">
+<meta property="og:url" content="http://codingme.xyz/2016/10/16/javascript-note-13-3/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="事件流事件类型“DOM3级事件”规定了以下几类事件。
+
+UI(User Interface，用户界面)事件，当用户与页面上的元素交互时触发；
+焦点事件，当元素获得或失去焦点时触发；
+鼠标事件，当用户通过鼠标在页面上执行操作时触发；
+滚轮事件，当使用鼠标滚轮(或类似设备)时触发；
+文本事件，当在文档中输入文本时触发；
+键盘事件，当用户通过键盘在页面上执行操作时触发；
+合成事件，当为IME(Input">
+<meta property="og:updated_time" content="2016-10-18T06:23:42.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十三章-3">
+<meta name="twitter:description" content="事件流事件类型“DOM3级事件”规定了以下几类事件。
+
+UI(User Interface，用户界面)事件，当用户与页面上的元素交互时触发；
+焦点事件，当元素获得或失去焦点时触发；
+鼠标事件，当用户通过鼠标在页面上执行操作时触发；
+滚轮事件，当使用鼠标滚轮(或类似设备)时触发；
+文本事件，当在文档中输入文本时触发；
+键盘事件，当用户通过键盘在页面上执行操作时触发；
+合成事件，当为IME(Input">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/16/javascript-note-13-3/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十三章-3 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十三章-3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-16T11:58:00+08:00" content="2016-10-16">
+              2016-10-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><p>“DOM3级事件”规定了以下几类事件。</p>
+<ul>
+<li>UI(User Interface，用户界面)事件，当用户与页面上的元素交互时触发；</li>
+<li>焦点事件，当元素获得或失去焦点时触发；</li>
+<li>鼠标事件，当用户通过鼠标在页面上执行操作时触发；</li>
+<li>滚轮事件，当使用鼠标滚轮(或类似设备)时触发；</li>
+<li>文本事件，当在文档中输入文本时触发；</li>
+<li>键盘事件，当用户通过键盘在页面上执行操作时触发；</li>
+<li>合成事件，当为IME(Input Method Editor，输入法编辑器)输入字符时触发；</li>
+<li>变动(mutation)事件，当底层DOM 结构发生变化时触发。</li>
+</ul>
+<p>除了这几类事件之外，HTML5 也定义了一组事件，而有些浏览器还会在DOM 和BOM中实现其他专有事件。<br>这些专有的事件一般都是根据开发人员需求定制的，没有什么规范，因此不同浏览器的实现有可能不一致。<br><a id="more"></a><br>DOM3 级事件模块在DOM2 级事件模块基础上重新定义了这些事件，也添加了一些新事件。</p>
+<h3 id="UI事件"><a href="#UI事件" class="headerlink" title="UI事件"></a>UI事件</h3><p>指的是那些不一定与用户操作有关的事件。<br>这些事件在DOM规范出现之前，都是以这种或那种形式存在的，而在DOM 规范中保留是为了向后兼容。</p>
+<ul>
+<li>DOMActivate：表示元素已经被用户操作(通过鼠标或键盘)激活。。考虑到不同浏览器实现的差异，不建议使用这个事件。</li>
+<li>load：当页面完全加载后在window 上面触发，当所有框架都加载完毕时在框架集上面触发，<br>  当图像加载完毕时在<code>&lt;img&gt;</code>元素上面触发，或者当嵌入的内容加载完毕时在<code>&lt;object&gt;</code>元素上面触发。</li>
+<li>unload：当页面完全卸载后在window 上面触发，当所有框架都卸载后在框架集上面触发，<br>  或者当嵌入的内容卸载完毕后在<code>&lt;object&gt;</code>元素上面触发。</li>
+<li>abort：在用户停止下载过程时，如果嵌入的内容没有加载完，则在<code>&lt;object&gt;</code>元素上面触发。</li>
+<li>error：当发生JavaScript 错误时在window 上面触发，当无法加载图像时在<code>&lt;img&gt;</code>元素上面触发，<br>  当无法加载嵌入内容时在<code>&lt;object&gt;</code>元素上面触发，或者当有一或多个框架无法加载时在框架集上面触发。</li>
+<li>select：当用户选择文本框(<code>&lt;input&gt;</code>或<code>&lt;texterea&gt;</code>)中的一或多个字符时触发。</li>
+<li>resize：当窗口或框架的大小变化时在window 或框架上面触发。</li>
+<li>scroll：当用户滚动带滚动条的元素中的内容时，在该元素上面触发。<code>&lt;body&gt;</code>元素中包含所加载页面的滚动条。</li>
+</ul>
+<p>多数这些事件都与window 对象或表单控件相关。<br>除了DOMActivate 之外，其他事件在DOM2 级事件中都归为HTML 事件(DOMActivate 在DOM2级中仍然属于UI 事件)。<br>要确定浏览器是否支持DOM2 级事件规定的HTML 事件:<br><code>var isSupported = document.implementation.hasFeature(&quot;HTMLEvents&quot;, &quot;2.0&quot;);</code><br>要确定浏览器是否支持“DOM3 级事件”定义的事件:<br><code>var isSupported = document.implementation.hasFeature(&quot;UIEvent&quot;, &quot;3.0&quot;);</code></p>
+<h4 id="load-事件"><a href="#load-事件" class="headerlink" title="load 事件"></a>load 事件</h4><p>JavaScript 中最常用的一个事件。当页面完全加载后(包括所有图像、JavaScript 文件、CSS 文件等外部资源)，就会触发window 上面的load 事件。<br>有两种定义onload 事件处理程序的方式。<br>第一种：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Loaded!"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>通过JavaScript 来指定事件处理程序的方式，使用了前面定义的跨浏览器的EventUtil对象。<br>这个event 对象中不包含有关这个事件的任何附加信息，但在兼容DOM 的浏览器中，event.target 属性的值会被设置为document，而IE 并不会为这个事件设置srcElement 属性。</p>
+<p>第二种:<br>为<code>&lt;body&gt;</code>元素添加一个onload 特性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">onload</span>=<span class="string">"alert('Loaded!')"</span>&gt;</span></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>一般来说，在window 上面发生的任何事件都可以在<code>&lt;body&gt;</code>元素中通过相应的特性来指定，因为在HTML 中无法访问window 元素。<br>实际上，这只是为了保证向后兼容的一种权宜之计，但所有浏览器都能很好地支持这种方式。</p>
+<p>建议尽可能使用JavaScript 方式。<br>根据“DOM2 级事件”规范，<strong>应该在document 而非window 上面触发load 事件</strong>。<br>但是，<strong>所有浏览器都在window 上面实现了该事件</strong>，以确保向后兼容。</p>
+<p>图像上面也可以触发load 事件，无论是在DOM 中的图像元素还是HTML 中的图像元素。<br>可以在HTML 中为任何图像指定onload 事件处理程序:<br><code>&lt;img src=&quot;smile.gif&quot; onload=&quot;alert(&#39;Image loaded.&#39;)&quot;&gt;</code><br>使用JavaScript方式实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image = <span class="built_in">document</span>.getElementById(<span class="string">"myImage"</span>);</div><div class="line">EventUtil.addHandler(image, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    alert(EventUtil.getTarget(event).src);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>传入event 对象，尽管它也不包含什么有用的信息。不过，事件的目标是<code>&lt;img&gt;</code>元素，因此可以通过src 属性访问并显示该信息。<br>在创建新的<code>&lt;img&gt;</code>元素时，可以为其指定一个事件处理程序，以便图像加载完毕后给出提示。最重要的是要在指定src 属性之前先指定事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> image = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">    EventUtil.addHandler(image, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        event = EventUtil.getEvent(event);</div><div class="line">        alert(EventUtil.getTarget(event).src);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">document</span>.body.appendChild(image);</div><div class="line">    image.src = <span class="string">"smile.gif"</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>首先为window 指定了onload 事件处理程序。<br>原因在于，我们是想向DOM中添加一个新元素，所以必须确定页面已经加载完毕——如果在页面加载前操作document.body 会导致错误。<br>新图像元素不一定要从添加到文档后才开始下载，只要设置了src 属性就会开始下载。</p>
+<p>同样的功能也可以通过使用DOM0 级的Image 对象实现。在DOM出现之前，开发人员经常使用Image 对象在客户端预先加载图像。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> image = <span class="keyword">new</span> Image();</div><div class="line">    EventUtil.addHandler(image, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        alert(<span class="string">"Image loaded!"</span>);</div><div class="line">    &#125;);</div><div class="line">    image.src = <span class="string">"smile.gif"</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>有的浏览器将Image 对象实现为<code>&lt;img&gt;</code>元素，但并非所有浏览器都如此，所以最好将它们区别对待。<br>在不属于DOM 文档的图像(包括未添加到文档的<code>&lt;img&gt;</code>元素和Image 对象)上触发load 事件时，IE8 及之前版本不会生成event 对象。IE9 修复了这个问题。</p>
+<p>在IE9+、Firefox、Opera、Chrome 和Safari 3+及更高版本中，<code>&lt;script&gt;</code>元素也会触发load 事件，以便开发人员确定动态加载的JavaScript 文件是否加载完毕。<br>与图像不同，只有在设置了<code>&lt;script&gt;</code>元素的src 属性并将该元素添加到文档后，才会开始下载JavaScript 文件。<br>对于<code>&lt;script&gt;</code>元素而言，指定src 属性和指定事件处理程序的先后顺序就不重要了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">    EventUtil.addHandler(script, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        alert(<span class="string">"Loaded"</span>);</div><div class="line">    &#125;);</div><div class="line">    script.src = <span class="string">"example.js"</span>;</div><div class="line">    <span class="built_in">document</span>.body.appendChild(script);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>大多数浏览器中event 对象的target 属性引用的都是<code>&lt;script&gt;</code>节点，而在Firefox 3 之前的版本中，引用的则是document。<br>IE8 及更早版本不支持<code>&lt;script&gt;</code>元素上的load 事件。<br>IE 和Opera 还支持<code>&lt;link&gt;</code>元素上的load 事件，以便开发人员确定样式表是否加载完毕。<br>与<code>&lt;script&gt;</code>节点类似，在未指定href 属性并将<code>&lt;link&gt;</code>元素添加到文档之前也不会开始下载样式表。</p>
+<h4 id="unload-事件"><a href="#unload-事件" class="headerlink" title="unload 事件"></a>unload 事件</h4><p>这个事件在文档被完全卸载后触发。只要用户从一个页面切换到另一个页面，就会发生unload 事件。<br>而利用这个事件最多的情况是清除引用，以避免内存泄漏。<br>与load 事件类似，也有两种指定onunload 事件处理程序的方式。<br>第一种：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"unload"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Unloaded"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>此时生成的event 对象在兼容DOM 的浏览器中只包含target 属性(值为document)。<br>IE8 及之前版本则为这个事件对象提供了srcElement 属性。</p>
+<p>第二种：<br><code>&lt;body onunload=&quot;alert(&#39;Unloaded!&#39;)&quot;&gt;</code></p>
+<p>无论使用哪种方式，都要小心编写onunload 事件处理程序中的代码。<br>既然unload 事件是在一切都被卸载之后才触发，那么在页面加载后存在的那些对象，此时就不一定存在了。<br>此时，操作DOM节点或者元素的样式就会导致错误。</p>
+<p>根据“DOM2 级事件”，应该在<code>&lt;body&gt;</code>元素而非window 对象上面触发unload事件。<br>不过，所有浏览器都在window 上实现了unload 事件，以确保向后兼容。</p>
+<h4 id="resize-事件"><a href="#resize-事件" class="headerlink" title="resize 事件"></a>resize 事件</h4><p>当浏览器窗口被调整到一个新的高度或宽度时，就会触发resize 事件。<br>在window(窗口)上面触发，因此可以通过JavaScript 或者<code>&lt;body&gt;</code>元素中的onresize 特性来指定事件处理程序。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"resize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Resized"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在兼容DOM 的浏览器中，传入事件处理程序中的event 对象有一个target 属性，值为document；而IE8 及之前版本则未提供任何属性。<br>关于何时会触发resize 事件，不同浏览器有不同的机制。<br>IE、Safari、Chrome 和Opera 会在浏览器窗口变化了1 像素时就触发resize 事件，然后随着变化不断重复触发。<br>Firefox 则只会在用户停止调整窗口大小时才会触发resize 事件。<br>由于存在这个差别，应该注意不要在这个事件的处理程序中加入大计算量的代码，因为这些代码有可能被频繁执行，从而导致浏览器反应明显变慢。</p>
+<p>窗口最小化或最大化时也会触发resize 事件。</p>
+<h4 id="scroll-事件"><a href="#scroll-事件" class="headerlink" title="scroll 事件"></a>scroll 事件</h4><p>scroll 事件是在window 对象上发生的，但它实际表示的则是页面中相应元素的变化。<br>混杂模式下，可以通过<code>&lt;body&gt;</code>元素的scrollLeft 和scrollTop 来监控到这一变化；<br>而在标准模式下，除Safari 之外的所有浏览器都会通过<code>&lt;html&gt;</code>元素来反映这一变化(Safari 仍然基于<code>&lt;body&gt;</code>跟踪滚动位置)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"scroll"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.compatMode == <span class="string">"CSS1Compat"</span>)&#123;</div><div class="line">        alert(<span class="built_in">document</span>.documentElement.scrollTop);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="built_in">document</span>.body.scrollTop);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>由于Safari 3.1 之前的版本不支持document.compatMode，因此旧版本的浏览器就会满足第二个条件。<br>与resize 事件类似，scroll 事件也会在文档被滚动期间重复被触发，所以有必要尽量保持事件处理程序的代码简单。</p>
+<h3 id="焦点事件"><a href="#焦点事件" class="headerlink" title="焦点事件"></a>焦点事件</h3><p>焦点事件会在页面元素获得或失去焦点时触发。<br>利用这些事件并与document.hasFocus()方法及document.activeElement 属性配合，可以知晓用户在页面上的行踪。</p>
+<ul>
+<li>blur：在元素失去焦点时触发。这个事件不会冒泡；所有浏览器都支持它。</li>
+<li>DOMFocusIn：在元素获得焦点时触发。这个事件与HTML 事件focus 等价，但它冒泡。只有Opera 支持这个事件。DOM3 级事件废弃了DOMFocusIn，选择了focusin。</li>
+<li>DOMFocusOut：在元素失去焦点时触发。这个事件是HTML 事件blur 的通用版本。只有Opera支持这个事件。DOM3 级事件废弃了DOMFocusOut，选择了focusout。</li>
+<li>focus：在元素获得焦点时触发。这个事件不会冒泡；所有浏览器都支持它。</li>
+<li>focusin：在元素获得焦点时触发。这个事件与HTML 事件focus 等价，但它冒泡。支持这个事件的浏览器有IE5.5+、Safari 5.1+、Opera 11.5+和Chrome。</li>
+<li>focusout：在元素失去焦点时触发。这个事件是HTML 事件blur 的通用版本。支持这个事件的浏览器有IE5.5+、Safari 5.1+、Opera 11.5+和Chrome。</li>
+</ul>
+<p>最主要的两个是focus 和blur，它们都是JavaScript 早期就得到所有浏览器支持的事件。这些事件的最大问题是它们不冒泡。<br>因此，IE 的focusin 和focusout 与Opera 的DOMFocusIn和DOMFocusOut 才会发生重叠。IE 的方式最后被DOM3 级事件采纳为标准方式。<br>当焦点从页面中的一个元素移动到另一个元素，会依次触发下列事件：<br>(1) focusout 在失去焦点的元素上触发；<br>(2) focusin 在获得焦点的元素上触发；<br>(3) blur 在失去焦点的元素上触发；<br>(4) DOMFocusOut 在失去焦点的元素上触发；<br>(5) focus 在获得焦点的元素上触发；<br>(6) DOMFocusIn 在获得焦点的元素上触发。</p>
+<p>其中，blur、DOMFocusOut 和focusout 的事件目标是失去焦点的元素；而focus、DOMFocusIn和focusin 的事件目标是获得焦点的元素。<br>判断浏览器是否支持:<br><code>var isSupported = document.implementation.hasFeature(&quot;FocusEvent&quot;, &quot;3.0&quot;);</code><br>即使focus 和blur 不冒泡，也可以在捕获阶段侦听到它们。</p>
+<h3 id="鼠标与滚轮事件"><a href="#鼠标与滚轮事件" class="headerlink" title="鼠标与滚轮事件"></a>鼠标与滚轮事件</h3><p>鼠标事件是Web 开发中最常用的一类事件，毕竟鼠标还是最主要的定位设备。<br>DOM3 级事件中定义了9个鼠标事件:</p>
+<ul>
+<li>click：在用户单击主鼠标按钮(一般是左边的按钮)或者按下回车键时触发。这一点对确保易访问性很重要，意味着onclick 事件处理程序既可以通过键盘也可以通过鼠标执行。</li>
+<li>dblclick：在用户双击主鼠标按钮(一般是左边的按钮)时触发。从技术上说，这个事件并不是DOM2 级事件规范中规定的，但鉴于它得到了广泛支持，所以DOM3 级事件将其纳入了标准。</li>
+<li>mousedown：在用户按下了任意鼠标按钮时触发。不能通过键盘触发这个事件。</li>
+<li>mouseenter：在鼠标光标从元素外部首次移动到元素范围之内时触发。这个事件不冒泡，而且在光标移动到后代元素上不会触发。DOM2 级事件并没有定义这个事件，但DOM3 级事件将它纳入了规范。IE、Firefox 9+和Opera 支持这个事件。</li>
+<li>mouseleave：在位于元素上方的鼠标光标移动到元素范围之外时触发。这个事件不冒泡，而且在光标移动到后代元素上不会触发。DOM2 级事件并没有定义这个事件，但DOM3 级事件将它纳入了规范。IE、Firefox 9+和Opera 支持这个事件。</li>
+<li>mousemove：当鼠标指针在元素内部移动时重复地触发。不能通过键盘触发这个事件。</li>
+<li>mouseout：在鼠标指针位于一个元素上方，然后用户将其移入另一个元素时触发。又移入的另一个元素可能位于前一个元素的外部，也可能是这个元素的子元素。不能通过键盘触发这个事件。</li>
+<li>mouseover：在鼠标指针位于一个元素外部，然后用户将其首次移入另一个元素边界之内时触发。不能通过键盘触发这个事件。</li>
+<li>mouseup：在用户释放鼠标按钮时触发。不能通过键盘触发这个事件。</li>
+</ul>
+<p>页面上的所有元素都支持鼠标事件。<br>除了mouseenter 和mouseleave，所有鼠标事件都会冒泡，也可以被取消，而取消鼠标事件将会影响浏览器的默认行为。<br>取消鼠标事件的默认行为还会影响其他事件，因为鼠标事件与其他事件是密不可分的关系。<br>只有在同一个元素上相继触发mousedown 和mouseup 事件，才会触发click 事件；<br>如果mousedown 或mouseup 中的一个被取消，就不会触发click 事件。<br>只有触发两次click 事件，才会触发一次dblclick 事件。<br>如果有代码阻止了连续两次触发click 事件(可能是直接取消click事件，也可能通过取消mousedown 或mouseup 间接实现)，<br>那么就不会触发dblclick 事件了。</p>
+<p>4个事件触发的顺序始终如下：<br>(1) mousedown<br>(2) mouseup<br>(3) click<br>(4) mousedown<br>(5) mouseup<br>(6) click<br>(7) dblclick</p>
+<p>click 和dblclick 事件都会依赖于其他先行事件的触发；而mousedown 和mouseup 则不受其他事件的影响。<br>IE8 及之前版本中的实现有一个小bug，因此在双击事件中，会跳过第二个mousedown 和click事件:<br>(1) mousedown<br>(2) mouseup<br>(3) click<br>(4) mouseup<br>(5) dblclick<br>IE9 修复了这个bug。</p>
+<p>检测浏览器是否支持以上DOM2 级事件(除dbclick、mouseenter 和mouseleave 之外)：<br><code>var isSupported = document.implementation.hasFeature(&quot;MouseEvents&quot;, &quot;2.0&quot;);</code>]<br>检测浏览器是否支持上面的所有事件：<br><code>var isSupported = document.implementation.hasFeature(&quot;MouseEvent&quot;, &quot;3.0&quot;)</code><br>DOM3 级事件的feature 名是”MouseEvent”，而非”MouseEvents”。</p>
+<p>鼠标事件中还有一类滚轮事件。<br>而说是一类事件，其实就是一个mousewheel 事件。<br>这个事件跟踪鼠标滚轮，类似于Mac 的触控板。</p>
+<h4 id="客户区坐标位置"><a href="#客户区坐标位置" class="headerlink" title="客户区坐标位置"></a>客户区坐标位置</h4><p>鼠标事件都是在浏览器视口中的特定位置上发生的。<br>这个位置信息保存在事件对象的clientX 和clientY 属性中。<br>所有浏览器都支持这两个属性，它们的值表示事件发生时鼠标指针在视口中的水平和垂直坐标。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">EventUtil.addHandler(div, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    alert(<span class="string">"Client coordinates: "</span> + event.clientX + <span class="string">","</span> + event.clientY);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>当用户单击这个元素时，就会看到事件的客户端坐标信息。<br>注意，这些值中不包括页面滚动的距离，因此这个位置并不表示鼠标在页面上的位置。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/16/javascript-note-13-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十三章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十三章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/16/javascript-note-13-4/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十三章-4">
+                《 JavaScript 高级程序设计》备忘-第十三章-4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件流"><span class="nav-number">1.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件类型"><span class="nav-number">1.1.</span> <span class="nav-text">事件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UI事件"><span class="nav-number">1.1.1.</span> <span class="nav-text">UI事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#load-事件"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">load 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unload-事件"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">unload 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resize-事件"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">resize 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scroll-事件"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">scroll 事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#焦点事件"><span class="nav-number">1.1.2.</span> <span class="nav-text">焦点事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标与滚轮事件"><span class="nav-number">1.1.3.</span> <span class="nav-text">鼠标与滚轮事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户区坐标位置"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">客户区坐标位置</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

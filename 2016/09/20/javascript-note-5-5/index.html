@@ -112,7 +112,7 @@ Global 对象Global (全局">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="单体内置对象内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”开发人员不必显式地实例化内置对象，因为它们已经实例化了。大多数内置对象，例如 Object 、 Array 和 String 。ECMA-262 还定义了两个单体内置对象： Global 和 Math 。
 Global 对象Global (全局">
-<meta property="og:updated_time" content="2016-10-04T06:00:03.363Z">
+<meta property="og:updated_time" content="2016-10-15T09:51:15.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第五章-5">
 <meta name="twitter:description" content="单体内置对象内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”开发人员不必显式地实例化内置对象，因为它们已经实例化了。大多数内置对象，例如 Object 、 Array 和 String 。ECMA-262 还定义了两个单体内置对象： Global 和 Math 。
@@ -388,10 +388,10 @@ Boolean     SyntaxError     String
 TypeError   Number          URIError
 </code></pre><p>ECMAScript 5 明确禁止给 undefined 、 NaN 和 Infinity 赋值，这样做即使在非严格模式下也会导致错误。</p>
 <h3 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h3><p>ECMAScript 虽然没有指出如何直接访问 Global 对象，但 Web 浏览器都是将这个全局对象作为 window 对象的一部分加以实现的。<br>因此，在全局作用域中声明的所有变量和函数，就都成为了 window 对象的属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">"red"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="built_in">window</span>.color);</div><div class="line">&#125;</div><div class="line"><span class="built_in">window</span>.sayColor(); <span class="comment">//"red"</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">"red"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="built_in">window</span>.color);</div><div class="line">&#125;</div><div class="line"><span class="built_in">window</span>.sayColor(); <span class="comment">//"red"</span></div></pre></td></tr></table></figure>
 <p>JavaScript 中的 window 对象除了扮演 ECMAScript 规定的 Global 对象的角色外，还承担了很多别的任务。</p>
 <p>另一种取得 Global 对象的方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> global = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> global = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
 <h2 id="Math-对象"><a href="#Math-对象" class="headerlink" title="Math 对象"></a>Math 对象</h2><h3 id="Math-对象的属性"><a href="#Math-对象的属性" class="headerlink" title="Math 对象的属性"></a>Math 对象的属性</h3><pre><code>属性          说明
 Math.E          自然对数的底数，即常量 e 的值
 Math.LN10       10的自然对数
@@ -406,7 +406,7 @@ Math.SQRT2      2的平方根
 <h3 id="舍入方法"><a href="#舍入方法" class="headerlink" title="舍入方法"></a>舍入方法</h3><p>Math.ceil() 执行向上舍入，即它总是将数值向上舍入为最接近的整数；<br>Math.floor() 执行向下舍入，即它总是将数值向下舍入为最接近的整数；<br>Math.round() 执行标准舍入，即它总是将数值四舍五入为最接近的整数(这也是我们在数学课上学到的舍入规则)。</p>
 <h3 id="random-方法"><a href="#random-方法" class="headerlink" title="random() 方法"></a>random() 方法</h3><p><code>值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)</code><br>想选择一个 1到 10 之间的数值的话，<br><code>var num = Math.floor(Math.random() * 10 + 1);</code><br>想要选择一个介于 2 到 10 之间的值的话,<br><code>var num = Math.floor(Math.random() * 9 + 2);</code></p>
 <p>也可以写成函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectFrom</span>(<span class="params">lowerValue, upperValue</span>) </span>&#123;</div><div class="line"><span class="keyword">var</span> choices = upperValue - lowerValue + <span class="number">1</span>;</div><div class="line"><span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * choices + lowerValue);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> num = selectFrom(<span class="number">2</span>, <span class="number">10</span>);</div><div class="line">alert(num); <span class="comment">// 介于 2 和 10 之间(包括 2 和 10)的一个数值</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectFrom</span>(<span class="params">lowerValue, upperValue</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> choices = upperValue - lowerValue + <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * choices + lowerValue);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> num = selectFrom(<span class="number">2</span>, <span class="number">10</span>);</div><div class="line">alert(num); <span class="comment">// 介于 2 和 10 之间(包括 2 和 10)的一个数值</span></div></pre></td></tr></table></figure>
 <h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><pre><code>Math.abs(num)           返回 num 的绝对值
 Math.asin(x)            返回 x 的反正弦值
 Math.exp(num)           返回 Math.E 的 num 次幂
@@ -530,7 +530,7 @@ Math.tan(x)             返回 x 的正切值
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -719,7 +719,7 @@ Math.tan(x)             返回 x 的正切值
 
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
@@ -728,10 +728,10 @@ Math.tan(x)             返回 x 的正切值
   <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>

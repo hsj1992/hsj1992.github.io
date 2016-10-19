@@ -1,0 +1,910 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="事件流事件类型键盘与文本事件键码在发生keydown 和keyup 事件时，event 对象的keyCode 属性中会包含一个代码，与键盘上一个特定的键对应。对数字字母字符键，keyCode 属性的值与ASCII 码中对应小写字母或数字的编码相同。数字键7 的keyCode 值为55，而字母A 键的keyCode 值为65——与Shift 键的状态无关。DOM 和IE 的event 对象都支持ke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十三章-5">
+<meta property="og:url" content="http://codingme.xyz/2016/10/16/javascript-note-13-5/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="事件流事件类型键盘与文本事件键码在发生keydown 和keyup 事件时，event 对象的keyCode 属性中会包含一个代码，与键盘上一个特定的键对应。对数字字母字符键，keyCode 属性的值与ASCII 码中对应小写字母或数字的编码相同。数字键7 的keyCode 值为55，而字母A 键的keyCode 值为65——与Shift 键的状态无关。DOM 和IE 的event 对象都支持ke">
+<meta property="og:updated_time" content="2016-10-18T06:23:42.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十三章-5">
+<meta name="twitter:description" content="事件流事件类型键盘与文本事件键码在发生keydown 和keyup 事件时，event 对象的keyCode 属性中会包含一个代码，与键盘上一个特定的键对应。对数字字母字符键，keyCode 属性的值与ASCII 码中对应小写字母或数字的编码相同。数字键7 的keyCode 值为55，而字母A 键的keyCode 值为65——与Shift 键的状态无关。DOM 和IE 的event 对象都支持ke">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/16/javascript-note-13-5/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十三章-5 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十三章-5
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-16T16:25:05+08:00" content="2016-10-16">
+              2016-10-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="键盘与文本事件"><a href="#键盘与文本事件" class="headerlink" title="键盘与文本事件"></a>键盘与文本事件</h3><h4 id="键码"><a href="#键码" class="headerlink" title="键码"></a>键码</h4><p>在发生keydown 和keyup 事件时，event 对象的keyCode 属性中会包含一个代码，与键盘上一个特定的键对应。<br>对数字字母字符键，keyCode 属性的值与ASCII 码中对应小写字母或数字的编码相同。<br>数字键7 的keyCode 值为55，而字母A 键的keyCode 值为65——与Shift 键的状态无关。<br>DOM 和IE 的event 对象都支持keyCode 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.getElementById(<span class="string">"myText"</span>);</div><div class="line">EventUtil.addHandler(textbox, <span class="string">"keyup"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    alert(event.keyCode);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>用户每次在文本框中按键触发keyup 事件时，都会显示keyCode 的值。<br>无论keydown 或keyup 事件都会存在的一些特殊情况。<br>在Firefox 和Opera 中，按分号键时keyCode值为59，也就是ASCII 中分号的编码；但IE 和Safari 返回186，即键盘中按键的键码。<br><a id="more"></a></p>
+<h4 id="字符编码"><a href="#字符编码" class="headerlink" title="字符编码"></a>字符编码</h4><p>发生keypress 事件意味着按下的键会影响到屏幕中文本的显示。<br>在所有浏览器中，按下能够插入或删除字符的键都会触发keypress 事件；按下其他键能否触发此事件因浏览器而异。<br>IE9、Firefox、Chrome 和Safari 的event 对象都支持一个charCode 属性，<br>这个属性只有在发生keypress 事件时才包含值，而且这个值是按下的那个键所代表字符的ASCII 编码。<br>此时的keyCode通常等于0 或者也可能等于所按键的键码。<br>IE8 及之前版本和Opera 则是在keyCode 中保存字符的ASCII编码。<br>要想以跨浏览器的方式取得字符编码，必须首先检测charCode 属性是否可用，如果不可用则使用keyCode。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> EventUtil = &#123;</div><div class="line">    <span class="comment">//省略的代码</span></div><div class="line">    getCharCode: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> event.charCode == <span class="string">"number"</span>)&#123;</div><div class="line">            <span class="keyword">return</span> event.charCode;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> event.keyCode;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//省略的代码</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>先检测charCode 属性是否包含数值(在不支持这个属性的浏览器中，值为undefined)，<br>否则，就返回keyCode 属性值。<br>在取得了字符编码之后，就可以使用String.fromCharCode()将其转换成实际的字符。</p>
+<h4 id="DOM3-级变化"><a href="#DOM3-级变化" class="headerlink" title="DOM3 级变化"></a>DOM3 级变化</h4><p>DOM3级事件中的键盘事件，不再包含charCode 属性，而是包含两个新属性：key 和char。<br>key 属性是为了取代keyCode 而新增的，它的值是一个字符串。<br>在按下某个字符键时，key的值就是相应的文本字符(如“k”或“M”)；<br>在按下非字符键时， key 的值是相应键的名(如“Shift”或“Down”)<br>而char 属性在按下字符键时的行为与key 相同，但在按下非字符键时值为null。</p>
+<p>IE9 支持key 属性，但不支持char 属性。Safari 5 和Chrome 支持名为keyIdentifier 的属性，<br>在按下非字符键(例如Shift)的情况下与key 的值相同。</p>
+<p>由于存在跨浏览器问题，因此本书不推荐使用key、keyIdentifier 或char。</p>
+<p>DOM3 级事件还添加了一个名为location 的属性，这是一个数值，表示按下了什么位置上的键：<br>0 表示默认键盘，1 表示左侧位置(例如左位的Alt 键)，2 表示右侧位置(例如右侧的Shift 键)，<br>3 表示数字小键盘，4 表示移动设备键盘(也就是虚拟键盘)，5 表示手柄(如任天堂Wii 控制器)。<br>IE9 支持这个属性。Safari 和Chrome 支持名为keyLocation 的等价属性，但即有bug——值始终是0，除非按下了数字键盘(此时，值 为3)；否则，不会是1、2、4、5。</p>
+<p>与key 属性一样，支持location 的浏览器也不多，所以在跨浏览器开发中不推荐使用。<br>最后是给event 对象添加了getModifierState()方法。<br>这个方法接收一个参数，即等于Shift、Control、AltGraph 或Meta 的字符串，表示要检测的修改键。<br>如果指定的修改键是活动的(也就是处于被按下的状态)，这个方法返回true，否则返回false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.getElementById(<span class="string">"myText"</span>);</div><div class="line">EventUtil.addHandler(textbox, <span class="string">"keypress"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">if</span> (event.getModifierState)&#123;</div><div class="line">        alert(event.getModifierState(<span class="string">"Shift"</span>));</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>实际上，通过event 对象的shiftKey、altKey、ctrlKey 和metaKey 属性已经可以取得类似的属性了。<br>IE9 是唯一支持getModifierState()方法的浏览器。</p>
+<h4 id="textInput-事件"><a href="#textInput-事件" class="headerlink" title="textInput 事件"></a>textInput 事件</h4><p>“DOM3 级事件”规范中引入了一个新事件，名叫textInput。<br>根据规范，当用户在可编辑区域中输入字符时，就会触发这个事件。<br>这个用于替代keypress 的textInput 事件的行为稍有不同。<br>区别之一就是任何可以获得焦点的元素都可以触发keypress 事件，但只有可编辑区域才能触发textInput事件。<br>区别之二是textInput 事件只会在用户按下能够输入实际字符的键时才会被触发，而keypress事件则在按下那些能够影响文本显示的键时也会触发(例如退格键)。<br>由于textInput 事件主要考虑的是字符，因此它的event 对象中还包含一个data 属性，这个属性的值就是用户输入的字符(而非字符编码)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.getElementById(<span class="string">"myText"</span>);</div><div class="line">EventUtil.addHandler(textbox, <span class="string">"textInput"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    alert(event.data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>插入到文本框中的字符会通过一个警告框显示出来。<br>event 对象上还有一个属性，叫inputMethod，表示把文本输入到文本框中的方式。</p>
+<ul>
+<li>0，表示浏览器不确定是怎么输入的。</li>
+<li>1，表示是使用键盘输入的。</li>
+<li>2，表示文本是粘贴进来的。</li>
+<li>3，表示文本是拖放进来的。</li>
+<li>4，表示文本是使用IME 输入的。</li>
+<li>5，表示文本是通过在表单中选择某一项输入的。</li>
+<li>6，表示文本是通过手写输入的(比如使用手写笔)。</li>
+<li>7，表示文本是通过语音输入的。</li>
+<li>8，表示文本是通过几种方法组合输入的。</li>
+<li>9，表示文本是通过脚本输入的。</li>
+</ul>
+<p>支持textInput 属性的浏览器有IE9+、Safari 和Chrome。只有IE 支持inputMethod 属性。</p>
+<h4 id="设备中的键盘事件"><a href="#设备中的键盘事件" class="headerlink" title="设备中的键盘事件"></a>设备中的键盘事件</h4><p>iOS 版Safari 和Android 版WebKit 在使用屏幕键盘时会触发键盘事件。</p>
+<h3 id="复合事件"><a href="#复合事件" class="headerlink" title="复合事件"></a>复合事件</h3><p>复合事件(composition event)是DOM3 级事件中新添加的一类事件，用于处理IME 的输入序列。<br>IME(Input Method Editor，输入法编辑器)可以让用户输入在物理键盘上找不到的字符。<br>IME 通常需要同时按住多个键，但最终只输入一个字符。</p>
+<p>IE9+是到2011 年唯一支持复合事件的浏览器。由于缺少支持，对于需要开发跨浏览器应用的开发人员，它的用处不大。</p>
+<h3 id="变动事件"><a href="#变动事件" class="headerlink" title="变动事件"></a>变动事件</h3><p>DOM2 级的变动(mutation)事件能在DOM 中的某一部分发生变化时给出提示。<br>变动事件是为XML或HTML DOM设计的，并不特定于某种语言。DOM2 级定义了如下变动事件。</p>
+<ul>
+<li>DOMSubtreeModified：在DOM 结构中发生任何变化时触发。这个事件在其他任何事件触发后都会触发。</li>
+<li>DOMNodeInserted：在一个节点作为子节点被插入到另一个节点中时触发。</li>
+<li>DOMNodeRemoved：在节点从其父节点中被移除时触发。</li>
+<li>DOMNodeInsertedIntoDocument：在一个节点被直接插入文档或通过子树间接插入文档之后触发。这个事件在DOMNodeInserted 之后触发。</li>
+<li>DOMNodeRemovedFromDocument：在一个节点被直接从文档中移除或通过子树间接从文档中移除之前触发。这个事件在DOMNodeRemoved 之后触发。</li>
+<li>DOMAttrModified：在特性被修改之后触发。</li>
+<li>DOMCharacterDataModified：在文本节点的值发生变化时触发。</li>
+</ul>
+<p>使用代码检测浏览器是否支持变动事件：<br><code>var isSupported = document.implementation.hasFeature(&quot;MutationEvents&quot;, &quot;2.0&quot;);</code><br>IE8 及更早版本不支持任何变动事件。</p>
+<h4 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h4><p>在使用removeChild()或replaceChild()从DOM中删除节点时，首先会触发DOMNodeRemoved事件。<br>这个事件的目标(event.target)是被删除的节点，而event.relatedNode 属性中包含着对目标节点父节点的引用。<br>在这个事件触发时，节点尚未从其父节点删除，<br>因此其parentNode 属性仍然指向父节点(与event.relatedNode 相同)。<br>这个事件会冒泡，因而可以在DOM 的任何层次上面处理它。</p>
+<p>如果被移除的节点包含子节点，那么在其所有子节点以及这个被移除的节点上会相继触发DOMNodeRemovedFromDocument 事件。<br>但这个事件不会冒泡，所以只有直接指定给其中一个子节点的事件处理程序才会被调用。<br>这个事件的 target 目标是相应的子节点或者那个被移除的节点，除此之外event对象中不包含其他信息。<br>紧随其后触发的是DOMSubtreeModified 事件。这个事件的目标是被移除节点的父节点；此时的event 对象也不会提供与事件相关的其他信息。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">!</span> <span class="attr">DOCTYPE</span> <span class="attr">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Node Removal Events Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myList"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>假设要移除<code>&lt;ul&gt;</code>元素。</p>
+<p>(1) 在<code>&lt;ul&gt;</code>元素上触发DOMNodeRemoved 事件。relatedNode 属性等于document.body。<br>(2) 在<code>&lt;ul&gt;</code>元素上触发DOMNodeRemovedFromDocument 事件。<br>(3) 在身为<code>&lt;ul&gt;</code>元素子节点的每个<code>&lt;li&gt;</code>元素及文本节点上触发DOMNodeRemovedFromDocument事件。<br>(4) 在document.body 上触发DOMSubtreeModified 事件，因为<code>&lt;ul&gt;</code>元素是document.body的直接子元素。</p>
+<h4 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h4><p>在使用appendChild()、replaceChild()或insertBefore()向DOM中插入节点时，首先会触发DOMNodeInserted 事件。<br>这个事件的目标是被插入的节点，而event.relatedNode 属性中包含一个对父节点的引用。<br>在这个事件触发时，节点已经被插入到了新的父节点中。这个事件是冒泡的，因此可以在DOM 的各个层次上处理它。<br>紧接着，会在新插入的节点上面触发DOMNodeInsertedIntoDocument 事件。<br>这个事件不冒泡，因此必须在插入节点之前为它添加这个事件处理程序。<br>这个事件的目标是被插入的节点，除此之外event 对象中不包含其他信息。<br>最后一个触发的事件是DOMSubtreeModified，触发于新插入节点的父节点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> list = <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>);</div><div class="line">    <span class="keyword">var</span> item = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line">    item.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Item 4"</span>));</div><div class="line">    EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"DOMSubtreeModified"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        alert(event.type);</div><div class="line">        alert(event.target);</div><div class="line">    &#125;);</div><div class="line">    EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"DOMNodeInserted"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        alert(event.type);</div><div class="line">        alert(event.target);</div><div class="line">        alert(event.relatedNode);</div><div class="line">    &#125;);</div><div class="line">    EventUtil.addHandler(item, <span class="string">"DOMNodeInsertedIntoDocument"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        alert(event.type);</div><div class="line">        alert(event.target);</div><div class="line">    &#125;);</div><div class="line">    list.appendChild(item);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>首先创建了一个包含文本”Item 4”的新<code>&lt;li&gt;</code>元素。由于DOMSubtreeModified 和DOMNodeInserted 事件是冒泡的，所以把它们的事件处理程序添加到了文档中。<br>在将列表项插入到其父节点之前，先将DOMNodeInsertedIntoDocument 事件的事件处理程序添加给它。<br>最后一步就是使用appendChild()来添加这个列表项。<br>事件开始依次被触发。<br>首先是在新<code>&lt;li&gt;</code>元素项上触发DOMNodeInserted 事件，其relatedNode 是<code>&lt;ul&gt;</code>元素。(冒泡到document的事件处理程序)<br>然后是触发新<code>&lt;li&gt;</code>元素上的DOMNodeInsertedIntoDocument 事件，(不是冒泡)<br>最后触发的是<code>&lt;ul&gt;</code>元素上的DOMSubtreeModified 事件。(同样冒泡到document)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/16/javascript-note-13-4/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十三章-4">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十三章-4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/18/javascript-note-13-6/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十三章-6">
+                《 JavaScript 高级程序设计》备忘-第十三章-6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事件流"><span class="nav-number">1.</span> <span class="nav-text">事件流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件类型"><span class="nav-number">1.1.</span> <span class="nav-text">事件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#键盘与文本事件"><span class="nav-number">1.1.1.</span> <span class="nav-text">键盘与文本事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#键码"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">键码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符编码"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">字符编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM3-级变化"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">DOM3 级变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#textInput-事件"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">textInput 事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设备中的键盘事件"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">设备中的键盘事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复合事件"><span class="nav-number">1.1.2.</span> <span class="nav-text">复合事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变动事件"><span class="nav-number">1.1.3.</span> <span class="nav-text">变动事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除节点"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入节点"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">插入节点</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
