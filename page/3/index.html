@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/02/javascript-note-9-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第九章-2
+                <a class="post-title-link" href="/2016/10/24/javascript-note-15-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十十五章-2
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-02T09:24:50+08:00" content="2016-10-02">
-              2016-10-02
+            <time itemprop="dateCreated" datetime="2016-10-24T15:38:08+08:00" content="2016-10-24">
+              2016-10-24
             </time>
           </span>
 
@@ -360,13 +360,16 @@
 
       
         
-          <h1 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h1><p>首先要确定的往往是你需要多么具体的浏览器信息。<br>一般情况下，知道呈现引擎和最低限度的版本就足以决定正确的操作方法了。<br>不推荐的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isIE6 || isIE7) &#123; <span class="comment">//不推荐!!!</span></div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种代码其实是很脆弱的，因为它要依据特定的版本来决定做什么。<br>如果是IE8 怎么办呢？只要IE 有新版本出来，就必须更新这些代码。</p>
-<p>使用这类代码可以避免：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ieVer &gt;=<span class="number">6</span>)&#123;</div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="2D-上下文"><a href="#2D-上下文" class="headerlink" title="2D 上下文"></a>2D 上下文</h2><h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><p>通过上下文的变换，可以把处理后的图像绘制到画布上。<br>2D 绘制上下文支持各种基本的绘制变换。<br>创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。<br>为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。</p>
+<ul>
+<li>rotate(angle)：围绕原点旋转图像angle 弧度。</li>
+<li>scale(scaleX, scaleY)：缩放图像，在x 方向乘以scaleX，在y 方向乘以scaleY。scaleX和scaleY 的默认值都是1.0。</li>
+<li>translate(x, y)：将坐标原点移动到(x,y)。执行这个变换之后，坐标(0,0)会变成之前由(x,y)表示的点。</li>
+<li>transform(m1_1, m1_2, m2_1, m2_2, dx, dy)：直接修改变换矩阵，方式是乘以如下矩阵。<br>  m1_1    m1_2    dx<br>  m2_1    m2_2    dy<br>  0       0       1</li>
+<li>setTransform(m1_1, m1_2, m2_1, m2_2, dx, dy)：将变换矩阵重置为默认状态，然后再调用transform()。</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/02/javascript-note-9-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/24/javascript-note-15-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -417,8 +420,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/30/javascript-note-9-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第九章-1
+                <a class="post-title-link" href="/2016/10/23/javascript-note-15-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十十五章-1
                 </a>
               
             
@@ -431,8 +434,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
-              2016-09-30
+            <time itemprop="dateCreated" datetime="2016-10-23T13:00:25+08:00" content="2016-10-23">
+              2016-10-23
             </time>
           </span>
 
@@ -479,14 +482,11 @@
 
       
         
-          <h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么(也是更常见的)就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”(quirk)，多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
-<p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
-<h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>(又称特性检测)。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (object.propertyInQuestion)&#123;</div><div class="line">    <span class="comment">//使用object.propertyInQuestion</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>举例来说，IE5.0 之前的版本不支持document.getElementById()这个DOM 方法。<br>尽管可以使用非标准的document.all 属性实现相同的目的，<br>但IE 的早期版本中确实不存在document.getElementById()。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.all)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.all[id];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p>HTML5 添加的最受欢迎的功能。<br>在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。<br>IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持<code>&lt;canvas&gt;</code>。<br>与浏览器环境中的其他组件类似，<code>&lt;canvas&gt;</code>由几组API 构成，但并非所有浏览器都支持所有这些API。<br><code>&lt;canvas&gt;</code>还建议了一个名为WebGL 的3D 上下文。<br>目前，支持该元素的浏览器都支持2D 上下文及文本API，但对WebGL 的支持还不够好。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>先设置其width 和height 属性，指定可以绘图的区域大小。<br>出现在开始和结束标签中的内容是<strong>后备(替换)信息</strong>，如果浏览器不支持<code>&lt;canvas&gt;</code>元素，就会显示这些信息。<br><code>&lt;canvas id=&quot;drawing&quot; width=&quot; 200&quot; height=&quot;200&quot;&gt;&lt;img src=&quot;images/clock.png&quot; width=&quot;150&quot; height=&quot;150&quot; alt=&quot;&quot;/&gt;&lt;/canvas&gt;</code><br>也能通过CSS 为该元素添加样式，如果不添加任何样式或者不绘制任何图形，在页面中是看不到该元素的。<br>要在这块画布（canvas）上绘图，需要取得绘图上下文。<br>而取得绘图上下文对象的引用，需要调用getContext()方法并传入上下文的名字。<br>传入”2d”，就可以取得2D 上下文对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//更多代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/30/javascript-note-9-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/23/javascript-note-15-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -537,8 +537,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第八章-2
+                <a class="post-title-link" href="/2016/10/20/javascript-note-14-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-4
                 </a>
               
             
@@ -551,8 +551,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
-              2016-09-30
+            <time itemprop="dateCreated" datetime="2016-10-20T11:12:59+08:00" content="2016-10-20">
+              2016-10-20
             </time>
           </span>
 
@@ -599,844 +599,64 @@
 
       
         
-          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
-<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
-<pre><code>hash &quot;#contents&quot; 返回URL中的hash(#号后跟零或多个字符)，如果URL中不包含散列，则返回空字符串
-host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号(如果有)
-hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
-href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
-toString()方法也返回这个值
-pathname &quot;/WileyCDA/&quot; 返回URL中的目录和(或)文件名
-port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
-这个属性返回空字符串
-protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
-search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/29/javascript-note-8-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第八章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-29T10:39:11+08:00" content="2016-09-29">
-              2016-09-29
-            </time>
-          </span>
+          
+            <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="富文本编辑"><a href="#富文本编辑" class="headerlink" title="富文本编辑"></a>富文本编辑</h2><p>富文本编辑，又称为WYSIWYG（What You See Is What You Get，所见即所得）。<br>在网页中编辑富文本内容，是人们对Web 应用程序最大的期待之一。<br>这一技术的本质，就是在页面中嵌入一个包含空HTML 页面的iframe。<br>通过设置designMode 属性，这个空白的HTML 页面可以被编辑，<br>而编辑对象则是该页面<code>&lt;body&gt;</code>元素的HTML 代码。<br>designMode 属性有两个可能的值：”off”（默认值）和”on”。<br>在设置为”on”时，整个文档都会变得可以编辑（显示插入符号），然后就可以像使用字处理软件一样，通过键盘将文本内容加粗、变成斜体。</p>
+<p>可以给iframe 指定一个非常简单的HTML 页面作为其内容来源。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Blank Page for Rich Text Editing<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这个页面在iframe 中可以像其他页面一样被加载。<br>要让它可以编辑，必须要将designMode 设置为”on”，但只有在页面完全加载之后才能设置这个属性。<br>因此，在包含页面中，需要使用onload 事件处理程序来在恰当的时刻设置designMode。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">name</span>=<span class="string">"richedit"</span> <span class="attr">style</span>=<span class="string">"height:100px;width:100px;"</span> <span class="attr">src</span>=<span class="string">"blank.htm"</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    frames[<span class="string">"richedit"</span>].document.designMode = <span class="string">"on"</span>;</div><div class="line">&#125;);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以上代码执行之后，就会在页面中看到一个类似文本框的可编辑区字段。<br>这个区字段具有与其他网页相同的默认样式；不过，通过为空白页面应用CSS 样式，可以修改可编辑区字段的外观。</p>
+<h3 id="使用contenteditable属性"><a href="#使用contenteditable属性" class="headerlink" title="使用contenteditable属性"></a>使用contenteditable属性</h3><p>另一种编辑富文本内容的方式是使用名为 contenteditable 的特殊属性，这个属性也是由IE 最早实现的。<br>可以把contenteditable 属性应用给页面中的任何元素，然后用户立即就可以编辑该元素。<br>这种方法之所以受到欢迎，是因为它不需要iframe、空白页和JavaScript，只要为元素设置contenteditable 属性即可。<br>元素中包含的任何文本内容就都可以编辑了，就好像这个元素变成了<code>&lt;textarea&gt;</code>元素一样。<br>contenteditable 属性有三个可能的值：”true”表示打开、”false”表示关闭，”inherit”表示从父元素那里继承。</p>
+<p>支持contenteditable属性的元素有IE、Firefox、Chrome、Safari 和Opera。</p>
+<h3 id="操作富文本"><a href="#操作富文本" class="headerlink" title="操作富文本"></a>操作富文本</h3><p>与富文本编辑器交互的主要方式，就是使用document.execCommand()。<br>这个方法可以对文档执行预定义的命令，而且可以应用大多数格式。<br>可以为document.execCommand()方法传递3 个参数：<br>要执行的命令名称、表示浏览器是否应该为当前命令提供用户界面的一个布尔值<br>和执行命令必须的一个值（如果不需要值，则传递null）。</p>
+<p>为了确保跨浏览器的兼容性，第二个参数应该始终设置为false，因为Firefox 会在该参数为true 时抛出错误。</p>
+<p>与剪贴板有关的命令在不同浏览器中的差异极大。</p>
+<p>可以在任何时候使用这些命令来修改富文本区域的外观。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//转换粗体文本</span></div><div class="line">frames[<span class="string">"richedit"</span>].document.execCommand(<span class="string">"bold"</span>, <span class="literal">false</span>, <span class="literal">null</span>);</div><div class="line"><span class="comment">//转换斜体文本</span></div><div class="line">frames[<span class="string">"richedit"</span>].document.execCommand(<span class="string">"italic"</span>, <span class="literal">false</span>, <span class="literal">null</span>);</div><div class="line"><span class="comment">//创建指向www.wrox.com 的链接</span></div><div class="line">frames[<span class="string">"richedit"</span>].document.execCommand(<span class="string">"createlink"</span>, <span class="literal">false</span>,</div><div class="line"><span class="string">"http://www.wrox.com"</span>);</div><div class="line"><span class="comment">//格式化为1 级标题</span></div><div class="line">frames[<span class="string">"richedit"</span>].document.execCommand(<span class="string">"formatblock"</span>, <span class="literal">false</span>, <span class="string">"&lt;h1&gt;"</span>);</div></pre></td></tr></table></figure>
+<p>同样的方法也适用于页面中contenteditable 属性为”true”的区块，只要把对框架的引用替换成当前窗口的document 对象即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//转换粗体文本</span></div><div class="line"><span class="built_in">document</span>.execCommand(<span class="string">"bold"</span>, <span class="literal">false</span>, <span class="literal">null</span>);</div><div class="line"><span class="comment">//转换斜体文本</span></div><div class="line"><span class="built_in">document</span>.execCommand(<span class="string">"italic"</span>, <span class="literal">false</span>, <span class="literal">null</span>);</div><div class="line"><span class="comment">//创建指向www.wrox.com 的链接</span></div><div class="line"><span class="built_in">document</span>.execCommand(<span class="string">"createlink"</span>, <span class="literal">false</span>,</div><div class="line"><span class="string">"http://www.wrox.com"</span>);</div><div class="line"><span class="comment">//格式化为1 级标题</span></div><div class="line"><span class="built_in">document</span>.execCommand(<span class="string">"formatblock"</span>, <span class="literal">false</span>, <span class="string">"&lt;h1&gt;"</span>);</div></pre></td></tr></table></figure>
+<p>虽然所有浏览器都支持这些命令，但这些命令所产生的HTML 仍然有很大不同。<br>例如，执行bold 命令时，IE 和Opera 会使用<code>&lt;strong&gt;</code>标签包围文本，Safari 和Chrome 使用<code>&lt;b&gt;</code>标签，而Firefox 则使用<code>&lt;span&gt;</code>标签。<br>由于各个浏览器实现命令的方式不同，加上它们通过innerHTML 实现转换的方式也不一样，因此不能指望富文本编辑器会产生一致的HTML。</p>
+<p>除了命令之外，还有一些与命令相关的方法。<br>第一个方法就是queryCommandEnabled()，可以用它来检测是否可以针对当前选择的文本，或者当前插入字符所在位置执行某个命令。<br>接收一个参数，即要检测的命令。如果当前编辑区域允许执行传入的命令，这个方法返回true，否则返回false。<br><code>var result = frames[&quot;richedit&quot;].document.queryCommandEnabled(&quot;bold&quot;);</code><br>如果能够对当前选择的文本执行”bold”命令，以上代码会返回true。<br>需要注意的是，queryCommandEnabled()方法返回true，并不意味着实际上就可以执行相应命令，而只能说明对当前选择的文本执行相应命令是否合适。<br>例如，Firefox 在默认情况下会禁用剪切操作，但执行queryCommandEnabled(“cut”)也可能会返回true。</p>
+<p>queryCommandState()方法用于确定是否已将指定命令应用到了选择的文本。<br>例如，要确定当前选择的文本是否已经转换成了粗体:<br><code>var isBold = frames[&quot;richedit&quot;].document.queryCommandState(&quot;bold&quot;);</code><br>如果此前已经对选择的文本执行了”bold”命令，那么上面的代码会返回true。<br>一些功能全面的富文本编辑器，正是利用这个方法来更新粗体、斜体等按钮的状态的。<br>最后一个方法是queryCommandValue()，用于取得执行命令时传入的值（即前面例子中传给document.execCommand()的第三个参数）。<br>例如，在对一段文本应用”fontsize”命令时如果传入了7，那么下面的代码就会返回”7”：<br><code>var fontSize = frames[&quot;richedit&quot;].document.queryCommandValue(&quot;fontsize&quot;);</code></p>
+<h3 id="富文本选区"><a href="#富文本选区" class="headerlink" title="富文本选区"></a>富文本选区</h3><p>在富文本编辑器中，使用框架（iframe）的getSelection()方法，可以确定实际选择的文本。<br>这个方法是window 对象和document 对象的属性，调用它会返回一个表示当前选择文本的Selection对象。<br>每个Selection 对象都有下列属性。</p>
+<ul>
+<li>anchorNode：选区起点所在的节点。</li>
+<li>anchorOffset：在到达选区起点位置之前跳过的anchorNode 中的字符数量。</li>
+<li>focusNode：选区终点所在的节点。</li>
+<li>focusOffset：focusNode 中包含在选区之内的字符数量。</li>
+<li>isCollapsed：布尔值，表示选区的起点和终点是否重合。</li>
+<li>rangeCount：选区中包含的DOM 范围的数量。</li>
+</ul>
+<p>Selection 对象的这些属性并没有包含多少有用的信息。<br>好在，该对象的方法提供了更多信息，并且支持对选区的操作。</p>
+<ul>
+<li>addRange(range)：将指定的DOM 范围添加到选区中。</li>
+<li>collapse(node, offset)：将选区折叠到指定节点中的相应的文本偏移位置。</li>
+<li>collapseToEnd()：将选区折叠到终点位置。</li>
+<li>collapseToStart()：将选区折叠到起点位置。</li>
+<li>containsNode(node)：确定指定的节点是否包含在选区中。</li>
+<li>deleteFromDocument()：从文档中删除选区中的文本，与document.execCommand(“delete”,false, null)命令的结果相同。</li>
+<li>extend(node, offset)：通过将focusNode 和focusOffset 移动到指定的值来扩展选区。</li>
+<li>getRangeAt(index)：返回索引对应的选区中的DOM范围。</li>
+<li>removeAllRanges()：从选区中移除所有DOM 范围。实际上，这样会移除选区，因为选区中至少要有一个范围。</li>
+<li>reomveRange(range)：从选区中移除指定的DOM 范围。</li>
+<li>selectAllChildren(node)：清除选区并选择指定节点的所有子节点。</li>
+<li>toString()：返回选区所包含的文本内容。</li>
+</ul>
+<p>利用了DOM范围来管理选区。<br>由于可以直接操作选择文本的DOM 表现，因此访问DOM范围与使用execCommand()相比，能够对富文本编辑器进行更加细化的控制。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> selection = frames[<span class="string">"richedit"</span>].getSelection();</div><div class="line"><span class="comment">//取得选择的文本</span></div><div class="line"><span class="keyword">var</span> selectedText = selection.toString();</div><div class="line"><span class="comment">//取得代表选区的范围</span></div><div class="line"><span class="keyword">var</span> range = selection.getRangeAt(<span class="number">0</span>);</div><div class="line"><span class="comment">//突出显示选择的文本</span></div><div class="line"><span class="keyword">var</span> span = frames[<span class="string">"richedit"</span>].document.createElement(<span class="string">"span"</span>);</div><div class="line">span.style.backgroundColor = <span class="string">"yellow"</span>;</div><div class="line">range.surroundContents(span);</div></pre></td></tr></table></figure>
+<p>以上代码会为富文本编辑器中被选择的文本添加黄色的背景。<br>这里使用了默认选区中的DOM 范围，通过surroundContents()方法将选区添加到了带有黄色背景的<code>&lt;span&gt;</code>元素中。</p>
+<p>HTML5 将getSelection()方法纳入了标准，而且IE9、Firefox、Safari、Chrome 和Opera 8 都实现了它。</p>
+<p>IE8 及更早的版本不支持DOM范围，但我们可以通过它支持的selection 对象操作选择的文本。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range = frames[<span class="string">"richedit"</span>].document.selection.createRange();</div><div class="line"><span class="keyword">var</span> selectedText = range.text;</div></pre></td></tr></table></figure>
+<p>虽然使用IE 的文本范围来执行HTML 操作并不像使用DOM 范围那么可靠，但也不失为一种有效的途径。<br>要像前面使用DOM 范围那样实现相同的文本高亮效果，可以组合使用htmlText 属性和pasteHTML()方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> range = frames[<span class="string">"richedit"</span>].document.selection.createRange();</div><div class="line">range.pasteHTML(<span class="string">"&lt;span style=\"background-color:yellow\"&gt; "</span> + range.htmlText +<span class="string">"&lt;/span&gt;"</span>);</div></pre></td></tr></table></figure>
+<h3 id="表单与富文本"><a href="#表单与富文本" class="headerlink" title="表单与富文本"></a>表单与富文本</h3><p>由于富文本编辑是使用iframe 而非表单控件实现的，因此从技术上说，富文本编辑器并不属于表单。<br>换句话说，富文本编辑器中的HTML 不会被自动提交给服务器，而需要我们手工来提取并提交HTML。<br>为此，通常可以添加一个隐藏的表单字段，让它的值等于从iframe 中提取出的HTML。<br>就是在提交表单之前，从iframe 中提取出HTML，并将其插入到隐藏的字段中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(form, <span class="string">"submit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">    target.elements[<span class="string">"comments"</span>].value = frames[<span class="string">"richedit"</span>].document.body.innerHTML;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在此，我们通过文档主体的innerHTML 属性取得了iframe 中的HTML，然后将其插入到了名为”comments”的表单字段中。<br>这样可以确保恰好在提交表单之前填充”comments”字段。</p>
+<p>对于contenteditable元素，也可以执行类似操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(form, <span class="string">"submit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">    target.elements[<span class="string">"comments"</span>].value =</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"richedit"</span>).innerHTML;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript ，那么 BOM(浏览器对象模型)则无疑才是真正的核心。</p>
-<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>它表示浏览器的一个实例。<br>它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。<br>这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问parseInt() 等方法。</p>
-<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;</div><div class="line">alert(<span class="built_in">window</span>.age); <span class="comment">//29</span></div><div class="line">sayAge(); <span class="comment">//29</span></div><div class="line"><span class="built_in">window</span>.sayAge(); <span class="comment">//29</span></div></pre></td></tr></table></figure>
-<p>由于 sayAge() 存在于全局作用域中，因此 this.age 被映射到 window.age 。<br>定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 操作符删除，而直接在 window 对象上的定义的属性可以。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/29/javascript-note-8-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/regex/" itemprop="url">
-                  正则表达式，治疗强迫症
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T18:47:11+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="治疗用药方"><a href="#治疗用药方" class="headerlink" title="治疗用药方"></a>治疗用药方</h1><p>中文字符： <code>[\u4e00-\u9fa5]</code><br>中文标点符号(似乎有遗漏)：<code>[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/javascript-note-7-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第七章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T17:32:32+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h1><p>严格来讲， JavaScript 中没有私有成员的概念；所有对象属性都是公有的。<br>不过，倒是有一个私有变量的概念。任何在函数中定义的变量，都可以认为是私有变量，因为不能在函数的外部访问这些变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> sum = num1 + num2;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个函数内部，有 3 个私有变量： num1 、 num2 和 sum 。<br>在函数内部可以访问这几个变量，但在函数外部则不能访问它们。<br>如果在这个函数内部创建一个闭包，那么闭包通过自己的作用域链也可以访问这些变量。<br>而利用这一点，就可以创建用于访问私有变量的公有方法。</p>
-<p>把有权访问私有变量和私有函数的公有方法称为<strong>特权方法(privileged method)</strong>。<br>有两种在对象上创建特权方法的方式。第一种是在构造函数中定义特权方法:<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/27/javascript-note-7-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/26/hexo-tool-livereload/" itemprop="url">
-                  记录：利用 Livereload 实现 Hexo 博客自动刷新页面
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T13:16:03+08:00" content="2016-09-26">
-              2016-09-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>一开始是因为使用了新的 IDE ： Visual Studio Code ，装上了 markdownlint 插件。<br>然后为了符合规则，修改原本的 .md 文件。<br><code>hexo s</code>命令会监控文件，每次修改完保存，刷新页面就能看到所修改的新内容。<br>为了看修改完符合规则后，文章页面实际的表现效果有没有出错，在使用了<code>hexo s</code>命令后还得手动刷新页面。<br>每修改完想确认一次就得刷新一次， F5 又不是真的氪合金做的，而且一直手动刷新也麻烦；浏览器定时刷新也不准确。</p>
-<p>为了第一驱动力：懒惰，于是就去寻找跟 Hexo 和自动刷新有关的内容。</p>
-<h1 id="第一次尝试："><a href="#第一次尝试：" class="headerlink" title="第一次尝试："></a>第一次尝试：</h1><p>找到关于 Livereload 的介绍和教程，但是可能是因为 Hexo 和 Livereload 都有更新的缘故，原本推荐的 Hexo 的插件并不好使。<br>本地端通过 npm 安装的 Livereload 哪怕运行了，浏览器的 Livereload 插件并不能正常检测连接上。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/26/hexo-tool-livereload/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/25/javascript-note-7-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第七章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-25T17:22:08+08:00" content="2016-09-25">
-              2016-09-25
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><p>定义函数的两种方式：</p>
-<ol>
-<li>函数声明,重要特征：函数声明提升(function declaration hoisting)<br> <code>function functionName(arg0,arg1){}</code></li>
-<li>函数表达式(也叫做匿名函数[因为没标识符]，有时候也叫 lambda 拉姆达函数)<br> <code>var functionName = function(arg0,arg1){}</code></li>
-</ol>
-<p>理解函数提升：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/25/javascript-note-7-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/22/javascript-note-6-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第六章-3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T11:55:27+08:00" content="2016-09-22">
-              2016-09-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>许多 OO 语言都支持两种继承方式：接口继承和实现继承。<br>接口继承只继承方法签名，而实现继承则继承实际的方法。<br>由于函数没有签名，在 ECMAScript 中无法实现接口继承。<br>ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链来实现的。</p>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>ECMAScript 将原型链作为实现继承的主要方法。<br>基本思想:利用原型让一个引用类型继承另一个引用类型的属性和方法。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/javascript-note-6-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/20/javascript-note-6-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第六章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:46:00+08:00" content="2016-09-20">
-              2016-09-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><p>虽然 Object 构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：<br>使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。</p>
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。<br>考虑到在 ECMAScript 中无法创建类，开发人员就发明了一种函数，用函数来封装以特定接口创建对象的细节。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    o.name = name;</div><div class="line">    o.age = age;</div><div class="line">    o.job = job;</div><div class="line">    o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-6-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
         
       
     </div>
@@ -1467,7 +687,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1508,7 +728,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

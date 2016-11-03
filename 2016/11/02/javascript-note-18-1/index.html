@@ -1,0 +1,924 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript 与XMLDOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。
+浏览器对XML DOM 的支持在正式的规范诞生以前，浏览">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十八章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/11/02/javascript-note-18-1/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="JavaScript 与XMLDOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。
+浏览器对XML DOM 的支持在正式的规范诞生以前，浏览">
+<meta property="og:updated_time" content="2016-11-03T08:15:44.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十八章-1">
+<meta name="twitter:description" content="JavaScript 与XMLDOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。
+浏览器对XML DOM 的支持在正式的规范诞生以前，浏览">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/11/02/javascript-note-18-1/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十八章-1 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十八章-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T14:37:30+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JavaScript-与XML"><a href="#JavaScript-与XML" class="headerlink" title="JavaScript 与XML"></a>JavaScript 与XML</h1><p>DOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。<br>此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。<br>而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。</p>
+<h2 id="浏览器对XML-DOM-的支持"><a href="#浏览器对XML-DOM-的支持" class="headerlink" title="浏览器对XML DOM 的支持"></a>浏览器对XML DOM 的支持</h2><p>在正式的规范诞生以前，浏览器提供商实现的XML 解决方案不仅对XML 的支持程度参差不齐，而且对同一特性的支持也各不相同。<br>DOM2 级是第一个提到动态创建XML DOM 概念的规范。DOM3级进一步增强了XML DOM，新增了解析和序列化等特性。<br>然而，当DOM3 级规范的各项条款尘埃落定之后，大多数浏览器也都实现了各自不同的解决方案。</p>
+<h3 id="DOM2-级核心"><a href="#DOM2-级核心" class="headerlink" title="DOM2 级核心"></a>DOM2 级核心</h3><p>DOM2级在document.implementation 中引入了createDocument()方法。IE9+、Firefox、Opera、Chrome 和Safari 都支持这个方法。<br><code>var xmldom = document.implementation.createDocument(namespaceUri, root, doctype);</code><br>在通过JavaScript 处理XML 时，通常只使用参数root，因为这个参数指定的是XML DOM 文档元素的标签名。<br>namespaceUri 参数则很少用到，原因是在JavaScript 中管理命名空间比较困难。<br>最后，doctype 参数用得就更少了。<br>创建一个新的、文档元素为<code>&lt;root&gt;</code>的XML 文档:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = <span class="built_in">document</span>.implementation.createDocument(<span class="string">""</span>, <span class="string">"root"</span>, <span class="literal">null</span>);</div><div class="line">alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line"><span class="keyword">var</span> child = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">xmldom.documentElement.appendChild(child);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>这个例子创建了一个XML DOM文档，没有默认的命名空间，也没有文档类型。但要注意的是，尽管不需要指定命名空间和文档类型，也必须传入相应的参数。<br>给命名空间URI 传入一个空字符串，就意味着未指定命名空间，而给文档类型传入null，就意味着不指定文档类型。<br>变量xmldom中保存着一个DOM2 级Document 类型的实例，带有所有DOM方法和属性。<br>我们这个例子显示了文档元素的标签名，然后又创建并给文档元素添加了一个新的子元素。</p>
+<p>检测浏览器是否支持DOM2 级XML:<br><code>var hasXmlDom = document.implementation.hasFeature(&quot;XML&quot;, &quot;2.0&quot;);</code></p>
+<p>在实际开发中，很少需要从头开始创建一个XML 文档，然后再使用DOM 文档为其添加元素。<br>更常见的情况往往是将某个XML 文档解析为DOM 结构，或者反之。<br>由于DOM2 级规范没有提供这种功能，因此就出现了一些事实标准。</p>
+<h3 id="DOMParser类型"><a href="#DOMParser类型" class="headerlink" title="DOMParser类型"></a>DOMParser类型</h3><p>为了将XML 解析为DOM文档，Firefox 引入了DOMParser 类型；后来，IE9、Safari、Chrome 和Opera 也支持了这个类型。<br>在解析XML 之前，首先必须创建一个DOMParser 的实例，然后再调用parseFromString()方法。<br>这个方法接受两个参数：要解析的XML 字符串和内容类型（内容类型始终都应该是”text/xml”）。<br>返回的值是一个Document 的实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> parser = <span class="keyword">new</span> DOMParser();</div><div class="line"><span class="keyword">var</span> xmldom = parser.parseFromString(<span class="string">"&lt;root&gt;&lt;child/&gt;&lt;/root&gt;"</span>, <span class="string">"text/xml"</span>);</div><div class="line">alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line">alert(xmldom.documentElement.firstChild.tagName); <span class="comment">//"child"</span></div><div class="line"><span class="keyword">var</span> anotherChild = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">xmldom.documentElement.appendChild(anotherChild);</div><div class="line"><span class="keyword">var</span> children = xmldom.getElementsByTagName(<span class="string">"child"</span>);</div><div class="line">alert(children.length); <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<p>把一个简单的XML 字符串解析成了一个DOM文档。<br>解析得到的DOM 结构以<code>&lt;root&gt;</code>作为其文档元素，该元素还有一个<code>&lt;child&gt;</code>子元素。<br>此后，就可以使用DOM 方法对返回的这个文档进行操作了。</p>
+<p>DOMParser 只能解析格式良好的XML，因而不能把HTML 解析为HTML 文档。<br>在发生解析错误时， 仍然会从parseFromString() 中返回一个Document 对象， 但这个对象的文档元素是<code>&lt;parsererror&gt;</code>，而文档元素的内容是对解析错误的描述。</p>
+<p>Firefox 和Opera 都会返回这种格式的文档。<br>Safari 和Chrome 返回的文档也包含<code>&lt;parsererror&gt;</code>元素，但该元素会出现在发生解析错误的地方。<br>IE9 会在调用parseFromString()的地方抛出一个解析错误。<br>确定是否发生解析错误的最佳方式就是，使用一个try-catch 语句块，如果没有错误，则通过getElementsByTagName()来查找文档中是否存在<code>&lt;parsererror&gt;</code>元素。</p>
+<h3 id="XMLSerializer类型"><a href="#XMLSerializer类型" class="headerlink" title="XMLSerializer类型"></a>XMLSerializer类型</h3><p>在引入DOMParser 的同时，Firefox 还引入了XMLSerializer 类型，提供了相反的功能：<br>将DOM文档序列化为XML 字符串。<br>后来，IE9+、Opera、Chrome 和Safari 都支持了XMLSerializer。</p>
+<p>要序列化DOM 文档，首先必须创建XMLSerializer 的实例，然后将文档传入其serializeToString ()方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> serializer = <span class="keyword">new</span> XMLSerializer();</div><div class="line"><span class="keyword">var</span> xml = serializer.serializeToString(xmldom);</div><div class="line">alert(xml);</div></pre></td></tr></table></figure>
+<p>但是，serializeToString()方法返回的字符串并不适合打印，因此看起来会显得乱糟糟的。<br>XMLSerializer 可以序列化任何有效的DOM 对象，不仅包括个别的节点，也包括HTML 文档。<br>将HTML 文档传入serializeToString()以后，HTML 文档将被视为XML 文档，因此得到的代码也将是格式良好的。<br>如果将非DOM 对象传入serializeToString()，会导致错误发生。</p>
+<h3 id="IE8-及之前版本中的XML"><a href="#IE8-及之前版本中的XML" class="headerlink" title="IE8 及之前版本中的XML"></a>IE8 及之前版本中的XML</h3><p>事实上，IE 是第一个原生支持XML 的浏览器，而这一支持是通过ActiveX 对象实现的。<br>为了便于桌面应用程序开发人员处理XML，微软创建了MSXML 库；但微软并没有针对JavaScript 创建不同的对象，而只是让Web 开发人员能够通过浏览器访问相同的对象。</p>
+<p>要创建一个XML 文档的实例，也要使用ActiveXObject 构造函数并为其传入一个表示XML 文档版本的字符串。</p>
+<ul>
+<li>Microsoft.XmlDom：最初随同IE 发布；不建议使用。</li>
+<li>MSXML2.DOMDocument：为方便脚本处理而更新的版本，建议仅在特殊情况下作为后备版本使用。</li>
+<li>MSXML2.DOMDocument.3.0：为了在JavaScript 中使用，这是最低的建议版本。</li>
+<li>MSXML2.DOMDocument.4.0：在通过脚本处理时并不可靠，使用这个版本可能导致安全警告。</li>
+<li>MSXML2.DOMDocument.5.0：在通过脚本处理时并不可靠，使用这个版本同样可能导致安全警告。</li>
+<li>MSXML2.DOMDocument.6.0：通过脚本能够可靠处理的最新版本。</li>
+</ul>
+<p>在这6 个版本中，微软只推荐使用MSXML2.DOMDocument.6.0 或MSXML2.DOMDocument.3.0；<br>前者是最新最可靠的版本，而后者则是大多数Windows 操作系统都支持的版本。</p>
+<p>通过尝试创建每个版本的实例并观察是否有错误发生，可以确定哪个版本可用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createDocument</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">arguments</span>.callee.activeXString != <span class="string">"string"</span>) &#123;</div><div class="line">        <span class="keyword">var</span> versions = [<span class="string">"MSXML2.DOMDocument.6.0"</span>, <span class="string">"MSXML2.DOMDocument.3.0"</span>,</div><div class="line">                <span class="string">"MSXML2.DOMDocument"</span>],</div><div class="line">            i, len;</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>, len = versions.length; i &lt; len; i++) &#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">new</span> ActiveXObject(versions[i]);</div><div class="line">                <span class="built_in">arguments</span>.callee.activeXString = versions[i];</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125; <span class="keyword">catch</span> (ex) &#123;</div><div class="line">                <span class="comment">//跳过</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ActiveXObject(<span class="built_in">arguments</span>.callee.activeXString);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用for 循环迭代了每个可能的ActiveX 版本。<br>如果版本无效， 则创建新ActiveXObject 的调用就会抛出错误；<br>此时，catch 语句会捕获错误，循环继续。如果没有发生错误，则可用的版本将被保存在这个函数的activeXString 属性中。<br>这样，就不必在每次调用这个函数时都重复检查可用版本了——直接创建并返回对象即可。</p>
+<p>要解析XML 字符串，首先必须创建一个DOM 文档，然后调用loadXML()方法。<br>新创建的XML文档完全是一个空文档，因而不能对其执行任何操作。为loadXML()方法传入的XML 字符串经解析之后会被填充到DOM 文档中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = createDocument();</div><div class="line">xmldom.loadXML(<span class="string">"&lt;root&gt;&lt;child/&gt;&lt;/root&gt;"</span>);</div><div class="line">alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line">alert(xmldom.documentElement.firstChild.tagName); <span class="comment">//"child"</span></div><div class="line"><span class="keyword">var</span> anotherChild = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">xmldom.documentElement.appendChild(anotherChild);</div><div class="line"><span class="keyword">var</span> children = xmldom.getElementsByTagName(<span class="string">"child"</span>);</div><div class="line">alert(children.length); <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<p>在新DOM 文档中填充了XML 内容之后，就可以像操作其他DOM 文档一样操作它了。</p>
+<p>如果解析过程中出错，可以在parseError 属性中找到错误消息。<br>这个属性本身是一个包含多个属性的对象,它的多个属性：</p>
+<ul>
+<li>errorCode：错误类型的数值编码；在没有发生错误时值为0。</li>
+<li>filePos：文件中导致错误发生的位置。</li>
+<li>line：发生错误的行。</li>
+<li>linepos：发生错误的行中的字符。</li>
+<li>reason：对错误的文本解释。</li>
+<li>srcText：导致错误的代码。</li>
+<li>url：导致错误的文件的URL（如果有这个文件的话）。</li>
+</ul>
+<p>parseError 的valueOf()方法返回errorCode 的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (xmldom.parseError != 0)&#123;</div><div class="line">    alert(&quot;Parsing error occurred.&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要取得有关解析错误的详细信息也很容易，而且可以将这些信息组合起来给出更有价值的解释。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (xmldom.parseError != <span class="number">0</span>) &#123;</div><div class="line">    alert(<span class="string">"An error occurred:\nError Code: "</span> +</div><div class="line">        xmldom.parseError.errorCode + <span class="string">"\n"</span> +</div><div class="line">        <span class="string">"Line: "</span> + xmldom.parseError.line + <span class="string">"\n"</span> +</div><div class="line">        <span class="string">"Line Pos: "</span> + xmldom.parseError.linepos + <span class="string">"\n"</span> +</div><div class="line">        <span class="string">"Reason: "</span> + xmldom.parseError.reason);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>应该在调用loadXML()之后、查询XML 文档之前，检查是否发生了解析错误。</p>
+<h4 id="序列化XML"><a href="#序列化XML" class="headerlink" title="序列化XML"></a>序列化XML</h4><p>IE 将序列化XML 的能力内置在了DOM文档中。每个DOM 节点都有一个xml 属性，其中保存着表示该节点的XML 字符串。<br><code>alert(xmldom.xml);</code><br>文档中的每个节点都支持这个简单的序列化机制，无论是序列化整个文档还是某个子文档树，都非常方便。</p>
+<h4 id="加载XML-文件"><a href="#加载XML-文件" class="headerlink" title="加载XML 文件"></a>加载XML 文件</h4><p>IE 中的XML 文档对象也可以加载来自服务器的文件。<br>与DOM3 级中的功能类似，要加载的XML文档必须与页面中运行的JavaScript 代码来自同一台服务器。<br>同样与DOM3 级规范类似，加载文档的方式也可以分为同步和异步两种。<br>要指定加载文档的方式，可以设置async 属性，true 表示异步，false表示同步（默认值为true）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = createDocument();</div><div class="line">xmldom.async = <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<p>在确定了加载XML 文档的方式后，调用load()可以启动下载过程。这个方法接受一个参数，即要加载的XML 文件的URL。<br>在同步方式下，调用load()后可以立即检测解析错误并执行相关的XML处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = createDocument();</div><div class="line">xmldom.async = <span class="literal">false</span>;</div><div class="line">xmldom.load(<span class="string">"example.xml"</span>);</div><div class="line"><span class="keyword">if</span> (xmldom.parseError != <span class="number">0</span>) &#123;</div><div class="line">    <span class="comment">//处理错误</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line">    alert(xmldom.documentElement.firstChild.tagName); <span class="comment">//"child"</span></div><div class="line">    <span class="keyword">var</span> anotherChild = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">    xmldom.documentElement.appendChild(anotherChild);</div><div class="line">    <span class="keyword">var</span> children = xmldom.getElementsByTagName(<span class="string">"child"</span>);</div><div class="line">    alert(children.length); <span class="comment">//2</span></div><div class="line">    alert(xmldom.xml);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在加载XML文档时，通常都使用异步方式。<br>在异步加载XML 文件的情况下，需要为XML DOM文档的onreadystatechange 事件指定处理程序。有4 个就绪状态（ready state）。</p>
+<ul>
+<li>1：DOM正在加载数据。</li>
+<li>2：DOM已经加载完数据。</li>
+<li>3：DOM已经可以使用，但某些部分可能还无法访问。</li>
+<li>4：DOM已经完全可以使用。</li>
+</ul>
+<p>在实际开发中，要关注的只有一个就绪状态：4。这个状态表示XML 文件已经全部加载完毕，而且已经全部解析为DOM 文档。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = createDocument();</div><div class="line">xmldom.async = <span class="literal">true</span>;</div><div class="line">xmldom.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (xmldom.readyState == <span class="number">4</span>) &#123;</div><div class="line">        <span class="keyword">if</span> (xmldom.parseError != <span class="number">0</span>) &#123;</div><div class="line">            alert(<span class="string">"An error occurred:\nError Code: "</span> +</div><div class="line">                xmldom.parseError.errorCode + <span class="string">"\n"</span> +</div><div class="line">                <span class="string">"Line: "</span> + xmldom.parseError.line + <span class="string">"\n"</span> +</div><div class="line">                <span class="string">"Line Pos: "</span> + xmldom.parseError.linepos + <span class="string">"\n"</span> +</div><div class="line">                <span class="string">"Reason: "</span> + xmldom.parseError.reason);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line">            alert(xmldom.documentElement.firstChild.tagName); <span class="comment">//"child"</span></div><div class="line">            <span class="keyword">var</span> anotherChild = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">            xmldom.documentElement.appendChild(anotherChild);</div><div class="line">            <span class="keyword">var</span> children = xmldom.getElementsByTagName(<span class="string">"child"</span>);</div><div class="line">            alert(children.length); <span class="comment">//2</span></div><div class="line">            alert(xmldom.xml);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">xmldom.load(<span class="string">"example.xml"</span>);</div></pre></td></tr></table></figure>
+<p>要注意的是，为onreadystatechange 事件指定处理程序的语句，必须放在调用load()方法的语句之前；这样，才能确保在就绪状态变化时调用该事件处理程序。</p>
+<p>另外，在事件处理程序内部，还必须注意要使用XML 文档变量的名称（xmldom），不能使用this 对象。ActiveX 控件为预防安全问题不允许使用this 对象。</p>
+<p>虽然可以通过XML DOM文档对象加载XML文件，但公认的还是使用XMLHttpRequest 对象比较好。</p>
+<h3 id="跨浏览器处理XML"><a href="#跨浏览器处理XML" class="headerlink" title="跨浏览器处理XML"></a>跨浏览器处理XML</h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/01/javascript-note-17-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十七章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十七章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-与XML"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 与XML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器对XML-DOM-的支持"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器对XML DOM 的支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM2-级核心"><span class="nav-number">1.1.1.</span> <span class="nav-text">DOM2 级核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOMParser类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">DOMParser类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLSerializer类型"><span class="nav-number">1.1.3.</span> <span class="nav-text">XMLSerializer类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE8-及之前版本中的XML"><span class="nav-number">1.1.4.</span> <span class="nav-text">IE8 及之前版本中的XML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化XML"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">序列化XML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载XML-文件"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">加载XML 文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨浏览器处理XML"><span class="nav-number">1.1.5.</span> <span class="nav-text">跨浏览器处理XML</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

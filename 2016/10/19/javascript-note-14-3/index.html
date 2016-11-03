@@ -1,0 +1,938 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="表单脚本选择框脚本选择框是通过&amp;lt;select&amp;gt;和&amp;lt;option&amp;gt;元素创建的。为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。
+
+add(newOption, relOption)：向控件中插入新&amp;lt;option&amp;gt;元素，其位置在相关项（relOption）之前。
+multiple：布尔值，表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十四章-3">
+<meta property="og:url" content="http://codingme.xyz/2016/10/19/javascript-note-14-3/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="表单脚本选择框脚本选择框是通过&amp;lt;select&amp;gt;和&amp;lt;option&amp;gt;元素创建的。为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。
+
+add(newOption, relOption)：向控件中插入新&amp;lt;option&amp;gt;元素，其位置在相关项（relOption）之前。
+multiple：布尔值，表">
+<meta property="og:updated_time" content="2016-10-20T03:12:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十四章-3">
+<meta name="twitter:description" content="表单脚本选择框脚本选择框是通过&amp;lt;select&amp;gt;和&amp;lt;option&amp;gt;元素创建的。为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。
+
+add(newOption, relOption)：向控件中插入新&amp;lt;option&amp;gt;元素，其位置在相关项（relOption）之前。
+multiple：布尔值，表">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/19/javascript-note-14-3/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十四章-3 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十四章-3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-19T18:37:28+08:00" content="2016-10-19">
+              2016-10-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h2><p>选择框是通过<code>&lt;select&gt;</code>和<code>&lt;option&gt;</code>元素创建的。<br>为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。</p>
+<ul>
+<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
+<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
+<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
+<li>remove(index)：移除给定位置的选项。</li>
+<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
+<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
+</ul>
+<p>选择框的type 属性不是”select-one”，就是”select-multiple”，这取决于HTML 代码中有没有multiple 特性。<br>选择框的value 属性由当前选中项决定。</p>
+<ul>
+<li>如果没有选中的项，则选择框的value 属性保存空字符串。</li>
+<li>如果有一个选中项，而且该项的value 特性已经在HTML 中指定，则选择框的value 属性等于选中项的value 特性。<br>  即使value 特性的值是空字符串，也同样遵循此条规则。</li>
+<li>如果有一个选中项，但该项的value 特性在HTML 中未指定，则选择框的value 属性等于该项的文本。</li>
+<li>如果有多个选中项，则选择框的value 属性将依据前两条规则取得第一个选中项的值。</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"location"</span> <span class="attr">id</span>=<span class="string">"selLocation"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Sunnyvale, CA"</span>&gt;</span>Sunnyvale<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Los Angeles, CA"</span>&gt;</span>Los Angeles<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"Mountain View, CA"</span>&gt;</span>Mountain View<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>China<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>Australia<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果文本为”China”的选项被选中，则选择框的值就是一个空字符串，因为其value 特性是空的。<br>如果选择了最后一项，那么由于<code>&lt;option&gt;</code>中没有指定value 特性，则选择框的值就是”Australia”。<br>在DOM 中，每个<code>&lt;option&gt;</code>元素都有一个HTMLOptionElement 对象表示。<br>为便于访问数据，HTMLOptionElement 对象添加了属性:</p>
+<ul>
+<li>index：当前选项在options 集合中的索引。</li>
+<li>label：当前选项的标签；等价于HTML 中的label 特性。</li>
+<li>selected：布尔值，表示当前选项是否被选中。将这个属性设置为true 可以选中当前选项。</li>
+<li>text：选项的文本。</li>
+<li>value：选项的值（等价于HTML 中的value 特性）。</li>
+</ul>
+<p>其中大部分属性的目的，都是为了方便对选项数据的访问。虽然也可以使用常规的DOM 功能来访问这些信息，但效率是比较低的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> selectbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"location"</span>];</div><div class="line"><span class="comment">//不推荐</span></div><div class="line"><span class="keyword">var</span> text = selectbox.options[<span class="number">0</span>].firstChild.nodeValue; <span class="comment">//选项的文本</span></div><div class="line"><span class="keyword">var</span> value = selectbox.options[<span class="number">0</span>].getAttribute(<span class="string">"value"</span>); <span class="comment">//选项的值</span></div><div class="line"></div><div class="line"><span class="comment">//推荐</span></div><div class="line"><span class="keyword">var</span> text = selectbox.options[<span class="number">0</span>].text; <span class="comment">//选项的文本</span></div><div class="line"><span class="keyword">var</span> value = selectbox.options[<span class="number">0</span>].value; <span class="comment">//选项的值</span></div></pre></td></tr></table></figure>
+<p>在操作选项时，建议最好是使用特定于选项的属性，因为所有浏览器都支持这些属性。<br>在将表单控件作为DOM 节点的情况下，实际的交互方式则会因浏览器而异。<br>不推荐使用标准DOM技术修改<code>&lt;option&gt;</code>元素的文本或者值。</p>
+<p>选择框的change 事件与其他表单字段的change 事件触发的条件不一样。<br>其他表单字段的change 事件是在值被修改且焦点离开当前字段时触发，而选择框的change 事件只要选中了选项就会触发。</p>
+<p>不同浏览器下，选项的value 属性返回什么值也存在差别。但是，在所有浏览器中，value 属性始终等于value 特性。</p>
+<h3 id="选择选项"><a href="#选择选项" class="headerlink" title="选择选项"></a>选择选项</h3><p>对于只允许选择一项的选择框，访问选中项的最简单方式，就是使用选择框的selectedIndex 属性。<br><code>var selectedOption = selectbox.options[selectbox.selectedIndex];</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> selectedIndex = selectbox.selectedIndex;</div><div class="line"><span class="keyword">var</span> selectedOption = selectbox.options[selectedIndex];</div><div class="line">alert(<span class="string">"Selected index: "</span> + selectedIndex + <span class="string">"\nSelected text: "</span> +</div><div class="line">    selectedOption.text + <span class="string">"\nSelected value: "</span> + selectedOption.value);</div></pre></td></tr></table></figure>
+<p>对于可以选择多项的选择框，selectedfIndex 属性就好像只允许选择一项一样。<br>设置selectedIndex 会导致取消以前的所有选项并选择指定的那一项，而读取selectedIndex 则只会返回选中项中第一项的索引值。</p>
+<p>另一种选择选项的方式，就是取得对某一项的引用，然后将其selected 属性设置为true。<br><code>selectbox.options[0].selected = true;</code><br>与selectedIndex 不同，在允许多选的选择框中设置选项的selected 属性，不会取消对其他选中项的选择，因而可以动态选中任意多个项。<br>但如果是在单选选择框中，修改某个选项的selected 属性则会取消对其他选项的选择。<br>将selected 属性设置为false 对单选选择框没有影响。<br>实际上，selected 属性的作用主要是确定用户选择了选择框中的哪一项。<br>要取得所有选中的项，可以循环遍历选项集合，然后测试每个选项的selected 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSelectedOptions</span>(<span class="params">selectbox</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line">    <span class="keyword">var</span> option = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=selectbox.options.length; i &lt; len; i++)&#123;</div><div class="line">        option = selectbox.options[i];</div><div class="line">        <span class="keyword">if</span> (option.selected)&#123;</div><div class="line">        result.push(option);</div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数返回给定选择框中选中项的一个数组。</p>
+<h3 id="添加选项"><a href="#添加选项" class="headerlink" title="添加选项"></a>添加选项</h3><p>可以使用JavaScript 动态创建选项，并将它们添加到选择框中。<br>第一种方式就是使用DOM 方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newOption = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</div><div class="line">newOption.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Option text"</span>));</div><div class="line">newOption.setAttribute(<span class="string">"value"</span>, <span class="string">"Option value"</span>);</div><div class="line">selectbox.appendChild(newOption);</div></pre></td></tr></table></figure>
+<p>以上代码创建了一个新的<code>&lt;option&gt;</code>元素，然后为它添加了一个文本节点，并设置其value 特性，最后将它添加到了选择框中。</p>
+<p>第二种方式是使用Option 构造函数来创建新选项，这个构造函数是DOM 出现之前就有的，一直遗留到现在。<br>接受两个参数：文本（text）和值（value）；第二个参数可选。<br>虽然这个构造函数会创建一个Object 的实例，但兼容DOM 的浏览器会返回一个<code>&lt;option&gt;</code>元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newOption = <span class="keyword">new</span> Option(<span class="string">"Option text"</span>, <span class="string">"Option value"</span>);</div><div class="line">selectbox.appendChild(newOption); <span class="comment">//在IE8 及之前版本中有问题</span></div></pre></td></tr></table></figure>
+<p>由于存在bug，IE 在这种方式下不能正确设置新选项的文本。</p>
+<p>第三种添加新选项的方式是使用选择框的add()方法。<br>DOM 规定这个方法接受两个参数：要添加的新选项和将位于新选项之后的选项。<br>如果想在列表的最后添加一个选项，应该将第二个参数设置为null。<br>在IE 对add()方法的实现中，第二个参数是可选的，而且如果指定，该参数必须是新选项之后选项的索引。<br>兼容DOM 的浏览器要求必须指定第二个参数，因此要想编写跨浏览器的代码，就不能只传入一个参数。<br>为第二个参数传入undefined，就可以在所有浏览器中都将新选项插入到列表最后了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newOption = <span class="keyword">new</span> Option(<span class="string">"Option text"</span>, <span class="string">"Option value"</span>);</div><div class="line">selectbox.add(newOption, <span class="literal">undefined</span>); <span class="comment">//最佳方案</span></div></pre></td></tr></table></figure>
+<p>如果想将新选项添加到其他位置（不是最后一个），就应该使用标准的DOM技术和insertBefore()方法。</p>
+<h3 id="移除选项"><a href="#移除选项" class="headerlink" title="移除选项"></a>移除选项</h3><p><code>selectbox.removeChild(selectbox.options[0]); //移除第一个选项</code><br>其次，可以使用选择框的remove()方法。这个方法接受一个参数，即要移除选项的索引。<br><code>selectbox.remove(0); //移除第一个选项</code><br>最后一种方式，就是将相应选项设置为null。这种方式也是DOM 出现之前浏览器的遗留机制。<br><code>selectbox.options[0] = null; //移除第一个选项</code><br>要清除选择框中所有的项，需要迭代所有选项并逐个移除它们。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clearSelectbox</span>(<span class="params">selectbox</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, len=selectbox.options.length; i &lt; len; i++)&#123;</div><div class="line">        selectbox.remove(<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个函数每次只移除选择框中的第一个选项。</p>
+<h3 id="移动和重排选项"><a href="#移动和重排选项" class="headerlink" title="移动和重排选项"></a>移动和重排选项</h3><p>在DOM 标准出现之前，将一个选择框中的选项移动到另一个选择框中是非常麻烦的。<br>整个过程要涉及从第一个选择框中移除选项，然后以相同的文本和值创建新选项，最后再将新选项添加到第二个选择框中。<br>使用DOM 的appendChild()方法，就可以将第一个选择框中的选项直接移动到第二个选择框中。<br>如果为appendChild()方法传入一个文档中已有的元素，那么就会先从该元素的父节点中移除它，再把它添加到指定的位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> selectbox1 = <span class="built_in">document</span>.getElementById(<span class="string">"selLocations1"</span>);</div><div class="line"><span class="keyword">var</span> selectbox2 = <span class="built_in">document</span>.getElementById(<span class="string">"selLocations2"</span>);</div><div class="line">selectbox2.appendChild(selectbox1.options[<span class="number">0</span>]);</div></pre></td></tr></table></figure>
+<p>移动选项与移除选项有一个共同之处，即会重置每一个选项的index 属性。<br>重排选项次序的过程也十分类似，最好的方式仍然是使用DOM 方法。要将选择框中的某一项移动到特定位置，最合适的DOM 方法就是insertBefore()；<br>appendChild()方法只适用于将选项添加到选择框的最后。<br>在选择框中向前移动一个选项的位置:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionToMove = selectbox.options[<span class="number">1</span>];</div><div class="line">selectbox.insertBefore(optionToMove, selectbox.options[optionToMove.index<span class="number">-1</span>]);</div></pre></td></tr></table></figure>
+<p>类似地，可以使用代码将选择框中的选项向后移动一个位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> optionToMove = selectbox.options[<span class="number">1</span>];</div><div class="line">selectbox.insertBefore(optionToMove, selectbox.options[optionToMove.index+<span class="number">2</span>]);</div></pre></td></tr></table></figure>
+<p>IE7 存在一个页面重绘问题，有时候会导致使用DOM 方法重排的选项不能马上正确显示。</p>
+<h2 id="表单序列化"><a href="#表单序列化" class="headerlink" title="表单序列化"></a>表单序列化</h2><p>随着Ajax 的出现，表单序列化已经成为一种常见需求。<br>在JavaScript 中，可以利用表单字段的type 属性，连同name 和value 属性一起实现对表单的序列化。<br>有必要先搞清楚在表单提交期间，浏览器是怎样将数据发送给服务器的。</p>
+<ol>
+<li>对表单字段的名称和值进行URL 编码，使用和号（&amp;）分隔。</li>
+<li>不发送禁用的表单字段。</li>
+<li>只发送勾选的复选框和单选按钮。</li>
+<li>不发送type 为”reset”和”button”的按钮。</li>
+<li>多选选择框中的每个选中的值单独一个条目。</li>
+<li>在单击提交按钮提交表单的情况下，也会发送提交按钮；否则，不发送提交按钮。也包括type为”image”的<code>&lt;input&gt;</code>元素。</li>
+<li><code>&lt;select&gt;</code>元素的值，就是选中的<code>&lt;option&gt;</code>元素的value 特性的值。如果<code>&lt;option&gt;</code>元素没有value 特性，则是<code>&lt;option&gt;</code>元素的文本值。</li>
+</ol>
+<p>在表单序列化过程中，一般不包含任何按钮字段，因为结果字符串很可能是通过其他方式提交的。除此之外的其他上述规则都应该遵循。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">serialize</span>(<span class="params">form</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> parts = [],</div><div class="line">        field = <span class="literal">null</span>,</div><div class="line">        i,</div><div class="line">        len,</div><div class="line">        j,</div><div class="line">        optLen,</div><div class="line">        option,</div><div class="line">        optValue;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>, len=form.elements.length; i &lt; len; i++)&#123;</div><div class="line">        field = form.elements[i];</div><div class="line">        <span class="keyword">switch</span>(field.type)&#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">"select-one"</span>:</div><div class="line">            <span class="keyword">case</span> <span class="string">"select-multiple"</span>:</div><div class="line">                <span class="keyword">if</span> (field.name.length)&#123;</div><div class="line">                    <span class="keyword">for</span> (j=<span class="number">0</span>, optLen = field.options.length; j &lt; optLen; j++)&#123;</div><div class="line">                        option = field.options[j];</div><div class="line">                        <span class="keyword">if</span> (option.selected)&#123;</div><div class="line">                            optValue = <span class="string">""</span>;</div><div class="line">                            <span class="keyword">if</span> (option.hasAttribute)&#123;</div><div class="line">                                optValue = (option.hasAttribute(<span class="string">"value"</span>) ?</div><div class="line">                                            option.value : option.text);</div><div class="line">                            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                                optValue = (option.attributes[<span class="string">"value"</span>].specified ?</div><div class="line">                                            option.value : option.text);</div><div class="line">                            &#125;</div><div class="line">                            parts.push(<span class="built_in">encodeURIComponent</span>(field.name) + <span class="string">"="</span> +</div><div class="line">                                       <span class="built_in">encodeURIComponent</span>(optValue));</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="literal">undefined</span>: <span class="comment">//字段集</span></div><div class="line">            <span class="keyword">case</span> <span class="string">"file"</span>: <span class="comment">//文件输入</span></div><div class="line">            <span class="keyword">case</span> <span class="string">"submit"</span>: <span class="comment">//提交按钮</span></div><div class="line">            <span class="keyword">case</span> <span class="string">"reset"</span>: <span class="comment">//重置按钮</span></div><div class="line">            <span class="keyword">case</span> <span class="string">"button"</span>: <span class="comment">//自定义按钮</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">"radio"</span>: <span class="comment">//单选按钮</span></div><div class="line">            <span class="keyword">case</span> <span class="string">"checkbox"</span>: <span class="comment">//复选框</span></div><div class="line">                <span class="keyword">if</span> (!field.checked)&#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="comment">/* 执行默认操作 */</span></div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="comment">//不包含没有名字的表单字段</span></div><div class="line">                <span class="keyword">if</span> (field.name.length)&#123;</div><div class="line">                    parts.push(<span class="built_in">encodeURIComponent</span>(field.name) + <span class="string">"="</span> +</div><div class="line">                               <span class="built_in">encodeURIComponent</span>(field.value));</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> parts.join(<span class="string">"&amp;"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先定义了一个名为parts 的数组，用于保存将要创建的字符串的各个部分。<br>然后，通过for 循环迭代每个表单字段，并将其保存在field 变量中。<br>在获得了一个字段的引用之后，使用switch 语句检测其type 属性。<br>序列化过程中最麻烦的就是<code>&lt;select&gt;</code>元素，它可能是单选框也可能是多选框。<br>为此，需要遍历控件中的每一个选项，并在相应选项被选中的情况下向数组中添加一个值。<br>对于单选框，只可能有一个选中项，而多选框则可能有零或多个选中项。这里的代码适用于这两种选择框，至于可选项的数量则是由浏览器控制的。<br>在找到一个选中项之后，需要确定使用什么值。<br>如果不存在value 特性，或者虽然存在该特性，但值为空字符串，都要使用选项的文本来代替。<br>为检查这个特性，在DOM 兼容的浏览器中需要使用hasAttribute()方法，而在IE 中需要使用特性的specified 属性。</p>
+<p>如果表单中包含<code>&lt;fieldset&gt;</code>元素，则该元素会出现在元素集合中，但没有type 属性。<br>因此，如果type属性未定义，则不需要对其进行序列化。<br>同样，对于各种按钮以及文件输入字段也是如此。<br>对于单选按钮和复选框，要检查其checked 属性是否被设置为false，如果是则退出switch 语句。<br>如果checked 属性为true，则继续执行default 语句，即将当前字段的名称和值进行编码，然后添加到parts 数组中。<br>最后一步，就是使用join()格式化整个字符串，也就是用和号来分隔每一个表单字段。<br>最后，serialize()函数会以查询字符串的格式输出序列化之后的字符串。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/19/javascript-note-14-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十四章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十四章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/20/javascript-note-14-4/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十四章-4">
+                《 JavaScript 高级程序设计》备忘-第十四章-4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#表单脚本"><span class="nav-number">1.</span> <span class="nav-text">表单脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择框脚本"><span class="nav-number">1.1.</span> <span class="nav-text">选择框脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择选项"><span class="nav-number">1.1.1.</span> <span class="nav-text">选择选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加选项"><span class="nav-number">1.1.2.</span> <span class="nav-text">添加选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移除选项"><span class="nav-number">1.1.3.</span> <span class="nav-text">移除选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动和重排选项"><span class="nav-number">1.1.4.</span> <span class="nav-text">移动和重排选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单序列化"><span class="nav-number">1.2.</span> <span class="nav-text">表单序列化</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

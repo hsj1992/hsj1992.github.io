@@ -1,0 +1,910 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="CanvasHTML5 添加的最受欢迎的功能。在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持&amp;lt;canvas&amp;gt;。与浏览器环境中的其他组件类似，&amp;lt;canvas&amp;gt;由几组API 构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十十五章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/10/23/javascript-note-15-1/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="CanvasHTML5 添加的最受欢迎的功能。在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持&amp;lt;canvas&amp;gt;。与浏览器环境中的其他组件类似，&amp;lt;canvas&amp;gt;由几组API 构">
+<meta property="og:updated_time" content="2016-10-24T04:51:56.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十十五章-1">
+<meta name="twitter:description" content="CanvasHTML5 添加的最受欢迎的功能。在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持&amp;lt;canvas&amp;gt;。与浏览器环境中的其他组件类似，&amp;lt;canvas&amp;gt;由几组API 构">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/23/javascript-note-15-1/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十十五章-1 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十十五章-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-23T13:00:25+08:00" content="2016-10-23">
+              2016-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p>HTML5 添加的最受欢迎的功能。<br>在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。<br>IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持<code>&lt;canvas&gt;</code>。<br>与浏览器环境中的其他组件类似，<code>&lt;canvas&gt;</code>由几组API 构成，但并非所有浏览器都支持所有这些API。<br><code>&lt;canvas&gt;</code>还建议了一个名为WebGL 的3D 上下文。<br>目前，支持该元素的浏览器都支持2D 上下文及文本API，但对WebGL 的支持还不够好。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>先设置其width 和height 属性，指定可以绘图的区域大小。<br>出现在开始和结束标签中的内容是<strong>后备(替换)信息</strong>，如果浏览器不支持<code>&lt;canvas&gt;</code>元素，就会显示这些信息。<br><code>&lt;canvas id=&quot;drawing&quot; width=&quot; 200&quot; height=&quot;200&quot;&gt;&lt;img src=&quot;images/clock.png&quot; width=&quot;150&quot; height=&quot;150&quot; alt=&quot;&quot;/&gt;&lt;/canvas&gt;</code><br>也能通过CSS 为该元素添加样式，如果不添加任何样式或者不绘制任何图形，在页面中是看不到该元素的。<br>要在这块画布（canvas）上绘图，需要取得绘图上下文。<br>而取得绘图上下文对象的引用，需要调用getContext()方法并传入上下文的名字。<br>传入”2d”，就可以取得2D 上下文对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//更多代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在使用<code>&lt;canvas&gt;</code>元素之前，首先要检测getContext()方法是否存在，这一步非常重要。<br>有些浏览器会为HTML 规范之外的元素创建默认的HTML 元素对象。<br>在这种情况下，即使drawing 变量中保存着一个有效的元素引用，也检测不到getContext()方法。</p>
+<p>使用toDataURL()方法，可以导出在<code>&lt;canvas&gt;</code>元素上绘制的图像。<br>这个方法接受一个参数，即图像的MIME 类型格式，而且适合用于创建图像的任何上下文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="comment">//取得图像的数据URI</span></div><div class="line">    <span class="keyword">var</span> imgURI = drawing.toDataURL(<span class="string">"image/png"</span>);</div><div class="line">    <span class="comment">//显示图像</span></div><div class="line">    <span class="keyword">var</span> image = <span class="built_in">document</span>.createElement(<span class="string">"img"</span>);</div><div class="line">    image.src = imgURI;</div><div class="line">    <span class="built_in">document</span>.body.appendChild(image);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>默认情况下，浏览器会将图像编码为PNG 格式（除非另行指定）。<br>Firefox 和Opera 也支持基于”image/jpeg”参数的JPEG 编码格式。</p>
+<p>如果绘制到画布上的图像源自不同的域，toDataURL()方法会抛出错误。</p>
+<h2 id="2D-上下文"><a href="#2D-上下文" class="headerlink" title="2D 上下文"></a>2D 上下文</h2><p>使用2D 绘图上下文提供的方法，可以绘制简单的2D 图形，比如矩形、弧线和路径。</p>
+<p>2D 上下文的坐标开始于<code>&lt;canvas&gt;</code>元素的<strong>左上角</strong>，原点坐标是(0,0)。<br>所有坐标值都基于这个原点计算，x 值越大表示越靠右，y 值越大表示越靠下。<br>默认情况下，width 和height 表示水平和垂直两个方向上可用的像素数目。</p>
+<h3 id="填充和描边"><a href="#填充和描边" class="headerlink" title="填充和描边"></a>填充和描边</h3><p>2D 上下文的两种基本绘图操作是填充和描边。<br>填充，就是用指定的样式（颜色、渐变或图像）填充图形；<br>描边，就是只在图形的边缘画线。<br>大多数2D 上下文操作都会细分为填充和描边两个操作。<br>操作的结果取决于两个属性：fillStyle 和strokeStyle。<br>属性的值可以是字符串、渐变对象或模式对象，而且它们的默认值都是”#000000”。<br>如果为它们指定表示颜色的字符串值，可以使用CSS 中指定颜色值的任何格式，包括颜色名、十六进制码、rgb、rgba、hsl 或hsla。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    context.strokeStyle = <span class="string">"red"</span>;</div><div class="line">    context.fillStyle = <span class="string">"#0000ff"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码将strokeStyle 设置为red（CSS 中的颜色名），将fillStyle 设置为#0000ff（蓝色）。<br>然后，所有涉及描边和填充的操作都将使用这两个样式，直至重新设置这两个值。<br>这两个属性的值也可以是渐变对象或模式对象。</p>
+<h3 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h3><p><strong>矩形是唯一一种可以直接在2D 上下文中绘制的形状</strong>。<br>与矩形有关的方法包括fillRect()、strokeRect()和clearRect()。<br>这三个方法都能接收4 个参数：矩形的x 坐标、矩形的y 坐标、矩形宽度和矩形高度。<br>这些参数的单位都是像素。</p>
+<p>fillRect()方法在画布上绘制的矩形会填充指定的颜色。填充的颜色通过fillStyle 属性指定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">/*</span></div><div class="line">    * 根据Mozilla 的文档</div><div class="line">    * https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_usage</div><div class="line">    */</div><div class="line">    <span class="comment">//绘制红色矩形</span></div><div class="line">    context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">    context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">    <span class="comment">//绘制半透明的蓝色矩形</span></div><div class="line">    context.fillStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">    context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>strokeRect()方法在画布上绘制的矩形会使用指定的颜色描边。描边颜色通过strokeStyle 属性指定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">/*</span></div><div class="line">    * 根据Mozilla 的文档</div><div class="line">    * https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_usage</div><div class="line">    */</div><div class="line">    <span class="comment">//绘制红色描边矩形</span></div><div class="line">    context.strokeStyle = <span class="string">"#ff0000"</span>;</div><div class="line">    context.strokeRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">    <span class="comment">//绘制半透明的蓝色描边矩形</span></div><div class="line">    context.strokeStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">    context.strokeRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>描边线条的宽度由lineWidth 属性控制，该属性的值可以是任意整数。<br>通过lineCap 属性可以控制线条末端的形状是平头、圆头还是方头（”butt”、”round”或”square”），<br>通过lineJoin 属性可以控制线条相交的方式是圆交、斜交还是斜接（”round”、”bevel”或”miter”）。</p>
+<p>clearRect()方法用于清除画布上的矩形区域。<br>本质上，这个方法可以把绘制上下文中的某一矩形区域变透明。<br>通过绘制形状然后再清除指定区域，就可以生成有意思的效果，例如把某个形状切掉一块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">/*</span></div><div class="line">    * 根据Mozilla 的文档</div><div class="line">    * https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_usage</div><div class="line">    */</div><div class="line">    <span class="comment">//绘制红色矩形</span></div><div class="line">    context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">    context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">    <span class="comment">//绘制半透明的蓝色矩形</span></div><div class="line">    context.fillStyle = <span class="string">"rgba(0,0,255,0.5)"</span>;</div><div class="line">    context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line">    <span class="comment">//在两个矩形重叠的地方清除一个小矩形</span></div><div class="line">    context.clearRect(<span class="number">40</span>, <span class="number">40</span>, <span class="number">10</span>, <span class="number">10</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><p>2D 绘制上下文支持很多在画布上绘制路径的方法。通过路径可以创造出复杂的形状和线条。<br>要绘制路径，首先必须调用beginPath()方法，表示要开始绘制新路径。<br>然后，再通过调用方法来实际地绘制路径。</p>
+<ul>
+<li>arc(x, y, radius, startAngle, endAngle, counterclockwise)：以(x,y)为圆心绘制一条弧线，弧线半径为radius，起始和结束角度（用弧度表示）分别为startAngle 和endAngle。最后一个参数表示startAngle 和endAngle 是否按逆时针方向计算，值为false表示按顺时针方向计算。</li>
+<li>arcTo(x1, y1, x2, y2, radius)：从上一点开始绘制一条弧线，到(x2,y2)为止，并且以给定的半径radius 穿过(x1,y1)。</li>
+<li>bezierCurveTo(c1x, c1y, c2x, c2y, x, y)：从上一点开始绘制一条曲线，到(x,y)为止，并且以(c1x,c1y)和(c2x,c2y)为控制点。</li>
+<li>lineTo(x, y)：从上一点开始绘制一条直线，到(x,y)为止。</li>
+<li>moveTo(x, y)：将绘图游标移动到(x,y)，不画线。</li>
+<li>quadraticCurveTo(cx, cy, x, y)：从上一点开始绘制一条二次曲线，到(x,y)为止，并且以(cx,cy)作为控制点。</li>
+<li>rect(x, y, width, height)：从点(x,y)开始绘制一个矩形，宽度和高度分别由width 和height 指定。<br>  这个方法绘制的是矩形路径，而不是strokeRect()和fillRect()所绘制的独立的形状。</li>
+</ul>
+<p>如果想绘制一条连接到路径起点的线条，可以调用closePath()。<br>如果路径已经完成，你想用fillStyle 填充它，可以调用fill()方法。<br>另外，还可以调用stroke()方法对路径描边，描边使用的是strokeStyle。<br>最后还可以调用clip()，这个方法可以在路径上创建一个剪切区域。</p>
+<p>绘制一个不带数字的时钟表盘:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">//开始路径</span></div><div class="line">    context.beginPath();</div><div class="line">    <span class="comment">//绘制外圆</span></div><div class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">99</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">    <span class="comment">//绘制内圆</span></div><div class="line">    context.moveTo(<span class="number">194</span>, <span class="number">100</span>);</div><div class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">94</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">    <span class="comment">//绘制分针</span></div><div class="line">    context.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    context.lineTo(<span class="number">100</span>, <span class="number">15</span>);</div><div class="line">    <span class="comment">//绘制时针</span></div><div class="line">    context.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    context.lineTo(<span class="number">35</span>, <span class="number">100</span>);</div><div class="line">    <span class="comment">//描边路径</span></div><div class="line">    context.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用arc()方法绘制了两个圆形：一个外圆和一个内圆，构成了表盘的边框。<br>外圆的半径是99 像素，圆心位于点(100,100)，也是画布的中心点。<br>为了绘制一个完整的圆形，我们从0 弧度开始，绘制2π 弧度（通过Math.PI 来计算）。<br>在绘制内圆之前，必须把路径移动到内圆上的某一点，以避免绘制出多余的线条。<br>组合使用moveTo()和lineTo()方法来绘制时针和分针。<br>最后一步是调用stroke()方法，这样才能把图形绘制到画布上。</p>
+<p>在2D 绘图上下文中，路径是一种主要的绘图方式，因为路径能为要绘制的图形提供更多控制。<br>由于路径的使用很频繁，所以就有了一个名为isPointInPath()的方法。<br>这个方法接收x 和y 坐标作为参数，用于在路径被关闭之前确定画布上的某一点是否位于路径上。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (context.isPointInPath(<span class="number">100</span>, <span class="number">100</span>))&#123;</div><div class="line">    alert(<span class="string">"Point (100, 100) is in the path."</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2D 上下文中的路径API 已经非常稳定，可以利用它们结合不同的填充和描边样式，绘制出非常复杂的图形来。</p>
+<h3 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h3><p>2D 绘图上下文也提供了绘制文本的方法。<br>绘制文本主要有两个方法：fillText()和strokeText()。<br>这两个方法都可以接收4 个参数：要绘制的文本字符串、x 坐标、y 坐标和可选的最大像素宽度。<br>这两个方法都以3 个属性为基础。</p>
+<ul>
+<li>font：表示文本样式、大小及字体，用CSS 中指定字体的格式来指定，例如”10px Arial”。</li>
+<li>textAlign：表示文本对齐方式。可能的值有”start”、”end”、”left”、”right”和”center”。<br>  建议使用”start”和”end”，不要使用”left”和”right”，因为前两者的意思更稳妥，能同时适合从左到右和从右到左显示（阅读）的语言。</li>
+<li>textBaseline：表示文本的基线。可能的值有”top”、”hanging”、”middle”、”alphabetic”、”ideographic”和”bottom”。</li>
+</ul>
+<p>fillText()方法使用fillStyle 属性绘制文本，而strokeText()方法使用strokeStyle 属性为文本描边。<br>相对来说，还是使用fillText()的时候更多，因为该方法模仿了在网页中正常显示文本。</p>
+<p>如果将textAlign 设置为”start”，则x 坐标表示的是文本左端的位置（从左到右阅读的语言）；<br>设置为”end”，则x 坐标表示的是文本右端的位置（从左到右阅读的语言）。<br>修改textBaseline 属性的值可以调整文本的垂直对齐方式：值为”top”，y 坐标表示文本顶端；<br>值为”bottom”，y 坐标表示文本底端；值为”hanging”、”alphabetic”和”ideographic”，则y 坐标分别指向字体的特定基线坐标。</p>
+<p>由于绘制文本比较复杂，特别是需要把文本控制在某一区域中的时候，2D 上下文提供了辅助确定文本大小的方法measureText()。<br>这个方法接收一个参数，即要绘制的文本；返回一个TextMetrics对象。</p>
+<p>measureText()方法利用font、textAlign 和textBaseline 的当前值计算指定文本的大小。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fontSize = <span class="number">100</span>;</div><div class="line">context.font = fontSize + <span class="string">"px Arial"</span>;</div><div class="line"><span class="keyword">while</span>(context.measureText(<span class="string">"Hello world!"</span>).width &gt; <span class="number">140</span>)&#123;</div><div class="line">    fontSize--;</div><div class="line">    context.font = fontSize + <span class="string">"px Arial"</span>;</div><div class="line">&#125;</div><div class="line">context.fillText(<span class="string">"Hello world!"</span>, <span class="number">10</span>, <span class="number">10</span>);</div><div class="line">context.fillText(<span class="string">"Font size is "</span> + fontSize + <span class="string">"px"</span>, <span class="number">10</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>fillText 和strokeText()方法都可以接收第四个参数，也就是文本的最大像素宽度。<br>调用fillText()或strokeText()时如果传入的字符串大于最大宽度，则绘制的文本字符的高度正确，但宽度会收缩以适应最大宽度。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/20/javascript-note-14-4/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十四章-4">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十四章-4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/24/javascript-note-15-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十十五章-2">
+                《 JavaScript 高级程序设计》备忘-第十十五章-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Canvas"><span class="nav-number">1.</span> <span class="nav-text">Canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">1.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-上下文"><span class="nav-number">1.2.</span> <span class="nav-text">2D 上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#填充和描边"><span class="nav-number">1.2.1.</span> <span class="nav-text">填充和描边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制矩形"><span class="nav-number">1.2.2.</span> <span class="nav-text">绘制矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制路径"><span class="nav-number">1.2.3.</span> <span class="nav-text">绘制路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制文本"><span class="nav-number">1.2.4.</span> <span class="nav-text">绘制文本</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

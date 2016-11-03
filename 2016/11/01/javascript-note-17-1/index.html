@@ -1,0 +1,943 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="错误处理与调试JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。之后出现了不少JavaScript调试程序和工具。
+浏览器报告的错误主流浏览器都具有某">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十七章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/11/01/javascript-note-17-1/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="错误处理与调试JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。之后出现了不少JavaScript调试程序和工具。
+浏览器报告的错误主流浏览器都具有某">
+<meta property="og:updated_time" content="2016-11-02T06:34:48.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十七章-1">
+<meta name="twitter:description" content="错误处理与调试JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。之后出现了不少JavaScript调试程序和工具。
+浏览器报告的错误主流浏览器都具有某">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/11/01/javascript-note-17-1/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十七章-1 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十七章-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-01T09:48:14+08:00" content="2016-11-01">
+              2016-11-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><p>JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)<br>原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。<br>之后出现了不少JavaScript调试程序和工具。</p>
+<h2 id="浏览器报告的错误"><a href="#浏览器报告的错误" class="headerlink" title="浏览器报告的错误"></a>浏览器报告的错误</h2><p>主流浏览器都具有某种向用户报告 JavaScript 错误的机制。默认情况下隐藏。</p>
+<h3 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h3><p>IE 是唯一一个在浏览器的界面窗体（chrome。chrome的意思是界面窗体?）中显示JavaScript 错误信息的浏览器。<br>在发生JavaScript错误时，浏览器左下角会出现一个黄色的图标，图标旁边则显示着”Error on page”（页面中有错误）。<br>可以双击查看相关信息（但不详细）。</p>
+<p>对于Web开发还可以通过设置让错误对话框直接显示出来。</p>
+<p>IE8和IE9自带脚本调试器。（更早版本需要安装）<br>在IE7 及更早版本中，如果错误发生在位于外部文件的脚本中，行号通常会与错误所在的行号差1。如果是嵌入在页面中的脚本发生错误，则行号就是错误所在的行号。</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>默认情况下，Firefox不会通过浏览器界面给出提示。可以从后台的错误控制台看到错误。<br>Firefox 插件Firebug现在已经成为开发人员必备的JavaScript 纠错工具。<br><a id="more"></a></p>
+<h3 id="Safari"><a href="#Safari" class="headerlink" title="Safari"></a>Safari</h3><p>需要开启高级菜单中的“开发”，然后通过错误控制台查看调试。</p>
+<h3 id="Opera"><a href="#Opera" class="headerlink" title="Opera"></a>Opera</h3><p>Pass</p>
+<h3 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h3><p>默认情况下也会隐藏JavaScript 错误。<br>要查看错误消息，必须打开Web Inspector。开发者工具-控制台。</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>任何有影响力的Web 应用程序都需要一套完善的错误处理机制，当然，大多数佼佼者确实做到了这一点，但通常只有服务器端应用程序才能做到如此。<br>虽然客户端应用程序的错误处理也同样重要，但真正受到重视，还是最近几年的事。<br>使用Web 的绝大多数人都不是技术高手，其中甚至有很多人根本就不明白浏览器到底是什么，更不用说让他们说喜欢哪一个了。<br>良好的错误处理机制可以让用户及时得到提醒，知道到底发生了什么事，因而不会惊惶失措。为此，作为开发人员，我们必须理解在处理JavaScript 错误的时候，都有哪些手段和工具可以利用。</p>
+<h3 id="try-catch语句"><a href="#try-catch语句" class="headerlink" title="try-catch语句"></a>try-catch语句</h3><p>ECMA-262 第3 版引入,作为JavaScript 中处理异常的一种标准方式。<br>与Java 中的try-catch 语句是完全相同的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line"><span class="comment">// 可能会导致错误的代码</span></div><div class="line">&#125; <span class="keyword">catch</span>(error)&#123;</div><div class="line"><span class="comment">// 在错误发生时怎么处理</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>与在其他语言中不同的是，即使你不想使用这个错误对象，也要给它起个名字。<br>这个对象中包含的实际信息会因浏览器而异，但共同的是有一个保存着错误消息的message 属性。<br>ECMA-262 还规定了一个保存错误类型的name 属性；当前所有浏览器都支持这个属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line"><span class="built_in">window</span>.someNonexistentFunction();</div><div class="line">&#125; <span class="keyword">catch</span> (error)&#123;</div><div class="line">alert(error.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个message 属性是唯一一个能够保证所有浏览器都支持的属性，除此之外，IE、Firefox、Safari、Chrome 以及Opera 都为事件对象添加了其他相关信息。</p>
+<p>IE: 添加了与message 属性完全相同的description 属性，还添加了保存着内部错误数量的number 属性。<br>Firefox: 添加了fileName、lineNumber 和stack（包含栈跟踪信息）属性。<br>Safari： 添加了line（表示行号）、sourceId（表示内部错误代码）和sourceURL 属性。</p>
+<p>在跨浏览器编程时，最好还是只使用message 属性。</p>
+<h4 id="finally-子句"><a href="#finally-子句" class="headerlink" title="finally 子句"></a>finally 子句</h4><p>一经使用，其代码无论如何都会执行。<br>无论try 或catch 语句块中包含什么代码——甚至return 语句，都不会阻止finally 子句的执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFinally</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line"><span class="keyword">return</span> <span class="number">2</span>;</div><div class="line">&#125; <span class="keyword">catch</span> (error)&#123;</div><div class="line"><span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125; <span class="keyword">finally</span> &#123;</div><div class="line"><span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后还有一个finally 子句，结果就会导致该return 2 语句被忽略；也就是说，调用这个函数只能返回0。<br><strong>只要代码中包含finally 子句，那么无论try 还是catch 语句块中的return 语句都将被忽略。</strong><br>如果提供finally 子句，则catch 子句就成了可选的（catch 或finally 有一个即可）</p>
+<p>E7 及更早版本中有一个bug：除非有catch 子句，否则finally 中的代码永远不会执行。</p>
+<h4 id="错误类型"><a href="#错误类型" class="headerlink" title="错误类型"></a>错误类型</h4><p>ECMA-262 定义了下列7 种错误类型：</p>
+<ul>
+<li>Error</li>
+<li>EvalError</li>
+<li>RangeError</li>
+<li>ReferenceError</li>
+<li>SyntaxError</li>
+<li>TypeError</li>
+<li>URIError</li>
+</ul>
+<p>Error 是基类型，其他错误类型都继承自该类型。因此，所有错误类型共享了一组相同的属性（错误对象中的方法全是默认的对象方法）。<br>这个基类型的主要目的是供开发人员抛出自定义错误。</p>
+<p>EvalError 类型的错误会在使用eval()函数而发生异常时被抛出。简单地说如果没有把eval()当成函数调用，就会抛出错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">eval</span>(); <span class="comment">//抛出EvalError</span></div><div class="line"><span class="built_in">eval</span> = foo; <span class="comment">//抛出EvalError</span></div></pre></td></tr></table></figure>
+<p>在实践中，浏览器不一定会在应该抛出错误时就抛出EvalError。<br>Firefox 4+和IE8 对第一种情况会抛出TypeError，而第二种情况会成功执行，不发生错误。实际开发很少用eval()。<br>所以遇到的可能性极小。</p>
+<p>RangeError 类型的错误会在数值超出相应范围时触发。<br>例如，在定义数组时，如果指定了数组不支持的项数（如-20 或Number.MAX_VALUE），就会触发这种错误。<br>数组的最大长度，ECMA-262第五版规范为无符号32bit整数，所以最大长度为2^32-1(取决于实际环境，如果浏览器是64位则是无符号64bit整数)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> items1 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">-20</span>); <span class="comment">//抛出RangeError</span></div><div class="line"><span class="keyword">var</span> items2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="built_in">Number</span>.MAX_VALUE); <span class="comment">//抛出RangeError</span></div></pre></td></tr></table></figure>
+<p>在找不到对象的情况下，会发生ReferenceError（这种情况下，会直接导致人所共知的”object expected”浏览器错误）。<br>通常在访问不存在的变量时，就会发生这种错误。</p>
+<p>SyntaxError:当我们把语法错误的JavaScript 字符串传入eval()函数时，就会导致此类错误。<br>如果语法错误的代码出现在eval()函数之外，则不太可能使用SyntaxError，因为此时的语法错误会导致JavaScript 代码立即停止执行。</p>
+<p>TypeError 类型在JavaScript 中会经常用到，在变量中保存着意外的类型时，或者在访问不存在的方法时，都会导致这种错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="number">10</span>; <span class="comment">//抛出TypeError</span></div><div class="line">alert(<span class="string">"name"</span> <span class="keyword">in</span> <span class="literal">true</span>); <span class="comment">//抛出TypeError</span></div><div class="line"><span class="built_in">Function</span>.prototype.toString.call(<span class="string">"name"</span>); <span class="comment">//抛出TypeError</span></div></pre></td></tr></table></figure>
+<p>最常发生类型错误的情况，就是传递给函数的参数事先未经检查，结果传入类型与预期类型不相符。</p>
+<p>使用encodeURI()或decodeURI()，而URI 格式不正确时，就会导致URIError 错误。</p>
+<p>要想知道错误的类型，可以像下面这样在try-catch 语句的catch 语句中使用instanceof 操作符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">someFunction();</div><div class="line">&#125; <span class="keyword">catch</span> (error)&#123;</div><div class="line"><span class="keyword">if</span> (error <span class="keyword">instanceof</span> <span class="built_in">TypeError</span>)&#123;</div><div class="line"><span class="comment">//处理类型错误</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (error <span class="keyword">instanceof</span> <span class="built_in">ReferenceError</span>)&#123;</div><div class="line"><span class="comment">//处理引用错误</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">//处理其他类型的错误</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在跨浏览器编程中，检查错误类型是确定处理方式的最简便途径；包含在message 属性中的错误消息会因浏览器而异。</p>
+<h4 id="合理使用try-catch"><a href="#合理使用try-catch" class="headerlink" title="合理使用try-catch"></a>合理使用try-catch</h4><p>当try-catch 语句中发生错误时，浏览器会认为错误已经被处理了，因而不会通过机制记录或报告错误。<br>try-catch 能够让我们实现自己的错误处理机制。</p>
+<p>使用try-catch 最适合处理那些我们无法控制的错误。<br>假设你在使用一个大型JavaScript 库中的函数，该函数可能会有意无意地抛出一些错误。<br>由于我们不能修改这个库的源代码，所以大可将对该函数的调用放在try-catch 语句当中，万一有什么错误发生，也好恰当地处理它们。<br>(一个不太好的使用轮子的方式？)</p>
+<p>在明明白白地知道自己的代码会发生错误时，再使用try-catch 语句就不太合适了。</p>
+<h3 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h3><p>throw 操作符，与try-catch 语句相配，用于随时抛出自定义错误。<br>抛出错误时，必须要给throw 操作符指定一个值，这个值是什么类型，没有要求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">throw</span> <span class="number">12345</span>;</div><div class="line"><span class="keyword">throw</span> <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">throw</span> <span class="literal">true</span>;</div><div class="line"><span class="keyword">throw</span> &#123; name: <span class="string">"JavaScript"</span>&#125;;</div></pre></td></tr></table></figure>
+<p>在遇到throw 操作符时，代码会立即停止执行。仅当有try-catch 语句捕获到被抛出的值时，代码才会继续执行。<br>通过使用某种内置错误类型，可以更真实地模拟浏览器错误。每种错误类型的构造函数接收一个参数，即实际的错误消息。<br><code>throw new Error(&quot;Something bad happened.&quot;);</code><br>这行代码抛出了一个通用错误，带有一条自定义错误消息。浏览器会像处理自己生成的错误一样，来处理这行代码抛出的错误。<br>浏览器会以常规方式报告这一错误，并且会显示这里的自定义错误消息。<br>在创建自定义错误消息时最常用的错误类型是Error、RangeError、ReferenceError 和TypeError。</p>
+<p>利用原型链还可以通过继承Error 来创建自定义错误类型。此时，需要为新创建的错误类型指定name 和message 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">CustomError</span>(<span class="params">message</span>)</span>&#123;</div><div class="line"><span class="keyword">this</span>.name = <span class="string">"CustomError"</span>;</div><div class="line"><span class="keyword">this</span>.message = message;</div><div class="line">&#125;</div><div class="line"></div><div class="line">CustomError.prototype = <span class="keyword">new</span> <span class="built_in">Error</span>();</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> CustomError(<span class="string">"My message"</span>);</div></pre></td></tr></table></figure>
+<p>浏览器对待继承自Error 的自定义错误类型，就像对待其他错误类型一样。<br>如果要捕获自己抛出的错误并且把它与浏览器错误区别对待的话，创建自定义错误是很有用的。</p>
+<p>IE 只有在抛出Error 对象的时候才会显示自定义错误消息。<br>对于其他类型，它都无一例外地显示”exception thrown and not caught”（抛出了异常，且未被捕获）。</p>
+<h4 id="抛出错误的时机"><a href="#抛出错误的时机" class="headerlink" title="抛出错误的时机"></a>抛出错误的时机</h4><p>应该在出现某种特定的已知错误条件，导致函数无法正常执行时抛出错误。<br>浏览器会在某种特定的条件下执行函数时抛出错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">process</span>(<span class="params">values</span>) </span>&#123;</div><div class="line">    values.sort();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = values.length; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (values[i] &gt; <span class="number">100</span>) &#123;</div><div class="line">            <span class="keyword">return</span> values[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果执行这个函数时传给它一个字符串参数，那么对sort()的调用就会失败。<br>不同浏览器会给出不同的错误消息，但都不是特别明确。</p>
+<ul>
+<li>IE：属性或方法不存在。</li>
+<li>Firefox：values.sort()不是函数。</li>
+<li>Safari：值undefined（表达式values.sort 的结果）不是对象。</li>
+<li>Chrome：对象名没有方法’sort’。</li>
+<li>Opera：类型不匹配（通常是在需要对象的地方使用了非对象值）。</li>
+</ul>
+<p>尽管Firefox、Chrome 和Safari 都明确指出了代码中导致错误的部分，但错误消息并没有清楚地告诉我们到底出了什么问题，该怎么修复问题。<br>在面对包含数千行JavaScript 代码的复杂的Web 应用程序时，要想查找错误来源就没有那么容易了。<br>所以带有适当信息的自定义错误能够显著提升代码的可维护性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">process</span>(<span class="params">values</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!(values <span class="keyword">instanceof</span> <span class="built_in">Array</span>)) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"process(): Argument must be an array."</span>);</div><div class="line">    &#125;</div><div class="line">    values.sort();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = values.length; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">if</span> (values[i] &gt; <span class="number">100</span>) &#123;</div><div class="line">            <span class="keyword">return</span> values[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在重写后的这个函数中，如果values 参数不是数组，就会抛出一个错误。<br>错误消息中包含了函数的名称，以及为什么会发生错误的明确描述。<br>如果一个复杂的Web 应用程序发生了这个错误，那么查找问题的根源也就容易多了。</p>
+<p>建议在开发JavaScript 代码的过程中，重点关注函数和可能导致函数执行失败的因素。<br>良好的错误处理机制应该可以确保代码中只发生你自己抛出的错误。</p>
+<p>在多框架环境下使用instanceof 来检测数组有一些问题。</p>
+<h4 id="抛出错误与使用try-catch"><a href="#抛出错误与使用try-catch" class="headerlink" title="抛出错误与使用try-catch"></a>抛出错误与使用try-catch</h4><p>说到抛出错误与捕获错误，<br><strong>只应该捕获那些你确切地知道该如何处理的错误。捕获错误的目的在于避免浏览器以默认方式处理它们；而抛出错误的目的在于提供错误发生具体原因的消息。</strong></p>
+<h3 id="错误（error）事件"><a href="#错误（error）事件" class="headerlink" title="错误（error）事件"></a>错误（error）事件</h3><p>任何没有通过try-catch 处理的错误都会触发window 对象的error 事件。<br>Web 浏览器最早支持的事件之一，IE、Firefox 和Chrome 为保持向后兼容，并没有对这个事件作任何修改。<br>在任何Web 浏览器中，onerror 事件处理程序都不会创建event 对象，但它可以接收三个参数：错误消息、错误所在的URL 和行号。<br>多数情况下，只有错误消息有用，因为URL 只是给出了文档的位置，而行号所指的代码行既可能出自嵌入的JavaScript 代码，也可能出自外部的文件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">message, url, line</span>)</span>&#123;</div><div class="line">    alert(message);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>只要发生错误，无论是不是浏览器生成的，都会触发error 事件，并执行这个事件处理程序。然后，浏览器默认的机制发挥作用，像往常一样显示出错误消息。<br>在事件处理程序中返回false，可以阻止浏览器报告错误的默认行为。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">message, url, line</span>) </span>&#123;</div><div class="line">    alert(message);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>通过返回false，这个函数实际上就充当了整个文档中的try-catch 语句，可以捕获所有无代码处理的运行时错误。<br>这个事件处理程序是避免浏览器报告错误的最后一道防线，理想情况下，只要可能就不应该使用它。</p>
+<p>浏览器在使用这个事件处理错误时的方式有明显不同。<br>在IE 中，即使发生error事件，代码仍然会正常执行；所有变量和数据都将得到保留，因此能在onerror 事件处理程序中访问它们。<br>但在Firefox 中，常规代码会停止执行，事件发生之前的所有变量和数据都将被销毁，因此几乎就无法判断错误了。</p>
+<p>图像也支持error 事件。只要图像的src 特性中的URL 不能返回可以被识别的图像格式，就会触发error 事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image = <span class="keyword">new</span> Image();</div><div class="line">EventUtil.addHandler(image, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">    alert(<span class="string">"Image loaded!"</span>);</div><div class="line">&#125;);</div><div class="line">EventUtil.addHandler(image, <span class="string">"error"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">    alert(<span class="string">"Image not loaded!"</span>);</div><div class="line">&#125;);</div><div class="line">image.src = <span class="string">"smilex.gif"</span>; <span class="comment">//指定不存在的文件</span></div></pre></td></tr></table></figure>
+<p>当加载图像失败时就会显示一个警告框。需要注意的是，发生error 事件时，图像下载过程已经结束，也就是说不能再重新下载了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/30/javascript-note-16-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十六章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十六章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/01/javascript-note-17-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十七章-2">
+                《 JavaScript 高级程序设计》备忘-第十七章-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#错误处理与调试"><span class="nav-number">1.</span> <span class="nav-text">错误处理与调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器报告的错误"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器报告的错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IE"><span class="nav-number">1.1.1.</span> <span class="nav-text">IE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Firefox"><span class="nav-number">1.1.2.</span> <span class="nav-text">Firefox</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Safari"><span class="nav-number">1.1.3.</span> <span class="nav-text">Safari</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Opera"><span class="nav-number">1.1.4.</span> <span class="nav-text">Opera</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chrome"><span class="nav-number">1.1.5.</span> <span class="nav-text">Chrome</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">1.2.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#try-catch语句"><span class="nav-number">1.2.1.</span> <span class="nav-text">try-catch语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#finally-子句"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">finally 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误类型"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">错误类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合理使用try-catch"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">合理使用try-catch</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抛出错误"><span class="nav-number">1.2.2.</span> <span class="nav-text">抛出错误</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抛出错误的时机"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">抛出错误的时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抛出错误与使用try-catch"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">抛出错误与使用try-catch</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误（error）事件"><span class="nav-number">1.2.3.</span> <span class="nav-text">错误（error）事件</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

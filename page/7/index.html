@@ -88,7 +88,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Web,JavaScript," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -104,25 +104,12 @@
 
 
 
-<meta name="description" content="表单脚本表单的基础知识HTML 对应： &amp;lt;form&amp;gt;元素JavaScript 对应：HTMLFormElement 类型HTMLFormElement 继承 HTMLElement自己的独有的属性和方法：
-
-acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。
-action：接受请求的URL；等价于HTML 中的action 特性">
-<meta property="og:type" content="article">
-<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十四章">
-<meta property="og:url" content="http://codingme.xyz/2016/10/19/javascript-note-14/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CodingMe">
+<meta property="og:url" content="http://codingme.xyz/page/7/index.html">
 <meta property="og:site_name" content="CodingMe">
-<meta property="og:description" content="表单脚本表单的基础知识HTML 对应： &amp;lt;form&amp;gt;元素JavaScript 对应：HTMLFormElement 类型HTMLFormElement 继承 HTMLElement自己的独有的属性和方法：
-
-acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。
-action：接受请求的URL；等价于HTML 中的action 特性">
-<meta property="og:updated_time" content="2016-10-19T05:28:44.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十四章">
-<meta name="twitter:description" content="表单脚本表单的基础知识HTML 对应： &amp;lt;form&amp;gt;元素JavaScript 对应：HTMLFormElement 类型HTMLFormElement 继承 HTMLElement自己的独有的属性和方法：
-
-acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。
-action：接受请求的URL；等价于HTML 中的action 特性">
+<meta name="twitter:title" content="CodingMe">
 
 
 
@@ -143,9 +130,9 @@ action：接受请求的URL；等价于HTML 中的action 特性">
 
 
 
-  <link rel="canonical" href="http://codingme.xyz/2016/10/19/javascript-note-14/"/>
+  <link rel="canonical" href="http://codingme.xyz/page/7/"/>
 
-  <title> 《 JavaScript 高级程序设计》备忘-第十四章 | CodingMe </title>
+  <title> CodingMe </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -166,7 +153,9 @@ action：接受请求的URL；等价于HTML 中的action 特性">
     
   
 
-  <div class="container one-collumn sidebar-position-right page-post-detail ">
+  <div class="container one-collumn sidebar-position-right 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -286,9 +275,9 @@ action：接受请求的URL；等价于HTML 中的action 特性">
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -308,7 +297,10 @@ action：接受请求的URL；等价于HTML 中的action 特性">
             
             
               
-                《 JavaScript 高级程序设计》备忘-第十四章
+                
+                <a class="post-title-link" href="/2016/10/16/javascript-note-13-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十三章-2
+                </a>
               
             
           </h1>
@@ -320,8 +312,8 @@ action：接受请求的URL；等价于HTML 中的action 特性">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-19T11:48:06+08:00" content="2016-10-19">
-              2016-10-19
+            <time itemprop="dateCreated" datetime="2016-10-16T11:33:29+08:00" content="2016-10-16">
+              2016-10-16
             </time>
           </span>
 
@@ -367,91 +359,285 @@ action：接受请求的URL；等价于HTML 中的action 特性">
       
 
       
-        <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h2><p>HTML 对应： <code>&lt;form&gt;</code>元素<br>JavaScript 对应：<code>HTMLFormElement</code> 类型<br>HTMLFormElement 继承 HTMLElement<br>自己的独有的属性和方法：</p>
-<ul>
-<li>acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。</li>
-<li>action：接受请求的URL；等价于HTML 中的action 特性。</li>
-<li>elements：表单中所有控件的集合（HTMLCollection）。</li>
-<li>enctype：请求的编码类型；等价于HTML 中的enctype 特性。</li>
-<li>length：表单中控件的数量。</li>
-<li>method：要发送的HTTP 请求类型，通常是”get”或”post”；等价于HTML 的method 特性。</li>
-<li>name：表单的名称；等价于HTML 的name 特性。</li>
-<li>reset()：将所有表单域重置为默认值。</li>
-<li>submit()：提交表单。</li>
-<li>target：用于发送请求和接收响应的窗口名称；等价于HTML 的target 特性。</li>
-</ul>
-<p>取得<code>&lt;form&gt;</code>元素引用的方式有好几种。<br>其中最常见的方式就是将它看成与其他元素一样，并为其添加id 特性，然后再像下面这样使用getElementById()方法找到它。<br>其次，通过document.forms 可以取得页面中所有的表单。在这个集合中，可以通过数值索引或name 值来取得特定的表单。<br>另外，在较早的浏览器或者那些支持向后兼容的浏览器中，也会把每个设置了name 特性的表单作为属性保存在document 对象中(不推荐使用这种方式)。<br>可以同时为表单指定id 和name 属性，但它们的值不一定相同。<br><a id="more"></a></p>
-<h3 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h3><p>用户单击提交按钮或图像按钮时，就会提交表单。<br>使用<code>&lt;input&gt;</code>或<code>&lt;button&gt;</code>都可以定义提交按钮，只要将其type 特性的值设置为”submit”即可。<br>图像按钮则是通过将<code>&lt;input&gt;</code>的type 特性值设置为”image”来定义的。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 通用提交按钮 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit Form"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 自定义提交按钮 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 图像按钮 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"image"</span> <span class="attr">src</span>=<span class="string">"graphic.gif"</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>只要表单中存在上面列出的任何一种按钮，那么在相应表单控件拥有焦点的情况下，按回车键就可以提交该表单。（textarea 是一个例外)<br>如果表单里没有提交按钮，按回车键不会提交表单。</p>
-<p>浏览器会在将请求发送给服务器之前触发submit 事件。这样，我们就有机会验证表单数据，并据以决定是否允许表单提交。<br>阻止这个事件的默认行为就可以取消表单提交。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</div><div class="line">EventUtil.addHandler(form, <span class="string">"submit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="comment">//取得事件对象</span></div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="comment">//阻止默认事件</span></div><div class="line">    EventUtil.preventDefault(event);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>在JavaScript 中，以编程方式调用submit()方法也可以提交表单。<br>这种方式无需表单包含提交按钮，任何时候都可以正常提交表单。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</div><div class="line"><span class="comment">//提交表单</span></div><div class="line">form.submit();</div></pre></td></tr></table></figure>
-<p>提交表单时可能出现的最大问题，就是重复提交表单。<br>在第一次提交表单后，如果长时间没有反应，用户可能会变得不耐烦。<br>这时候，他们也许会反复单击提交按钮。结果往往很麻烦，或者会造成错误。<br>解决这一问题的办法有两个：<br>在第一次提交表单后就禁用提交按钮，<br>或者利用onsubmit 事件处理程序取消后续的表单提交操作。</p>
-<h3 id="重置表单"><a href="#重置表单" class="headerlink" title="重置表单"></a>重置表单</h3><p>用户单击重置按钮时，表单会被重置。<br>使用type 特性值为”reset”的<code>&lt;input&gt;</code>或<code>&lt;button&gt;</code>都可以创建重置按钮。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 通用重置按钮 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"Reset Form"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 自定义重置按钮 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>在重置表单时，所有表单字段都会恢复到页面刚加载完毕时的初始值。<br>如果某个字段的初始值为空，就会恢复为空；而带有默认值的字段，也会恢复为默认值。</p>
-<p>用户单击重置按钮重置表单时，会触发reset 事件。利用这个机会，我们可以在必要时取消重置操作。<br>与提交表单一样，也可以通过JavaScript 来重置表单。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</div><div class="line">EventUtil.addHandler(form, <span class="string">"reset"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="comment">//取得事件对象</span></div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="comment">//阻止表单重置</span></div><div class="line">    EventUtil.preventDefault(event);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</div><div class="line"><span class="comment">//重置表单</span></div><div class="line">form.reset();</div></pre></td></tr></table></figure>
-<p>与调用submit()方法不同，调用reset()方法会像单击重置按钮一样触发reset 事件。<br>事实上，重置表单的需求是很少见的。更常见的做法是提供一个取消按钮，让用户能够回到前一个页面，而不是不分青红皂白地重置表单中的所有值。</p>
-<h3 id="表单字段"><a href="#表单字段" class="headerlink" title="表单字段"></a>表单字段</h3><p>表单元素elements 属性，它是表单中所有表单元素（字段）的集合,是一个有序列表，<br>其中包含着表单中的所有字段，例如<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;button&gt;</code>和<code>&lt;fieldset&gt;</code>。</p>
-
+        
+          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p>在触发DOM上的某个事件时，会产生一个事件对象event，这个对象中包含着所有与事件有关的信息。<br>包括导致事件的元素、事件的类型以及其他与特定事件相关的信息。<br>所有浏览器都支持event 对象，但支持方式不同。</p>
+<h3 id="DOM中的事件对象"><a href="#DOM中的事件对象" class="headerlink" title="DOM中的事件对象"></a>DOM中的事件对象</h3><p>兼容DOM 的浏览器会将一个event 对象传入到事件处理程序中。无论指定事件处理程序时使用什么方法(DOM0 级或DOM2 级)，都会传入event 对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(event.type); <span class="comment">//"click"</span></div><div class="line">&#125;;</div><div class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(event.type); <span class="comment">//"click"</span></div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>在通过HTML 特性指定事件处理程序时，变量event 中保存着event 对象。<br><code>&lt;input type=&quot;button&quot; value=&quot;Click Me&quot; onclick=&quot;alert(event.type)&quot;/&gt;</code><br>以这种方式提供event 对象，可以让HTML 特性事件处理程序与JavaScript 函数执行相同的操作。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/16/javascript-note-13-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Web/" rel="tag">#Web</a>
-          
-            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/10/18/javascript-note-13-8/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十三章-8">
-                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十三章-8
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/12/javascript-note-13-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十三章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-12T14:49:48+08:00" content="2016-10-12">
+              2016-10-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>JavaScript 与HTML 之间的交互是通过事件实现的。<br><strong>事件，就是文档或浏览器窗口中发生的一些特定的交互瞬间</strong>。<br>可以使用侦听器(或处理程序)来预订事件，以便事件发生时执行相应的代码。<br>这种在传统软件工程中被称为观察员模式的模型，支持页面的行为(JavaScript 代码)与页面的外观(HTML 和CSS 代码)之间的松散耦合。</p>
+<p>IE9、Firefox、Opera、Safari 和Chrome 全都已经实现了“DOM2 级事件”模块的核心部分。<strong>IE8 是最后一个仍然使用其专有事件系统的主要浏览器。</strong><br>尽管所有主要浏览器已经实现了“DOM2 级事件”，但这个规范本身并没有涵盖所有事件类型。</p>
+<h2 id="1事件流"><a href="#1事件流" class="headerlink" title="1事件流"></a>1事件流</h2><p>在单击按钮的同时，你也单击了按钮的容器元素，甚至也单击了整个页面。<br>事件流描述的是从页面中接收事件的顺序。<br>当时，IE 的事件流是事件冒泡流，而Netscape Communicator 的事件流是事件捕获流。</p>
+<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>即事件开始时由最具体的元素(文档中嵌套层次最深的那个节点)接收，然后逐级向上传播到较为不具体的节点(文档)。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/12/javascript-note-13-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
       
     </div>
-  </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/09/javascript-note-12-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-09T18:04:29+08:00" content="2016-10-09">
+              2016-10-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h1><h2 id="DOM中的范围"><a href="#DOM中的范围" class="headerlink" title="DOM中的范围"></a>DOM中的范围</h2><h3 id="操作DOM-范围中的内容"><a href="#操作DOM-范围中的内容" class="headerlink" title="操作DOM 范围中的内容"></a>操作DOM 范围中的内容</h3><p>在创建范围时 ，内部会为这个范围创建一个文档片段，范围所属的全部节点都被添加到了这个文档片段中。<br>为了创建这个文档片段，范围内容的格式必须正确有效。<br>在前面的例子中，我们创建的选区分别开始和结束于两个文本节点的内部，因此不能算是格式良好的DOM结构，也就无法通过DOM来表示。<br>范围知道自身缺少哪些开标签和闭标签，它能够重新构建有效的DOM结构以便我们对其进行操作。</p>
+<p>范围经过计算知道选区中缺少一个开始的<code>&lt;b&gt;</code>标签，因此就会在后台动态加入一个该标签，同时还会在前面加入一个表示结束的<code>&lt;/b&gt;</code>标签以结束”He”。于是，修改后的DOM 就变成了:<br><code>&lt;p&gt;&lt;b&gt;He&lt;/b&gt;&lt;b&gt;llo&lt;/b&gt; world!&lt;/p&gt;</code><br>文本节点”world!”也被拆分为两个文本节点，一个包含”wo”，另一个包含”rld!”。</p>
+<p>像这样创建了范围之后，就可以使用各种方法对范围的内容进行操作了。<br>deleteContents()这个方法能够从文档中删除范围所包含的内容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">range.setEnd(worldNode, <span class="number">3</span>);</div><div class="line">range.deleteContents();</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/09/javascript-note-12-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -459,10 +645,6 @@ action：接受请求的URL；等价于HTML 中的action 特性">
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -482,17 +664,8 @@ action：接受请求的URL；等价于HTML 中的action 特性">
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -503,7 +676,7 @@ action：接受请求的URL；等价于HTML 中的action 特性">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">61</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -617,17 +790,6 @@ action：接受请求的URL；等价于HTML 中的action 特性">
       </section>
 
       
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#表单脚本"><span class="nav-number">1.</span> <span class="nav-text">表单脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表单的基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">表单的基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交表单"><span class="nav-number">1.1.1.</span> <span class="nav-text">提交表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重置表单"><span class="nav-number">1.1.2.</span> <span class="nav-text">重置表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表单字段"><span class="nav-number">1.1.3.</span> <span class="nav-text">表单字段</span></a></li></ol></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
 
     </div>
   </aside>
@@ -730,10 +892,6 @@ action：接受请求的URL；等价于HTML 中的action 特性">
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

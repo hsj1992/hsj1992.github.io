@@ -1,0 +1,954 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="表单脚本文本框脚本在HTML 中，有两种方式来表现文本框：一种是使用&amp;lt;input&amp;gt;元素的单行文本框，另一种是使用&amp;lt;textarea&amp;gt;的多行文本框。两者相似，但仍有重要区别。
+使用&amp;lt;input&amp;gt;，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十四章-2">
+<meta property="og:url" content="http://codingme.xyz/2016/10/19/javascript-note-14-2/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="表单脚本文本框脚本在HTML 中，有两种方式来表现文本框：一种是使用&amp;lt;input&amp;gt;元素的单行文本框，另一种是使用&amp;lt;textarea&amp;gt;的多行文本框。两者相似，但仍有重要区别。
+使用&amp;lt;input&amp;gt;，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。">
+<meta property="og:updated_time" content="2016-10-19T10:37:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十四章-2">
+<meta name="twitter:description" content="表单脚本文本框脚本在HTML 中，有两种方式来表现文本框：一种是使用&amp;lt;input&amp;gt;元素的单行文本框，另一种是使用&amp;lt;textarea&amp;gt;的多行文本框。两者相似，但仍有重要区别。
+使用&amp;lt;input&amp;gt;，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/19/javascript-note-14-2/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十四章-2 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十四章-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-19T11:48:06+08:00" content="2016-10-19">
+              2016-10-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h2><p>在HTML 中，有两种方式来表现文本框：一种是使用<code>&lt;input&gt;</code>元素的单行文本框，另一种是使用<code>&lt;textarea&gt;</code>的多行文本框。<br>两者相似，但仍有重要区别。</p>
+<p>使用<code>&lt;input&gt;</code>，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。</p>
+<p>相对而言,<code>&lt;textarea&gt;</code>始终会呈现一个多行文本框，要指定大小可以用row和col特性。row指的是文本框行数，col指的是文本框字符列数。<br>初始值要放在<code>&lt;textarea&gt;</code>和<code>&lt;/textarea&gt;</code>之间。一个区别：不能在HTML 中给<code>&lt;textarea&gt;</code>指定最大字符数。</p>
+<p>它们都会将用户输入的内容保存在value 属性中。可以通过这个属性读取和设置文本框的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"textbox1"</span>];</div><div class="line">alert(textbox.value);</div><div class="line">textbox.value = <span class="string">"Some new value"</span>;</div></pre></td></tr></table></figure>
+<p>建议使用value 属性读取或设置文本框的值，不建议使用标准的DOM 方法。即不要使用setAttribute()设置<code>&lt;input&gt;</code>元素的value 特性，也不要去修改<code>&lt;textarea&gt;</code>元素的第一个子节点。<br>原因很简单：对value 属性所作的修改，不一定会反映在DOM中。因此，在处理文本框的值时，最好不要使用DOM 方法。</p>
+<h3 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h3><p>都支持select()方法，这个方法用于选择文本框中的所有文本。<br>在调用select()方法时，大多数浏览器都会将焦点设置到文本框中。这个方法不接受参数，可以在任何时候被调用。<br><a id="more"></a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"textbox1"</span>];</div><div class="line">textbox.select();</div></pre></td></tr></table></figure>
+<p>在文本框获得焦点时选择其所有文本，这是一种非常常见的做法，特别是在文本框包含默认值的时候。因为这样做可以让用户不必一个一个地删除文本。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(textbox, <span class="string">"focus"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">    target.select();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>只要文本框获得焦点，就会选择其中所有的文本。较大幅度地提升表单的易用性。</p>
+<h4 id="选择（select）事件"><a href="#选择（select）事件" class="headerlink" title="选择（select）事件"></a>选择（select）事件</h4><p>与select()方法对应的，是一个select 事件。在选择了文本框中的文本时，就会触发select事件。<br>不过，到底什么时候触发select 事件，还会因浏览器而异。<br>IE9+、Opera、Firefox、Chrome和Safari :只有用户选择了文本（而且要释放鼠标），才会触发select 事件。<br>IE8 及更早版本 :只要用户选择了一个字母（不必释放鼠标），就会触发select 事件。<br>在调用select()方法时也会触发select 事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"textbox1"</span>];</div><div class="line">EventUtil.addHandler(textbox, <span class="string">"select"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> alert(<span class="string">"Text selected"</span> + textbox.value);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="取得选择的文本"><a href="#取得选择的文本" class="headerlink" title="取得选择的文本"></a>取得选择的文本</h4><p>虽然通过select 事件我们可以知道用户什么时候选择了文本，但仍然不知道用户选择了什么文本。<br>HTML5 扩展方案规范采取的办法是添加两个属性：selectionStart 和selectionEnd。<br>这两个属性中保存的是基于0 的数值，表示所选择文本的范围（即文本选区开头和结尾的偏移量）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSelectedText</span>(<span class="params">textbox</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> textbox.value.substring(textbox.selectionStart, textbox.selectionEnd);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从而取得用户在文本框中选择的文本。</p>
+<p>IE8 及之前版本不支持这两个属性，而是提供了另一种方案。</p>
+<p>document.selection 对象，其中保存着用户在整个文档范围内选择的文本信息；<br>也就是说，无法确定用户选择的是页面中哪个部位的文本。<br>不过，在与select 事件一起使用的时候，可以假定是用户选择了文本框中的文本，因而触发了该事件。<br>要取得选择的文本，首先必须创建一个范围，然后再将文本从其中提取出来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getSelectedText</span>(<span class="params">textbox</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> textbox.selectionStart == <span class="string">"number"</span>)&#123;</div><div class="line">        <span class="keyword">return</span> textbox.value.substring(textbox.selectionStart,</div><div class="line">        textbox.selectionEnd);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.selection)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.selection.createRange().text;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>调用document.selection时，不需要考虑textbox 参数。</p>
+<h4 id="选择部分文本"><a href="#选择部分文本" class="headerlink" title="选择部分文本"></a>选择部分文本</h4><p>HTML5 也为选择文本框中的部分文本提供了解决方案:最早由Firefox 引入的setSelectionRange()方法。<br>现在除select()方法之外，所有文本框都有一个setSelectionRange()方法。这个方法接收两个参数：要选择的第一个字符的索引和要选择的最后一个字符之后的字符的索引（类似于substring()方法的两个参数）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">textbox.value = <span class="string">"Hello world!"</span></div><div class="line"><span class="comment">//选择所有文本</span></div><div class="line">textbox.setSelectionRange(<span class="number">0</span>, textbox.value.length); <span class="comment">//"Hello world!"</span></div><div class="line"><span class="comment">//选择前3 个字符</span></div><div class="line">textbox.setSelectionRange(<span class="number">0</span>, <span class="number">3</span>); <span class="comment">//"Hel"</span></div><div class="line"><span class="comment">//选择第4 到第6 个字符</span></div><div class="line">textbox.setSelectionRange(<span class="number">4</span>, <span class="number">7</span>); <span class="comment">//"o w"</span></div></pre></td></tr></table></figure>
+<p>IE9、Firefox、Safari、Chrome 和Opera 支持这种方案。</p>
+<p>IE8 及更早版本支持使用范围选择部分文本。<br>先使用IE 在所有文本框上提供的createTextRange()方法创建一个范围，并将其放在恰当的位置上。<br>然后，再使用moveStart()和moveEnd()这两个范围方法将范围移动到位。<br>在调用这两个方法以前，还必须使用collapse()将范围折叠到文本框的开始位置。<br>此时，moveStart()将范围的起点和终点移动到了相同的位置，只要再给moveEnd()传入要选择的字符总数即可。<br>最后一步，就是使用范围的select()方法选择文本。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">textbox.value = <span class="string">"Hello world!"</span>;</div><div class="line"><span class="keyword">var</span> range = textbox.createTextRange();</div><div class="line"><span class="comment">//选择所有文本</span></div><div class="line">range.collapse(<span class="literal">true</span>);</div><div class="line">range.moveStart(<span class="string">"character"</span>, <span class="number">0</span>);</div><div class="line">range.moveEnd(<span class="string">"character"</span>, textbox.value.length); <span class="comment">//"Hello world!"</span></div><div class="line">range.select();</div><div class="line"><span class="comment">//选择前3 个字符</span></div><div class="line">range.collapse(<span class="literal">true</span>);</div><div class="line">range.moveStart(<span class="string">"character"</span>, <span class="number">0</span>);</div><div class="line">range.moveEnd(<span class="string">"character"</span>, <span class="number">3</span>);</div><div class="line">range.select(); <span class="comment">//"Hel"</span></div><div class="line"><span class="comment">//选择第4 到第6 个字符</span></div><div class="line">range.collapse(<span class="literal">true</span>);</div><div class="line">range.moveStart(<span class="string">"character"</span>, <span class="number">4</span>);</div><div class="line">range.moveEnd(<span class="string">"character"</span>, <span class="number">3</span>);</div><div class="line">range.select(); <span class="comment">//"o w"</span></div></pre></td></tr></table></figure>
+<p>与在其他浏览器中一样，要想在文本框中看到文本被选择的效果，必须让文本框获得焦点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectText</span>(<span class="params">textbox, startIndex, stopIndex</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (textbox.setSelectionRange)&#123;</div><div class="line">        textbox.setSelectionRange(startIndex, stopIndex);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (textbox.createTextRange)&#123;</div><div class="line">        <span class="keyword">var</span> range = textbox.createTextRange();</div><div class="line">        range.collapse(<span class="literal">true</span>);</div><div class="line">        range.moveStart(<span class="string">"character"</span>, startIndex);</div><div class="line">        range.moveEnd(<span class="string">"character"</span>, stopIndex - startIndex);</div><div class="line">        range.select();</div><div class="line">    &#125;</div><div class="line">    textbox.focus();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>选择部分文本的技术在实现高级文本输入框时很有用，例如提供自动完成建议的文本框就可以使用这种技术。</p>
+<h3 id="过滤输入"><a href="#过滤输入" class="headerlink" title="过滤输入"></a>过滤输入</h3><p>综合运用事件和DOM 手段，就可以将普通的文本框转换成能够理解用户输入数据的功能型控件。</p>
+<h4 id="屏蔽字符"><a href="#屏蔽字符" class="headerlink" title="屏蔽字符"></a>屏蔽字符</h4><p>例如，电话号码中不能包含非数值字符。如前所述，响应向文本框中插入字符操作的是keypress 事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(textbox, <span class="string">"keypress"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">    <span class="keyword">var</span> charCode = EventUtil.getCharCode(event);</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/\d/</span>.test(<span class="built_in">String</span>.fromCharCode(charCode)) &amp;&amp; charCode &gt; <span class="number">9</span> &amp;&amp; !event.ctrlKey)&#123;</div><div class="line">            EventUtil.preventDefault(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="操作剪贴板"><a href="#操作剪贴板" class="headerlink" title="操作剪贴板"></a>操作剪贴板</h4><p>HTML 5 也把剪贴板事件纳入了规范。下列就是6 个剪贴板事件。</p>
+<ul>
+<li>beforecopy：在发生复制操作前触发。</li>
+<li>copy：在发生复制操作时触发。</li>
+<li>beforecut：在发生剪切操作前触发。</li>
+<li>cut：在发生剪切操作时触发。</li>
+<li>beforepaste：在发生粘贴操作前触发。</li>
+<li>paste：在发生粘贴操作时触发。</li>
+</ul>
+<p>由于没有针对剪贴板操作的标准，这些事件及相关对象会因浏览器而异。<br>Safari、Chrome 和Firefox: beforecopy、beforecut 和beforepaste 事件只会在显示针对文本框的上下文菜单(鼠标右键？)（预期将发生剪贴板事件）的情况下触发。<br>IE :会在触发copy、cut 和paste 事件之前先行触发这些事件。</p>
+<p>至于copy、cut 和paste 事件，只要是在上下文菜单中选择了相应选项，或者使用了相应的键盘组合键，所有浏览器都会触发它们。</p>
+<p>在实际的事件发生之前，通过beforecopy、beforecut 和beforepaste 事件可以在向剪贴板发送数据，或者从剪贴板取得数据之前修改数据。<br>不过，取消这些事件并不会取消对剪贴板的操作——只有取消copy、cut 和paste 事件，才能阻止相应操作发生。<br>(思考：使用示例，防盗版？如果手动从一个网站上复制内容，之后要粘贴的时候发现后面带有网站地址？)</p>
+<p>要访问剪贴板中的数据，可以使用clipboardData 对象：<br>在IE 中，这个对象是window 对象的属性；而在Firefox 4+、Safari 和Chrome 中，这个对象是相应event 对象的属性。<br>在Firefox、Safari 和Chorme 中，只有在处理剪贴板事件期间clipboardData 对象才有效，这是为了防止对剪贴板的未授权访问；<br>在IE 中，则可以随时访问clipboardData 对象。为了确保跨浏览器兼容性，最好只在发生剪贴板事件期间使用这个对象。</p>
+<p>clipboardData 对象有三个方法：getData()、setData()和clearData()。</p>
+<p>getData()用于从剪贴板中取得数据，它接受一个参数，即要取得的数据的格式。<br>在IE 中，有两种数据格式：”text”和”URL”。在Firefox、Safari 和Chrome 中，这个参数是一种MIME 类型；<br>不过，可以用”text”代表”text/plain”。</p>
+<p>setData()方法的第一个参数也是数据类型，第二个参数是要放在剪贴板中的文本。<br>与getData()方法不同的是，Safari 和Chrome 的setData()方法不能识别”text”类型。<br>这两个浏览器在成功将文本放到剪贴板中后，都会返回true；否则，返回false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> EventUtil = &#123;</div><div class="line">    <span class="comment">//省略的代码</span></div><div class="line">    getClipboardText: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> clipboardData = (event.clipboardData || <span class="built_in">window</span>.clipboardData);</div><div class="line">        <span class="keyword">return</span> clipboardData.getData(<span class="string">"text"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//省略的代码</span></div><div class="line">    setClipboardText: <span class="function"><span class="keyword">function</span>(<span class="params">event, value</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span> (event.clipboardData)&#123;</div><div class="line">            <span class="keyword">return</span> event.clipboardData.setData(<span class="string">"text/plain"</span>, value);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.clipboardData)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">window</span>.clipboardData.setData(<span class="string">"text"</span>, value);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//省略的代码</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在paste事件中，可以确定剪贴板中的值是否有效，如果无效，就可以像下面示例中那样，取消默认的行为。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(textbox, <span class="string">"paste"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    <span class="keyword">var</span> text = EventUtil.getClipboardText(event);</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/^\d*$/</span>.test(text))&#123;</div><div class="line">        EventUtil.preventDefault(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在这里，onpaste 事件处理程序可以确保只有数值才会被粘贴到文本框中。如果剪贴板的值与正则表达式不匹配，则会取消粘贴操作。<br>Firefox、Safari 和Chrome 只允许在onpaste 事件处理程序中访问getData()方法。</p>
+<p>由于并非所有浏览器都支持访问剪贴板，所以更简单的做法是屏蔽一或多个剪贴板操作。<br>在支持copy、cut 和paste 事件的浏览器中（IE、Safari、Chrome 和Firefox 3 及更高版本），很容易阻止这些事件的默认行为。<br>(思考：之前键盘事件、鼠标事件有屏蔽按键、屏蔽鼠标右键的上下文菜单来防止copy的，这里直接用剪切板事件禁止更彻底)</p>
+<h3 id="自动切换焦点"><a href="#自动切换焦点" class="headerlink" title="自动切换焦点"></a>自动切换焦点</h3><p>使用JavaScript 可以从多个方面增强表单字段的易用性。其中，最常见的一种方式就是在用户填写完当前字段时，自动将焦点切换到下一个字段。</p>
+<p>例如，美国的电话号码通常会分为三部分：区号、局号和另外4 位数字。为取得完整的电话号码，很多网页中都会提供下列3 个文本框：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"tel1"</span> <span class="attr">id</span>=<span class="string">"txtTel1"</span> <span class="attr">maxlength</span>=<span class="string">"3"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"tel2"</span> <span class="attr">id</span>=<span class="string">"txtTel2"</span> <span class="attr">maxlength</span>=<span class="string">"3"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"tel3"</span> <span class="attr">id</span>=<span class="string">"txtTel3"</span> <span class="attr">maxlength</span>=<span class="string">"4"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>为增强易用性，同时加快数据输入，可以在前一个文本框中的字符达到最大数量后，自动将焦点切换到下一个文本框。<br>(即在输入多段数据时候常见的方法，比如Windows输入激活码)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">tabForward</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        event = EventUtil.getEvent(event);</div><div class="line">        <span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">        <span class="keyword">if</span> (target.value.length == target.maxLength)&#123;</div><div class="line">            <span class="keyword">var</span> form = target.form;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=form.elements.length; i &lt; len; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (form.elements[i] == target) &#123;</div><div class="line">                    <span class="keyword">if</span> (form.elements[i+<span class="number">1</span>])&#123;</div><div class="line">                        form.elements[i+<span class="number">1</span>].focus();</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> textbox1 = <span class="built_in">document</span>.getElementById(<span class="string">"txtTel1"</span>);</div><div class="line">    <span class="keyword">var</span> textbox2 = <span class="built_in">document</span>.getElementById(<span class="string">"txtTel2"</span>);</div><div class="line">    <span class="keyword">var</span> textbox3 = <span class="built_in">document</span>.getElementById(<span class="string">"txtTel3"</span>);</div><div class="line">    EventUtil.addHandler(textbox1, <span class="string">"keyup"</span>, tabForward);</div><div class="line">    EventUtil.addHandler(textbox2, <span class="string">"keyup"</span>, tabForward);</div><div class="line">    EventUtil.addHandler(textbox3, <span class="string">"keyup"</span>, tabForward);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>如果用户输入的值与文本框的maxlength相等（因为浏览器最终会强制它们相等，因此用户绝不会多输入字符），则需要查找表单字段集合，直至找到下一个文本框。<br>找到下一个文本框之后，则将焦点切换到该文本框。</p>
+<p>这些代码只适用于前面给出的标记，而且没有考虑隐藏字段。</p>
+<h3 id="HTML5-约束验证API"><a href="#HTML5-约束验证API" class="headerlink" title="HTML5 约束验证API"></a>HTML5 约束验证API</h3><p>为了在将表单提交到服务器之前验证数据，HTML5 新增了一些功能。<br>有了这些功能，即便JavaScript被禁用或者由于种种原因未能加载，也可以确保基本的验证。</p>
+<p>换句话说，浏览器自己会根据标记中的规则执行验证，然后自己显示适当的错误消息（完全不用JavaScript 插手）。<br>这个功能只有在支持HTML5 这部分内容的浏览器中才有效，这些浏览器有Firefox 4+、Safari 5+、Chrome 和Opera 10+。<br>(IE你….)</p>
+<p>只有在某些情况下表单字段才能进行自动验证。具体来说，就是要在HTML 标记中为特定的字段指定一些约束，然后浏览器才会自动执行表单验证。</p>
+<h4 id="必填字段"><a href="#必填字段" class="headerlink" title="必填字段"></a>必填字段</h4><p>required 属性。<br><code>&lt;input type=&quot;text&quot; name=&quot;username&quot; required&gt;</code><br>这个属性适用于<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>和<code>&lt;select&gt;</code>字段。</p>
+<p>在JavaScript 中，通过对应的required 属性，可以检查某个表单字段是否为必填字段:<br><code>var isUsernameRequired = document.forms[0].elements[&quot;username&quot;].required;</code><br>测试浏览器是否支持required 属性:<br><code>var isRequiredSupported = &quot;required&quot; in document.createElement(&quot;input&quot;);</code><br>以上代码通过特性检测来确定新创建的<code>&lt;input&gt;</code>元素中是否存在required 属性。</p>
+<h4 id="其他输入类型"><a href="#其他输入类型" class="headerlink" title="其他输入类型"></a>其他输入类型</h4><p>HTML5 为<code>&lt;input&gt;</code>元素的type 属性又增加了几个值。其中，”email”和”url”是两个得到支持最多的类型，各浏览器也都为它们增加了定制的验证机制。<br>“email”类型要求输入的文本必须符合电子邮件地址的模式，而”url”类型要求输入的文本必须符合URL 的模式。<br>不过，本节前面提到的浏览器在恰当地匹配模式方面都存在问题。最明显的是”-@-“会被当成一个有效的电子邮件地址。</p>
+<p>对于不支持这两个属性值的浏览器来说，会把type属性的值设置为”text”。<br>如果不给<code>&lt;input&gt;</code>元素设置required 属性，那么空文本框也会验证通过。<br>设置特定的输入类型并不能阻止用户输入无效的值，只是应用某些默认的验证而已。</p>
+<h4 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h4><p>HTML5 定义了另外几个输入元素:：”number”、”range”、”datetime”、”datetime-local”、”date”、”month”、”week”，还有”time”。<br>浏览器对这几个类型的支持情况并不好，因此如果真想选用的话，要特别小心。<br>想让用户只能输入0 到100 的值，而且这个值必须是5 的倍数:<br><code>&lt;input type=&quot;number&quot; min=&quot;0&quot; max=&quot;100&quot; step=&quot;5&quot; name=&quot;count&quot;&gt;</code><br>在不同的浏览器中，可能会也可能不会看到能够自动递增和递减的数值调节按钮（向上和向下按钮）。</p>
+<h4 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h4><p>HTML5 为文本字段新增了pattern 属性。这个属性的值是一个正则表达式，用于匹配文本框中的值。<br><code>&lt;input type=&quot;text&quot; pattern=&quot;\d+&quot; name=&quot;count&quot;&gt;</code><br>模式的开头和末尾不用加^和$符号（假定已经有了）<br>指定pattern 也不能阻止用户输入无效的文本。这个模式应用给值，浏览器来判断值是有效，还是无效。<br>在JavaScript 中可以通过pattern 属性访问模式。<br><code>var pattern = document.forms[0].elements[&quot;count&quot;].pattern;</code><br>检测是否支持：<br><code>var isPatternSupported = &quot;pattern&quot; in document.createElement(&quot;input&quot;);</code></p>
+<h4 id="检测有效性"><a href="#检测有效性" class="headerlink" title="检测有效性"></a>检测有效性</h4><p>checkValidity()方法可以检测表单中的某个字段是否有效。<br>如果字段的值有效，这个方法返回true，否则返回false。<br>值是否有效的判断依据是前面介绍过的那些约束。<br>如果必填字段中如果没有值就是无效的，而字段中的值与pattern 属性不匹配也是无效的。</p>
+<p>要检测整个表单是否有效，可以在表单自身调用checkValidity()方法。<br>如果所有表单字段都有效，这个方法返回true；即使有一个字段无效，这个方法也会返回false。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.forms[<span class="number">0</span>].checkValidity())&#123;</div><div class="line"><span class="comment">//表单有效，继续</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">//表单无效</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>validity 的属性则会告诉你为什么字段有效或无效。这个对象中包含一系列属性，每个属性会返回一个布尔值。</p>
+<ul>
+<li>customError ：如果设置了setCustomValidity()，则为true，否则返回false。</li>
+<li>patternMismatch：如果值与指定的pattern 属性不匹配，返回true。</li>
+<li>rangeOverflow：如果值比max 值大，返回true。</li>
+<li>rangeUnderflow：如果值比min 值小，返回true。</li>
+<li>stepMisMatch：如果min 和max 之间的步长值不合理，返回true。</li>
+<li>tooLong：如果值的长度超过了maxlength 属性指定的长度，返回true。<br>  有的浏览器（如Firefox 4）会自动约束字符数量，因此这个值可能永远都返回false。</li>
+<li>typeMismatch：如果值不是”mail”或”url”要求的格式，返回true。</li>
+<li>valid：如果这里的其他属性都是false，返回true。checkValidity()也要求相同的值。</li>
+<li>valueMissing：如果标注为required 的字段中没有值，返回true。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (input.validity &amp;&amp; !input.validity.valid)&#123;</div><div class="line">    <span class="keyword">if</span> (input.validity.valueMissing)&#123;</div><div class="line">        alert(<span class="string">"Please specify a value."</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (input.validity.typeMismatch)&#123;</div><div class="line">        alert(<span class="string">"Please enter an email address."</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="string">"Value is invalid."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(思考：第一个 if 确定了validity对象存在并且不合法。<br>这里的想法是：对validity所有属性进行遍历来获得所有的或运算。<br>不对，这样也无法找出是哪个出错了而且跟第一个 if 功能冲突了。<br>应该是遍历所有属性，如果该属性是true，则返回该属性的Key.toString())</p>
+<h4 id="禁用验证"><a href="#禁用验证" class="headerlink" title="禁用验证"></a>禁用验证</h4><p>通过设置novalidate 属性，可以告诉表单不进行验证。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"signup.php"</span> <span class="attr">novalidate</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--这里插入表单元素--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在JavaScript 中使用noValidate 属性可以取得或设置这个值，如果这个属性存在，值为true，如果不存在，值为false。<br><code>document.forms[0].noValidate = true; //禁用验证</code></p>
+<p>如果一个表单中有多个提交按钮，为了指定点击某个提交按钮不必验证表单，可以在相应的按钮上添加formnovalidate 属性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"foo.php"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--这里插入表单元素--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Regular Submit"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">formnovalidate</span> <span class="attr">name</span>=<span class="string">"btnNoValidate"</span></span></div><div class="line">    <span class="attr">value</span>=<span class="string">"Non-validating Submit"</span>&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>点击第一个提交按钮会像往常一样验证表单，而点击第二个按钮则会不经过验证而提交表单。<br>使用JavaScript 也可以设置这个属性。</p>
+<p><code>document.forms[0].elements[&quot;btnNoValidate&quot;].formNoValidate = true;</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/19/javascript-note-14-1/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十四章-1">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十四章-1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/19/javascript-note-14-3/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十四章-3">
+                《 JavaScript 高级程序设计》备忘-第十四章-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#表单脚本"><span class="nav-number">1.</span> <span class="nav-text">表单脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本框脚本"><span class="nav-number">1.1.</span> <span class="nav-text">文本框脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择文本"><span class="nav-number">1.1.1.</span> <span class="nav-text">选择文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择（select）事件"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">选择（select）事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#取得选择的文本"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">取得选择的文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择部分文本"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">选择部分文本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤输入"><span class="nav-number">1.1.2.</span> <span class="nav-text">过滤输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#屏蔽字符"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">屏蔽字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作剪贴板"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">操作剪贴板</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动切换焦点"><span class="nav-number">1.1.3.</span> <span class="nav-text">自动切换焦点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5-约束验证API"><span class="nav-number">1.1.4.</span> <span class="nav-text">HTML5 约束验证API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#必填字段"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">必填字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他输入类型"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">其他输入类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数值范围"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">数值范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入模式"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">输入模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检测有效性"><span class="nav-number">1.1.4.5.</span> <span class="nav-text">检测有效性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁用验证"><span class="nav-number">1.1.4.6.</span> <span class="nav-text">禁用验证</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

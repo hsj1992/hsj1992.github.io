@@ -1,0 +1,947 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="CanvasWebGLWebGL 是针对Canvas 的3D 上下文。与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。
+要全面了解OpenGL，请访问http://www.opengl.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十五章-3">
+<meta property="og:url" content="http://codingme.xyz/2016/10/24/javascript-note-15-3/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="CanvasWebGLWebGL 是针对Canvas 的3D 上下文。与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。
+要全面了解OpenGL，请访问http://www.opengl.">
+<meta property="og:updated_time" content="2016-10-28T11:45:49.057Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十五章-3">
+<meta name="twitter:description" content="CanvasWebGLWebGL 是针对Canvas 的3D 上下文。与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。
+要全面了解OpenGL，请访问http://www.opengl.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/24/javascript-note-15-3/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十五章-3 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十五章-3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-24T15:39:31+08:00" content="2016-10-24">
+              2016-10-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h2><p>WebGL 是针对Canvas 的3D 上下文。<br>与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。<br>Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。</p>
+<p>要全面了解OpenGL，请访问<a href="http://www.opengl.org/" target="_blank" rel="external">http://www.opengl.org/</a>。要全面学习WebGL，请参考<a href="http://www.learningwebgl.com/" target="_blank" rel="external">http://www.learningwebgl.com/</a>，其中包含非常棒的系列教程。<br><a id="more"></a></p>
+<h3 id="类型化数组"><a href="#类型化数组" class="headerlink" title="类型化数组"></a>类型化数组</h3><p>WebGL 涉及的复杂计算需要提前知道数值的精度，而标准的JavaScript 数值无法满足需要。<br>WebGL 引入了一个概念，叫类型化数组（typed arrays）。类型化数组也是数组，只不过其元素被设置为特定类型的值。<br>类型化数组的核心就是一个名为ArrayBuffer 的类型。<br>每个ArrayBuffer 对象表示的只是内存中指定的字节数，但不会指定这些字节用于保存什么类型的数据。<br>通过ArrayBuffer 所能做的，就是为了将来使用而分配一定数量的字节。例如，下面这行代码会在内存中分配20B。<br><code>var buffer = new ArrayBuffer(20);</code><br>创建了ArrayBuffer 对象后，能够通过该对象获得的信息只有它包含的字节数，方法是访问其byteLength 属性：<br><code>var bytes = buffer.byteLength;</code><br>虽然ArrayBuffer 对象本身没有多少可说的，但对WebGL 而言，使用它是极其重要的。</p>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>使用ArrayBuffer（数组缓冲器类型）的一种特别的方式就是用它来创建数组缓冲器视图。<br>最常见的视图是DataView，通过它可以选择ArrayBuffer 中一小段字节。<br>可以在创建DataView实例的时候传入一个ArrayBuffer、一个可选的字节偏移量（从该字节开始选择）和一个可选的要选择的字节数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//基于整个缓冲器创建一个新视图</span></div><div class="line"><span class="keyword">var</span> view = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer);</div><div class="line"><span class="comment">//创建一个开始于字节9 的新视图</span></div><div class="line"><span class="keyword">var</span> view = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer, <span class="number">9</span>);</div><div class="line"><span class="comment">//创建一个从字节9 开始到字节18 的新视图</span></div><div class="line"><span class="keyword">var</span> view = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer, <span class="number">9</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>实例化之后，DataView 对象会把字节偏移量以及字节长度信息分别保存在byteOffset 和byteLength 属性中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alert(view.byteOffset);</div><div class="line">alert(view.byteLength);</div></pre></td></tr></table></figure>
+<p>通过这两个属性可以在以后方便地了解视图的状态。另外，通过其buffer 属性也可以取得数组缓冲器。<br>读取和写入DataView 的时候，要根据实际操作的数据类型，选择相应的getter 和setter 方法。<br>例如有符号8位整数: getInt8(byteOffset) 、setInt8(byteOffset, value)等。<br>所有这些方法的第一个参数都是一个字节偏移量，表示要从哪个字节开始读取或写入。<br>要保存有些数据类型的数据，可能需要不止1B。比如，无符号8 位整数要用1B，而32 位浮点数则要用4B。<br>使用DataView，就需要你自己来管理这些细节，即要明确知道自己的数据需要多少字节，并选择正确的读写方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">20</span>),</div><div class="line">view = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer),</div><div class="line">value;</div><div class="line">view.setUint16(<span class="number">0</span>, <span class="number">25</span>);</div><div class="line">view.setUint16(<span class="number">2</span>, <span class="number">50</span>); <span class="comment">//不能从字节1 开始，因为16 位整数要用2B</span></div><div class="line">value = view.getUint16(<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<p>以上代码把两个无符号16 位整数保存到了数组缓冲器中。<br>因为每个16 位整数要用2B，所以保存第一个数的字节偏移量为0，而保存第二个数的字节偏移量为2。<br>用于读写16 位或更大数值的方法都有一个可选的参数littleEndian。<br>这个参数是一个布尔值，表示读写数值时是否采用小端字节序（即将数据的最低有效位保存在低内存地址中），而不是大端字节序（即将数据的最低有效位保存在高内存地址中）。<br>用于读写16 位或更大数值的方法都有一个可选的参数littleEndian。<br>这个参数是一个布尔值，表示读写数值时是否采用小端字节序（即将数据的最低有效位保存在低内存地址中），而不是大端字节序（即将数据的最低有效位保存在高内存地址中）。<br>如果你也不确定应该使用哪种字节序，那不用管它，就采用默认的大端字节序方式保存即可。<br>因为在这里使用的是字节偏移量，而非数组元素数，所以可以通过几种不同的方式来访问同一字节。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">20</span>),</div><div class="line">view = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer),</div><div class="line">value;</div><div class="line">view.setUint16(<span class="number">0</span>, <span class="number">25</span>);</div><div class="line">value = view.getInt8(<span class="number">0</span>);</div><div class="line">alert(value); <span class="comment">//0</span></div></pre></td></tr></table></figure>
+<p>在这个例子中，数值25 以16 位无符号整数的形式被写入，字节偏移量为0。<br>然后，再以8 位有符号整数的方式读取该数据，得到的结果是0。这是因为25 的二进制形式的前8 位（第一个字节）全部是0。<br>可见，虽然DataView 能让我们在字节级别上读写数组缓冲器中的数据，但我们必须自己记住要将数据保存到哪里，需要占用多少字节。<br>这样一来，就会带来很多工作量，因此类型化视图也就应运而生。</p>
+<h4 id="类型化视图"><a href="#类型化视图" class="headerlink" title="类型化视图"></a>类型化视图</h4><p>类型化视图一般也被称为类型化数组，因为它们除了元素必须是某种特定的数据类型外，与常规的数组无异。类型化视图也分几种，而且它们都继承了DataView。</p>
+<ul>
+<li>Int8Array：表示8 位二补整数。</li>
+<li>Uint8Array：表示8 位无符号整数。</li>
+<li>Int16Array：表示16 位二补整数。</li>
+<li>Uint16Array：表示16 位无符号整数。</li>
+<li>Int32Array：表示32 位二补整数。</li>
+<li>Uint32Array：表示32 位无符号整数。</li>
+<li>Float32Array：表示32 位IEEE 浮点值。</li>
+<li>Float64Array：表示64 位IEEE 浮点值。</li>
+</ul>
+<p>每种视图类型都以不同的方式表示数据，而同一数据视选择的类型不同有可能占用一或多字节。<br>例如，20B 的ArrayBuffer 可以保存20 个Int8Array 或Uint8Array，<br>或者10 个Int16Array 或Uint16Array，或者5 个Int32Array、Uint32Array 或Float32Array，或者2 个Float64Array。<br>由于这些视图都继承自DataView，因而可以使用相同的构造函数参数来实例化。<br>第一个参数是要使用ArrayBuffer 对象，第二个参数是作为起点的字节偏移量（默认为0），第三个参数是要包含的字节数。三个参数中只有第一个是必需的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个新数组，使用整个缓冲器</span></div><div class="line"><span class="keyword">var</span> int8s = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(buffer);</div><div class="line"><span class="comment">//只使用从字节9 开始的缓冲器</span></div><div class="line"><span class="keyword">var</span> int16s = <span class="keyword">new</span> <span class="built_in">Int16Array</span>(buffer, <span class="number">9</span>);</div><div class="line"><span class="comment">//只使用从字节9 到字节18 的缓冲器</span></div><div class="line"><span class="keyword">var</span> uint16s = <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(buffer, <span class="number">9</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>能够指定缓冲器中可用的字节段，意味着能在同一个缓冲器中保存不同类型的数值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用缓冲器的一部分保存8 位整数，另一部分保存16 位整数</span></div><div class="line"><span class="keyword">var</span> int8s = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(buffer, <span class="number">0</span>, <span class="number">10</span>);</div><div class="line"><span class="keyword">var</span> uint16s = <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(buffer, <span class="number">11</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>每个视图构造函数都有一个名为BYTES_PER_ELEMENT 的属性，表示类型化数组的每个元素需要多少字节。<br>因此，Uint8Array.BYTES_PER_ELEMENT 就是1，而Float32Array.BYTES_PER_ELEMENT则为4。可以利用这个属性来辅助初始化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//需要10 个元素空间</span></div><div class="line"><span class="keyword">var</span> int8s = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(buffer, <span class="number">0</span>, <span class="number">10</span> * <span class="built_in">Int8Array</span>.BYTES_PER_ELEMENT);</div><div class="line"><span class="comment">//需要5 个元素空间</span></div><div class="line"><span class="keyword">var</span> uint16s = <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(buffer, int8s.byteOffset + int8s.byteLength,</div><div class="line"><span class="number">5</span> * <span class="built_in">Uint16Array</span>.BYTES_PER_ELEMENT);</div></pre></td></tr></table></figure>
+<p>以上代码基于同一个数组缓冲器创建了两个视图。缓冲器的前10B 用于保存8 位整数，而其他字节用于保存无符号16 位整数。<br>在初始化Uint16Array 的时候，使用了Int8Array 的byteOffset 和byteLength 属性，以确保uint16s 开始于8 位数据之后。</p>
+<p>类型化视图的目的在于简化对二进制数据的操作。除了前面看到的优点之外，<strong>创建类型化视图还可以不用首先创建ArrayBuffer 对象</strong>。<br>只要传入希望数组保存的元素数，相应的构造函数就可以自动创建一个包含足够字节数的ArrayBuffer 对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个数组保存10 个8 位整数（10 字节）</span></div><div class="line"><span class="keyword">var</span> int8s = <span class="keyword">new</span> <span class="built_in">Int8Array</span>(<span class="number">10</span>);</div><div class="line"><span class="comment">//创建一个数组保存10 个16 位整数（20 字节）</span></div><div class="line"><span class="keyword">var</span> int16s = <span class="keyword">new</span> <span class="built_in">Int16Array</span>(<span class="number">10</span>);</div><div class="line">另外，也可以把常规数组转换为类型化视图，只要把常规数组传入类型化视图的构造函数即可：</div><div class="line"><span class="comment">//创建一个数组保存5 个8 位整数（10 字节）</span></div><div class="line"><span class="keyword">var</span> int8s = <span class="keyword">new</span> <span class="built_in">Int8Array</span>([<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]);</div></pre></td></tr></table></figure>
+<p>这是用默认值来初始化类型化视图的最佳方式，也是WebGL 项目中最常用的方式。<br>以这种方式来使用类型化视图，可以让它们看起来更像Array 对象，同时也能确保在读写信息的时候使用正确的数据类型。</p>
+<p>使用类型化视图时，可以通过方括号语法访问每一个数据成员，可以通过length 属性确定数组中有多少元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=int8s.length; i &lt; len; i++)&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"Value at position "</span> + i + <span class="string">" is "</span> + int8s[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也可以使用方括号语法为类型化视图的元素赋值。。如果为相应元素指定的字节数放不下相应的值，则实际保存的值是最大可能值的模。<br>例如，无符号16 位整数所能表示的最大数值是65535，如果想保存65536，那实际保存的值是0；如果你想保存65537，那实际保存的值是1。<br>数据类型不匹配时不会抛出错误，所以必须自己保证所赋的值不会超过相应元素的字节限制。</p>
+<p>类型化视图还有一个方法，即subarray()，使用这个方法可以基于底层数组缓冲器的子集创建一个新视图。<br>这个方法接收两个参数：开始元素的索引和可选的结束元素的索引。返回的类型与调用该方法的视图类型相同。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uint16s = <span class="keyword">new</span> <span class="built_in">Uint16Array</span>(<span class="number">10</span>),</div><div class="line">sub = uint16s.subarray(<span class="number">2</span>, <span class="number">5</span>);</div></pre></td></tr></table></figure>
+<p>sub 也是Uint16Array 的一个实例，而且底层与uint16s 都基于同一个ArrayBuffer。<br>通过大视图创建小视图的主要好处就是，在操作大数组中的一部分元素时，无需担心意外修改了其他元素。</p>
+<h3 id="WebGL上下文"><a href="#WebGL上下文" class="headerlink" title="WebGL上下文"></a>WebGL上下文</h3><p>在使用WebGL 上下文时，务必先检测一下返回值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line"><span class="keyword">var</span> gl = drawing.getContext(<span class="string">"experimental-webgl"</span>);</div><div class="line"><span class="keyword">if</span> (gl)&#123;</div><div class="line"><span class="comment">//使用WebGL</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般都把WebGL 上下文对象命名为gl。大多数WebGL 应用和示例都遵守这一约定，因为OpenGLES 2.0 规定的方法和值通常都以”gl”开头。<br>这样做也可以保证JavaScript 代码与OpenGL 程序更相近。<br>取得了WebGL 上下文之后，就可以开始3D 绘图了。<br>WebGL 是OpenGL ES 2.0 的Web版，<br>因此讨论的概念实际上就是OpenGL 概念在JavaScript 中的实现。<br>通过给getContext()传递第二个参数，可以为WebGL 上下文设置一些选项。这个参数本身是一个对象，可以包含下列属性。</p>
+<ul>
+<li>alpha：值为true，表示为上下文创建一个Alpha 通道缓冲区；默认值为true。</li>
+<li>depth：值为true，表示可以使用16 位深缓冲区；默认值为true。</li>
+<li>stencil：值为true，表示可以使用8 位模板缓冲区；默认值为false。</li>
+<li>antialias：值为true，表示将使用默认机制执行抗锯齿操作；默认值为true。</li>
+<li>premultipliedAlpha：值为true，表示绘图缓冲区有预乘Alpha 值；默认值为true。</li>
+<li>preserveDrawingBuffer：值为true，表示在绘图完成后保留绘图缓冲区；默认值为false。<br>  建议确实有必要的情况下再开启这个值，因为可能影响性能。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line"><span class="keyword">var</span> gl = drawing.getContext(<span class="string">"experimental-webgl"</span>, &#123; alpha: <span class="literal">false</span>&#125;);</div><div class="line"><span class="keyword">if</span> (gl)&#123;</div><div class="line"><span class="comment">//使用WebGL</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>大多数上下文选项只在高级技巧中使用。很多时候，各个选项的默认值就能满足我们的要求。<br>如果getContext()无法创建WebGL 上下文，有的浏览器会抛出错误。为此，最好把调用封装到一个try-catch 块中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>),</div><div class="line">gl;</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">gl = drawing.getContext(<span class="string">"experimental-webgl"</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (ex) &#123;</div><div class="line"><span class="comment">//什么也不做</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (gl)&#123;</div><div class="line"><span class="comment">//使用WebGL</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">alert(<span class="string">"WebGL context could not be created."</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>OpenGL常量在OpenGL 中都带前缀GL<em>。<br>在WebGL 中，保存在上下文对象中的这些常量都没有GL</em>前缀。<br>GL_COLOR_BUFFER_BIT 常量在 WebGL 上下文中就是 gl.COLOR_BUFFER_BIT。<br>WebGL 以这种方式支持大多数OpenGL 常量（有一部分常量是不支持的）。</p>
+<h4 id="方法命名"><a href="#方法命名" class="headerlink" title="方法命名"></a>方法命名</h4><p>OpenGL（以及WebGL）中的很多方法都试图通过名字传达有关数据类型的信息。如果某方法可以接收不同类型及不同数量的参数，看方法名的后缀就可以知道。<br>方法名的后缀会包含参数个数（1 到4）和接收的数据类型（f 表示浮点数，i 表示整数）。<br>例如，gl.uniform4f()意味着要接收4 个浮点数，而gl.uniform3i()则表示要接收3 个整数。<br>也有很多方法接收数组参数而非一个个单独的参数。这样的方法其名字中会包含字母v（即vector，矢量）。因此，gl.uniform3iv()可以接收一个包含3 个值的整数数组。</p>
+<h4 id="准备绘图"><a href="#准备绘图" class="headerlink" title="准备绘图"></a>准备绘图</h4><p>在实际操作WebGL 上下文之前，一般都要使用某种实色清除<code>&lt;canvas&gt;</code>，为绘图做好准备。<br>首先必须使用clearColor()方法来指定要使用的颜色值，该方法接收4 个参数：红、绿、蓝和透明度。每个参数必须是一个0 到1 之间的数值，表示每种分量在最终颜色中的强度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gl.clearColor(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>); <span class="comment">//black</span></div><div class="line">gl.clear(gl.COLOR_BUFFER_BIT);</div></pre></td></tr></table></figure>
+<p>以上代码把清理颜色缓冲区的值设置为黑色，然后调用了clear()方法，这个方法与OpenGL 中的glClear()等价。<br>传入的参数gl.COLOR_BUFFER_BIT 告诉WebGL 使用之前定义的颜色来填充相应区域。<br>一般来说，都要先清理缓冲区，然后再执行其他绘图操作。</p>
+<h4 id="视口与坐标"><a href="#视口与坐标" class="headerlink" title="视口与坐标"></a>视口与坐标</h4><p>开始绘图之前，通常要先定义WebGL 的视口（viewport）。默认情况下，视口可以使用整个<code>&lt;canvas&gt;</code>区域。<br>要改变视口大小，可以调用viewport()方法并传入4 个参数：（视口相对于<code>&lt;canvas&gt;</code>元素的）x 坐标、y 坐标、宽度和高度。<br><code>gl.viewport(0, 0, drawing.width, drawing.height);</code><br>视口坐标与我们通常熟悉的网页坐标不一样。视口坐标的原点(0,0)在<code>&lt;canvas&gt;</code>元素的左下角，x轴和y 轴的正方向分别是向右和向上，可以定义为(width-1, height-1)。<br>知道怎么定义视口大小，就可以只在<code>&lt;canvas&gt;</code>元素的部分区域中绘图。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//视口是&lt;canvas&gt;左下角的四分之一区域</span></div><div class="line">gl.viewport(<span class="number">0</span>, <span class="number">0</span>, drawing.width/<span class="number">2</span>, drawing.height/<span class="number">2</span>);</div><div class="line"><span class="comment">//视口是&lt;canvas&gt;左上角的四分之一区域</span></div><div class="line">gl.viewport(<span class="number">0</span>, drawing.height/<span class="number">2</span>, drawing.width/<span class="number">2</span>, drawing.height/<span class="number">2</span>);</div><div class="line"><span class="comment">//视口是&lt;canvas&gt;右下角的四分之一区域</span></div><div class="line">gl.viewport(drawing.width/<span class="number">2</span>, <span class="number">0</span>, drawing.width/<span class="number">2</span>, drawing.height/<span class="number">2</span>);</div></pre></td></tr></table></figure>
+<p>另外，视口内部的坐标系与定义视口的坐标系也不一样。<br>在视口内部，坐标原点(0,0)是视口的中心点，因此视口左下角坐标为(-1,-1)，而右上角坐标为(1,1)。<br>如果在视口内部绘图时使用视口外部的坐标，结果可能会被视口剪切。<br>比如，要绘制的形状有一个顶点在(1,2)，那么该形状在视口右侧的部分会被剪切掉。</p>
+<p>####　缓冲区</p>
+<p>顶点信息保存在JavaScript 的类型化数组中，使用之前必须转换到WebGL 的缓冲区。<br>要创建缓冲区，可以调用gl.createBuffer()，然后使用gl.bindBuffer()绑定到WebGL 上下文。这两步做完之后，就可以用数据来填充缓冲区了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buffer = gl.createBuffer();</div><div class="line">gl.bindBuffer(gl.ARRAY_BUFFER, buffer);</div><div class="line">gl.bufferData(gl.ARRAY_BUFFER, <span class="keyword">new</span> <span class="built_in">Float32Array</span>([<span class="number">0</span>, <span class="number">0.5</span>, <span class="number">1</span>]), gl.STATIC_DRAW);</div></pre></td></tr></table></figure>
+<p>调用gl.bindBuffer()可以将buffer 设置为上下文的当前缓冲区。此后，所有缓冲区操作都直接在buffer 中执行。<br>因此，调用gl.bufferData()时不需要明确传入buffer 也没有问题。<br>最后一行代码使用Float32Array 中的数据初始化了buffer（一般都是用Float32Array 来保存顶点信息）。<br>如果想使用drawElements()输出缓冲区的内容，也可以传入gl.ELEMENT_ARRAY_BUFFER。</p>
+<p>gl.bufferData()的最后一个参数用于指定使用缓冲区的方式，取值范围是如下几个常量。</p>
+<ul>
+<li>gl.STATIC_DRAW：数据只加载一次，在多次绘图中使用。</li>
+<li>gl.STREAM_DRAW：数据只加载一次，在几次绘图中使用。</li>
+<li>gl.DYNAMIC_DRAW：数据动态改变，在多次绘图中使用。</li>
+</ul>
+<p>多数情况下将缓冲区使用方式设置为gl.STATIC_DRAW即可。<br>在包含缓冲区的页面重载之前，缓冲区始终保留在内存中。如果你不想要某个缓冲区了，可以直接调用gl.deleteBuffer()释放内存：<code>gl.deleteBuffer(buffer);</code></p>
+<h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h4><p>JavaScript 与WebGL 之间的一个最大的区别在于，WebGL 操作一般不会抛出错误。<br>为了知道是否有错误发生，必须在调用某个可能出错的方法后，手工调用gl.getError()方法。<br>这个方法返回一个表示错误类型的常量。</p>
+<ul>
+<li>gl.NO_ERROR：上一次操作没有发生错误（值为0）。</li>
+<li>gl.INVALID_ENUM：应该给方法传入WebGL 常量，但却传错了参数。</li>
+<li>gl.INVALID_VALUE：在需要无符号数的地方传入了负值。</li>
+<li>gl.INVALID_OPERATION：在当前状态下不能完成操作。</li>
+<li>gl.OUT_OF_MEMORY：没有足够的内存完成操作。</li>
+<li>gl.CONTEXT_LOST_WEBGL：由于外部事件（如设备断电）干扰丢失了当前WebGL 上下文。</li>
+</ul>
+<p>每次调用gl.getError()方法返回一个错误值。<br>第一次调用后，后续对gl.getError()的调用可能会返回另一个错误值。<br>如果发生了多个错误，需要反复调用gl.getError()直至它返回gl.NO_ERROR。<br>在执行了很多操作的情况下，最好通过一个循环来调用getError()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> errorCode = gl.getError();</div><div class="line"><span class="keyword">while</span>(errorCode)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Error occurred: "</span> + errorCode);</div><div class="line">    errorCode = gl.getError();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果WebGL 脚本输出不正确，那在脚本中放几行gl.getError()有助于找出问题所在。</p>
+<h4 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h4><p>着色器（shader）是OpenGL 中的另一个概念。WebGL 中有两种着色器：顶点着色器和片段（或像素）着色器。<br>顶点着色器用于将3D 顶点转换为需要渲染的2D 点。<br>片段着色器用于准确计算要绘制的每个像素的颜色。<br>WebGL 着色器的独特之处也是其难点在于，它们并不是用JavaScript 写的。这些着色器是使用GLSL（OpenGL Shading Language，OpenGL 着色语言）写的，GLSL 是一种与C 和JavaScript完全不同的语言。</p>
+<h4 id="编写着色器"><a href="#编写着色器" class="headerlink" title="编写着色器"></a>编写着色器</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/24/javascript-note-15-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十十五章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十十五章-2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/26/javascript-note-16-1/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十六章-1">
+                《 JavaScript 高级程序设计》备忘-第十六章-1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Canvas"><span class="nav-number">1.</span> <span class="nav-text">Canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebGL"><span class="nav-number">1.1.</span> <span class="nav-text">WebGL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型化数组"><span class="nav-number">1.1.1.</span> <span class="nav-text">类型化数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#视图"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型化视图"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">类型化视图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebGL上下文"><span class="nav-number">1.1.2.</span> <span class="nav-text">WebGL上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法命名"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">方法命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备绘图"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">准备绘图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视口与坐标"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">视口与坐标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#着色器"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">着色器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写着色器"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">编写着色器</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

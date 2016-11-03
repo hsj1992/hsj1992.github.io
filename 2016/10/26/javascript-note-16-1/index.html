@@ -1,0 +1,928 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="HTML5 脚本编程跨文档消息传递跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
+XDM 的核">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十六章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/10/26/javascript-note-16-1/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="HTML5 脚本编程跨文档消息传递跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
+XDM 的核">
+<meta property="og:updated_time" content="2016-11-01T01:20:35.930Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十六章-1">
+<meta name="twitter:description" content="HTML5 脚本编程跨文档消息传递跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。
+XDM 的核">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/26/javascript-note-16-1/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十六章-1 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十六章-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T10:34:47+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="跨文档消息传递"><a href="#跨文档消息传递" class="headerlink" title="跨文档消息传递"></a>跨文档消息传递</h2><p>跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。<br>例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。<br>在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。</p>
+<p>XDM 的核心是postMessage()方法。<br>在HTML5 规范中，除了XDM部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于XDM而言，“另一个地方”指的是包含在当前页面中的<code>&lt;iframe&gt;</code>元素，或者由当前页面弹出的窗口。<br>postMessage()方法接收两个参数：一条消息和一个表示消息接收方来自哪个域的字符串。<br>第二个参数对保障安全通信非常重要，可以防止浏览器把消息发送到不安全的地方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注意：所有支持XDM 的浏览器也支持iframe 的contentWindow 属性</span></div><div class="line"><span class="keyword">var</span> iframeWindow = <span class="built_in">document</span>.getElementById(<span class="string">"myframe"</span>).contentWindow;</div><div class="line">iframeWindow.postMessage(<span class="string">"A secret"</span>, <span class="string">"http://www.wrox.com"</span>);</div></pre></td></tr></table></figure>
+<p>最后一行代码尝试向内嵌框架中发送一条消息，并指定框架中的文档必须来源于”<a href="http://www.wrox.com&quot;域。" target="_blank" rel="external">http://www.wrox.com&quot;域。</a><br>如果来源匹配，消息会传递到内嵌框架中；否则，postMessage()什么也不做。<br>这一限制可以避免窗口中的位置在你不知情的情况下发生改变。</p>
+<p>接收到XDM消息时，会触发window 对象的message 事件。这个事件是以异步形式触发的，因此从发送消息到接收消息（触发接收窗口的message 事件）可能要经过一段时间的延迟。<br>触发message事件后，传递给onmessage 处理程序的事件对象包含以下三方面的重要信息。<br><a id="more"></a></p>
+<ul>
+<li>data：作为postMessage()第一个参数传入的字符串数据。</li>
+<li>origin：发送消息的文档所在的域，例如”<a href="http://www.wrox.com&quot;。" target="_blank" rel="external">http://www.wrox.com&quot;。</a></li>
+<li>source：发送消息的文档的window 对象的代理。这个代理对象主要用于在发送上一条消息的窗口中调用postMessage()方法。如果发送消息的窗口来自同一个域，那这个对象就是window。</li>
+</ul>
+<p>接收到消息后验证发送窗口的来源是至关重要的。就像给postMessage()方法指定第二个参数，以确保浏览器不会把消息发送给未知页面一样。<br>在onmessage 处理程序中检测消息来源可以确保传入的消息来自已知的页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line"><span class="comment">//确保发送消息的域是已知的域</span></div><div class="line"><span class="keyword">if</span> (event.origin == <span class="string">"http://www.wrox.com"</span>)&#123;</div><div class="line"><span class="comment">//处理接收到的数据</span></div><div class="line">processMessage(event.data);</div><div class="line"><span class="comment">//可选：向来源窗口发送回执</span></div><div class="line">event.source.postMessage(<span class="string">"Received!"</span>, <span class="string">"http://p2p.wrox.com"</span>);</div><div class="line">&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>event.source 大多数情况下只是window 对象的代理，并非实际的window 对象。<br>换句话说，不能通过这个代理对象访问window 对象的其他任何信息。<br>只通过这个代理调用postMessage()就好，这个方法永远存在，永远可以调用。</p>
+<p>XDM 还有一些怪异之处。首先，postMessage()的第一个参数最早是作为“永远都是字符串”来实现的。<br>但后来这个参数的定义改了，改成允许传入任何数据结构。可是，并非所有浏览器都实现了这一变化。<br>为保险起见，使用postMessage()时，最好还是只传字符串。<br>如果想传入结构化的数据，最佳选择是先在要传入的数据上调用JSON.stringify()，通过postMessage()传入得到的字符串，然后再在onmessage 事件处理程序中调用JSON.parse()。</p>
+<p>在通过内嵌框架加载其他域的内容时，使用XDM 是非常方便的。<br>因此，在混搭（mashup）和社交网络应用中，这种传递消息的方法极为常用。<br>有了XDM，包含<code>&lt;iframe&gt;</code>的页面可以确保自身不受恶意内容的侵扰，因为它只通过XDM 与嵌入的框架通信。而XDM 也可以在来自相同域的页面间使用。</p>
+<p>支持XDM 的浏览器有IE8+、Firefox 3.5+、Safari 4+、Opera、Chrome、iOS 版Safari 及Android 版WebKit 。<br>XDM 已经作为一个规范独立出来， 现在它的名字叫Web Messaging ， 官方页面是<a href="http://dev.w3.org/html5/postmsg/。" target="_blank" rel="external">http://dev.w3.org/html5/postmsg/。</a></p>
+<h2 id="原生拖放"><a href="#原生拖放" class="headerlink" title="原生拖放"></a>原生拖放</h2><p>最早在网页中引入JavaScript 拖放功能的是IE4。当时，网页中只有两种对象可以拖放：图像和某些文本。<br>到了IE5.5 更进一步，让网页中的任何元素都可以拖放。（IE6 同样也支持这些功能。）<br>HTML5 以IE 的实例为基础制定了拖放规范。Firefox 3.5、Safari 3+和Chrome 也根据HTML5 规范实现了原生拖放功能。</p>
+<p>说到拖放，最有意思的恐怕就是能够在框架间、窗口间，甚至在应用间拖放网页元素了。</p>
+<h3 id="拖放事件"><a href="#拖放事件" class="headerlink" title="拖放事件"></a>拖放事件</h3><p>有些事件是在被拖动的元素上触发的，而有些事件是在放置目标上触发的。拖动某元素时，将依次触发下列事件：<br>(1) dragstart<br>(2) drag<br>(3) dragend</p>
+<p>按下鼠标键并开始移动鼠标时，会在被拖放的元素上触发dragstart 事件。此时光标变成“不能放”符号（圆环中有一条反斜线），表示不能把元素放到自己上面。<br>拖动开始时，可以通过ondragstart事件处理程序来运行JavaScript 代码。<br>触发dragstart 事件后，随即会触发drag 事件，而且在元素被拖动期间会持续触发该事件。<br>这个事件与mousemove 事件相似，在鼠标移动过程中，mousemove 事件也会持续发生。<br>当拖动停止时（无论是把元素放到了有效的放置目标，还是放到了无效的放置目标上），会触发dragend 事件。</p>
+<p>上述三个事件的目标都是被拖动的元素。<br>默认情况下，浏览器不会在拖动期间改变被拖动元素的外观，但可以自己修改。<br>不过，大多数浏览器会为正被拖动的元素创建一个半透明的副本，这个副本始终跟随着光标移动。</p>
+<p>当某个元素被拖动到一个有效的放置目标上时，下列事件会依次发生：<br>(1) dragenter<br>(2) dragover<br>(3) dragleave 或drop</p>
+<p>只要有元素被拖动到放置目标上，就会触发dragenter 事件（类似于mouseover 事件）。<br>紧随其后的是dragover 事件，而且在被拖动的元素还在放置目标的范围内移动时，就会持续触发该事件。<br>如果元素被拖出了放置目标，dragover 事件不再发生，但会触发dragleave 事件（类似于mouseout事件）。<br>如果元素被放到了放置目标中，则会触发drop 事件而不是dragleave 事件。<br>上述三个事件的目标都是作为放置目标的元素。</p>
+<h3 id="自定义放置目标"><a href="#自定义放置目标" class="headerlink" title="自定义放置目标"></a>自定义放置目标</h3><p>在拖动元素经过某些无效放置目标时，可以看到一种特殊的光标（圆环中有一条反斜线），表示不能放置。<br>虽然所有元素都支持放置目标事件，但这些元素默认是不允许放置的。<br>如果拖动元素经过不允<br>许放置的元素，无论用户如何操作，都不会发生drop 事件。<br>不过可以把任何元素变成有效的放置目标，方法是重写dragenter 和dragover 事件的默认行为。<br>例如，假设有一个ID 为”droptarget”的<code>&lt;div&gt;</code>元素:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> droptarget = <span class="built_in">document</span>.getElementById(<span class="string">"droptarget"</span>);</div><div class="line">EventUtil.addHandler(droptarget, <span class="string">"dragover"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">EventUtil.preventDefault(event);</div><div class="line">&#125;);</div><div class="line">EventUtil.addHandler(droptarget, <span class="string">"dragenter"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">EventUtil.preventDefault(event);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>以上代码执行后，就会发现当拖动着元素移动到放置目标上时，光标变成了允许放置的符号。当然，释放鼠标也会触发drop 事件。<br>对于Firefox来说，放置事件的默认行为是打开被放到放置目标上的URL。<br>换句话说，如果是把图像拖放到放置目标上，页面就会转向图像文件；而如果是把文本拖放到放置目标上，则会导致无效URL错误。<br>所以需要取消drop 事件的默认行为，阻止它打开URL。</p>
+<h3 id="dataTransfer对象"><a href="#dataTransfer对象" class="headerlink" title="dataTransfer对象"></a>dataTransfer对象</h3><p>为了在拖放操作时实现数据交换，IE 5 引入了dataTransfer 对象，它是事件对象的一个属性，用于从被拖动元素向放置目标传递字符串格式的数据。<br>因为它是事件对象的属性，所以只能在拖放事件的事件处理程序中访问dataTransfer 对象。<br>dataTransfer 对象有两个主要方法：getData()和setData()。<br>getData()可以取得由setData()保存的值。<br>setData()方法的第一个参数，也是getData()方法唯一的一个参数，是一个字符串，表示保存的数据类型，取值为”text”或”URL”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置和接收文本数据</span></div><div class="line">event.dataTransfer.setData(<span class="string">"text"</span>, <span class="string">"some text"</span>);</div><div class="line"><span class="keyword">var</span> text = event.dataTransfer.getData(<span class="string">"text"</span>);</div><div class="line"><span class="comment">//设置和接收URL</span></div><div class="line">event.dataTransfer.setData(<span class="string">"URL"</span>, <span class="string">"http://www.wrox.com/"</span>);</div><div class="line"><span class="keyword">var</span> url = event.dataTransfer.getData(<span class="string">"URL"</span>);</div></pre></td></tr></table></figure>
+<p>IE只定义了”text”和”URL”两种有效的数据类型，而HTML5则对此加以扩展，允许指定各种MIME类型。<br>考虑到向后兼容，HTML5 也支持”text”和”URL”，但这两种类型会被映射为”text/plain”和”text/uri-list”。<br>实际上，dataTransfer 对象可以为每种MIME 类型都保存一个值。<br>换句话说，同时在这个对象中保存一段文本和一个URL 不会有任何问题。<br>不过，保存在dataTransfer 对象中的数据只能在drop事件处理程序中读取。<br>如果在ondrop 处理程序中没有读到数据，那就是dataTransfer 对象已经被销毁，数据也丢失了。<br>在拖动文本框中的文本时，浏览器会调用setData()方法，将拖动的文本以”text”格式保存在dataTransfer 对象中。<br>类似地，在拖放链接或图像时，会调用setData()方法并保存URL。<br>然后，在这些元素被拖放到放置目标时，就可以通过getData()读到这些数据。<br>当然，也可以在dragstart 事件处理程序中调用setData()，手工保存自己要传输的数据，以便将来使用。</p>
+<p>将数据保存为文本和保存为URL 是有区别的。<br>如果将数据保存为文本格式，那么数据不会得到任何特殊处理。<br>而如果将数据保存为URL，浏览器会将其当成网页中的链接。换句话说，如果你把它放置到另一个浏览器窗口中，浏览器就会打开该URL。</p>
+<p>注意，一定要把短数据类型放在前面，因为IE 10 及之前的版本仍然不支持扩展的MIME 类型名，而它们在遇到无法识别的数据类型时，会抛出错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//读取URL</span></div><div class="line"><span class="keyword">var</span> url = dataTransfer.getData(<span class="string">"url"</span>) ||dataTransfer.getData(<span class="string">"text/uri-list"</span>);</div></pre></td></tr></table></figure>
+<h3 id="dropEffect与effectAllowed"><a href="#dropEffect与effectAllowed" class="headerlink" title="dropEffect与effectAllowed"></a>dropEffect与effectAllowed</h3><p>dataTransfer 对象的两个属性：dropEffect 和effectAllowed。<br>确定被拖动的元素以及作为放置目标的元素能够接收什么操作。</p>
+<p>dropEffect 属性的四个值：</p>
+<ul>
+<li>“none”：不能把拖动的元素放在这里。这是除文本框之外所有元素的默认值。</li>
+<li>“move”：应该把拖动的元素移动到放置目标。</li>
+<li>“copy”：应该把拖动的元素复制到放置目标。</li>
+<li>“link”：表示放置目标会打开拖动的元素（但拖动的元素必须是一个链接，有URL）。</li>
+</ul>
+<p>在把元素拖动到放置目标上时，以上每一个值都会导致光标显示为不同的符号。<br>浏览器只能帮你改变光标的样式，而其他的都要靠你自己来实现。<br>要使用dropEffect属性，必须在ondragenter 事件处理程序中针对放置目标来设置它。</p>
+<p>dropEffect 属性只有搭配effectAllowed 属性才有用。effectAllowed 属性表示允许拖动元素的哪种dropEffect。<br>其可能的值有：</p>
+<ul>
+<li>“uninitialized”：没有给被拖动的元素设置任何放置行为。</li>
+<li>“none”：被拖动的元素不能有任何行为。</li>
+<li>“copy”：只允许值为”copy”的dropEffect。</li>
+<li>“link”：只允许值为”link”的dropEffect。</li>
+<li>“move”：只允许值为”move”的dropEffect。</li>
+<li>“copyLink”：允许值为”copy”和”link”的dropEffect。</li>
+<li>“copyMove”：允许值为”copy”和”move”的dropEffect。</li>
+<li>“linkMove”：允许值为”link”和”move”的dropEffect。</li>
+<li>“all”：允许任意dropEffect。</li>
+</ul>
+<p>必须在ondragstart 事件处理程序中设置effectAllowed 属性。</p>
+<p>假设想允许用户把文本框中的文本拖放到一个<code>&lt;div&gt;</code>元素中。首先，必须将dropEffect 和effectAllowed 设置为”move”。<br>但由于<code>&lt;div&gt;</code>元素的放置事件的默认行为是什么也不做，所以文本不可能自动移动。<br>重写这个默认行为，就能从文本框中移走文本。然后就可以自己编写代码将文本插入到<code>&lt;div&gt;</code>中，这样整个拖放操作就完成了。<br>如果将dropEffect 和effectAllowed 的值设置为”copy”，那就不会自动移走文本框中的文本。</p>
+<h3 id="可拖动"><a href="#可拖动" class="headerlink" title="可拖动"></a>可拖动</h3><p>默认情况下，图像、链接和文本是可以拖动的，也就是说，不用额外编写代码，用户就可以拖动它们。<br>文本只有在被选中的情况下才能拖动，而图像和链接在任何时候都可以拖动。<br>HTML5 为所有HTML 元素规定了一个draggable 属性，表示元素是否可以拖动。可以设置使得其他元素也可以被拖动。<br>图像和链接的draggable 属性自动被设置成了true，而其他元素这个属性的默认值都是false。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 让这个图像不可以拖动 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"smile.gif"</span> <span class="attr">draggable</span>=<span class="string">"false"</span> <span class="attr">alt</span>=<span class="string">"Smiley face"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 让这个元素可以拖动 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">draggable</span>=<span class="string">"true"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>支持draggable 属性的浏览器有IE 10+、Firefox 4+、Safari 5+和Chrome。</p>
+<p>在IE9 及更早版本中，通过mousedown 事件处理程序调用dragDrop()能够让任何元素可拖动。</p>
+<h3 id="其他成员"><a href="#其他成员" class="headerlink" title="其他成员"></a>其他成员</h3><p>dataTransfer 对象还包含的方法和属性：</p>
+<ul>
+<li>addElement(element):只有Firefox支持。为拖动操作添加一个元素。<br>  添加这个元素只影响数据（即增加作为拖动源而响应回调的对象），不会影响拖动操作时页面元素的外观。</li>
+<li>clearData(format)：清除以特定格式保存的数据。<br>  实现这个方法的浏览器有IE10、Fireforx 3.5+、Chrome 和Safari 4+。</li>
+<li>setDragImage(element, x, y)：指定一幅图像，当拖动发生时，显示在光标下方。接收的三个参数分别是要显示的HTML 元素和光标在图像中的x、y 坐标。HTML 元素可以是一幅图像，也可以是其他元素。是图像则显示图像，是其他元素则显示渲染后的元素。IE不支持。</li>
+<li>types:当前保存的数据类型。这是一个类似数组的集合，以”text”这样的字符串形式保存着数据类型。实现这个属性的浏览器有IE10+、Firefox 3.5+和Chrome。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/24/javascript-note-15-3/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十五章-3">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十五章-3
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/30/javascript-note-16-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十六章-2">
+                《 JavaScript 高级程序设计》备忘-第十六章-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5-脚本编程"><span class="nav-number">1.</span> <span class="nav-text">HTML5 脚本编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跨文档消息传递"><span class="nav-number">1.1.</span> <span class="nav-text">跨文档消息传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原生拖放"><span class="nav-number">1.2.</span> <span class="nav-text">原生拖放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拖放事件"><span class="nav-number">1.2.1.</span> <span class="nav-text">拖放事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义放置目标"><span class="nav-number">1.2.2.</span> <span class="nav-text">自定义放置目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dataTransfer对象"><span class="nav-number">1.2.3.</span> <span class="nav-text">dataTransfer对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dropEffect与effectAllowed"><span class="nav-number">1.2.4.</span> <span class="nav-text">dropEffect与effectAllowed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可拖动"><span class="nav-number">1.2.5.</span> <span class="nav-text">可拖动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他成员"><span class="nav-number">1.2.6.</span> <span class="nav-text">其他成员</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

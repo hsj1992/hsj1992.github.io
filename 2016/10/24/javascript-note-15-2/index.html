@@ -1,0 +1,943 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Canvas2D 上下文变换通过上下文的变换，可以把处理后的图像绘制到画布上。2D 绘制上下文支持各种基本的绘制变换。创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。
+
+rotate(angle)：围绕原点旋转图像angle 弧度。
+scale(scaleX, scaleY)：缩放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第十十五章-2">
+<meta property="og:url" content="http://codingme.xyz/2016/10/24/javascript-note-15-2/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="Canvas2D 上下文变换通过上下文的变换，可以把处理后的图像绘制到画布上。2D 绘制上下文支持各种基本的绘制变换。创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。
+
+rotate(angle)：围绕原点旋转图像angle 弧度。
+scale(scaleX, scaleY)：缩放">
+<meta property="og:updated_time" content="2016-10-28T11:44:37.745Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十十五章-2">
+<meta name="twitter:description" content="Canvas2D 上下文变换通过上下文的变换，可以把处理后的图像绘制到画布上。2D 绘制上下文支持各种基本的绘制变换。创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。
+
+rotate(angle)：围绕原点旋转图像angle 弧度。
+scale(scaleX, scaleY)：缩放">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/10/24/javascript-note-15-2/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第十十五章-2 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第十十五章-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-24T15:38:08+08:00" content="2016-10-24">
+              2016-10-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="2D-上下文"><a href="#2D-上下文" class="headerlink" title="2D 上下文"></a>2D 上下文</h2><h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><p>通过上下文的变换，可以把处理后的图像绘制到画布上。<br>2D 绘制上下文支持各种基本的绘制变换。<br>创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。<br>为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。</p>
+<ul>
+<li>rotate(angle)：围绕原点旋转图像angle 弧度。</li>
+<li>scale(scaleX, scaleY)：缩放图像，在x 方向乘以scaleX，在y 方向乘以scaleY。scaleX和scaleY 的默认值都是1.0。</li>
+<li>translate(x, y)：将坐标原点移动到(x,y)。执行这个变换之后，坐标(0,0)会变成之前由(x,y)表示的点。</li>
+<li>transform(m1_1, m1_2, m2_1, m2_2, dx, dy)：直接修改变换矩阵，方式是乘以如下矩阵。<br>  m1_1    m1_2    dx<br>  m2_1    m2_2    dy<br>  0       0       1</li>
+<li>setTransform(m1_1, m1_2, m2_1, m2_2, dx, dy)：将变换矩阵重置为默认状态，然后再调用transform()。</li>
+</ul>
+<a id="more"></a>
+<p>如果把原点变换到表盘的中心，然后再绘制表针就容易多了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">//开始路径</span></div><div class="line">    context.beginPath();</div><div class="line">    <span class="comment">//绘制外圆</span></div><div class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">99</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">    <span class="comment">//绘制内圆</span></div><div class="line">    context.moveTo(<span class="number">194</span>, <span class="number">100</span>);</div><div class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">94</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">    <span class="comment">//变换原点</span></div><div class="line">    context.translate(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    <span class="comment">//绘制分针</span></div><div class="line">    context.moveTo(<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">    context.lineTo(<span class="number">0</span>, <span class="number">-85</span>);</div><div class="line">    <span class="comment">//绘制时针</span></div><div class="line">    context.moveTo(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    context.lineTo(<span class="number">-65</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//描边路径</span></div><div class="line">    context.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>把原点变换到时钟表盘的中心点(100,100)后，在同一方向上绘制线条就变成了简单的数学问题了。<br>还可以更进一步，像下面这样使用rotate()方法旋转时钟的表针。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line">    <span class="comment">//开始路径</span></div><div class="line">    context.beginPath();</div><div class="line">    <span class="comment">//绘制外圆</span></div><div class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">99</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">    <span class="comment">//绘制内圆</span></div><div class="line">    context.moveTo(<span class="number">194</span>, <span class="number">100</span>);</div><div class="line">    context.arc(<span class="number">100</span>, <span class="number">100</span>, <span class="number">94</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>);</div><div class="line">    <span class="comment">//变换原点</span></div><div class="line">    context.translate(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    <span class="comment">//旋转表针</span></div><div class="line">    context.rotate(<span class="number">1</span>);</div><div class="line">    <span class="comment">//绘制分针</span></div><div class="line">    context.moveTo(<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">    context.lineTo(<span class="number">0</span>, <span class="number">-85</span>);</div><div class="line">    <span class="comment">//绘制时针</span></div><div class="line">    context.moveTo(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    context.lineTo(<span class="number">-65</span>, <span class="number">0</span>);</div><div class="line">    <span class="comment">//描边路径</span></div><div class="line">    context.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>因为原点已经变换到了时钟表盘的中心点，所以旋转也是以该点为圆心的。<br>结果就像是表针真的被固定在表盘中心一样，然后向右旋转了一定角度。</p>
+<p>无论是刚才执行的变换，还是fillStyle、strokeStyle 等属性，都会在当前上下文中一直有效，除非再对上下文进行什么修改。</p>
+<p>虽然没有什么办法把上下文中的一切都重置回默认值，但有两个方法可以跟踪上下文的状态变化。<br>如果知道将来还要返回某组属性与变换的组合，可以调用save()方法。<br>调用这个方法后，当时的所有设置都会进入一个栈结构，得以妥善保管。然后可以对上下文进行其他修改。<br>等想要回到之前保存的设置时，可以调用restore()方法，在保存设置的栈结构中向前返回一级，恢复之前的状态。<br>连续调用save()可以把更多设置保存到栈结构中，之后再连续调用restore()则可以一级一级返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;<span class="comment">//红色</span></div><div class="line">context.save();</div><div class="line">context.fillStyle = <span class="string">"#00ff00"</span>;<span class="comment">//绿色</span></div><div class="line">context.translate(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">context.save();</div><div class="line">context.fillStyle = <span class="string">"#0000ff"</span>;<span class="comment">//蓝色</span></div><div class="line">context.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>); <span class="comment">//从点(100,100)开始绘制蓝色矩形</span></div><div class="line">context.restore();</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">200</span>); <span class="comment">//从点(110,110)开始绘制绿色矩形</span></div><div class="line">context.restore();</div><div class="line">context.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>); <span class="comment">//从点(0,0)开始绘制红色矩形</span></div></pre></td></tr></table></figure>
+<p>save()方法保存的只是对绘图上下文的设置和变换，不会保存绘图上下文的内容。</p>
+<h3 id="绘制图像"><a href="#绘制图像" class="headerlink" title="绘制图像"></a>绘制图像</h3><p>2D 绘图上下文内置了对图像的支持。如果你想把一幅图像绘制到画布上，可以使用drawImage()方法。<br>调用这个方法时，可以使用三种不同的参数组合。最简单的调用方式是传入一个HTML <code>&lt;img&gt;</code>元素，以及绘制该图像的起点的x 和y 坐标。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image = <span class="built_in">document</span>.images[<span class="number">0</span>];</div><div class="line">context.drawImage(image, <span class="number">10</span>, <span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>绘制到画布上的图像大小与原始大小一样。如果想改变绘制后图像的大小，可以再多传入两个参数，分别表示目标宽度和目标高度。<br>通过这种方式来缩放图像并不影响上下文的变换矩阵。<br><code>context.drawImage(image, 50, 10, 20, 30);</code><br>执行代码后，绘制出来的图像大小会变成20×30 像素。</p>
+<p>还可以选择把图像中的某个区域绘制到上下文中。<br>drawImage()方法的这种调用方式总共需要传入9 个参数：要绘制的图像、源图像的x 坐标、源图像的y 坐标、源图像的宽度、源图像的高度、目标图像的x 坐标、目标图像的y 坐标、目标图像的宽度、目标图像的高度。<br><code>context.drawImage(image, 0, 10, 50, 50, 0, 100, 40, 60);</code><br>原始图像的这一部分的起点为(0,10)，宽和高都是50 像素。最终绘制到上下文中的图像的起点是(0,100)，而大小变成了40×60 像素。</p>
+<p>除了给drawImage()方法传入HTML<code>&lt;img&gt;</code>元素外，还可以传入另一个<code>&lt;canvas&gt;</code>元素作为其第一个参数。<br>这样，就可以把另一个画布内容绘制到当前画布上。</p>
+<p>结合使用drawImage()和其他方法，可以对图像进行各种基本操作。而操作的结果可以通过toDataURL()方法获得。<br>但是图像不能来自其他域。如果图像来自其他域，调用toDataURL()会抛出一个错误。</p>
+<p>假如位于www.example.com 上的页面绘制的图像来自于www.wrox.com，那当前上下文就会被认为“不干净”，因而会抛出错误。</p>
+<h3 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h3><p>2D 上下文会根据以下几个属性的值，自动为形状或路径绘制出阴影。</p>
+<ul>
+<li>shadowColor：用CSS 颜色格式表示的阴影颜色，默认为黑色。</li>
+<li>shadowOffsetX：形状或路径x 轴方向的阴影偏移量，默认为0。</li>
+<li>shadowOffsetY：形状或路径y 轴方向的阴影偏移量，默认为0。</li>
+<li>shadowBlur：模糊的像素数，默认0，即不模糊。</li>
+</ul>
+<p>这些属性都可以通过context 对象来修改。只要在绘制前为它们设置适当的值，就能自动产生阴影。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//设置阴影</span></div><div class="line">context.shadowOffsetX = <span class="number">5</span>;</div><div class="line">context.shadowOffsetY = <span class="number">5</span>;</div><div class="line">context.shadowBlur = <span class="number">4</span>;</div><div class="line">context.shadowColor = <span class="string">"rgba(0, 0, 0, 0.5)"</span>;</div><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="comment">//绘制蓝色矩形</span></div><div class="line">context.fillStyle = <span class="string">"rgba(0,0,255,1)"</span>;</div><div class="line">context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>不同浏览器对阴影的支持有一些差异。IE9、Firefox 4 和Opera 11 的行为最为规范，其他浏览器多多少少会有一些奇怪的现象，甚至根本不支持阴影。</p>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><p>渐变由CanvasGradient 实例表示，很容易通过2D 上下文来创建和修改。<br>要创建一个新的线性渐变，可以调用createLinearGradient()方法。这个方法接收4 个参数：起点的x 坐标、起点的y 坐标、终点的x 坐标、终点的y 坐标。<br>调用这个方法后，它就会创建一个指定大小的渐变，并返回CanvasGradient 对象的实例。<br>创建了渐变对象后，下一步就是使用addColorStop()方法来指定色标。这个方法接收两个参数：色标位置和CSS 颜色值。色标位置是一个0（开始的颜色）到1（结束的颜色）之间的数字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gradient = context.createLinearGradient(<span class="number">30</span>, <span class="number">30</span>, <span class="number">70</span>, <span class="number">70</span>);</div><div class="line">gradient.addColorStop(<span class="number">0</span>, <span class="string">"white"</span>);</div><div class="line">gradient.addColorStop(<span class="number">1</span>, <span class="string">"black"</span>);</div></pre></td></tr></table></figure>
+<p>此时，gradient 对象表示的是一个从画布上点(30,30)到点(70,70)的渐变。<br>起点的色标是白色，终点的色标是黑色。然后就可以把fillStyle 或strokeStyle 设置为这个对象，从而使用渐变来绘制形状或描边。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="comment">//绘制渐变矩形</span></div><div class="line">context.fillStyle = gradient;</div><div class="line">context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>为了让渐变覆盖整个矩形，而不是仅应用到矩形的一部分，矩形和渐变对象的坐标必须匹配才行。<br>如果没有把矩形绘制到恰当的位置，那可能就只会显示部分渐变效果。<br>确保渐变与形状对齐非常重要，有时候可以考虑使用函数来确保坐标合适。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createRectLinearGradient</span>(<span class="params">context, x, y, width, height</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> context.createLinearGradient(x, y, x+width, y+height);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个函数基于起点的x 和y 坐标以及宽度和高度值来创建渐变对象，从而让我们可以在fillRect()中使用相同的值。<br>使用画布的时候，确保坐标匹配很重要，也需要一些技巧。类似createRectLinearGradient()这样的辅助方法可以让控制坐标更容易一些。</p>
+<p>要创建径向渐变（或放射渐变），可以使用createRadialGradient()方法。这个方法接收6个参数，对应着两个圆的圆心和半径。前三个参数指定的是起点圆的原心（x 和y）及半径，后三个参数指定的是终点圆的原心（x 和y）及半径。<br>可以把径向渐变想象成一个长圆桶，而这6 个参数定义的正是这个桶的两个圆形开口的位置。<br>如果把一个圆形开口定义得比另一个小一些，那这个圆桶就变成了圆锥体，而通过移动每个圆形开口的位置，就可达到像旋转这个圆锥体一样的效果。</p>
+<p>如果想从某个形状的中心点开始创建一个向外扩散的径向渐变效果，就要将两个圆定义为同心圆。<br>比如，就拿前面创建的矩形来说，径向渐变的两个圆的圆心都应该在(55,55)，因为矩形的区域是从(30,30)到(80,80)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gradient = context.createRadialGradient(<span class="number">55</span>, <span class="number">55</span>, <span class="number">10</span>, <span class="number">55</span>, <span class="number">55</span>, <span class="number">30</span>);</div><div class="line">gradient.addColorStop(<span class="number">0</span>, <span class="string">"white"</span>);</div><div class="line">gradient.addColorStop(<span class="number">1</span>, <span class="string">"black"</span>);</div><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="comment">//绘制渐变矩形</span></div><div class="line">context.fillStyle = gradient;</div><div class="line">context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>因为创建比较麻烦，所以径向渐变并不那么容易控制。不过，一般来说，让起点圆和终点圆保持为同心圆的情况比较多，这时候只要考虑给两个圆设置不同的半径就好了。</p>
+<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><p>模式其实就是重复的图像， 可以用来填充或描边图形。<br>要创建一个新模式， 可以调用createPattern()方法并传入两个参数：一个HTML<code>&lt;img&gt;</code>元素和一个表示如何重复图像的字符串。<br>其中，第二个参数的值与CSS 的background-repeat 属性值相同，包括”repeat”、”repeat-x”、”repeat-y”和”no-repeat”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> image = <span class="built_in">document</span>.images[<span class="number">0</span>],</div><div class="line">pattern = context.createPattern(image, <span class="string">"repeat"</span>);</div><div class="line"><span class="comment">//绘制矩形</span></div><div class="line">context.fillStyle = pattern;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">150</span>, <span class="number">150</span>);</div></pre></td></tr></table></figure>
+<p>模式与渐变一样，都是从画布的原点(0,0)开始的。将填充样式（fillStyle）设置为模式对象，只表示在某个特定的区域内显示重复的图像，而不是要从某个位置开始绘制重复的图像。<br>createPattern()方法的第一个参数也可以是一个<code>&lt;video&gt;</code>元素，或者另一个<code>&lt;canvas&gt;</code>元素。</p>
+<h3 id="使用图像数据"><a href="#使用图像数据" class="headerlink" title="使用图像数据"></a>使用图像数据</h3><p>2D 上下文的一个明显的长处就是，可以通过getImageData()取得原始图像数据。<br>这个方法接收4 个参数：要取得其数据的画面区域的x 和y 坐标以及该区域的像素宽度和高度。<br>例如，要取得左上角坐标为(10,5)、大小为50×50 像素的区域的图像数据:<br><code>var imageData = context.getImageData(10, 5, 50, 50);</code></p>
+<p>这里返回的对象是ImageData 的实例。每个ImageData 对象都有三个属性：width、height 和data。<br>其中data 属性是一个数组，保存着图像中每一个像素的数据。<br>在data 数组中，每一个像素用4 个元素来保存，分别表示红、绿、蓝和透明度值。因此，第一个像素的数据就保存在数组的第0 到第3 个元素中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = imageData.data,</div><div class="line">red = data[<span class="number">0</span>],</div><div class="line">green = data[<span class="number">1</span>],</div><div class="line">blue = data[<span class="number">2</span>],</div><div class="line">alpha = data[<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<p>数组中每个元素的值都介于0 到255 之间（包括0 和255）。能够直接访问到原始图像数据，就能够以各种方式来操作这些数据。<br>例如，通过修改图像数据，可以创建一个简单的灰阶过滤器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line"><span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>),</div><div class="line">image = <span class="built_in">document</span>.images[<span class="number">0</span>],</div><div class="line">imageData, data,</div><div class="line">i, len, average,</div><div class="line">red, green, blue, alpha;</div><div class="line"><span class="comment">//绘制原始图像</span></div><div class="line">context.drawImage(image, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line"><span class="comment">//取得图像数据</span></div><div class="line">imageData = context.getImageData(<span class="number">0</span>, <span class="number">0</span>, image.width, image.height);</div><div class="line">data = imageData.data;</div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>, len=data.length; i &lt; len; i+=<span class="number">4</span>)&#123;</div><div class="line">red = data[i];</div><div class="line">green = data[i+<span class="number">1</span>];</div><div class="line">blue = data[i+<span class="number">2</span>];</div><div class="line">alpha = data[i+<span class="number">3</span>];</div><div class="line"><span class="comment">//求得rgb 平均值</span></div><div class="line">average = <span class="built_in">Math</span>.floor((red + green + blue) / <span class="number">3</span>);</div><div class="line"><span class="comment">//设置颜色值，透明度不变</span></div><div class="line">data[i] = average;</div><div class="line">data[i+<span class="number">1</span>] = average;</div><div class="line">data[i+<span class="number">2</span>] = average;</div><div class="line">&#125;</div><div class="line"><span class="comment">//回写图像数据并显示结果</span></div><div class="line">imageData.data = data;</div><div class="line">context.putImageData(imageData, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>首先在画面上绘制了一幅图像，然后取得了原始图像数据。其中的for 循环遍历了图像数据中的每一个像素。<br>每次循环控制变量i 都递增4。在取得每个像素的红、绿、蓝颜色值后，计算出它们的平均值。再把这个平均值设置为每个颜色的值，结果就是去掉了每个像素的颜色，只保留了亮度接近的灰度值（即彩色变黑白）。<br>在把data 数组回写到imageData 对象后，调用putImageData()方法把图像数据绘制到画布上。最终得到了图像的黑白版。<br>当然，通过操作原始像素值不仅能实现灰阶过滤，还能实现其他功能。</p>
+<p>只有在画布“干净”的情况下（即图像并非来自其他域），才可以取得图像数据。如果画布“不干净”，那么访问图像数据时会导致JavaScript 错误。</p>
+<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><p>两个会应用到2D 上下文中所有绘制操作的属性：globalAlpha 和globalCompositionOperation。<br>globalAlpha 是一个介于0 和1 之间的值（包括0 和1），用于指定所有绘制的透明度。默认值为0。<br>如果所有后续操作都要基于相同的透明度，就可以先把globalAlpha 设置为适当值，然后绘制，最后再把它设置回默认值0。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="comment">//修改全局透明度</span></div><div class="line">context.globalAlpha = <span class="number">0.5</span>;</div><div class="line"><span class="comment">//绘制蓝色矩形</span></div><div class="line">context.fillStyle = <span class="string">"rgba(0,0,255,1)"</span>;</div><div class="line">context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="comment">//重置全局透明度</span></div><div class="line">context.globalAlpha = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<p>globalCompositionOperation 表示后绘制的图形怎样与先绘制的图形结合。<br>属性的值是字符串。</p>
+<ul>
+<li>source-over（默认值）：后绘制的图形位于先绘制的图形上方。</li>
+<li>source-in：后绘制的图形与先绘制的图形重叠的部分可见，两者其他部分完全透明。</li>
+<li>source-out：后绘制的图形与先绘制的图形不重叠的部分可见，先绘制的图形完全透明。</li>
+<li>source-atop：后绘制的图形与先绘制的图形重叠的部分可见，先绘制图形不受影响。</li>
+<li>destination-over：后绘制的图形位于先绘制的图形下方，只有之前透明像素下的部分才可见。</li>
+<li>destination-in：后绘制的图形位于先绘制的图形下方，两者不重叠的部分完全透明。</li>
+<li>destination-out：后绘制的图形擦除与先绘制的图形重叠的部分。</li>
+<li>destination-atop：后绘制的图形位于先绘制的图形下方，在两者不重叠的地方，先绘制的图形会变透明。</li>
+<li>lighter：后绘制的图形与先绘制的图形重叠部分的值相加，使该部分变亮。</li>
+<li>copy：后绘制的图形完全替代与之重叠的先绘制图形。</li>
+<li>xor：后绘制的图形与先绘制的图形重叠的部分执行“异或”操作。</li>
+</ul>
+<p>这个合成操作实际上用语言或者黑白图像是很难说清楚的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绘制红色矩形</span></div><div class="line">context.fillStyle = <span class="string">"#ff0000"</span>;</div><div class="line">context.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>);</div><div class="line"><span class="comment">//设置合成操作</span></div><div class="line">context.globalCompositeOperation = <span class="string">"destination-over"</span>;</div><div class="line"><span class="comment">//绘制蓝色矩形</span></div><div class="line">context.fillStyle = <span class="string">"rgba(0,0,255,1)"</span>;</div><div class="line">context.fillRect(<span class="number">30</span>, <span class="number">30</span>, <span class="number">50</span>, <span class="number">50</span>);</div></pre></td></tr></table></figure>
+<p>如果不修改globalCompositionOperation，那么蓝色矩形应该位于红色矩形之上。但把globalCompositionOperation 设置为”destination-over”之后，红色矩形跑到了蓝色矩形上面。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/23/javascript-note-15-1/" rel="next" title="《 JavaScript 高级程序设计》备忘-第十十五章-1">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第十十五章-1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/24/javascript-note-15-3/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十五章-3">
+                《 JavaScript 高级程序设计》备忘-第十五章-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Canvas"><span class="nav-number">1.</span> <span class="nav-text">Canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2D-上下文"><span class="nav-number">1.1.</span> <span class="nav-text">2D 上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变换"><span class="nav-number">1.1.1.</span> <span class="nav-text">变换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制图像"><span class="nav-number">1.1.2.</span> <span class="nav-text">绘制图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阴影"><span class="nav-number">1.1.3.</span> <span class="nav-text">阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐变"><span class="nav-number">1.1.4.</span> <span class="nav-text">渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式"><span class="nav-number">1.1.5.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用图像数据"><span class="nav-number">1.1.6.</span> <span class="nav-text">使用图像数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合成"><span class="nav-number">1.1.7.</span> <span class="nav-text">合成</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
