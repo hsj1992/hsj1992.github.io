@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/02/javascript-note-10-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十章-1
+                <a class="post-title-link" href="/2016/10/09/javascript-note-12-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-4
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-02T11:10:30+08:00" content="2016-10-02">
-              2016-10-02
+            <time itemprop="dateCreated" datetime="2016-10-09T18:04:29+08:00" content="2016-10-09">
+              2016-10-09
             </time>
           </span>
 
@@ -360,10 +360,12 @@
 
       
         
-          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>针对HTML 和XML 文档的一个API。<br>脱胎于Netscape 及微软公司创始的DHTML(动态HTML)。<br>已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。</p>
-<h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><p><code>&lt;html&gt;</code>元素称之为文档元素。<br>每个文档只能有一个文档元素。<br>文档元素是文档的最外层元素。<br>在HTML 页面中，文档元素始终都是<code>&lt;html&gt;</code>元素。<br>在XML 中，没有预定义的元素，因此任何元素都可能成为文档元素。<br>标记都可以通过树中的节点来表示：<br>HTML 元素通过元素节点表示，<br>特性(attribute)通过特性节点表示，<br>文档类型通过文档类型节点表示，<br>而注释则通过注释节点表示。<br>总共有12 种节点类型，这些类型都继承自一个基类型。<br>
+          <h1 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h1><h2 id="DOM中的范围"><a href="#DOM中的范围" class="headerlink" title="DOM中的范围"></a>DOM中的范围</h2><h3 id="操作DOM-范围中的内容"><a href="#操作DOM-范围中的内容" class="headerlink" title="操作DOM 范围中的内容"></a>操作DOM 范围中的内容</h3><p>在创建范围时 ，内部会为这个范围创建一个文档片段，范围所属的全部节点都被添加到了这个文档片段中。<br>为了创建这个文档片段，范围内容的格式必须正确有效。<br>在前面的例子中，我们创建的选区分别开始和结束于两个文本节点的内部，因此不能算是格式良好的DOM结构，也就无法通过DOM来表示。<br>范围知道自身缺少哪些开标签和闭标签，它能够重新构建有效的DOM结构以便我们对其进行操作。</p>
+<p>范围经过计算知道选区中缺少一个开始的<code>&lt;b&gt;</code>标签，因此就会在后台动态加入一个该标签，同时还会在前面加入一个表示结束的<code>&lt;/b&gt;</code>标签以结束”He”。于是，修改后的DOM 就变成了:<br><code>&lt;p&gt;&lt;b&gt;He&lt;/b&gt;&lt;b&gt;llo&lt;/b&gt; world!&lt;/p&gt;</code><br>文本节点”world!”也被拆分为两个文本节点，一个包含”wo”，另一个包含”rld!”。</p>
+<p>像这样创建了范围之后，就可以使用各种方法对范围的内容进行操作了。<br>deleteContents()这个方法能够从文档中删除范围所包含的内容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">range.setEnd(worldNode, <span class="number">3</span>);</div><div class="line">range.deleteContents();</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/02/javascript-note-10-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/09/javascript-note-12-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -414,8 +416,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/02/javascript-note-9-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第九章-2
+                <a class="post-title-link" href="/2016/10/09/javascript-note-12-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-3
                 </a>
               
             
@@ -428,8 +430,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-02T09:24:50+08:00" content="2016-10-02">
-              2016-10-02
+            <time itemprop="dateCreated" datetime="2016-10-09T14:26:31+08:00" content="2016-10-09">
+              2016-10-09
             </time>
           </span>
 
@@ -476,13 +478,12 @@
 
       
         
-          <h1 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h1><p>首先要确定的往往是你需要多么具体的浏览器信息。<br>一般情况下，知道呈现引擎和最低限度的版本就足以决定正确的操作方法了。<br>不推荐的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isIE6 || isIE7) &#123; <span class="comment">//不推荐!!!</span></div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种代码其实是很脆弱的，因为它要依据特定的版本来决定做什么。<br>如果是IE8 怎么办呢？只要IE 有新版本出来，就必须更新这些代码。</p>
-<p>使用这类代码可以避免：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ieVer &gt;=<span class="number">6</span>)&#123;</div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1><p>“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：<br>NodeIterator和TreeWalker。<br>能够基于给定的起点对DOM 结构执行深度优先(depth-first)的遍历操作。<br>IE 不支持DOM 遍历。<br>检测浏览器对DOM2 级遍历能力的支持情况。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsTraversals = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Traversal"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsNodeIterator = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createNodeIterator == <span class="string">"function"</span>);</div><div class="line"><span class="keyword">var</span> supportsTreeWalker = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createTreeWalker == <span class="string">"function"</span>);</div></pre></td></tr></table></figure>
+<p>DOM 遍历是深度优先的DOM 结构遍历，也就是说，移动的方向至少有两个(取决于使用的遍历类型)。<br>遍历以给定节点为根，不可能向上超出DOM 树的根节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/02/javascript-note-9-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/09/javascript-note-12-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -533,8 +534,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第八章-2
+                <a class="post-title-link" href="/2016/10/08/javascript-note-12-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-2
                 </a>
               
             
@@ -547,8 +548,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
-              2016-09-30
+            <time itemprop="dateCreated" datetime="2016-10-08T14:26:31+08:00" content="2016-10-08">
+              2016-10-08
             </time>
           </span>
 
@@ -595,21 +596,18 @@
 
       
         
-          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
-<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
-<pre><code>hash &quot;#contents&quot; 返回URL中的hash(#号后跟零或多个字符)，如果URL中不包含散列，则返回空字符串
-host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号(如果有)
-hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
-href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
-toString()方法也返回这个值
-pathname &quot;/WileyCDA/&quot; 返回URL中的目录和(或)文件名
-port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
-这个属性返回空字符串
-protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
-search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
+          <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
+<p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="访问元素的样式"><a href="#访问元素的样式" class="headerlink" title="访问元素的样式"></a>访问元素的样式</h2><p>任何支持style 特性的HTML 元素在JavaScript 中都有一个对应的style 属性。<br>这个style 对象是CSSStyleDeclaration 的实例，包含着通过HTML 的style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。<br>在style 特性中指定的任何CSS 属性都将表现为这个style 对象的相应属性。<br>对于使用短划线(分隔不同的词汇，例如background-image)的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</p>
+<p>例如:</p>
+<pre><code>background-image    style.backgroundImage
+color               style.color
+display             style.display
+font-family         style.fontFamily
 </code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/08/javascript-note-12-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -643,7 +641,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -684,7 +682,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -769,7 +767,7 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -783,6 +781,15 @@ search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串�
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

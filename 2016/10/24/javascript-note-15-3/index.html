@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="CanvasWebGLWebGL 是针对Canvas 的3D 上下文。与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。
 要全面了解OpenGL，请访问http://www.opengl.">
-<meta property="og:updated_time" content="2016-10-28T11:45:49.057Z">
+<meta property="og:updated_time" content="2016-11-03T09:42:39.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十五章-3">
 <meta name="twitter:description" content="CanvasWebGLWebGL 是针对Canvas 的3D 上下文。与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。
@@ -446,7 +446,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> errorCode = gl.getError();</div><div class="line"><span class="keyword">while</span>(errorCode)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Error occurred: "</span> + errorCode);</div><div class="line">    errorCode = gl.getError();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果WebGL 脚本输出不正确，那在脚本中放几行gl.getError()有助于找出问题所在。</p>
 <h4 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h4><p>着色器（shader）是OpenGL 中的另一个概念。WebGL 中有两种着色器：顶点着色器和片段（或像素）着色器。<br>顶点着色器用于将3D 顶点转换为需要渲染的2D 点。<br>片段着色器用于准确计算要绘制的每个像素的颜色。<br>WebGL 着色器的独特之处也是其难点在于，它们并不是用JavaScript 写的。这些着色器是使用GLSL（OpenGL Shading Language，OpenGL 着色语言）写的，GLSL 是一种与C 和JavaScript完全不同的语言。</p>
-<h4 id="编写着色器"><a href="#编写着色器" class="headerlink" title="编写着色器"></a>编写着色器</h4>
+<h4 id="编写着色器"><a href="#编写着色器" class="headerlink" title="编写着色器"></a>编写着色器</h4><p>to be continued.</p>
+
       
     </div>
 
@@ -557,7 +558,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -642,7 +643,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -656,6 +657,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

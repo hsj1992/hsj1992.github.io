@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/30/javascript-note-9-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第九章-1
+                <a class="post-title-link" href="/2016/10/07/javascript-note-12-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十二章-1
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
-              2016-09-30
+            <time itemprop="dateCreated" datetime="2016-10-07T14:26:29+08:00" content="2016-10-07">
+              2016-10-07
             </time>
           </span>
 
@@ -360,14 +360,11 @@
 
       
         
-          <h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么(也是更常见的)就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”(quirk)，多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
-<p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
-<h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>(又称特性检测)。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (object.propertyInQuestion)&#123;</div><div class="line">    <span class="comment">//使用object.propertyInQuestion</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>举例来说，IE5.0 之前的版本不支持document.getElementById()这个DOM 方法。<br>尽管可以使用非标准的document.all 属性实现相同的目的，<br>但IE 的早期版本中确实不存在document.getElementById()。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.all)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.all[id];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <h1 id="DOM2-和-DOM3"><a href="#DOM2-和-DOM3" class="headerlink" title="DOM2 和 DOM3"></a>DOM2 和 DOM3</h1><h1 id="DOM-变化"><a href="#DOM-变化" class="headerlink" title="DOM 变化"></a>DOM 变化</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM3Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"3.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2HTML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"HTML"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2Views = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Views"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2XML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
+<h2 id="针对XML命名空间的变化"><a href="#针对XML命名空间的变化" class="headerlink" title="针对XML命名空间的变化"></a>针对XML命名空间的变化</h2><p>XML 命名空间使不同XML 文档的元素可以混合在一起，共同构成格式良好的文档不必担心发生命名冲突。<br>HTML 不支持XML 命名空间，但XHTML 支持XML 命名空间。<br>命名空间要使用xmlns 特性来指定。<br>XHTML 的命名空间是<code>http://www.w3.org/1999/xhtml</code>，在任何格式良好XHTML 页面中，都应该将其包含在<code>&lt;html&gt;</code>元素中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        Hello world!</div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/30/javascript-note-9-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/07/javascript-note-12-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -418,8 +415,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/29/javascript-note-8-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第八章-1
+                <a class="post-title-link" href="/2016/10/05/javascript-note-11-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十一章-2
                 </a>
               
             
@@ -432,8 +429,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-29T10:39:11+08:00" content="2016-09-29">
-              2016-09-29
+            <time itemprop="dateCreated" datetime="2016-10-05T16:27:47+08:00" content="2016-10-05">
+              2016-10-05
             </time>
           </span>
 
@@ -480,13 +477,11 @@
 
       
         
-          <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript ，那么 BOM(浏览器对象模型)则无疑才是真正的核心。</p>
-<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>它表示浏览器的一个实例。<br>它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。<br>这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问parseInt() 等方法。</p>
-<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;</div><div class="line">alert(<span class="built_in">window</span>.age); <span class="comment">//29</span></div><div class="line">sayAge(); <span class="comment">//29</span></div><div class="line"><span class="built_in">window</span>.sayAge(); <span class="comment">//29</span></div></pre></td></tr></table></figure>
-<p>由于 sayAge() 存在于全局作用域中，因此 this.age 被映射到 window.age 。<br>定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 操作符删除，而直接在 window 对象上的定义的属性可以。<br>
+          <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><h2 id="插入标记"><a href="#插入标记" class="headerlink" title="插入标记"></a>插入标记</h2><p>在需要给文档插入大量新HTML 标记的情况下，通过DOM操作仍然非常麻烦。<br>因为不仅要创建一系列DOM 节点，而且还要小心地按照正确的顺序把它们连接起来。<br>相对而言，使用插入标记的技术，直接插入HTML 字符串不仅更简单，速度也更快。</p>
+<h3 id="innerHTML-属性"><a href="#innerHTML-属性" class="headerlink" title="innerHTML 属性"></a>innerHTML 属性</h3><p>在读模式下，innerHTML 属性返回与调用元素的所有子节点(包括元素、注释和文本节点)对应的HTML 标记。<br>在写模式下，innerHTML 会根据指定的值创建新的DOM树，然后用这个DOM树完全替换调用元素原先的所有子节点。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a <span class="tag">&lt;<span class="name">strong</span>&gt;</span>paragraph<span class="tag">&lt;/<span class="name">strong</span>&gt;</span> with a list following it.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>Item 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/29/javascript-note-8-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/05/javascript-note-11-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -537,8 +532,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/27/regex/" itemprop="url">
-                  正则表达式，治疗强迫症
+                <a class="post-title-link" href="/2016/10/04/javascript-note-11-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十一章-1
                 </a>
               
             
@@ -551,8 +546,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T18:47:11+08:00" content="2016-09-27">
-              2016-09-27
+            <time itemprop="dateCreated" datetime="2016-10-04T14:33:04+08:00" content="2016-10-04">
+              2016-10-04
             </time>
           </span>
 
@@ -565,8 +560,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Coding/" itemprop="url" rel="index">
-                    <span itemprop="name">Coding</span>
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
                   </a>
                 </span>
 
@@ -599,10 +594,15 @@
 
       
         
-          
-            <h1 id="治疗用药方"><a href="#治疗用药方" class="headerlink" title="治疗用药方"></a>治疗用药方</h1><p>中文字符： <code>[\u4e00-\u9fa5]</code><br>中文标点符号(似乎有遗漏)：<code>[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]</code></p>
-
-          
+          <h1 id="选择符API"><a href="#选择符API" class="headerlink" title="选择符API"></a>选择符API</h1><p>众多JavaScript 库中最常用的一项功能，就是根据CSS 选择符选择与某个模式匹配的DOM 元素。<br>实际上，jQuery(www.jquery.com)的核心就是通过CSS 选择符查询DOM文档取得元素的引用，从而抛开了getElementById()和getElementsByTagName()。</p>
+<p>Selectors API Level 1 的核心是两个方法：querySelector()和querySelectorAll()。<br>在兼容的浏览器中，可以通过Document 及Element 类型的实例调用它们。<br>目前已完全支持Selectors API Level 1的浏览器有IE 8+、Firefox 3.5+、Safari 3.1+、Chrome 和Opera 10+。</p>
+<h2 id="querySelector-方法"><a href="#querySelector-方法" class="headerlink" title="querySelector()方法"></a>querySelector()方法</h2><p>querySelector()方法接收一个CSS 选择符，返回与该模式匹配的第一个元素，如果没有找到匹配的元素，返回null。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//取得body 元素</span></div><div class="line"><span class="keyword">var</span> body = <span class="built_in">document</span>.querySelector(<span class="string">"body"</span>);</div><div class="line"><span class="comment">//取得ID 为"myDiv"的元素</span></div><div class="line"><span class="keyword">var</span> myDiv = <span class="built_in">document</span>.querySelector(<span class="string">"#myDiv"</span>);</div><div class="line"><span class="comment">//取得类为"selected"的第一个元素</span></div><div class="line"><span class="keyword">var</span> selected = <span class="built_in">document</span>.querySelector(<span class="string">".selected"</span>);</div><div class="line"><span class="comment">//取得类为"button"的第一个图像元素</span></div><div class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.body.querySelector(<span class="string">"img.button"</span>);</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/04/javascript-note-11-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -633,7 +633,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -674,7 +674,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -759,7 +759,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -773,6 +773,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

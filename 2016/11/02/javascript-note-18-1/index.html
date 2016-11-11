@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="JavaScript 与XMLDOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。
 浏览器对XML DOM 的支持在正式的规范诞生以前，浏览">
-<meta property="og:updated_time" content="2016-11-03T08:15:44.101Z">
+<meta property="og:updated_time" content="2016-11-03T08:32:58.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第十八章-1">
 <meta name="twitter:description" content="JavaScript 与XMLDOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。
@@ -427,7 +427,17 @@
 <p>要注意的是，为onreadystatechange 事件指定处理程序的语句，必须放在调用load()方法的语句之前；这样，才能确保在就绪状态变化时调用该事件处理程序。</p>
 <p>另外，在事件处理程序内部，还必须注意要使用XML 文档变量的名称（xmldom），不能使用this 对象。ActiveX 控件为预防安全问题不允许使用this 对象。</p>
 <p>虽然可以通过XML DOM文档对象加载XML文件，但公认的还是使用XMLHttpRequest 对象比较好。</p>
-<h3 id="跨浏览器处理XML"><a href="#跨浏览器处理XML" class="headerlink" title="跨浏览器处理XML"></a>跨浏览器处理XML</h3>
+<h3 id="跨浏览器处理XML"><a href="#跨浏览器处理XML" class="headerlink" title="跨浏览器处理XML"></a>跨浏览器处理XML</h3><p>很少有开发人员能够有福气专门针对一款浏览器做开发。因此，编写能够跨浏览器处理XML 的函数就成为了常见的需求。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseXml</span>(<span class="params">xml</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> xmldom = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> DOMParser != <span class="string">"undefined"</span>) &#123;</div><div class="line">        xmldom = (<span class="keyword">new</span> DOMParser()).parseFromString(xml, <span class="string">"text/xml"</span>);</div><div class="line">        <span class="keyword">var</span> errors = xmldom.getElementsByTagName(<span class="string">"parsererror"</span>);</div><div class="line">        <span class="keyword">if</span> (errors.length) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"XML parsing error:"</span> + errors[<span class="number">0</span>].textContent);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> ActiveXObject != <span class="string">"undefined"</span>) &#123;</div><div class="line">        xmldom = createDocument();</div><div class="line">        xmldom.loadXML(xml);</div><div class="line">        <span class="keyword">if</span> (xmldom.parseError != <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"XML parsing error: "</span> + xmldom.parseError.reason);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No XML parser available."</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> xmldom;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>parseXml()函数只接收一个参数，即可解析的XML 字符串。在函数内部，通过能力检测来确定要使用的XML 解析方式。<br>DOMParser 类型是受支持最多的解决方案，因此首先检测该类型是否有效。<br>如果是，则创建一个新的DOMParser 对象，并将解析XML 字符串的结果保存在变量xmldom中。<br>由于DOMParser 对象在发生解析错误时不抛出错误（除IE9+之外），因此还要检测返回的文档以确定解析过程是否顺利。<br>如果发现了解析错误，则根据错误消息抛出一个错误。</p>
+<p>函数的最后一部分代码检测了对ActiveX 的支持，并使用前面定义的createDocument()函数来创建适当版本的XML 文档。<br>与使用DOMParser 时一样，这里也需要检测结果，以防有错误发生。如果确实有错误发生，同样也需要抛出一个包含错误原因的错误。</p>
+<p>在使用这个函数解析XML 字符串时，应该将它放在try-catch 语句当中，以防发生错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = <span class="literal">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    xmldom = parseXml(<span class="string">"&lt;root&gt;&lt;child/&gt;&lt;/root&gt;"</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (ex) &#123;</div><div class="line">    alert(ex.message);</div><div class="line">&#125;</div><div class="line"><span class="comment">//进一步处理</span></div></pre></td></tr></table></figure>
+<p>对序列化XML 而言，也可以按照同样的方式编写一个能够在四大浏览器中运行的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">serializeXml</span>(<span class="params">xmldom</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> XMLSerializer != <span class="string">"undefined"</span>) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">new</span> XMLSerializer()).serializeToString(xmldom);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> xmldom.xml != <span class="string">"undefined"</span>) &#123;</div><div class="line">        <span class="keyword">return</span> xmldom.xml;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Could not serialize XML DOM."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>serializeXml()函数接收一个参数，即要序列化的XML DOM 文档。<br>与parseXml()函数一样，这个函数首先也是检测受到最广泛支持的特性，即XMLSerializer。<br>如果这个类型有效，则使用它来生成并返回文档的XML 字符串。<br>由于ActiveX 方案比较简单，只使用了一个xml 属性，因此这个函数直接检测了该属性。<br>一般来说，只要针对浏览器使用了适当的XML DOM 对象，就不会出现无法序列化的情况，因而也就没有必要在try-catch 语句中调用serializeXml()。</p>
+<p>只不过由于序列化过程的差异，相同的DOM 对象在不同的浏览器下，有可能会得到不同的XML字符串。</p>
+
       
     </div>
 
@@ -467,6 +477,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/03/javascript-note-18-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第十八章-2">
+                《 JavaScript 高级程序设计》备忘-第十八章-2 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -534,7 +548,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -619,7 +633,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -633,6 +647,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

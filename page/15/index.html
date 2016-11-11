@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-5-5/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第五章-5
+                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-2
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T13:35:35+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
+              2016-09-30
             </time>
           </span>
 
@@ -360,11 +360,21 @@
 
       
         
-          <h1 id="单体内置对象"><a href="#单体内置对象" class="headerlink" title="单体内置对象"></a>单体内置对象</h1><p>内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”<br>开发人员不必显式地实例化内置对象，因为它们已经实例化了。<br>大多数内置对象，例如 Object 、 Array 和 String 。<br>ECMA-262 还定义了两个单体内置对象： Global 和 Math 。</p>
-<h2 id="Global-对象"><a href="#Global-对象" class="headerlink" title="Global 对象"></a>Global 对象</h2><p>Global (全局)对象可以说是 ECMAScript 中最特别的一个对象了，因为不管你从什么角度上看，这个对象都是不存在的。<br>ECMAScript 中的 Global 对象在某种意义上是作为一个终极的“兜底儿对象”来定义的。<br>换句话说，不属于任何其他对象的属性和方法，最终都是它的属性和方法。<br><strong>事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</strong></p>
-<p>诸如 isNaN() 、 isFinite() 、 parseInt() 以及 parseFloat() ，实际上全都是 Global 对象的方法。<br>除此之外， Global 对象还包含其他一些方法。</p>
+          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
+<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
+<pre><code>hash &quot;#contents&quot; 返回URL中的hash(#号后跟零或多个字符)，如果URL中不包含散列，则返回空字符串
+host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号(如果有)
+hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
+href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
+toString()方法也返回这个值
+pathname &quot;/WileyCDA/&quot; 返回URL中的目录和(或)文件名
+port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
+这个属性返回空字符串
+protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
+search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
+</code></pre>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-5-5/#more" rel="contents">
+            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -415,8 +425,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-5-4/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第五章-4
+                <a class="post-title-link" href="/2016/09/30/javascript-note-9-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第九章-1
                 </a>
               
             
@@ -429,8 +439,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T12:26:34+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-09-30T20:23:33+08:00" content="2016-09-30">
+              2016-09-30
             </time>
           </span>
 
@@ -477,11 +487,14 @@
 
       
         
-          <h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><p>为了便于操作基本类型值， ECMAScript 还提供了 3 个特殊的引用类型： Boolean 、 Number 和 String 。<br>这些类型与本章介绍的其他引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。<br>实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="string">"some text"</span>;</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">//等同于</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"some text"</span>);</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line">s1 = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<p>后台操作：<br>(1) 创建 String 类型的一个实例；<br>(2) 在实例上调用指定的方法；<br>(3) 销毁这个实例。<br>这三个步骤也分别适用于 Boolean 和 Number 类型对应的布尔值和数字值。<br>
+          <h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么(也是更常见的)就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”(quirk)，多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
+<p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
+<h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>(又称特性检测)。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (object.propertyInQuestion)&#123;</div><div class="line">    <span class="comment">//使用object.propertyInQuestion</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>举例来说，IE5.0 之前的版本不支持document.getElementById()这个DOM 方法。<br>尽管可以使用非标准的document.all 属性实现相同的目的，<br>但IE 的早期版本中确实不存在document.getElementById()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.all)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.all[id];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-5-4/#more" rel="contents">
+            <a class="btn" href="/2016/09/30/javascript-note-9-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -532,8 +545,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/javascript-note-5-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第五章-3
+                <a class="post-title-link" href="/2016/09/29/javascript-note-8-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-1
                 </a>
               
             
@@ -546,8 +559,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T12:56:36+08:00" content="2016-09-19">
-              2016-09-19
+            <time itemprop="dateCreated" datetime="2016-09-29T10:39:11+08:00" content="2016-09-29">
+              2016-09-29
             </time>
           </span>
 
@@ -594,12 +607,13 @@
 
       
         
-          <h1 id="Function-类型"><a href="#Function-类型" class="headerlink" title="Function 类型"></a>Function 类型</h1><p>ECMAScript 中最有意思的是函数——因为函数实际上是对象。<br>JavaScript 最有特色的地方。<br>每个函数都是 Function 类型的实例，而且都与其他引用类型一样具有属性和方法。<br>由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*等同于*/</span></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不推荐</span></div></pre></td></tr></table></figure>
-<p>在使用函数表达式定义函数时，没有必要使用函数名——通过变量 sum 即可以引用函数。<br>另外，还要注意函数末尾有一个分号，就像声明其他变量时一样。<br>最后一种定义函数的方式是使用 Function 构造函数。<br>但是不推荐这种方法定义函数，因为这种语法会导致解析两次代码(第一次是解析常规 ECMAScript 代码，第二次是解析传入构造函数中的字符串)，从而影响性能。</p>
-<p>使用不带圆括号的函数名是访问函数指针，而非调用函数。<br>
+          <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript ，那么 BOM(浏览器对象模型)则无疑才是真正的核心。</p>
+<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>它表示浏览器的一个实例。<br>它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。<br>这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问parseInt() 等方法。</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;</div><div class="line">alert(<span class="built_in">window</span>.age); <span class="comment">//29</span></div><div class="line">sayAge(); <span class="comment">//29</span></div><div class="line"><span class="built_in">window</span>.sayAge(); <span class="comment">//29</span></div></pre></td></tr></table></figure>
+<p>由于 sayAge() 存在于全局作用域中，因此 this.age 被映射到 window.age 。<br>定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 操作符删除，而直接在 window 对象上的定义的属性可以。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/javascript-note-5-3/#more" rel="contents">
+            <a class="btn" href="/2016/09/29/javascript-note-8-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -633,7 +647,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -674,7 +688,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -759,7 +773,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -773,6 +787,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

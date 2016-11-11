@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/02/javascript-note-18-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十八章-1
+                <a class="post-title-link" href="/2016/11/10/javascript-note-24/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十四章
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-02T14:37:30+08:00" content="2016-11-02">
-              2016-11-02
+            <time itemprop="dateCreated" datetime="2016-11-10T15:04:02+08:00" content="2016-11-10">
+              2016-11-10
             </time>
           </span>
 
@@ -360,137 +360,24 @@
 
       
         
-          <h1 id="JavaScript-与XML"><a href="#JavaScript-与XML" class="headerlink" title="JavaScript 与XML"></a>JavaScript 与XML</h1><p>DOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。<br>此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。<br>而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。</p>
-<h2 id="浏览器对XML-DOM-的支持"><a href="#浏览器对XML-DOM-的支持" class="headerlink" title="浏览器对XML DOM 的支持"></a>浏览器对XML DOM 的支持</h2><p>在正式的规范诞生以前，浏览器提供商实现的XML 解决方案不仅对XML 的支持程度参差不齐，而且对同一特性的支持也各不相同。<br>DOM2 级是第一个提到动态创建XML DOM 概念的规范。DOM3级进一步增强了XML DOM，新增了解析和序列化等特性。<br>然而，当DOM3 级规范的各项条款尘埃落定之后，大多数浏览器也都实现了各自不同的解决方案。</p>
-<h3 id="DOM2-级核心"><a href="#DOM2-级核心" class="headerlink" title="DOM2 级核心"></a>DOM2 级核心</h3><p>DOM2级在document.implementation 中引入了createDocument()方法。IE9+、Firefox、Opera、Chrome 和Safari 都支持这个方法。<br><code>var xmldom = document.implementation.createDocument(namespaceUri, root, doctype);</code><br>在通过JavaScript 处理XML 时，通常只使用参数root，因为这个参数指定的是XML DOM 文档元素的标签名。<br>namespaceUri 参数则很少用到，原因是在JavaScript 中管理命名空间比较困难。<br>最后，doctype 参数用得就更少了。<br>创建一个新的、文档元素为<code>&lt;root&gt;</code>的XML 文档:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = <span class="built_in">document</span>.implementation.createDocument(<span class="string">""</span>, <span class="string">"root"</span>, <span class="literal">null</span>);</div><div class="line">alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line"><span class="keyword">var</span> child = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">xmldom.documentElement.appendChild(child);</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/02/javascript-note-18-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/01/javascript-note-17-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十七章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-01T16:16:11+08:00" content="2016-11-01">
-              2016-11-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h3 id="处理错误的策略"><a href="#处理错误的策略" class="headerlink" title="处理错误的策略"></a>处理错误的策略</h3><p>搞清楚何时以及为什么发生错误至关重要。<br>作为开发人员，必须要知道代码何时可能出错，会出什么错，同时还要有一个跟踪此类问题的系统。</p>
-<h3 id="常见的错误类型"><a href="#常见的错误类型" class="headerlink" title="常见的错误类型"></a>常见的错误类型</h3><p>错误处理的核心，是首先要知道代码里会发生什么错误。</p>
-<p>JavaScript 是松散类型的，而且也不会验证函数的参数，因此错误只会在代码运行期间出现。一般来说，需要关注三种错误：</p>
-<ul>
-<li>类型转换错误</li>
-<li>数据类型错误</li>
-<li>通信错误</li>
+          <h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h2><h3 id="什么是可维护的代码"><a href="#什么是可维护的代码" class="headerlink" title="什么是可维护的代码"></a>什么是可维护的代码</h3><ul>
+<li>可理解性——其他人可以接手代码并理解它的意图和一般途径，而无需原开发人员的完整解释。</li>
+<li>直观性——代码中的东西一看就能明白，不管其操作过程多么复杂。</li>
+<li>可适应性——代码以一种数据上的变化不要求完全重写的方法撰写。</li>
+<li>可扩展性——在代码架构上已考虑到在未来允许对核心功能进行扩展。</li>
+<li>可调试性——当有地方出错时，代码可以给予你足够的信息来尽可能直接地确定问题所在。</li>
 </ul>
-<h4 id="类型转换错误"><a href="#类型转换错误" class="headerlink" title="类型转换错误"></a>类型转换错误</h4><p>误发生在使用某个操作符，或者使用其他可能会自动转换值的数据类型的语言结构时。<br>在使用相等（==）和不相等（!=）操作符，或者在if、for 及while 等流控制语句中使用非布尔值时，最常发生类型转换错误。</p>
-<p>多数情况下，我们建议使用全等（===）和不全等（!==）操作符，以避免类型转换。<br>使用全等和非全等操作符，可以避免发生因为使用相等和不相等操作符引发的类型转换错误，因此我们强烈推荐使用。</p>
-<p>容易发生类型转换错误的另一个地方，就是流控制语句。像if 之类的语句在确定下一步操作之前，会自动把任何值转换成布尔值。<br>在流控制语句中使用非布尔值，是极为常见的一个错误来源。为避免此类错误，就要做到在条件比较时切实传入布尔值。实际上，执行某种形式的比较就可以达到这个目的。<br>
+<h3 id="代码约定"><a href="#代码约定" class="headerlink" title="代码约定"></a>代码约定</h3><h4 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h4><p>可读性的大部分内容都是和代码的缩进相关的。一种不错的、很常见的缩进大小为4 个空格。</p>
+<p>可读性的另一方面是注释。如下一些地方需要进行注释:</p>
+<ul>
+<li>函数和方法——每个函数或方法都应该包含一个注释，描述其目的和用于完成任务所可能使用的算法。陈述事先的假设也非常重要，如参数代表什么，函数是否有返回值。</li>
+<li>大段代码——用于完成单个任务的多行代码应该在前面放一个描述任务的注释。</li>
+<li>复杂的算法——如果使用了一种独特的方式解决某个问题，则要在注释中解释你是如何做的。</li>
+<li>Hack——因为存在浏览器差异，JavaScript 代码一般会包含一些hack。不要假设其他人在看代码的时候能够理解hack 所要应付的浏览器问题。</li>
+</ul>
+<p>缩进和注释可以带来更可读的代码，在未来则更容易维护。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/01/javascript-note-17-2/#more" rel="contents">
+            <a class="btn" href="/2016/11/10/javascript-note-24/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -541,8 +428,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/01/javascript-note-17-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十七章-1
+                <a class="post-title-link" href="/2016/11/08/javascript-note-23/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十三章
                 </a>
               
             
@@ -555,8 +442,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-01T09:48:14+08:00" content="2016-11-01">
-              2016-11-01
+            <time itemprop="dateCreated" datetime="2016-11-08T14:13:55+08:00" content="2016-11-08">
+              2016-11-08
             </time>
           </span>
 
@@ -603,14 +490,130 @@
 
       
         
-          <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><p>JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)<br>原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。<br>之后出现了不少JavaScript调试程序和工具。</p>
-<h2 id="浏览器报告的错误"><a href="#浏览器报告的错误" class="headerlink" title="浏览器报告的错误"></a>浏览器报告的错误</h2><p>主流浏览器都具有某种向用户报告 JavaScript 错误的机制。默认情况下隐藏。</p>
-<h3 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h3><p>IE 是唯一一个在浏览器的界面窗体（chrome。chrome的意思是界面窗体?）中显示JavaScript 错误信息的浏览器。<br>在发生JavaScript错误时，浏览器左下角会出现一个黄色的图标，图标旁边则显示着”Error on page”（页面中有错误）。<br>可以双击查看相关信息（但不详细）。</p>
-<p>对于Web开发还可以通过设置让错误对话框直接显示出来。</p>
-<p>IE8和IE9自带脚本调试器。（更早版本需要安装）<br>在IE7 及更早版本中，如果错误发生在位于外部文件的脚本中，行号通常会与错误所在的行号差1。如果是嵌入在页面中的脚本发生错误，则行号就是错误所在的行号。</p>
-<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>默认情况下，Firefox不会通过浏览器界面给出提示。可以从后台的错误控制台看到错误。<br>Firefox 插件Firebug现在已经成为开发人员必备的JavaScript 纠错工具。<br>
+          <h1 id="离线应用与客户端存储"><a href="#离线应用与客户端存储" class="headerlink" title="离线应用与客户端存储"></a>离线应用与客户端存储</h1><p>支持离线Web 应用开发是HTML5 的另一个重点。<br>开发离线Web 应用需要几个步骤。<br>首先是确保应用知道设备是否能上网，以便下一步执行正确的操作。<br>然后，应用还必须能访问一定的资源（图像、JavaScript、CSS 等），只有这样才能正常工作。<br>最后，必须有一块本地空间用于保存数据，无论能否上网都不妨碍读写。</p>
+<h2 id="离线检测"><a href="#离线检测" class="headerlink" title="离线检测"></a>离线检测</h2><p>开发离线应用的第一步是要知道设备是在线还是离线，HTML5为此定义了一个navigator.onLine属性，这个属性值为true 表示设备能上网，值为false 表示设备离线。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (navigator.onLine)&#123;</div><div class="line"><span class="comment">//正常工作</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">//执行离线状态时的任务</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除navigator.onLine 属性之外，为了更好地确定网络是否可用，HTML5 还定义了两个事件：online 和offline。<br>当网络从离线变为在线或者从在线变为离线时，分别触发这两个事件。<br>这两个事件在window 对象上触发。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/01/javascript-note-17-1/#more" rel="contents">
+            <a class="btn" href="/2016/11/08/javascript-note-23/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/javascript-note-22-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十二章-3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-08T14:12:52+08:00" content="2016-11-08">
+              2016-11-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h1><h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><p>在本书前面，你已经学到事件是JavaScript 与浏览器交互的主要途径。<br>事件是一种叫做观察者的设计模式，这是一种创建松散耦合代码的技术。</p>
+<p>对象可以发布事件，用来表示在该对象生命周期中某个有趣的时刻到了。<br>然后其他对象可以观察该对象，等待这些有趣的时刻到来并通过运行代码来响应。</p>
+<p>观察者模式由两类对象组成：主体和观察者。<br>主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。<br>该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说即使观察者不存在,它也可以独自存在并正常运作。<br>从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。<br>涉及DOM 上时，DOM元素便是主体，你的事件处理代码便是观察者。</p>
+<p>事件是与DOM 交互的最常见的方式，但它们也可以用于非DOM 代码中——通过实现自定义事件。<br>自定义事件背后的概念是创建一个管理事件的对象，让其他对象监听那些事件。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/08/javascript-note-22-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -644,7 +647,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -685,7 +688,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -770,7 +773,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -784,6 +787,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

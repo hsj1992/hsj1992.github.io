@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/16/javascript-note-13-5/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-5
+                <a class="post-title-link" href="/2016/10/24/javascript-note-15-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十五章-3
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T16:25:05+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2016-10-24T15:39:31+08:00" content="2016-10-24">
+              2016-10-24
             </time>
           </span>
 
@@ -360,11 +360,10 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="键盘与文本事件"><a href="#键盘与文本事件" class="headerlink" title="键盘与文本事件"></a>键盘与文本事件</h3><h4 id="键码"><a href="#键码" class="headerlink" title="键码"></a>键码</h4><p>在发生keydown 和keyup 事件时，event 对象的keyCode 属性中会包含一个代码，与键盘上一个特定的键对应。<br>对数字字母字符键，keyCode 属性的值与ASCII 码中对应小写字母或数字的编码相同。<br>数字键7 的keyCode 值为55，而字母A 键的keyCode 值为65——与Shift 键的状态无关。<br>DOM 和IE 的event 对象都支持keyCode 属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.getElementById(<span class="string">"myText"</span>);</div><div class="line">EventUtil.addHandler(textbox, <span class="string">"keyup"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    alert(event.keyCode);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>用户每次在文本框中按键触发keyup 事件时，都会显示keyCode 的值。<br>无论keydown 或keyup 事件都会存在的一些特殊情况。<br>在Firefox 和Opera 中，按分号键时keyCode值为59，也就是ASCII 中分号的编码；但IE 和Safari 返回186，即键盘中按键的键码。<br>
+          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h2><p>WebGL 是针对Canvas 的3D 上下文。<br>与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。<br>Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。</p>
+<p>要全面了解OpenGL，请访问<a href="http://www.opengl.org/">http://www.opengl.org/</a>。要全面学习WebGL，请参考<a href="http://www.learningwebgl.com/">http://www.learningwebgl.com/</a>，其中包含非常棒的系列教程。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/16/javascript-note-13-5/#more" rel="contents">
+            <a class="btn" href="/2016/10/24/javascript-note-15-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -415,8 +414,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/16/javascript-note-13-4/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-4
+                <a class="post-title-link" href="/2016/10/24/javascript-note-15-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十十五章-2
                 </a>
               
             
@@ -429,8 +428,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T15:49:30+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2016-10-24T15:38:08+08:00" content="2016-10-24">
+              2016-10-24
             </time>
           </span>
 
@@ -477,137 +476,133 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="鼠标与滚轮事件"><a href="#鼠标与滚轮事件" class="headerlink" title="鼠标与滚轮事件"></a>鼠标与滚轮事件</h3><h4 id="页面坐标位置"><a href="#页面坐标位置" class="headerlink" title="页面坐标位置"></a>页面坐标位置</h4><p>通过客户区坐标能够知道鼠标是在视口中什么位置发生的，<br>而页面坐标通过事件对象的pageX 和pageY 属性，能告诉你事件是在页面中的什么位置发生的。<br>这两个属性表示鼠标光标在页面中的位置，因此坐标是从页面本身而非视口的左边和顶边计算的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">EventUtil.addHandler(div, <span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    event = EventUtil.getEvent(event);</div><div class="line">    alert(<span class="string">"Page coordinates: "</span> + event.pageX + <span class="string">","</span> + event.pageY);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>在页面没有滚动的情况下，pageX 和pageY 的值与clientX 和clientY 的值相等。<br>IE8 及更早版本不支持事件对象上的页面坐标，不过使用客户区坐标和滚动信息可以计算出来。<br>这时候需要用到document.body(混杂模式)或document.documentElement(标准模式)中的scrollLeft 和scrollTop 属性。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/16/javascript-note-13-4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/16/javascript-note-13-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T11:58:00+08:00" content="2016-10-16">
-              2016-10-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><p>“DOM3级事件”规定了以下几类事件。</p>
+          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="2D-上下文"><a href="#2D-上下文" class="headerlink" title="2D 上下文"></a>2D 上下文</h2><h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><p>通过上下文的变换，可以把处理后的图像绘制到画布上。<br>2D 绘制上下文支持各种基本的绘制变换。<br>创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。<br>为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。</p>
 <ul>
-<li>UI(User Interface，用户界面)事件，当用户与页面上的元素交互时触发；</li>
-<li>焦点事件，当元素获得或失去焦点时触发；</li>
-<li>鼠标事件，当用户通过鼠标在页面上执行操作时触发；</li>
-<li>滚轮事件，当使用鼠标滚轮(或类似设备)时触发；</li>
-<li>文本事件，当在文档中输入文本时触发；</li>
-<li>键盘事件，当用户通过键盘在页面上执行操作时触发；</li>
-<li>合成事件，当为IME(Input Method Editor，输入法编辑器)输入字符时触发；</li>
-<li>变动(mutation)事件，当底层DOM 结构发生变化时触发。</li>
+<li>rotate(angle)：围绕原点旋转图像angle 弧度。</li>
+<li>scale(scaleX, scaleY)：缩放图像，在x 方向乘以scaleX，在y 方向乘以scaleY。scaleX和scaleY 的默认值都是1.0。</li>
+<li>translate(x, y)：将坐标原点移动到(x,y)。执行这个变换之后，坐标(0,0)会变成之前由(x,y)表示的点。</li>
+<li>transform(m1_1, m1_2, m2_1, m2_2, dx, dy)：直接修改变换矩阵，方式是乘以如下矩阵。<br>  m1_1    m1_2    dx<br>  m2_1    m2_2    dy<br>  0       0       1</li>
+<li>setTransform(m1_1, m1_2, m2_1, m2_2, dx, dy)：将变换矩阵重置为默认状态，然后再调用transform()。</li>
 </ul>
-<p>除了这几类事件之外，HTML5 也定义了一组事件，而有些浏览器还会在DOM 和BOM中实现其他专有事件。<br>这些专有的事件一般都是根据开发人员需求定制的，没有什么规范，因此不同浏览器的实现有可能不一致。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/16/javascript-note-13-3/#more" rel="contents">
+            <a class="btn" href="/2016/10/24/javascript-note-15-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/23/javascript-note-15-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十十五章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-23T13:00:25+08:00" content="2016-10-23">
+              2016-10-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p>HTML5 添加的最受欢迎的功能。<br>在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。<br>IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持<code>&lt;canvas&gt;</code>。<br>与浏览器环境中的其他组件类似，<code>&lt;canvas&gt;</code>由几组API 构成，但并非所有浏览器都支持所有这些API。<br><code>&lt;canvas&gt;</code>还建议了一个名为WebGL 的3D 上下文。<br>目前，支持该元素的浏览器都支持2D 上下文及文本API，但对WebGL 的支持还不够好。</p>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>先设置其width 和height 属性，指定可以绘图的区域大小。<br>出现在开始和结束标签中的内容是<strong>后备(替换)信息</strong>，如果浏览器不支持<code>&lt;canvas&gt;</code>元素，就会显示这些信息。<br><code>&lt;canvas id=&quot;drawing&quot; width=&quot; 200&quot; height=&quot;200&quot;&gt;&lt;img src=&quot;images/clock.png&quot; width=&quot;150&quot; height=&quot;150&quot; alt=&quot;&quot;/&gt;&lt;/canvas&gt;</code><br>也能通过CSS 为该元素添加样式，如果不添加任何样式或者不绘制任何图形，在页面中是看不到该元素的。<br>要在这块画布（canvas）上绘图，需要取得绘图上下文。<br>而取得绘图上下文对象的引用，需要调用getContext()方法并传入上下文的名字。<br>传入”2d”，就可以取得2D 上下文对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//更多代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/23/javascript-note-15-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -641,7 +636,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -682,7 +677,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -767,7 +762,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -781,6 +776,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

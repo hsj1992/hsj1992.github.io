@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/19/javascript-note-14-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十四章-3
+                <a class="post-title-link" href="/2016/11/03/javascript-note-18-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十八章-2
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-19T18:37:28+08:00" content="2016-10-19">
-              2016-10-19
+            <time itemprop="dateCreated" datetime="2016-11-03T16:34:07+08:00" content="2016-11-03">
+              2016-11-03
             </time>
           </span>
 
@@ -360,24 +360,133 @@
 
       
         
-          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h2><p>选择框是通过<code>&lt;select&gt;</code>和<code>&lt;option&gt;</code>元素创建的。<br>为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。</p>
+          
+            <h1 id="JavaScript-与XML"><a href="#JavaScript-与XML" class="headerlink" title="JavaScript 与XML"></a>JavaScript 与XML</h1><h2 id="浏览器对XPath-的支持"><a href="#浏览器对XPath-的支持" class="headerlink" title="浏览器对XPath 的支持"></a>浏览器对XPath 的支持</h2><p>XPath 是设计用来在DOM文档中查找节点的一种手段，因而对XML 处理也很重要。<br>但是，DOM3级以前的标准并没有就XPath 的API 作出规定；XPath 是在DOM3 级XPath 模块中首次跻身推荐标准行列的。<br>很多浏览器都实现了这个推荐标准，但IE 则以自己的方式实现了XPath。</p>
+<h3 id="DOM3-级XPath"><a href="#DOM3-级XPath" class="headerlink" title="DOM3 级XPath"></a>DOM3 级XPath</h3><p>DOM3级XPath 规范定义了在DOM中对XPath 表达式求值的接口。要确定某浏览器是否支持DOM3级XPath。<br><code>var supportsXPath = document.implementation.hasFeature(&quot;XPath&quot;, &quot;3.0&quot;);</code><br>在DOM3 级XPath 规范定义的类型中，最重要的两个类型是XPathEvaluator 和XPathResult。<br>XPathEvaluator 用于在特定的上下文中对XPath 表达式求值。<br>三个方法：</p>
 <ul>
-<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
-<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
-<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
-<li>remove(index)：移除给定位置的选项。</li>
-<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
-<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
+<li>createExpression(expression, nsresolver)：将XPath 表达式及相应的命名空间信息转换成一个XPathExpression，这是查询的编译版。在多次使用同一个查询时很有用。</li>
+<li>createNSResolver(node)：根据node 的命名空间信息创建一个新的XPathNSResolver 对象。在基于使用命名空间的XML 文档求值时，需要使用XPathNSResolver 对象。</li>
+<li>evaluate(expression, context, nsresolver, type, result)：在给定的上下文中，基于特定的命名空间信息来对XPath 表达式求值。剩下的参数指定如何返回结果。</li>
 </ul>
-<p>选择框的type 属性不是”select-one”，就是”select-multiple”，这取决于HTML 代码中有没有multiple 特性。<br>选择框的value 属性由当前选中项决定。</p>
-<ul>
-<li>如果没有选中的项，则选择框的value 属性保存空字符串。</li>
-<li>如果有一个选中项，而且该项的value 特性已经在HTML 中指定，则选择框的value 属性等于选中项的value 特性。<br>  即使value 特性的值是空字符串，也同样遵循此条规则。</li>
-<li>如果有一个选中项，但该项的value 特性在HTML 中未指定，则选择框的value 属性等于该项的文本。</li>
-<li>如果有多个选中项，则选择框的value 属性将依据前两条规则取得第一个选中项的值。</li>
-</ul>
+<p>在Firefox、Safari、Chrome 和Opera 中，Document 类型通常都是与XPathEvaluator 接口一起实现的。<br>换句话说，在这些浏览器中，既可以创建XPathEvaluator 的新实例，也可以使用Document实例中的方法（XML 或HTML 文档均是如此）。<br>evaluate()是最常用的。<br>这个方法接收5 个参数：XPath 表达式、上下文节点、命名空间求解器、返回结果的类型和保存结果的XPathResult 对象（通常是null，因为结果也会以函数值的形式返回）。</p>
+<p>to be continued.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/02/javascript-note-18-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十八章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T14:37:30+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="JavaScript-与XML"><a href="#JavaScript-与XML" class="headerlink" title="JavaScript 与XML"></a>JavaScript 与XML</h1><p>DOM 规范的制定，不仅是为了方便在Web 浏览器中使用XML，也是为了在桌面及服务器应用程序中处理XML 数据。<br>此前，由于浏览器无法解析XML 数据，很多开发人员都要动手编写自己的XML 解析器。<br>而自从DOM 出现后，所有浏览器都内置了对XML 的原生支持（XML DOM），同时也提供了一系列相关的技术支持。</p>
+<h2 id="浏览器对XML-DOM-的支持"><a href="#浏览器对XML-DOM-的支持" class="headerlink" title="浏览器对XML DOM 的支持"></a>浏览器对XML DOM 的支持</h2><p>在正式的规范诞生以前，浏览器提供商实现的XML 解决方案不仅对XML 的支持程度参差不齐，而且对同一特性的支持也各不相同。<br>DOM2 级是第一个提到动态创建XML DOM 概念的规范。DOM3级进一步增强了XML DOM，新增了解析和序列化等特性。<br>然而，当DOM3 级规范的各项条款尘埃落定之后，大多数浏览器也都实现了各自不同的解决方案。</p>
+<h3 id="DOM2-级核心"><a href="#DOM2-级核心" class="headerlink" title="DOM2 级核心"></a>DOM2 级核心</h3><p>DOM2级在document.implementation 中引入了createDocument()方法。IE9+、Firefox、Opera、Chrome 和Safari 都支持这个方法。<br><code>var xmldom = document.implementation.createDocument(namespaceUri, root, doctype);</code><br>在通过JavaScript 处理XML 时，通常只使用参数root，因为这个参数指定的是XML DOM 文档元素的标签名。<br>namespaceUri 参数则很少用到，原因是在JavaScript 中管理命名空间比较困难。<br>最后，doctype 参数用得就更少了。<br>创建一个新的、文档元素为<code>&lt;root&gt;</code>的XML 文档:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmldom = <span class="built_in">document</span>.implementation.createDocument(<span class="string">""</span>, <span class="string">"root"</span>, <span class="literal">null</span>);</div><div class="line">alert(xmldom.documentElement.tagName); <span class="comment">//"root"</span></div><div class="line"><span class="keyword">var</span> child = xmldom.createElement(<span class="string">"child"</span>);</div><div class="line">xmldom.documentElement.appendChild(child);</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/19/javascript-note-14-3/#more" rel="contents">
+            <a class="btn" href="/2016/11/02/javascript-note-18-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -428,8 +537,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/19/javascript-note-14-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十四章-2
+                <a class="post-title-link" href="/2016/11/01/javascript-note-17-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十七章-2
                 </a>
               
             
@@ -442,8 +551,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-19T11:48:06+08:00" content="2016-10-19">
-              2016-10-19
+            <time itemprop="dateCreated" datetime="2016-11-01T16:16:11+08:00" content="2016-11-01">
+              2016-11-01
             </time>
           </span>
 
@@ -490,143 +599,19 @@
 
       
         
-          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h2><p>在HTML 中，有两种方式来表现文本框：一种是使用<code>&lt;input&gt;</code>元素的单行文本框，另一种是使用<code>&lt;textarea&gt;</code>的多行文本框。<br>两者相似，但仍有重要区别。</p>
-<p>使用<code>&lt;input&gt;</code>，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。</p>
-<p>相对而言,<code>&lt;textarea&gt;</code>始终会呈现一个多行文本框，要指定大小可以用row和col特性。row指的是文本框行数，col指的是文本框字符列数。<br>初始值要放在<code>&lt;textarea&gt;</code>和<code>&lt;/textarea&gt;</code>之间。一个区别：不能在HTML 中给<code>&lt;textarea&gt;</code>指定最大字符数。</p>
-<p>它们都会将用户输入的内容保存在value 属性中。可以通过这个属性读取和设置文本框的值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"textbox1"</span>];</div><div class="line">alert(textbox.value);</div><div class="line">textbox.value = <span class="string">"Some new value"</span>;</div></pre></td></tr></table></figure>
-<p>建议使用value 属性读取或设置文本框的值，不建议使用标准的DOM 方法。即不要使用setAttribute()设置<code>&lt;input&gt;</code>元素的value 特性，也不要去修改<code>&lt;textarea&gt;</code>元素的第一个子节点。<br>原因很简单：对value 属性所作的修改，不一定会反映在DOM中。因此，在处理文本框的值时，最好不要使用DOM 方法。</p>
-<h3 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h3><p>都支持select()方法，这个方法用于选择文本框中的所有文本。<br>在调用select()方法时，大多数浏览器都会将焦点设置到文本框中。这个方法不接受参数，可以在任何时候被调用。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/19/javascript-note-14-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/19/javascript-note-14-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十四章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-19T11:48:06+08:00" content="2016-10-19">
-              2016-10-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h2><p>HTML 对应： <code>&lt;form&gt;</code>元素<br>JavaScript 对应：<code>HTMLFormElement</code> 类型<br>HTMLFormElement 继承 HTMLElement<br>自己的独有的属性和方法：</p>
+          <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h3 id="处理错误的策略"><a href="#处理错误的策略" class="headerlink" title="处理错误的策略"></a>处理错误的策略</h3><p>搞清楚何时以及为什么发生错误至关重要。<br>作为开发人员，必须要知道代码何时可能出错，会出什么错，同时还要有一个跟踪此类问题的系统。</p>
+<h3 id="常见的错误类型"><a href="#常见的错误类型" class="headerlink" title="常见的错误类型"></a>常见的错误类型</h3><p>错误处理的核心，是首先要知道代码里会发生什么错误。</p>
+<p>JavaScript 是松散类型的，而且也不会验证函数的参数，因此错误只会在代码运行期间出现。一般来说，需要关注三种错误：</p>
 <ul>
-<li>acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。</li>
-<li>action：接受请求的URL；等价于HTML 中的action 特性。</li>
-<li>elements：表单中所有控件的集合（HTMLCollection）。</li>
-<li>enctype：请求的编码类型；等价于HTML 中的enctype 特性。</li>
-<li>length：表单中控件的数量。</li>
-<li>method：要发送的HTTP 请求类型，通常是”get”或”post”；等价于HTML 的method 特性。</li>
-<li>name：表单的名称；等价于HTML 的name 特性。</li>
-<li>reset()：将所有表单域重置为默认值。</li>
-<li>submit()：提交表单。</li>
-<li>target：用于发送请求和接收响应的窗口名称；等价于HTML 的target 特性。</li>
+<li>类型转换错误</li>
+<li>数据类型错误</li>
+<li>通信错误</li>
 </ul>
-<p>取得<code>&lt;form&gt;</code>元素引用的方式有好几种。<br>其中最常见的方式就是将它看成与其他元素一样，并为其添加id 特性，然后再像下面这样使用getElementById()方法找到它。<br>其次，通过document.forms 可以取得页面中所有的表单。在这个集合中，可以通过数值索引或name 值来取得特定的表单。<br>另外，在较早的浏览器或者那些支持向后兼容的浏览器中，也会把每个设置了name 特性的表单作为属性保存在document 对象中(不推荐使用这种方式)。<br>可以同时为表单指定id 和name 属性，但它们的值不一定相同。<br>
+<h4 id="类型转换错误"><a href="#类型转换错误" class="headerlink" title="类型转换错误"></a>类型转换错误</h4><p>误发生在使用某个操作符，或者使用其他可能会自动转换值的数据类型的语言结构时。<br>在使用相等（==）和不相等（!=）操作符，或者在if、for 及while 等流控制语句中使用非布尔值时，最常发生类型转换错误。</p>
+<p>多数情况下，我们建议使用全等（===）和不全等（!==）操作符，以避免类型转换。<br>使用全等和非全等操作符，可以避免发生因为使用相等和不相等操作符引发的类型转换错误，因此我们强烈推荐使用。</p>
+<p>容易发生类型转换错误的另一个地方，就是流控制语句。像if 之类的语句在确定下一步操作之前，会自动把任何值转换成布尔值。<br>在流控制语句中使用非布尔值，是极为常见的一个错误来源。为避免此类错误，就要做到在条件比较时切实传入布尔值。实际上，执行某种形式的比较就可以达到这个目的。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/19/javascript-note-14-1/#more" rel="contents">
+            <a class="btn" href="/2016/11/01/javascript-note-17-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -660,7 +645,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -701,7 +686,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -786,7 +771,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -800,6 +785,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

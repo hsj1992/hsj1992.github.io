@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/09/javascript-note-12-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十二章-3
+                <a class="post-title-link" href="/2016/10/19/javascript-note-14-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-1
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-09T14:26:31+08:00" content="2016-10-09">
-              2016-10-09
+            <time itemprop="dateCreated" datetime="2016-10-19T11:48:06+08:00" content="2016-10-19">
+              2016-10-19
             </time>
           </span>
 
@@ -360,12 +360,22 @@
 
       
         
-          <h1 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h1><p>“DOM2 级遍历和范围”模块定义了两个用于辅助完成顺序遍历DOM 结构的类型：<br>NodeIterator和TreeWalker。<br>能够基于给定的起点对DOM 结构执行深度优先(depth-first)的遍历操作。<br>IE 不支持DOM 遍历。<br>检测浏览器对DOM2 级遍历能力的支持情况。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsTraversals = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Traversal"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsNodeIterator = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createNodeIterator == <span class="string">"function"</span>);</div><div class="line"><span class="keyword">var</span> supportsTreeWalker = (<span class="keyword">typeof</span> <span class="built_in">document</span>.createTreeWalker == <span class="string">"function"</span>);</div></pre></td></tr></table></figure>
-<p>DOM 遍历是深度优先的DOM 结构遍历，也就是说，移动的方向至少有两个(取决于使用的遍历类型)。<br>遍历以给定节点为根，不可能向上超出DOM 树的根节点。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span> world!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h2><p>HTML 对应： <code>&lt;form&gt;</code>元素<br>JavaScript 对应：<code>HTMLFormElement</code> 类型<br>HTMLFormElement 继承 HTMLElement<br>自己的独有的属性和方法：</p>
+<ul>
+<li>acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。</li>
+<li>action：接受请求的URL；等价于HTML 中的action 特性。</li>
+<li>elements：表单中所有控件的集合（HTMLCollection）。</li>
+<li>enctype：请求的编码类型；等价于HTML 中的enctype 特性。</li>
+<li>length：表单中控件的数量。</li>
+<li>method：要发送的HTTP 请求类型，通常是”get”或”post”；等价于HTML 的method 特性。</li>
+<li>name：表单的名称；等价于HTML 的name 特性。</li>
+<li>reset()：将所有表单域重置为默认值。</li>
+<li>submit()：提交表单。</li>
+<li>target：用于发送请求和接收响应的窗口名称；等价于HTML 的target 特性。</li>
+</ul>
+<p>取得<code>&lt;form&gt;</code>元素引用的方式有好几种。<br>其中最常见的方式就是将它看成与其他元素一样，并为其添加id 特性，然后再像下面这样使用getElementById()方法找到它。<br>其次，通过document.forms 可以取得页面中所有的表单。在这个集合中，可以通过数值索引或name 值来取得特定的表单。<br>另外，在较早的浏览器或者那些支持向后兼容的浏览器中，也会把每个设置了name 特性的表单作为属性保存在document 对象中(不推荐使用这种方式)。<br>可以同时为表单指定id 和name 属性，但它们的值不一定相同。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/09/javascript-note-12-3/#more" rel="contents">
+            <a class="btn" href="/2016/10/19/javascript-note-14-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -416,8 +426,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/08/javascript-note-12-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十二章-2
+                <a class="post-title-link" href="/2016/10/18/javascript-note-13-8/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十三章-8
                 </a>
               
             
@@ -430,8 +440,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-08T14:26:31+08:00" content="2016-10-08">
-              2016-10-08
+            <time itemprop="dateCreated" datetime="2016-10-18T19:37:41+08:00" content="2016-10-18">
+              2016-10-18
             </time>
           </span>
 
@@ -478,18 +488,18 @@
 
       
         
-          <h1 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h1><p>定义样式的方式有3 种：通过<code>&lt;link/&gt;</code>元素包含外部样式表文件、[外联]<br>使用<code>&lt;style/&gt;</code>元素定义嵌入式样式，[内联]<br>以及使用style 特性定义针对特定元素的样式。[行内]</p>
-<p>可以用来确定浏览器是否支持DOM2 级定义的CSS 能力：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2CSS = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2CSS2 = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"CSS2"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
-<h2 id="访问元素的样式"><a href="#访问元素的样式" class="headerlink" title="访问元素的样式"></a>访问元素的样式</h2><p>任何支持style 特性的HTML 元素在JavaScript 中都有一个对应的style 属性。<br>这个style 对象是CSSStyleDeclaration 的实例，包含着通过HTML 的style 特性指定的所有样式信息，但不包含与外部样式表或嵌入样式表经层叠而来的样式。<br>在style 特性中指定的任何CSS 属性都将表现为这个style 对象的相应属性。<br>对于使用短划线(分隔不同的词汇，例如background-image)的CSS 属性名，必须将其转换成驼峰大小写形式，才能通过JavaScript 来访问。</p>
-<p>例如:</p>
-<pre><code>background-image    style.backgroundImage
-color               style.color
-display             style.display
-font-family         style.fontFamily
-</code></pre>
+          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="模拟事件"><a href="#模拟事件" class="headerlink" title="模拟事件"></a>模拟事件</h2><p>也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。<br>在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，<br>IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。</p>
+<h3 id="DOM中的事件模拟"><a href="#DOM中的事件模拟" class="headerlink" title="DOM中的事件模拟"></a>DOM中的事件模拟</h3><p>可以在document 对象上使用createEvent()方法创建event 对象。<br>接收一个参数，即表示要创建的事件类型的字符串。<br>在DOM2 级中，所有这些字符串都使用英文复数形式，而在DOM3级中都变成了单数。</p>
+<ul>
+<li>UIEvents：一般化的UI 事件。鼠标事件和键盘事件都继承自UI 事件。DOM3 级中是UIEvent。</li>
+<li>MouseEvents：一般化的鼠标事件。DOM3 级中是MouseEvent。</li>
+<li>MutationEvents：一般化的DOM 变动事件。DOM3 级中是MutationEvent。</li>
+<li>HTMLEvents：一般化的HTML 事件。没有对应的DOM3 级事件（HTML 事件被分散到其他类别中）。</li>
+</ul>
+<p>“DOM2 级事件”并没有专门规定键盘事件，后来的“DOM3 级事件”中才正式将其作为一种事件给出规定。<br>在其他浏览器中，在现有方法的基础上，可以通过几种方式来模拟键盘事件。</p>
+<p>模拟事件的最后一步就是触发事件。这一步需要使用dispatchEvent()方法，所有支持事件的DOM 节点都支持这个方法。<br>调用dispatchEvent()方法时，需要传入一个参数，即表示要触发事件的event 对象。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/08/javascript-note-12-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/18/javascript-note-13-8/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -540,8 +550,8 @@ font-family         style.fontFamily
             
               
                 
-                <a class="post-title-link" href="/2016/10/07/javascript-note-12-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十二章-1
+                <a class="post-title-link" href="/2016/10/18/javascript-note-13-7/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十三章-7
                 </a>
               
             
@@ -554,8 +564,8 @@ font-family         style.fontFamily
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-07T14:26:29+08:00" content="2016-10-07">
-              2016-10-07
+            <time itemprop="dateCreated" datetime="2016-10-18T14:32:13+08:00" content="2016-10-18">
+              2016-10-18
             </time>
           </span>
 
@@ -602,11 +612,11 @@ font-family         style.fontFamily
 
       
         
-          <h1 id="DOM2-和-DOM3"><a href="#DOM2-和-DOM3" class="headerlink" title="DOM2 和 DOM3"></a>DOM2 和 DOM3</h1><h1 id="DOM-变化"><a href="#DOM-变化" class="headerlink" title="DOM 变化"></a>DOM 变化</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> supportsDOM2Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM3Core = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Core"</span>, <span class="string">"3.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2HTML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"HTML"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2Views = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"Views"</span>, <span class="string">"2.0"</span>);</div><div class="line"><span class="keyword">var</span> supportsDOM2XML = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>, <span class="string">"2.0"</span>);</div></pre></td></tr></table></figure>
-<h2 id="针对XML命名空间的变化"><a href="#针对XML命名空间的变化" class="headerlink" title="针对XML命名空间的变化"></a>针对XML命名空间的变化</h2><p>XML 命名空间使不同XML 文档的元素可以混合在一起，共同构成格式良好的文档不必担心发生命名冲突。<br>HTML 不支持XML 命名空间，但XHTML 支持XML 命名空间。<br>命名空间要使用xmlns 特性来指定。<br>XHTML 的命名空间是<code>http://www.w3.org/1999/xhtml</code>，在任何格式良好XHTML 页面中，都应该将其包含在<code>&lt;html&gt;</code>元素中。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Example XHTML page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        Hello world!</div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="设备事件"><a href="#设备事件" class="headerlink" title="设备事件"></a>设备事件</h3><h4 id="orientationchange-事件"><a href="#orientationchange-事件" class="headerlink" title="orientationchange 事件"></a>orientationchange 事件</h4><p>苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。<br>移动Safari 的window.orientation 属性中可能包含3 个值：<br>0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。<br>相关文档中还提到一个值，即180 表示iPhone 头朝下；但这种模式至今尚未得到支持。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">    div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"orientationchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>所有iOS 设备都支持orientationchange 事件和window.orientation 属性。<br>可以将orientationchange 看成window 事件，所以也可以通过指定<code>&lt;body&gt;</code>元素的onorientationchange 特性来指定事件处理程序。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/07/javascript-note-12-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/18/javascript-note-13-7/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -640,7 +650,7 @@ font-family         style.fontFamily
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -681,7 +691,7 @@ font-family         style.fontFamily
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -766,7 +776,7 @@ font-family         style.fontFamily
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -780,6 +790,15 @@ font-family         style.fontFamily
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/18/javascript-note-13-8/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-8
+                <a class="post-title-link" href="/2016/11/01/javascript-note-17-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十七章-1
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T19:37:41+08:00" content="2016-10-18">
-              2016-10-18
+            <time itemprop="dateCreated" datetime="2016-11-01T09:48:14+08:00" content="2016-11-01">
+              2016-11-01
             </time>
           </span>
 
@@ -360,18 +360,14 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="模拟事件"><a href="#模拟事件" class="headerlink" title="模拟事件"></a>模拟事件</h2><p>也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。<br>在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，<br>IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。</p>
-<h3 id="DOM中的事件模拟"><a href="#DOM中的事件模拟" class="headerlink" title="DOM中的事件模拟"></a>DOM中的事件模拟</h3><p>可以在document 对象上使用createEvent()方法创建event 对象。<br>接收一个参数，即表示要创建的事件类型的字符串。<br>在DOM2 级中，所有这些字符串都使用英文复数形式，而在DOM3级中都变成了单数。</p>
-<ul>
-<li>UIEvents：一般化的UI 事件。鼠标事件和键盘事件都继承自UI 事件。DOM3 级中是UIEvent。</li>
-<li>MouseEvents：一般化的鼠标事件。DOM3 级中是MouseEvent。</li>
-<li>MutationEvents：一般化的DOM 变动事件。DOM3 级中是MutationEvent。</li>
-<li>HTMLEvents：一般化的HTML 事件。没有对应的DOM3 级事件（HTML 事件被分散到其他类别中）。</li>
-</ul>
-<p>“DOM2 级事件”并没有专门规定键盘事件，后来的“DOM3 级事件”中才正式将其作为一种事件给出规定。<br>在其他浏览器中，在现有方法的基础上，可以通过几种方式来模拟键盘事件。</p>
-<p>模拟事件的最后一步就是触发事件。这一步需要使用dispatchEvent()方法，所有支持事件的DOM 节点都支持这个方法。<br>调用dispatchEvent()方法时，需要传入一个参数，即表示要触发事件的event 对象。<br>
+          <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><p>JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)<br>原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。<br>之后出现了不少JavaScript调试程序和工具。</p>
+<h2 id="浏览器报告的错误"><a href="#浏览器报告的错误" class="headerlink" title="浏览器报告的错误"></a>浏览器报告的错误</h2><p>主流浏览器都具有某种向用户报告 JavaScript 错误的机制。默认情况下隐藏。</p>
+<h3 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h3><p>IE 是唯一一个在浏览器的界面窗体（chrome。chrome的意思是界面窗体?）中显示JavaScript 错误信息的浏览器。<br>在发生JavaScript错误时，浏览器左下角会出现一个黄色的图标，图标旁边则显示着”Error on page”（页面中有错误）。<br>可以双击查看相关信息（但不详细）。</p>
+<p>对于Web开发还可以通过设置让错误对话框直接显示出来。</p>
+<p>IE8和IE9自带脚本调试器。（更早版本需要安装）<br>在IE7 及更早版本中，如果错误发生在位于外部文件的脚本中，行号通常会与错误所在的行号差1。如果是嵌入在页面中的脚本发生错误，则行号就是错误所在的行号。</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>默认情况下，Firefox不会通过浏览器界面给出提示。可以从后台的错误控制台看到错误。<br>Firefox 插件Firebug现在已经成为开发人员必备的JavaScript 纠错工具。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/javascript-note-13-8/#more" rel="contents">
+            <a class="btn" href="/2016/11/01/javascript-note-17-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -422,8 +418,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/18/javascript-note-13-7/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-7
+                <a class="post-title-link" href="/2016/10/30/javascript-note-16-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十六章-2
                 </a>
               
             
@@ -436,8 +432,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T14:32:13+08:00" content="2016-10-18">
-              2016-10-18
+            <time itemprop="dateCreated" datetime="2016-10-30T16:00:57+08:00" content="2016-10-30">
+              2016-10-30
             </time>
           </span>
 
@@ -484,11 +480,12 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="设备事件"><a href="#设备事件" class="headerlink" title="设备事件"></a>设备事件</h3><h4 id="orientationchange-事件"><a href="#orientationchange-事件" class="headerlink" title="orientationchange 事件"></a>orientationchange 事件</h4><p>苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。<br>移动Safari 的window.orientation 属性中可能包含3 个值：<br>0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。<br>相关文档中还提到一个值，即180 表示iPhone 头朝下；但这种模式至今尚未得到支持。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">    div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"orientationchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>所有iOS 设备都支持orientationchange 事件和window.orientation 属性。<br>可以将orientationchange 看成window 事件，所以也可以通过指定<code>&lt;body&gt;</code>元素的onorientationchange 特性来指定事件处理程序。<br>
+          <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="媒体元素"><a href="#媒体元素" class="headerlink" title="媒体元素"></a>媒体元素</h2><p>Flash毒瘤，不得不用。而HTML5 新增了<code>&lt;audio&gt;</code>和<code>&lt;video&gt;</code>，为了摆脱毒瘤。<br>它们都提供了用于实现常用功能的JavaScript API，允许为媒体创建自定义的控件。<br><code>&lt;video src=&quot;conference.mpg&quot; id=&quot;myVideo&quot;&gt;Video player not available.&lt;/video&gt;</code></p>
+<p>必需:src 属性，指向要加载的媒体文件。<br>可选:width和height 属性以指定视频播放器的大小，<br>可选:poster 属性指定图像的URI 可以在加载视频内容期间显示一幅图像。<br>可选:controls 属性，则意味着浏览器应该显示UI 控件，以便用户直接操作媒体。<br>标签之间的任何内容都将作为后备内容，在浏览器不支持这两个媒体元素的情况下显示。</p>
+<p>因为并非所有浏览器都支持所有媒体格式，所以可以指定多个不同的媒体来源。利用<code>&lt;source&gt;</code>标签。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 嵌入视频 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"myVideo"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"conference.webm"</span> <span class="attr">type</span>=<span class="string">"video/webm; codecs='vp8, vorbis'"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"conference.ogv"</span> <span class="attr">type</span>=<span class="string">"video/ogg; codecs='theora, vorbis'"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"conference.mpg"</span>&gt;</span></div><div class="line">Video player not available.</div><div class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 嵌入音频 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">id</span>=<span class="string">"myAudio"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"song.ogg"</span> <span class="attr">type</span>=<span class="string">"audio/ogg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"song.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span>&gt;</span></div><div class="line">Audio player not available.</div><div class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/javascript-note-13-7/#more" rel="contents">
+            <a class="btn" href="/2016/10/30/javascript-note-16-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -539,8 +536,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/18/javascript-note-13-6/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-6
+                <a class="post-title-link" href="/2016/10/26/javascript-note-16-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十六章-1
                 </a>
               
             
@@ -553,8 +550,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-18T14:14:57+08:00" content="2016-10-18">
-              2016-10-18
+            <time itemprop="dateCreated" datetime="2016-10-26T10:34:47+08:00" content="2016-10-26">
+              2016-10-26
             </time>
           </span>
 
@@ -601,12 +598,13 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="HTML5-事件"><a href="#HTML5-事件" class="headerlink" title="HTML5 事件"></a>HTML5 事件</h3><p>DOM 规范没有涵盖所有浏览器支持的所有事件。</p>
-<h4 id="contextmenu-事件"><a href="#contextmenu-事件" class="headerlink" title="contextmenu 事件"></a>contextmenu 事件</h4><p>Windows 95 在PC 中引入了上下文菜单的概念，即通过单击鼠标右键可以调出上下文菜单。<br>如何屏蔽与该操作关联的默认上下文菜单。<br>为解决这个问题，就出现了contextmenu 这个事件，用以表示何时应该显示上下文菜单，以便开发人员取消默认的上下文菜单而提供自定义的菜单。<br>(所以这是屏蔽鼠标右键、更改鼠标右键显示内容所使用的事件？)<br>由于contextmenu 事件是冒泡的，因此可以为document 指定一个事件处理程序，用以处理页面中发生的所有此类事件。<br>这个事件的目标是发生用户操作的元素。</p>
-<p>在所有浏览器中都可以取消这个事件：<br>在兼容DOM的浏览器中，使用event.preventDefalut()；<br>在IE 中，将event.returnValue 的值设置为false。</p>
-<p>因为contextmenu 事件属于鼠标事件，所以其事件对象中包含与光标位置有关的所有属性。<br>通常使用contextmenu 事件来显示自定义的上下文菜单，而使用onclick 事件处理程序来隐藏该菜单。<br>
+          <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="跨文档消息传递"><a href="#跨文档消息传递" class="headerlink" title="跨文档消息传递"></a>跨文档消息传递</h2><p>跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。<br>例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。<br>在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。</p>
+<p>XDM 的核心是postMessage()方法。<br>在HTML5 规范中，除了XDM部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于XDM而言，“另一个地方”指的是包含在当前页面中的<code>&lt;iframe&gt;</code>元素，或者由当前页面弹出的窗口。<br>postMessage()方法接收两个参数：一条消息和一个表示消息接收方来自哪个域的字符串。<br>第二个参数对保障安全通信非常重要，可以防止浏览器把消息发送到不安全的地方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注意：所有支持XDM 的浏览器也支持iframe 的contentWindow 属性</span></div><div class="line"><span class="keyword">var</span> iframeWindow = <span class="built_in">document</span>.getElementById(<span class="string">"myframe"</span>).contentWindow;</div><div class="line">iframeWindow.postMessage(<span class="string">"A secret"</span>, <span class="string">"http://www.wrox.com"</span>);</div></pre></td></tr></table></figure>
+<p>最后一行代码尝试向内嵌框架中发送一条消息，并指定框架中的文档必须来源于”<a href="http://www.wrox.com&quot;域。">http://www.wrox.com&quot;域。</a><br>如果来源匹配，消息会传递到内嵌框架中；否则，postMessage()什么也不做。<br>这一限制可以避免窗口中的位置在你不知情的情况下发生改变。</p>
+<p>接收到XDM消息时，会触发window 对象的message 事件。这个事件是以异步形式触发的，因此从发送消息到接收消息（触发接收窗口的message 事件）可能要经过一段时间的延迟。<br>触发message事件后，传递给onmessage 处理程序的事件对象包含以下三方面的重要信息。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/javascript-note-13-6/#more" rel="contents">
+            <a class="btn" href="/2016/10/26/javascript-note-16-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -640,7 +638,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -681,7 +679,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -766,7 +764,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -780,6 +778,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

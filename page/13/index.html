@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/27/javascript-note-7-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第七章-2
+                <a class="post-title-link" href="/2016/10/04/javascript-note-10-5/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-5
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T17:32:32+08:00" content="2016-09-27">
-              2016-09-27
+            <time itemprop="dateCreated" datetime="2016-10-04T14:12:40+08:00" content="2016-10-04">
+              2016-10-04
             </time>
           </span>
 
@@ -360,12 +360,12 @@
 
       
         
-          <h1 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h1><p>严格来讲， JavaScript 中没有私有成员的概念；所有对象属性都是公有的。<br>不过，倒是有一个私有变量的概念。任何在函数中定义的变量，都可以认为是私有变量，因为不能在函数的外部访问这些变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> sum = num1 + num2;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个函数内部，有 3 个私有变量： num1 、 num2 和 sum 。<br>在函数内部可以访问这几个变量，但在函数外部则不能访问它们。<br>如果在这个函数内部创建一个闭包，那么闭包通过自己的作用域链也可以访问这些变量。<br>而利用这一点，就可以创建用于访问私有变量的公有方法。</p>
-<p>把有权访问私有变量和私有函数的公有方法称为<strong>特权方法(privileged method)</strong>。<br>有两种在对象上创建特权方法的方式。第一种是在构造函数中定义特权方法:<br>
+          <h1 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h1><p>由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。</p>
+<h2 id="动态脚本"><a href="#动态脚本" class="headerlink" title="动态脚本"></a>动态脚本</h2><p>动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。<br>创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
+<p>动态加载的外部JavaScript 文件能够立即运行。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;client.js&quot;&gt;&lt;/script&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = <span class="string">"client.js"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/27/javascript-note-7-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/04/javascript-note-10-5/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -416,8 +416,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/26/hexo-tool-livereload/" itemprop="url">
-                  记录：利用 Livereload 实现 Hexo 博客自动刷新页面
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-4
                 </a>
               
             
@@ -430,8 +430,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-26T13:16:03+08:00" content="2016-09-26">
-              2016-09-26
+            <time itemprop="dateCreated" datetime="2016-10-03T19:04:28+08:00" content="2016-10-03">
+              2016-10-03
             </time>
           </span>
 
@@ -478,11 +478,26 @@
 
       
         
-          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>一开始是因为使用了新的 IDE ： Visual Studio Code ，装上了 markdownlint 插件。<br>然后为了符合规则，修改原本的 .md 文件。<br><code>hexo s</code>命令会监控文件，每次修改完保存，刷新页面就能看到所修改的新内容。<br>为了看修改完符合规则后，文章页面实际的表现效果有没有出错，在使用了<code>hexo s</code>命令后还得手动刷新页面。<br>每修改完想确认一次就得刷新一次， F5 又不是真的氪合金做的，而且一直手动刷新也麻烦；浏览器定时刷新也不准确。</p>
-<p>为了第一驱动力：懒惰，于是就去寻找跟 Hexo 和自动刷新有关的内容。</p>
-<h1 id="第一次尝试："><a href="#第一次尝试：" class="headerlink" title="第一次尝试："></a>第一次尝试：</h1><p>找到关于 Livereload 的介绍和教程，但是可能是因为 Hexo 和 Livereload 都有更新的缘故，原本推荐的 Hexo 的插件并不好使。<br>本地端通过 npm 安装的 Livereload 哪怕运行了，浏览器的 Livereload 插件并不能正常检测连接上。<br>
+          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
+<ul>
+<li>nodeType 的值为3；</li>
+<li>nodeName 的值为”#text”；</li>
+<li>nodeValue 的值为节点所包含的文本；</li>
+<li>parentNode 是一个Element；</li>
+<li>不支持(没有)子节点。</li>
+</ul>
+<p>可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包含的值相同。<br>操作文本方法：</p>
+<ul>
+<li>appendData(text)：将text 添加到节点的末尾。</li>
+<li>deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。</li>
+<li>insertData(offset, text)：在offset 指定的位置插入text。</li>
+<li>replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+count 为止处的文本。</li>
+<li>splitText(offset)：从offset 指定的位置将当前文本节点分成两个文本节点。</li>
+<li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有空格，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有内容，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--想必有换行的也是吧(换行符)--&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/26/hexo-tool-livereload/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -533,8 +548,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/25/javascript-note-7-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第七章-1
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-3
                 </a>
               
             
@@ -547,8 +562,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-25T17:22:08+08:00" content="2016-09-25">
-              2016-09-25
+            <time itemprop="dateCreated" datetime="2016-10-03T14:36:47+08:00" content="2016-10-03">
+              2016-10-03
             </time>
           </span>
 
@@ -595,14 +610,18 @@
 
       
         
-          <h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><p>定义函数的两种方式：</p>
-<ol>
-<li>函数声明,重要特征：函数声明提升(function declaration hoisting)<br> <code>function functionName(arg0,arg1){}</code></li>
-<li>函数表达式(也叫做匿名函数[因为没标识符]，有时候也叫 lambda 拉姆达函数)<br> <code>var functionName = function(arg0,arg1){}</code></li>
-</ol>
-<p>理解函数提升：<br>
+          <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h2><p>Element 类型就要算是Web 编程中最常用的类型了。<br>Element 类型用于表现XML或HTML元素，提供了对元素标签名、子节点及特性的访问。</p>
+<ul>
+<li>nodeType 的值为1；</li>
+<li>nodeName 的值为元素的标签名；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>其子节点可能是Element、Text、Comment、ProcessingInstruction、CDATASection 或EntityReference。</li>
+</ul>
+<p>要访问元素的标签名，可以使用nodeName 属性，也可以使用tagName 属性；<br>这两个属性会返回相同的值(使用后者主要是为了清晰起见)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">alert(div.tagName); <span class="comment">//"DIV"</span></div><div class="line">alert(div.tagName == div.nodeName); <span class="comment">//true</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/25/javascript-note-7-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -636,7 +655,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -677,7 +696,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -762,7 +781,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -776,6 +795,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

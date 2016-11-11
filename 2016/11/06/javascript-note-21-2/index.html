@@ -1,0 +1,963 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Ajax 与CometXMLHttpRequest 2 级XMLHttpRequest 1 级只是把已有的XHR 对象的实现细节描述了出来。而XMLHttpRequest 2 级则进一步发展了XHR。并非所有浏览器都完整地实现了XMLHttpRequest 2 级规范。
+FormData现代Web 应用中频繁使用的一项功能就是表单数据的序列化，XMLHttpRequest 2 级为此定义了Form">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第二十一章-2">
+<meta property="og:url" content="http://codingme.xyz/2016/11/06/javascript-note-21-2/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="Ajax 与CometXMLHttpRequest 2 级XMLHttpRequest 1 级只是把已有的XHR 对象的实现细节描述了出来。而XMLHttpRequest 2 级则进一步发展了XHR。并非所有浏览器都完整地实现了XMLHttpRequest 2 级规范。
+FormData现代Web 应用中频繁使用的一项功能就是表单数据的序列化，XMLHttpRequest 2 级为此定义了Form">
+<meta property="og:updated_time" content="2016-11-09T16:37:19.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第二十一章-2">
+<meta name="twitter:description" content="Ajax 与CometXMLHttpRequest 2 级XMLHttpRequest 1 级只是把已有的XHR 对象的实现细节描述了出来。而XMLHttpRequest 2 级则进一步发展了XHR。并非所有浏览器都完整地实现了XMLHttpRequest 2 级规范。
+FormData现代Web 应用中频繁使用的一项功能就是表单数据的序列化，XMLHttpRequest 2 级为此定义了Form">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/11/06/javascript-note-21-2/"/>
+
+  <title> 《 JavaScript 高级程序设计》备忘-第二十一章-2 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第二十一章-2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-06T09:59:13+08:00" content="2016-11-06">
+              2016-11-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Ajax-与Comet"><a href="#Ajax-与Comet" class="headerlink" title="Ajax 与Comet"></a>Ajax 与Comet</h1><h2 id="XMLHttpRequest-2-级"><a href="#XMLHttpRequest-2-级" class="headerlink" title="XMLHttpRequest 2 级"></a>XMLHttpRequest 2 级</h2><p>XMLHttpRequest 1 级只是把已有的XHR 对象的实现细节描述了出来。而XMLHttpRequest 2 级则进一步发展了XHR。<br>并非所有浏览器都完整地实现了XMLHttpRequest 2 级规范。</p>
+<h3 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h3><p>现代Web 应用中频繁使用的一项功能就是表单数据的序列化，XMLHttpRequest 2 级为此定义了FormData 类型。<br>FormData 为序列化表单以及创建与表单格式相同的数据（用于通过XHR 传输）提供了便利。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = <span class="keyword">new</span> FormData();</div><div class="line">data.append(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div></pre></td></tr></table></figure>
+<p>append()方法接收两个参数：键和值，分别对应表单字段的名字和字段中包含的值。<br>可以像这样添加任意多个键值对。而通过向FormData 构造函数中传入表单元素，也可以用表单元素的数据预先向其中填入键值对:<br><code>var data = new FormData(document.forms[0]);</code><br>创建了FormData 的实例后，可以将它直接传给XHR 的send()方法:<br><a id="more"></a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">xhr.open(<span class="string">"post"</span>,<span class="string">"postexample.php"</span>, <span class="literal">true</span>);</div><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"user-info"</span>);</div><div class="line">xhr.send(<span class="keyword">new</span> FormData(form));</div></pre></td></tr></table></figure>
+<p>使用FormData 的方便之处体现在不必明确地在XHR 对象上设置请求头部。XHR 对象能够识别传入的数据类型是FormData 的实例，并配置适当的头部信息。<br>支持FormData 的浏览器有Firefox 4+、Safari 5+、Chrome 和Android 3+版WebKit。</p>
+<h3 id="超时设定"><a href="#超时设定" class="headerlink" title="超时设定"></a>超时设定</h3><p>IE8 为XHR 对象添加了一个timeout 属性，表示请求在等待响应多少毫秒之后就终止。<br>在给timeout 设置一个数值后，如果在规定的时间内浏览器还没有接收到响应，那么就会触发timeout 事件，进而会调用ontimeout 事件处理程序。<br>这项功能后来也被收入了XMLHttpRequest 2 级规范中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"timeout.php"</span>, <span class="literal">true</span>);</div><div class="line">xhr.timeout = <span class="number">1000</span>; <span class="comment">//将超时设置为1 秒钟（仅适用于IE8+）</span></div><div class="line">xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="string">"Request did not return in a second."</span>);</div><div class="line">&#125;;</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>请求终止时，会调用ontimeout 事件处理程序。但此时readyState可能已经改变为4 了，这意味着会调用onreadystatechange 事件处理程序。<br>可是，如果在超时终止请求之后再访问status 属性，就会导致错误。<br>为避免浏览器报告错误，可以将检查status 属性的语句封装在一个try-catch 语句当中。</p>
+<h3 id="overrideMimeType-方法"><a href="#overrideMimeType-方法" class="headerlink" title="overrideMimeType()方法"></a>overrideMimeType()方法</h3><p>Firefox 最早引入了overrideMimeType()方法，用于重写XHR 响应的MIME 类型。这个方法后来也被纳入了XMLHttpRequest 2 级规范。<br>因为返回响应的MIME 类型决定了XHR 对象如何处理它，所以提供一种方法能够重写服务器返回的MIME 类型是很有用的。</p>
+<p>比如，服务器返回的MIME 类型是text/plain，但数据中实际包含的是XML。<br>根据MIME 类型，即使数据是XML，responseXML 属性中仍然是null。<br>通过调用overrideMimeType()方法，可以保证把响应当作XML 而非纯文本来处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = createXHR();</div><div class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"text.php"</span>, <span class="literal">true</span>);</div><div class="line">xhr.overrideMimeType(<span class="string">"text/xml"</span>);</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>这个例子强迫XHR 对象将响应当作XML 而非纯文本来处理。调用overrideMimeType()必须在send()方法之前，才能保证重写响应的MIME 类型。<br>支持overrideMimeType()方法的浏览器有Firefox、Safari 4+、Opera 10.5 和Chrome。</p>
+<h2 id="进度事件"><a href="#进度事件" class="headerlink" title="进度事件"></a>进度事件</h2><p>Progress Events 规范是W3C 的一个工作草案，定义了与客户端服务器通信有关的事件。<br>这些事件最早其实只针对XHR 操作，但目前也被其他API 借鉴。</p>
+<ul>
+<li>loadstart：在接收到响应数据的第一个字节时触发。</li>
+<li>progress：在接收响应期间持续不断地触发。</li>
+<li>error：在请求发生错误时触发。</li>
+<li>abort：在因为调用abort()方法而终止连接时触发。</li>
+<li>load：在接收到完整的响应数据时触发。</li>
+<li>loadend：在通信完成或者触发error、abort 或load 事件后触发。</li>
+</ul>
+<p>每个请求都从触发loadstart 事件开始，<br>接下来是一或多个progress 事件，<br>然后触发error、abort 或load 事件中的一个，<br>最后以触发loadend 事件结束。</p>
+<p>支持前5 个事件的浏览器有Firefox 3.5+、Safari 4+、Chrome、iOS 版Safari 和Android 版WebKit。<br>Opera（从第11 版开始）、IE 8+只支持load 事件。目前还没有浏览器支持loadend 事件。<br>(现在：iOS版chrome上progress事件不工作；IE10/11不支持同步request并且希望其他浏览器也抛弃等等)</p>
+<h3 id="load事件"><a href="#load事件" class="headerlink" title="load事件"></a>load事件</h3><p>Firefox 在实现XHR 对象的某个版本时，曾致力于简化异步交互模型。<br>最终，Firefox 实现中引入了load 事件，用以替代readystatechange 事件。<br>响应接收完毕后将触发load 事件，因此也就没有必要去检查readyState 属性了。<br>而onload 事件处理程序会接收到一个event 对象，其target 属性就指向XHR 对象实例，因而可以访问到XHR 对象的所有方法和属性。<br>然而，并非所有浏览器都为这个事件实现了适当的事件对象。结果，开发人员还是要像下面这样被迫使用XHR 对象变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr = createXHR();</div><div class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>) &#123;</div><div class="line">        alert(xhr.responseText);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="string">"Request was unsuccessful: "</span> + xhr.status);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"altevents.php"</span>, <span class="literal">true</span>);</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>只要浏览器接收到服务器的响应，不管其状态如何，都会触发load 事件。<br>而这意味着你必须要检查status 属性，才能确定数据是否真的已经可用了。<br>Firefox、Opera、Chrome 和Safari 都支持load事件。</p>
+<h3 id="progress事件"><a href="#progress事件" class="headerlink" title="progress事件"></a>progress事件</h3><p>Mozilla 对XHR 的另一个革新是添加了progress 事件，这个事件会在浏览器接收新数据期间周期性地触发。<br>onprogress 事件处理程序会接收到一个event 对象，其target 属性是XHR 对象，<br>但包含着三个额外的属性：lengthComputable、position 和totalSize。<br>lengthComputable是一个表示进度信息是否可用的布尔值，<br>position 表示已经接收的字节数，<br>totalSize 表示根据Content-Length 响应头部确定的预期字节数。</p>
+<p>有了这些信息，我们就可以为用户创建一个进度指示器了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">xhr.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> divStatus = <span class="built_in">document</span>.getElementById(<span class="string">"status"</span>);</div><div class="line">    <span class="keyword">if</span> (event.lengthComputable) &#123;</div><div class="line">        divStatus.innerHTML = <span class="string">"Received "</span> + event.position + <span class="string">" of "</span> +</div><div class="line">            event.totalSize + <span class="string">" bytes"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"altevents.php"</span>, <span class="literal">true</span>);</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>为确保正常执行，必须在调用open()方法之前添加onprogress 事件处理程序。<br>每次触发progress 事件，都会以新的状态信息更新HTML 元素的内容。如果响应头部中包含Content-Length 字段，那么也可以利用此信息来计算从响应中已经接收到的数据的百分比。<br>(一个想法：上传图片时候网页有时候会有百分比/进度条之类的，是不是利用了这个progress事件？)</p>
+<h2 id="跨源资源共享"><a href="#跨源资源共享" class="headerlink" title="跨源资源共享"></a>跨源资源共享</h2><p>通过XHR 实现Ajax 通信的一个主要限制，来源于跨域安全策略。<br>默认情况下，XHR 对象只能访问与包含它的页面位于同一个域中的资源。<br>这种安全策略可以预防某些恶意行为。但是，实现合理的跨域请求对开发某些浏览器应用程序也是至关重要的。</p>
+<p>CORS（Cross-Origin Resource Sharing，跨源资源共享）是W3C 的一个工作草案，定义了在必须访问跨源资源时，浏览器与服务器应该如何沟通。<br>(现在已经是标准了)<br>CORS 背后的基本思想，就是使用自定义的HTTP 头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。</p>
+<p>比如一个简单的使用GET 或POST 发送的请求，它没有自定义的头部，而主体内容是text/plain。<br>在发送该请求时，需要给它附加一个额外的Origin 头部，其中包含请求页面的源信息（协议、域名和端口），以便服务器根据这个头部信息来决定是否给予响应。<br>Origin 头部的一个示例：<code>Origin: http://www.nczonline.net</code><br>如果服务器认为这个请求可以接受，就在Access-Control-Allow-Origin 头部中回发相同的源信息（如果是公共资源，可以回发”*”）。例如：<br><code>Access-Control-Allow-Origin: http://www.nczonline.net</code><br>如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求。正常情况下，浏览器会处理请求。<br>注意，请求和响应都不包含cookie 信息。</p>
+<h3 id="IE对CORS的实现"><a href="#IE对CORS的实现" class="headerlink" title="IE对CORS的实现"></a>IE对CORS的实现</h3><p>微软在IE8 中引入了XDR（XDomainRequest）类型。<br>(在IE10中被 包含CORS的XMLHttpRequest 取代了)<br>这个对象与XHR 类似，但能实现安全可靠的跨域通信。<br>XDR 与XHR 的一些不同之处:</p>
+<ul>
+<li>cookie 不会随请求发送，也不会随响应返回。</li>
+<li>只能设置请求头部信息中的Content-Type 字段。</li>
+<li>不能访问响应头部信息。</li>
+<li>只支持GET 和POST 请求。</li>
+</ul>
+<p>这些变化使CSRF（Cross-Site Request Forgery，跨站点请求伪造）和XSS（Cross-Site Scripting，跨站点脚本）的问题得到了缓解。<br>被请求的资源可以根据它认为合适的任意数据（用户代理、来源页面等）来决定是否设置Access-Control- Allow-Origin 头部。<br>作为请求的一部分，Origin 头部的值表示请求的来源域，以便远程资源明确地识别XDR 请求。</p>
+<p>XDR对象的使用方法与XHR对象非常相似。也是创建一个XDomainRequest 的实例，调用open()方法，再调用send()方法。<br>但与XHR 对象的open()方法不同，XDR 对象的open()方法只接收两个参数：请求的类型和URL。<br>所有XDR 请求都是异步执行的，不能用它来创建同步请求。<br>请求返回之后，会触发load 事件，响应的数据也会保存在responseText 属性中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xdr = <span class="keyword">new</span> XDomainRequest();</div><div class="line">xdr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(xdr.responseText);</div><div class="line">&#125;;</div><div class="line">xdr.open(<span class="string">"get"</span>, <span class="string">"http://www.somewhere-else.com/page/"</span>);</div><div class="line">xdr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>在接收到响应后，你只能访问响应的原始文本；没有办法确定响应的状态代码。<br>而且，只要响应有效就会触发load 事件，如果失败（包括响应中缺少Access-Control-Allow-Origin 头部）就会触发error 事件。<br>遗憾的是，除了错误本身之外，没有其他信息可用，因此唯一能够确定的就只有请求未成功了。<br>要检测错误，可以指定一个onerror 事件处理程序。</p>
+<p>鉴于导致XDR 请求失败的因素很多，因此建议不要忘记通过onerror 事件处理程序来捕获该事件；<br>否则，即使请求失败也不会有任何提示。</p>
+<p>在请求返回前调用abort()方法可以终止请求：<br><code>xdr.abort(); //终止请求</code></p>
+<p>与XHR 一样，XDR 对象也支持timeout 属性以及ontimeout 事件处理程序。使用方式相同。</p>
+<p>为支持POST 请求，XDR 对象提供了contentType 属性，用来表示发送数据的格式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">xdr.open(<span class="string">"post"</span>, <span class="string">"http://www.somewhere-else.com/page/"</span>);</div><div class="line">xdr.contentType = <span class="string">"application/x-www-form-urlencoded"</span>;</div><div class="line">xdr.send(<span class="string">"name1=value1&amp;name2=value2"</span>);</div></pre></td></tr></table></figure>
+<p>这个属性是通过XDR 对象影响头部信息的唯一方式。</p>
+<h3 id="其他浏览器对CORS的实现"><a href="#其他浏览器对CORS的实现" class="headerlink" title="其他浏览器对CORS的实现"></a>其他浏览器对CORS的实现</h3><p>Firefox 3.5+、Safari 4+、Chrome、iOS 版Safari 和Android 平台中的WebKit 都通过XMLHttpRequest对象实现了对CORS 的原生支持。<br>(所以说啊，头铁的微软，头铁的IE…)</p>
+<p>在尝试打开不同来源的资源时，无需额外编写代码就可以触发这个行为。<br>要请求位于另一个域中的资源，使用标准的XHR 对象并在open()方法中传入绝对URL 即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"http://www.somewhere-else.com/page/"</span>, <span class="literal">true</span>);</div><div class="line">xhr.send(<span class="literal">null</span>);</div></pre></td></tr></table></figure>
+<p>与IE 中的XDR 对象不同，通过跨域XHR 对象可以访问status 和statusText 属性，而且还支持同步请求。<br>跨域XHR 对象也有一些限制，但为了安全这些限制是必需的:</p>
+<ul>
+<li>不能使用setRequestHeader()设置自定义头部。</li>
+<li>不能发送和接收cookie。</li>
+<li>调用getAllResponseHeaders()方法总会返回空字符串。</li>
+</ul>
+<p>无论同源请求还是跨源请求都使用相同的接口，因此对于本地资源，最好使用相对URL，在访问远程资源时再使用绝对URL。<br>这样做能消除歧义，避免出现限制访问头部或本地cookie 信息等问题。</p>
+<h3 id="Preflighted-Reqeusts"><a href="#Preflighted-Reqeusts" class="headerlink" title="Preflighted Reqeusts"></a>Preflighted Reqeusts</h3><p>CORS 通过一种叫做Preflighted Requests(预请求) 的透明服务器验证机制支持开发人员使用自定义的头部、GET 或POST 之外的方法，以及不同类型的主体内容。</p>
+<p>在使用下列高级选项来发送请求时，就会向服务器发送一个Preflight 请求。这种请求使用OPTIONS 方法，发送下列头部。</p>
+<ul>
+<li>Origin：与简单的请求相同。</li>
+<li>Access-Control-Request-Method：请求自身使用的方法。</li>
+<li>Access-Control-Request-Headers：（可选）自定义的头部信息，多个头部以逗号分隔。</li>
+</ul>
+<p>一个带有自定义头部NCZ 的使用POST 方法发送的请求：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Origin: http:<span class="comment">//www.nczonline.net</span></div><div class="line">Access-Control-Request-Method: POST</div><div class="line">Access-Control-Request-Headers: NCZ</div></pre></td></tr></table></figure>
+<p>发送这个请求后，服务器可以决定是否允许这种类型的请求。服务器通过在响应中发送如下头部与浏览器进行沟通。</p>
+<ul>
+<li>Access-Control-Allow-Origin：与简单的请求相同。</li>
+<li>Access-Control-Allow-Methods：允许的方法，多个方法以逗号分隔。</li>
+<li>Access-Control-Allow-Headers：允许的头部，多个头部以逗号分隔。</li>
+<li>Access-Control-Max-Age：应该将这个Preflight 请求缓存多长时间（以秒表示）。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: http:<span class="comment">//www.nczonline.net</span></div><div class="line">Access-Control-Allow-Methods: POST, GET</div><div class="line">Access-Control-Allow-Headers: NCZ</div><div class="line">Access-Control-Max-Age: <span class="number">1728000</span></div></pre></td></tr></table></figure>
+<p>Preflight 请求结束后，结果将按照响应中指定的时间缓存起来。<br>而为此付出的代价只是第一次发送这种请求时会多一次HTTP 请求。</p>
+<p>支持Preflight 请求的浏览器包括Firefox 3.5+、Safari 4+和Chrome。IE 10 及更早版本都不支持。</p>
+<h3 id="带凭据的请求"><a href="#带凭据的请求" class="headerlink" title="带凭据的请求"></a>带凭据的请求</h3><p>默认情况下，跨源请求不提供凭据（cookie、HTTP 认证及客户端SSL 证明等）。<br>通过将withCredentials 属性设置为true，可以指定某个请求应该发送凭据。<br>如果服务器接受带凭据的请求，会用下面的HTTP 头部来响应。<br><code>Access-Control-Allow-Credentials: true</code><br>如果发送的是带凭据的请求，但服务器的响应中没有包含这个头部，那么浏览器就不会把响应交给JavaScript<br>（于是，responseText 中将是空字符串，status 的值为0，而且会调用onerror()事件处理程序）。<br>服务器还可以在Preflight 响应中发送这个HTTP 头部，表示允许源发送带凭据的请求。<br>支持withCredentials 属性的浏览器有Firefox 3.5+、Safari 4+和Chrome。IE 10 及更早版本都不支持。</p>
+<h3 id="跨浏览器的CORS"><a href="#跨浏览器的CORS" class="headerlink" title="跨浏览器的CORS"></a>跨浏览器的CORS</h3><p>即使浏览器对CORS 的支持程度并不都一样，但所有浏览器都支持简单的（非Preflight 和不带凭据的）请求，因此有必要实现一个跨浏览器的方案。<br>检测XHR 是否支持CORS 的最简单方式，就是检查是否存在withCredentials 属性。<br>再结合检测XDomainRequest 对象是否存在，就可以兼顾所有浏览器了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCORSRequest</span>(<span class="params">method, url</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    <span class="keyword">if</span> (<span class="string">"withCredentials"</span> <span class="keyword">in</span> xhr) &#123;</div><div class="line">        xhr.open(method, url, <span class="literal">true</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> XDomainRequest != <span class="string">"undefined"</span>) &#123;</div><div class="line">        xhr = <span class="keyword">new</span> XDomainRequest();</div><div class="line">        xhr.open(method, url);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        xhr = <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> xhr;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> request = createCORSRequest(<span class="string">"get"</span>, <span class="string">"http://www.somewhere-else.com/page/"</span>);</div><div class="line"><span class="keyword">if</span> (request) &#123;</div><div class="line">    request.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//对request.responseText 进行处理</span></div><div class="line">    &#125;;</div><div class="line">    request.send();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Firefox、Safari 和Chrome 中的XMLHttpRequest 对象与IE 中的XDomainRequest 对象类似，都提供了够用的接口，因此以上模式还是相当有用的。<br>共同的属性/方法：</p>
+<ul>
+<li>abort()：用于停止正在进行的请求。</li>
+<li>onerror：用于替代onreadystatechange 检测错误。</li>
+<li>onload：用于替代onreadystatechange 检测成功。</li>
+<li>responseText：用于取得响应内容。</li>
+<li>send()：用于发送请求。</li>
+</ul>
+<p>以上成员都包含在createCORSRequest()函数返回的对象中，在所有浏览器中都能正常使用。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag">#Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/04/javascript-note-21-1/" rel="next" title="《 JavaScript 高级程序设计》备忘-第二十一章-1">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第二十一章-1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/07/javascript-note-21-3/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第二十一章-3">
+                《 JavaScript 高级程序设计》备忘-第二十一章-3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax-与Comet"><span class="nav-number">1.</span> <span class="nav-text">Ajax 与Comet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XMLHttpRequest-2-级"><span class="nav-number">1.1.</span> <span class="nav-text">XMLHttpRequest 2 级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FormData"><span class="nav-number">1.1.1.</span> <span class="nav-text">FormData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超时设定"><span class="nav-number">1.1.2.</span> <span class="nav-text">超时设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overrideMimeType-方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">overrideMimeType()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进度事件"><span class="nav-number">1.2.</span> <span class="nav-text">进度事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load事件"><span class="nav-number">1.2.1.</span> <span class="nav-text">load事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#progress事件"><span class="nav-number">1.2.2.</span> <span class="nav-text">progress事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨源资源共享"><span class="nav-number">1.3.</span> <span class="nav-text">跨源资源共享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IE对CORS的实现"><span class="nav-number">1.3.1.</span> <span class="nav-text">IE对CORS的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他浏览器对CORS的实现"><span class="nav-number">1.3.2.</span> <span class="nav-text">其他浏览器对CORS的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Preflighted-Reqeusts"><span class="nav-number">1.3.3.</span> <span class="nav-text">Preflighted Reqeusts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带凭据的请求"><span class="nav-number">1.3.4.</span> <span class="nav-text">带凭据的请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨浏览器的CORS"><span class="nav-number">1.3.5.</span> <span class="nav-text">跨浏览器的CORS</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

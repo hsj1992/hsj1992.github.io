@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/22/javascript-note-6-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第六章-3
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-2
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T11:55:27+08:00" content="2016-09-22">
-              2016-09-22
+            <time itemprop="dateCreated" datetime="2016-10-03T14:18:24+08:00" content="2016-10-03">
+              2016-10-03
             </time>
           </span>
 
@@ -360,10 +360,19 @@
 
       
         
-          <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>许多 OO 语言都支持两种继承方式：接口继承和实现继承。<br>接口继承只继承方法签名，而实现继承则继承实际的方法。<br>由于函数没有签名，在 ECMAScript 中无法实现接口继承。<br>ECMAScript 只支持实现继承，而且其实现继承主要是依靠原型链来实现的。</p>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>ECMAScript 将原型链作为实现继承的主要方法。<br>基本思想:利用原型让一个引用类型继承另一个引用类型的属性和方法。<br>
+          <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h2><p>JavaScript 通过Document 类型表示文档。<br>在浏览器中，document 对象是HTMLDocument(继承自Document 类型)的一个实例，表示整个HTML 页面。<br>document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。<br>Document 节点具有下列特征：</p>
+<ul>
+<li>nodeType 的值为9；</li>
+<li>nodeName 的值为”#document”；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 的值为null；</li>
+<li>ownerDocument 的值为 null；</li>
+<li>其子节点可能是一个DocumentType(最多一个)、Element(最多一个)、ProcessingInstruction或Comment。</li>
+</ul>
+<p>Document 类型可以表示HTML 页面或者其他基于XML 的文档。<br>不过，最常见的应用还是作为HTMLDocument 实例的document 对象。</p>
+<h3 id="文档的子节点"><a href="#文档的子节点" class="headerlink" title="文档的子节点"></a>文档的子节点</h3><p>Document 节点的子节点可以是DocumentType、Element、ProcessingInstruction或Comment，但还有两个内置的访问其子节点的快捷方式。<br>第一个就是documentElement属性，该属性始终指向HTML 页面中的<code>&lt;html&gt;</code>元素。<br>另一个就是通过childNodes 列表访问文档元素，但通过documentElement 属性则能更快捷、更直接地访问该元素。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/22/javascript-note-6-3/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -414,8 +423,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-6-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第六章-2
+                <a class="post-title-link" href="/2016/10/02/javascript-note-10-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-1
                 </a>
               
             
@@ -428,8 +437,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:46:00+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-10-02T11:10:30+08:00" content="2016-10-02">
+              2016-10-02
             </time>
           </span>
 
@@ -476,11 +485,10 @@
 
       
         
-          <h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><p>虽然 Object 构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：<br>使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用工厂模式的一种变体。</p>
-<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><p>工厂模式是软件工程领域一种广为人知的设计模式，这种模式抽象了创建具体对象的过程。<br>考虑到在 ECMAScript 中无法创建类，开发人员就发明了一种函数，用函数来封装以特定接口创建对象的细节。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    o.name = name;</div><div class="line">    o.age = age;</div><div class="line">    o.job = job;</div><div class="line">    o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Engineer"</span>);</div><div class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</div></pre></td></tr></table></figure>
+          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>针对HTML 和XML 文档的一个API。<br>脱胎于Netscape 及微软公司创始的DHTML(动态HTML)。<br>已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。</p>
+<h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><p><code>&lt;html&gt;</code>元素称之为文档元素。<br>每个文档只能有一个文档元素。<br>文档元素是文档的最外层元素。<br>在HTML 页面中，文档元素始终都是<code>&lt;html&gt;</code>元素。<br>在XML 中，没有预定义的元素，因此任何元素都可能成为文档元素。<br>标记都可以通过树中的节点来表示：<br>HTML 元素通过元素节点表示，<br>特性(attribute)通过特性节点表示，<br>文档类型通过文档类型节点表示，<br>而注释则通过注释节点表示。<br>总共有12 种节点类型，这些类型都继承自一个基类型。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-6-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/02/javascript-note-10-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -531,8 +539,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/20/javascript-note-6-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第六章-1
+                <a class="post-title-link" href="/2016/10/02/javascript-note-9-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第九章-2
                 </a>
               
             
@@ -545,8 +553,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T14:12:25+08:00" content="2016-09-20">
-              2016-09-20
+            <time itemprop="dateCreated" datetime="2016-10-02T09:24:50+08:00" content="2016-10-02">
+              2016-10-02
             </time>
           </span>
 
@@ -593,10 +601,13 @@
 
       
         
-          <h1 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h1><p>ECMA-262 把对象定义为：“无序属性的集合，其属性可以包含基本值、对象或者函数。”<br>严格来讲，这就相当于说对象是一组没有特定顺序的值。<br>对象的每个属性或方法都有一个名字，而每个名字都映射到一个值。<br>我们可以把 ECMAScript 的对象想象成散列表：无非就是一组名值对，其中值可以是数据或函数。<br>每个对象都是基于一个引用类型创建的，这个引用类型可以是原生类型，也可以是开发人员定义的类型。</p>
-<p>创建自定义对象最简单方式就是创建一个 Object 的实例，然后再为它添加属性和方法。<br>
+          <h1 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h1><p>首先要确定的往往是你需要多么具体的浏览器信息。<br>一般情况下，知道呈现引擎和最低限度的版本就足以决定正确的操作方法了。<br>不推荐的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isIE6 || isIE7) &#123; <span class="comment">//不推荐!!!</span></div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这种代码其实是很脆弱的，因为它要依据特定的版本来决定做什么。<br>如果是IE8 怎么办呢？只要IE 有新版本出来，就必须更新这些代码。</p>
+<p>使用这类代码可以避免：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ieVer &gt;=<span class="number">6</span>)&#123;</div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/20/javascript-note-6-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/02/javascript-note-9-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -630,7 +641,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -671,7 +682,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -756,7 +767,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -770,6 +781,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

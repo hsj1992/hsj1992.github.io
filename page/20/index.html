@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/29/html-css-diary-2/" itemprop="url">
-                  《 HTML5 与 CSS3 基础教程》备忘2
+                <a class="post-title-link" href="/2016/09/17/javascript-note-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第四章
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-29T17:04:53+08:00" content="2016-08-29">
-              2016-08-29
+            <time itemprop="dateCreated" datetime="2016-09-17T12:59:05+08:00" content="2016-09-17">
+              2016-09-17
             </time>
           </span>
 
@@ -360,13 +360,13 @@
 
       
         
-          <h1 id="html-的其他属性"><a href="#html-的其他属性" class="headerlink" title="html 的其他属性"></a>html 的其他属性</h1><p>除非在 html 元素中添加 dir 属性并将属性值设为 rtl ，否则内容的基准方向都默认为从左至右。</p>
-<h1 id="span-和-div"><a href="#span-和-div" class="headerlink" title="span 和 div"></a>span 和 div</h1><p>span 只适合<strong>包围字词或短语内容</strong>，而 div 适合<strong>包含块级内容</strong>。由于 span 没有任何语义，因此应将它作为最后的选择，仅在没有其他合适的元素时才使用它。</p>
-<h1 id="bdo"><a href="#bdo" class="headerlink" title="bdo"></a>bdo</h1><p>bdo ( bidirectional override ，双向重载):用于显式地格式化其内容的文本方向。<br>要使用 bdo ，必须包含 dir 属性并将属性值设为 ltr (由左至右)或 rtl (由右至左)，指定你希望呈现的方向。(如果你的 HTML 页面中混合了从左至右书写的字符和从右至左书写的字符，就可能要用到 bdi 和 bdo 元素。)例子： <code>&lt;plang=&quot;he&quot;&gt;&lt;bdo dir=&quot;rtl&quot;&gt;...&lt;/bdo&gt;&lt;/p&gt;</code></p>
-<h1 id="bdi-元素"><a href="#bdi-元素" class="headerlink" title="bdi 元素"></a>bdi 元素</h1><p>bdi 指的是 bidi 隔离(Bi-directional Isolation)，用于标识独立于周围文本的用做双向文本格式化的一块文本。<br>bdi 元素是 HTML5 中新加的元素，用于内容的方向未知的情况。不必包含 dir 属性，因为默认已设为自动判断。例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>jcranmer<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    12 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>hober<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    5 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>نا إي<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    3 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+          <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
+<p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
+<p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
+<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<br>ECMAScript 放弃了这一传统。</p>
+<h2 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。(Object)<br>只能给引用类型值动态地添加属性，以便将来使用。(给基本类型的添加了也是 undefined)</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/29/html-css-diary-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -417,8 +417,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/07/html-css-diary/" itemprop="url">
-                  《 HTML5与 CSS3 基础教程》备忘
+                <a class="post-title-link" href="/2016/09/17/javascript-note-3-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第三章-3
                 </a>
               
             
@@ -431,8 +431,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-07T13:39:51+08:00" content="2016-08-07">
-              2016-08-07
+            <time itemprop="dateCreated" datetime="2016-09-17T12:31:15+08:00" content="2016-09-17">
+              2016-09-17
             </time>
           </span>
 
@@ -479,12 +479,18 @@
 
       
         
-          <h1 id="Web-设计-在线网址"><a href="#Web-设计-在线网址" class="headerlink" title="Web 设计 在线网址"></a>Web 设计 在线网址</h1><p><a href="http://designingfortheweb.co.uk/">http://designingfortheweb.co.uk/</a><br>—— Mark Boulton</p>
-<h1 id="article-元素"><a href="#article-元素" class="headerlink" title="article 元素"></a>article 元素</h1><p>article 元素表示文档、页面、应用或网站中<em>一个独立的容器</em>，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他<strong>独立的内容项</strong>。</p>
-<h1 id="section-元素"><a href="#section-元素" class="headerlink" title="section 元素"></a>section 元素</h1><p>section 元素代表文档或应用的<em>一个一般的区块</em>。如果只是出于添加样式的原因要对内容添加一个容器，应使用 div 而不是 section 。在考虑何时使用 section 的时候，记住定义中“<strong>具有相似主题的一组内容</strong>”这一条是很有帮助的。这也是 section 区别于 div 的另一个原因。</p>
-<h1 id="div-元素"><a href="#div-元素" class="headerlink" title="div 元素"></a>div 元素</h1><p>有关 div 的一些历史以及何时在 HTML5 中使用它:<br>在 HTML5 之前， div 是包围大块内容(如页眉、页脚、主要内容、插图、附注栏等)从而可用 CSS 为之添加样式的不二选择。之前 div 没有任何语义含义，现在也一样。 这就是 HTML5 引入 header 、 footer 、 main 、 article 、 section 、 aside 和 nav 的原因。这些类型的构造块在网页中普遍存在，因此它们可以成为具有独立含义的元素。在 HTML5 中， div 并没有消失，只是使用它的场合变少了。不过，可以肯定的是， div 应该作为最后一个备用容器，因为它没有任何语义价值。大多数时候，使用 header 、 footer 、 main (仅使用一次)、 article 、 section 、 aside 甚至 nav 代替 div 会更合适。但是，如果语义上不合适，也不必为了刻意避免使用 div 而使用上述元素。有用得上 div 的地方，只是需要限制其使用。</p>
+          <h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>ECMA-262 规定了一组语句(也称为流控制语句)。</p>
+<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
+<p>其中的 condition(条件)可以是任意表达式；而且对这个表达式求值的结果不一定是布尔值。<br>ECMAScript 会自动调用 <code>Boolean()</code> 转换函数将这个表达式的结果转换为一个布尔值。</p>
+<p><strong>业界普遍推崇的最佳实践是始终使用代码块，即使要执行的只有一行代码。</strong>因为这样可以消除人们的误解，否则可能让人分不清在不同条件下要执行哪些语句。</p>
+<h2 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h2><p>要点：<strong>像 do-while 这种后测试循环语句最常用于循环体中的代码至少要被执行一次的情形。</strong></p>
+<h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><p>while 语句属于前测试循环语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。</p>
+<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h2><p>for 语句也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。</p>
+<p><strong>使用 while 循环做不到的，使用 for 循环同样也做不到。</strong>也就是说， for 循环只是把与循环有关的代码集中在了一个位置。</p>
+<p>由于 ECMAScript 中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
+<p>for 语句中的初始化表达式、控制表达式和循环后表达式都是可选的。将这三个表达式全部省略，就会创建一个无限循环。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/07/html-css-diary/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-3-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -535,8 +541,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/22/sql-tips/" itemprop="url">
-                  SQL 的小注意事项
+                <a class="post-title-link" href="/2016/09/17/javascript-note-3-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第三章-2
                 </a>
               
             
@@ -549,8 +555,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-22T12:00:47+08:00" content="2015-12-22">
-              2015-12-22
+            <time itemprop="dateCreated" datetime="2016-09-17T12:29:08+08:00" content="2016-09-17">
+              2016-09-17
             </time>
           </span>
 
@@ -563,8 +569,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/DataBase/" itemprop="url" rel="index">
-                    <span itemprop="name">DataBase</span>
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
                   </a>
                 </span>
 
@@ -597,21 +603,14 @@
 
       
         
-          <h1 id="DISTINCT-和-GROUP-BY"><a href="#DISTINCT-和-GROUP-BY" class="headerlink" title="DISTINCT 和 GROUP BY"></a>DISTINCT 和 GROUP BY</h1><ul>
-<li>使用 GROUP BY 子句时， SELECT 子句中不能出现聚合键之外的列名；</li>
-<li>GROUP BY 子句结果的显示是无序的；</li>
-<li>DISTINCT 和 GROUP BY 子句都能删除后续列中的重复数据，除此之外，它们还都会把 NULL 作为一个独立的结果返回，对多列使用时也会得到完全相同的结果。其实不仅处理结果相同，执行速度也基本上差不多，到底该用哪一个呢？</li>
-</ul>
-<p>但其实这个问题本身就是本末倒置的，我们应该考虑的是该 SELECT 语句是否满足需求。选择的标准其实很简单：<br><strong>在“想要删除选择结果中的重复记录”时使用 DISTINCT ；在“想要计算聚合结果”时使用 GROUP BY 。</strong><br>不使用 COUNT 等聚合函数，而只使用 GROUP BY 子句的 SELECT 语句，会让人觉得非常奇怪。难免让人产生“到底为什么要对表进行分组呢？这样做有必要吗？”等疑问。</p>
-<h1 id="HAVING-和-WHERE"><a href="#HAVING-和-WHERE" class="headerlink" title="HAVING 和 WHERE"></a>HAVING 和 WHERE</h1><ul>
-<li>WHERE 用例：“商品种类为衣服”、“销售单价在1000元以上”；<br>HAVING 用例：“数据行数为2行”、“平均值为500”；【 count 、 avg 】</li>
-<li>WHERE 子句不能使用聚合函数。(只有 SELECT 子句和 HAVING 子句(以及 ORDER BY 子句)中能够使用聚合函数)。</li>
-<li>WHERE 子句只能指定记录(行)的条件，不能用来指定组的条件(例如，“数据行数为2行”或者“平均值为500”等)。<br>因此，对集合指定条件就需要使用 HAVING 子句。</li>
-<li>HAVING 子句能够使用:常数、聚合函数、聚合键。</li>
-<li>有些条件既可以写在 HAVING 子句当中，又可以写在 WHERE 子句当中。这些条件就是 聚合键所对应的条件。</li>
-</ul>
+          <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><p>包括算术操作符(如加号和减号)、位操作符、关系操作符和相等操作符。<br>ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字符串、数字值、布尔值，甚至对象。<br>不过，<strong>在应用于对象时，相应的操作符通常都会调用对象的 valueOf()和(或) toString() 方法，以便取得可以操作的值。</strong></p>
+<h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h2><h3 id="递增递减操作符"><a href="#递增递减操作符" class="headerlink" title="递增递减操作符"></a>递增递减操作符</h3><p>执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。(在计算机科学领域，这种情况通常被称作副效应。)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="keyword">var</span> anotherAge = --age + <span class="number">2</span>;</div><div class="line">alert(age); <span class="comment">// 输出 28</span></div><div class="line">alert(anotherAge); <span class="comment">// 输出 30</span></div></pre></td></tr></table></figure>
+<p>后置递增和递减与前置递增和递减有一个非常重要的区别，即递增和递减操作是在包含它们的语句被求值之后才执行的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> num2 = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> num3 = num1-- + num2; <span class="comment">//  等于 22</span></div><div class="line"><span class="keyword">var</span> num4 = num1 + num2; <span class="comment">// 等于 21</span></div></pre></td></tr></table></figure>
+<p>作用数据类型时候，等同于先 Number() 再加减1，会像 Number() 转型函数一样对这个值执行转换。</p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2015/12/22/sql-tips/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-3-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -645,7 +644,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -686,7 +685,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -771,7 +770,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -785,6 +784,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

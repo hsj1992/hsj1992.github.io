@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2015/12/06/recursion/" itemprop="url">
-                  递归的四条基本法则
+                <a class="post-title-link" href="/2016/09/11/javascript-note-3-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第三章-1
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-06T17:43:47+08:00" content="2015-12-06">
-              2015-12-06
+            <time itemprop="dateCreated" datetime="2016-09-11T15:36:56+08:00" content="2016-09-11">
+              2016-09-11
             </time>
           </span>
 
@@ -326,8 +326,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
                   </a>
                 </span>
 
@@ -360,13 +360,279 @@
 
       
         
-          
-            <h1 id="基准情形"><a href="#基准情形" class="headerlink" title="基准情形"></a>基准情形</h1><p>必须总要有某些基准情形，它无须递归就能解出。</p>
-<h1 id="不断推进"><a href="#不断推进" class="headerlink" title="不断推进"></a>不断推进</h1><p>对于那些需要递归求解的情形，每一次递归调用都必须要使状况朝向一种基准情形推进。</p>
-<h1 id="设计法则。"><a href="#设计法则。" class="headerlink" title="设计法则。"></a>设计法则。</h1><p>假设所有的递归调用都能运行。</p>
-<h1 id="合成效益法则。"><a href="#合成效益法则。" class="headerlink" title="合成效益法则。"></a>合成效益法则。</h1><p>在求解一个问题的同一实例时，切勿在不同的递归调用中做重复性的工作。</p>
+          <h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
+<li>区分大小写</li>
+<li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
+</ul>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul>
+<li>单行： <code>//这里是注释</code></li>
+<li>多行：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line">这里是注释</div><div class="line">*/</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="ECMAScript-的严格模式-strict-mode"><a href="#ECMAScript-的严格模式-strict-mode" class="headerlink" title="ECMAScript 的严格模式 (strict mode)"></a>ECMAScript 的严格模式 (strict mode)</h1><ul>
+<li>严格模式的启用：<br>顶部添加如下代码：”use strict”;<br>看起来像是字符串，而且也没有赋值给任何变量，但其实它是一个编译指示(pragma)，用于告诉支持的 JavaScript 引擎切换到严格模式。这是为不破坏 ECMAScript 3 语法而特意选定的语法。</li>
+<li><p>也可以指定函数在严格模式下执行：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line">    <span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>严格模式下， JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+ 、 Firefox 4+ 、 Safari 5.1+ 、 Opera 12+和 Chrome 。</p>
+</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/11/javascript-note-3-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/10/javascript-note-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二章
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-10T17:38:26+08:00" content="2016-09-10">
+              2016-09-10
+            </time>
+          </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="script-元素的-defer"><a href="#script-元素的-defer" class="headerlink" title="script 元素的 defer"></a>script 元素的 defer</h1><p><strong>defer</strong> 延迟脚本。<br>效果：在页面解析时候下载脚本，可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。(HTML 4.01时定义)</p>
+<ul>
+<li>在现实当中，延迟脚本并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件触发前执行，因此最好只包含一个延迟脚本。</li>
+<li>把延迟脚本放在页面底部仍然是最佳选择。</li>
+<li>defer 属性在浏览器之间表现并不一致。 defer 属性只被 IE 4 和 Firefox 3.5 更高版本的浏览器所支持，所以它不是一个理想的跨浏览器解决方案。在其他浏览器中， defer 属性会被直接忽略，因此<code>&lt;script&gt;</code>标签会以默认的方式处理，也就是说会造成阻塞。</li>
+<li>为了避免跨浏览器的差异，可以使用 “ lazy loading ”的方法，即直到用到该脚本时才加载。</li>
+<li>在 XHTML 文档中，要把 defer 属性设置为 defer=”defer” 。 async 同理。</li>
+</ul>
+<h1 id="script-元素的-async"><a href="#script-元素的-async" class="headerlink" title="script 元素的 async"></a>script 元素的 async</h1><p><strong>async</strong> 异步脚本。<br>效果：下载脚本同时不影响页面解析，当下载完毕后就执行，执行完接着页面解析。只对外部脚本文件有效。<br>Google Analytics 就是适合使用 async 的脚本；<br>还有下载其他资源。<br>目的：不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。</p>
+<ul>
+<li>标记为 async 的脚本并不保证按照指定它们的先后顺序执行。因此，确保互不依赖非常重要。</li>
+<li>建议异步脚本不要在加载期间修改 DOM 。</li>
+<li>异步脚本一定会在页面的 load 事件前执行，但可能会在 DOMContentLoaded 事件触发之前或之后执行。</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/10/javascript-note-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/09/javascript-note-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第一章
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T15:58:05+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front-End</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="JavaScript-的诞生："><a href="#JavaScript-的诞生：" class="headerlink" title="JavaScript 的诞生："></a>JavaScript 的诞生：</h1><p>以前必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域。<br>Netscape Navigator 希望通过 JavaScript 来解决这个问题。<br>于是 JavaScript 诞生，当时主要目的是处理以前由服务器端语言负责的一些输入验证操作。<br>它从一个简单的输入验证器发展成为一门强大的编程语言。</p>
+<h1 id="JavaScript-、-ECMAScript-历史："><a href="#JavaScript-、-ECMAScript-历史：" class="headerlink" title="JavaScript 、 ECMAScript 历史："></a>JavaScript 、 ECMAScript 历史：</h1><ol>
+<li>Netscape navigator 2诞生, JavaScript 诞生。</li>
+<li>IE 的 JScript 。</li>
+<li>标准化， ECMA-262，即 ECMAScript 诞生。</li>
+<li>ECMAScript 与 Web 浏览器没有依赖关系,Web 浏览器只是 ECMAScript 实现可能的宿主环境之一。</li>
+<li>ECMA-262 定义的只是这门语言的基础。</li>
+<li>JavaScript 包含 <strong>ECMAScript</strong> 、 <strong>DOM</strong> 、 <strong>BOM</strong> 三个部分。</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/09/javascript-note-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -397,7 +663,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -438,7 +704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -523,7 +789,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -537,6 +803,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

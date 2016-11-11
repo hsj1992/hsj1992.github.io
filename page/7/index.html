@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/16/javascript-note-13-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-2
+                <a class="post-title-link" href="/2016/10/20/javascript-note-14-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-4
                 </a>
               
             
@@ -312,8 +312,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T11:33:29+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2016-10-20T11:12:59+08:00" content="2016-10-20">
+              2016-10-20
             </time>
           </span>
 
@@ -360,12 +360,11 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p>在触发DOM上的某个事件时，会产生一个事件对象event，这个对象中包含着所有与事件有关的信息。<br>包括导致事件的元素、事件的类型以及其他与特定事件相关的信息。<br>所有浏览器都支持event 对象，但支持方式不同。</p>
-<h3 id="DOM中的事件对象"><a href="#DOM中的事件对象" class="headerlink" title="DOM中的事件对象"></a>DOM中的事件对象</h3><p>兼容DOM 的浏览器会将一个event 对象传入到事件处理程序中。无论指定事件处理程序时使用什么方法(DOM0 级或DOM2 级)，都会传入event 对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(event.type); <span class="comment">//"click"</span></div><div class="line">&#125;;</div><div class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    alert(event.type); <span class="comment">//"click"</span></div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
-<p>在通过HTML 特性指定事件处理程序时，变量event 中保存着event 对象。<br><code>&lt;input type=&quot;button&quot; value=&quot;Click Me&quot; onclick=&quot;alert(event.type)&quot;/&gt;</code><br>以这种方式提供event 对象，可以让HTML 特性事件处理程序与JavaScript 函数执行相同的操作。<br>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="富文本编辑"><a href="#富文本编辑" class="headerlink" title="富文本编辑"></a>富文本编辑</h2><p>富文本编辑，又称为WYSIWYG（What You See Is What You Get，所见即所得）。<br>在网页中编辑富文本内容，是人们对Web 应用程序最大的期待之一。<br>这一技术的本质，就是在页面中嵌入一个包含空HTML 页面的iframe。<br>通过设置designMode 属性，这个空白的HTML 页面可以被编辑，<br>而编辑对象则是该页面<code>&lt;body&gt;</code>元素的HTML 代码。<br>designMode 属性有两个可能的值：”off”（默认值）和”on”。<br>在设置为”on”时，整个文档都会变得可以编辑（显示插入符号），然后就可以像使用字处理软件一样，通过键盘将文本内容加粗、变成斜体。</p>
+<p>可以给iframe 指定一个非常简单的HTML 页面作为其内容来源。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Blank Page for Rich Text Editing<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/16/javascript-note-13-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/20/javascript-note-14-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -416,8 +415,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/12/javascript-note-13-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-1
+                <a class="post-title-link" href="/2016/10/19/javascript-note-14-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-3
                 </a>
               
             
@@ -430,8 +429,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-12T14:49:48+08:00" content="2016-10-12">
-              2016-10-12
+            <time itemprop="dateCreated" datetime="2016-10-19T18:37:28+08:00" content="2016-10-19">
+              2016-10-19
             </time>
           </span>
 
@@ -478,12 +477,24 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>JavaScript 与HTML 之间的交互是通过事件实现的。<br><strong>事件，就是文档或浏览器窗口中发生的一些特定的交互瞬间</strong>。<br>可以使用侦听器(或处理程序)来预订事件，以便事件发生时执行相应的代码。<br>这种在传统软件工程中被称为观察员模式的模型，支持页面的行为(JavaScript 代码)与页面的外观(HTML 和CSS 代码)之间的松散耦合。</p>
-<p>IE9、Firefox、Opera、Safari 和Chrome 全都已经实现了“DOM2 级事件”模块的核心部分。<strong>IE8 是最后一个仍然使用其专有事件系统的主要浏览器。</strong><br>尽管所有主要浏览器已经实现了“DOM2 级事件”，但这个规范本身并没有涵盖所有事件类型。</p>
-<h2 id="1事件流"><a href="#1事件流" class="headerlink" title="1事件流"></a>1事件流</h2><p>在单击按钮的同时，你也单击了按钮的容器元素，甚至也单击了整个页面。<br>事件流描述的是从页面中接收事件的顺序。<br>当时，IE 的事件流是事件冒泡流，而Netscape Communicator 的事件流是事件捕获流。</p>
-<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>即事件开始时由最具体的元素(文档中嵌套层次最深的那个节点)接收，然后逐级向上传播到较为不具体的节点(文档)。<br>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h2><p>选择框是通过<code>&lt;select&gt;</code>和<code>&lt;option&gt;</code>元素创建的。<br>为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。</p>
+<ul>
+<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
+<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
+<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
+<li>remove(index)：移除给定位置的选项。</li>
+<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
+<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
+</ul>
+<p>选择框的type 属性不是”select-one”，就是”select-multiple”，这取决于HTML 代码中有没有multiple 特性。<br>选择框的value 属性由当前选中项决定。</p>
+<ul>
+<li>如果没有选中的项，则选择框的value 属性保存空字符串。</li>
+<li>如果有一个选中项，而且该项的value 特性已经在HTML 中指定，则选择框的value 属性等于选中项的value 特性。<br>  即使value 特性的值是空字符串，也同样遵循此条规则。</li>
+<li>如果有一个选中项，但该项的value 特性在HTML 中未指定，则选择框的value 属性等于该项的文本。</li>
+<li>如果有多个选中项，则选择框的value 属性将依据前两条规则取得第一个选中项的值。</li>
+</ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/12/javascript-note-13-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/19/javascript-note-14-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -534,8 +545,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/09/javascript-note-12-4/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十二章-4
+                <a class="post-title-link" href="/2016/10/19/javascript-note-14-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-2
                 </a>
               
             
@@ -548,8 +559,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-09T18:04:29+08:00" content="2016-10-09">
-              2016-10-09
+            <time itemprop="dateCreated" datetime="2016-10-19T11:48:06+08:00" content="2016-10-19">
+              2016-10-19
             </time>
           </span>
 
@@ -596,12 +607,15 @@
 
       
         
-          <h1 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h1><h2 id="DOM中的范围"><a href="#DOM中的范围" class="headerlink" title="DOM中的范围"></a>DOM中的范围</h2><h3 id="操作DOM-范围中的内容"><a href="#操作DOM-范围中的内容" class="headerlink" title="操作DOM 范围中的内容"></a>操作DOM 范围中的内容</h3><p>在创建范围时 ，内部会为这个范围创建一个文档片段，范围所属的全部节点都被添加到了这个文档片段中。<br>为了创建这个文档片段，范围内容的格式必须正确有效。<br>在前面的例子中，我们创建的选区分别开始和结束于两个文本节点的内部，因此不能算是格式良好的DOM结构，也就无法通过DOM来表示。<br>范围知道自身缺少哪些开标签和闭标签，它能够重新构建有效的DOM结构以便我们对其进行操作。</p>
-<p>范围经过计算知道选区中缺少一个开始的<code>&lt;b&gt;</code>标签，因此就会在后台动态加入一个该标签，同时还会在前面加入一个表示结束的<code>&lt;/b&gt;</code>标签以结束”He”。于是，修改后的DOM 就变成了:<br><code>&lt;p&gt;&lt;b&gt;He&lt;/b&gt;&lt;b&gt;llo&lt;/b&gt; world!&lt;/p&gt;</code><br>文本节点”world!”也被拆分为两个文本节点，一个包含”wo”，另一个包含”rld!”。</p>
-<p>像这样创建了范围之后，就可以使用各种方法对范围的内容进行操作了。<br>deleteContents()这个方法能够从文档中删除范围所包含的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p1 = <span class="built_in">document</span>.getElementById(<span class="string">"p1"</span>);</div><div class="line">helloNode = p1.firstChild.firstChild;</div><div class="line">worldNode = p1.lastChild;</div><div class="line">range = <span class="built_in">document</span>.createRange();</div><div class="line">range.setStart(helloNode, <span class="number">2</span>);</div><div class="line">range.setEnd(worldNode, <span class="number">3</span>);</div><div class="line">range.deleteContents();</div></pre></td></tr></table></figure>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h2><p>在HTML 中，有两种方式来表现文本框：一种是使用<code>&lt;input&gt;</code>元素的单行文本框，另一种是使用<code>&lt;textarea&gt;</code>的多行文本框。<br>两者相似，但仍有重要区别。</p>
+<p>使用<code>&lt;input&gt;</code>，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。</p>
+<p>相对而言,<code>&lt;textarea&gt;</code>始终会呈现一个多行文本框，要指定大小可以用row和col特性。row指的是文本框行数，col指的是文本框字符列数。<br>初始值要放在<code>&lt;textarea&gt;</code>和<code>&lt;/textarea&gt;</code>之间。一个区别：不能在HTML 中给<code>&lt;textarea&gt;</code>指定最大字符数。</p>
+<p>它们都会将用户输入的内容保存在value 属性中。可以通过这个属性读取和设置文本框的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"textbox1"</span>];</div><div class="line">alert(textbox.value);</div><div class="line">textbox.value = <span class="string">"Some new value"</span>;</div></pre></td></tr></table></figure>
+<p>建议使用value 属性读取或设置文本框的值，不建议使用标准的DOM 方法。即不要使用setAttribute()设置<code>&lt;input&gt;</code>元素的value 特性，也不要去修改<code>&lt;textarea&gt;</code>元素的第一个子节点。<br>原因很简单：对value 属性所作的修改，不一定会反映在DOM中。因此，在处理文本框的值时，最好不要使用DOM 方法。</p>
+<h3 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h3><p>都支持select()方法，这个方法用于选择文本框中的所有文本。<br>在调用select()方法时，大多数浏览器都会将焦点设置到文本框中。这个方法不接受参数，可以在任何时候被调用。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/09/javascript-note-12-4/#more" rel="contents">
+            <a class="btn" href="/2016/10/19/javascript-note-14-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -635,7 +649,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -676,7 +690,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -761,7 +775,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -775,6 +789,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             

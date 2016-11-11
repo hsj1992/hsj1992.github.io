@@ -298,8 +298,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/javascript-note-5-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第五章-2
+                <a class="post-title-link" href="/2016/09/27/regex/" itemprop="url">
+                  正则表达式，治疗强迫症
                 </a>
               
             
@@ -312,8 +312,121 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T11:45:54+08:00" content="2016-09-19">
-              2016-09-19
+            <time itemprop="dateCreated" datetime="2016-09-27T18:47:11+08:00" content="2016-09-27">
+              2016-09-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="治疗用药方"><a href="#治疗用药方" class="headerlink" title="治疗用药方"></a>治疗用药方</h1><p>中文字符： <code>[\u4e00-\u9fa5]</code><br>中文标点符号(似乎有遗漏)：<code>[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/27/javascript-note-7-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第七章-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-27T17:32:32+08:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -360,11 +473,12 @@
 
       
         
-          <h1 id="Date-类型"><a href="#Date-类型" class="headerlink" title="Date 类型"></a>Date 类型</h1><p>创建一个 Date 对象，使用 new 操作符和 Date 构造函数即可。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
-<p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。<br>如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数。(从 UTC 时间 1970 年 1 月 1 日午夜起至该日期止经过的毫秒数)<br>了简化这一计算过程， ECMAScript 提供了两个方法： Date.parse()和 Date.UTC() 。<br>
+          <h1 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h1><p>严格来讲， JavaScript 中没有私有成员的概念；所有对象属性都是公有的。<br>不过，倒是有一个私有变量的概念。任何在函数中定义的变量，都可以认为是私有变量，因为不能在函数的外部访问这些变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> sum = num1 + num2;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这个函数内部，有 3 个私有变量： num1 、 num2 和 sum 。<br>在函数内部可以访问这几个变量，但在函数外部则不能访问它们。<br>如果在这个函数内部创建一个闭包，那么闭包通过自己的作用域链也可以访问这些变量。<br>而利用这一点，就可以创建用于访问私有变量的公有方法。</p>
+<p>把有权访问私有变量和私有函数的公有方法称为<strong>特权方法(privileged method)</strong>。<br>有两种在对象上创建特权方法的方式。第一种是在构造函数中定义特权方法:<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/javascript-note-5-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/27/javascript-note-7-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -415,8 +529,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/javascript-note-5-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第五章-1
+                <a class="post-title-link" href="/2016/09/26/hexo-tool-livereload/" itemprop="url">
+                  记录：利用 Livereload 实现 Hexo 博客自动刷新页面
                 </a>
               
             
@@ -429,8 +543,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T14:59:26+08:00" content="2016-09-17">
-              2016-09-17
+            <time itemprop="dateCreated" datetime="2016-09-26T13:16:03+08:00" content="2016-09-26">
+              2016-09-26
             </time>
           </span>
 
@@ -477,139 +591,11 @@
 
       
         
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript 不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
-<p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
-<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>Object 是一个基础类型，其他所有类型都从 Object 继承了基本的行为。</p>
-<h2 id="创建-Object-实例的方式"><a href="#创建-Object-实例的方式" class="headerlink" title="创建 Object 实例的方式"></a>创建 Object 实例的方式</h2><ol>
-<li>使用 new 操作符后跟 Object 构造函数:<code>var person = new Object();</code></li>
-<li><p>使用对象字面量表示法：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">    <span class="string">"name"</span> : <span class="string">"Nicholas"</span>,</div><div class="line">    <span class="string">"age"</span> : <span class="number">29</span>,</div><div class="line">    <span class="number">5</span> : <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p> 左边的花括号( { )表示对象字面量的开始，如果是在 if 语句的后面，则表示一个语句块的开始。<br> 在使用对象字面量语法时，属性名也可以使用字符串。5会自动转化为字符串。<br> 使用字面量表示法不会调用 Object 构造函数。<br> 使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象。<code>var person = {}; //与 new Object()相同</code><br> 关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。<br> 因为这种语法要求的代码量少，而且能够给人封装数据的感觉，开发人员更青睐对象字面量语法。<br> 对象字面量也是向函数传递大量可选参数的首选方式。<br> 在函数中的使用：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">displayInfo(&#123;</div><div class="line">    name: <span class="string">"Nicholas"</span>,</div><div class="line">    age: <span class="number">29</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p> 最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
-</li>
-</ol>
+          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>一开始是因为使用了新的 IDE ： Visual Studio Code ，装上了 markdownlint 插件。<br>然后为了符合规则，修改原本的 .md 文件。<br><code>hexo s</code>命令会监控文件，每次修改完保存，刷新页面就能看到所修改的新内容。<br>为了看修改完符合规则后，文章页面实际的表现效果有没有出错，在使用了<code>hexo s</code>命令后还得手动刷新页面。<br>每修改完想确认一次就得刷新一次， F5 又不是真的氪合金做的，而且一直手动刷新也麻烦；浏览器定时刷新也不准确。</p>
+<p>为了第一驱动力：懒惰，于是就去寻找跟 Hexo 和自动刷新有关的内容。</p>
+<h1 id="第一次尝试："><a href="#第一次尝试：" class="headerlink" title="第一次尝试："></a>第一次尝试：</h1><p>找到关于 Livereload 的介绍和教程，但是可能是因为 Hexo 和 Livereload 都有更新的缘故，原本推荐的 Hexo 的插件并不好使。<br>本地端通过 npm 安装的 Livereload 哪怕运行了，浏览器的 Livereload 插件并不能正常检测连接上。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-5-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/javascript-note-4/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第四章
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T12:59:05+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front-End</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
-<p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
-<p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
-<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<br>ECMAScript 放弃了这一传统。</p>
-<h2 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。(Object)<br>只能给引用类型值动态地添加属性，以便将来使用。(给基本类型的添加了也是 undefined)</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-4/#more" rel="contents">
+            <a class="btn" href="/2016/09/26/hexo-tool-livereload/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -643,7 +629,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -684,7 +670,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -769,7 +755,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
                   
                     <i class="fa fa-fw fa-code"></i>
                   
@@ -783,6 +769,15 @@
                     <i class="fa fa-fw fa-code"></i>
                   
                   github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
                 </a>
               </span>
             
