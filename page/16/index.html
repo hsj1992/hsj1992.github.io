@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/27/regex/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/30/javascript-note-8-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/27/regex/" itemprop="url">
-                  正则表达式，治疗强迫症
+                <a class="post-title-link" href="/2016/09/30/javascript-note-8-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-2
                 </a>
               
             
@@ -368,122 +368,22 @@
 
       
         
-          
-            <h1 id="治疗用药方"><a href="#治疗用药方" class="headerlink" title="治疗用药方"></a>治疗用药方</h1><p>中文字符： <code>[\u4e00-\u9fa5]</code><br>中文标点符号(似乎有遗漏)：<code>[\u3002\uff1b\uff0c\uff1a\u201c\u201d\uff08\uff09\u3001\uff1f\u300a\u300b]</code></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/27/javascript-note-7-2/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/javascript-note-7-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第七章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="私有变量"><a href="#私有变量" class="headerlink" title="私有变量"></a>私有变量</h1><p>严格来讲， JavaScript 中没有私有成员的概念；所有对象属性都是公有的。<br>不过，倒是有一个私有变量的概念。任何在函数中定义的变量，都可以认为是私有变量，因为不能在函数的外部访问这些变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> sum = num1 + num2;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这个函数内部，有 3 个私有变量： num1 、 num2 和 sum 。<br>在函数内部可以访问这几个变量，但在函数外部则不能访问它们。<br>如果在这个函数内部创建一个闭包，那么闭包通过自己的作用域链也可以访问这些变量。<br>而利用这一点，就可以创建用于访问私有变量的公有方法。</p>
-<p>把有权访问私有变量和私有函数的公有方法称为<strong>特权方法(privileged method)</strong>。<br>有两种在对象上创建特权方法的方式。第一种是在构造函数中定义特权方法:<br>
+          <h1 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h1><p>location 是最有用的BOM对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。<br>location 对象是很特别的一个对象，因为它既是window 对象的属性，也是document 对象的属性。</p>
+<p>window.location 和document.location 引用的是同一个对象。<br>location 对象的用处不只表现在它保存着当前文档的信息，还表现在它将URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。</p>
+<pre><code>hash &quot;#contents&quot; 返回URL中的hash(#号后跟零或多个字符)，如果URL中不包含散列，则返回空字符串
+host &quot;www.wrox.com:80&quot; 返回服务器名称和端口号(如果有)
+hostname &quot;www.wrox.com&quot; 返回不带端口号的服务器名称
+href &quot;http:/www.wrox.com&quot; 返回当前加载页面的完整URL。而location对象的
+toString()方法也返回这个值
+pathname &quot;/WileyCDA/&quot; 返回URL中的目录和(或)文件名
+port &quot;8080&quot; 返回URL中指定的端口号。如果URL中不包含端口号，则
+这个属性返回空字符串
+protocol &quot;http:&quot; 返回页面使用的协议。通常是http:或https:
+search &quot;?q=JavaScript&quot; 返回URL的查询字符串。这个字符串以问号开头
+</code></pre>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/27/javascript-note-7-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/30/javascript-note-8-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -524,7 +424,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/26/hexo-tool-livereload/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/30/javascript-note-9-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -549,8 +449,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/26/hexo-tool-livereload/" itemprop="url">
-                  记录：利用 Livereload 实现 Hexo 博客自动刷新页面
+                <a class="post-title-link" href="/2016/09/30/javascript-note-9-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第九章-1
                 </a>
               
             
@@ -593,12 +493,132 @@
 
       
         
-          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>一开始是因为使用了新的 IDE ： Visual Studio Code ，装上了 markdownlint 插件。<br>然后为了符合规则，修改原本的 .md 文件。<br><code>hexo s</code>命令会监控文件，每次修改完保存，刷新页面就能看到所修改的新内容。<br>为了看修改完符合规则后，文章页面实际的表现效果有没有出错，在使用了<code>hexo s</code>命令后还得手动刷新页面。<br>每修改完想确认一次就得刷新一次， F5 又不是真的氪合金做的，而且一直手动刷新也麻烦；浏览器定时刷新也不准确。</p>
-<p>为了第一驱动力：懒惰，于是就去寻找跟 Hexo 和自动刷新有关的内容。</p>
-<h1 id="第一次尝试："><a href="#第一次尝试：" class="headerlink" title="第一次尝试："></a>第一次尝试：</h1><p>找到关于 Livereload 的介绍和教程，但是可能是因为 Hexo 和 Livereload 都有更新的缘故，原本推荐的 Hexo 的插件并不好使。<br>本地端通过 npm 安装的 Livereload 哪怕运行了，浏览器的 Livereload 插件并不能正常检测连接上。<br>
+          <h1 id="客户端检测"><a href="#客户端检测" class="headerlink" title="客户端检测"></a>客户端检测</h1><p>面对普遍存在的不一致性问题，开发人员要么采取迁就各方的“最小公分母”策略，<br>要么(也是更常见的)就得利用各种客户端检测方法，来突破或者规避种种局限性。<br>迄今为止，客户端检测仍然是Web 开发领域中一个饱受争议的话题。<br>在现实当中，浏览器之间的差异以及不同浏览器的“怪癖”(quirk)，多得简直不胜枚举。<br>因此，客户端检测除了是一种补救措施之外，更是一种行之有效的开发策略。</p>
+<p>但不到万不得已，就不要使用客户端检测。<br>只要能找到更通用的方法，就应该优先采用更通用的方法。<br>一言以蔽之，先设计最通用的方案，然后再使用特定于浏览器的技术增强该方案。</p>
+<h1 id="能力检测"><a href="#能力检测" class="headerlink" title="能力检测"></a>能力检测</h1><p>(又称特性检测)。能力检测的目标不是识别特定的浏览器，而是识别浏览器的能力。<br>不必顾及特定的浏览器如何如何，只要确定浏览器支持特定的能力，就可以给出解决方案。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (object.propertyInQuestion)&#123;</div><div class="line">    <span class="comment">//使用object.propertyInQuestion</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>举例来说，IE5.0 之前的版本不支持document.getElementById()这个DOM 方法。<br>尽管可以使用非标准的document.all 属性实现相同的目的，<br>但IE 的早期版本中确实不存在document.getElementById()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getElement</span>(<span class="params">id</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(id);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.all)&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.all[id];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"No way to retrieve element!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/26/hexo-tool-livereload/#more" rel="contents">
+            <a class="btn" href="/2016/09/30/javascript-note-9-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/29/javascript-note-8-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/29/javascript-note-8-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第八章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>ECMAScript 是 JavaScript 的核心，但如果要在 Web 中使用 JavaScript ，那么 BOM(浏览器对象模型)则无疑才是真正的核心。</p>
+<h2 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h2><p>它表示浏览器的一个实例。<br>它既是通过 JavaScript 访问浏览器窗口的一个接口，又是 ECMAScript 规定的 Global 对象。<br>这意味着在网页中定义的任何一个对象、变量和函数，都以 window 作为其 Global 对象，因此有权访问parseInt() 等方法。</p>
+<h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><p>由于 window 对象同时扮演着 ECMAScript中 Global 对象的角色，因此所有在全局作用域中声明的变量、函数都会变成 window 对象的属性和方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">&#125;</div><div class="line">alert(<span class="built_in">window</span>.age); <span class="comment">//29</span></div><div class="line">sayAge(); <span class="comment">//29</span></div><div class="line"><span class="built_in">window</span>.sayAge(); <span class="comment">//29</span></div></pre></td></tr></table></figure>
+<p>由于 sayAge() 存在于全局作用域中，因此 this.age 被映射到 window.age 。<br>定义全局变量与在 window 对象上直接定义属性还是有一点差别：全局变量不能通过 delete 操作符删除，而直接在 window 对象上的定义的属性可以。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/29/javascript-note-8-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -634,7 +654,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -675,7 +695,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -870,10 +890,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -882,7 +902,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

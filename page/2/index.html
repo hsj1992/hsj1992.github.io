@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/07/javascript-note-22-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/08/javascript-note-23-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/07/javascript-note-22-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二十二章-2
+                <a class="post-title-link" href="/2016/11/08/javascript-note-23-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十三章-2
                 </a>
               
             
@@ -368,12 +368,177 @@
 
       
         
-          <h1 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h1><h2 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h2><h3 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h3><p>与函数绑定紧密相关的主题是函数柯里化（function currying），它用于创建已经设置好了一个或多个参数的函数。<br>基本方法和函数绑定是一样的：使用一个闭包返回一个函数。两者的区别在于，当函数被调用时，返回的函数还需要设置一些传入的参数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">curriedAdd</span>(<span class="params">num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> add(<span class="number">5</span>, num2);</div><div class="line">&#125;</div><div class="line">alert(add(<span class="number">2</span>, <span class="number">3</span>)); <span class="comment">//5</span></div><div class="line">alert(curriedAdd(<span class="number">3</span>)); <span class="comment">//8</span></div></pre></td></tr></table></figure>
-<p>后者本质上是在任何情况下第一个参数为5的add()版本。<br>尽管从技术上来说curriedAdd()并非柯里化的函数，但它很好地展示了其概念。<br>
+          
+            <h1 id="离线应用与客户端存储"><a href="#离线应用与客户端存储" class="headerlink" title="离线应用与客户端存储"></a>离线应用与客户端存储</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="IE用户数据"><a href="#IE用户数据" class="headerlink" title="IE用户数据"></a>IE用户数据</h3><p>在IE5.0 中，微软通过一个自定义行为引入了持久化用户数据的概念。<br>用户数据允许每个文档最多128KB 数据，每个域名最多1MB 数据。<br>使用CSS 在某个元素上指定userData 行为：<br><code>&lt;div style=&quot;behavior:url(#default#userData)&quot; id=&quot;dataStore&quot;&gt;&lt;/div&gt;</code><br>一旦该元素使用了userData 行为，那么就可以使用setAttribute()方法在上面保存数据了。<br>为了将数据提交到浏览器缓存中，还必须调用save()方法并告诉它要保存到的数据空间的名字。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dataStore = <span class="built_in">document</span>.getElementById(<span class="string">"dataStore"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"book"</span>, <span class="string">"Professional JavaScript"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div></pre></td></tr></table></figure>
+<p>在这段代码中，<code>&lt;div&gt;</code>元素上存入了两部分信息。<br>在用setAttribute()存储了数据之后，调用了save()方法，指定了数据空间的名称为BookInfo。<br>下一次页面载入之后，可以使用load()方法指定同样的数据空间名称来获取数据:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dataStore.load(<span class="string">"BookInfo"</span>);</div><div class="line">alert(dataStore.getAttribute(<span class="string">"name"</span>)); <span class="comment">//"Nicholas"</span></div><div class="line">alert(dataStore.getAttribute(<span class="string">"book"</span>)); <span class="comment">//"Professional JavaScript"</span></div></pre></td></tr></table></figure>
+<p>对load()的调用获取了BookInfo 数据空间中的所有信息，并且使数据可以通过元素访问；<br>只有到载入确切完成之后数据方能使用。如果getAttribute()调用了不存在的名称或者是尚未载入的名程，则返回null。</p>
+<p>你可以通过removeAttribute()方法明确指定要删除某元素数据，只要指定属性名称。<br>删除之后，必须再次调用save()来提交更改。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dataStore.removeAttribute(<span class="string">"name"</span>);</div><div class="line">dataStore.removeAttribute(<span class="string">"book"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div></pre></td></tr></table></figure>
+<p>这段代码删除了两个数据属性，然后将更改保存到缓存中。<br>对IE 用户数据的访问限制和对cookie 的限制类似。<br>要访问某个数据空间，脚本运行的页面必须来自同一个域名，在同一个路径下，并使用与进行存储的脚本同样的协议。<br>和cookie 不同的是，无法将用户数据访问限制扩展到更多的客户。<br>还有一点不同，用户数据默认是可以跨越会话持久存在的，同时也不会过期；<br>数据需要通过removeAttribute()方法专门进行删除以释放空间。</p>
+<p>和cookie 一样，IE 用户数据并非安全的，所以不能存放敏感信息。</p>
+<h3 id="Web存储机制"><a href="#Web存储机制" class="headerlink" title="Web存储机制"></a>Web存储机制</h3><p>Web Storage 的目的是克服由cookie 带来的一些限制，<br>当数据需要被严格控制在客户端上时，无须持续地将数据发回服务器。<br>Web Storage 的两个主要目标是：</p>
+<ul>
+<li>提供一种在cookie 之外存储会话数据的途径；</li>
+<li>提供一种存储大量可以跨会话存在的数据的机制。</li>
+</ul>
+<p>最初的Web Storage 规范包含了两种对象的定义：sessionStorage 和globalStorage。<br>这两个对象在支持的浏览器中都是以windows 对象属性的形式存在的，支持这两个属性的浏览器包括IE8+、Firefox 3.5+、Chrome 4+和Opera 10.5+。</p>
+<h4 id="Storage-类型"><a href="#Storage-类型" class="headerlink" title="Storage 类型"></a>Storage 类型</h4><p>Storage 的实例与其他对象类似，有如下方法。</p>
+<ul>
+<li>clear()： 删除所有值；Firefox 中没有实现 。</li>
+<li>getItem(name)：根据指定的名字name 获取对应的值。</li>
+<li>key(index)：获得index 位置处的值的名字。</li>
+<li>removeItem(name)：删除由name 指定的名值对儿。</li>
+<li>setItem(name, value)：为指定的name 设置一个对应的值。</li>
+</ul>
+<p>其中，getItem()、removeItem()和setItem()方法可以直接调用，也可通过Storage 对象间接调用。<br>因为每个项目都是作为属性存储在该对象上的，所以可以通过点语法或者方括号语法访问属性来读取值，设置也一样，或者通过delete 操作符进行删除。</p>
+<p>最好使用方法而不是属性来访问数据，以免某个键会意外重写该对象上已经存在的成员。</p>
+<p>还可以使用length 属性来判断有多少名值对儿存放在Storage 对象中。<br>但无法判断对象中所有数据的大小，不过IE8 提供了一个remainingSpace 属性，用于获取还可以使用的存储空间的字节数。</p>
+<p>Storage 类型只能存储字符串。非字符串的数据在存储之前会被转换成字符串。</p>
+<h4 id="sessionStorage-对象"><a href="#sessionStorage-对象" class="headerlink" title="sessionStorage 对象"></a>sessionStorage 对象</h4><p>sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。<br>这个对象就像会话cookie，也会在浏览器关闭后消失。<br>存储在sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和WebKit 都支持，IE 则不行）。</p>
+<p>因为seesionStorage 对象绑定于某个服务器会话，所以当文件在本地运行的时候是不可用的。<br>存储在sessionStorage 中的数据只能由最初给对象存储数据的页面访问到，所以对多页面应用有限制。<br>由于sessionStorage 对象其实是Storage 的一个实例，所以可以使用setItem()或者直接设置新的属性来存储数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法存储数据</span></div><div class="line">sessionStorage.setItem(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="comment">//使用属性存储数据</span></div><div class="line">sessionStorage.book = <span class="string">"Professional JavaScript"</span>;</div></pre></td></tr></table></figure>
+<p>不同浏览器写入数据方面略有不同。<br>Firefox 和WebKit 实现了同步写入，所以添加到存储空间中的数据是立刻被提交的。<br>而IE 的实现则是异步写入数据，所以在设置数据和将数据实际写入磁盘之间可能有一些延迟。</p>
+<p>在IE8 中可以强制把数据写入磁盘：<br>在设置新数据之前使用begin()方法，并且在所有设置完成之后调用commit()方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//只适用于IE8</span></div><div class="line">sessionStorage.begin();</div><div class="line">sessionStorage.name = <span class="string">"Nicholas"</span>;</div><div class="line">sessionStorage.book = <span class="string">"Professional JavaScript"</span>;</div><div class="line">sessionStorage.commit();</div></pre></td></tr></table></figure>
+<p>这段代码确保了name 和book 的值在调用commit()之后立刻被写入磁盘。<br>调用begin()是为了确保在这段代码执行的时候不会发生其他磁盘写入操作。<br>对于少量数据而言，这个过程不是必需的；不过，对于大量数据（如文档之类的）可能就要考虑这种事务形式的方法了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法读取数据</span></div><div class="line"><span class="keyword">var</span> name = sessionStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="comment">//使用属性读取数据</span></div><div class="line"><span class="keyword">var</span> book = sessionStorage.book;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = sessionStorage.length; i &lt; len; i++)&#123;</div><div class="line"><span class="keyword">var</span> key = sessionStorage.key(i);</div><div class="line"><span class="keyword">var</span> value = sessionStorage.getItem(key);</div><div class="line">alert(key + <span class="string">"="</span> + value);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> sessionStorage)&#123;</div><div class="line"><span class="keyword">var</span> value = sessionStorage.getItem(key);</div><div class="line">alert(key + <span class="string">"="</span> + value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>要从sessionStorage 中删除数据，可以使用delete 操作符删除对象属性，也可调用removeItem()方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用delete 删除一个值——在WebKit 中无效</span></div><div class="line"><span class="keyword">delete</span> sessionStorage.name;</div><div class="line"><span class="comment">//使用方法删除一个值</span></div><div class="line">sessionStorage.removeItem(<span class="string">"book"</span>);</div></pre></td></tr></table></figure>
+<p>sessionStorage 对象应该主要用于仅针对会话的小段数据的存储。<br>如果需要跨越会话存储数据，那么 globalStorage 或者localStorage 更为合适。</p>
+<h4 id="localStorage-对象"><a href="#localStorage-对象" class="headerlink" title="localStorage 对象"></a>localStorage 对象</h4><p>localStorage 对象在修订过的HTML 5 规范中作为持久保存客户端数据的方案取代了globalStorage。<br>与globalStorage 不同，不能给localStorage 指定任何访问规则；规则事先就设定好了。<br>要访问同一个localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。<br>这相当于globalStorage[location.host]。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法存储数据</span></div><div class="line">localStorage.setItem(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="comment">//使用属性存储数据</span></div><div class="line">localStorage.book = <span class="string">"Professional JavaScript"</span>;</div><div class="line"><span class="comment">//使用方法读取数据</span></div><div class="line"><span class="keyword">var</span> name = localStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="comment">//使用属性读取数据</span></div><div class="line"><span class="keyword">var</span> book = localStorage.book;</div></pre></td></tr></table></figure>
+<p>数据保留到通过JavaScript 删除或者是用户清除浏览器缓存。<br>为了兼容只支持globalStorage 的浏览器:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLocalStorage</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> localStorage == <span class="string">"object"</span>)&#123;</div><div class="line"><span class="keyword">return</span> localStorage;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> globalStorage == <span class="string">"object"</span>)&#123;</div><div class="line"><span class="keyword">return</span> globalStorage[location.host];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Local storage not available."</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在确定了使用哪个Storage 对象之后，就能在所有支持Web Storage 的浏览器中使用相同的存取规则操作数据了。</p>
+<h4 id="storage-事件"><a href="#storage-事件" class="headerlink" title="storage 事件"></a>storage 事件</h4><p>对Storage 对象进行任何修改，都会在文档上触发storage 事件。<br>当通过属性或setItem()方法保存数据，使用delete 操作符或removeItem()删除数据，或者调用clear()方法时，都会发生该事件。</p>
+<p>event 对象有以下属性:</p>
+<ul>
+<li>domain：发生变化的存储空间的域名。</li>
+<li>key：设置或者删除的键名。</li>
+<li>newValue：如果是设置值，则是新值；如果是删除键，则是null。</li>
+<li>oldValue：键被更改之前的值。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"storage"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">alert(<span class="string">"Storage changed for "</span> + event.domain);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>无论对sessionStorage、globalStorage 还是localStorage 进行操作，都会触发storage事件，但不作区分。</p>
+<h4 id="Web-Storage-限制"><a href="#Web-Storage-限制" class="headerlink" title="Web Storage 限制"></a>Web Storage 限制</h4><p>对于localStorage 而言，大多数桌面浏览器会设置每个来源5MB 的限制。<br>Chrome 和Safari 对每个来源的限制是2.5MB。而iOS 版Safari 和Android 版WebKit 的限制也是2.5MB。<br>对sessionStorage 的限制也是因浏览器而异。有的浏览器对sessionStorage 的大小没有限制，<br>但Chrome、Safari、iOS 版Safari 和Android 版WebKit 都有限制，也都是2.5MB。IE8+和Opera 对sessionStorage 的限制是5MB。</p>
+<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><p>Indexed Database API，或者简称为IndexedDB，是在浏览器中保存结构化数据的一种数据库。<br>IndexedDB 是为了替代目前已被废弃的Web SQL Database API而出现的。<br>IndexedDB 的思想是创建一套API，方便保存和读取JavaScript 对象，同时还支持查询及搜索。</p>
+<p>to be continued.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/08/javascript-note-23-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/javascript-note-23-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十三章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="离线应用与客户端存储"><a href="#离线应用与客户端存储" class="headerlink" title="离线应用与客户端存储"></a>离线应用与客户端存储</h1><p>支持离线Web 应用开发是HTML5 的另一个重点。<br>开发离线Web 应用需要几个步骤。<br>首先是确保应用知道设备是否能上网，以便下一步执行正确的操作。<br>然后，应用还必须能访问一定的资源（图像、JavaScript、CSS 等），只有这样才能正常工作。<br>最后，必须有一块本地空间用于保存数据，无论能否上网都不妨碍读写。</p>
+<h2 id="离线检测"><a href="#离线检测" class="headerlink" title="离线检测"></a>离线检测</h2><p>开发离线应用的第一步是要知道设备是在线还是离线，HTML5为此定义了一个navigator.onLine属性，这个属性值为true 表示设备能上网，值为false 表示设备离线。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (navigator.onLine)&#123;</div><div class="line"><span class="comment">//正常工作</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="comment">//执行离线状态时的任务</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除navigator.onLine 属性之外，为了更好地确定网络是否可用，HTML5 还定义了两个事件：online 和offline。<br>当网络从离线变为在线或者从在线变为离线时，分别触发这两个事件。<br>这两个事件在window 对象上触发。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/07/javascript-note-22-2/#more" rel="contents">
+            <a class="btn" href="/2016/11/08/javascript-note-23-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -414,7 +579,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/07/javascript-note-22-1/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/08/javascript-note-22-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -439,8 +604,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/07/javascript-note-22-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二十二章-1
+                <a class="post-title-link" href="/2016/11/08/javascript-note-22-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十二章-3
                 </a>
               
             
@@ -483,129 +648,13 @@
 
       
         
-          <h1 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h1><h2 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h2><h3 id="安全的类型检测"><a href="#安全的类型检测" class="headerlink" title="安全的类型检测"></a>安全的类型检测</h3><p>JavaScript 内置的类型检测机制并非完全可靠。<br>比如说typeof 操作符，由于它有一些无法预知的行为，经常会导致检测数据类型时得到不靠谱的结果。<br>instanceof 操作符在存在多个全局作用域（像一个页面包含多个frame）的情况下，也是问题多多。<br><code>var isArray = value instanceof Array;</code><br>要返回true，value 必须是一个数组，而且还必须与Array 构造函数在同个全局作用域中。（别忘了，Array 是window 的属性。）<br>如果value 是在另个frame 中定义的数组，那么以上代码就会返回false。</p>
-<p>在检测某个对象到底是原生对象还是开发人员自定义的对象的时候，也会有问题。<br>原因是浏览器开始原生支持JSON 对象了。因为很多人一直在使用Douglas Crockford 的JSON 库，而该库定义了一个全局JSON 对象。<br>于是开发人员很难确定页面中的JSON 对象到底是不是原生的。</p>
-<p>解决上述问题的办法都一样。<br>在任何值上调用Object 原生的toString()方法，都会返回一个[object NativeConstructorName]格式的字符串。<br>每个类在内部都有一个[[Class]]属性，这个属性中就指定了上述字符串中的构造函数名。<br><code>alert(Object.prototype.toString.call(value)); //&quot;[object Array]&quot;</code><br>由于原生数组的构造函数名与全局作用域无关，因此使用toString()就能保证返回一致的值。<br>
+          <h1 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h1><h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><p>在本书前面，你已经学到事件是JavaScript 与浏览器交互的主要途径。<br>事件是一种叫做观察者的设计模式，这是一种创建松散耦合代码的技术。</p>
+<p>对象可以发布事件，用来表示在该对象生命周期中某个有趣的时刻到了。<br>然后其他对象可以观察该对象，等待这些有趣的时刻到来并通过运行代码来响应。</p>
+<p>观察者模式由两类对象组成：主体和观察者。<br>主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。<br>该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说即使观察者不存在,它也可以独自存在并正常运作。<br>从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。<br>涉及DOM 上时，DOM元素便是主体，你的事件处理代码便是观察者。</p>
+<p>事件是与DOM 交互的最常见的方式，但它们也可以用于非DOM 代码中——通过实现自定义事件。<br>自定义事件背后的概念是创建一个管理事件的对象，让其他对象监听那些事件。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/07/javascript-note-22-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/07/javascript-note-21-3/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/07/javascript-note-21-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二十一章-3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Ajax-与Comet"><a href="#Ajax-与Comet" class="headerlink" title="Ajax 与Comet"></a>Ajax 与Comet</h1><h2 id="其他跨域技术"><a href="#其他跨域技术" class="headerlink" title="其他跨域技术"></a>其他跨域技术</h2><p>在CORS 出现以前，要实现跨域Ajax 通信颇费一些周折。开发人员想出了一些办法，利用DOM 中能够执行跨域请求的功能，在不依赖XHR 对象的情况下也能发送某种请求。<br>虽然CORS 技术已经无处不在，但开发人员自己发明的这些技术仍然被广泛使用，毕竟这样不需要修改服务器端代码。</p>
-<h3 id="图像Ping"><a href="#图像Ping" class="headerlink" title="图像Ping"></a>图像Ping</h3><p>使用<code>&lt;img&gt;</code>标签。一个网页可以从任何网页中加载图像，不用担心跨域不跨域。这也是在线广告跟踪浏览量的主要方式。<br>可以动态地创建图像，使用它们的onload 和onerror 事件处理程序来确定是否接收到了响应。<br>动态创建图像经常用于图像Ping。图像Ping 是与服务器进行简单、单向的跨域通信的一种方式。<br>请求的数据是通过查询字符串形式发送的，而响应可以是任意内容，但通常是像素图或204 响应。</p>
-<p>通过图像Ping，浏览器得不到任何具体的数据，但通过侦听load 和error 事件，它能知道响应是什么时候接收到的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.onload = img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Done!"</span>);</div><div class="line">&#125;;</div><div class="line">img.src = <span class="string">"http://www.example.com/test?name=Nicholas"</span>;</div></pre></td></tr></table></figure>
-<p>创建了一个Image 的实例，然后将onload 和onerror 事件处理程序指定为同一个函数。<br>这样无论是什么响应，只要请求完成，就能得到通知。请求从设置src 属性那一刻开始，而这个例子在请求中发送了一个name 参数。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/07/javascript-note-21-3/#more" rel="contents">
+            <a class="btn" href="/2016/11/08/javascript-note-22-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -641,7 +690,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -682,7 +731,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -877,10 +926,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -889,7 +938,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

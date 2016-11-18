@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/11/javascript-note-3-1/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-4/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/javascript-note-3-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第三章-1
+                <a class="post-title-link" href="/2016/09/17/javascript-note-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第四章
                 </a>
               
             
@@ -368,26 +368,14 @@
 
       
         
-          <h1 id="ECMAScript-的标识符"><a href="#ECMAScript-的标识符" class="headerlink" title="ECMAScript 的标识符"></a>ECMAScript 的标识符</h1><ul>
-<li>区分大小写</li>
-<li>采用驼峰大小写格式。为了与 ECMAScript 内置的函数和对象命名格式保持一致。<br>  如： doSomethingImportant</li>
-</ul>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><ul>
-<li>单行： <code>//这里是注释</code></li>
-<li>多行：  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</div><div class="line">这里是注释</div><div class="line">*/</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="ECMAScript-的严格模式-strict-mode"><a href="#ECMAScript-的严格模式-strict-mode" class="headerlink" title="ECMAScript 的严格模式 (strict mode)"></a>ECMAScript 的严格模式 (strict mode)</h1><ul>
-<li>严格模式的启用：<br>顶部添加如下代码：”use strict”;<br>看起来像是字符串，而且也没有赋值给任何变量，但其实它是一个编译指示(pragma)，用于告诉支持的 JavaScript 引擎切换到严格模式。这是为不破坏 ECMAScript 3 语法而特意选定的语法。</li>
-<li><p>也可以指定函数在严格模式下执行：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="meta">    "use strict"</span>;</div><div class="line">    <span class="comment">//函数体</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>严格模式下， JavaScript 的执行结果会有很大不同。<br>  支持严格模式的浏览器包括 IE10+ 、 Firefox 4+ 、 Safari 5.1+ 、 Opera 12+和 Chrome 。</p>
-</li>
-</ul>
+          <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
+<p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
+<p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
+<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<br>ECMAScript 放弃了这一传统。</p>
+<h2 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。(Object)<br>只能给引用类型值动态地添加属性，以便将来使用。(给基本类型的添加了也是 undefined)</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/11/javascript-note-3-1/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -428,7 +416,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/10/javascript-note-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-3-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -453,8 +441,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/10/javascript-note-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二章
+                <a class="post-title-link" href="/2016/09/17/javascript-note-3-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第三章-3
                 </a>
               
             
@@ -497,23 +485,19 @@
 
       
         
-          <h1 id="script-元素的-defer"><a href="#script-元素的-defer" class="headerlink" title="script 元素的 defer"></a>script 元素的 defer</h1><p><strong>defer</strong> 延迟脚本。<br>效果：在页面解析时候下载脚本，可以延迟到文档完全被解析和显示之后再执行。只对外部脚本文件有效。(HTML 4.01时定义)</p>
-<ul>
-<li>在现实当中，延迟脚本并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件触发前执行，因此最好只包含一个延迟脚本。</li>
-<li>把延迟脚本放在页面底部仍然是最佳选择。</li>
-<li>defer 属性在浏览器之间表现并不一致。 defer 属性只被 IE 4 和 Firefox 3.5 更高版本的浏览器所支持，所以它不是一个理想的跨浏览器解决方案。在其他浏览器中， defer 属性会被直接忽略，因此<code>&lt;script&gt;</code>标签会以默认的方式处理，也就是说会造成阻塞。</li>
-<li>为了避免跨浏览器的差异，可以使用 “ lazy loading ”的方法，即直到用到该脚本时才加载。</li>
-<li>在 XHTML 文档中，要把 defer 属性设置为 defer=”defer” 。 async 同理。</li>
-</ul>
-<h1 id="script-元素的-async"><a href="#script-元素的-async" class="headerlink" title="script 元素的 async"></a>script 元素的 async</h1><p><strong>async</strong> 异步脚本。<br>效果：下载脚本同时不影响页面解析，当下载完毕后就执行，执行完接着页面解析。只对外部脚本文件有效。<br>Google Analytics 就是适合使用 async 的脚本；<br>还有下载其他资源。<br>目的：不让页面等待两个脚本下载和执行，从而异步加载页面其他内容。</p>
-<ul>
-<li>标记为 async 的脚本并不保证按照指定它们的先后顺序执行。因此，确保互不依赖非常重要。</li>
-<li>建议异步脚本不要在加载期间修改 DOM 。</li>
-<li>异步脚本一定会在页面的 load 事件前执行，但可能会在 DOMContentLoaded 事件触发之前或之后执行。</li>
-</ul>
+          <h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>ECMA-262 规定了一组语句(也称为流控制语句)。</p>
+<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
+<p>其中的 condition(条件)可以是任意表达式；而且对这个表达式求值的结果不一定是布尔值。<br>ECMAScript 会自动调用 <code>Boolean()</code> 转换函数将这个表达式的结果转换为一个布尔值。</p>
+<p><strong>业界普遍推崇的最佳实践是始终使用代码块，即使要执行的只有一行代码。</strong>因为这样可以消除人们的误解，否则可能让人分不清在不同条件下要执行哪些语句。</p>
+<h2 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h2><p>要点：<strong>像 do-while 这种后测试循环语句最常用于循环体中的代码至少要被执行一次的情形。</strong></p>
+<h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><p>while 语句属于前测试循环语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。</p>
+<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h2><p>for 语句也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。</p>
+<p><strong>使用 while 循环做不到的，使用 for 循环同样也做不到。</strong>也就是说， for 循环只是把与循环有关的代码集中在了一个位置。</p>
+<p>由于 ECMAScript 中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
+<p>for 语句中的初始化表达式、控制表达式和循环后表达式都是可选的。将这三个表达式全部省略，就会创建一个无限循环。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/10/javascript-note-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-3-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -554,7 +538,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/09/javascript-note-1/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-3-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -579,8 +563,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/09/javascript-note-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第一章
+                <a class="post-title-link" href="/2016/09/17/javascript-note-3-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第三章-2
                 </a>
               
             
@@ -623,18 +607,15 @@
 
       
         
-          <h1 id="JavaScript-的诞生："><a href="#JavaScript-的诞生：" class="headerlink" title="JavaScript 的诞生："></a>JavaScript 的诞生：</h1><p>以前必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域。<br>Netscape Navigator 希望通过 JavaScript 来解决这个问题。<br>于是 JavaScript 诞生，当时主要目的是处理以前由服务器端语言负责的一些输入验证操作。<br>它从一个简单的输入验证器发展成为一门强大的编程语言。</p>
-<h1 id="JavaScript-、-ECMAScript-历史："><a href="#JavaScript-、-ECMAScript-历史：" class="headerlink" title="JavaScript 、 ECMAScript 历史："></a>JavaScript 、 ECMAScript 历史：</h1><ol>
-<li>Netscape navigator 2诞生, JavaScript 诞生。</li>
-<li>IE 的 JScript 。</li>
-<li>标准化， ECMA-262，即 ECMAScript 诞生。</li>
-<li>ECMAScript 与 Web 浏览器没有依赖关系,Web 浏览器只是 ECMAScript 实现可能的宿主环境之一。</li>
-<li>ECMA-262 定义的只是这门语言的基础。</li>
-<li>JavaScript 包含 <strong>ECMAScript</strong> 、 <strong>DOM</strong> 、 <strong>BOM</strong> 三个部分。</li>
-</ol>
+          <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><p>包括算术操作符(如加号和减号)、位操作符、关系操作符和相等操作符。<br>ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字符串、数字值、布尔值，甚至对象。<br>不过，<strong>在应用于对象时，相应的操作符通常都会调用对象的 valueOf()和(或) toString() 方法，以便取得可以操作的值。</strong></p>
+<h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h2><h3 id="递增递减操作符"><a href="#递增递减操作符" class="headerlink" title="递增递减操作符"></a>递增递减操作符</h3><p>执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。(在计算机科学领域，这种情况通常被称作副效应。)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="keyword">var</span> anotherAge = --age + <span class="number">2</span>;</div><div class="line">alert(age); <span class="comment">// 输出 28</span></div><div class="line">alert(anotherAge); <span class="comment">// 输出 30</span></div></pre></td></tr></table></figure>
+<p>后置递增和递减与前置递增和递减有一个非常重要的区别，即递增和递减操作是在包含它们的语句被求值之后才执行的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> num2 = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> num3 = num1-- + num2; <span class="comment">//  等于 22</span></div><div class="line"><span class="keyword">var</span> num4 = num1 + num2; <span class="comment">// 等于 21</span></div></pre></td></tr></table></figure>
+<p>作用数据类型时候，等同于先 Number() 再加减1，会像 Number() 转型函数一样对这个值执行转换。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/09/javascript-note-1/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-3-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -670,7 +651,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -711,7 +692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -906,10 +887,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -918,7 +899,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

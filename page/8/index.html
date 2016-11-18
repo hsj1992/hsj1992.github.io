@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/19/javascript-note-14-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/20/javascript-note-14-4/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/19/javascript-note-14-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十四章-2
+                <a class="post-title-link" href="/2016/10/20/javascript-note-14-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-4
                 </a>
               
             
@@ -368,16 +368,12 @@
 
       
         
-          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h2><p>在HTML 中，有两种方式来表现文本框：一种是使用<code>&lt;input&gt;</code>元素的单行文本框，另一种是使用<code>&lt;textarea&gt;</code>的多行文本框。<br>两者相似，但仍有重要区别。</p>
-<p>使用<code>&lt;input&gt;</code>，将type设置为text,通过设置size特性，指定文本框能够显示的字符数；通过value特性，设置文本框的初始值，maxlength特性设置文本框可以接受的最大字符数。</p>
-<p>相对而言,<code>&lt;textarea&gt;</code>始终会呈现一个多行文本框，要指定大小可以用row和col特性。row指的是文本框行数，col指的是文本框字符列数。<br>初始值要放在<code>&lt;textarea&gt;</code>和<code>&lt;/textarea&gt;</code>之间。一个区别：不能在HTML 中给<code>&lt;textarea&gt;</code>指定最大字符数。</p>
-<p>它们都会将用户输入的内容保存在value 属性中。可以通过这个属性读取和设置文本框的值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> textbox = <span class="built_in">document</span>.forms[<span class="number">0</span>].elements[<span class="string">"textbox1"</span>];</div><div class="line">alert(textbox.value);</div><div class="line">textbox.value = <span class="string">"Some new value"</span>;</div></pre></td></tr></table></figure>
-<p>建议使用value 属性读取或设置文本框的值，不建议使用标准的DOM 方法。即不要使用setAttribute()设置<code>&lt;input&gt;</code>元素的value 特性，也不要去修改<code>&lt;textarea&gt;</code>元素的第一个子节点。<br>原因很简单：对value 属性所作的修改，不一定会反映在DOM中。因此，在处理文本框的值时，最好不要使用DOM 方法。</p>
-<h3 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h3><p>都支持select()方法，这个方法用于选择文本框中的所有文本。<br>在调用select()方法时，大多数浏览器都会将焦点设置到文本框中。这个方法不接受参数，可以在任何时候被调用。<br>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="富文本编辑"><a href="#富文本编辑" class="headerlink" title="富文本编辑"></a>富文本编辑</h2><p>富文本编辑，又称为WYSIWYG（What You See Is What You Get，所见即所得）。<br>在网页中编辑富文本内容，是人们对Web 应用程序最大的期待之一。<br>这一技术的本质，就是在页面中嵌入一个包含空HTML 页面的iframe。<br>通过设置designMode 属性，这个空白的HTML 页面可以被编辑，<br>而编辑对象则是该页面<code>&lt;body&gt;</code>元素的HTML 代码。<br>designMode 属性有两个可能的值：”off”（默认值）和”on”。<br>在设置为”on”时，整个文档都会变得可以编辑（显示插入符号），然后就可以像使用字处理软件一样，通过键盘将文本内容加粗、变成斜体。</p>
+<p>可以给iframe 指定一个非常简单的HTML 页面作为其内容来源。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Blank Page for Rich Text Editing<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/19/javascript-note-14-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/20/javascript-note-14-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -418,7 +414,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/18/javascript-note-13-8/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/19/javascript-note-14-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -443,8 +439,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/18/javascript-note-13-8/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-8
+                <a class="post-title-link" href="/2016/10/19/javascript-note-14-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-3
                 </a>
               
             
@@ -487,19 +483,25 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="模拟事件"><a href="#模拟事件" class="headerlink" title="模拟事件"></a>模拟事件</h2><p>也可以使用JavaScript 在任意时刻来触发特定的事件，而此时的事件就如同浏览器创建的事件一样。<br>在测试Web 应用程序，模拟触发事件是一种极其有用的技术。DOM2 级规范为此规定了模拟特定事件的方式，<br>IE9、Opera、Firefox、Chrome 和Safari 都支持这种方式。IE 有它自己模拟事件的方式。</p>
-<h3 id="DOM中的事件模拟"><a href="#DOM中的事件模拟" class="headerlink" title="DOM中的事件模拟"></a>DOM中的事件模拟</h3><p>可以在document 对象上使用createEvent()方法创建event 对象。<br>接收一个参数，即表示要创建的事件类型的字符串。<br>在DOM2 级中，所有这些字符串都使用英文复数形式，而在DOM3级中都变成了单数。</p>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h2><p>选择框是通过<code>&lt;select&gt;</code>和<code>&lt;option&gt;</code>元素创建的。<br>为了方便与这个控件交互，除了所有表单字段共有的属性和方法外，HTMLSelectElement 类型还提供了下列属性和方法。</p>
 <ul>
-<li>UIEvents：一般化的UI 事件。鼠标事件和键盘事件都继承自UI 事件。DOM3 级中是UIEvent。</li>
-<li>MouseEvents：一般化的鼠标事件。DOM3 级中是MouseEvent。</li>
-<li>MutationEvents：一般化的DOM 变动事件。DOM3 级中是MutationEvent。</li>
-<li>HTMLEvents：一般化的HTML 事件。没有对应的DOM3 级事件（HTML 事件被分散到其他类别中）。</li>
+<li>add(newOption, relOption)：向控件中插入新<code>&lt;option&gt;</code>元素，其位置在相关项（relOption）之前。</li>
+<li>multiple：布尔值，表示是否允许多项选择；等价于HTML 中的multiple 特性。</li>
+<li>options：控件中所有<code>&lt;option&gt;</code>元素的HTMLCollection。</li>
+<li>remove(index)：移除给定位置的选项。</li>
+<li>selectedIndex：基于0 的选中项的索引，如果没有选中项，则值为-1。对于支持多选的控件，只保存选中项中第一项的索引。</li>
+<li>size：选择框中可见的行数；等价于HTML 中的size 特性。</li>
 </ul>
-<p>“DOM2 级事件”并没有专门规定键盘事件，后来的“DOM3 级事件”中才正式将其作为一种事件给出规定。<br>在其他浏览器中，在现有方法的基础上，可以通过几种方式来模拟键盘事件。</p>
-<p>模拟事件的最后一步就是触发事件。这一步需要使用dispatchEvent()方法，所有支持事件的DOM 节点都支持这个方法。<br>调用dispatchEvent()方法时，需要传入一个参数，即表示要触发事件的event 对象。<br>
+<p>选择框的type 属性不是”select-one”，就是”select-multiple”，这取决于HTML 代码中有没有multiple 特性。<br>选择框的value 属性由当前选中项决定。</p>
+<ul>
+<li>如果没有选中的项，则选择框的value 属性保存空字符串。</li>
+<li>如果有一个选中项，而且该项的value 特性已经在HTML 中指定，则选择框的value 属性等于选中项的value 特性。<br>  即使value 特性的值是空字符串，也同样遵循此条规则。</li>
+<li>如果有一个选中项，但该项的value 特性在HTML 中未指定，则选择框的value 属性等于该项的文本。</li>
+<li>如果有多个选中项，则选择框的value 属性将依据前两条规则取得第一个选中项的值。</li>
+</ul>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/javascript-note-13-8/#more" rel="contents">
+            <a class="btn" href="/2016/10/19/javascript-note-14-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -540,7 +542,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/18/javascript-note-13-7/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/19/javascript-note-14-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -565,8 +567,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/18/javascript-note-13-7/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-7
+                <a class="post-title-link" href="/2016/10/19/javascript-note-14-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-1
                 </a>
               
             
@@ -609,12 +611,23 @@
 
       
         
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="设备事件"><a href="#设备事件" class="headerlink" title="设备事件"></a>设备事件</h3><h4 id="orientationchange-事件"><a href="#orientationchange-事件" class="headerlink" title="orientationchange 事件"></a>orientationchange 事件</h4><p>苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。<br>移动Safari 的window.orientation 属性中可能包含3 个值：<br>0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。<br>相关文档中还提到一个值，即180 表示iPhone 头朝下；但这种模式至今尚未得到支持。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">    div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"orientationchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>所有iOS 设备都支持orientationchange 事件和window.orientation 属性。<br>可以将orientationchange 看成window 事件，所以也可以通过指定<code>&lt;body&gt;</code>元素的onorientationchange 特性来指定事件处理程序。<br>
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h2><p>HTML 对应： <code>&lt;form&gt;</code>元素<br>JavaScript 对应：<code>HTMLFormElement</code> 类型<br>HTMLFormElement 继承 HTMLElement<br>自己的独有的属性和方法：</p>
+<ul>
+<li>acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。</li>
+<li>action：接受请求的URL；等价于HTML 中的action 特性。</li>
+<li>elements：表单中所有控件的集合（HTMLCollection）。</li>
+<li>enctype：请求的编码类型；等价于HTML 中的enctype 特性。</li>
+<li>length：表单中控件的数量。</li>
+<li>method：要发送的HTTP 请求类型，通常是”get”或”post”；等价于HTML 的method 特性。</li>
+<li>name：表单的名称；等价于HTML 的name 特性。</li>
+<li>reset()：将所有表单域重置为默认值。</li>
+<li>submit()：提交表单。</li>
+<li>target：用于发送请求和接收响应的窗口名称；等价于HTML 的target 特性。</li>
+</ul>
+<p>取得<code>&lt;form&gt;</code>元素引用的方式有好几种。<br>其中最常见的方式就是将它看成与其他元素一样，并为其添加id 特性，然后再像下面这样使用getElementById()方法找到它。<br>其次，通过document.forms 可以取得页面中所有的表单。在这个集合中，可以通过数值索引或name 值来取得特定的表单。<br>另外，在较早的浏览器或者那些支持向后兼容的浏览器中，也会把每个设置了name 特性的表单作为属性保存在document 对象中(不推荐使用这种方式)。<br>可以同时为表单指定id 和name 属性，但它们的值不一定相同。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/javascript-note-13-7/#more" rel="contents">
+            <a class="btn" href="/2016/10/19/javascript-note-14-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -650,7 +663,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -691,7 +704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -886,10 +899,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -898,7 +911,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

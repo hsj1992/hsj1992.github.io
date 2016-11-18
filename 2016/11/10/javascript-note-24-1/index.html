@@ -1,0 +1,1011 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="最佳实践可维护性什么是可维护的代码
+可理解性——其他人可以接手代码并理解它的意图和一般途径，而无需原开发人员的完整解释。
+直观性——代码中的东西一看就能明白，不管其操作过程多么复杂。
+可适应性——代码以一种数据上的变化不要求完全重写的方法撰写。
+可扩展性——在代码架构上已考虑到在未来允许对核心功能进行扩展。
+可调试性——当有地方出错时，代码可以给予你足够的信息来尽可能直接地确定问题所在。
+
+代码约">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第二十四章-1">
+<meta property="og:url" content="http://codingme.xyz/2016/11/10/javascript-note-24-1/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="最佳实践可维护性什么是可维护的代码
+可理解性——其他人可以接手代码并理解它的意图和一般途径，而无需原开发人员的完整解释。
+直观性——代码中的东西一看就能明白，不管其操作过程多么复杂。
+可适应性——代码以一种数据上的变化不要求完全重写的方法撰写。
+可扩展性——在代码架构上已考虑到在未来允许对核心功能进行扩展。
+可调试性——当有地方出错时，代码可以给予你足够的信息来尽可能直接地确定问题所在。
+
+代码约">
+<meta property="og:updated_time" content="2016-11-18T02:09:41.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第二十四章-1">
+<meta name="twitter:description" content="最佳实践可维护性什么是可维护的代码
+可理解性——其他人可以接手代码并理解它的意图和一般途径，而无需原开发人员的完整解释。
+直观性——代码中的东西一看就能明白，不管其操作过程多么复杂。
+可适应性——代码以一种数据上的变化不要求完全重写的方法撰写。
+可扩展性——在代码架构上已考虑到在未来允许对核心功能进行扩展。
+可调试性——当有地方出错时，代码可以给予你足够的信息来尽可能直接地确定问题所在。
+
+代码约">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/11/10/javascript-note-24-1/"/>
+
+
+
+
+
+  <title> 《 JavaScript 高级程序设计》备忘-第二十四章-1 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/10/javascript-note-24-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第二十四章-1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h2><h3 id="什么是可维护的代码"><a href="#什么是可维护的代码" class="headerlink" title="什么是可维护的代码"></a>什么是可维护的代码</h3><ul>
+<li>可理解性——其他人可以接手代码并理解它的意图和一般途径，而无需原开发人员的完整解释。</li>
+<li>直观性——代码中的东西一看就能明白，不管其操作过程多么复杂。</li>
+<li>可适应性——代码以一种数据上的变化不要求完全重写的方法撰写。</li>
+<li>可扩展性——在代码架构上已考虑到在未来允许对核心功能进行扩展。</li>
+<li>可调试性——当有地方出错时，代码可以给予你足够的信息来尽可能直接地确定问题所在。</li>
+</ul>
+<h3 id="代码约定"><a href="#代码约定" class="headerlink" title="代码约定"></a>代码约定</h3><h4 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h4><p>可读性的大部分内容都是和代码的缩进相关的。一种不错的、很常见的缩进大小为4 个空格。</p>
+<p>可读性的另一方面是注释。如下一些地方需要进行注释:</p>
+<ul>
+<li>函数和方法——每个函数或方法都应该包含一个注释，描述其目的和用于完成任务所可能使用的算法。陈述事先的假设也非常重要，如参数代表什么，函数是否有返回值。</li>
+<li>大段代码——用于完成单个任务的多行代码应该在前面放一个描述任务的注释。</li>
+<li>复杂的算法——如果使用了一种独特的方式解决某个问题，则要在注释中解释你是如何做的。</li>
+<li>Hack——因为存在浏览器差异，JavaScript 代码一般会包含一些hack。不要假设其他人在看代码的时候能够理解hack 所要应付的浏览器问题。</li>
+</ul>
+<p>缩进和注释可以带来更可读的代码，在未来则更容易维护。<br><a id="more"></a></p>
+<h4 id="变量和函数命名"><a href="#变量和函数命名" class="headerlink" title="变量和函数命名"></a>变量和函数命名</h4><p>命名的一般规则：</p>
+<ul>
+<li>变量名应为名词如car 或person。</li>
+<li>函数名应该以动词开始，如getName()。返回布尔类型值的函数一般以is 开头，如isEnable()。</li>
+<li>变量和函数都应使用合乎逻辑的名字，不要担心长度。长度问题可以通过后处理和压缩来缓解。</li>
+</ul>
+<h4 id="变量类型透明"><a href="#变量类型透明" class="headerlink" title="变量类型透明"></a>变量类型透明</h4><p>由于在JavaScript 中变量是松散类型的，很容易就忘记变量所应包含的数据类型。<br>合适的命名方式可以一定程度上缓解这个问题，但放到所有的情况下看，还不够。有三种表示变量数据类型的方式。</p>
+<p>第一种方式是初始化。当定义了一个变量后，它应该被初始化为一个值，来暗示它将来应该如何应用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过初始化指定变量类型</span></div><div class="line"><span class="keyword">var</span> found = <span class="literal">false</span>; <span class="comment">//布尔型</span></div><div class="line"><span class="keyword">var</span> count = <span class="number">-1</span>; <span class="comment">//数字</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">""</span>; <span class="comment">//字符串</span></div><div class="line"><span class="keyword">var</span> person = <span class="literal">null</span>; <span class="comment">//对象</span></div></pre></td></tr></table></figure>
+<p>初始化为一个特定的数据类型可以很好的指明变量的类型。但缺点是它无法用于函数声明中的函数参数。</p>
+<p>第二种方法是使用匈牙利标记法来指定变量类型。</p>
+<p>匈牙利标记法在变量名之前加上一个或多个字符来表示数据类型。<br>这个标记法在脚本语言中很流行，曾经很长时间也是JavaScript 所推崇的方式。</p>
+<p>JavaScript 中最传统的匈牙利标记法是用单个字符表示基本类型：”o”代表对象，”s”代表字符串，”i”代表整数，”f”代表浮点数，”b”代表布尔型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用于指定数据类型的匈牙利标记法</span></div><div class="line"><span class="keyword">var</span> bFound; <span class="comment">//布尔型</span></div><div class="line"><span class="keyword">var</span> iCount; <span class="comment">//整数</span></div><div class="line"><span class="keyword">var</span> sName; <span class="comment">//字符串</span></div><div class="line"><span class="keyword">var</span> oPerson; <span class="comment">//对象</span></div></pre></td></tr></table></figure>
+<p>JavaScript 中用匈牙利标记法的好处是函数参数一样可以使用。但它的缺点是让代码某种程度上难以阅读，阻碍了没有用它时代码的直观性和句子式的特质。</p>
+<p>最后一种指定变量类型的方式是使用类型注释。<br>类型注释放在变量名右边，但是在初始化前面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用于指定类型的类型注释</span></div><div class="line"><span class="keyword">var</span> found <span class="comment">/*:Boolean*/</span> = <span class="literal">false</span>;</div><div class="line"><span class="keyword">var</span> count <span class="comment">/*:int*/</span> = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> name <span class="comment">/*:String*/</span> = <span class="string">"Nicholas"</span>;</div><div class="line"><span class="keyword">var</span> person <span class="comment">/*:Object*/</span> = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
+<p>类型注释维持了代码的整体可读性，同时注入了类型信息。<br>类型注释的缺点是你不能用多行注释一次注释大块的代码，因为类型注释也是多行注释，两者会冲突。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//以下代码不能正确运行</span></div><div class="line"><span class="comment">/*</span></div><div class="line">var found /*:Boolean*/ = <span class="literal">false</span>;</div><div class="line"><span class="keyword">var</span> count <span class="comment">/*:int*/</span> = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> name <span class="comment">/*:String*/</span> = <span class="string">"Nicholas"</span>;</div><div class="line"><span class="keyword">var</span> person <span class="comment">/*:Object*/</span> = <span class="literal">null</span>;</div><div class="line">*<span class="regexp">/</span></div></pre></td></tr></table></figure>
+<p>每种都有各自的优势和劣势，要自己在使用之前进行评估。最重要的是要确定哪种最适合你的项目并一致使用。</p>
+<h3 id="松散耦合"><a href="#松散耦合" class="headerlink" title="松散耦合"></a>松散耦合</h3><p>只要应用的某个部分过分依赖于另一部分，代码就是耦合过紧，难于维护。<br>典型的问题如：对象直接引用另一个对象，并且当修改其中一个的同时需要修改另外一个。紧密耦合的软件难于维护并且需要经常重写。</p>
+<h4 id="解耦HTML-JavaScript"><a href="#解耦HTML-JavaScript" class="headerlink" title="解耦HTML/JavaScript"></a>解耦HTML/JavaScript</h4><p>一种最常见的耦合类型是HTML/JavaScript 耦合。<br>在Web 上，HTML 和JavaScript 各自代表了解决方案中的不同层次：HTML 是数据，JavaScript 是行为。</p>
+<p>直接写在HTML 中的JavaScript，使用包含内联代码的<code>&lt;script&gt;</code>元素或者是使用HTML 属性来分配事件处理程序，都是过于紧密的耦合。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 使用了 &lt;script&gt; 的紧密耦合的 HTML/JavaScript --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="built_in">document</span>.write(<span class="string">"Hello world!"</span>);</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 使用事件处理程序属性值的紧密耦合的 HTML/JavaScript --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Click Me"</span> <span class="attr">onclick</span>=<span class="string">"doSomething()"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>虽然这些从技术上来说都是正确的，但是实践中，它们将表示数据的HTML 和定义行为的JavaScript紧密耦合在了一起。<br>理想情况是，HTML 和JavaScript 应该完全分离，并通过外部文件和使用DOM 附加行为来包含JavaScript。</p>
+<p>当HTML 和JavaScript 过于紧密的耦合在一起时，出现JavaScript 错误时就要先判断错误是出现在HTML 部分还是在JavaScript 文件中。<br>它还会引入和代码是否可用的相关新问题。在这个例子中，可能在doSomething()函数可用之前，就已经按下了按钮，引发了一个JavaScript 错误。<br>因为任何对按钮行为的更改要同时触及HTML 和JavaScript，因此影响了可维护性。而这些更改本该只在JavaScript 中进行。</p>
+<p>HTML 和JavaScript 的紧密耦合也可以在相反的关系上成立：JavaScript 包含了HTML。<br>这通常会出现在使用innerHTML 来插入一段HTML 文本到页面上这种情况中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将HTML 紧密耦合到JavaScript</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertMessage</span>(<span class="params">msg</span>)</span>&#123;</div><div class="line"><span class="keyword">var</span> container = <span class="built_in">document</span>.getElementById(<span class="string">"container"</span>);</div><div class="line">container.innerHTML = <span class="string">"&lt;div class=\"msg\"&gt;&lt;p class=\"post\"&gt;"</span> + msg + <span class="string">"&lt;/p&gt;"</span> +</div><div class="line"><span class="string">"&lt;p&gt;&lt;em&gt;Latest message above.&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般来说，应该避免在JavaScript 中创建大量HTML。再一次重申要保持层次的分离，这样可以很容易的确定错误来源。</p>
+<p>HTML 呈现应该尽可能与JavaScript 保持分离。当JavaScript 用于插入数据时，尽量不要直接插入标记。<br>一般可以在页面中直接包含并隐藏标记，然后等到整个页面渲染好之后，就可以用JavaScript 显示该标记，而非生成它。</p>
+<p>另一种方法是进行Ajax 请求并获取更多要显示的HTML，这个方法可以让同样的渲染层（PHP、JSP、Ruby 等等）来输出标记，而不是直接嵌在JavaScript 中。</p>
+<p>将HTML 和JavaScript 解耦可以在调试过程中节省时间，更加容易确定错误的来源，也减轻维护的难度：<br>更改行为只需要在JavaScript 文件中进行，而更改标记则只要在渲染文件中。</p>
+<h4 id="解耦CSS-JavaScript"><a href="#解耦CSS-JavaScript" class="headerlink" title="解耦CSS/JavaScript"></a>解耦CSS/JavaScript</h4><p>另一个Web 层则是CSS，它主要负责页面的显示。<br>JavaScript 和CSS 也是非常紧密相关的：他们都是HTML 之上的层次，因此常常一起使用。<br>但是，和HTML 与JavaScript 的情况一样，CSS 和JavaScript也可能会过于紧密地耦合在一起。<br>最常见的紧密耦合的例子是使用JavaScript 来更改某些样式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//CSS 对JavaScript 的紧密耦合</span></div><div class="line">element.style.color = <span class="string">"red"</span>;</div><div class="line">element.style.backgroundColor = <span class="string">"blue"</span>;</div></pre></td></tr></table></figure>
+<p>由于CSS 负责页面的显示，当显示出现任何问题时都应该只是查看CSS 文件来解决。<br>然而，当使用了JavaScript 来更改某些样式的时候，比如颜色，就出现了第二个可能已更改和必须检查的地方。<br>如果未来需要更改样式表，CSS 和JavaScript 文件可能都需要修改。这就给开发人员造成了维护上的噩梦。<br>所以在这两个层次之间必须有清晰的划分。</p>
+<p>现代Web 应用常常要使用JavaScript 来更改样式，所以虽然不可能完全将CSS 和JavaScript 解耦，但是还是能让耦合更松散的。<br>这是通过动态更改样式类而非特定样式来实现的:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//CSS 对 JavaScript 的松散耦合</span></div><div class="line">element.className = <span class="string">"edit"</span>;</div></pre></td></tr></table></figure>
+<p>通过只修改某个元素的CSS 类，就可以让大部分样式信息严格保留在CSS 中。<br>JavaScript 可以更改样式类，但并不会直接影响到元素的样式。只要应用了正确的类，那么任何显示问题都可以直接追溯到CSS 而非JavaScript。</p>
+<p>第二类紧密耦合仅会在IE 中出现（但运行于标准模式下的IE8 不会出现），它可以在CSS 中通过表达式嵌入JavaScript。<br>(使用范围太小，pass)</p>
+<p>好的层次划分是非常重要的。显示问题的唯一来源应该是CSS，行为问题的唯一来源应该是JavaScript。<br>在这些层次之间保持松散耦合可以让你的整个应用更加易于维护。</p>
+<h4 id="解耦应用逻辑／事件处理程序"><a href="#解耦应用逻辑／事件处理程序" class="headerlink" title="解耦应用逻辑／事件处理程序"></a>解耦应用逻辑／事件处理程序</h4><p>每个Web 应用一般都有相当多的事件处理程序，监听着无数不同的事件。然而，很少有能仔细得将应用逻辑从事件处理程序中分离的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleKeyPress</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">event = EventUtil.getEvent(event);</div><div class="line"><span class="keyword">if</span> (event.keyCode == <span class="number">13</span>)&#123;</div><div class="line"><span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line"><span class="keyword">var</span> value = <span class="number">5</span> * <span class="built_in">parseInt</span>(target.value);</div><div class="line"><span class="keyword">if</span> (value &gt; <span class="number">10</span>)&#123;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"error-msg"</span>).style.display = <span class="string">"block"</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个事件处理程序除了包含了应用逻辑，还进行了事件的处理。<br>这种方式的问题有其双重性。<br>首先，除了通过事件之外就再没有方法执行应用逻辑，这让调试变得困难。如果没有发生预想的结果怎么办？<br>是不是表示事件处理程序没有被调用还是指应用逻辑失败？<br>其次，如果一个后续的事件引发同样的应用逻辑，那就必须复制功能代码或者将代码抽取到一个单独的函数中。<br>无论何种方式，都要作比实际所需更多的改动。</p>
+<p>较好的方法是将应用逻辑和事件处理程序相分离，这样两者分别处理各自的东西。<br>一个事件处理程序应该从事件对象中提取相关信息，并将这些信息传送到处理应用逻辑的某个方法中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateValue</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">value = <span class="number">5</span> * <span class="built_in">parseInt</span>(value);</div><div class="line"><span class="keyword">if</span> (value &gt; <span class="number">10</span>)&#123;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"error-msg"</span>).style.display = <span class="string">"block"</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleKeyPress</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">event = EventUtil.getEvent(event);</div><div class="line"><span class="keyword">if</span> (event.keyCode == <span class="number">13</span>)&#123;</div><div class="line"><span class="keyword">var</span> target = EventUtil.getTarget(event);</div><div class="line">validateValue(target.value);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>改动过的代码合理将应用逻辑从事件处理程序中分离了出来。<br>handleKeyPress() 函数确认是按下了Enter 键（event.keyCode 为13），取得了事件的目标并将value 属性传递给validateValue()函数，这个函数包含了应用逻辑。<br>注意validateValue()中没有任何东西会依赖于任何事件处理程序逻辑，它只是接收一个值，并根据该值进行其他处理。</p>
+<p>从事件处理程序中分离应用逻辑有几个好处。<br>首先，可以让你更容易更改触发特定过程的事件。<br>其次，可以在不附加到事件的情况下测试代码，使其更易创建单元测试或者是自动化应用流程。</p>
+<p>要牢记的应用和业务逻辑之间松散耦合的几条原则：</p>
+<ul>
+<li>勿将event 对象传给其他方法；只传来自event 对象中所需的数据；</li>
+<li>任何可以在应用层面的动作都应该可以在不执行任何事件处理程序的情况下进行；</li>
+<li>任何事件处理程序都应该处理事件，然后将处理转交给应用逻辑。</li>
+</ul>
+<h3 id="编程实践"><a href="#编程实践" class="headerlink" title="编程实践"></a>编程实践</h3><p>最好坚持以下一些编程实践:</p>
+<h4 id="尊重对象所有权"><a href="#尊重对象所有权" class="headerlink" title="尊重对象所有权"></a>尊重对象所有权</h4><p>也许在企业环境中最重要的编程实践就是尊重对象所有权，它的意思是你不能修改不属于你的对象。<br>更具体地说：</p>
+<ul>
+<li>不要为实例或原型添加属性；</li>
+<li>不要为实例或原型添加方法；</li>
+<li>不要重定义已存在的方法。</li>
+</ul>
+<p>最佳的方法便是永远不修改不是由你所有的对象。<br>所谓拥有对象，就是说这个对象是你创建的，比如你自己创建的自定义类型或对象字面量。<br>而Array、document 这些显然不是你的，它们在你的代码执行前就存在了。<br>依然可以通过以下方式为对象创建新的功能：</p>
+<ul>
+<li>创建包含所需功能的新对象，并用它与相关对象进行交互；</li>
+<li>创建自定义类型，继承需要进行修改的类型。然后可以为自定义类型添加额外功能。</li>
+</ul>
+<p>现在很多JavaScript 库都赞同并遵守这条开发原理，这样即使浏览器频繁更改，库本身也能继续成长和适应。</p>
+<h4 id="避免全局量"><a href="#避免全局量" class="headerlink" title="避免全局量"></a>避免全局量</h4><p>与尊重对象所有权密切相关的是尽可能避免全局变量和函数。<br>这也关系到创建一个脚本执行的一致的和可维护的环境。<br>最多创建一个全局变量，让其他对象和函数存在其中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//两个全局量——避免！！</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">"Nicholas"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(name);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码包含了两个全局量：变量name 和函数sayName()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//一个全局量——推荐</span></div><div class="line"><span class="keyword">var</span> MyApplication = &#123;</div><div class="line">name: <span class="string">"Nicholas"</span>,</div><div class="line">sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">alert(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>这段重写的代码引入了一个单一的全局对象MyApplication，name 和sayName()都附加到其上。<br>这样做消除了一些存在于前一段代码中的一些问题。<br>首先，变量name 覆盖了window.name 属性，可能会与其他功能产生冲突；其次，它有助消除功能作用域之间的混淆。<br>调用MyApplication.sayName()在逻辑上暗示了代码的任何问题都可以通过检查定义MyApplication 的代码来确定。</p>
+<p>单一的全局量的延伸便是命名空间的概念，由YUI（Yahoo! User Interface）库普及。<br>命名空间包括创建一个用于放置功能的对象。在YUI 的2.x 版本中，有若干用于追加功能的命名空间。比如：</p>
+<ul>
+<li>YAHOO.util.Dom —— 处理DOM 的方法；</li>
+<li>YAHOO.util.Event —— 与事件交互的方法；</li>
+<li>YAHOO.lang —— 用于底层语言特性的方法。</li>
+</ul>
+<p>对于YUI，单一的全局对象YAHOO 作为一个容器，其中定义了其他对象。<br>用这种方式将功能组合在一起的对象，叫做命名空间。<br>整个YUI 库便是构建在这个概念上的，让它能够在同一个页面上与其他的JavaScript 库共存。</p>
+<p>命名空间很重要的一部分是确定每个人都同意使用的全局对象的名字，并且尽可能唯一，让其他人不太可能也使用这个名字。在大多数情况下，可以是开发代码的公司的名字，例如YAHOO 或者Wrox。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建全局对象</span></div><div class="line"><span class="keyword">var</span> Wrox = &#123;&#125;;</div><div class="line"><span class="comment">//为 Professional JavaScript 创建命名空间</span></div><div class="line">Wrox.ProJS = &#123;&#125;;</div><div class="line"><span class="comment">//将书中用到的对象附加上去</span></div><div class="line">Wrox.ProJS.EventUtil = &#123; ... &#125;;</div><div class="line">Wrox.ProJS.CookieUtil = &#123; ... &#125;;</div></pre></td></tr></table></figure>
+<p>在这个例子中，Wrox 是全局量，其他命名空间在此之上创建。<br>只要所有人都遵循这个规则，那么就不用担心其他人也创建叫做EventUtil 或者CookieUtil 的对象，因为它会存在于不同的命名空间中。</p>
+<p>虽然命名空间会需要多写一些代码，但是对于可维护的目的而言是值得的。<br>命名空间有助于确保代码可以在同一个页面上与其他代码以无害的方式一起工作。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag"># Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/08/javascript-note-23-2/" rel="next" title="《 JavaScript 高级程序设计》备忘-第二十三章-2">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第二十三章-2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/10/javascript-note-24-2/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第二十四章-2">
+                《 JavaScript 高级程序设计》备忘-第二十四章-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#最佳实践"><span class="nav-number">1.</span> <span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可维护性"><span class="nav-number">1.1.</span> <span class="nav-text">可维护性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是可维护的代码"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是可维护的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码约定"><span class="nav-number">1.1.2.</span> <span class="nav-text">代码约定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可读性"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">可读性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量和函数命名"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">变量和函数命名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量类型透明"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">变量类型透明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#松散耦合"><span class="nav-number">1.1.3.</span> <span class="nav-text">松散耦合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解耦HTML-JavaScript"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">解耦HTML/JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解耦CSS-JavaScript"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">解耦CSS/JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解耦应用逻辑／事件处理程序"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">解耦应用逻辑／事件处理程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程实践"><span class="nav-number">1.1.4.</span> <span class="nav-text">编程实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#尊重对象所有权"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">尊重对象所有权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#避免全局量"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">避免全局量</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

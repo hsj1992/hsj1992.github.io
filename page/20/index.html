@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-4/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/19/javascript-note-5-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/javascript-note-4/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第四章
+                <a class="post-title-link" href="/2016/09/19/javascript-note-5-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第五章-3
                 </a>
               
             
@@ -368,14 +368,13 @@
 
       
         
-          <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>基本数据类型： Undefined 、 Null 、 Boolean 、 Number 和 String 。<br>基本类型值在内存中占据固定大小的空间，因此被保存在栈内存中。<br>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。</p>
-<p>引用类型的值是保存在内存中的对象(Object)。<br>引用类型的值是对象，保存在堆内存中。<br>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的指针。<br>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</p>
-<p>JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。<br>在操作对象时，实际上是在操作对象的引用而不是实际的对象。<br>为此，引用类型的值是按引用访问的。(当复制保存着对象的某个变量时，操作的是对象的引用。但在为对象添加属性时，操作的是实际<br>的对象。)</p>
-<p>在很多语言中，字符串以对象的形式来表示，因此被认为是引用类型的。<br>ECMAScript 放弃了这一传统。</p>
-<h2 id="动态的属性"><a href="#动态的属性" class="headerlink" title="动态的属性"></a>动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。(Object)<br>只能给引用类型值动态地添加属性，以便将来使用。(给基本类型的添加了也是 undefined)</p>
+          <h1 id="Function-类型"><a href="#Function-类型" class="headerlink" title="Function 类型"></a>Function 类型</h1><p>ECMAScript 中最有意思的是函数——因为函数实际上是对象。<br>JavaScript 最有特色的地方。<br>每个函数都是 Function 类型的实例，而且都与其他引用类型一样具有属性和方法。<br>由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span> (<span class="params">num1, num2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*等同于*/</span></div><div class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> num1 + num2;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"num1"</span>, <span class="string">"num2"</span>, <span class="string">"return num1 + num2"</span>); <span class="comment">// 不推荐</span></div></pre></td></tr></table></figure>
+<p>在使用函数表达式定义函数时，没有必要使用函数名——通过变量 sum 即可以引用函数。<br>另外，还要注意函数末尾有一个分号，就像声明其他变量时一样。<br>最后一种定义函数的方式是使用 Function 构造函数。<br>但是不推荐这种方法定义函数，因为这种语法会导致解析两次代码(第一次是解析常规 ECMAScript 代码，第二次是解析传入构造函数中的字符串)，从而影响性能。</p>
+<p>使用不带圆括号的函数名是访问函数指针，而非调用函数。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-4/#more" rel="contents">
+            <a class="btn" href="/2016/09/19/javascript-note-5-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -416,7 +415,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-3-3/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/19/javascript-note-5-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -441,8 +440,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/javascript-note-3-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第三章-3
+                <a class="post-title-link" href="/2016/09/19/javascript-note-5-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第五章-2
                 </a>
               
             
@@ -485,19 +484,12 @@
 
       
         
-          <h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><p>ECMA-262 规定了一组语句(也称为流控制语句)。</p>
-<h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statement1 <span class="keyword">else</span> statement2</div></pre></td></tr></table></figure>
-<p>其中的 condition(条件)可以是任意表达式；而且对这个表达式求值的结果不一定是布尔值。<br>ECMAScript 会自动调用 <code>Boolean()</code> 转换函数将这个表达式的结果转换为一个布尔值。</p>
-<p><strong>业界普遍推崇的最佳实践是始终使用代码块，即使要执行的只有一行代码。</strong>因为这样可以消除人们的误解，否则可能让人分不清在不同条件下要执行哪些语句。</p>
-<h2 id="do-while-语句"><a href="#do-while-语句" class="headerlink" title="do-while 语句"></a>do-while 语句</h2><p>要点：<strong>像 do-while 这种后测试循环语句最常用于循环体中的代码至少要被执行一次的情形。</strong></p>
-<h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><p>while 语句属于前测试循环语句，也就是说，在循环体内的代码被执行之前，就会对出口条件求值。</p>
-<h2 id="for-语句"><a href="#for-语句" class="headerlink" title="for 语句"></a>for 语句</h2><p>for 语句也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。</p>
-<p><strong>使用 while 循环做不到的，使用 for 循环同样也做不到。</strong>也就是说， for 循环只是把与循环有关的代码集中在了一个位置。</p>
-<p>由于 ECMAScript 中不存在块级作用域，因此在循环内部定义的变量也可以在外部访问到。</p>
-<p>for 语句中的初始化表达式、控制表达式和循环后表达式都是可选的。将这三个表达式全部省略，就会创建一个无限循环。</p>
+          <h1 id="Date-类型"><a href="#Date-类型" class="headerlink" title="Date 类型"></a>Date 类型</h1><p>创建一个 Date 对象，使用 new 操作符和 Date 构造函数即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
+<p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。<br>如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数。(从 UTC 时间 1970 年 1 月 1 日午夜起至该日期止经过的毫秒数)<br>了简化这一计算过程， ECMAScript 提供了两个方法： Date.parse()和 Date.UTC() 。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-3-3/#more" rel="contents">
+            <a class="btn" href="/2016/09/19/javascript-note-5-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -538,7 +530,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-3-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-5-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -563,8 +555,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/17/javascript-note-3-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第三章-2
+                <a class="post-title-link" href="/2016/09/17/javascript-note-5-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第五章-1
                 </a>
               
             
@@ -607,15 +599,21 @@
 
       
         
-          <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><p>包括算术操作符(如加号和减号)、位操作符、关系操作符和相等操作符。<br>ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字符串、数字值、布尔值，甚至对象。<br>不过，<strong>在应用于对象时，相应的操作符通常都会调用对象的 valueOf()和(或) toString() 方法，以便取得可以操作的值。</strong></p>
-<h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h2><h3 id="递增递减操作符"><a href="#递增递减操作符" class="headerlink" title="递增递减操作符"></a>递增递减操作符</h3><p>执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。(在计算机科学领域，这种情况通常被称作副效应。)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="keyword">var</span> anotherAge = --age + <span class="number">2</span>;</div><div class="line">alert(age); <span class="comment">// 输出 28</span></div><div class="line">alert(anotherAge); <span class="comment">// 输出 30</span></div></pre></td></tr></table></figure>
-<p>后置递增和递减与前置递增和递减有一个非常重要的区别，即递增和递减操作是在包含它们的语句被求值之后才执行的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> num2 = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> num3 = num1-- + num2; <span class="comment">//  等于 22</span></div><div class="line"><span class="keyword">var</span> num4 = num1 + num2; <span class="comment">// 等于 21</span></div></pre></td></tr></table></figure>
-<p>作用数据类型时候，等同于先 Number() 再加减1，会像 Number() 转型函数一样对这个值执行转换。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript 不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
+<p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
+<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>Object 是一个基础类型，其他所有类型都从 Object 继承了基本的行为。</p>
+<h2 id="创建-Object-实例的方式"><a href="#创建-Object-实例的方式" class="headerlink" title="创建 Object 实例的方式"></a>创建 Object 实例的方式</h2><ol>
+<li>使用 new 操作符后跟 Object 构造函数:<code>var person = new Object();</code></li>
+<li><p>使用对象字面量表示法：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">    <span class="string">"name"</span> : <span class="string">"Nicholas"</span>,</div><div class="line">    <span class="string">"age"</span> : <span class="number">29</span>,</div><div class="line">    <span class="number">5</span> : <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p> 左边的花括号( { )表示对象字面量的开始，如果是在 if 语句的后面，则表示一个语句块的开始。<br> 在使用对象字面量语法时，属性名也可以使用字符串。5会自动转化为字符串。<br> 使用字面量表示法不会调用 Object 构造函数。<br> 使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象。<code>var person = {}; //与 new Object()相同</code><br> 关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。<br> 因为这种语法要求的代码量少，而且能够给人封装数据的感觉，开发人员更青睐对象字面量语法。<br> 对象字面量也是向函数传递大量可选参数的首选方式。<br> 在函数中的使用：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">displayInfo(&#123;</div><div class="line">    name: <span class="string">"Nicholas"</span>,</div><div class="line">    age: <span class="number">29</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p> 最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
+</li>
+</ol>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-3-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/17/javascript-note-5-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -651,7 +649,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -692,7 +690,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -887,10 +885,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -899,7 +897,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

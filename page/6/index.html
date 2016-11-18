@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/24/javascript-note-15-3/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/01/javascript-note-17-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/24/javascript-note-15-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十五章-3
+                <a class="post-title-link" href="/2016/11/01/javascript-note-17-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十七章-1
                 </a>
               
             
@@ -368,11 +368,15 @@
 
       
         
-          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h2><p>WebGL 是针对Canvas 的3D 上下文。<br>与其他Web 技术不同，WebGL 并不是W3C 制定的标准，而是由Khronos Group 制定的。<br>Khronos Group 也设计了其他图形处理API，比如OpenGL ES 2.0。浏览器中使用的WebGL 就是基于OpenGL ES 2.0 制定的。</p>
-<p>要全面了解OpenGL，请访问<a href="http://www.opengl.org/">http://www.opengl.org/</a>。要全面学习WebGL，请参考<a href="http://www.learningwebgl.com/">http://www.learningwebgl.com/</a>，其中包含非常棒的系列教程。<br>
+          <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><p>JavaScript 本身是动态语言，(动态语言，是指程序在运行时可以改变其结构：新的函数可以被引进，已有的函数可以被删除等在结构上的变化。)<br>原本出错时给的信息都让人摸不着头脑。ECMAScript第三版引入了try-catch 和throw 语句以及一些错误类型，意在让开发人员能够适当地处理错误。<br>之后出现了不少JavaScript调试程序和工具。</p>
+<h2 id="浏览器报告的错误"><a href="#浏览器报告的错误" class="headerlink" title="浏览器报告的错误"></a>浏览器报告的错误</h2><p>主流浏览器都具有某种向用户报告 JavaScript 错误的机制。默认情况下隐藏。</p>
+<h3 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h3><p>IE 是唯一一个在浏览器的界面窗体（chrome。chrome的意思是界面窗体?）中显示JavaScript 错误信息的浏览器。<br>在发生JavaScript错误时，浏览器左下角会出现一个黄色的图标，图标旁边则显示着”Error on page”（页面中有错误）。<br>可以双击查看相关信息（但不详细）。</p>
+<p>对于Web开发还可以通过设置让错误对话框直接显示出来。</p>
+<p>IE8和IE9自带脚本调试器。（更早版本需要安装）<br>在IE7 及更早版本中，如果错误发生在位于外部文件的脚本中，行号通常会与错误所在的行号差1。如果是嵌入在页面中的脚本发生错误，则行号就是错误所在的行号。</p>
+<h3 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h3><p>默认情况下，Firefox不会通过浏览器界面给出提示。可以从后台的错误控制台看到错误。<br>Firefox 插件Firebug现在已经成为开发人员必备的JavaScript 纠错工具。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/24/javascript-note-15-3/#more" rel="contents">
+            <a class="btn" href="/2016/11/01/javascript-note-17-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -413,7 +417,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/24/javascript-note-15-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/30/javascript-note-16-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -438,8 +442,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/24/javascript-note-15-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十十五章-2
+                <a class="post-title-link" href="/2016/10/30/javascript-note-16-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十六章-2
                 </a>
               
             
@@ -482,17 +486,13 @@
 
       
         
-          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><h2 id="2D-上下文"><a href="#2D-上下文" class="headerlink" title="2D 上下文"></a>2D 上下文</h2><h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><p>通过上下文的变换，可以把处理后的图像绘制到画布上。<br>2D 绘制上下文支持各种基本的绘制变换。<br>创建绘制上下文时，会以默认值初始化变换矩阵，在默认的变换矩阵下，所有处理都按描述直接绘制。<br>为绘制上下文应用变换，会导致使用不同的变换矩阵应用处理，从而产生不同的结果。</p>
-<ul>
-<li>rotate(angle)：围绕原点旋转图像angle 弧度。</li>
-<li>scale(scaleX, scaleY)：缩放图像，在x 方向乘以scaleX，在y 方向乘以scaleY。scaleX和scaleY 的默认值都是1.0。</li>
-<li>translate(x, y)：将坐标原点移动到(x,y)。执行这个变换之后，坐标(0,0)会变成之前由(x,y)表示的点。</li>
-<li>transform(m1_1, m1_2, m2_1, m2_2, dx, dy)：直接修改变换矩阵，方式是乘以如下矩阵。<br>  m1_1    m1_2    dx<br>  m2_1    m2_2    dy<br>  0       0       1</li>
-<li>setTransform(m1_1, m1_2, m2_1, m2_2, dx, dy)：将变换矩阵重置为默认状态，然后再调用transform()。</li>
-</ul>
+          <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="媒体元素"><a href="#媒体元素" class="headerlink" title="媒体元素"></a>媒体元素</h2><p>Flash毒瘤，不得不用。而HTML5 新增了<code>&lt;audio&gt;</code>和<code>&lt;video&gt;</code>，为了摆脱毒瘤。<br>它们都提供了用于实现常用功能的JavaScript API，允许为媒体创建自定义的控件。<br><code>&lt;video src=&quot;conference.mpg&quot; id=&quot;myVideo&quot;&gt;Video player not available.&lt;/video&gt;</code></p>
+<p>必需:src 属性，指向要加载的媒体文件。<br>可选:width和height 属性以指定视频播放器的大小，<br>可选:poster 属性指定图像的URI 可以在加载视频内容期间显示一幅图像。<br>可选:controls 属性，则意味着浏览器应该显示UI 控件，以便用户直接操作媒体。<br>标签之间的任何内容都将作为后备内容，在浏览器不支持这两个媒体元素的情况下显示。</p>
+<p>因为并非所有浏览器都支持所有媒体格式，所以可以指定多个不同的媒体来源。利用<code>&lt;source&gt;</code>标签。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 嵌入视频 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"myVideo"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"conference.webm"</span> <span class="attr">type</span>=<span class="string">"video/webm; codecs='vp8, vorbis'"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"conference.ogv"</span> <span class="attr">type</span>=<span class="string">"video/ogg; codecs='theora, vorbis'"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"conference.mpg"</span>&gt;</span></div><div class="line">Video player not available.</div><div class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 嵌入音频 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">id</span>=<span class="string">"myAudio"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"song.ogg"</span> <span class="attr">type</span>=<span class="string">"audio/ogg"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"song.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span>&gt;</span></div><div class="line">Audio player not available.</div><div class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/24/javascript-note-15-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/30/javascript-note-16-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -533,7 +533,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/23/javascript-note-15-1/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/26/javascript-note-16-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -558,8 +558,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/23/javascript-note-15-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十十五章-1
+                <a class="post-title-link" href="/2016/10/26/javascript-note-16-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十六章-1
                 </a>
               
             
@@ -602,12 +602,14 @@
 
       
         
-          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p>HTML5 添加的最受欢迎的功能。<br>在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。<br>IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持<code>&lt;canvas&gt;</code>。<br>与浏览器环境中的其他组件类似，<code>&lt;canvas&gt;</code>由几组API 构成，但并非所有浏览器都支持所有这些API。<br><code>&lt;canvas&gt;</code>还建议了一个名为WebGL 的3D 上下文。<br>目前，支持该元素的浏览器都支持2D 上下文及文本API，但对WebGL 的支持还不够好。</p>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>先设置其width 和height 属性，指定可以绘图的区域大小。<br>出现在开始和结束标签中的内容是<strong>后备(替换)信息</strong>，如果浏览器不支持<code>&lt;canvas&gt;</code>元素，就会显示这些信息。<br><code>&lt;canvas id=&quot;drawing&quot; width=&quot; 200&quot; height=&quot;200&quot;&gt;&lt;img src=&quot;images/clock.png&quot; width=&quot;150&quot; height=&quot;150&quot; alt=&quot;&quot;/&gt;&lt;/canvas&gt;</code><br>也能通过CSS 为该元素添加样式，如果不添加任何样式或者不绘制任何图形，在页面中是看不到该元素的。<br>要在这块画布（canvas）上绘图，需要取得绘图上下文。<br>而取得绘图上下文对象的引用，需要调用getContext()方法并传入上下文的名字。<br>传入”2d”，就可以取得2D 上下文对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//更多代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="跨文档消息传递"><a href="#跨文档消息传递" class="headerlink" title="跨文档消息传递"></a>跨文档消息传递</h2><p>跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。<br>例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。<br>在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。</p>
+<p>XDM 的核心是postMessage()方法。<br>在HTML5 规范中，除了XDM部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于XDM而言，“另一个地方”指的是包含在当前页面中的<code>&lt;iframe&gt;</code>元素，或者由当前页面弹出的窗口。<br>postMessage()方法接收两个参数：一条消息和一个表示消息接收方来自哪个域的字符串。<br>第二个参数对保障安全通信非常重要，可以防止浏览器把消息发送到不安全的地方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注意：所有支持XDM 的浏览器也支持iframe 的contentWindow 属性</span></div><div class="line"><span class="keyword">var</span> iframeWindow = <span class="built_in">document</span>.getElementById(<span class="string">"myframe"</span>).contentWindow;</div><div class="line">iframeWindow.postMessage(<span class="string">"A secret"</span>, <span class="string">"http://www.wrox.com"</span>);</div></pre></td></tr></table></figure>
+<p>最后一行代码尝试向内嵌框架中发送一条消息，并指定框架中的文档必须来源于”<a href="http://www.wrox.com&quot;域。">http://www.wrox.com&quot;域。</a><br>如果来源匹配，消息会传递到内嵌框架中；否则，postMessage()什么也不做。<br>这一限制可以避免窗口中的位置在你不知情的情况下发生改变。</p>
+<p>接收到XDM消息时，会触发window 对象的message 事件。这个事件是以异步形式触发的，因此从发送消息到接收消息（触发接收窗口的message 事件）可能要经过一段时间的延迟。<br>触发message事件后，传递给onmessage 处理程序的事件对象包含以下三方面的重要信息。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/23/javascript-note-15-1/#more" rel="contents">
+            <a class="btn" href="/2016/10/26/javascript-note-16-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -643,7 +645,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -684,7 +686,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -879,10 +881,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -891,7 +893,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/29/html-css-diary-3/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/06/html-css-diary-5/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/29/html-css-diary-3/" itemprop="url">
-                  《 HTML5 与 CSS3 基础教程》备忘3
+                <a class="post-title-link" href="/2016/09/06/html-css-diary-5/" itemprop="url">
+                  《 HTML5 与 CSS3基础教程》备忘5
                 </a>
               
             
@@ -368,12 +368,25 @@
 
       
         
-          <h1 id="边距-简记法"><a href="#边距-简记法" class="headerlink" title="边距 简记法"></a>边距 简记法</h1><p><code>padding: 5px;</code>——使用一个值，这个值就会应用于全部四个边。<br><code>padding: 5px 9px;</code>——使用两个值，则前一个值会应用于上下两边，后一个值会应用于左右两边。<br><code>padding: 5px 9px 11px;</code>——使用三个值，则第一个值会应用于上边，第二个值会应用于左右两边，第三个值会应用于下边<br><code>padding: 5px 9px 11px 0;</code>——使用四个值，它们会按照时钟顺序，依次应用于上、右、下、左四个边.<br>应该也适用与 margin 。</p>
-<h1 id="Bootstrap-3的-box-sizing"><a href="#Bootstrap-3的-box-sizing" class="headerlink" title="Bootstrap 3的 box-sizing"></a>Bootstrap 3的 box-sizing</h1><p>学习到 <code>box-sizing:border-box</code> 时候发现原来 <strong>Bootstrap 3</strong> 已经把所有的盒模型都设置成 border-box 了……将 box-sizing 属性设置为 border-box ，就可以很方便地对拥有水平方向内边距(使用 em 或其他的单位)的元素定义宽度，而不必进行复杂的数学计算来找出百分数的值。这对响应式页面来说很方便。所以 Bootstrap 3 才用了 border-box 吧。</p>
-<h1 id="em-与-margin-、-padding"><a href="#em-与-margin-、-padding" class="headerlink" title="em 与 margin 、 padding"></a>em 与 margin 、 padding</h1><p>当 em 值用于内边距和外边距时，它的值是<strong>相对于元素的字体大小</strong>的，而不是相对于父元素的字体大小。</p>
+          <h1 id="单选按钮"><a href="#单选按钮" class="headerlink" title="单选按钮"></a>单选按钮</h1><ol>
+<li><code>type=&quot;radio&quot;</code> ，例子：性别的单选按钮。</li>
+<li>两个按钮的 name 属性都是 gender ，相同 name 才能实现同一时间只有其中一个能被选中。</li>
+<li>value 属性设置值，因为对于单选按钮访问者无法输入值。</li>
+<li>输入 checked 或者 <code>checked=&quot;checked&quot;</code> 让该单选按钮在页面打开时默认处于激活状态</li>
+</ol>
+<h1 id="复选框"><a href="#复选框" class="headerlink" title="复选框"></a>复选框</h1><ol>
+<li><code>type=&quot;checkbox&quot;</code> ,例子：选择订阅推送。</li>
+<li>name 属性相同，<code>name=&quot; boxset &quot;</code>。(如果使用 PHP 处理表单，使用 name=” boxset[] “)</li>
+<li>value 属性设置值，因为对于复选按钮访问者无法输入值。</li>
+<li>checked 方面跟单选按钮一样。</li>
+</ol>
+<h1 id="textarea-元素，文本区域"><a href="#textarea-元素，文本区域" class="headerlink" title="textarea 元素，文本区域"></a>textarea 元素，文本区域</h1><ol>
+<li>rows 和 cols 属性分别控制文本区域的高度和宽度，除非使用 CSS 覆盖其中之一或者全部。</li>
+<li>textarea 没有 value 属性，所以如果想要预设文本要直接在 textarea 标签之间添加文本。</li>
+</ol>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/29/html-css-diary-3/#more" rel="contents">
+            <a class="btn" href="/2016/09/06/html-css-diary-5/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -414,7 +427,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/29/html-css-diary-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/01/html-css-diary-4/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -439,8 +452,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/29/html-css-diary-2/" itemprop="url">
-                  《 HTML5 与 CSS3 基础教程》备忘2
+                <a class="post-title-link" href="/2016/09/01/html-css-diary-4/" itemprop="url">
+                  《 HTML5 与 CSS3 基础教程》备忘4
                 </a>
               
             
@@ -483,14 +496,24 @@
 
       
         
-          <h1 id="html-的其他属性"><a href="#html-的其他属性" class="headerlink" title="html 的其他属性"></a>html 的其他属性</h1><p>除非在 html 元素中添加 dir 属性并将属性值设为 rtl ，否则内容的基准方向都默认为从左至右。</p>
-<h1 id="span-和-div"><a href="#span-和-div" class="headerlink" title="span 和 div"></a>span 和 div</h1><p>span 只适合<strong>包围字词或短语内容</strong>，而 div 适合<strong>包含块级内容</strong>。由于 span 没有任何语义，因此应将它作为最后的选择，仅在没有其他合适的元素时才使用它。</p>
-<h1 id="bdo"><a href="#bdo" class="headerlink" title="bdo"></a>bdo</h1><p>bdo ( bidirectional override ，双向重载):用于显式地格式化其内容的文本方向。<br>要使用 bdo ，必须包含 dir 属性并将属性值设为 ltr (由左至右)或 rtl (由右至左)，指定你希望呈现的方向。(如果你的 HTML 页面中混合了从左至右书写的字符和从右至左书写的字符，就可能要用到 bdi 和 bdo 元素。)例子： <code>&lt;plang=&quot;he&quot;&gt;&lt;bdo dir=&quot;rtl&quot;&gt;...&lt;/bdo&gt;&lt;/p&gt;</code></p>
-<h1 id="bdi-元素"><a href="#bdi-元素" class="headerlink" title="bdi 元素"></a>bdi 元素</h1><p>bdi 指的是 bidi 隔离(Bi-directional Isolation)，用于标识独立于周围文本的用做双向文本格式化的一块文本。<br>bdi 元素是 HTML5 中新加的元素，用于内容的方向未知的情况。不必包含 dir 属性，因为默认已设为自动判断。例子：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>jcranmer<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    12 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>hober<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    5 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>User <span class="tag">&lt;<span class="name">bdi</span>&gt;</span>نا إي<span class="tag">&lt;/<span class="name">bdi</span>&gt;</span>:</div><div class="line">    3 posts.<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+          <h1 id="sprite"><a href="#sprite" class="headerlink" title="sprite"></a>sprite</h1><ul>
+<li>目的：<br>  将多个图像拼合成单个背景图像(sprite)，再通过 CSS 控制具体显示图像的哪一部分，从而减少多个图像的 HTTP 请求问题。常用于 UI 上的多个小图标、重复图标等。</li>
+<li>使用方法：<br>  <code>background-image</code> 获得图像，<code>background-position</code> 获得所取的具体位置(目前只知道 x 范围和 y 范围，但想必还可以更加深入的切取)</li>
+<li>工具：<br>  可以多个图片合成一张 sprite 的 CSS Sprite Generator:<a href="http://spritegen.website-performance.org/">http://spritegen.website-performance.org/</a></li>
+<li>关于 Retina 显示屏：<br>  使用长宽双倍大小像素的图片，一样的容器长宽，使其缩小。</li>
+</ul>
+<h1 id="列表的缩进对齐"><a href="#列表的缩进对齐" class="headerlink" title="列表的缩进对齐"></a>列表的缩进对齐</h1><p>默认的列表要左缩进对齐的话，用<code>padding-left:1.125em</code>，但是针对 IE7 及以下版本，还要使用<code>margin-left:0;</code></p>
+<h1 id="ol-、-ul-的选择"><a href="#ol-、-ul-的选择" class="headerlink" title="ol 、 ul 的选择"></a>ol 、 ul 的选择</h1><p>会因为顺序改变而改变的列表，使用有序列表，比如<strong>分页标记</strong>、<strong>面包屑导航</strong>；其他大多数情况下都可以用无序列表。</p>
+<h1 id="标记的修改"><a href="#标记的修改" class="headerlink" title="标记的修改"></a>标记的修改</h1><ul>
+<li>对于标记的修改，使用 <code>list-style-type:none;</code> 或者 <code>type=&quot;none&quot;;</code></li>
+<li><code>background: url( image.ext ) repeat-type horizontal vertical;</code> [ horizontal 、 vertical 是背景图像相对于元素的位置，默认为0]</li>
+<li><code>list-style-image</code> 不同浏览器显示效果不一致，更难控制位置(所以很少用)</li>
+</ul>
+<h1 id="列表的属性-start-、-value"><a href="#列表的属性-start-、-value" class="headerlink" title="列表的属性 start 、 value"></a>列表的属性 start 、 value</h1><p><code>&lt;ol&gt;</code> 中 <code>start=&quot;n&quot;</code> 表示列表初始值， <code>&lt;li&gt;</code> 的 <code>value=&quot;n&quot;</code> 表示该项目的值。 value 属性的值会覆盖 start 的值。</p>
+<h1 id="列表标记的位置"><a href="#列表标记的位置" class="headerlink" title="列表标记的位置"></a>列表标记的位置</h1><p><code>list-style-position</code> 默认为 <code>outside</code> ，可以设置为 <code>inside</code> 成为段落的一部分(像首个大写的字母)而不是独立在段落外。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/29/html-css-diary-2/#more" rel="contents">
+            <a class="btn" href="/2016/09/01/html-css-diary-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -531,7 +554,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/07/html-css-diary/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/30/target-blank-vulnerable/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -556,8 +579,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/07/html-css-diary/" itemprop="url">
-                  《 HTML5与 CSS3 基础教程》备忘
+                <a class="post-title-link" href="/2016/08/30/target-blank-vulnerable/" itemprop="url">
+                  target="_blank" 漏洞
                 </a>
               
             
@@ -600,17 +623,31 @@
 
       
         
-          <h1 id="Web-设计-在线网址"><a href="#Web-设计-在线网址" class="headerlink" title="Web 设计 在线网址"></a>Web 设计 在线网址</h1><p><a href="http://designingfortheweb.co.uk/">http://designingfortheweb.co.uk/</a><br>—— Mark Boulton</p>
-<h1 id="article-元素"><a href="#article-元素" class="headerlink" title="article 元素"></a>article 元素</h1><p>article 元素表示文档、页面、应用或网站中<em>一个独立的容器</em>，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他<strong>独立的内容项</strong>。</p>
-<h1 id="section-元素"><a href="#section-元素" class="headerlink" title="section 元素"></a>section 元素</h1><p>section 元素代表文档或应用的<em>一个一般的区块</em>。如果只是出于添加样式的原因要对内容添加一个容器，应使用 div 而不是 section 。在考虑何时使用 section 的时候，记住定义中“<strong>具有相似主题的一组内容</strong>”这一条是很有帮助的。这也是 section 区别于 div 的另一个原因。</p>
-<h1 id="div-元素"><a href="#div-元素" class="headerlink" title="div 元素"></a>div 元素</h1><p>有关 div 的一些历史以及何时在 HTML5 中使用它:<br>在 HTML5 之前， div 是包围大块内容(如页眉、页脚、主要内容、插图、附注栏等)从而可用 CSS 为之添加样式的不二选择。之前 div 没有任何语义含义，现在也一样。 这就是 HTML5 引入 header 、 footer 、 main 、 article 、 section 、 aside 和 nav 的原因。这些类型的构造块在网页中普遍存在，因此它们可以成为具有独立含义的元素。在 HTML5 中， div 并没有消失，只是使用它的场合变少了。不过，可以肯定的是， div 应该作为最后一个备用容器，因为它没有任何语义价值。大多数时候，使用 header 、 footer 、 main (仅使用一次)、 article 、 section 、 aside 甚至 nav 代替 div 会更合适。但是，如果语义上不合适，也不必为了刻意避免使用 div 而使用上述元素。有用得上 div 的地方，只是需要限制其使用。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/07/html-css-diary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="劫持手段"><a href="#劫持手段" class="headerlink" title="劫持手段"></a>劫持手段</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">/* pseudo url */</div><div class="line">window.opener.location = 'https://钓鱼网站.假/</div><div class="line">qq 客服中奖.电脑一台/输入账号密码.领奖';</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>举例说明：</p>
+<ol>
+<li>如果<strong>页面一</strong>上有<code>target=&quot;_blank&quot;</code>没有 script ，新建窗口跳转到<strong>页面二</strong>，而<strong>页面二</strong>上有这段 script 的话：<ul>
+<li>原本在后台作为后台标签页的<strong>页面一</strong>，会被重定向为<code>https://钓鱼网站.假/qq 客服中奖.电脑一台/输入账号密码.领奖&#39;</code>的页面；</li>
+</ul>
+</li>
+<li>如果<strong>页面一</strong>上有<code>target=&quot;_blank&quot;</code>而且有 script ，使用了<code>target=&quot;_blank&quot;</code>新建窗口跳转到其他没有 script 的页面的话：<ul>
+<li><strong>页面一</strong>并不会有改变。</li>
+</ul>
+</li>
+</ol>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p><code>target=&quot;_blank&quot;</code>打开新页面实际上是要经由<code>window.opener</code>对象。<br>每次打开一个新窗口都要经由<code>window.open();</code></p>
+<h1 id="劫持效果"><a href="#劫持效果" class="headerlink" title="劫持效果"></a>劫持效果</h1><p>结果：<br>`target=”_blank”的漏洞会影响新建窗口之前的页面一，使其重定向为 script 设置好的钓鱼网站。</p>
+<p>实际例子 demo ：<br><a href="http://tvvocold.coding.me/target_blank_vulnerability/test.html/" target="_blank" rel="external">http://tvvocold.coding.me/target_blank_vulnerability/test.html/</a></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul>
+<li><p>对于使用了<code>target=&quot;_blank&quot;</code>的元素，使用 rel 属性：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*因为 FireFox 不支持 noopener ，所以添加了 noreferrer */</span></div><div class="line">rel=<span class="string">"noopener noreferrer"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>解决 opener 属性：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newWnd = <span class="built_in">window</span>.open();</div><div class="line">newWnd.opener = <span class="literal">null</span>;</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
         
       
     </div>
@@ -642,7 +679,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -683,7 +720,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -878,10 +915,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -890,7 +927,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   

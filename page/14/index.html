@@ -29,7 +29,7 @@
   
     
   
-  <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -83,7 +83,7 @@
 
   
 
-<link href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/03/javascript-note-10-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/04/javascript-note-10-5/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,8 +324,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/03/javascript-note-10-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十章-2
+                <a class="post-title-link" href="/2016/10/04/javascript-note-10-5/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-5
                 </a>
               
             
@@ -368,20 +368,143 @@
 
       
         
-          <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h2><p>JavaScript 通过Document 类型表示文档。<br>在浏览器中，document 对象是HTMLDocument(继承自Document 类型)的一个实例，表示整个HTML 页面。<br>document 对象是window 对象的一个属性，因此可以将其作为全局对象来访问。<br>Document 节点具有下列特征：</p>
+          <h1 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h1><p>由于浏览器中充斥着隐藏的陷阱和不兼容问题，用JavaScript 代码处理DOM 的某些部分要比处理其他部分更复杂一些。</p>
+<h2 id="动态脚本"><a href="#动态脚本" class="headerlink" title="动态脚本"></a>动态脚本</h2><p>动态脚本，指的是在页面加载时不存在，但将来的某一时刻通过修改DOM 动态添加的脚本。<br>创建动态脚本有两种方式：插入外部文件和直接插入JavaScript 代码。</p>
+<p>动态加载的外部JavaScript 文件能够立即运行。<br><code>&lt;script type=&quot;text/javascript&quot; src=&quot;client.js&quot;&gt;&lt;/script&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</div><div class="line">script.type = <span class="string">"text/javascript"</span>;</div><div class="line">script.src = <span class="string">"client.js"</span>;</div><div class="line"><span class="built_in">document</span>.body.appendChild(script);</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/04/javascript-note-10-5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/03/javascript-note-10-4/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><h2 id="Text类型"><a href="#Text类型" class="headerlink" title="Text类型"></a>Text类型</h2><p>可以照字面解释的纯文本内容。<br>纯文本中可以包含转义后的HTML 字符，但不能包含HTML 代码。</p>
 <ul>
-<li>nodeType 的值为9；</li>
-<li>nodeName 的值为”#document”；</li>
-<li>nodeValue 的值为null；</li>
-<li>parentNode 的值为null；</li>
-<li>ownerDocument 的值为 null；</li>
-<li>其子节点可能是一个DocumentType(最多一个)、Element(最多一个)、ProcessingInstruction或Comment。</li>
+<li>nodeType 的值为3；</li>
+<li>nodeName 的值为”#text”；</li>
+<li>nodeValue 的值为节点所包含的文本；</li>
+<li>parentNode 是一个Element；</li>
+<li>不支持(没有)子节点。</li>
 </ul>
-<p>Document 类型可以表示HTML 页面或者其他基于XML 的文档。<br>不过，最常见的应用还是作为HTMLDocument 实例的document 对象。</p>
-<h3 id="文档的子节点"><a href="#文档的子节点" class="headerlink" title="文档的子节点"></a>文档的子节点</h3><p>Document 节点的子节点可以是DocumentType、Element、ProcessingInstruction或Comment，但还有两个内置的访问其子节点的快捷方式。<br>第一个就是documentElement属性，该属性始终指向HTML 页面中的<code>&lt;html&gt;</code>元素。<br>另一个就是通过childNodes 列表访问文档元素，但通过documentElement 属性则能更快捷、更直接地访问该元素。<br>
+<p>可以通过nodeValue 属性或data 属性访问Text 节点中包含的文本，这两个属性中包含的值相同。<br>操作文本方法：</p>
+<ul>
+<li>appendData(text)：将text 添加到节点的末尾。</li>
+<li>deleteData(offset, count)：从offset 指定的位置开始删除count 个字符。</li>
+<li>insertData(offset, text)：在offset 指定的位置插入text。</li>
+<li>replaceData(offset, count, text)：用text 替换从offset 指定的位置开始到offset+count 为止处的文本。</li>
+<li>splitText(offset)：从offset 指定的位置将当前文本节点分成两个文本节点。</li>
+<li>substringData(offset, count)：提取从offset 指定的位置开始到offset+count 为止处的字符串。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 没有内容，也就没有文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有空格，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 有内容，因而有一个文本节点 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--想必有换行的也是吧(换行符)--&gt;</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/03/javascript-note-10-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-4/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -422,7 +545,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/02/javascript-note-10-1/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/03/javascript-note-10-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -447,8 +570,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/10/02/javascript-note-10-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十章-1
+                <a class="post-title-link" href="/2016/10/03/javascript-note-10-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十章-3
                 </a>
               
             
@@ -491,128 +614,19 @@
 
       
         
-          <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>针对HTML 和XML 文档的一个API。<br>脱胎于Netscape 及微软公司创始的DHTML(动态HTML)。<br>已经成为表现和操作页面标记的真正的跨平台、语言中立的方式。</p>
-<h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><p><code>&lt;html&gt;</code>元素称之为文档元素。<br>每个文档只能有一个文档元素。<br>文档元素是文档的最外层元素。<br>在HTML 页面中，文档元素始终都是<code>&lt;html&gt;</code>元素。<br>在XML 中，没有预定义的元素，因此任何元素都可能成为文档元素。<br>标记都可以通过树中的节点来表示：<br>HTML 元素通过元素节点表示，<br>特性(attribute)通过特性节点表示，<br>文档类型通过文档类型节点表示，<br>而注释则通过注释节点表示。<br>总共有12 种节点类型，这些类型都继承自一个基类型。<br>
+          <h1 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h1><h2 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h2><p>Element 类型就要算是Web 编程中最常用的类型了。<br>Element 类型用于表现XML或HTML元素，提供了对元素标签名、子节点及特性的访问。</p>
+<ul>
+<li>nodeType 的值为1；</li>
+<li>nodeName 的值为元素的标签名；</li>
+<li>nodeValue 的值为null；</li>
+<li>parentNode 可能是Document 或Element；</li>
+<li>其子节点可能是Element、Text、Comment、ProcessingInstruction、CDATASection 或EntityReference。</li>
+</ul>
+<p>要访问元素的标签名，可以使用nodeName 属性，也可以使用tagName 属性；<br>这两个属性会返回相同的值(使用后者主要是为了清晰起见)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">alert(div.tagName); <span class="comment">//"DIV"</span></div><div class="line">alert(div.tagName == div.nodeName); <span class="comment">//true</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/02/javascript-note-10-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/02/javascript-note-9-2/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/02/javascript-note-9-2/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第九章-2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="用户代理字符串检测技术"><a href="#用户代理字符串检测技术" class="headerlink" title="用户代理字符串检测技术"></a>用户代理字符串检测技术</h1><p>首先要确定的往往是你需要多么具体的浏览器信息。<br>一般情况下，知道呈现引擎和最低限度的版本就足以决定正确的操作方法了。<br>不推荐的：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isIE6 || isIE7) &#123; <span class="comment">//不推荐!!!</span></div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这种代码其实是很脆弱的，因为它要依据特定的版本来决定做什么。<br>如果是IE8 怎么办呢？只要IE 有新版本出来，就必须更新这些代码。</p>
-<p>使用这类代码可以避免：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (ieVer &gt;=<span class="number">6</span>)&#123;</div><div class="line"><span class="comment">//代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/02/javascript-note-9-2/#more" rel="contents">
+            <a class="btn" href="/2016/10/03/javascript-note-10-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -648,7 +662,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -689,7 +703,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -884,10 +898,10 @@
   <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
 
   
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
@@ -896,7 +910,7 @@
   <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
 
   
-  <script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 
 
   
