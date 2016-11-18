@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="最佳实践可维护性编程实践避免与null 进行比较由于JavaScript 不做任何自动的类型检查，所有它就成了开发人员的责任。因此，在JavaScript 代码中其实很少进行类型检测。最常见的类型检测就是查看某个值是否为null。但是，直接将值与null比较是使用过度的，并且常常由于不充分的类型检查导致错误。
 12345function sortArray(values)&amp;#123;if (val">
-<meta property="og:updated_time" content="2016-11-18T02:12:01.129Z">
+<meta property="og:updated_time" content="2016-11-18T02:54:29.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第二十四章-2">
 <meta name="twitter:description" content="最佳实践可维护性编程实践避免与null 进行比较由于JavaScript 不做任何自动的类型检查，所有它就成了开发人员的责任。因此，在JavaScript 代码中其实很少进行类型检测。最常见的类型检测就是查看某个值是否为null。但是，直接将值与null比较是使用过度的，并且常常由于不充分的类型检查导致错误。
@@ -371,7 +371,7 @@
       
         <h1 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h1><h2 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h2><h3 id="编程实践"><a href="#编程实践" class="headerlink" title="编程实践"></a>编程实践</h3><h4 id="避免与null-进行比较"><a href="#避免与null-进行比较" class="headerlink" title="避免与null 进行比较"></a>避免与null 进行比较</h4><p>由于JavaScript 不做任何自动的类型检查，所有它就成了开发人员的责任。<br>因此，在JavaScript 代码中其实很少进行类型检测。<br>最常见的类型检测就是查看某个值是否为null。但是，直接将值与null比较是使用过度的，并且常常由于不充分的类型检查导致错误。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortArray</span>(<span class="params">values</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (values != <span class="literal">null</span>)&#123; <span class="comment">//避免！</span></div><div class="line">values.sort(comparator);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里的if 语句仅仅检查该values 是否为null。还有其他的值可以通过if 语句，包括字符串、数字，它们会导致函数抛出错误。<br>现实中，与null 比较很少适合情况而被使用。<br>必须按照所期望的对值进行检查，而非按照不被期望的那些。<br>values 参数应该是一个数组，那么就要检查它是不是一个数组，而不是检查它是否非null。</p>
+<p>这里的if 语句仅仅检查该values 是否为null。还有其他的值可以通过if 语句，包括字符串、数字，它们会导致函数抛出错误。<br>现实中，与null 比较很少适合情况而被使用。<br>必须按照所期望的对值进行检查，而非按照不被期望的那些。<br>values 参数应该是一个数组，那么就要检查它是不是一个数组，而不是检查它是否非null。<br><a id="more"></a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortArray</span>(<span class="params">values</span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (values <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123; <span class="comment">//推荐</span></div><div class="line">values.sort(comparator);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这种验证数组的技术在多框架的网页中不一定正确工作，因为每个框架都有其自己的全局对象，因此，也有自己的Array 构造函数。</p>
 <p>尝试使用以下技术替换与null 比较的代码：</p>

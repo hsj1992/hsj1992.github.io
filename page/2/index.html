@@ -368,65 +368,16 @@
 
       
         
-          
-            <h1 id="离线应用与客户端存储"><a href="#离线应用与客户端存储" class="headerlink" title="离线应用与客户端存储"></a>离线应用与客户端存储</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="IE用户数据"><a href="#IE用户数据" class="headerlink" title="IE用户数据"></a>IE用户数据</h3><p>在IE5.0 中，微软通过一个自定义行为引入了持久化用户数据的概念。<br>用户数据允许每个文档最多128KB 数据，每个域名最多1MB 数据。<br>使用CSS 在某个元素上指定userData 行为：<br><code>&lt;div style=&quot;behavior:url(#default#userData)&quot; id=&quot;dataStore&quot;&gt;&lt;/div&gt;</code><br>一旦该元素使用了userData 行为，那么就可以使用setAttribute()方法在上面保存数据了。<br>为了将数据提交到浏览器缓存中，还必须调用save()方法并告诉它要保存到的数据空间的名字。</p>
+          <h1 id="离线应用与客户端存储"><a href="#离线应用与客户端存储" class="headerlink" title="离线应用与客户端存储"></a>离线应用与客户端存储</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="IE用户数据"><a href="#IE用户数据" class="headerlink" title="IE用户数据"></a>IE用户数据</h3><p>在IE5.0 中，微软通过一个自定义行为引入了持久化用户数据的概念。<br>用户数据允许每个文档最多128KB 数据，每个域名最多1MB 数据。<br>使用CSS 在某个元素上指定userData 行为：<br><code>&lt;div style=&quot;behavior:url(#default#userData)&quot; id=&quot;dataStore&quot;&gt;&lt;/div&gt;</code><br>一旦该元素使用了userData 行为，那么就可以使用setAttribute()方法在上面保存数据了。<br>为了将数据提交到浏览器缓存中，还必须调用save()方法并告诉它要保存到的数据空间的名字。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dataStore = <span class="built_in">document</span>.getElementById(<span class="string">"dataStore"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"book"</span>, <span class="string">"Professional JavaScript"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div></pre></td></tr></table></figure>
-<p>在这段代码中，<code>&lt;div&gt;</code>元素上存入了两部分信息。<br>在用setAttribute()存储了数据之后，调用了save()方法，指定了数据空间的名称为BookInfo。<br>下一次页面载入之后，可以使用load()方法指定同样的数据空间名称来获取数据:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dataStore.load(<span class="string">"BookInfo"</span>);</div><div class="line">alert(dataStore.getAttribute(<span class="string">"name"</span>)); <span class="comment">//"Nicholas"</span></div><div class="line">alert(dataStore.getAttribute(<span class="string">"book"</span>)); <span class="comment">//"Professional JavaScript"</span></div></pre></td></tr></table></figure>
-<p>对load()的调用获取了BookInfo 数据空间中的所有信息，并且使数据可以通过元素访问；<br>只有到载入确切完成之后数据方能使用。如果getAttribute()调用了不存在的名称或者是尚未载入的名程，则返回null。</p>
-<p>你可以通过removeAttribute()方法明确指定要删除某元素数据，只要指定属性名称。<br>删除之后，必须再次调用save()来提交更改。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dataStore.removeAttribute(<span class="string">"name"</span>);</div><div class="line">dataStore.removeAttribute(<span class="string">"book"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div></pre></td></tr></table></figure>
-<p>这段代码删除了两个数据属性，然后将更改保存到缓存中。<br>对IE 用户数据的访问限制和对cookie 的限制类似。<br>要访问某个数据空间，脚本运行的页面必须来自同一个域名，在同一个路径下，并使用与进行存储的脚本同样的协议。<br>和cookie 不同的是，无法将用户数据访问限制扩展到更多的客户。<br>还有一点不同，用户数据默认是可以跨越会话持久存在的，同时也不会过期；<br>数据需要通过removeAttribute()方法专门进行删除以释放空间。</p>
-<p>和cookie 一样，IE 用户数据并非安全的，所以不能存放敏感信息。</p>
-<h3 id="Web存储机制"><a href="#Web存储机制" class="headerlink" title="Web存储机制"></a>Web存储机制</h3><p>Web Storage 的目的是克服由cookie 带来的一些限制，<br>当数据需要被严格控制在客户端上时，无须持续地将数据发回服务器。<br>Web Storage 的两个主要目标是：</p>
-<ul>
-<li>提供一种在cookie 之外存储会话数据的途径；</li>
-<li>提供一种存储大量可以跨会话存在的数据的机制。</li>
-</ul>
-<p>最初的Web Storage 规范包含了两种对象的定义：sessionStorage 和globalStorage。<br>这两个对象在支持的浏览器中都是以windows 对象属性的形式存在的，支持这两个属性的浏览器包括IE8+、Firefox 3.5+、Chrome 4+和Opera 10.5+。</p>
-<h4 id="Storage-类型"><a href="#Storage-类型" class="headerlink" title="Storage 类型"></a>Storage 类型</h4><p>Storage 的实例与其他对象类似，有如下方法。</p>
-<ul>
-<li>clear()： 删除所有值；Firefox 中没有实现 。</li>
-<li>getItem(name)：根据指定的名字name 获取对应的值。</li>
-<li>key(index)：获得index 位置处的值的名字。</li>
-<li>removeItem(name)：删除由name 指定的名值对儿。</li>
-<li>setItem(name, value)：为指定的name 设置一个对应的值。</li>
-</ul>
-<p>其中，getItem()、removeItem()和setItem()方法可以直接调用，也可通过Storage 对象间接调用。<br>因为每个项目都是作为属性存储在该对象上的，所以可以通过点语法或者方括号语法访问属性来读取值，设置也一样，或者通过delete 操作符进行删除。</p>
-<p>最好使用方法而不是属性来访问数据，以免某个键会意外重写该对象上已经存在的成员。</p>
-<p>还可以使用length 属性来判断有多少名值对儿存放在Storage 对象中。<br>但无法判断对象中所有数据的大小，不过IE8 提供了一个remainingSpace 属性，用于获取还可以使用的存储空间的字节数。</p>
-<p>Storage 类型只能存储字符串。非字符串的数据在存储之前会被转换成字符串。</p>
-<h4 id="sessionStorage-对象"><a href="#sessionStorage-对象" class="headerlink" title="sessionStorage 对象"></a>sessionStorage 对象</h4><p>sessionStorage 对象存储特定于某个会话的数据，也就是该数据只保持到浏览器关闭。<br>这个对象就像会话cookie，也会在浏览器关闭后消失。<br>存储在sessionStorage 中的数据可以跨越页面刷新而存在，同时如果浏览器支持，浏览器崩溃并重启之后依然可用（Firefox 和WebKit 都支持，IE 则不行）。</p>
-<p>因为seesionStorage 对象绑定于某个服务器会话，所以当文件在本地运行的时候是不可用的。<br>存储在sessionStorage 中的数据只能由最初给对象存储数据的页面访问到，所以对多页面应用有限制。<br>由于sessionStorage 对象其实是Storage 的一个实例，所以可以使用setItem()或者直接设置新的属性来存储数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法存储数据</span></div><div class="line">sessionStorage.setItem(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="comment">//使用属性存储数据</span></div><div class="line">sessionStorage.book = <span class="string">"Professional JavaScript"</span>;</div></pre></td></tr></table></figure>
-<p>不同浏览器写入数据方面略有不同。<br>Firefox 和WebKit 实现了同步写入，所以添加到存储空间中的数据是立刻被提交的。<br>而IE 的实现则是异步写入数据，所以在设置数据和将数据实际写入磁盘之间可能有一些延迟。</p>
-<p>在IE8 中可以强制把数据写入磁盘：<br>在设置新数据之前使用begin()方法，并且在所有设置完成之后调用commit()方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//只适用于IE8</span></div><div class="line">sessionStorage.begin();</div><div class="line">sessionStorage.name = <span class="string">"Nicholas"</span>;</div><div class="line">sessionStorage.book = <span class="string">"Professional JavaScript"</span>;</div><div class="line">sessionStorage.commit();</div></pre></td></tr></table></figure>
-<p>这段代码确保了name 和book 的值在调用commit()之后立刻被写入磁盘。<br>调用begin()是为了确保在这段代码执行的时候不会发生其他磁盘写入操作。<br>对于少量数据而言，这个过程不是必需的；不过，对于大量数据（如文档之类的）可能就要考虑这种事务形式的方法了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法读取数据</span></div><div class="line"><span class="keyword">var</span> name = sessionStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="comment">//使用属性读取数据</span></div><div class="line"><span class="keyword">var</span> book = sessionStorage.book;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len = sessionStorage.length; i &lt; len; i++)&#123;</div><div class="line"><span class="keyword">var</span> key = sessionStorage.key(i);</div><div class="line"><span class="keyword">var</span> value = sessionStorage.getItem(key);</div><div class="line">alert(key + <span class="string">"="</span> + value);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> sessionStorage)&#123;</div><div class="line"><span class="keyword">var</span> value = sessionStorage.getItem(key);</div><div class="line">alert(key + <span class="string">"="</span> + value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>要从sessionStorage 中删除数据，可以使用delete 操作符删除对象属性，也可调用removeItem()方法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用delete 删除一个值——在WebKit 中无效</span></div><div class="line"><span class="keyword">delete</span> sessionStorage.name;</div><div class="line"><span class="comment">//使用方法删除一个值</span></div><div class="line">sessionStorage.removeItem(<span class="string">"book"</span>);</div></pre></td></tr></table></figure>
-<p>sessionStorage 对象应该主要用于仅针对会话的小段数据的存储。<br>如果需要跨越会话存储数据，那么 globalStorage 或者localStorage 更为合适。</p>
-<h4 id="localStorage-对象"><a href="#localStorage-对象" class="headerlink" title="localStorage 对象"></a>localStorage 对象</h4><p>localStorage 对象在修订过的HTML 5 规范中作为持久保存客户端数据的方案取代了globalStorage。<br>与globalStorage 不同，不能给localStorage 指定任何访问规则；规则事先就设定好了。<br>要访问同一个localStorage 对象，页面必须来自同一个域名（子域名无效），使用同一种协议，在同一个端口上。<br>这相当于globalStorage[location.host]。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法存储数据</span></div><div class="line">localStorage.setItem(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="comment">//使用属性存储数据</span></div><div class="line">localStorage.book = <span class="string">"Professional JavaScript"</span>;</div><div class="line"><span class="comment">//使用方法读取数据</span></div><div class="line"><span class="keyword">var</span> name = localStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="comment">//使用属性读取数据</span></div><div class="line"><span class="keyword">var</span> book = localStorage.book;</div></pre></td></tr></table></figure>
-<p>数据保留到通过JavaScript 删除或者是用户清除浏览器缓存。<br>为了兼容只支持globalStorage 的浏览器:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLocalStorage</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> localStorage == <span class="string">"object"</span>)&#123;</div><div class="line"><span class="keyword">return</span> localStorage;</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> globalStorage == <span class="string">"object"</span>)&#123;</div><div class="line"><span class="keyword">return</span> globalStorage[location.host];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Local storage not available."</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在确定了使用哪个Storage 对象之后，就能在所有支持Web Storage 的浏览器中使用相同的存取规则操作数据了。</p>
-<h4 id="storage-事件"><a href="#storage-事件" class="headerlink" title="storage 事件"></a>storage 事件</h4><p>对Storage 对象进行任何修改，都会在文档上触发storage 事件。<br>当通过属性或setItem()方法保存数据，使用delete 操作符或removeItem()删除数据，或者调用clear()方法时，都会发生该事件。</p>
-<p>event 对象有以下属性:</p>
-<ul>
-<li>domain：发生变化的存储空间的域名。</li>
-<li>key：设置或者删除的键名。</li>
-<li>newValue：如果是设置值，则是新值；如果是删除键，则是null。</li>
-<li>oldValue：键被更改之前的值。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"storage"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">alert(<span class="string">"Storage changed for "</span> + event.domain);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>无论对sessionStorage、globalStorage 还是localStorage 进行操作，都会触发storage事件，但不作区分。</p>
-<h4 id="Web-Storage-限制"><a href="#Web-Storage-限制" class="headerlink" title="Web Storage 限制"></a>Web Storage 限制</h4><p>对于localStorage 而言，大多数桌面浏览器会设置每个来源5MB 的限制。<br>Chrome 和Safari 对每个来源的限制是2.5MB。而iOS 版Safari 和Android 版WebKit 的限制也是2.5MB。<br>对sessionStorage 的限制也是因浏览器而异。有的浏览器对sessionStorage 的大小没有限制，<br>但Chrome、Safari、iOS 版Safari 和Android 版WebKit 都有限制，也都是2.5MB。IE8+和Opera 对sessionStorage 的限制是5MB。</p>
-<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><p>Indexed Database API，或者简称为IndexedDB，是在浏览器中保存结构化数据的一种数据库。<br>IndexedDB 是为了替代目前已被废弃的Web SQL Database API而出现的。<br>IndexedDB 的思想是创建一套API，方便保存和读取JavaScript 对象，同时还支持查询及搜索。</p>
-<p>to be continued.</p>
-
-          
+<p>在这段代码中，<code>&lt;div&gt;</code>元素上存入了两部分信息。<br>在用setAttribute()存储了数据之后，调用了save()方法，指定了数据空间的名称为BookInfo。<br>下一次页面载入之后，可以使用load()方法指定同样的数据空间名称来获取数据:<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/08/javascript-note-23-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

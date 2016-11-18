@@ -110,7 +110,7 @@
 <meta property="og:url" content="http://codingme.xyz/2016/11/08/javascript-note-23-2/index.html">
 <meta property="og:site_name" content="CodingMe">
 <meta property="og:description" content="离线应用与客户端存储数据存储IE用户数据在IE5.0 中，微软通过一个自定义行为引入了持久化用户数据的概念。用户数据允许每个文档最多128KB 数据，每个域名最多1MB 数据。使用CSS 在某个元素上指定userData 行为：&amp;lt;div style=&amp;quot;behavior:url(#default#userData)&amp;quot; id=&amp;quot;dataStore&amp;quot;&amp;gt;">
-<meta property="og:updated_time" content="2016-11-18T02:07:49.591Z">
+<meta property="og:updated_time" content="2016-11-18T02:54:41.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第二十三章-2">
 <meta name="twitter:description" content="离线应用与客户端存储数据存储IE用户数据在IE5.0 中，微软通过一个自定义行为引入了持久化用户数据的概念。用户数据允许每个文档最多128KB 数据，每个域名最多1MB 数据。使用CSS 在某个元素上指定userData 行为：&amp;lt;div style=&amp;quot;behavior:url(#default#userData)&amp;quot; id=&amp;quot;dataStore&amp;quot;&amp;gt;">
@@ -368,7 +368,7 @@
       
         <h1 id="离线应用与客户端存储"><a href="#离线应用与客户端存储" class="headerlink" title="离线应用与客户端存储"></a>离线应用与客户端存储</h1><h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="IE用户数据"><a href="#IE用户数据" class="headerlink" title="IE用户数据"></a>IE用户数据</h3><p>在IE5.0 中，微软通过一个自定义行为引入了持久化用户数据的概念。<br>用户数据允许每个文档最多128KB 数据，每个域名最多1MB 数据。<br>使用CSS 在某个元素上指定userData 行为：<br><code>&lt;div style=&quot;behavior:url(#default#userData)&quot; id=&quot;dataStore&quot;&gt;&lt;/div&gt;</code><br>一旦该元素使用了userData 行为，那么就可以使用setAttribute()方法在上面保存数据了。<br>为了将数据提交到浏览器缓存中，还必须调用save()方法并告诉它要保存到的数据空间的名字。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dataStore = <span class="built_in">document</span>.getElementById(<span class="string">"dataStore"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"book"</span>, <span class="string">"Professional JavaScript"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div></pre></td></tr></table></figure>
-<p>在这段代码中，<code>&lt;div&gt;</code>元素上存入了两部分信息。<br>在用setAttribute()存储了数据之后，调用了save()方法，指定了数据空间的名称为BookInfo。<br>下一次页面载入之后，可以使用load()方法指定同样的数据空间名称来获取数据:</p>
+<p>在这段代码中，<code>&lt;div&gt;</code>元素上存入了两部分信息。<br>在用setAttribute()存储了数据之后，调用了save()方法，指定了数据空间的名称为BookInfo。<br>下一次页面载入之后，可以使用load()方法指定同样的数据空间名称来获取数据:<br><a id="more"></a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dataStore.load(<span class="string">"BookInfo"</span>);</div><div class="line">alert(dataStore.getAttribute(<span class="string">"name"</span>)); <span class="comment">//"Nicholas"</span></div><div class="line">alert(dataStore.getAttribute(<span class="string">"book"</span>)); <span class="comment">//"Professional JavaScript"</span></div></pre></td></tr></table></figure>
 <p>对load()的调用获取了BookInfo 数据空间中的所有信息，并且使数据可以通过元素访问；<br>只有到载入确切完成之后数据方能使用。如果getAttribute()调用了不存在的名称或者是尚未载入的名程，则返回null。</p>
 <p>你可以通过removeAttribute()方法明确指定要删除某元素数据，只要指定属性名称。<br>删除之后，必须再次调用save()来提交更改。</p>
