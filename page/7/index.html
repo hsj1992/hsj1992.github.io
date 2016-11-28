@@ -299,6 +299,123 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/26/javascript-note-16-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/26/javascript-note-16-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十六章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="跨文档消息传递"><a href="#跨文档消息传递" class="headerlink" title="跨文档消息传递"></a>跨文档消息传递</h2><p>跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。<br>例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。<br>在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。</p>
+<p>XDM 的核心是postMessage()方法。<br>在HTML5 规范中，除了XDM部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于XDM而言，“另一个地方”指的是包含在当前页面中的<code>&lt;iframe&gt;</code>元素，或者由当前页面弹出的窗口。<br>postMessage()方法接收两个参数：一条消息和一个表示消息接收方来自哪个域的字符串。<br>第二个参数对保障安全通信非常重要，可以防止浏览器把消息发送到不安全的地方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注意：所有支持XDM 的浏览器也支持iframe 的contentWindow 属性</span></div><div class="line"><span class="keyword">var</span> iframeWindow = <span class="built_in">document</span>.getElementById(<span class="string">"myframe"</span>).contentWindow;</div><div class="line">iframeWindow.postMessage(<span class="string">"A secret"</span>, <span class="string">"http://www.wrox.com"</span>);</div></pre></td></tr></table></figure>
+<p>最后一行代码尝试向内嵌框架中发送一条消息，并指定框架中的文档必须来源于”<a href="http://www.wrox.com&quot;域。">http://www.wrox.com&quot;域。</a><br>如果来源匹配，消息会传递到内嵌框架中；否则，postMessage()什么也不做。<br>这一限制可以避免窗口中的位置在你不知情的情况下发生改变。</p>
+<p>接收到XDM消息时，会触发window 对象的message 事件。这个事件是以异步形式触发的，因此从发送消息到接收消息（触发接收窗口的message 事件）可能要经过一段时间的延迟。<br>触发message事件后，传递给onmessage 处理程序的事件对象包含以下三方面的重要信息。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/26/javascript-note-16-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/24/javascript-note-15-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -524,121 +641,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/23/javascript-note-15-1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/23/javascript-note-15-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十十五章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p>HTML5 添加的最受欢迎的功能。<br>在页面中设定一个区域，然后就可以通过JavaScript 动态地在这个区域中绘制图形。<br>IE9+、Firefox 1.5+、Safari 2+、Opera 9+、Chrome、iOS 版Safari 以及Android 版WebKit都在某种程度上支持<code>&lt;canvas&gt;</code>。<br>与浏览器环境中的其他组件类似，<code>&lt;canvas&gt;</code>由几组API 构成，但并非所有浏览器都支持所有这些API。<br><code>&lt;canvas&gt;</code>还建议了一个名为WebGL 的3D 上下文。<br>目前，支持该元素的浏览器都支持2D 上下文及文本API，但对WebGL 的支持还不够好。</p>
-<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>先设置其width 和height 属性，指定可以绘图的区域大小。<br>出现在开始和结束标签中的内容是<strong>后备(替换)信息</strong>，如果浏览器不支持<code>&lt;canvas&gt;</code>元素，就会显示这些信息。<br><code>&lt;canvas id=&quot;drawing&quot; width=&quot; 200&quot; height=&quot;200&quot;&gt;&lt;img src=&quot;images/clock.png&quot; width=&quot;150&quot; height=&quot;150&quot; alt=&quot;&quot;/&gt;&lt;/canvas&gt;</code><br>也能通过CSS 为该元素添加样式，如果不添加任何样式或者不绘制任何图形，在页面中是看不到该元素的。<br>要在这块画布（canvas）上绘图，需要取得绘图上下文。<br>而取得绘图上下文对象的引用，需要调用getContext()方法并传入上下文的名字。<br>传入”2d”，就可以取得2D 上下文对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> drawing = <span class="built_in">document</span>.getElementById(<span class="string">"drawing"</span>);</div><div class="line"><span class="comment">//确定浏览器支持&lt;canvas&gt;元素</span></div><div class="line"><span class="keyword">if</span> (drawing.getContext)&#123;</div><div class="line">    <span class="keyword">var</span> context = drawing.getContext(<span class="string">"2d"</span>);</div><div class="line"><span class="comment">//更多代码</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/23/javascript-note-15-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -684,7 +686,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

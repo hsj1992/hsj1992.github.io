@@ -299,6 +299,122 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/08/javascript-note-22-3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/08/javascript-note-22-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十二章-3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="高级技巧"><a href="#高级技巧" class="headerlink" title="高级技巧"></a>高级技巧</h1><h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><p>在本书前面，你已经学到事件是JavaScript 与浏览器交互的主要途径。<br>事件是一种叫做观察者的设计模式，这是一种创建松散耦合代码的技术。</p>
+<p>对象可以发布事件，用来表示在该对象生命周期中某个有趣的时刻到了。<br>然后其他对象可以观察该对象，等待这些有趣的时刻到来并通过运行代码来响应。</p>
+<p>观察者模式由两类对象组成：主体和观察者。<br>主体负责发布事件，同时观察者通过订阅这些事件来观察该主体。<br>该模式的一个关键概念是主体并不知道观察者的任何事情，也就是说即使观察者不存在,它也可以独自存在并正常运作。<br>从另一方面来说，观察者知道主体并能注册事件的回调函数（事件处理程序）。<br>涉及DOM 上时，DOM元素便是主体，你的事件处理代码便是观察者。</p>
+<p>事件是与DOM 交互的最常见的方式，但它们也可以用于非DOM 代码中——通过实现自定义事件。<br>自定义事件背后的概念是创建一个管理事件的对象，让其他对象监听那些事件。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/08/javascript-note-22-3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/07/javascript-note-22-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -520,123 +636,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/07/javascript-note-21-3/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/07/javascript-note-21-3/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二十一章-3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Ajax-与Comet"><a href="#Ajax-与Comet" class="headerlink" title="Ajax 与Comet"></a>Ajax 与Comet</h1><h2 id="其他跨域技术"><a href="#其他跨域技术" class="headerlink" title="其他跨域技术"></a>其他跨域技术</h2><p>在CORS 出现以前，要实现跨域Ajax 通信颇费一些周折。开发人员想出了一些办法，利用DOM 中能够执行跨域请求的功能，在不依赖XHR 对象的情况下也能发送某种请求。<br>虽然CORS 技术已经无处不在，但开发人员自己发明的这些技术仍然被广泛使用，毕竟这样不需要修改服务器端代码。</p>
-<h3 id="图像Ping"><a href="#图像Ping" class="headerlink" title="图像Ping"></a>图像Ping</h3><p>使用<code>&lt;img&gt;</code>标签。一个网页可以从任何网页中加载图像，不用担心跨域不跨域。这也是在线广告跟踪浏览量的主要方式。<br>可以动态地创建图像，使用它们的onload 和onerror 事件处理程序来确定是否接收到了响应。<br>动态创建图像经常用于图像Ping。图像Ping 是与服务器进行简单、单向的跨域通信的一种方式。<br>请求的数据是通过查询字符串形式发送的，而响应可以是任意内容，但通常是像素图或204 响应。</p>
-<p>通过图像Ping，浏览器得不到任何具体的数据，但通过侦听load 和error 事件，它能知道响应是什么时候接收到的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.onload = img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Done!"</span>);</div><div class="line">&#125;;</div><div class="line">img.src = <span class="string">"http://www.example.com/test?name=Nicholas"</span>;</div></pre></td></tr></table></figure>
-<p>创建了一个Image 的实例，然后将onload 和onerror 事件处理程序指定为同一个函数。<br>这样无论是什么响应，只要请求完成，就能得到通知。请求从设置src 属性那一刻开始，而这个例子在请求中发送了一个name 参数。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/07/javascript-note-21-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -682,7 +681,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

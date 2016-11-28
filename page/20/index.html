@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/19/javascript-note-5-3/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/20/javascript-note-05-4/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,7 +324,122 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/javascript-note-5-3/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/20/javascript-note-05-4/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第五章-4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h1><p>为了便于操作基本类型值， ECMAScript 还提供了 3 个特殊的引用类型： Boolean 、 Number 和 String 。<br>这些类型与本章介绍的其他引用类型相似，但同时也具有与各自的基本类型相应的特殊行为。<br>实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s1 = <span class="string">"some text"</span>;</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">//等同于</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"some text"</span>);</div><div class="line"><span class="keyword">var</span> s2 = s1.substring(<span class="number">2</span>);</div><div class="line">s1 = <span class="literal">null</span>;</div></pre></td></tr></table></figure>
+<p>后台操作：<br>(1) 创建 String 类型的一个实例；<br>(2) 在实例上调用指定的方法；<br>(3) 销毁这个实例。<br>这三个步骤也分别适用于 Boolean 和 Number 类型对应的布尔值和数字值。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/20/javascript-note-05-4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/19/javascript-note-05-3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/19/javascript-note-05-3/" itemprop="url">
                   《 JavaScript 高级程序设计》备忘-第五章-3
                 </a>
               
@@ -374,7 +489,7 @@
 <p>使用不带圆括号的函数名是访问函数指针，而非调用函数。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/javascript-note-5-3/#more" rel="contents">
+            <a class="btn" href="/2016/09/19/javascript-note-05-3/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -415,7 +530,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/19/javascript-note-5-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/19/javascript-note-05-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -440,7 +555,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/19/javascript-note-5-2/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/19/javascript-note-05-2/" itemprop="url">
                   《 JavaScript 高级程序设计》备忘-第五章-2
                 </a>
               
@@ -489,131 +604,7 @@
 <p>在调用 Date 构造函数而不传递参数的情况下，新创建的对象自动获得当前日期和时间。<br>如果想根据特定的日期和时间创建日期对象，必须传入表示该日期的毫秒数。(从 UTC 时间 1970 年 1 月 1 日午夜起至该日期止经过的毫秒数)<br>了简化这一计算过程， ECMAScript 提供了两个方法： Date.parse()和 Date.UTC() 。<br>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/19/javascript-note-5-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-5-1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/17/javascript-note-5-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第五章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 ECMAScript 中，<strong>引用类型</strong>是一种数据结构，用于将数据和功能组织在一起。<br>它也常被称为<strong>类</strong>，但这种称呼并不妥当。<br>ECMAScript 不具备传统的面向对象语言所支持的<strong>类和接口</strong>等基本结构。<br>引用类型有时候也被称为<strong>对象定义</strong>，因为它们描述的是一类<strong>对象所具有的属性和方法</strong>。</p>
-<p>虽然引用类型与类看起来相似，但它们并不是相同的概念。<br><strong>对象(Object)是某个特定引用类型的实例。</strong><br>新对象是使用 new 操作符后跟一个构造函数来创建的。</p>
-<h1 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h1><p>Object 是一个基础类型，其他所有类型都从 Object 继承了基本的行为。</p>
-<h2 id="创建-Object-实例的方式"><a href="#创建-Object-实例的方式" class="headerlink" title="创建 Object 实例的方式"></a>创建 Object 实例的方式</h2><ol>
-<li>使用 new 操作符后跟 Object 构造函数:<code>var person = new Object();</code></li>
-<li><p>使用对象字面量表示法：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">    <span class="string">"name"</span> : <span class="string">"Nicholas"</span>,</div><div class="line">    <span class="string">"age"</span> : <span class="number">29</span>,</div><div class="line">    <span class="number">5</span> : <span class="literal">true</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p> 左边的花括号( { )表示对象字面量的开始，如果是在 if 语句的后面，则表示一个语句块的开始。<br> 在使用对象字面量语法时，属性名也可以使用字符串。5会自动转化为字符串。<br> 使用字面量表示法不会调用 Object 构造函数。<br> 使用对象字面量语法时，如果留空其花括号，则可以定义只包含默认属性和方法的对象。<code>var person = {}; //与 new Object()相同</code><br> 关于对象字面量语法，我们推荐只在考虑对象属性名的可读性时使用。<br> 因为这种语法要求的代码量少，而且能够给人封装数据的感觉，开发人员更青睐对象字面量语法。<br> 对象字面量也是向函数传递大量可选参数的首选方式。<br> 在函数中的使用：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">displayInfo(&#123;</div><div class="line">    name: <span class="string">"Nicholas"</span>,</div><div class="line">    age: <span class="number">29</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p> 最好的做法是对那些必需值使用命名参数，而使用对象字面量来封装多个可选参数。</p>
-</li>
-</ol>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/17/javascript-note-5-1/#more" rel="contents">
+            <a class="btn" href="/2016/09/19/javascript-note-05-2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -690,7 +681,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

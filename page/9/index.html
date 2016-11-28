@@ -418,6 +418,132 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/19/javascript-note-14-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/19/javascript-note-14-1/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十四章-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="表单脚本"><a href="#表单脚本" class="headerlink" title="表单脚本"></a>表单脚本</h1><h2 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h2><p>HTML 对应： <code>&lt;form&gt;</code>元素<br>JavaScript 对应：<code>HTMLFormElement</code> 类型<br>HTMLFormElement 继承 HTMLElement<br>自己的独有的属性和方法：</p>
+<ul>
+<li>acceptCharset：服务器能够处理的字符集；等价于HTML 中的accept-charset 特性。</li>
+<li>action：接受请求的URL；等价于HTML 中的action 特性。</li>
+<li>elements：表单中所有控件的集合（HTMLCollection）。</li>
+<li>enctype：请求的编码类型；等价于HTML 中的enctype 特性。</li>
+<li>length：表单中控件的数量。</li>
+<li>method：要发送的HTTP 请求类型，通常是”get”或”post”；等价于HTML 的method 特性。</li>
+<li>name：表单的名称；等价于HTML 的name 特性。</li>
+<li>reset()：将所有表单域重置为默认值。</li>
+<li>submit()：提交表单。</li>
+<li>target：用于发送请求和接收响应的窗口名称；等价于HTML 的target 特性。</li>
+</ul>
+<p>取得<code>&lt;form&gt;</code>元素引用的方式有好几种。<br>其中最常见的方式就是将它看成与其他元素一样，并为其添加id 特性，然后再像下面这样使用getElementById()方法找到它。<br>其次，通过document.forms 可以取得页面中所有的表单。在这个集合中，可以通过数值索引或name 值来取得特定的表单。<br>另外，在较早的浏览器或者那些支持向后兼容的浏览器中，也会把每个设置了name 特性的表单作为属性保存在document 对象中(不推荐使用这种方式)。<br>可以同时为表单指定id 和name 属性，但它们的值不一定相同。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/19/javascript-note-14-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/18/javascript-note-13-8/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -531,121 +657,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/18/javascript-note-13-7/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/18/javascript-note-13-7/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十三章-7
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="设备事件"><a href="#设备事件" class="headerlink" title="设备事件"></a>设备事件</h3><h4 id="orientationchange-事件"><a href="#orientationchange-事件" class="headerlink" title="orientationchange 事件"></a>orientationchange 事件</h4><p>苹果公司为 移动Safari 添加，以便开发人员能够确定用户何时将设备由横向查看模式切换为纵向查看模式。<br>移动Safari 的window.orientation 属性中可能包含3 个值：<br>0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模式（“主屏幕”按钮在左侧）。<br>相关文档中还提到一个值，即180 表示iPhone 头朝下；但这种模式至今尚未得到支持。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>);</div><div class="line">    div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"orientationchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        div.innerHTML = <span class="string">"Current orientation is "</span> + <span class="built_in">window</span>.orientation;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>所有iOS 设备都支持orientationchange 事件和window.orientation 属性。<br>可以将orientationchange 看成window 事件，所以也可以通过指定<code>&lt;body&gt;</code>元素的onorientationchange 特性来指定事件处理程序。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/javascript-note-13-7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -691,7 +702,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,953 @@
+<!doctype html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+  
+
+<link href="//cdn.staticfile.org/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="单体内置对象内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”开发人员不必显式地实例化内置对象，因为它们已经实例化了。大多数内置对象，例如 Object 、 Array 和 String 。ECMA-262 还定义了两个单体内置对象： Global 和 Math 。
+Global 对象Global (全局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《 JavaScript 高级程序设计》备忘-第五章-5">
+<meta property="og:url" content="http://codingme.xyz/2016/09/20/javascript-note-05-5/index.html">
+<meta property="og:site_name" content="CodingMe">
+<meta property="og:description" content="单体内置对象内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”开发人员不必显式地实例化内置对象，因为它们已经实例化了。大多数内置对象，例如 Object 、 Array 和 String 。ECMA-262 还定义了两个单体内置对象： Global 和 Math 。
+Global 对象Global (全局">
+<meta property="og:updated_time" content="2016-10-15T09:51:15.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《 JavaScript 高级程序设计》备忘-第五章-5">
+<meta name="twitter:description" content="单体内置对象内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”开发人员不必显式地实例化内置对象，因为它们已经实例化了。大多数内置对象，例如 Object 、 Array 和 String 。ECMA-262 还定义了两个单体内置对象： Global 和 Math 。
+Global 对象Global (全局">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://codingme.xyz/2016/09/20/javascript-note-05-5/"/>
+
+
+
+
+
+  <title> 《 JavaScript 高级程序设计》备忘-第五章-5 | CodingMe </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CodingMe</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/20/javascript-note-05-5/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《 JavaScript 高级程序设计》备忘-第五章-5
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="单体内置对象"><a href="#单体内置对象" class="headerlink" title="单体内置对象"></a>单体内置对象</h1><p>内置对象的定义是：“由 ECMAScript 实现提供的、不依赖于宿主环境的对象，这些对象在 ECMAScript 程序执行之前就已经存在了。”<br>开发人员不必显式地实例化内置对象，因为它们已经实例化了。<br>大多数内置对象，例如 Object 、 Array 和 String 。<br>ECMA-262 还定义了两个单体内置对象： Global 和 Math 。</p>
+<h2 id="Global-对象"><a href="#Global-对象" class="headerlink" title="Global 对象"></a>Global 对象</h2><p>Global (全局)对象可以说是 ECMAScript 中最特别的一个对象了，因为不管你从什么角度上看，这个对象都是不存在的。<br>ECMAScript 中的 Global 对象在某种意义上是作为一个终极的“兜底儿对象”来定义的。<br>换句话说，不属于任何其他对象的属性和方法，最终都是它的属性和方法。<br><strong>事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</strong></p>
+<p>诸如 isNaN() 、 isFinite() 、 parseInt() 以及 parseFloat() ，实际上全都是 Global 对象的方法。<br>除此之外， Global 对象还包含其他一些方法。</p>
+<a id="more"></a>
+<h3 id="URI-编码方法"><a href="#URI-编码方法" class="headerlink" title="URI 编码方法"></a>URI 编码方法</h3><p>encodeURI() 和 encodeURIComponent() 方法。<br>这两个 URI 编码方法就可以对 URI 进行编码，它们用特殊的 UTF-8 编码替换所有无效的字符，从而让浏览器能够接受和理解。</p>
+<p>encodeURI() 主要用于整个 URI(例如，<a href="http://www.wrox.com/illegalvalue.htm/" target="_blank" rel="external">http://www.wrox.com/illegalvalue.htm/</a>)，<br>而 encode-URIComponent() 主要用于对 URI 中的某一段(例如前面 URI 中的 illegal value.htm )进行编码。</p>
+<p>主要区别在于， encodeURI() 不会对本身属于 URI 的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；<br>而 encodeURIComponent() 则会对它发现的任何非标准字符进行编码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uri = <span class="string">"http://www.wrox.com/illegal value.htm#start"</span>;</div><div class="line"><span class="comment">//"http://www.wrox.com/illegal%20value.htm#start"</span></div><div class="line">alert(<span class="built_in">encodeURI</span>(uri));</div><div class="line"><span class="comment">//"http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start"</span></div><div class="line">alert(<span class="built_in">encodeURIComponent</span>(uri));</div></pre></td></tr></table></figure>
+<p>一般来说，我们使用 encodeURIComponent() 方法的时候要比使用 encodeURI() 更多，<br>因为在实践中更常见的是对查询字符串参数而不是对基础 URI 进行编码。</p>
+<p>与 encodeURI() 和 encodeURIComponent() 方法对应的两个方法分别是 decodeURI() 和 decodeURIComponent() 。<br>decodeURI() 只能对使用 encodeURI() 替换的字符进行解码。<br>例如，它可将 <code>%20</code> 替换成一个空格，但不会对 <code>%23</code> 作任何处理，因为 <code>%23</code> 表示井字号( # )，而井字号不是使用 encodeURI() 替换的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uri = <span class="string">"http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start"</span>;</div><div class="line"><span class="comment">//http%3A%2F%2Fwww.wrox.com%2Fillegal value.htm%23start</span></div><div class="line">alert(<span class="built_in">decodeURI</span>(uri));</div><div class="line"><span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div><div class="line">alert(<span class="built_in">decodeURIComponent</span>(uri));</div></pre></td></tr></table></figure>
+<p>URI 方法 encodeURI() 、 encodeURIComponent() 、 decodeURI() 和 decodeURIComponent() 用于替代已经被 ECMA-262 第3版废弃的 escape() 和 unescape()方法。<br>URI 方法能够编码所有 Unicode 字符，而原来的方法只能正确地编码 ASCII 字符。<br>因此在开发实践中，特别是在产品级的代码中，一定要使用 URI 方法，不要使用 escape()和 unescape() 方法。</p>
+<h3 id="eval-方法"><a href="#eval-方法" class="headerlink" title="eval() 方法"></a>eval() 方法</h3><p>大概是整个 ECMAScript 语言中最强大的一个方法： eval() 。<br>eval()方法就像是一个完整的 ECMAScript 解析器，<br>它只接受一个参数，即要执行的 ECMAScript (或 JavaScript)字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">eval</span>(<span class="string">"alert('hi')"</span>);</div><div class="line"><span class="comment">//等价于</span></div><div class="line">alert(<span class="string">"hi"</span>);</div></pre></td></tr></table></figure>
+<p>当解析器发现代码中调用 eval() 方法时，它会将传入的参数当作实际的 ECMAScript 语句来解析，然后把执行结果插入到原位置。<br>通过 eval() 执行的代码被认为是包含该次调用的执行环境的一部分，因此被执行的代码具有与该执行环境相同的作用域链。<br>这意味着通过 eval() 执行的代码可以引用在包含环境中定义的变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> msg = <span class="string">"hello world"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"alert(msg)"</span>); <span class="comment">//"hello world"</span></div><div class="line"></div><div class="line"><span class="built_in">eval</span>(<span class="string">"function sayHi() &#123; alert('hi'); &#125;"</span>);</div><div class="line">sayHi();</div><div class="line"></div><div class="line"><span class="built_in">eval</span>(<span class="string">"var msg = 'hello world'; "</span>);</div><div class="line">alert(msg); <span class="comment">//"hello world"</span></div></pre></td></tr></table></figure>
+<p>在 eval() 中创建的任何变量或函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；<br>它们只在 eval() 执行的时候创建。<br>严格模式下，在外部访问不到 eval() 中创建的任何变量或函数,为 eval 赋值也会导致错误。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="built_in">eval</span> = <span class="string">"hi"</span>; <span class="comment">//causes error</span></div></pre></td></tr></table></figure>
+<p>要点：能够解释代码字符串的能力非常强大，但也非常危险。因此在使用 eval() 时必须极为谨慎，<br>特别是在用它执行用户输入数据的情况下。否则，可能会有恶意用户输入威胁你的站点或应用程序安全的代码(即所谓的代码注入)。</p>
+<h3 id="Global-对象的属性"><a href="#Global-对象的属性" class="headerlink" title="Global 对象的属性"></a>Global 对象的属性</h3><pre><code>undefined   Date            NaN
+RegExp      Infinity        Error
+Object      EvalError       Array
+RangeError  Function        ReferenceError
+Boolean     SyntaxError     String
+TypeError   Number          URIError
+</code></pre><p>ECMAScript 5 明确禁止给 undefined 、 NaN 和 Infinity 赋值，这样做即使在非严格模式下也会导致错误。</p>
+<h3 id="window-对象"><a href="#window-对象" class="headerlink" title="window 对象"></a>window 对象</h3><p>ECMAScript 虽然没有指出如何直接访问 Global 对象，但 Web 浏览器都是将这个全局对象作为 window 对象的一部分加以实现的。<br>因此，在全局作用域中声明的所有变量和函数，就都成为了 window 对象的属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">"red"</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayColor</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="built_in">window</span>.color);</div><div class="line">&#125;</div><div class="line"><span class="built_in">window</span>.sayColor(); <span class="comment">//"red"</span></div></pre></td></tr></table></figure>
+<p>JavaScript 中的 window 对象除了扮演 ECMAScript 规定的 Global 对象的角色外，还承担了很多别的任务。</p>
+<p>另一种取得 Global 对象的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> global = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<h2 id="Math-对象"><a href="#Math-对象" class="headerlink" title="Math 对象"></a>Math 对象</h2><h3 id="Math-对象的属性"><a href="#Math-对象的属性" class="headerlink" title="Math 对象的属性"></a>Math 对象的属性</h3><pre><code>属性          说明
+Math.E          自然对数的底数，即常量 e 的值
+Math.LN10       10的自然对数
+Math.LN2        2的自然对数
+Math.LOG2E      以2为底 e 的对数
+Math.LOG10E     以10为底 e 的对数
+Math.PI         π的值
+Math.SQRT1_2    1/2的平方根(即2的平方根的倒数)
+Math.SQRT2      2的平方根
+</code></pre><h3 id="min-和-max-方法"><a href="#min-和-max-方法" class="headerlink" title="min() 和 max() 方法"></a>min() 和 max() 方法</h3><p>这两个方法经常用于避免多余的循环和在 if 语句中确定一组数的最大值。<br>要找到数组中的最大或最小值，可以像下面这样使用 apply() 方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> values = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>];</div><div class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, values);</div></pre></td></tr></table></figure>
+<h3 id="舍入方法"><a href="#舍入方法" class="headerlink" title="舍入方法"></a>舍入方法</h3><p>Math.ceil() 执行向上舍入，即它总是将数值向上舍入为最接近的整数；<br>Math.floor() 执行向下舍入，即它总是将数值向下舍入为最接近的整数；<br>Math.round() 执行标准舍入，即它总是将数值四舍五入为最接近的整数(这也是我们在数学课上学到的舍入规则)。</p>
+<h3 id="random-方法"><a href="#random-方法" class="headerlink" title="random() 方法"></a>random() 方法</h3><p><code>值 = Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)</code><br>想选择一个 1到 10 之间的数值的话，<br><code>var num = Math.floor(Math.random() * 10 + 1);</code><br>想要选择一个介于 2 到 10 之间的值的话,<br><code>var num = Math.floor(Math.random() * 9 + 2);</code></p>
+<p>也可以写成函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectFrom</span>(<span class="params">lowerValue, upperValue</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> choices = upperValue - lowerValue + <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * choices + lowerValue);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> num = selectFrom(<span class="number">2</span>, <span class="number">10</span>);</div><div class="line">alert(num); <span class="comment">// 介于 2 和 10 之间(包括 2 和 10)的一个数值</span></div></pre></td></tr></table></figure>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><pre><code>Math.abs(num)           返回 num 的绝对值
+Math.asin(x)            返回 x 的反正弦值
+Math.exp(num)           返回 Math.E 的 num 次幂
+Math.atan(x)            返回 x 的反正切值
+Math.log(num)           返回 num 的自然对数
+Math.atan2(y,x)         返回 y/x 的反正切值
+Math.pow(num,power)     返回 num 的 power 次幂
+Math.cos(x)             返回 x 的余弦值
+Math.sqrt(num)          返回 num 的平方根
+Math.sin(x)             返回 x 的正弦值
+Math.acos(x)            返回 x 的反余弦值
+Math.tan(x)             返回 x 的正切值
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag"># Web</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/20/javascript-note-05-4/" rel="next" title="《 JavaScript 高级程序设计》备忘-第五章-4">
+                <i class="fa fa-chevron-left"></i> 《 JavaScript 高级程序设计》备忘-第五章-4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/20/javascript-note-06-1/" rel="prev" title="《 JavaScript 高级程序设计》备忘-第六章-1">
+                《 JavaScript 高级程序设计》备忘-第六章-1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Huang SJ" />
+          <p class="site-author-name" itemprop="name">Huang SJ</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">75</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hsj1992" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/hsj9527" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1694147905" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.freecodecamp.cn/hsj1992" target="_blank" title="FreeCodeCamp">
+                  
+                    <i class="fa fa-fw fa-fire"></i>
+                  
+                  FreeCodeCamp
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://codepen.io/hsj1992/" target="_blank" title="codepen">
+                  
+                    <i class="fa fa-fw fa-codepen"></i>
+                  
+                  codepen
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://hsj1992.oschina.io/" target="_blank" title="码云镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  码云镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.coding.me/" target="_blank" title="coding镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  coding镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://hsj1992.github.io/" target="_blank" title="github镜像">
+                  
+                    <i class="fa fa-fw fa-code"></i>
+                  
+                  github镜像
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://codingme-6dd8a.firebaseapp.com" target="_blank" title="Firebase镜像">
+                  
+                    <i class="fa fa-fw fa-google"></i>
+                  
+                  Firebase镜像
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单体内置对象"><span class="nav-number">1.</span> <span class="nav-text">单体内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-对象"><span class="nav-number">1.1.</span> <span class="nav-text">Global 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URI-编码方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">URI 编码方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eval-方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">eval() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-对象的属性"><span class="nav-number">1.1.3.</span> <span class="nav-text">Global 对象的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#window-对象"><span class="nav-number">1.1.4.</span> <span class="nav-text">window 对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-对象"><span class="nav-number">1.2.</span> <span class="nav-text">Math 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Math-对象的属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">Math 对象的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min-和-max-方法"><span class="nav-number">1.2.2.</span> <span class="nav-text">min() 和 max() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#舍入方法"><span class="nav-number">1.2.3.</span> <span class="nav-text">舍入方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random-方法"><span class="nav-number">1.2.4.</span> <span class="nav-text">random() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他方法"><span class="nav-number">1.2.5.</span> <span class="nav-text">其他方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huang SJ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/fastclick/1.0.6/fastclick.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/velocity/1.2.1/velocity.ui.min.js"></script>
+
+  
+  <script type="text/javascript" src="//cdn.staticfile.org/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

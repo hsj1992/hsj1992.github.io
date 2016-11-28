@@ -299,6 +299,129 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/01/javascript-note-17-2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/01/javascript-note-17-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第十七章-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="错误处理与调试"><a href="#错误处理与调试" class="headerlink" title="错误处理与调试"></a>错误处理与调试</h1><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h3 id="处理错误的策略"><a href="#处理错误的策略" class="headerlink" title="处理错误的策略"></a>处理错误的策略</h3><p>搞清楚何时以及为什么发生错误至关重要。<br>作为开发人员，必须要知道代码何时可能出错，会出什么错，同时还要有一个跟踪此类问题的系统。</p>
+<h3 id="常见的错误类型"><a href="#常见的错误类型" class="headerlink" title="常见的错误类型"></a>常见的错误类型</h3><p>错误处理的核心，是首先要知道代码里会发生什么错误。</p>
+<p>JavaScript 是松散类型的，而且也不会验证函数的参数，因此错误只会在代码运行期间出现。一般来说，需要关注三种错误：</p>
+<ul>
+<li>类型转换错误</li>
+<li>数据类型错误</li>
+<li>通信错误</li>
+</ul>
+<h4 id="类型转换错误"><a href="#类型转换错误" class="headerlink" title="类型转换错误"></a>类型转换错误</h4><p>误发生在使用某个操作符，或者使用其他可能会自动转换值的数据类型的语言结构时。<br>在使用相等（==）和不相等（!=）操作符，或者在if、for 及while 等流控制语句中使用非布尔值时，最常发生类型转换错误。</p>
+<p>多数情况下，我们建议使用全等（===）和不全等（!==）操作符，以避免类型转换。<br>使用全等和非全等操作符，可以避免发生因为使用相等和不相等操作符引发的类型转换错误，因此我们强烈推荐使用。</p>
+<p>容易发生类型转换错误的另一个地方，就是流控制语句。像if 之类的语句在确定下一步操作之前，会自动把任何值转换成布尔值。<br>在流控制语句中使用非布尔值，是极为常见的一个错误来源。为避免此类错误，就要做到在条件比较时切实传入布尔值。实际上，执行某种形式的比较就可以达到这个目的。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/01/javascript-note-17-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/01/javascript-note-17-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -524,123 +647,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/10/26/javascript-note-16-1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/26/javascript-note-16-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第十六章-1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="HTML5-脚本编程"><a href="#HTML5-脚本编程" class="headerlink" title="HTML5 脚本编程"></a>HTML5 脚本编程</h1><h2 id="跨文档消息传递"><a href="#跨文档消息传递" class="headerlink" title="跨文档消息传递"></a>跨文档消息传递</h2><p>跨文档消息传送（cross-document messaging），有时候简称为XDM，指的是在来自不同域的页面间传递消息。<br>例如，www.wrox.com域中的页面与位于一个内嵌框架中的p2p.wrox.com 域中的页面通信。<br>在XDM 机制出现之前，要稳妥地实现这种通信需要花很多工夫。XDM 把这种机制规范化，让我们能既稳妥又简单地实现跨文档通信。</p>
-<p>XDM 的核心是postMessage()方法。<br>在HTML5 规范中，除了XDM部分之外的其他部分也会提到这个方法名，但都是为了同一个目的：向另一个地方传递数据。对于XDM而言，“另一个地方”指的是包含在当前页面中的<code>&lt;iframe&gt;</code>元素，或者由当前页面弹出的窗口。<br>postMessage()方法接收两个参数：一条消息和一个表示消息接收方来自哪个域的字符串。<br>第二个参数对保障安全通信非常重要，可以防止浏览器把消息发送到不安全的地方。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//注意：所有支持XDM 的浏览器也支持iframe 的contentWindow 属性</span></div><div class="line"><span class="keyword">var</span> iframeWindow = <span class="built_in">document</span>.getElementById(<span class="string">"myframe"</span>).contentWindow;</div><div class="line">iframeWindow.postMessage(<span class="string">"A secret"</span>, <span class="string">"http://www.wrox.com"</span>);</div></pre></td></tr></table></figure>
-<p>最后一行代码尝试向内嵌框架中发送一条消息，并指定框架中的文档必须来源于”<a href="http://www.wrox.com&quot;域。">http://www.wrox.com&quot;域。</a><br>如果来源匹配，消息会传递到内嵌框架中；否则，postMessage()什么也不做。<br>这一限制可以避免窗口中的位置在你不知情的情况下发生改变。</p>
-<p>接收到XDM消息时，会触发window 对象的message 事件。这个事件是以异步形式触发的，因此从发送消息到接收消息（触发接收窗口的message 事件）可能要经过一段时间的延迟。<br>触发message事件后，传递给onmessage 处理程序的事件对象包含以下三方面的重要信息。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/26/javascript-note-16-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -686,7 +692,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

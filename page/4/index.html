@@ -299,6 +299,123 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/07/javascript-note-21-3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/07/javascript-note-21-3/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第二十一章-3
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Ajax-与Comet"><a href="#Ajax-与Comet" class="headerlink" title="Ajax 与Comet"></a>Ajax 与Comet</h1><h2 id="其他跨域技术"><a href="#其他跨域技术" class="headerlink" title="其他跨域技术"></a>其他跨域技术</h2><p>在CORS 出现以前，要实现跨域Ajax 通信颇费一些周折。开发人员想出了一些办法，利用DOM 中能够执行跨域请求的功能，在不依赖XHR 对象的情况下也能发送某种请求。<br>虽然CORS 技术已经无处不在，但开发人员自己发明的这些技术仍然被广泛使用，毕竟这样不需要修改服务器端代码。</p>
+<h3 id="图像Ping"><a href="#图像Ping" class="headerlink" title="图像Ping"></a>图像Ping</h3><p>使用<code>&lt;img&gt;</code>标签。一个网页可以从任何网页中加载图像，不用担心跨域不跨域。这也是在线广告跟踪浏览量的主要方式。<br>可以动态地创建图像，使用它们的onload 和onerror 事件处理程序来确定是否接收到了响应。<br>动态创建图像经常用于图像Ping。图像Ping 是与服务器进行简单、单向的跨域通信的一种方式。<br>请求的数据是通过查询字符串形式发送的，而响应可以是任意内容，但通常是像素图或204 响应。</p>
+<p>通过图像Ping，浏览器得不到任何具体的数据，但通过侦听load 和error 事件，它能知道响应是什么时候接收到的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.onload = img.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"Done!"</span>);</div><div class="line">&#125;;</div><div class="line">img.src = <span class="string">"http://www.example.com/test?name=Nicholas"</span>;</div></pre></td></tr></table></figure>
+<p>创建了一个Image 的实例，然后将onload 和onerror 事件处理程序指定为同一个函数。<br>这样无论是什么响应，只要请求完成，就能得到通知。请求从设置src 属性那一刻开始，而这个例子在请求中发送了一个name 参数。<br>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/07/javascript-note-21-3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/06/javascript-note-21-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -522,128 +639,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/11/03/javascript-note-20/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/03/javascript-note-20/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第二十章
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>JSON（JavaScript Object Notation，JavaScript 对象表示法）<br>2006 年，Douglas Crockford 把JSON（JavaScript Object Notation，JavaScript 对象表示法）作为IETFRFC 4627 提交给IETF。<br>Crockford 认为与XML相比，JSON 是在JavaScript中读写结构化数据的更好的方式。因为可以把JSON 直接传给eval()，而且不必创建DOM 对象。</p>
-<p>关于JSON，最重要的是要理解它是一种<strong>数据格式</strong>，不是一种编程语言。虽然具有相同的语法形式，但JSON 并不从属于JavaScript。<br>而且，并不是只有JavaScript 才使用JSON，毕竟JSON 只是一种数据格式。很多编程语言都有针对JSON 的解析器和序列化器。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>JSON 的语法可以表示以下三种类型的值。</p>
-<ul>
-<li>简单值：使用与JavaScript 相同的语法，可以在JSON 中表示字符串、数值、布尔值和null。但JSON 不支持JavaScript 中的特殊值undefined。</li>
-<li>对象：对象作为一种复杂数据类型，表示的是一组无序的键值对儿。而每个键值对儿中的值可以是简单值，也可以是复杂数据类型的值。</li>
-<li>数组：数组也是一种复杂数据类型，表示一组有序的值的列表，可以通过数值索引来访问其中的值。数组的值也可以是任意类型——简单值、对象或数组。</li>
-</ul>
-<p>JSON 不支持变量、函数或对象实例，它就是一种表示结构化数据的格式，虽然与JavaScript 中表示数据的某些语法相同，但它并不局限JavaScript 的范畴。</p>
-<h3 id="简单值"><a href="#简单值" class="headerlink" title="简单值"></a>简单值</h3><p>JavaScript 字符串与JSON 字符串的最大区别在于，JSON 字符串必须使用双引号（单引号会导致语法错误）。<br><code>&quot;Hello world!&quot;</code><br>布尔值和null 也是有效的JSON 形式。<br>但是，在实际应用中，JSON 更多地用来表示更复杂的数据结构，而简单值只是整个数据结构中的一部分。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/03/javascript-note-20/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -689,7 +684,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/11/javascript-note-3-1/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/17/javascript-note-03-2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -324,7 +324,125 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/11/javascript-note-3-1/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/17/javascript-note-03-2/" itemprop="url">
+                  《 JavaScript 高级程序设计》备忘-第三章-2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><p>包括算术操作符(如加号和减号)、位操作符、关系操作符和相等操作符。<br>ECMAScript 操作符的与众不同之处在于，它们能够适用于很多值，例如字符串、数字值、布尔值，甚至对象。<br>不过，<strong>在应用于对象时，相应的操作符通常都会调用对象的 valueOf()和(或) toString() 方法，以便取得可以操作的值。</strong></p>
+<h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h2><h3 id="递增递减操作符"><a href="#递增递减操作符" class="headerlink" title="递增递减操作符"></a>递增递减操作符</h3><p>执行前置递增和递减操作时，变量的值都是在语句被求值以前改变的。(在计算机科学领域，这种情况通常被称作副效应。)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</div><div class="line"><span class="keyword">var</span> anotherAge = --age + <span class="number">2</span>;</div><div class="line">alert(age); <span class="comment">// 输出 28</span></div><div class="line">alert(anotherAge); <span class="comment">// 输出 30</span></div></pre></td></tr></table></figure>
+<p>后置递增和递减与前置递增和递减有一个非常重要的区别，即递增和递减操作是在包含它们的语句被求值之后才执行的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num1 = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> num2 = <span class="number">20</span>;</div><div class="line"><span class="keyword">var</span> num3 = num1-- + num2; <span class="comment">//  等于 22</span></div><div class="line"><span class="keyword">var</span> num4 = num1 + num2; <span class="comment">// 等于 21</span></div></pre></td></tr></table></figure>
+<p>作用数据类型时候，等同于先 Number() 再加减1，会像 Number() 转型函数一样对这个值执行转换。</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/17/javascript-note-03-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/11/javascript-note-03-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/11/javascript-note-03-1/" itemprop="url">
                   《 JavaScript 高级程序设计》备忘-第三章-1
                 </a>
               
@@ -387,7 +505,7 @@
 </ul>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/11/javascript-note-3-1/#more" rel="contents">
+            <a class="btn" href="/2016/09/11/javascript-note-03-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -428,7 +546,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/10/javascript-note-2/">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/10/javascript-note-02/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Huang SJ">
@@ -453,7 +571,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/10/javascript-note-2/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/10/javascript-note-02/" itemprop="url">
                   《 JavaScript 高级程序设计》备忘-第二章
                 </a>
               
@@ -513,128 +631,7 @@
 </ul>
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/10/javascript-note-2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/09/09/javascript-note-1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/09/javascript-note-1/" itemprop="url">
-                  《 JavaScript 高级程序设计》备忘-第一章
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="JavaScript-的诞生："><a href="#JavaScript-的诞生：" class="headerlink" title="JavaScript 的诞生："></a>JavaScript 的诞生：</h1><p>以前必须把表单数据发送到服务器端才能确定用户是否没有填写某个必填域。<br>Netscape Navigator 希望通过 JavaScript 来解决这个问题。<br>于是 JavaScript 诞生，当时主要目的是处理以前由服务器端语言负责的一些输入验证操作。<br>它从一个简单的输入验证器发展成为一门强大的编程语言。</p>
-<h1 id="JavaScript-、-ECMAScript-历史："><a href="#JavaScript-、-ECMAScript-历史：" class="headerlink" title="JavaScript 、 ECMAScript 历史："></a>JavaScript 、 ECMAScript 历史：</h1><ol>
-<li>Netscape navigator 2诞生, JavaScript 诞生。</li>
-<li>IE 的 JScript 。</li>
-<li>标准化， ECMA-262，即 ECMAScript 诞生。</li>
-<li>ECMAScript 与 Web 浏览器没有依赖关系,Web 浏览器只是 ECMAScript 实现可能的宿主环境之一。</li>
-<li>ECMA-262 定义的只是这门语言的基础。</li>
-<li>JavaScript 包含 <strong>ECMAScript</strong> 、 <strong>DOM</strong> 、 <strong>BOM</strong> 三个部分。</li>
-</ol>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/09/javascript-note-1/#more" rel="contents">
+            <a class="btn" href="/2016/09/10/javascript-note-02/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -711,7 +708,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

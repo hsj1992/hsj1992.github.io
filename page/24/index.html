@@ -299,6 +299,136 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/30/target-blank-vulnerable/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Huang SJ">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CodingMe">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/30/target-blank-vulnerable/" itemprop="url">
+                  target="_blank" 漏洞
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="劫持手段"><a href="#劫持手段" class="headerlink" title="劫持手段"></a>劫持手段</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">/* pseudo url */</div><div class="line">window.opener.location = 'https://钓鱼网站.假/</div><div class="line">qq 客服中奖.电脑一台/输入账号密码.领奖';</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>举例说明：</p>
+<ol>
+<li>如果<strong>页面一</strong>上有<code>target=&quot;_blank&quot;</code>没有 script ，新建窗口跳转到<strong>页面二</strong>，而<strong>页面二</strong>上有这段 script 的话：<ul>
+<li>原本在后台作为后台标签页的<strong>页面一</strong>，会被重定向为<code>https://钓鱼网站.假/qq 客服中奖.电脑一台/输入账号密码.领奖&#39;</code>的页面；</li>
+</ul>
+</li>
+<li>如果<strong>页面一</strong>上有<code>target=&quot;_blank&quot;</code>而且有 script ，使用了<code>target=&quot;_blank&quot;</code>新建窗口跳转到其他没有 script 的页面的话：<ul>
+<li><strong>页面一</strong>并不会有改变。</li>
+</ul>
+</li>
+</ol>
+<h1 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h1><p><code>target=&quot;_blank&quot;</code>打开新页面实际上是要经由<code>window.opener</code>对象。<br>每次打开一个新窗口都要经由<code>window.open();</code></p>
+<h1 id="劫持效果"><a href="#劫持效果" class="headerlink" title="劫持效果"></a>劫持效果</h1><p>结果：<br>`target=”_blank”的漏洞会影响新建窗口之前的页面一，使其重定向为 script 设置好的钓鱼网站。</p>
+<p>实际例子 demo ：<br><a href="http://tvvocold.coding.me/target_blank_vulnerability/test.html/" target="_blank" rel="external">http://tvvocold.coding.me/target_blank_vulnerability/test.html/</a></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ul>
+<li><p>对于使用了<code>target=&quot;_blank&quot;</code>的元素，使用 rel 属性：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*因为 FireFox 不支持 noopener ，所以添加了 noreferrer */</span></div><div class="line">rel=<span class="string">"noopener noreferrer"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>解决 opener 属性：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newWnd = <span class="built_in">window</span>.open();</div><div class="line">newWnd.opener = <span class="literal">null</span>;</div></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/29/html-css-diary-3/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -522,122 +652,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://codingme.xyz/2016/08/07/html-css-diary/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Huang SJ">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/uploads/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="CodingMe">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="CodingMe" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/07/html-css-diary/" itemprop="url">
-                  《 HTML5与 CSS3 基础教程》备忘
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Web-设计-在线网址"><a href="#Web-设计-在线网址" class="headerlink" title="Web 设计 在线网址"></a>Web 设计 在线网址</h1><p><a href="http://designingfortheweb.co.uk/">http://designingfortheweb.co.uk/</a><br>—— Mark Boulton</p>
-<h1 id="article-元素"><a href="#article-元素" class="headerlink" title="article 元素"></a>article 元素</h1><p>article 元素表示文档、页面、应用或网站中<em>一个独立的容器</em>，原则上是可独立分配或可再用的，就像聚合内容中的各部分。它可以是一篇论坛帖子、一篇杂志或报纸文章、一篇博客条目、一则用户提交的评论、一个交互式的小部件或小工具，或者任何其他<strong>独立的内容项</strong>。</p>
-<h1 id="section-元素"><a href="#section-元素" class="headerlink" title="section 元素"></a>section 元素</h1><p>section 元素代表文档或应用的<em>一个一般的区块</em>。如果只是出于添加样式的原因要对内容添加一个容器，应使用 div 而不是 section 。在考虑何时使用 section 的时候，记住定义中“<strong>具有相似主题的一组内容</strong>”这一条是很有帮助的。这也是 section 区别于 div 的另一个原因。</p>
-<h1 id="div-元素"><a href="#div-元素" class="headerlink" title="div 元素"></a>div 元素</h1><p>有关 div 的一些历史以及何时在 HTML5 中使用它:<br>在 HTML5 之前， div 是包围大块内容(如页眉、页脚、主要内容、插图、附注栏等)从而可用 CSS 为之添加样式的不二选择。之前 div 没有任何语义含义，现在也一样。 这就是 HTML5 引入 header 、 footer 、 main 、 article 、 section 、 aside 和 nav 的原因。这些类型的构造块在网页中普遍存在，因此它们可以成为具有独立含义的元素。在 HTML5 中， div 并没有消失，只是使用它的场合变少了。不过，可以肯定的是， div 应该作为最后一个备用容器，因为它没有任何语义价值。大多数时候，使用 header 、 footer 、 main (仅使用一次)、 article 、 section 、 aside 甚至 nav 代替 div 会更合适。但是，如果语义上不合适，也不必为了刻意避免使用 div 而使用上述元素。有用得上 div 的地方，只是需要限制其使用。</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/07/html-css-diary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -683,7 +697,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
